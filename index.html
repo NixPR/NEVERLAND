@@ -134,6 +134,10 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     --radius-subtle: 0.5rem;
 
 }
+::selection {
+    background: var(--fontcolor-dark) ;; /* 选中文本的背景色 */
+    color: var(--fontcolor-light) ;     /* 选中文本的颜色 */
+}
       /* 字体 */
 body {
 font-weight: 500;
@@ -178,9 +182,13 @@ input, select, textarea {
     border: transparent;
 }
 select:hover {
-    background-color:var(--fontcolor-deep1);
+    background-color:var(--fontcolor-dark);
     border: transparent;
 }
+select option {
+  background:var(--background-goldengray);
+      color:var(--fontcolor-gold);
+  }
 /* 错误提示 */
 .error-view {
 	background-color: #eaa;
@@ -445,6 +453,7 @@ transform: scale(.90);
   border: transparent;
   border-radius:var(--radius-moderate);
 }
+
 .popup-button:hover {
   background: var(--background-dark);
   color: var(--fontcolor-light);
@@ -858,7 +867,6 @@ html.bleached body textarea:not(:disabled):hover, body.bleached textarea:not(:di
 html.bleached body hr, body.bleached hr {
     color:var(--fontcolor-dark);
 }
-
 html.bleached body pre, body.bleached pre,
 html.bleached body code, body.bleached code {
     background-color: #d9d9d9;
@@ -1204,7 +1212,7 @@ width: 100%;
 
 /************************* 小部件*************************/
 /*-----seisi----*/
-.seisi button {
+.seisi a {
     display:inline-block;
     padding:4px 10px;
     margin: 0;
@@ -1216,12 +1224,12 @@ width: 100%;
             user-select: none;
             -webkit-user-select: none;
             touch-action: manipulation;
-  color:var( --fontcolor-dark);
-       background-color:var(--background-light);
+  color:var( --fontcolor-light);
+       background-color:var(--background-dark);
     border-color:var(--background-light);
     border-radius:var(--radius-moderate);
 }
-.seisi button:hover {
+.seisi a:hover {
 	text-decoration:none;
 	text-align: center;  
 	border-radius:var(--radius-moderate);  
@@ -1230,9 +1238,14 @@ width: 100%;
   	border-color: var( --fontcolor-gold);
   background-color:var(--background-light);
 }
-.seisi button:not(:disabled):hover:active {
+.seisi a:not(:disabled):a:active {
 transform: scale(.90);
 }
+.seisi {
+display:flex;
+margin-bottom: 1em;
+}
+
 
 /*-----翻页容器----*/
 .page { color:var( --fontcolor-gold); 
@@ -1360,14 +1373,15 @@ background-repeat: no-repeat;
     justify-content: space-evenly;}
 
 html.bleached body #minisidebar a, body.bleached #minisidebar a {
-    border:1px solid var(--background-goldengray);
+    border:8px double var(--background-goldengray);
 	color:var( --fontcolor-gold);
     background-color:var(--background-light);
 }
 html.bleached body  #minisidebar a:hover, body.bleached  #minisidebar a:hover {
 	color:var( --background-goldengray);
     background-color:var(--fontcolor-dark);
-   border:1px solid var(--background-goldengray);
+   border:8px double var(--background-goldengray);
+     box-shadow:none;    
 }
 
 /*----获得容器----*/
@@ -2154,16 +2168,15 @@ align-items: center;
 }
 .achievement-icon {
     flex-shrink: 0;
-    width: 2.5rem;
-    height: 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.25rem;
     color: var(--fontcolor-deep1);
-    background: #ffffff;
+    background: white;
     border-radius:var(--radius-subtle);
 }
+
 .achievement-icon-image {
     width: 100%;
     height: 100%;
@@ -2203,6 +2216,25 @@ align-items: center;
 .achievement.show {
     animation: achievementSlideIn 0.3s ease forwards;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">importStyles("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css");
+
+document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+            alert('你在尝试什么?');
+        });
+
+document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+        e.preventDefault();
+      alert('你想得到什么?');
+    }
+}, false);
+
+document.addEventListener('keydown', function(event) {
+            if (event.key === 'F12') {
+                event.preventDefault();
+                alert('你想看到什么?');
+            }
+        });
 
 Config.history.controls = true;/* 开启回退 */
 Config.history.maxStates = 6;/* 回退步数 */
@@ -3971,6 +4003,8 @@ Coni——岛上几乎猫尽皆知的酒鬼, 赊账到琥珀夫人已经不再�
 	&lt;&lt;set $dn = 1&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;set $dn = 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if $msstat == &quot;新的开始2&quot; &amp;&amp; $feather &gt;= 200&gt;&gt;&lt;&lt;set $msstat = &quot;新的开始3&quot;&gt;&gt;&lt;&lt;redo &quot;rightbar&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+
 &lt;&lt;if $hour &gt;=6 &amp;&amp; $hour &lt;=17&gt;&gt;&lt;&lt;set $oriloc = [&quot;罗索伦特湖&quot;,&quot;草甸&quot;,&quot;沙地&quot;,&quot;贝雷河&quot;,&quot;小镇&quot;,&quot;礁岩区&quot;,&quot;主港口&quot;,&quot;副港口&quot;,&quot;断桥&quot;,&quot;秋毛岗&quot;,&quot;拓荒者木屋&quot;].random()&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set $oriloc = &quot;仓库&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $hour &gt;=6 &amp;&amp; $hour &lt;=21&gt;&gt;&lt;&lt;set $nmloc = [&quot;罗索伦特湖&quot;,&quot;草甸&quot;,&quot;沙地&quot;,&quot;贝雷河&quot;,&quot;小镇&quot;,&quot;礁岩区&quot;,&quot;主港口&quot;,&quot;副港口&quot;,&quot;断桥&quot;,&quot;秋毛岗&quot;,&quot;拓荒者木屋&quot;].random()&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set $nmloc = &quot;天上人间&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
@@ -4031,14 +4065,14 @@ Coni——岛上几乎猫尽皆知的酒鬼, 赊账到琥珀夫人已经不再�
 &lt;&lt;set $needt2 = $nt + random(50,20000)&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-</tw-passagedata><tw-passagedata pid="6" name="StoryCaption" tags="" position="100,0" size="100,100">&lt;&lt;if !$nn&gt;&gt; 欢迎你来到永无乡, 远方的旅客, &lt;br&gt;请完成入岛登记&lt;br&gt;&lt;br&gt;&lt;&lt;elseif $loc == &quot;未知&quot;&gt;&gt;$nn, 永无乡永远都是你的归宿&lt;&lt;else&gt;&gt;嗨$nn!&lt;br&gt;&lt;&lt;if $nn == &quot;Nix&quot;&gt;&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/95512775_jgcolbTxzr46GdO.png&quot; width=60% class=&quot;picr&quot;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;欢迎来到&lt;br&gt;&lt;font size=5px&gt;$loc&lt;/font&gt;&lt;br&gt;&lt;&lt;if $loc == &quot;白雾&quot;&gt;&gt;美味&lt;&lt;else&gt;&gt;永远&lt;&lt;/if&gt;&gt;的朋友!&lt;br&gt;
+</tw-passagedata><tw-passagedata pid="6" name="StoryCaption" tags="" position="100,0" size="100,100">&lt;&lt;if !$nn&gt;&gt; 欢迎你来到永无乡, 远方的旅客, &lt;br&gt;请完成入岛登记&lt;br&gt;&lt;br&gt;&lt;&lt;elseif $loc == &quot;未知&quot;&gt;&gt;$nn, 永无乡永远都是你的归宿&lt;&lt;else&gt;&gt;嗨&lt;b&gt;$nn&lt;/b&gt;!&lt;br&gt;&lt;&lt;if $nn == &quot;Nix&quot;&gt;&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/95512775_jgcolbTxzr46GdO.png&quot; width=60% class=&quot;picr&quot;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;欢迎来到&lt;br&gt;&lt;font size=5px&gt;$loc&lt;/font&gt;&lt;br&gt;&lt;&lt;if $loc == &quot;白雾&quot;&gt;&gt;美味&lt;&lt;else&gt;&gt;永远&lt;&lt;/if&gt;&gt;的朋友!&lt;br&gt;
 &lt;&lt;do&gt;&gt;鸟羽: &lt;&lt;= $feather&gt;&gt;&lt;&lt;/do&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;timeWidget&gt;&gt;&lt;&lt;do&gt;&gt;&lt;&lt;if $week == 1&gt;&gt;&lt;&lt;set $dayOfWeek = &quot;礼拜一&quot;&gt;&gt;&lt;&lt;elseif $week == 2&gt;&gt;&lt;&lt;set $dayOfWeek = &quot;礼拜二&quot;&gt;&gt;&lt;&lt;elseif $week == 3&gt;&gt;&lt;&lt;set $dayOfWeek = &quot;礼拜三&quot;&gt;&gt;&lt;&lt;elseif $week == 4&gt;&gt;&lt;&lt;set $dayOfWeek = &quot;礼拜四&quot;&gt;&gt;&lt;&lt;elseif $week == 5&gt;&gt;&lt;&lt;set $dayOfWeek = &quot;礼拜五&quot;&gt;&gt;&lt;&lt;elseif $week == 6&gt;&gt;&lt;&lt;set $dayOfWeek = &quot;礼拜六&quot;&gt;&gt;&lt;&lt;elseif $week == 7&gt;&gt;&lt;&lt;set $dayOfWeek = &quot;礼拜日&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $dtr == 0&gt;&gt;&lt;&lt;set $dtn1 to random(1,24), $dtn2 to random(1,24), $dtr to 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;weatherWidget&gt;&gt;&lt;&lt;if $hour eq $dtn1 &amp;&amp; $dtr1 == 0&gt;&gt;&lt;&lt;set $dtr1 to 1&gt;&gt;&lt;&lt;set $weather = $weathers&gt;&gt;&lt;&lt;set $wind = $winds&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $hour eq $dtn2 &amp;&amp; $dtr2 == 0&gt;&gt;&lt;&lt;set $weather = $weathers&gt;&gt;&lt;&lt;set $wind = $winds&gt;&gt;&lt;&lt;set $dtr2 to 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;div id=&quot;moon&quot;&gt;&lt;&lt;moonphase&gt;&gt;&amp;nbsp;$weather $wind&lt;/div&gt;$showmonth月$showday日 $dayOfWeek  $showHour:$showMinute&lt;br&gt;
 &lt;&lt;if !$nn&gt;&gt;&lt;&lt;else&gt;&gt;&lt;b&gt;体力&lt;/b&gt; &lt;&lt;if $HP lt 0&gt;&gt;&lt;&lt;set $HP = 0&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $HP gt 100&gt;&gt;&lt;&lt;set $HP = 100&gt;&gt;&lt;&lt;/if&gt;&gt;$HP/100&lt;meter min=&quot;0&quot; high=&quot;20&quot; optimum=&quot;100&quot; max=&quot;100&quot; @value=&quot;$HP&quot; align=&quot;center&quot; style=&quot;width:200px&quot;&gt;&lt;/meter&gt;
 &lt;&lt;set $kl to $player.knowledge+ 1&gt;&gt;&lt;&lt;set _extk to setup.getStat(&quot;knowledge&quot;)- $player.knowledge&gt;&gt;&lt;span class=&quot;tooltip&quot;&gt;&lt;b&gt;学识&lt;/b&gt;&lt;span class=&quot;tooltiptext&quot;&gt;$player.knowledge/120&lt;br&gt;知识, 阅历, 智慧&lt;/span&gt;&lt;/span&gt; $player.knowledge &lt;font color=&quot;white&quot;&gt;+_extk&lt;/font&gt;&lt;meter min=0 @max=&quot;$kl&quot;  @value=&quot;$knowledgeexp&quot; align=&quot;center&quot; style=&quot;width:200px&quot;&gt;&lt;/meter&gt;
-&lt;&lt;set $sl to $player.strength+ 1&gt;&gt;&lt;&lt;set _exts to setup.getStat(&quot;strength&quot;)- $player.strength&gt;&gt;&lt;b&gt;力量&lt;/b&gt; $player.strength &lt;font color=&quot;white&quot;&gt;+_exts&lt;/font&gt;&lt;meter @value=&quot;$strengthexp&quot; min=&quot;0&quot; high=&quot;0&quot; @max=&quot;$sl&quot; align=&quot;center&quot; style=&quot;width:200px&quot;&gt;&lt;/meter&gt;
-&lt;&lt;set $ol to $player.observation+ 1&gt;&gt;&lt;&lt;set _exto to setup.getStat(&quot;observation&quot;)- $player.observation&gt;&gt;&lt;b&gt;观察&lt;/b&gt; $player.observation &lt;font color=&quot;white&quot;&gt;+_exto&lt;/font&gt;&lt;meter @value=&quot;$observationexp&quot; min=&quot;0&quot; high=&quot;0&quot; @max=&quot;$ol&quot; align=&quot;center&quot; style=&quot;width:200px&quot;&gt;&lt;/meter&gt;
-&lt;&lt;set $pl to $player.persuasive+ 1&gt;&gt;&lt;&lt;set _extp to setup.getStat(&quot;persuasive&quot;)- $player.persuasive&gt;&gt;&lt;b&gt;话术&lt;/b&gt; $player.persuasive &lt;font color=&quot;white&quot;&gt;+_extp&lt;/font&gt;&lt;meter @value=&quot;$persuasiveexp&quot; min=&quot;0&quot; high=&quot;0&quot; @max=&quot;$pl&quot; align=&quot;center&quot; style=&quot;width:200px&quot;&gt;&lt;/meter&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;
+&lt;&lt;set $sl to $player.strength+ 1&gt;&gt;&lt;&lt;set _exts to setup.getStat(&quot;strength&quot;)- $player.strength&gt;&gt;&lt;span class=&quot;tooltip&quot;&gt;&lt;b&gt;力量&lt;/b&gt;&lt;span class=&quot;tooltiptext&quot;&gt;$player.strength/120&lt;br&gt;体魄, 蛮力, 战斗&lt;/span&gt;&lt;/span&gt; $player.strength &lt;font color=&quot;white&quot;&gt;+_exts&lt;/font&gt;&lt;meter @value=&quot;$strengthexp&quot; min=&quot;0&quot; high=&quot;0&quot; @max=&quot;$sl&quot; align=&quot;center&quot; style=&quot;width:200px&quot;&gt;&lt;/meter&gt;
+&lt;&lt;set $ol to $player.observation+ 1&gt;&gt;&lt;&lt;set _exto to setup.getStat(&quot;observation&quot;)- $player.observation&gt;&gt;&lt;span class=&quot;tooltip&quot;&gt;&lt;b&gt;观察&lt;/b&gt;&lt;span class=&quot;tooltiptext&quot;&gt;$player.observation/120&lt;br&gt;敏锐, 狡黠, 觉察&lt;/span&gt;&lt;/span&gt; $player.observation &lt;font color=&quot;white&quot;&gt;+_exto&lt;/font&gt;&lt;meter @value=&quot;$observationexp&quot; min=&quot;0&quot; high=&quot;0&quot; @max=&quot;$ol&quot; align=&quot;center&quot; style=&quot;width:200px&quot;&gt;&lt;/meter&gt;
+&lt;&lt;set $pl to $player.persuasive+ 1&gt;&gt;&lt;&lt;set _extp to setup.getStat(&quot;persuasive&quot;)- $player.persuasive&gt;&gt;&lt;span class=&quot;tooltip&quot;&gt;&lt;b&gt;话术&lt;/b&gt;&lt;span class=&quot;tooltiptext&quot;&gt;$player.persuasive/120&lt;br&gt;诡辩, 说服, 谎言&lt;/span&gt;&lt;/span&gt; $player.persuasive &lt;font color=&quot;white&quot;&gt;+_extp&lt;/font&gt;&lt;meter @value=&quot;$persuasiveexp&quot; min=&quot;0&quot; high=&quot;0&quot; @max=&quot;$pl&quot; align=&quot;center&quot; style=&quot;width:200px&quot;&gt;&lt;/meter&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;
   &lt;br&gt;</tw-passagedata><tw-passagedata pid="7" name="StoryDisplayTitle" tags="" position="2025,550" size="100,100">&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87586917_ODEphEoOE67jGWI.png&quot; width=100%&gt;</tw-passagedata><tw-passagedata pid="8" name="StoryInit" tags="" position="0,0" size="100,100">&lt;&lt;cacheaudio &quot;mainBGM&quot; &quot;media/audio/Neverland.mp3&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;gardenBGM&quot; &quot;media/audio/GardenofUntamedRoses.mp3&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;wildhuntBGM&quot; &quot;media/audio/Whistling Winds.mp3&quot;&gt;&gt;
@@ -4162,7 +4196,7 @@ if (ndef $player[stat]) {throw new Error(`Invalid stat: ${stat}`);}
   Dialog.open();
 &gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if !$orifirstc&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;link &#39;&lt;i class=&quot;fa-duotone fa-solid fa-book-bookmark&quot;&gt;&lt;/i&gt;&amp;nbsp;日志&#39;&gt;&gt; &lt;&lt;run changemap(&quot;page1&quot;, &quot;logs&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="StoryRightSidebar" tags="nobr" position="300,0" size="100,100">&lt;&lt;do&gt;&gt;
+&lt;&lt;if !$orifirstc&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;link &#39;&lt;i class=&quot;fa-duotone fa-solid fa-book-bookmark&quot;&gt;&lt;/i&gt;&amp;nbsp;日志&#39;&gt;&gt; &lt;&lt;run changemap(&quot;page1&quot;, &quot;logs&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="StoryRightSidebar" tags="nobr" position="300,0" size="100,100">&lt;&lt;do tag  &quot;rightbar&quot;&gt;&gt;
 &lt;&lt;if !$nn&gt;&gt;&lt;center&gt;&lt;h2&gt;CREDITS&lt;/h2&gt;世界观创作、游戏制作、剧情设计：Nix&lt;br&gt;文本编写：暮雪深、安德森、真央、Nix&lt;br&gt;特别感谢：Chapel、Shour、黑星&lt;br&gt;&lt;br&gt;&lt;br&gt;有任何问题请联系&lt;br&gt;qq: 641549971&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;版本&lt;br&gt;1.1.4.022225_alpha&lt;br&gt;制作&amp;测试阶段&lt;/center&gt;
 &lt;&lt;elseif !$firsts&gt;&gt;&lt;&lt;elseif !$npc || $npc == 0&gt;&gt;
 
@@ -4170,7 +4204,7 @@ if (ndef $player[stat]) {throw new Error(`Invalid stat: ${stat}`);}
 $msname&lt;br&gt;
 &lt;&lt;set _msds = Item.get($msname).description&gt;&gt;_msds&lt;br&gt;&lt;br&gt;
 
-&lt;b&gt;&lt;&lt;button &#39;&lt;i class=&quot;fa-solid fa-feather-pointed&quot; style=&quot;font-size: 1.3em;&quot;&gt;&lt;/i&gt;  呼唤Seisi &#39;&gt;&gt;&lt;&lt;run
+&lt;b&gt;&lt;&lt;button &#39;&lt;i class=&quot;fa-solid fa-feather-pointed&quot; style=&quot;font-size: 1.3em;&quot;&gt;&lt;/i&gt;  呼唤Seisi &#39;&gt;&gt;&lt;&lt;set $seisistate = 0&gt;&gt;&lt;&lt;run
   Dialog.setup(&quot;Seisinofoaga&quot;);
   Dialog.wiki(Story.get(&quot;seisi&quot;).processText());
   Dialog.open();
@@ -4254,11 +4288,45 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 &lt;h3&gt;--- 禁止前往地区 ---&lt;/h3&gt;
 ♢「深林」   ♢「山区」   ♢「守夜者钟楼」&lt;/center&gt;
 
-&lt;div style=&quot;float: right;&quot;&gt;&lt;&lt;link ♢「漫步」&gt;&gt;&lt;&lt;wanderWidget&gt;&gt;&lt;&lt;goto $locs&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;     &lt;&lt;link ♢「回家」&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;if $home == &quot;旅店&quot;&gt;&gt;&lt;&lt;goto &quot;旅店&quot;&gt;&gt;&lt;&lt;elseif $home == &quot;暂无&quot;&gt;&gt;&lt;&lt;run Dialog.setup(&quot;回家&quot;);Dialog.wiki(&quot;你还没有住所&quot;);Dialog.open();&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;goto &quot;家&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;</tw-passagedata><tw-passagedata pid="14" name="seisi" tags="" position="1300,100" size="100,100">&lt;&lt;set _rpl= [&quot;【Seisi抖抖翅膀表示祂听到了】&quot;,&quot;【Seisi偏着头等待你继续说下去】&quot;].random()&gt;&gt;_rpl
+&lt;div style=&quot;float: right;&quot;&gt;&lt;&lt;link ♢「漫步」&gt;&gt;&lt;&lt;wanderWidget&gt;&gt;&lt;&lt;goto $locs&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;     &lt;&lt;link ♢「回家」&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;if $home == &quot;旅店&quot;&gt;&gt;&lt;&lt;goto &quot;旅店&quot;&gt;&gt;&lt;&lt;elseif $home == &quot;暂无&quot;&gt;&gt;&lt;&lt;run Dialog.setup(&quot;回家&quot;);Dialog.wiki(&quot;你还没有住所&quot;);Dialog.open();&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;goto &quot;家&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;</tw-passagedata><tw-passagedata pid="14" name="seisi" tags="nobr" position="1300,100" size="100,100">&lt;div class=&quot;seisi&quot;&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/96310056_qhmkkeTJguDBmGV.jpg&quot; width=60% class=&quot;pic&quot;&gt;
+&lt;span&gt;&lt;&lt;link &quot;✧领鸟羽&quot;&gt;&gt;&lt;&lt;set $seisistate = &quot;领鸟羽&quot;&gt;&gt;&lt;&lt;if $msstat == &quot;新的开始1&quot;&gt;&gt;&lt;&lt;set $msstat = &quot;新的开始2&quot;&gt;&gt;&lt;&lt;redo &quot;rightbar&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo &quot;seisi&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link &quot;✧问好&quot;&gt;&gt;&lt;&lt;set $seisistate = &quot;问好&quot;&gt;&gt;&lt;&lt;redo &quot;seisi&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link &quot;✧提问&quot;&gt;&gt;&lt;&lt;set $seisistate = &quot;提问&quot;, _qst =0&gt;&gt;&gt;&gt;&lt;&lt;redo &quot;seisi&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;if $dn == 0&gt;&gt;&lt;&lt;link &quot;✧晚安&quot;&gt;&gt;&lt;&lt;set $hi = 1, $seisistate &quot;问好&quot;&gt;&gt;&lt;&lt;redo &quot;seisi&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;/span&gt;&lt;/div&gt;
+
+&lt;div id=&quot;chatextcard&quot;&gt;
+&lt;&lt;do tag &quot;seisi&quot;&gt;&gt;
+&lt;&lt;if $seisistate == 0&gt;&gt;
+&lt;&lt;set _rpl= [&quot;【Seisi抖抖翅膀表示祂听到了】&quot;,&quot;【Seisi偏着头等待你继续说下去】&quot;].random()&gt;&gt;_rpl
+&lt;br&gt;&lt;br&gt;
+
+&lt;&lt;elseif $seisistate ==&quot;领鸟羽&quot;&gt;&gt;
+&lt;&lt;if $lny !=1&gt;&gt;&lt;&lt;set _o to random(1,10)&gt;&gt;&lt;&lt;set $feather += _o&gt;&gt;&lt;&lt;set $lny = 1&gt;&gt; &lt;&lt;set _rpf = [&quot;只有_o枚羽毛, 心怀感激地拿去吧. 瞧瞧你自己, 小东西, 现在可是拥有$feather片神圣的羽毛了, 还不满足么?&quot;,&quot;已经给了你_o枚羽毛，那样的眼神难道在奢求更多吗? 瞧瞧你现在拥有的$feather枚羽毛, 收敛收敛你的贪婪吧, 小鬼&quot;].random()&gt;&gt;_rpf
+&lt;&lt;set _rpf = [&quot;喂, 小孩, 我今天见过你一次了吧&quot;,&quot;小鬼, 贪心可没有好下场&quot;].random()&gt;&gt;_rpf
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;elseif $seisistate ==&quot;问好&quot;&gt;&gt;
+&lt;&lt;if $dn == 0 &amp;&amp; $hi == 1&gt;&gt;
+&lt;&lt;set $hi = 0&gt;&gt;
+&lt;&lt;print [&quot;用那种眼神看着我做什么, 快点去睡觉, 这里没有睡前故事&quot;,&quot;我看得出那副表情, 小鬼. 你在想: 白天已经受得够多了, 拜托别让我在梦里也见到老Seisi&quot;,&quot;愿你今夜无梦. 要是见到祂们中的哪位了, 记得别多嘴&quot;,&quot;你在希望我回应你这样的寒暄吗? 真不知道你从哪来的错觉以为我会关心你的事情. 不过要放心, 当你睡觉的时候, 我会继续以超乎你所能想象的高贵和智慧来驾驭存在的复杂性. 如果你能理解这个概念,那就做个好梦吧&quot;,&quot;晚安, 世界终于从你没完没了的闲聊中休息片刻了&quot;,&quot;睡眠, 多么古怪啊. 逃离现实几个小时一定让你心情愉悦. 别担心, 我还会在这里, 好在早上用我超凡的智力来启发你&quot;,&quot;这是给你的一条建议——要大胆做梦, 因为这是你在微不足道的存在中最接近实现任何重大成就的机会&quot;].random()&gt;&gt;
+&lt;&lt;elseif $hour &gt;=6 &amp;&amp; $hour &lt;=9&gt;&gt;
+&lt;&lt;print [&quot;一早就遇见你这样冒失的家伙, 今天想必不会好到哪儿去&quot;,&quot;如果早晨真的很美好, 我就不必忍受你们这样下等生物平凡的寒暄了&quot;,&quot;我发现早晨被高估了, 就像你在社交礼仪上的尝试一样&quot;,&quot;你说早上好? 比起无意义的礼节, 多关注你的新一天吧, 毕竟没有第二个人会去在意&quot;].random()&gt;&gt;
+&lt;&lt;elseif $hour &gt;=12 &amp;&amp; $hour &lt;=14&gt;&gt;
+嘘, 安静...你难道不知道现在是规定的午睡时间吗
+&lt;&lt;elseif $hour &gt;=21 || $hour ==0&gt;&gt;
+&lt;&lt;set _rpl= [&quot;你好, 亲爱的$nn. 我多么希望你的存在不像你的问候这么平凡&quot;,&quot;晚上好, 小毛球. 让我猜猜看, 你今天又过得一事无成&quot;,&quot;哦, $nn, 一天到晚殷殷恳恳地到处给别人问好&quot;,&quot;晚上好, 小鬼. 你的礼貌和你的智力一样微弱. 我想我该感激你用你的平庸来逗我开心&quot;,&quot;无论是早上、中午还是深夜, 你的讨好对我来说都毫无作用&quot;].random()&gt;&gt;_rpl
+&lt;&lt;else&gt;&gt;
+&lt;&lt;set _rpl= [&quot;你好, 亲爱的$nn. 我多么希望你的存在不像你的问候这么平凡&quot;,&quot;你好? 只有这点廉价还毫无意义的问候? 你们这些家伙连对神最基本的礼节都没了吗?&quot;,&quot;哦, $nn, 一天到晚殷殷恳恳地到处给别人问好&quot;,&quot;早安午安晚安, blahblah, 你们的礼节可真是无趣&quot;,&quot;无论是早上、中午还是深夜, 你的讨好对我来说都毫无作用&quot;].random()&gt;&gt;_rpl
+&lt;&lt;/if&gt;&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;&lt;elseif $seisistate ==&quot;提问&quot;&gt;&gt;
+&lt;&lt;include &quot;问题列表&quot;&gt;&gt;
+ &lt;br&gt;&lt;br&gt;
 
 
-&lt;&lt;link &quot;✧问好&quot;&gt;&gt;&lt;&lt;run Dialog.setup(&quot;问好&quot;);Dialog.wiki(Story.get(&quot;问好&quot;).processText());Dialog.open();&gt;&gt;&lt;&lt;/link&gt;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;&lt;link &quot;✧鸟窝&quot;&gt;&gt;&lt;&lt;run Dialog.setup(&quot;鸟窝&quot;);Dialog.wiki(Story.get(&quot;鸟窝&quot;).processText());Dialog.open();&gt;&gt;&lt;&lt;/link&gt;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;&lt;link &quot;✧领鸟羽&quot;&gt;&gt;&lt;&lt;run Dialog.setup(&quot;领鸟羽&quot;);Dialog.wiki(Story.get(&quot;领鸟羽&quot;).processText());Dialog.open();&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;if $dn == 0&gt;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;&lt;link &quot;✧晚安&quot;&gt;&gt;&lt;&lt;set $hi = 1&gt;&gt;&lt;&lt;run Dialog.setup(&quot;晚安&quot;);Dialog.wiki(Story.get(&quot;问好&quot;).processText());Dialog.open();&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $firsts == 1&gt;&gt;&lt;&lt;link &quot;✧赚钱指南&quot;&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赚钱指南&quot;);Dialog.wiki(Story.get(&quot;赚钱指南&quot;).processText());Dialog.open();&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="一般梦" tags="" position="1200,300" size="100,100">&lt;&lt;set _s to random(1,20)&gt;&gt;&lt;&lt;set $HP to $HP+ 48&gt;&gt;&lt;&lt;if _s &lt;= 12&gt;&gt;&lt;center&gt;——✮入梦·鹈鹕王国✭——&lt;/center&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/do&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="一般梦" tags="" position="1200,300" size="100,100">&lt;&lt;set _s to random(1,20)&gt;&gt;&lt;&lt;set $HP to $HP+ 48&gt;&gt;&lt;&lt;if _s &lt;= 12&gt;&gt;&lt;center&gt;——✮入梦·鹈鹕王国✭——&lt;/center&gt;
 
 &lt;&lt;timed 1s t8n&gt;&gt;【你梦到了一片粉色的王国. 海滩四周满是鹈鹕, 它们似乎在按照一种规律逐渐聚集起来, 开始...唱歌和跳舞?】&lt;&lt;/timed&gt;&gt;
 
@@ -4316,18 +4384,18 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 
 &lt;&lt;elseif $choice == &quot;你怎么在这儿&quot;&gt;&gt;
 &lt;font color=#FFAA00&gt; Seisinofoaga&lt;/font&gt;: &lt;br&gt;
-我怎么在这儿? 我来庆祝你完成了第一个任务! 喜欢我的祝贺吗, 这可是永无乡上最受欢迎的传统!&lt;br&gt;&lt;br&gt;
+“我怎么在这儿? 我来庆祝你完成了第一个任务! 喜欢我的祝贺吗, 这可是永无乡上最受欢迎的传统!”&lt;br&gt;&lt;br&gt;
 &lt;&lt;timed 2s t8n&gt;&gt;Seisi似乎很满意自己的幽默, 在你的肩膀上舒展起了翅膀, 丝毫不顾及有些翎羽差点戳进你的眼睛里&lt;br&gt;&lt;br&gt;
-&lt;&lt;next&gt;&gt;好了, 现在快点收拾收拾自己, 岛主要见你&lt;br&gt;
+&lt;&lt;next&gt;&gt;“好了, 现在快点收拾收拾自己, 岛主要见你”&lt;br&gt;
 &lt;br&gt;
 &lt;&lt;next 1s&gt;&gt; ⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
 &lt;&lt;link ▷「见我?」 主线第一天&gt;&gt;&lt;&lt;set $choice to &quot;见我&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;elseif $choice == &quot;哎哟&quot;&gt;&gt;
 &lt;font color=#FFAA00&gt; Seisinofoaga&lt;/font&gt;: &lt;br&gt;
-喜欢我的祝贺吗, 这可是永无乡上最受欢迎的传统!&lt;br&gt;&lt;br&gt;
+“喜欢我的祝贺吗, 这可是永无乡上最受欢迎的传统!”&lt;br&gt;&lt;br&gt;
 &lt;&lt;timed 2s t8n&gt;&gt;Seisi似乎很满意自己的幽默, 在你的肩膀上舒展起了翅膀, 丝毫不顾及有些翎羽差点戳进你的眼睛里&lt;br&gt;&lt;br&gt;
-&lt;&lt;next&gt;&gt;好了, 现在快点收拾收拾自己, 岛主要见你&lt;br&gt;
+&lt;&lt;next&gt;&gt;“好了, 现在快点收拾收拾自己, 岛主要见你”&lt;br&gt;
 &lt;br&gt;
 &lt;&lt;next 1s&gt;&gt; ⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
 &lt;&lt;link ▷「见我?」 主线第一天&gt;&gt;&lt;&lt;set $choice to &quot;见我&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/timed&gt;&gt;
@@ -4456,7 +4524,7 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 ⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
 &lt;&lt;link ▷「离开」 主线第三天结束&gt;&gt;&lt;&lt;set $choice to &quot;离开a&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="主线第三天结束" tags="nobr" position="1650,1325" size="100,100">&lt;&lt;set $mss to &quot;主线第三天结束&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="主线第三天结束" tags="nobr" position="1400,1275" size="100,100">&lt;&lt;set $mss to &quot;主线第三天结束&quot;&gt;&gt;
 &lt;&lt;if $choice == &quot;离开&quot;&gt;&gt;【治安官一行已经走远, 你也对之后的事情不感兴趣, 着手去干自己的事了】
 &lt;&lt;timed 4s&gt;&gt;&lt;&lt;goto &quot;demo结语&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
 
@@ -5567,6 +5635,8 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 
 &lt;&lt;elseif $loc == &quot;泡泡布提&quot;&gt;&gt;没写&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「返回」 泡泡布提&gt;&gt;&lt;&lt;/link&gt;&gt;
 
+&lt;&lt;elseif $loc == &quot;小镇&quot;&gt;&gt;没写&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「返回」 小镇&gt;&gt;&lt;&lt;/link&gt;&gt;
+
 &lt;&lt;elseif $loc == &quot;沙地&quot;&gt;&gt;【你用
 &lt;&lt;set _rpe1 = [&quot;红色的&quot;,&quot;黑色的&quot;,&quot;金色的&quot;,&quot;橙色的&quot;,&quot;靛蓝色的&quot;,&quot;红黄相间的&quot;,&quot;红黑相间的&quot;,&quot;黄白相间的&quot;,&quot;五颜六色的&quot;].random()&gt;&gt;_rpe1
 沙子堆了一个
@@ -5600,7 +5670,7 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 &lt;&lt;elseif _s &lt;=98&gt;&gt;&lt;&lt;set $choice = [&quot;兰巴丹的女士们&quot;,&quot;罗兰之歌&quot;,&quot;贝奥武甫&quot;,&quot;牧歌&quot;,&quot;农事诗&quot;,&quot;埃涅阿斯纪&quot;].random()&gt;&gt;
 &lt;&lt;else&gt;&gt;特殊&lt;&lt;/if&gt;&gt;&lt;&lt;pickup $book $choice 1&gt;&gt;
 &lt;&lt;timed 3s t8n&gt;&gt;你找到了一本《$choice》&lt;br&gt;&lt;br&gt;
-❖&lt;&lt;link 阅读&gt;&gt;&lt;&lt;set $page =1, $pageS=&quot;on&quot;&gt;&gt;&lt;&lt;run Dialog.setup($choice);Dialog.wiki(Story.get(&quot;阅读&quot;).processText());Dialog.open();&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+❖&lt;&lt;link 阅读&gt;&gt;&lt;&lt;set $page =1, $pageS=&quot;on&quot;&gt;&gt;&lt;&lt;goto &quot;阅读&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 ❖借书&lt;br&gt;
 ▷&lt;&lt;link 「返回」 图书馆&gt;&gt;&lt;&lt;drop $book $choice 1&gt;&gt;&lt;&lt;set $choice =0&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/timed&gt;&gt;
 
@@ -5894,7 +5964,7 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 &lt;&lt;do&gt;&gt;〖&lt;span class=&quot;tooltip&quot;&gt;学识&lt;div class=&quot;tooltiptext&quot;&gt;知识, 阅历, 智慧&lt;/div&gt;&lt;/span&gt;〗：$player.knowledge  &lt;&lt;link&quot; +1 &quot;&gt;&gt;&lt;&lt;if $points gt 0&gt;&gt;&lt;&lt;set $player.knowledge to $player.knowledge+ 1&gt;&gt;&lt;&lt;set $points to $points - 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;  &lt;&lt;link&quot; -1 &quot;&gt;&gt;&lt;&lt;if $player.knowledge gt 0&gt;&gt;&lt;&lt;set $player.knowledge -= 1&gt;&gt;&lt;&lt;set $points += 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
 〖&lt;span class=&quot;tooltip&quot;&gt;力量&lt;span class=&quot;tooltiptext&quot;&gt;体魄, 蛮力, 战斗&lt;/span&gt;&lt;/span&gt;〗：$player.strength  &lt;&lt;link&quot; +1 &quot;&gt;&gt;&lt;&lt;if $points gt 0&gt;&gt;&lt;&lt;set $player.strength to $player.strength+ 1&gt;&gt;&lt;&lt;set $points to $points - 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;  &lt;&lt;link&quot; -1 &quot;&gt;&gt;&lt;&lt;if $player.strength gt 0&gt;&gt;&lt;&lt;set $player.strength -= 1&gt;&gt;&lt;&lt;set $points += 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
 〖&lt;span class=&quot;tooltip&quot;&gt;观察&lt;span class=&quot;tooltiptext&quot;&gt;敏锐, 狡黠, 觉察&lt;/span&gt;&lt;/span&gt;〗：$player.observation  &lt;&lt;link&quot; +1 &quot;&gt;&gt;&lt;&lt;if $points gt 0&gt;&gt;&lt;&lt;set $player.observation to $player.observation+ 1&gt;&gt;&lt;&lt;set $points to $points - 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;  &lt;&lt;link&quot; -1 &quot;&gt;&gt;&lt;&lt;if $player.observation gt 0&gt;&gt;&lt;&lt;set $player.observation -= 1&gt;&gt;&lt;&lt;set $points += 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
-〖&lt;span class=&quot;tooltip&quot;&gt;话术&lt;span class=&quot;tooltiptext&quot;&gt;诡辩, 智慧, 思维&lt;/span&gt;&lt;/span&gt;〗：$player.persuasive  &lt;&lt;link&quot; +1 &quot;&gt;&gt;&lt;&lt;if $points gt 0&gt;&gt;&lt;&lt;set $player.persuasive to $player.persuasive+ 1&gt;&gt;&lt;&lt;set $points to $points - 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;  &lt;&lt;link&quot; -1 &quot;&gt;&gt;&lt;&lt;if $player.persuasive gt 0&gt;&gt;&lt;&lt;set $player.persuasive -= 1&gt;&gt;&lt;&lt;set $points += 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+〖&lt;span class=&quot;tooltip&quot;&gt;话术&lt;span class=&quot;tooltiptext&quot;&gt;诡辩, 说服, 谎言&lt;/span&gt;&lt;/span&gt;〗：$player.persuasive  &lt;&lt;link&quot; +1 &quot;&gt;&gt;&lt;&lt;if $points gt 0&gt;&gt;&lt;&lt;set $player.persuasive to $player.persuasive+ 1&gt;&gt;&lt;&lt;set $points to $points - 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;  &lt;&lt;link&quot; -1 &quot;&gt;&gt;&lt;&lt;if $player.persuasive gt 0&gt;&gt;&lt;&lt;set $player.persuasive -= 1&gt;&gt;&lt;&lt;set $points += 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
 〖资金〗：$feather  &lt;&lt;link&quot; +1 &quot;&gt;&gt;&lt;&lt;if $points gt 0&gt;&gt;&lt;&lt;set $feather to $feather+ 10&gt;&gt;&lt;&lt;set $points to $points - 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;  &lt;&lt;link&quot; -1 &quot;&gt;&gt;&lt;&lt;if $feather gt 0&gt;&gt;&lt;&lt;set $feather -= 10&gt;&gt;&lt;&lt;set $points += 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 剩余点数: $points&lt;&lt;/do&gt;&gt;
@@ -5951,7 +6021,7 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 &lt;&lt;line&gt;&gt;
 &lt;&lt;link ▷「明白」 开始故事&gt;&gt;&lt;&lt;set $choice to &quot;明白&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;(☜选这个)&lt;br&gt;
 &lt;&lt;linkreplace ▷「不明白」(别选这个,我没心情给你再讲一遍)&gt;&gt;【Seisi仿佛没听懂一样, 一动不动地盯着你】&lt;&lt;/linkreplace&gt;&gt;&lt;br&gt;
-&lt;&lt;linkreplace ▷「你是谁」&gt;&gt;&lt;br&gt;愚昧的凡间生物, 居然连我庇护之神Seisinofoaga的名讳都不曾听过? 真是可惜, 你没机会见到万人称颂我的名字的场面了. 我是岛主的唯一的导师, 也是你的指引者，岛主不在的时候，这里一切听我的&lt;&lt;/linkreplace&gt;&gt;&lt;&lt;/type-wp&gt;&gt;
+&lt;&lt;/type-wp&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="开枪" tags="nobr" position="1000,300" size="100,100">&lt;&lt;set _m to random(1,10)&gt;&gt;&lt;&lt;if _m == 10&gt;&gt;&lt;&lt;set _rpe = [&quot;【真可惜, 你错过了时机】&quot;,&quot;【真可惜, 你打偏了】&quot;,&quot;【看起来它觉得你决定放它一马, 飞快地从你的视线里消失了】&quot;].random()&gt;&gt;_rpe
 &lt;&lt;elseif $tmpprey == &quot;灰兔&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;灰兔&quot;)&gt;&gt;&lt;&lt;pickup $prey &quot;兔皮&quot; 1 &quot;兽肉&quot; 1&gt;&gt;【短暂的瞄准后, 你击中了灰兔】&lt;br&gt;
 【你获得兔皮*1 兽肉*1】
@@ -6493,7 +6563,7 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 &lt;&lt;link ▷「关节指环」&gt;&gt;&lt;&lt;goto &quot;初始选择&quot;&gt;&gt;&lt;&lt;set $choice to &quot;关节指环&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;(赠自Andersen, 装备后力量+2, 话术+2))
 &lt;&lt;/type-wp&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="提问2" tags="" position="1000,1175" size="100,100">&lt;&lt;set _q = 0&gt;&gt;&lt;&lt;do&gt;&gt;&lt;&lt;if _q == 0&gt;&gt;【&quot;他们说, 你总能在永无乡找到你想要的. 我希望你也会找到你想要的生活. &quot;她最后总结道, 满怀期望的冲你眨眨眼. 你谢过她的祝福, 但仍有疑问】
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="提问2" tags="" position="1000,1175" size="100,100">&lt;&lt;set _q = 0&gt;&gt;&lt;&lt;do&gt;&gt;&lt;&lt;if _q == 0&gt;&gt;&quot;他们说, 你总能在永无乡找到你想要的. 我希望你也会找到你想要的生活. &quot;她最后总结道, 满怀期望的冲你眨眨眼. 你谢过她的祝福, 但仍有疑问
 
 ⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘
 &lt;&lt;link▷「我能找到什么」&gt;&gt;&lt;&lt;set _q = 1&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -7106,7 +7176,7 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
             &lt;li&gt;&lt;&lt;button `_tool`&gt;&gt; 
                 &lt;&lt;run Dialog.close()&gt;&gt;
                 &lt;&lt;run setup.equip(&quot;tool&quot;, _tool)&gt;&gt;
-                &lt;&lt;redo&gt;&gt;
+                &lt;&lt;redo &quot;rightbar&quot;&gt;&gt;
             &lt;&lt;/button&gt;&gt;〖&lt;&lt;=setup.items[_tool].function&gt;&gt;〗&lt;/li&gt;
         &lt;&lt;/capture&gt;&gt;
     &lt;&lt;/for&gt;&gt;
@@ -7117,7 +7187,7 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
             &lt;li&gt;&lt;&lt;button `_head`&gt;&gt;
                 &lt;&lt;run Dialog.close()&gt;&gt;
                 &lt;&lt;run setup.equip(&quot;head&quot;, _head)&gt;&gt;
-                &lt;&lt;redo&gt;&gt;
+                &lt;&lt;redo &quot;rightbar&quot;&gt;&gt;
             &lt;&lt;/button&gt;&gt;〖&lt;&lt;=setup.items[_head].function&gt;&gt;〗&lt;/li&gt;
         &lt;&lt;/capture&gt;&gt;
     &lt;&lt;/for&gt;&gt;
@@ -7128,7 +7198,7 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
             &lt;li&gt;&lt;&lt;button `_neck`&gt;&gt;
                 &lt;&lt;run Dialog.close()&gt;&gt;
                 &lt;&lt;run setup.equip(&quot;neck&quot;, _neck)&gt;&gt;
-                &lt;&lt;redo&gt;&gt;
+                &lt;&lt;redo &quot;rightbar&quot;&gt;&gt;
             &lt;&lt;/button&gt;&gt;〖&lt;&lt;=setup.items[_neck].function&gt;&gt;〗&lt;/li&gt;
         &lt;&lt;/capture&gt;&gt;
     &lt;&lt;/for&gt;&gt;
@@ -7139,7 +7209,7 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
             &lt;li&gt;&lt;&lt;button ` _top`&gt;&gt;
                 &lt;&lt;run Dialog.close()&gt;&gt;
                 &lt;&lt;run setup.equip(&quot;top&quot;, _top)&gt;&gt;
-                &lt;&lt;redo&gt;&gt;
+                &lt;&lt;redo &quot;rightbar&quot;&gt;&gt;
             &lt;&lt;/button&gt;&gt;〖&lt;&lt;=setup.items[_top].function&gt;&gt;〗&lt;/li&gt;
         &lt;&lt;/capture&gt;&gt;
     &lt;&lt;/for&gt;&gt;
@@ -7154,14 +7224,14 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
             &lt;li&gt;&lt;&lt;button ` _pants`&gt;&gt;
                 &lt;&lt;run Dialog.close()&gt;&gt;
                 &lt;&lt;run setup.equip(&quot;pants&quot;, _pants)&gt;&gt;
-                &lt;&lt;redo&gt;&gt;
+                &lt;&lt;redo &quot;rightbar&quot;&gt;&gt;
             &lt;&lt;/button&gt;&gt;〖&lt;&lt;=setup.items[_pants].function&gt;&gt;〗&lt;/li&gt;
         &lt;&lt;/capture&gt;&gt;
     &lt;&lt;/for&gt;&gt;
     
 &lt;&lt;elseif _eqchoice == &quot;脚部&quot;&gt;&gt;
 &lt;&lt;for _foot range $foot.list&gt;&gt;&lt;&lt;capture _foot&gt;&gt;&lt;li&gt;&lt;&lt;button `_foot`&gt;&gt;&lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;run setup.equip(&quot;foot&quot;, _foot)&gt;&gt;
-&lt;&lt;redo&gt;&gt;&lt;&lt;/button&gt;&gt;〖&lt;&lt;=setup.items[_foot].function&gt;&gt;〗&lt;/li&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/for&gt;&gt;
+&lt;&lt;redo &quot;rightbar&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;〖&lt;&lt;=setup.items[_foot].function&gt;&gt;〗&lt;/li&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/for&gt;&gt;
 
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="77" name="木屋内部" tags="nobr" position="300,500" size="100,100">&lt;&lt;timed 2s t8n&gt;&gt;&lt;&lt;if $nixloc == &quot;拓荒者木屋&quot;&gt;&gt;
 &lt;&lt;audio &quot;mainBGM&quot; mute&gt;&gt;
@@ -7598,7 +7668,10 @@ Save.browser.continue()
 &lt;br&gt;&lt;br&gt;
 &lt;div class=&quot;hidden&quot;&gt;Hiding a word is the glory of the Deity, revealing a word is the glory of the King&lt;/div&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="100" name="白雾" tags="nobr" position="700,500" size="100,100">&lt;&lt;set _s to random(1,18)&gt;&gt;
 &lt;&lt;if $whm == 0&gt;&gt;
-【你终于走出了白雾】&lt;&lt;set $choice to 0, $whm =6, $loc = &quot;深林边缘&quot;&gt;&gt;
+&lt;&lt;fadeout 2s 2s&gt;&gt;【你终于走出了白雾】&lt;&lt;set $choice to 0, $whm =6, $loc = &quot;深林边缘&quot;&gt;&gt;&lt;br&gt;&lt;br&gt;
+【不知不觉间，你来到了$loc】&lt;&lt;/fadeout&gt;&gt;
+&lt;&lt;timed 4s&gt;&gt;&lt;&lt;goto $loc&gt;&gt;&lt;&lt;/timed&gt;&gt;
+
 &lt;&lt;elseif $choice == &quot;向北走&quot;&gt;&gt;
 &lt;&lt;if _s == 12&gt;&gt;&lt;&lt;set $choice to 0, $whm = 6, $loc = &quot;你的小屋&quot;&gt;&gt;
 &lt;&lt;fadeout 2s 2s&gt;&gt;【随着一阵寒冷的北风吹过, 清脆的鹿铃声兀然在你耳旁响起, 你意识到一头硕大的灰白驯鹿正站在你的身旁. 它刚才也在这儿吗? 驯鹿的模样在白雾里模糊不清, 但你确确实实的触碰到了它厚实的皮毛, 在你攀上它的脊背时也没有跌落下去. 几阵颠簸后, 你看到了家中熟悉的灯光和炉火】&lt;br&gt;【你现在安全了】&lt;&lt;/fadeout&gt;&gt;
@@ -8098,25 +8171,7 @@ Era很感激你的帮忙,
 [[♢「高地」|高地]]&lt;br&gt;
 [[♢「主港口」|主港口]]&lt;br&gt;
 [[♢「副港口」|副港口]]&lt;br&gt;
-[[♢「罗索伦特湖」|罗索伦特湖]]</tw-passagedata><tw-passagedata pid="118" name="赚钱指南" tags="" position="1500,400" size="100,100">&lt;font color=#FFAA00&gt;Seisinofoaga&lt;/font&gt;: 
-看看是谁终于肯动动懒屁股去干点正事了, 但做事情要先确保你的体力充沛, 要是因为干点活计就累倒, 那我们这段时间可就有得笑话讲了
-
-&lt;&lt;link [[♢「草甸」|草甸]]&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;
-不下雨的时候Era都会在草甸上放羊, 那小子很乐意有谁能代他的班呢, 但是别想着替他的位子, 你离够格还远着呢
-&lt;&lt;link [[♢「拓荒者木屋」|拓荒者木屋]]&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;
-这边时不时会有一些杂活, 我想Nix也不会在酬劳上吝啬
-&lt;&lt;link [[♢「咖啡馆」|咖啡馆]]&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;link [[♢「酒馆」|酒馆]]&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt; 
-两位老板娘总有自己忙不过来的时候, 去给她们搭把手, 报酬不会少的
-✧「钓鱼」  ✧「打猎」
-既然你还有副好身体, 为什么不去干点你的祖先几千年前都会干的事? 但岛上的东西可不是取之不尽的, 我会时刻注视着你
-&lt;&lt;link [[♢「杂货铺」|杂货铺]]&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;link [[♢「鱼铺」|鱼铺]]&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;
-平日里获得的东西都可以拿到这些店里去卖
-&lt;&lt;link [[♢「主港口灯塔」|灯塔]]&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;
-在灯塔看守琼那里可以提交你炼制的鱼油, 价钱不高但积少成多
-
-
-&lt;&lt;if $sin &gt;=10&gt;&gt;哦, 我知道了. 你看起来也没有多么正派. 在晚上的镇子多转转, 总能发现点不一样的东西. 去那碰碰运气吧, 或者, 说不定, 你会花光自己的钱
-&lt;&lt;elseif $sin &gt;=20&gt;&gt;不知道你有没有去过深林? 好奇吗? 想去一探究竟吗?&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="赠送" tags="" position="1400,300" size="100,100">&lt;div class=&quot;tab-container&quot;&gt;&lt;div class=&quot;tab-content&quot; id=&quot;item1&quot;&gt;&lt;&lt;nobr&gt;&gt;
+[[♢「罗索伦特湖」|罗索伦特湖]]</tw-passagedata><tw-passagedata pid="118" name="赚钱指南" tags="" position="1500,400" size="100,100"></tw-passagedata><tw-passagedata pid="119" name="赠送" tags="" position="1400,300" size="100,100">&lt;div class=&quot;tab-container&quot;&gt;&lt;div class=&quot;tab-content&quot; id=&quot;item1&quot;&gt;&lt;&lt;nobr&gt;&gt;
 ▸▹ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾◃◂&lt;br&gt;
 &lt;&lt;for _i to 0; _i lt $item.uniqueLength;  _i++&gt;&gt;
 &lt;&lt;set _itemn = $item.list[_i]&gt;&gt;
@@ -8377,10 +8432,40 @@ Dialog.open();
 属性: &lt;&lt;print [&quot;守序&quot;,&quot;中立&quot;,&quot;混乱&quot;].random()&gt;&gt;&lt;&lt;print [&quot;善良&quot;,&quot;中立&quot;,&quot;邪恶&quot;].random()&gt;&gt;
 反派: &lt;&lt;print [&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;童年遭受欺凌, 长大报复社会&quot;,&quot;想通过犯罪找到创作灵感&quot;,&quot;迷恋犯罪头目, 想得到赏识&quot;,&quot;感官薄弱, 通过作恶获得感官刺激&quot;,&quot;感官薄弱, 无所谓行恶&quot;,&quot;生于罪犯家庭, 传承家业&quot;,&quot;被陷害后痛恨虚假的正义&quot;,&quot;家庭富裕, 犯罪不过是一种消遣&quot;,&quot;天生反社会人格&quot;,&quot;痛恨另一个反派, 犯罪与其作对&quot;,&quot;急需钱财&quot;,&quot;利用程序漏洞&quot;].random()&gt;&gt;
 龙裔: &lt;&lt;print [&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;否&quot;,&quot;体能强化&quot;,&quot;千里耳&quot;,&quot;发出次声波&quot;,&quot;夜视&quot;,&quot;多眼&quot;,&quot;生出翅膀&quot;,&quot;生出尖刺&quot;,&quot;生出鳞片&quot;,&quot;自我恢复&quot;,&quot;可在水下呼吸&quot;,&quot;超忆&quot;,&quot;变形&quot;,&quot;石化&quot;,&quot;镭射眼&quot;,&quot;雾化&quot;,&quot;体型变化&quot;,&quot;分泌毒素&quot;,&quot;血液凝固成尖刺或盔甲&quot;,&quot;体能强化&quot;,&quot;千里耳&quot;,&quot;发出次声波&quot;,&quot;夜视&quot;,&quot;多眼&quot;,&quot;生出翅膀&quot;,&quot;生出尖刺&quot;,&quot;生出鳞片&quot;,&quot;自我恢复&quot;,&quot;可在水下呼吸&quot;,&quot;超忆&quot;,&quot;变形&quot;,&quot;石化&quot;,&quot;镭射眼&quot;,&quot;雾化&quot;,&quot;体型变化&quot;,&quot;分泌毒素&quot;,&quot;血液凝固成尖刺或盔甲&quot;,&quot;控制火焰&quot;,&quot;控制水分子&quot;,&quot;瞬移&quot;,&quot;隐形&quot;,&quot;控制雷电&quot;,&quot;与动物沟通&quot;,&quot;疾步&quot;,&quot;防水&quot;,&quot;调动周围情绪&quot;,&quot;促进细胞生长&quot;,&quot;控制震动&quot;,&quot;控制金属&quot;,&quot;操控物体&quot;,&quot;使物体漂浮&quot;,&quot;使物体雾化&quot;,&quot;控制重力&quot;,&quot;控制温度&quot;,&quot;控制光束&quot;,&quot;制造幻影&quot;,&quot;控制风暴&quot;,&quot;读心&quot;,&quot;入梦&quot;,&quot;预言&quot;,&quot;思维控制&quot;,&quot;语言操控&quot;,&quot;感知灵魂&quot;,&quot;造梦&quot;,&quot;唤醒欲望&quot;].random()&gt;&gt;
-死法: &lt;&lt;print [&quot;衰老&quot;,&quot;衰老&quot;,&quot;衰老&quot;,&quot;衰老&quot;,&quot;衰老&quot;,&quot;衰老&quot;,&quot;衰老&quot;,&quot;食物中毒&quot;,&quot;金属中毒&quot;,&quot;跳崖&quot;,&quot;跳楼&quot;,&quot;利器贯穿&quot;,&quot;枪击&quot;,&quot;割喉&quot;,&quot;火焚&quot;,&quot;窒息&quot;,&quot;野兽&quot;,&quot;溺水&quot;,&quot;上吊&quot;].random()&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="领鸟羽" tags="" position="1400,100" size="100,100">&lt;&lt;if $lny !=1&gt;&gt;&lt;&lt;set $o to random(1,10)&gt;&gt;&lt;&lt;set $feather += $o&gt;&gt;&lt;&lt;set $lny = 1&gt;&gt;&lt;font color=#FFAA00&gt;Seisinofoaga&lt;/font&gt;: &lt;&lt;set _rpf = [&quot;只有$o枚羽毛, 心怀感激地拿去吧. 瞧瞧你自己, 小东西, 现在可是拥有$feather片神圣的羽毛了, 还不满足么?&quot;,&quot;已经给了你$o枚羽毛，那样的眼神难道在奢求更多吗? 瞧瞧你现在拥有的$feather枚羽毛, 收敛收敛你的贪婪吧, 小鬼&quot;].random()&gt;&gt;_rpf&lt;&lt;redo&gt;&gt;
-&lt;&lt;if $msstat == &quot;新的开始1&quot;&gt;&gt;&lt;&lt;set $msstat = &quot;新的开始2&quot;&gt;&gt;&lt;&lt;if $msstat == &quot;新的开始2&quot; &amp;&amp; $feather &gt;= 200&gt;&gt;&lt;&lt;set $msstat = &quot;新的开始3&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;else&gt;&gt;&lt;font color=#FFAA00&gt;Seisinofoaga&lt;/font&gt;: 
-&lt;&lt;set _rpf = [&quot;喂, 小孩, 我今天见过你一次了吧&quot;,&quot;小鬼, 贪心可没有好下场&quot;].random()&gt;&gt;_rpf
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="风车" tags="nobr" position="200,600" size="100,100">&lt;&lt;if $loc != &quot;风车&quot;&gt;&gt;&lt;&lt;set $minute += random(2,5)&gt;&gt;&lt;&lt;set $loc = &quot;风车&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;//一栋小型的风车房和磨坊, 岛上永不止息的海风使得其能提供上供给全岛的谷物//&lt;br&gt;&lt;br&gt;
+死法: &lt;&lt;print [&quot;衰老&quot;,&quot;衰老&quot;,&quot;衰老&quot;,&quot;衰老&quot;,&quot;衰老&quot;,&quot;衰老&quot;,&quot;衰老&quot;,&quot;食物中毒&quot;,&quot;金属中毒&quot;,&quot;跳崖&quot;,&quot;跳楼&quot;,&quot;利器贯穿&quot;,&quot;枪击&quot;,&quot;割喉&quot;,&quot;火焚&quot;,&quot;窒息&quot;,&quot;野兽&quot;,&quot;溺水&quot;,&quot;上吊&quot;].random()&gt;&gt;</tw-passagedata><tw-passagedata pid="130" name="问题列表" tags="nobr" position="1400,100" size="100,100">&lt;&lt;link &quot;✧你是谁&quot;&gt;&gt;&lt;&lt;set _qst = &quot;你是谁&quot;&gt;&gt;&lt;&lt;redo &quot;问题列表&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+
+&lt;&lt;if $firsts == 1&gt;&gt;&lt;&lt;link &quot;✧赚钱指南&quot;&gt;&gt;&lt;&lt;set _qst = &quot;赚钱指南&quot;&gt;&gt;&lt;&lt;redo &quot;问题列表&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
+&lt;br&gt;
+&lt;hr&gt;&lt;br&gt;
+&lt;&lt;do tag &quot;问题列表&quot;&gt;&gt;
+&lt;&lt;if _qst == &quot;你是谁&quot;&gt;&gt;
+愚昧的凡间生物, 居然连我庇护之神Seisinofoaga的名讳都不曾听过? 真是可惜, 你没机会见到万人称颂我的名字的场面了. 我是岛主的唯一的导师, 也是你的指引者，岛主不在的时候，这里一切听我的
+
+&lt;&lt;elseif _qst == &quot;赚钱指南&quot;&gt;&gt;
+&lt;font color=#FFAA00&gt;Seisinofoaga&lt;/font&gt;: 
+看看是谁终于肯动动懒屁股去干点正事了, 但做事情要先确保你的体力充沛, 要是因为干点活计就累倒, 那我们这段时间可就有得笑话讲了
+&lt;br&gt;&lt;br&gt;
+&lt;&lt;link [[♢「草甸」|草甸]]&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+不下雨的时候Era都会在草甸上放羊, 那小子很乐意有谁能代他的班呢, 但是别想着替他的位子, 你离够格还远着呢&lt;br&gt;
+&lt;&lt;link [[♢「拓荒者木屋」|拓荒者木屋]]&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+这边时不时会有一些杂活, 我想Nix也不会在酬劳上吝啬&lt;br&gt;
+&lt;&lt;link [[♢「咖啡馆」|咖啡馆]]&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;link [[♢「酒馆」|酒馆]]&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;br&gt;
+两位老板娘总有自己忙不过来的时候, 去给她们搭把手, 报酬不会少的&lt;br&gt;
+✧「钓鱼」  ✧「打猎」&lt;br&gt;
+既然你还有副好身体, 为什么不去干点你的祖先几千年前都会干的事? 但岛上的东西可不是取之不尽的, 我会时刻注视着你&lt;br&gt;
+&lt;&lt;link [[♢「杂货铺」|杂货铺]]&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;link [[♢「鱼铺」|鱼铺]]&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+平日里获得的东西都可以拿到这些店里去卖&lt;br&gt;
+&lt;&lt;link [[♢「主港口灯塔」|灯塔]]&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+在灯塔看守琼那里可以提交你炼制的鱼油, 价钱不高但积少成多
+
+
+&lt;&lt;if $sin &gt;=10&gt;&gt;哦, 我知道了. 你看起来也没有多么正派. 在晚上的镇子多转转, 总能发现点不一样的东西. 去那碰碰运气吧, 或者, 说不定, 你会花光自己的钱
+&lt;&lt;elseif $sin &gt;=20&gt;&gt;不知道你有没有去过深林? 好奇吗? 想去一探究竟吗?&lt;&lt;/if&gt;&gt;
+
+
+&lt;&lt;else&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="131" name="风车" tags="nobr" position="200,600" size="100,100">&lt;&lt;if $loc != &quot;风车&quot;&gt;&gt;&lt;&lt;set $minute += random(2,5)&gt;&gt;&lt;&lt;set $loc = &quot;风车&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;//一栋小型的风车房和磨坊, 岛上永不止息的海风使得其能提供上供给全岛的谷物//&lt;br&gt;&lt;br&gt;
 
 ✧「磨坊帮工」&lt;br&gt;&lt;br&gt;
 
