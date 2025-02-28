@@ -4451,7 +4451,7 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 
 &lt;&lt;elseif $choice == &quot;继续&quot;&gt;&gt;
 &lt;&lt;if $id != &quot;无&quot;&gt;&gt;&quot;你是一名$id? 这很不错. 我知道你今天可能听过数十次了, 但我还是要说, 欢迎你入住永无乡. &quot;你觉得她几乎是迫不及待的说出来这句, &quot;这不是什么大地方, 比不上那些城市, 但大家的生活都很愉快, 彼此之间也没有什么隔阂, 而这就是我建起永无乡的初衷. &quot;&lt;&lt;else&gt;&gt;我知道你今天可能听过数十次了, 但我还是要说, 欢迎你入住永无乡. &quot;你觉得她几乎是迫不及待的说出来这句, &quot;这不是什么大地方, 比不上那些城市, 但大家的生活都很愉快, 彼此之间也没有什么隔阂, 而这就是我建起永无乡的初衷. &quot;&lt;&lt;/if&gt;&gt;&lt;br&gt;&lt;br&gt;
-&lt;&lt;timed 2s t8n&gt;&gt;&quot;我知道任何事情在最开始时都会很艰难, 所以为了让新居民们能尽快拥有更好的生活品质, 我们在小镇的教堂里准备了一些免费物资, 在你空闲时间去找Daisy牧师领取就好, 他一般不会离开教堂太久. &quot;&lt;&lt;set _bjb to 0&gt;&gt;&lt;&lt;/timed&gt;&gt;&lt;br&gt;&lt;br&gt;
+&lt;&lt;timed 2s t8n&gt;&gt;&quot;我知道任何事情在最开始时都会很艰难, 所以为了让新居民们能尽快拥有更好的生活品质, 我们在&lt;b&gt;小镇的教堂&lt;/b&gt;里准备了一些免费物资, 在你空闲时间去找Daisy牧师领取就好, 他一般不会离开教堂太久. &quot;&lt;&lt;set _bjb to 0&gt;&gt;&lt;&lt;/timed&gt;&gt;&lt;br&gt;&lt;br&gt;
 &lt;&lt;timed 4s t8n&gt;&gt;&quot;作为欢迎, 礼拜三的晚上我会在木屋外办一场篝火晚会, 新居民都会收到邀请, 老居民想参加就得靠自己的努力了, 毕竟我们的邀请函过上几天就会枯萎&quot;她边说着边从桌上的花篮里摘出一枝白玫瑰, 你很容易就注意到枝干上的棘刺已经被精心剔除, 花托上还绑着一根蓝丝带&lt;br&gt;
 &lt;&lt;pickup $item &quot;丝带白玫瑰&quot; 1&gt;&gt;&lt;&lt;set _itemobtain = &quot;丝带白玫瑰 * 1&quot;&gt;&gt;&lt;&lt;itemobtain&gt;&gt;&lt;&lt;/timed&gt;&gt;
 &lt;&lt;timed 8s t8n&gt;&gt;&quot;礼拜三晚上六点以后, 来拓荒者木屋带上白玫瑰, 你就能参加我们的篝火晚会啦. &quot;&lt;&lt;/timed&gt;&gt;&lt;br&gt;&lt;br&gt;
@@ -5590,7 +5590,9 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 &lt;&lt;link ▷「继续」&gt;&gt;&lt;&lt;goto &quot;家&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="38" name="图书馆" tags="" position="500,400" size="100,100">&lt;&lt;if $dn == 0&gt;&gt;【图书馆里的门上挂着关门的牌子, 尽管里面还在不断闪烁着温暖的烛光, 你决定还是不要在这时候打扰, 等到白天再来吧】&lt;&lt;else&gt;&gt;&lt;&lt;if $loc != &quot;图书馆&quot;&gt;&gt;&lt;&lt;set $loc = &quot;图书馆&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;【图书馆木制的书架上堆满了陈旧的书籍, 空气中弥漫着墨水和灰尘的气味, 角落里, 一个矮胖的中年猫坐在书桌旁, 四周堆满了未完成的手稿和甜点, 他在你推门而入时抬起毛绒绒的脑袋看了你一眼, 很快又埋头继续写着他手里的文章. &quot;欢迎来到镇图书馆, 我的朋友, 不过我现在很忙, 请随意翻阅吧&quot;】
 
 
-&lt;&lt;link&quot; ✣「Otis」 &quot; &quot;图书馆&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;Otis&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;埋头忙碌地书写着, 似乎最好不要打搅他
+&lt;&lt;link&quot; ✣「Otis」 &quot; &quot;图书馆&quot;&gt;&gt;&lt;&lt;set $npc to &quot;Otis&quot;&gt;&gt;&lt;&lt;run Dialog.setup($npc);
+  Dialog.wiki(Story.get(&quot;NPC&quot;).processText());
+  Dialog.open();&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;埋头忙碌地书写着, 似乎最好不要打搅他
 
 地点活动
 [[✧「翻阅书架」|地点活动]]&lt;&lt;/if&gt;&gt;
@@ -5604,6 +5606,7 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 
 &lt;&lt;elseif $loc == &quot;泡泡布提&quot;&gt;&gt;没写&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「返回」 泡泡布提&gt;&gt;&lt;&lt;/link&gt;&gt;
 
+&lt;&lt;elseif $loc == &quot;拓荒者木屋&quot;&gt;&gt;没写&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「返回」 拓荒者木屋&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 &lt;&lt;elseif $loc == &quot;小镇&quot;&gt;&gt;
 【你翻找口袋, 似乎没有什么能引起】
@@ -6262,7 +6265,7 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 
 &lt;&lt;elseif $loc == &quot;花店&quot;&gt;&gt;&lt;&lt;set $dgcs -= 1&gt;&gt;&lt;&lt;set $hour to $hour+ 1&gt;&gt;&lt;&lt;set _rpe = [&quot;【你在Nix的指导下尝试着给生长中的幼苗换花盆】&quot;,&quot;【你拿起了清扫工具, 开始清理店里的泥土】&quot;,&quot;【你拿出喷壶和花园铲, 开始给店里的盆栽浇水松土】&quot;].random()&gt;&gt;_rpe
 
-&lt;&lt;timed 3s&gt;&gt;&lt;&lt;set _t to random(15,40)&gt;&gt;&lt;&lt;set _r to setup.getStat(&quot;strength&quot;)*_t/10&gt;&gt;&lt;&lt;set _a to setup.getStat(&quot;strength&quot;)/_r*100&gt;&gt;&lt;&lt;set _b to _a/6&gt;&gt;&lt;&lt;checkWidget&gt;&gt;&lt;&lt;if _rst == &quot;大成功&quot;&gt;&gt;【你出色的完成了在花店的工作, 花儿们在你的照料下看起来更鲜嫩了】
+&lt;&lt;timed 3s&gt;&gt;&lt;&lt;set _t to random(15,35)&gt;&gt;&lt;&lt;set _r to setup.getStat(&quot;strength&quot;)*_t/10&gt;&gt;&lt;&lt;set _a to setup.getStat(&quot;strength&quot;)/_r*100&gt;&gt;&lt;&lt;set _b to _a/6&gt;&gt;&lt;&lt;checkWidget&gt;&gt;&lt;&lt;if _rst == &quot;大成功&quot;&gt;&gt;【你出色的完成了在花店的工作, 花儿们在你的照料下看起来更鲜嫩了】
 &lt;&lt;set $feather to $feather+ _n&gt;&gt;&lt;&lt;set $strengthexp to $strengthexp+ 1&gt;&gt;&lt;&lt;addsexpWidget&gt;&gt;
 &lt;font color=#4E84BA&gt;✧你获得_n枚鸟羽✧&lt;/font&gt;&lt;&lt;redo&gt;&gt;
 &lt;&lt;elseif _rst == &quot;成功&quot;&gt;&gt;【你顺利完成了在花店的工作, 花儿们看起来精神了不少】
@@ -6320,7 +6323,7 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 &lt;br&gt;
 &lt;&lt;NPCloc&gt;&gt;
 &lt;br&gt;要进木屋看看吗?&lt;br&gt;
-&lt;&lt;link ✧「敲门」 木屋内部&gt;&gt;&lt;&lt;audio &quot;轻敲门&quot; play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ✧「敲门」 木屋内部&gt;&gt;&lt;&lt;audio &quot;mainBGM&quot; mute&gt;&gt;&lt;&lt;audio &quot;轻敲门&quot; play&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;br&gt;地点活动&lt;br&gt;
 &lt;&lt;if $lostsheep[0] == 1&gt;&gt;[[✧「找羊」|era互动]]&lt;br&gt;&lt;&lt;/if&gt;&gt;
 [[✧「采摘无花果」|地点活动]]&lt;br&gt;
@@ -6697,13 +6700,15 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 &lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;【你注意到白猫有着一张男性化的面孔】&lt;br&gt;&lt;&lt;set $observationexp to $observationexp+1&gt;&gt;&lt;&lt;addoexpWidget&gt;&gt;&lt;br&gt;
 &lt;&lt;/if&gt;&gt;&lt;br&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/timed&gt;&gt;
-&lt;&lt;timed 5s t8n&gt;&gt;&lt;br&gt;&lt;&lt;if $jofirstc == 1&gt;&gt;&lt;&lt;link&quot; ✣「NPC 琼」 &quot; &quot;教堂&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;琼&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;link&quot; ✣「NPC Daisy」 &quot; &quot;教堂&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;Daisy&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;timed 5s t8n&gt;&gt;&lt;br&gt;&lt;&lt;if $jofirstc == 1&gt;&gt;&lt;&lt;link&quot; ✣「NPC 琼」 &quot; &quot;教堂&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;琼&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;link&quot; ✣「NPC Daisy」 &quot; &quot;教堂&quot;&gt;&gt;&lt;&lt;set $npc to &quot;Daisy&quot;&gt;&gt;&lt;&lt;run Dialog.setup($npc);
+  Dialog.wiki(Story.get(&quot;NPC&quot;).processText());
+  Dialog.open();&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;br&gt;&lt;br&gt;
 [[✧「找个座位」|找个座位]]&lt;br&gt;
 ✧「查看约柜」
 &lt;br&gt;
 &lt;&lt;set _m to random(1,10)&gt;&gt;
-&lt;&lt;link ▷「离开」&gt;&gt;&lt;&lt;set $loc = &quot;小镇&quot;&gt;&gt;&lt;&lt;if $jofirstc != 1 &amp;&amp; _m &lt;= 2&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;琼&quot;&gt;&gt;&lt;&lt;goto &quot;交谈&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;goto &quot;小镇&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;link ▷「离开」&gt;&gt;&lt;&lt;set $loc = &quot;小镇&quot;&gt;&gt;&lt;&lt;if $jofirstc != 1 &amp;&amp; _m &lt;= 4&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;琼&quot;&gt;&gt;&lt;&lt;goto &quot;交谈&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;goto &quot;小镇&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;else&gt;&gt;
 &lt;&lt;link&quot; ✣「NPC Daisy」 &quot; &quot;教堂&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;Daisy&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -7212,7 +7217,6 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 &lt;&lt;redo &quot;rightbar&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;〖&lt;&lt;=setup.items[_foot].function&gt;&gt;〗&lt;/li&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/for&gt;&gt;
 
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="77" name="木屋内部" tags="nobr" position="300,500" size="100,100">&lt;&lt;timed 2s t8n&gt;&gt;&lt;&lt;if $nixloc == &quot;拓荒者木屋&quot;&gt;&gt;
-&lt;&lt;audio &quot;mainBGM&quot; mute&gt;&gt;
 &lt;&lt;audio &quot;NixBGM&quot; loop play&gt;&gt;
 
 【你来到了拓荒者木屋, Nix给你开了门, 进去坐坐吧】&lt;br&gt;
@@ -8448,7 +8452,8 @@ Dialog.open();
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 副港口&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="鸟窝" tags="" position="1500,200" size="100,100">还没写</tw-passagedata><tw-passagedata pid="136" name="黑市" tags="" position="600,500" size="100,100">还没写</tw-passagedata><tw-passagedata pid="137" name="PassageDone" tags="" position="2125,300" size="100,100">/*----------------BGM判断----------------*/
 &lt;&lt;audio &quot;mainBGM&quot; loop play&gt;&gt;
 &lt;&lt;if $loc !=&quot;拓荒者木屋&quot;&gt;&gt;&lt;&lt;audio &quot;NixBGM&quot; stop&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $loc !=&quot;酒馆&quot;&gt;&gt;&lt;&lt;audio &quot;pubBGM&quot; stop&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="NPC各种" tags="nobr widget" position="600,0" size="100,100">&lt;&lt;widget &quot;sxdkind&quot;&gt;&gt;
+&lt;&lt;if $loc !=&quot;酒馆&quot;&gt;&gt;&lt;&lt;audio &quot;pubBGM&quot; stop&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $loc !=&quot;家&quot; || $loc !=&quot;旅店&quot; || &gt;&gt;&lt;&lt;audio &quot;homeBGM&quot; stop&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="NPC各种" tags="nobr widget" position="600,0" size="100,100">&lt;&lt;widget &quot;sxdkind&quot;&gt;&gt;
 &lt;&lt;if _sxd &lt;= 0&gt;&gt;并不信任你
 &lt;&lt;elseif _sxd &lt;= 5&gt;&gt;对你没什么看法
 &lt;&lt;elseif _sxd &lt; 25&gt;&gt;认为你是一个不错的岛民
@@ -8502,7 +8507,7 @@ Dialog.open();
   Dialog.wiki(Story.get(&quot;NPC&quot;).processText());
   Dialog.open();&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;$spadis&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $jofirstc == 1 &amp;&amp; $joloc == $loc&gt;&gt;&lt;br&gt;✣&lt;&lt;link &quot;✣「琼」&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;琼&quot;&gt;&gt;&lt;&lt;run Dialog.setup($npc);
+&lt;&lt;if $jofirstc == 1 &amp;&amp; $joloc == $loc&gt;&gt;&lt;br&gt;✣&lt;&lt;link &quot;✣「琼」&quot;&gt;&gt;&lt;&lt;set $npc to &quot;琼&quot;&gt;&gt;&lt;&lt;run Dialog.setup($npc);
   Dialog.wiki(Story.get(&quot;NPC&quot;).processText());
   Dialog.open();&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 
