@@ -3145,7 +3145,7 @@ Config.saves.descriptions = function (saveType) {
     window.Item = window.Item || Item;
 })();
 
-/* WordWheel-Fork.1, Ver.0.1.0 */
+/* 字轮-Fork.1, Ver.0.1.0 */
 // Made by SjoerdHekking with too much help from Gwen
 setup.circle = {
     msg: "Error".split(""),
@@ -3314,17 +3314,6 @@ Macro.add("wordwheel", {
 });
 /* End WordWheel-Fork.1 */
 
-function videoMuteHandler() {
-	// (Un)Mute the videos
-	$("video").prop("muted", settings.videoMute);  // (Un)Mute all videos
-}
-Setting.addToggle("videoMute", {
-	label	 : "背景音乐静音",
-	default  : false,
-	onInit	 : videoMuteHandler,
-	onChange : videoMuteHandler
-});
-
 (function () {
 	// Set initial values.
 	var options = {
@@ -3427,108 +3416,6 @@ Setting.addToggle("videoMute", {
 		}
 	}
 }());
-
-      // 打字跳过＋显示选项
-setup.typewriter = (() => {
-  let currentTyping = null;
- 
-  function typewriter(element, text, speed = 50, choiceElement = null) {
-    if (currentTyping) {
-      currentTyping.abort = true;
-    }
- 
-    element.textContent = '';
-    element.classList.add('typing');
-    
-    const cursor = document.createElement('span');
-    cursor.className = 'cursor';
-    element.appendChild(cursor);
-    
-    let i = 0;
-    let aborted = false;
-    
-    function handleSkip(e) {
-      // 任意鼠标按键都可以触发跳过
-      aborted = true;
-    }
-    document.addEventListener('mousedown', handleSkip);
-    
-    return new Promise(resolve => {
-      currentTyping = { abort: false };
-      
-      function type() {
-        if (currentTyping.abort || aborted) {
-          document.removeEventListener('mousedown', handleSkip);
-          element.innerHTML = text;
-          finish();
-          return;
-        }
- 
-        if (i < text.length) {
-          const char = text.charAt(i);
-          if (char === '\n') {
-            element.insertBefore(document.createElement('br'), cursor);
-          } else {
-            element.insertBefore(document.createTextNode(char), cursor);
-          }
-          i++;
-          setTimeout(type, speed);
-        } else {
-          document.removeEventListener('mousedown', handleSkip);
-          finish();
-        }
-      }
- 
-      function finish() {
-        cursor.remove();
-        if (choiceElement) {
-          setTimeout(() => {
-            choiceElement.style.display = 'block';
-            choiceElement.style.opacity = '1';
-            choiceElement.style.transform = 'translateY(0)';
-          }, 100);
-        }
-        resolve();
-      }
- 
-      type();
-    });
-  }
- 
-  return typewriter;
-})();
- 
-Macro.add('typewriter', {
-  tags: ['choices'],
-  handler: function() {
-    if (!this.args[0]) {
-      return this.error('No typing speed specified');
-    }
- 
-    const speed = this.args[0];
-    const $wrapper = $('<div/>').addClass('typewriter');
-    
-    let $choices = null;
-    
-    if (this.payload[1]) {
-      $choices = $('<div/>').addClass('choice-container').css({
-        'display': 'none',
-        'opacity': '0',
-        'transform': 'translateY(20px)',
-        'transition': 'all 0.5s ease'
-      });
-      
-      $choices.wiki(this.payload[1].contents);
-    }
-    
-    this.output.appendChild($wrapper[0]);
-    if ($choices) {
-      this.output.appendChild($choices[0]);
-    }
-    
-    setup.typewriter($wrapper[0], this.payload[0].contents, speed, $choices ? $choices[0] : null);
-  }
-});
 
 /*黑星版*/
 /* Type-wp, Modified from SugarCube, Ver.0.1.2 */
@@ -4902,15 +4789,16 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 &lt;&lt;/if&gt;&gt;
 
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="任务完成" tags="" position="800,400" size="100,100">&lt;&lt;if $msstat == &quot;新的开始完成&quot;&gt;&gt;&lt;&lt;set $achv.push({name: &#39;永无乡的新居民&#39;, dscr: &#39;你踏上了永无乡, 成为了她的新居民, 但是接下来呢? 你会选择什么样的生活?&#39;})&gt;&gt;&lt;&lt;notify 5s&gt;&gt;&lt;font color=&quot;BD5786&quot;&gt;☆获得成就 : 永无乡的新居民☆&lt;/font&gt;&lt;&lt;/notify&gt;&gt;【你刚放下手头的工具, 就看到Seisi跳到了工作台上, 爪子里抓着什么东西. 祂一直都在附近吗? 你等着Seisi开始祂的讲话】
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="任务完成" tags="" position="800,400" size="100,100">&lt;&lt;if $msstat == &quot;新的开始完成&quot;&gt;&gt;【你刚放下手头的工具, 就看到Seisi跳到了工作台上, 爪子里抓着什么东西. 祂一直都在附近吗? 你等着Seisi开始祂的讲话】
 
 &lt;font color=&quot;FFAA00&quot;&gt; Seisinofoaga&lt;/font&gt;: 
 你完成了那堆任务, 我们也按时清理出来了一批空房, 这是你的安家许可证, 再付上200鸟羽, 你就能在永无乡拥有一栋独立的小屋了, 当然, 去不去住的选择权都在你
 
 【Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里面用花体英文写着祝贺你开启在永无乡上的新生活, 以及一些住所选址的注意事项和建议, 落款签名是N. P. Reaper】&lt;&lt;pickup $item &quot;安家许可证&quot; 1&gt;&gt;
 &lt;font color=#4E84BA&gt;✧你获得安家许可证*1✧&lt;/font&gt;
-&lt;&lt;set $achv.push({name: &#39;新的开始&#39;, dscr: &#39;你踏上了永无乡, 成为了她的新居民, 但是接下来呢? 你会选择什么样的生活?&#39;})&gt;&gt;
-&lt;&lt;notify 5s&gt;&gt;&lt;font color=&quot;BD5786&quot;&gt;☆获得成就 : 新的开始☆&lt;/font&gt;&lt;&lt;/notify&gt;&gt;
+&lt;&lt;checkachievement &quot;beginning&quot;&gt;&gt;
+&lt;&lt;if !$hasAchievement&gt;&gt;
+&lt;&lt;achievement &quot;beginning&quot;&gt;&gt;
 &lt;&lt;set $msstat = 0&gt;&gt;&lt;&lt;set $msname = &quot;无&quot;&gt;&gt;&lt;&lt;drop $ms &quot;新的开始&quot; 1&gt;&gt;&lt;&lt;pickup $msd &quot;【已完成】新的开始&quot; 1&gt;&gt;
 &lt;&lt;link ▷「离开」 小镇&gt;&gt;&lt;&lt;if $nn == &quot;Nix&quot;&gt;&gt;&lt;&lt;set $home to &quot;拓荒者木屋&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;
 
@@ -5942,7 +5830,7 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 &lt;&lt;do&gt;&gt;〖&lt;span class=&quot;tooltip&quot;&gt;学识&lt;div class=&quot;tooltiptext&quot;&gt;知识, 阅历, 智慧&lt;/div&gt;&lt;/span&gt;〗：$player.knowledge  &lt;&lt;link&quot; +1 &quot;&gt;&gt;&lt;&lt;if $points gt 0&gt;&gt;&lt;&lt;set $player.knowledge to $player.knowledge+ 1&gt;&gt;&lt;&lt;set $points to $points - 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;  &lt;&lt;link&quot; -1 &quot;&gt;&gt;&lt;&lt;if $player.knowledge gt 0&gt;&gt;&lt;&lt;set $player.knowledge -= 1&gt;&gt;&lt;&lt;set $points += 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
 〖&lt;span class=&quot;tooltip&quot;&gt;力量&lt;span class=&quot;tooltiptext&quot;&gt;体魄, 蛮力, 战斗&lt;/span&gt;&lt;/span&gt;〗：$player.strength  &lt;&lt;link&quot; +1 &quot;&gt;&gt;&lt;&lt;if $points gt 0&gt;&gt;&lt;&lt;set $player.strength to $player.strength+ 1&gt;&gt;&lt;&lt;set $points to $points - 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;  &lt;&lt;link&quot; -1 &quot;&gt;&gt;&lt;&lt;if $player.strength gt 0&gt;&gt;&lt;&lt;set $player.strength -= 1&gt;&gt;&lt;&lt;set $points += 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
 〖&lt;span class=&quot;tooltip&quot;&gt;观察&lt;span class=&quot;tooltiptext&quot;&gt;敏锐, 狡黠, 觉察&lt;/span&gt;&lt;/span&gt;〗：$player.observation  &lt;&lt;link&quot; +1 &quot;&gt;&gt;&lt;&lt;if $points gt 0&gt;&gt;&lt;&lt;set $player.observation to $player.observation+ 1&gt;&gt;&lt;&lt;set $points to $points - 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;  &lt;&lt;link&quot; -1 &quot;&gt;&gt;&lt;&lt;if $player.observation gt 0&gt;&gt;&lt;&lt;set $player.observation -= 1&gt;&gt;&lt;&lt;set $points += 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
-〖&lt;span class=&quot;tooltip&quot;&gt;话术&lt;span class=&quot;tooltiptext&quot;&gt;诡辩, 说服, 谎言&lt;/span&gt;&lt;/span&gt;〗：$player.persuasive  &lt;&lt;link&quot; +1 &quot;&gt;&gt;&lt;&lt;if $points gt 0&gt;&gt;&lt;&lt;set $player.persuasive to $player.persuasive+ 1&gt;&gt;&lt;&lt;set $points to $points - 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;  &lt;&lt;link&quot; -1 &quot;&gt;&gt;&lt;&lt;if $player.persuasive gt 0&gt;&gt;&lt;&lt;set $player.persuasive -= 1&gt;&gt;&lt;&lt;set $points += 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+〖&lt;span class=&quot;tooltip&quot;&gt;话术&lt;span class=&quot;tooltiptext&quot;&gt;诡辩, 说服, 谎言&lt;/span&gt;&lt;/span&gt;〗：$player.persuasive  &lt;&lt;link &quot; +1 &quot;&gt;&gt;&lt;&lt;if $points gt 0&gt;&gt;&lt;&lt;set $player.persuasive += 1, $points -= 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;  &lt;&lt;link&quot; -1 &quot;&gt;&gt;&lt;&lt;if $player.persuasive gt 0&gt;&gt;&lt;&lt;set $player.persuasive -= 1&gt;&gt;&lt;&lt;set $points += 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
 〖资金〗：$feather  &lt;&lt;link&quot; +1 &quot;&gt;&gt;&lt;&lt;if $points gt 0&gt;&gt;&lt;&lt;set $feather to $feather+ 10&gt;&gt;&lt;&lt;set $points to $points - 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;  &lt;&lt;link&quot; -1 &quot;&gt;&gt;&lt;&lt;if $feather gt 0&gt;&gt;&lt;&lt;set $feather -= 10&gt;&gt;&lt;&lt;set $points += 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 剩余点数: $points&lt;&lt;/do&gt;&gt;
@@ -7638,7 +7526,7 @@ Save.browser.continue()
 &lt;&lt;button[[创建角色]]&gt;&gt;&lt;&lt;/button&gt;&gt;------------✧✦✧✦✧------------&lt;br&gt;
 
 &lt;&lt;button &quot;系统设置&quot;&gt;&gt;
-&lt;&lt;run UI.buildSetting()&gt;&gt;
+&lt;&lt;run UI.settings()&gt;&gt;
 &lt;&lt;run Dialog.open()&gt;&gt;
 &lt;&lt;/button&gt;&gt;------------✧✦✧✦✧------------&lt;br&gt;
 
@@ -7714,7 +7602,7 @@ Save.browser.continue()
 &lt;b&gt;&lt;center&gt;主要角色&lt;/center&gt;&lt;/b&gt;&lt;br&gt;
 &lt;&lt;if $erafirstc == 1&gt;&gt;
 &lt;table style=&quot;width:100%&quot;&gt;
-  &lt;tr&gt;&lt;th colspan=2&gt;&lt;center&gt;Era&amp;nbsp;&amp;nbsp;&lt;font size=1px color=#ABA49B&gt;//船长//&lt;/font&gt;&lt;/center&gt;&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;th colspan=2&gt;&lt;center&gt;Era&amp;nbsp;&amp;nbsp;&lt;font size=1px color=#ABA49B&gt;//羊倌//&lt;/font&gt;&lt;/center&gt;&lt;/th&gt;&lt;/tr&gt;
   &lt;tr&gt;&lt;td style=&quot;width:50%&quot;&gt;&lt;center&gt;❥&amp;nbsp;$erahgd&lt;/center&gt;&lt;/td&gt;
     &lt;td style=&quot;width:50%&quot;&gt;&lt;center&gt;--&lt;/center&gt;&lt;/td&gt;&lt;/tr&gt;
   &lt;tr&gt;&lt;td colspan=2 style=&quot;border-style: none;&quot;&gt;
