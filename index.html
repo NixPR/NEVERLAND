@@ -4315,7 +4315,7 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 ♢「深林」   ♢「山区」   ♢「守夜者钟楼」&lt;/center&gt;
 
 &lt;div style=&quot;float: right;&quot;&gt;&lt;&lt;link ♢「漫步」&gt;&gt;&lt;&lt;wanderWidget&gt;&gt;&lt;&lt;goto $locs&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;     &lt;&lt;link ♢「回家」&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;if $home == &quot;旅店&quot;&gt;&gt;&lt;&lt;goto &quot;旅店&quot;&gt;&gt;&lt;&lt;elseif $home == &quot;暂无&quot;&gt;&gt;&lt;&lt;run Dialog.setup(&quot;回家&quot;);Dialog.wiki(&quot;你还没有住所&quot;);Dialog.open();&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;goto &quot;家&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;</tw-passagedata><tw-passagedata pid="14" name="seisi" tags="nobr" position="1300,100" size="100,100">&lt;div class=&quot;seisi&quot;&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/96310056_qhmkkeTJguDBmGV.jpg&quot; width=60% class=&quot;pic&quot;&gt;
-&lt;span&gt;&lt;&lt;link &quot;✧领鸟羽&quot;&gt;&gt;&lt;&lt;set $seisistate = &quot;领鸟羽&quot;&gt;&gt;&lt;&lt;if $msstat == &quot;新的开始1&quot;&gt;&gt;&lt;&lt;set $msstat = &quot;新的开始2&quot;&gt;&gt;&lt;&lt;redo &quot;rightbar&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo &quot;seisi&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;span&gt;&lt;&lt;link &quot;✧领鸟羽&quot;&gt;&gt;&lt;&lt;set $seisistate = &quot;领鸟羽&quot;&gt;&gt;&lt;&lt;if $msstat == &quot;新的开始1&quot;&gt;&gt;&lt;&lt;set $msstat = &quot;新的开始2&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;notify 5s&gt;&gt;&lt;font color=&quot;BD5786&quot;&gt;☆完成任务：新的开始阶段I☆&lt;/font&gt;&lt;&lt;/notify&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo &quot;seisi&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link &quot;✧问好&quot;&gt;&gt;&lt;&lt;set $seisistate = &quot;问好&quot;&gt;&gt;&lt;&lt;redo &quot;seisi&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link &quot;✧提问&quot;&gt;&gt;&lt;&lt;set $seisistate = &quot;提问&quot;, _qst =0&gt;&gt;&gt;&gt;&lt;&lt;redo &quot;seisi&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;if $dn == 0&gt;&gt;&lt;&lt;link &quot;✧晚安&quot;&gt;&gt;&lt;&lt;set $hi = 1, $seisistate &quot;问好&quot;&gt;&gt;&lt;&lt;redo &quot;seisi&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;/span&gt;&lt;/div&gt;
@@ -8453,7 +8453,7 @@ Dialog.open();
 &lt;&lt;audio &quot;mainBGM&quot; loop play&gt;&gt;
 &lt;&lt;if $loc !=&quot;拓荒者木屋&quot;&gt;&gt;&lt;&lt;audio &quot;NixBGM&quot; stop&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $loc !=&quot;酒馆&quot;&gt;&gt;&lt;&lt;audio &quot;pubBGM&quot; stop&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $loc !=&quot;家&quot; || $loc !=&quot;旅店&quot; || &gt;&gt;&lt;&lt;audio &quot;homeBGM&quot; stop&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="NPC各种" tags="nobr widget" position="600,0" size="100,100">&lt;&lt;widget &quot;sxdkind&quot;&gt;&gt;
+&lt;&lt;if $loc !=&quot;家&quot; || $loc !=&quot;旅店&quot;&gt;&gt;&lt;&lt;audio &quot;homeBGM&quot; stop&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="NPC各种" tags="nobr widget" position="600,0" size="100,100">&lt;&lt;widget &quot;sxdkind&quot;&gt;&gt;
 &lt;&lt;if _sxd &lt;= 0&gt;&gt;并不信任你
 &lt;&lt;elseif _sxd &lt;= 5&gt;&gt;对你没什么看法
 &lt;&lt;elseif _sxd &lt; 25&gt;&gt;认为你是一个不错的岛民
