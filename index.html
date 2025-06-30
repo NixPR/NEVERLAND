@@ -5440,7 +5440,7 @@ Item.add("鱼竿", {}, [ "制作", "工具","制材"]);
 /*在描述中使用的*/
 Item.add("鲜花诗集", {
     displayName: "鲜花诗集",
-    description: '【用永无乡最美的花朵写成的诗篇, 花瓣就像墨水一样平展, 有着天鹅绒般的触感, 闻起来仿佛身处花园】<br><br><<if $xhsjusable == 2>><center><<link "❖阅读">><<run Dialog.setup("阅读");Dialog.wiki("【你轻轻翻阅着, 鲜花组成的诗歌鲜活而令你沉醉, 但除此之外, 那些花朵的形状和颜色在你眼里没有任何意义. 你合上了鲜花诗集】<<set $knowledgeexp +=10>><<addkexpWidget>>");Dialog.open();>><<set $xhsjusable = 1>><</link>></center><</if>>',
+    description: '【用永无乡最美的花朵写成的诗篇, 花瓣就像墨水一样平展, 有着天鹅绒般的触感, 闻起来仿佛身处花园】<br><br><<if $xhsjusable == 2>><center><<link "❖阅读">><<run Dialog.setup("阅读");Dialog.wiki("【你轻轻翻阅着, 鲜花组成的诗歌鲜活而令你沉醉, 但除此之外, 那些花朵的形状和颜色在你眼里没有任何意义. 你合上了鲜花诗集】<<addkexp 10>>");Dialog.open();>><<set $xhsjusable = 1>><</link>></center><</if>>',
 }, ["cantlose", "fuelS"]);
 Item.add("律法之书", {
     displayName: "律法之书",
@@ -6023,10 +6023,14 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
    &lt;&lt;/link&gt;&gt;
 &amp;emsp;
 &lt;&lt;link &#39;&lt;i class=&quot;fa-solid fa-hat-wizard&quot; style=&quot;font-size: 1.3em;&quot;&gt;&lt;/i&gt;&#39;&gt;&gt;
-&lt;&lt;Dialog title=&quot;装备&quot; passage=&quot;装备栏&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
+&lt;&lt;run
+   Dialog.setup(&quot;装备&quot;);
+  Dialog.wiki(Story.get(&quot;装备栏&quot;).processText());
+  Dialog.open();&gt;&gt;
 &lt;&lt;/link&gt;&gt;
 &amp;emsp;
-&lt;&lt;link &#39;&lt;i class=&quot;fa-solid fa-feather-pointed&quot; style=&quot;font-size: 1.3em;&quot;&gt;&lt;/i&gt;&#39;&gt;&gt;&lt;&lt;run
+&lt;&lt;link &#39;&lt;i class=&quot;fa-solid fa-feather-pointed&quot; style=&quot;font-size: 1.3em;&quot;&gt;&lt;/i&gt;&#39;&gt;&gt;&lt;&lt;set $seisistate = 0&gt;&gt;
+&lt;&lt;run
    Dialog.setup(&quot;Seisinofoaga&quot;);
   Dialog.wiki(Story.get(&quot;seisi&quot;).processText());
   Dialog.open();
@@ -6413,7 +6417,7 @@ $msname&lt;br&gt;
 
 
 &lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;
-&lt;&lt;if $loct != $loc&gt;&gt;&lt;&lt;set $npc = 0, $loct = $loc, $coffin = 0&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="demo结语" tags="" position="2100,900" size="100,100">&lt;center&gt;
+&lt;&lt;if $loct != $loc&gt;&gt;&lt;&lt;set $npc = 0, $loct = $loc, $coffin = 0&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="demo结语" tags="" position="2000,1000" size="100,100">&lt;center&gt;
 
 demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情、一个支线任务、四个可攻略角色、七个一般角色、六个成就、五条线索
 
@@ -6479,7 +6483,7 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 &lt;div id=&quot;textcard&quot;&gt;
 &lt;&lt;do tag &quot;seisi&quot;&gt;&gt;
 &lt;&lt;if $seisistate == 0&gt;&gt;
-&lt;&lt;set _rpl= [&quot;【Seisi抖抖翅膀表示它听到了】&quot;,&quot;【Seisi偏着头等待你继续说下去】&quot;].random()&gt;&gt;_rpl
+&lt;&lt;set _rpl= [&quot;Seisi抖抖翅膀表示它听到了&quot;,&quot;Seisi偏着头等待你继续说下去】&quot;].random()&gt;&gt;_rpl
 &lt;br&gt;&lt;br&gt;
 
 &lt;&lt;elseif $seisistate ==&quot;领鸟羽&quot;&gt;&gt;
@@ -7106,18 +7110,25 @@ seisi好像早就知道了你的意图，发出警报一样的啸叫，张开翅
 &lt;&lt;link ▷「继续」 家&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 
 &lt;&lt;elseif $choice == &quot;收起来&quot;&gt;&gt;
-你站在屋内，信纸依旧放在桌上，微弱的烛光跳动着。外面风声呼啸，似乎将岛屿上的每一缕空气都吹得凌乱不堪。你坐下来，闭上眼睛，试图让自己的思绪归于平静。
+/*你站在屋内，信纸依旧放在桌上，微弱的烛光跳动着。外面风声呼啸，似乎将岛屿上的每一缕空气都吹得凌乱不堪。你坐下来，闭上眼睛，试图让自己的思绪归于平静。
 “或许，这只是些无关紧要的警告。”你低语自语，“岛上的人们，或许只是在戏弄我。”你不禁自嘲地笑了笑，轻轻放下信，走向窗前。夜幕渐渐低垂，月光洒下，银白色的波光在海面上轻轻波动。
 然而，心底的某个声音却不曾平静，它提醒你——永无乡远非表面上看起来的那么简单。
 
 去检查屋外的环境，寻找是否有不寻常的迹象。你无法安抚内心的躁动，决定离开房间，去外面走一走，看看夜色中的永无乡到底隐藏了些什么。
-决定回到床上，闭上眼睛，或许一觉醒来，一切都会变得清晰。疑虑与困惑渐渐压得你有些喘不过气，你决定放下这封信，休息片刻，也许明天一切会更加明了。
+决定回到床上，闭上眼睛，或许一觉醒来，一切都会变得清晰。疑虑与困惑渐渐压得你有些喘不过气，你决定放下这封信，休息片刻，也许明天一切会更加明了。*/
 
-信箱增加来自未知的信 可以后续查看 继续询问奥里的剧情
+
+信箱增加来自未知的信 可以后续查看 不能继续询问奥里的剧情
 
 &lt;&lt;elseif $choice == &quot;询问奥里&quot;&gt;&gt;
+首先需要找到奥里在哪 “现在这个时间 她有可能在任何地方”路上会遇到路人给说奥里的位置
+遇到奥里后界面多出未知信件的选项 交谈后得知奥里需要送太多信现在没法帮你查找来源 可以选择帮她送 获得送信任务 或者是在黄昏之后去仓库找她 
 
-不知为何，信件带给你一种莫名的寒意，似乎这句简短的警告包含了某种无形的重压。
+&lt;&lt;link ▷「帮她送信」 主线D4&gt;&gt;&lt;&lt;set $choice to &quot;帮她送信&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「黄昏时见」 主线D4&gt;&gt;&lt;&lt;set $choice to &quot;黄昏时见&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+
+/*不知为何，信件带给你一种莫名的寒意，似乎这句简短的警告包含了某种无形的重压。
 你抬头看向四周，空无一人，唯有自己的心跳在寂静中回响。那封信，毫无疑问，是寄给你的。那么，究竟是谁，又为何如此警告你？在这个陌生的小岛上，似乎没有什么是简单的。你的目光落在门外的小道上，那条通向集市的老路，或许那里能给你一些线索。
 你决定去找岛上的信使——奥拉。她总是在岛上的各个角落忙碌，送信，传递消息，虽说她并不引人注意，但总是藏匿在影子中，仿佛岛上的某种无声的脉搏。
 
@@ -7154,14 +7165,38 @@ seisi好像早就知道了你的意图，发出警报一样的啸叫，张开翅
 选择：
 继续追问奥拉，看看她是否真的没有任何线索。你决定再深挖一点，虽然她的回答似乎很轻松，但你感觉奥拉一定知道些什么。
 回到自己的住所，自己调查信中的“雪”到底意味着什么。奥拉的回答并没有提供太多帮助，你决定回到住所，自己理清思路，或许从其他地方能找到些许线索。
-按照奥拉的建议，写一封回信，看看会发生什么。奥拉的玩笑似乎不无道理，或许这是岛上居民的一种幽默。你决定试试她的建议，看看回信是否能引发什么样的反应。
+按照奥拉的建议，写一封回信，看看会发生什么。奥拉的玩笑似乎不无道理，或许这是岛上居民的一种幽默。你决定试试她的建议，看看回信是否能引发什么样的反应。*/
 
 
+
+&lt;&lt;elseif $choice == &quot;帮她送信&quot;&gt;&gt;
+一共四封信，奥丁一个 nix一个（是家里的来信，你居然有些惊讶  两个随机猫族 
+
+送完信后去仓库见奥里
+
+&lt;&lt;elseif $choice == &quot;黄昏时见&quot;&gt;&gt;
+这个选项可以去询问其他人的意见 贝尔 埃拉 
+
+最后可以爽约
+
+/*去找小时，询问他对这封信的看法。尽管奥拉没有给出更多线索，小时的话语中似乎总带着些许深意。你决定去探查他的看法，或许他能给你一些启发。
+回到住所，自己静下心来思考下一步该做什么。奥拉的提醒让你有些动摇，你决定回到住所，冷静思考，或许更清晰的思路会帮助你找到突破口。
+
+选择二：回到自己的住所，自己调查信中的“雪”到底意味着什么
+你感觉奥拉的回答并没有提供什么实质性的帮助，于是你决定独自回到住所，仔细思考这封信的内容。你走过小镇的街道，脚步无声，心中却充满了疑惑与不安。
+当你重新回到屋内，关上门，静静坐下，目光落在那封写着“当心永无乡的雪”的信上。每一个字都像是在轻轻敲打你的思绪。你把信展开，反复读着那简短而意味深长的句子。是什么样的雪，值得让人警惕？
+你思索着，记忆中的某些片段开始浮现——雪，冰冷，死亡，还是某种象征？你突然意识到，这个“雪”并非字面上的寒冷与冰雪，而是与永无乡的某种更为深邃的力量有关。也许，它是某种象征，指向一个隐藏的秘密。
+你的思绪被打断，门外传来轻微的响动。你站起身，心跳不由加速。你拿起信封，再次走到窗前，目光扫视着外面的空旷，夜色下的永无乡依然静谧无声。
+你觉得，自己或许正被某种力量引导着，走向一个不为人知的真相。
+
+选择：
+去检查屋外的环境，看看是否有不寻常的迹象。你不再相信一切表面上的平静，决定出去查看一番，看看是否有什么东西在暗中观察着你。
+决定暂时放下疑虑，去找Era，或许他能给你带来一些新的视角。Era似乎是岛上为数不多的直接面对问题的人之一，你决定去找他，或许他能帮助你理清思路。*/
 
 &lt;&lt;/if&gt;&gt;
 
 
-o3-mini
+/*o3-mini
 
 您说：
 请写出全部三个选项的后续
@@ -7176,19 +7211,7 @@ o3-mini
 你感到一阵寒意，决定暂时离开，去寻找更多的线索。
 
 选择：
-去找小时，询问他对这封信的看法。尽管奥拉没有给出更多线索，小时的话语中似乎总带着些许深意。你决定去探查他的看法，或许他能给你一些启发。
-回到住所，自己静下心来思考下一步该做什么。奥拉的提醒让你有些动摇，你决定回到住所，冷静思考，或许更清晰的思路会帮助你找到突破口。
 
-选择二：回到自己的住所，自己调查信中的“雪”到底意味着什么
-你感觉奥拉的回答并没有提供什么实质性的帮助，于是你决定独自回到住所，仔细思考这封信的内容。你走过小镇的街道，脚步无声，心中却充满了疑惑与不安。
-当你重新回到屋内，关上门，静静坐下，目光落在那封写着“当心永无乡的雪”的信上。每一个字都像是在轻轻敲打你的思绪。你把信展开，反复读着那简短而意味深长的句子。是什么样的雪，值得让人警惕？
-你思索着，记忆中的某些片段开始浮现——雪，冰冷，死亡，还是某种象征？你突然意识到，这个“雪”并非字面上的寒冷与冰雪，而是与永无乡的某种更为深邃的力量有关。也许，它是某种象征，指向一个隐藏的秘密。
-你的思绪被打断，门外传来轻微的响动。你站起身，心跳不由加速。你拿起信封，再次走到窗前，目光扫视着外面的空旷，夜色下的永无乡依然静谧无声。
-你觉得，自己或许正被某种力量引导着，走向一个不为人知的真相。
-
-选择：
-去检查屋外的环境，看看是否有不寻常的迹象。你不再相信一切表面上的平静，决定出去查看一番，看看是否有什么东西在暗中观察着你。
-决定暂时放下疑虑，去找Era，或许他能给你带来一些新的视角。Era似乎是岛上为数不多的直接面对问题的人之一，你决定去找他，或许他能帮助你理清思路。
 
 选择三：按照奥拉的建议，写一封回信，看看会发生什么
 奥拉的建议轻松而带有一丝玩笑意味，但你决定试试看。或许，这真的是岛上的一种独特幽默，回信会给你带来意外的反应。
@@ -7202,7 +7225,7 @@ o3-mini
 
 选择：
 继续留意岛上的变化，看看是否会有任何回应。你决定观察一段时间，看看回信是否会激起岛上某些奇异的反应，或许这将是揭开真相的一把钥匙。
-去找Era，聊聊你收到的信件，看看他是否有任何看法。Era对永无乡的了解深刻，你决定去找他，或许他能给你一些新的线索，帮助你破解这封回信带来的谜团。</tw-passagedata><tw-passagedata pid="27" name="书籍" tags="" position="1700,300" size="100,100">&lt;&lt;inv $book drop inspect stack filter&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="买药" tags="" position="1100,800" size="100,100">还没写
+去找Era，聊聊你收到的信件，看看他是否有任何看法。Era对永无乡的了解深刻，你决定去找他，或许他能给你一些新的线索，帮助你破解这封回信带来的谜团。*/</tw-passagedata><tw-passagedata pid="27" name="书籍" tags="" position="1700,300" size="100,100">&lt;&lt;inv $book drop inspect stack filter&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="买药" tags="" position="1100,800" size="100,100">还没写
 
 &lt;&lt;link ▷「返回」 医院&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="交谈" tags="nobr" position="2200,400" size="100,100">&lt;&lt;if $npc == &quot;埃拉&quot;&gt;&gt;
 /*初见*/
@@ -7640,7 +7663,7 @@ Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里�
 &lt;&lt;link ▷「继续」 $loc&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $npc == &quot;奥里&quot;&gt;&gt;
-&lt;&lt;if $choice == &quot;握住她的手&quot;&gt;&gt;【奥里很高兴地握住你的手上下摆动着：“那，如果你对这里还不是很熟悉的话，我可以带你逛一圈！这里没有我不知道的地方。”她看上去笑得很开心，一红一蓝的眸子中此刻似乎只倒映着你，错觉？等你回过神来的时候，她牵着你的手指了指城镇的方向，“来吧，想去哪？”】&lt;&lt;set _slevel = 1&gt;&gt;&lt;&lt;addsocial&gt;&gt;
+&lt;&lt;if $choice == &quot;握住她的手&quot;&gt;&gt;【奥里很高兴地握住你的手上下摆动着：“那，如果你对这里还不是很熟悉的话，我可以带你逛一圈！这里没有我不知道的地方。”她看上去笑得很开心，一红一蓝的眸子中此刻似乎只倒映着你，错觉？等你回过神来的时候，她牵着你的手指了指城镇的方向，“来吧，想去哪？”】&lt;&lt;addsocial 1&gt;&gt;
 &lt;&lt;elseif $choice == &quot;犹豫&quot;&gt;&gt;【“噢！抱歉，大概是我来太自来熟了？”她收回了手并且往后退了一步，你们之间的距离回到了最标准的社交距离。她仍然笑着，两只手顺势背到身后，脚尖点地，“不过不用太拘束，在这个地方只要做你自己就好了。总之……欢迎来到永无乡。”】&lt;br&gt;
 &lt;&lt;set $social -= 1&gt;&gt;&lt;font color=#FFAA00&gt;你的社会属性减少了1级&lt;/font&gt;
 &lt;&lt;elseif $choice == &quot;抱住她&quot;&gt;&gt;【被你突如其来的举动吓了一跳？奥里愣了一会儿，便同样笑着抱住了你——以朋友之间的方式：“看样子你也和我一样？真高兴认识你！”她拍了拍你的背，你们两这才从友好的拥抱状态中离开，奥里笑了笑，“虽然想要抱着一起转圈圈，不过那样的话对我们来说太早了？”她用开玩笑的口吻说道，一红一蓝的眸子笑得弯了起来，“欢迎来到永无乡，不介意的话要不要一起享用下午茶？”】&lt;br&gt;
@@ -9300,7 +9323,7 @@ $fireplace.fuelT</tw-passagedata><tw-passagedata pid="45" name="天上人间" ta
   {name:&quot;浮雕桦木柱&quot;, owner: &quot;特里特&quot;, describe: &quot;【】&quot;, state: &quot;约柜&quot;},
   {name:&quot;芦苇笔&quot;, owner: &quot;萨巴夫人&quot;, describe: &quot;【】&quot;, state: &quot;约柜&quot;},
   {name:&quot;河马胃袋&quot;, owner: &quot;安南西&quot;, describe: &quot;【风干的河马胃制成口袋，袋口以蛛丝为纱线缝制而成，表面绘制着颇具风格的花纹样式】&quot;, state: &quot;藏匿&quot;}
-]&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="提问" tags="nobr" position="1900,900" size="100,100">&lt;&lt;set _q = 0&gt;&gt;&lt;&lt;do&gt;&gt;&lt;&lt;if _q == 0&gt;&gt;Seisi又跳到你的头顶, 开始居高临下的对你说道: &quot;岛主派我来迎接你, 顺便为你解答一些疑惑, 有什么问题都快问, 我还有其他事情要做. &quot;&lt;br&gt;&lt;br&gt;
+]&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="提问" tags="nobr" position="1800,1000" size="100,100">&lt;&lt;set _q = 0&gt;&gt;&lt;&lt;do&gt;&gt;&lt;&lt;if _q == 0&gt;&gt;Seisi又跳到你的头顶, 开始居高临下的对你说道: &quot;岛主派我来迎接你, 顺便为你解答一些疑惑, 有什么问题都快问, 我还有其他事情要做. &quot;&lt;br&gt;&lt;br&gt;
 
 ⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
 &lt;&lt;link ▷「地图」&gt;&gt;&lt;&lt;set _q = 1&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
@@ -10239,7 +10262,7 @@ $horse2.odds = Math.floor($horse2.odds*(1-$horse2.bitmoney*$racing.adjust/$racin
 &lt;&lt;link ◈「钓鱼」 钓鱼&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 副港口&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="83" name="死亡" tags="autosave nobr" position="1800,900" size="100,100">&lt;&lt;if setup.getStat(&quot;wound&quot;) &gt;= 24&gt;&gt;
+&lt;&lt;link ▷「离开」 副港口&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="83" name="死亡" tags="autosave nobr" position="1700,1000" size="100,100">&lt;&lt;if setup.getStat(&quot;wound&quot;) &gt;= 24&gt;&gt;
 你的伤口像一头明亮、炙热、初获新生的小兽，舔舐着你的皮毛，饥渴的吞噬着你，你看着它越来越大，越来越壮硕，感到一阵自豪。
 
 你是一个出色的饲主，不是吗？
@@ -12433,7 +12456,7 @@ function qteChange() {
 
 
 &lt;&lt;/if&gt;&gt;
-&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 小镇&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="随机设定" tags="" position="2000,900" size="100,100">姓名：&lt;&lt;print [&quot;Ann&quot;,&quot;Alice&quot;,&quot;Ada&quot;,&quot;Amy&quot;,&quot;Ivy&quot;,&quot;Gladys&quot;,&quot;Gloria&quot;,&quot;Belinda&quot;,&quot;Breeda&quot;,&quot;Florence&quot;,&quot;Griselda&quot;,&quot;Jennifer&quot;,&quot;Lorraine&quot;,&quot;Anastasia&quot;,&quot;Annabelle&quot;,&quot;Catherine&quot;,&quot;Charlotte&quot;,&quot;Christine&quot;,&quot;Constance&quot;,&quot;Elizabeth&quot;,&quot;Frederica&quot;,&quot;Gabrielle&quot;,&quot;Genevieve&quot;,&quot;Geraldine&quot;,&quot;Gwendolyn&quot;,&quot;Josephine&quot;,&quot;Katherine&quot;,&quot;Kimberley&quot;,&quot;Eleanore&quot;,&quot;Georgia&quot;,&quot;Giselle&quot;,&quot;Gustave&quot;,&quot;Harriet&quot;,&quot;Heather&quot;,&quot;Heloise&quot;,&quot;Hermosa&quot;,&quot;Jessica&quot;,&quot;Jocelyn&quot;,&quot;Kristin&quot;,&quot;Letitia&quot;,&quot;Lillian&quot;,&quot;Lindsay&quot;,&quot;Adelaide&quot;,&quot;Atalanta&quot;,&quot;Beatrice&quot;,&quot;Candance&quot;,&quot;Caroline&quot;,&quot;Cornelia&quot;,&quot;June&quot;,&quot;Kama&quot;,&quot;Lena&quot;,&quot;Lisa&quot;,&quot;Lucy&quot;,&quot;Lynn&quot;,&quot;Adela&quot;,&quot;Agnes&quot;,&quot;Alice&quot;,&quot;April&quot;,&quot;Bella&quot;,&quot;Belle&quot;,&quot;Beryl&quot;,&quot;Betsy&quot;,&quot;Betty&quot;,&quot;Brook&quot;,&quot;Carol&quot;,&quot;Cathy&quot;,&quot;Chloe&quot;,&quot;Clark&quot;,&quot;Aaron&quot;,&quot;Abbott&quot;,&quot;Ivan&quot;,&quot;Ives&quot;,&quot;Hayden&quot;,&quot;Heater&quot;,&quot;Henry&quot;,&quot;Herbert&quot;,&quot;Herman&quot;,&quot;Hilary&quot;,&quot;Hiram&quot;,&quot;Hobart&quot;,&quot;Hogan&quot;,&quot;Horace&quot;,&quot;Howar&quot;,&quot;Hubery&quot;,&quot;Hugh&quot;,&quot;Hugo&quot;,&quot;Humphrey&quot;,&quot;Hunter&quot;,&quot;Hyman&quot;,&quot;Ian&quot;,&quot;Nat&quot;,&quot;Nathan&quot;,&quot;Nathaniel&quot;,&quot;Neil&quot;,&quot;Nelson&quot;,&quot;Newman&quot;,&quot;Newt&quot;,&quot;Nicholas&quot;,&quot;Nick&quot;,&quot;Nigel&quot;,&quot;Noah&quot;,&quot;Noel&quot;,&quot;Norman&quot;,&quot;Norton&quot;,&quot;Ogden&quot;,&quot;Oliver&quot;,&quot;Omar&quot;,&quot;Orville&quot;,&quot;Osborn&quot;,&quot;Oscar&quot;,&quot;Osmond&quot;,&quot;Oswald&quot;,&quot;Otis&quot;,&quot;Otto&quot;,&quot;Owen&quot;].random()&gt;&gt; &lt;&lt;print [&quot;Smith&quot;,&quot;Brown&quot;,&quot;White&quot;,&quot;Anderson&quot;,&quot;Harris&quot;,&quot;Moore&quot;,&quot;Wilson&quot;,&quot;Parker&quot;,&quot;Evans&quot;,&quot;Edwards&quot;,&quot;Collins&quot;,&quot;Stewart&quot;,&quot;Sanchez&quot;,&quot;Morris&quot;,&quot;Rogers&quot;,&quot;Reed&quot;,&quot;Finch&quot;,&quot;Cook&quot;,&quot;Morgan&quot;,&quot;Bell&quot;,&quot;Murphy&quot;,&quot;Cox&quot;,&quot;Howard&quot;,&quot;Ward&quot;,&quot;Torres&quot;,&quot;Peterson&quot;,&quot;Gray&quot;,&quot;Ramirez&quot;,&quot;James&quot;,&quot;Watson&quot;,&quot;Brooks&quot;,&quot;Kelly&quot;,&quot;Sanders&quot;,&quot;Price&quot;,&quot;Bennett&quot;,&quot;Wood&quot;,&quot;Barnes&quot;,&quot;Ross&quot;,&quot;Henderson&quot;,&quot;Coleman&quot;,&quot;Jenkins&quot;,&quot;Perry&quot;,&quot;Roux&quot;,&quot;Lopez&quot;,&quot;Vincent&quot;,&quot;Fontaine&quot;,&quot;Fournier&quot;,&quot;Chevalier&quot;,&quot;Morel&quot;,&quot;Girard&quot;,&quot;Robin&quot;,&quot;Andre&quot;,&quot;Masson&quot;,&quot;Lefevre&quot;,&quot;Mercier&quot;,&quot;Gerard&quot;,&quot;Dupont&quot;,&quot;Nguyen&quot;,&quot;Leroy&quot;,&quot;Roussel&quot;,&quot;Moreau&quot;,&quot;Nicolas&quot;,&quot;Laurent&quot;,&quot;Perrin&quot;,&quot;Lefebvre&quot;,&quot;Morin&quot;,&quot;Michel&quot;,&quot;Mathieu&quot;,&quot;Garcia&quot;,&quot;Clement&quot;,&quot;David&quot;,&quot;Gauthier&quot;,&quot;Bertrand&quot;,&quot;Dumont&quot;,&quot;Martin&quot;,&quot;Moreau&quot;,&quot;Menard&quot;,&quot;Terrien&quot;,&quot;ALLARD&quot;].random()&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 小镇&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="135" name="随机设定" tags="" position="1900,1000" size="100,100">姓名：&lt;&lt;print [&quot;Ann&quot;,&quot;Alice&quot;,&quot;Ada&quot;,&quot;Amy&quot;,&quot;Ivy&quot;,&quot;Gladys&quot;,&quot;Gloria&quot;,&quot;Belinda&quot;,&quot;Breeda&quot;,&quot;Florence&quot;,&quot;Griselda&quot;,&quot;Jennifer&quot;,&quot;Lorraine&quot;,&quot;Anastasia&quot;,&quot;Annabelle&quot;,&quot;Catherine&quot;,&quot;Charlotte&quot;,&quot;Christine&quot;,&quot;Constance&quot;,&quot;Elizabeth&quot;,&quot;Frederica&quot;,&quot;Gabrielle&quot;,&quot;Genevieve&quot;,&quot;Geraldine&quot;,&quot;Gwendolyn&quot;,&quot;Josephine&quot;,&quot;Katherine&quot;,&quot;Kimberley&quot;,&quot;Eleanore&quot;,&quot;Georgia&quot;,&quot;Giselle&quot;,&quot;Gustave&quot;,&quot;Harriet&quot;,&quot;Heather&quot;,&quot;Heloise&quot;,&quot;Hermosa&quot;,&quot;Jessica&quot;,&quot;Jocelyn&quot;,&quot;Kristin&quot;,&quot;Letitia&quot;,&quot;Lillian&quot;,&quot;Lindsay&quot;,&quot;Adelaide&quot;,&quot;Atalanta&quot;,&quot;Beatrice&quot;,&quot;Candance&quot;,&quot;Caroline&quot;,&quot;Cornelia&quot;,&quot;June&quot;,&quot;Kama&quot;,&quot;Lena&quot;,&quot;Lisa&quot;,&quot;Lucy&quot;,&quot;Lynn&quot;,&quot;Adela&quot;,&quot;Agnes&quot;,&quot;Alice&quot;,&quot;April&quot;,&quot;Bella&quot;,&quot;Belle&quot;,&quot;Beryl&quot;,&quot;Betsy&quot;,&quot;Betty&quot;,&quot;Brook&quot;,&quot;Carol&quot;,&quot;Cathy&quot;,&quot;Chloe&quot;,&quot;Clark&quot;,&quot;Aaron&quot;,&quot;Abbott&quot;,&quot;Ivan&quot;,&quot;Ives&quot;,&quot;Hayden&quot;,&quot;Heater&quot;,&quot;Henry&quot;,&quot;Herbert&quot;,&quot;Herman&quot;,&quot;Hilary&quot;,&quot;Hiram&quot;,&quot;Hobart&quot;,&quot;Hogan&quot;,&quot;Horace&quot;,&quot;Howar&quot;,&quot;Hubery&quot;,&quot;Hugh&quot;,&quot;Hugo&quot;,&quot;Humphrey&quot;,&quot;Hunter&quot;,&quot;Hyman&quot;,&quot;Ian&quot;,&quot;Nat&quot;,&quot;Nathan&quot;,&quot;Nathaniel&quot;,&quot;Neil&quot;,&quot;Nelson&quot;,&quot;Newman&quot;,&quot;Newt&quot;,&quot;Nicholas&quot;,&quot;Nick&quot;,&quot;Nigel&quot;,&quot;Noah&quot;,&quot;Noel&quot;,&quot;Norman&quot;,&quot;Norton&quot;,&quot;Ogden&quot;,&quot;Oliver&quot;,&quot;Omar&quot;,&quot;Orville&quot;,&quot;Osborn&quot;,&quot;Oscar&quot;,&quot;Osmond&quot;,&quot;Oswald&quot;,&quot;Otis&quot;,&quot;Otto&quot;,&quot;Owen&quot;].random()&gt;&gt; &lt;&lt;print [&quot;Smith&quot;,&quot;Brown&quot;,&quot;White&quot;,&quot;Anderson&quot;,&quot;Harris&quot;,&quot;Moore&quot;,&quot;Wilson&quot;,&quot;Parker&quot;,&quot;Evans&quot;,&quot;Edwards&quot;,&quot;Collins&quot;,&quot;Stewart&quot;,&quot;Sanchez&quot;,&quot;Morris&quot;,&quot;Rogers&quot;,&quot;Reed&quot;,&quot;Finch&quot;,&quot;Cook&quot;,&quot;Morgan&quot;,&quot;Bell&quot;,&quot;Murphy&quot;,&quot;Cox&quot;,&quot;Howard&quot;,&quot;Ward&quot;,&quot;Torres&quot;,&quot;Peterson&quot;,&quot;Gray&quot;,&quot;Ramirez&quot;,&quot;James&quot;,&quot;Watson&quot;,&quot;Brooks&quot;,&quot;Kelly&quot;,&quot;Sanders&quot;,&quot;Price&quot;,&quot;Bennett&quot;,&quot;Wood&quot;,&quot;Barnes&quot;,&quot;Ross&quot;,&quot;Henderson&quot;,&quot;Coleman&quot;,&quot;Jenkins&quot;,&quot;Perry&quot;,&quot;Roux&quot;,&quot;Lopez&quot;,&quot;Vincent&quot;,&quot;Fontaine&quot;,&quot;Fournier&quot;,&quot;Chevalier&quot;,&quot;Morel&quot;,&quot;Girard&quot;,&quot;Robin&quot;,&quot;Andre&quot;,&quot;Masson&quot;,&quot;Lefevre&quot;,&quot;Mercier&quot;,&quot;Gerard&quot;,&quot;Dupont&quot;,&quot;Nguyen&quot;,&quot;Leroy&quot;,&quot;Roussel&quot;,&quot;Moreau&quot;,&quot;Nicolas&quot;,&quot;Laurent&quot;,&quot;Perrin&quot;,&quot;Lefebvre&quot;,&quot;Morin&quot;,&quot;Michel&quot;,&quot;Mathieu&quot;,&quot;Garcia&quot;,&quot;Clement&quot;,&quot;David&quot;,&quot;Gauthier&quot;,&quot;Bertrand&quot;,&quot;Dumont&quot;,&quot;Martin&quot;,&quot;Moreau&quot;,&quot;Menard&quot;,&quot;Terrien&quot;,&quot;ALLARD&quot;].random()&gt;&gt;
 性别：&lt;&lt;print [&quot;男&quot;,&quot;女&quot;].random()&gt;&gt;
 出生日期: &lt;&lt;print random(1,12)&gt;&gt;-&lt;&lt;print random(1,31)&gt;&gt;-&lt;&lt;print random(1970,2003)&gt;&gt;
 血统: &lt;&lt;print [&quot;英短&quot;,&quot;暹罗&quot;,&quot;波斯&quot;,&quot;金吉拉&quot;,&quot;俄蓝&quot;,&quot;安哥拉&quot;,&quot;哈瓦那&quot;,&quot;挪威森林&quot;,&quot;缅因&quot;,&quot;东短&quot;,&quot;埃及&quot;,&quot;缅因&quot;,&quot;奥西&quot;,&quot;巴厘&quot;,&quot;短尾&quot;,&quot;无尾&quot;,&quot;东奇尼&quot;,&quot;阿比西尼亚&quot;,&quot;索马里&quot;,&quot;德文卷毛&quot;,&quot;孟买&quot;,&quot;布偶&quot;,&quot;卷耳&quot;,&quot;伯曼&quot;,&quot;波米拉&quot;].randomMany(4)&gt;&gt;
@@ -12557,7 +12580,9 @@ function qteChange() {
 &lt;/span&gt;
 &lt;&lt;/do&gt;&gt;
 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="143" name="鱼缸" tags="" position="1300,600" size="100,100"></tw-passagedata><tw-passagedata pid="144" name="遭遇" tags="" position="1300,800" size="100,100">&lt;&lt;hunter&gt;&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;&lt;link ▷「回到小镇」 小镇&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="143" name="鱼缸" tags="" position="1300,600" size="100,100"></tw-passagedata><tw-passagedata pid="144" name="遭遇" tags="" position="1300,800" size="100,100">&lt;&lt;hunter&gt;&gt;
 你遇到了$hunter
 
 &lt;&lt;set _da to [&quot;信仰&quot;,&quot;突袭&quot;,&quot;洞察&quot;,&quot;诱唆&quot;].random()&gt;&gt;
@@ -12613,7 +12638,7 @@ function qteChange() {
 */</tw-passagedata><tw-passagedata pid="145" name="观鸟" tags="nobr" position="1100,700" size="100,100">&lt;&lt;if _bird == &quot;鸽子&quot;&gt;&gt;
 
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="跳转事件" tags="" position="2200,900" size="100,100"></tw-passagedata><tw-passagedata pid="147" name="火之梦" tags="nobr" position="1500,200" size="100,100">&lt;&lt;if $fpfirst ==1 &amp;&amp; $dream_fire.I ==0&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="跳转事件" tags="" position="2100,1000" size="100,100"></tw-passagedata><tw-passagedata pid="147" name="火之梦" tags="nobr" position="1500,200" size="100,100">&lt;&lt;if $fpfirst ==1 &amp;&amp; $dream_fire.I ==0&gt;&gt;
 /*I-第一次点燃壁炉*/
 &lt;&lt;set $dream.fire += 1&gt;&gt;
 &lt;&lt;timed 2s t8n&gt;&gt;你点燃了壁炉。&lt;br&gt;&lt;br&gt;
@@ -13090,6 +13115,11 @@ XIII-她？
 完成后解锁: 火之梦3
 */
 
+/*第一页*/
+&lt;&lt;if $choice == 0&gt;&gt;
+进入图书馆 贝尔正好跟在身后要去图书馆 可以选择去打招呼或者不去 不去贝尔会自己来 然后贝尔邀请陪他去图书馆，短暂出现一个不想的选项然后消失 只能跟着进去 
+
+
 你并不常去图书馆。太远、太安静、太像某种等待腐烂的地方。可今天贝尔说，他想让你陪他去一趟。
 
 “只有一小会儿。”
@@ -13110,12 +13140,73 @@ XIII-她？
 ③ 什么也没说，只默默跟着他。
 
 
+贝尔停在一排木柜前，翻找着什么。
+
+“如果这些资料没有被篡改过，那它应该还在。”他像是自言自语，手指快速地翻动着纸页，“岛志、行政文书、旧时代的海图……这些都不会撒谎。”
+
+他抽出一本厚重的册子，封皮上满是灰尘，翻开后里头的纸泛黄得近乎透明。他蹙起眉。
+
+“……有缺页。被谁撕掉了？”他语气很轻，指节却微微用力。
+
+你可以选择回应他：
+
+① “你在找什么？”
+② “这里没人会来。”
+③ 保持沉默。
+
+贝尔没有正面回答你的问题。他只是翻得更快，动作像在争分夺秒。
+
+
+这话让你心里隐隐发凉。
+
+你可以选择：
+
+① “你到底知道什么？”
+② “为什么要调查这些？”
+③ 不作声，只是看着他。
+
+贝尔停下脚步。他看着一本摊开的记录册，上面密密麻麻是旧城镇的改建计划，还有几页被胶水粘住的页脚。他把书轻轻合上，像是已经确认了某个猜想。
+
+“不是所有地方都欢迎真相。”他喃喃道，“不过它们总会留下痕迹。”
+
+
 
 贝尔没有停下脚步。他指着最里侧的书架，说：
 
 “你可以随便翻翻这里的书，我去找点东西。”
 
+你可以选择回答：
 
+① “如果是真的，我想听。”
+② “只要好听，真假无所谓。”
+③ “比起听，我更喜欢记下来。”
+④ （不作声，轻轻点头）
+
+他看了你一眼，没说什么，只是轻轻点了点头，像是确认了什么，又像只是回应你。
+
+他从书架上抽出一本书，翻开，指尖拂过纸页边缘。你瞥了一眼，封面上印着金色花体字：《海崖之上的石眼神》。
+
+“这个地方信的神真多。”他低声说，“如果你细读，会发现许多故事讲的不是神做了什么，而是神没有做什么。”
+
+他放下那本书，又抽出另一本。这一次是《渡鸦与盐井》。然后是《空壳之雨》《捕梦人之宴》《鱼的耳语》……他的动作越来越快，却依旧小心翼翼，像是在翻阅一个逐渐拼合的谜题。
+
+
+“你愿意帮我找吗？找和‘神’有关的故事。”
+
+你可以选择：
+
+① “这些书里，写的都是神？”
+② “神只是传说吧？”
+③ “你想找哪个神？”
+④ （什么也不说，点头）
+
+他没有正面回答你的问题，而是淡淡地说：
+
+“故事的真假不是最重要的。有时候，它们只是用来掩盖另一个故事的形状。”
+
+他说完这句话，继续低头翻书。你不知道他在找的“神”究竟是什么，也不知道这些故事对他来说意味着什么。但你开始注意到，他记录下来的那些名字，有的听起来像是传说，有的却……像是你在岛上某些人身上听过的外号，或者形容词。
+
+“渡口的金纱婆婆”、“雨停那天的孩子”、“掌灯人”、“旧戏院里的人偶匠”……
 ---
 
  图书馆剧情 · 沉默的翻页
@@ -13326,7 +13417,7 @@ XIII-她？
 留下一个物件/提示，后来让玩家开始疑虑“陪伴自己的贝尔是谁”。
 
 
-你希望剧情更梦幻一些、惊悚一些，还是情感推动更多？可以告诉我，我会继续帮你推进。</tw-passagedata><tw-passagedata pid="155" name="书架" tags="" position="1300,500" size="100,100"></tw-passagedata><tw-passagedata pid="156" name="沙龙" tags="" position="1000,1000" size="100,100"></tw-passagedata><tw-passagedata pid="157" name="弹窗导向页" tags="" position="2300,900" size="100,100">&lt;&lt;if _pages == &quot;日志&quot;&gt;&gt;
+你希望剧情更梦幻一些、惊悚一些，还是情感推动更多？可以告诉我，我会继续帮你推进。</tw-passagedata><tw-passagedata pid="155" name="书架" tags="" position="1300,500" size="100,100"></tw-passagedata><tw-passagedata pid="156" name="沙龙" tags="" position="1000,1000" size="100,100"></tw-passagedata><tw-passagedata pid="157" name="弹窗导向页" tags="" position="2200,1000" size="100,100">&lt;&lt;if _pages == &quot;日志&quot;&gt;&gt;
 &lt;&lt;run changemap (&quot;page1&quot;, &quot;logs&quot;)&gt;&gt;
 &lt;&lt;elseif _pages == &quot;物品&quot;&gt;&gt;
 &lt;&lt;run changemap(&quot;page1&quot;, &quot;items&quot;)&gt;&gt;
