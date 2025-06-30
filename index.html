@@ -8232,9 +8232,7 @@ Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里�
 
 &lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="40" name="咖啡馆" tags="nobr" position="500,600" size="100,100">&lt;h3&gt;@@.emboss;咖啡馆@@&lt;/h3&gt;
 &lt;font color=#D4A34C&gt;【营业时间 早晨~黄昏】&lt;/font&gt;&lt;br&gt;
-&lt;&lt;if $hour &gt;= 7 &amp;&amp; $hour &lt; 21&gt;&gt;咖啡馆的门紧闭着, 门口的牌子写着休息中. 换个时间再来吧&lt;br&gt;
-
-&lt;&lt;link ▷「离开」 小镇&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;if $loc != &quot;咖啡馆&quot;&gt;&gt;&lt;&lt;set $loc = &quot;咖啡馆&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $storydone.count(&#39;【已完成】点心代送&#39;) &gt; 0 || $dxdsstat &gt;= 1 || $date &lt;= 2&gt;&gt;//你踏进这家精致的小店, 咖啡的醇香扑面而来，店内的灯光明亮而温暖. &quot;欢迎光临! &quot; 老板娘小小的身影在柜台后忙碌着，但还是不忘热情地欢迎进店的客人//&lt;br&gt;
+&lt;&lt;if $hour &gt;= 7 &amp;&amp; $hour &lt; 21&gt;&gt;&lt;&lt;if $loc != &quot;咖啡馆&quot;&gt;&gt;&lt;&lt;set $loc = &quot;咖啡馆&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $storydone.count(&#39;【已完成】点心代送&#39;) &gt; 0 || $dxdsstat &gt;= 1 || $date &lt; 2&gt;&gt;//你踏进这家精致的小店, 咖啡的醇香扑面而来，店内的灯光明亮而温暖. &quot;欢迎光临! &quot; 老板娘小小的身影在柜台后忙碌着，但还是不忘热情地欢迎进店的客人//&lt;br&gt;
 
 &lt;br&gt;地点活动&lt;br&gt;
 &lt;&lt;link ◈「查看菜单」&gt;&gt;&lt;&lt;run
@@ -8246,6 +8244,8 @@ Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里�
 &lt;br&gt;
 &lt;br&gt;离开&lt;br&gt;
 &lt;&lt;link ▷「回到小镇」 小镇&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+
 &lt;&lt;elseif $dxdsstat == 0 &amp;&amp; $story.count(&#39;点心代送&#39;) &gt; 0&gt;&gt;&quot;你回来了! &quot;老板娘朝你招招手, &quot;再次感谢你, 一定很辛苦. 给, 这是一点犒劳. &quot;她递给你一个朗姆葡萄酥卷, 甜甜的笑起来: &quot;还有这里的一整盒! &quot;&lt;&lt;set $storydone.push(&quot;【已完成】点心代送&quot;)&gt;&gt;&lt;&lt;set $story.deleteFirst(&quot;点心代送&quot;)&gt;&gt;
 &lt;&lt;pickup $food &quot;朗姆葡萄酥卷&quot; 1 &quot;黑巧小蛋糕&quot; 2 &quot;朗姆冰淇淋&quot; 2&gt;&gt;你获得朗姆葡萄酥卷*1，黑巧小蛋糕*4，朗姆冰淇淋*2
 
@@ -8255,6 +8255,10 @@ Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里�
 &lt;&lt;link ▷「这是什么」 支线选项&gt;&gt;&lt;&lt;set $choice to &quot;四盒点心&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「有什么推荐」 支线选项&gt;&gt;&lt;&lt;set $choice to &quot;有什么推荐&quot;, $abs +=1&gt;&gt;&lt;&lt;/link&gt;&gt;(这个选项会直接结束事件)&lt;br&gt;&lt;&lt;/if&gt;&gt;
 
+&lt;&lt;else&gt;&gt;
+咖啡馆的门紧闭着, 门口的牌子写着休息中. 换个时间再来吧&lt;br&gt;
+
+&lt;&lt;link ▷「离开」 小镇&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="图书馆" tags="" position="700,600" size="100,100">&lt;&lt;if $dn == 0&gt;&gt;图书馆里的门上挂着关门的牌子, 尽管里面还在不断闪烁着温暖的烛光, 你决定还是不要在这时候打扰, 等到白天再来吧&lt;&lt;else&gt;&gt;&lt;&lt;if $loc != &quot;图书馆&quot;&gt;&gt;&lt;&lt;set $loc = &quot;图书馆&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;@@.intrtext;图书馆木制的书架上堆满了陈旧的书籍, 空气中弥漫着墨水和灰尘的气味, 角落里, 一个矮胖的中年猫坐在书桌旁, 四周堆满了未完成的手稿和甜点, 他在你推门而入时抬起毛绒绒的脑袋看了你一眼, 很快又埋头继续写着他手里的文章. &quot;欢迎来到镇图书馆, 我的朋友, 不过我现在很忙, 请随意翻阅吧&quot;@@
 &lt;&lt;NPCloc&gt;&gt;
 地点活动
