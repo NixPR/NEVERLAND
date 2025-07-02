@@ -6814,7 +6814,6 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="主线D2" tags="nobr" position="1100,1200" size="100,100">/*第一页*/
 &lt;&lt;if $choice == 0&gt;&gt;
-&lt;&lt;set $mss = 1.5&gt;&gt;
 你准备进入旅店稍作休息，前进的道路却被一只公猫和他拖拽的一堆行李挡住。他抱着一堆行李, 正在竭尽全力用打开旅店的门，可能是拿了太多的物件的原因，他始终没能做到这件简单的事情&lt;br&gt;&lt;br&gt;
 你不太能判断出眼前这只陷入困境的猫的年纪，岛上的阳光让他看起来面容模糊，
 
@@ -6995,7 +6994,7 @@ $tnn对你这个问题似乎有些惊讶, 他摸摸鼻子, 耳朵前后转动几
 
 /*第二页---未完成*/
 &lt;&lt;elseif $choice == &quot;出去&quot; || $choice == &quot;悄悄离开&quot;&gt;&gt;&lt;&lt;set $loc = &quot;小镇&quot;&gt;&gt;
-&lt;&lt;if $choice == &quot;出去&quot;&gt;
+&lt;&lt;if $choice == &quot;出去&quot;&gt;&gt;
 你向Seisi走去, 而这只老鸟毫不惊讶你的出现, 径直飞到了你的头顶, 你注意到粘在它脚爪上的土块都掉落在你的皮毛上. 
 &lt;&lt;elseif $choice == &quot;悄悄离开&quot;&gt;&gt;
 你放缓脚步，想若无其事的逃离，Seisi却径直飞到了你的头顶, 你注意到粘在它脚爪上的土块都掉落在你的皮毛上. 
@@ -7011,10 +7010,10 @@ $tnn对你这个问题似乎有些惊讶, 他摸摸鼻子, 耳朵前后转动几
 岛上的治安倒还不用你来担心, 你帮助了一个陌生猫, 仅此而已, 即使他在这里用的是你给的名字. Seisi见在你这里得不到有价值的东西，扑棱翅膀飞走了。&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「继续」 小镇&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;else&gt;&gt;
-&lt;&lt;link ▷「告诉」&gt;&gt;&lt;&lt;set $choice to &quot;告诉&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「不告诉」&gt;&gt;&lt;&lt;set $choice to &quot;不告诉&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link ▷「告诉」&gt;&gt;&lt;&lt;set $choice to &quot;告诉&quot;&gt;&gt;&lt;&lt;redo &quot;2&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「不告诉」&gt;&gt;&lt;&lt;set $choice to &quot;不告诉&quot;&gt;&gt;&lt;&lt;redo &quot;2&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-
+&lt;&lt;/do&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
 
 
@@ -8229,11 +8228,11 @@ Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里�
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;stories&quot;&gt;&gt;
-&lt;&lt;if $loc == &quot;旅店&quot; &amp;&amp; $mss == 1 &amp;&amp; $msstat == &quot;新的开始3&quot; &amp;&amp; $date &gt;=2 &amp;&amp; $hour &gt;=6 &amp;&amp; $hour &lt;=18&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;goto &quot;主线D2&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $loc == &quot;小镇&quot; &amp;&amp; $mss == 2 &amp;&amp; $msstat == 0 &amp;&amp; $date &gt;=3 &amp;&amp; $hour &gt;=6 &amp;&amp; $hour &lt;=12&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;goto &quot;主线D6&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $mss == 2 &amp;&amp; $loc == &quot;你的小屋&quot;&gt;&gt;&lt;&lt;goto &quot;主线D3&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $loc == &quot;旅店&quot; &amp;&amp; $mss == 1 &amp;&amp; $msstat == &quot;新的开始3&quot; &amp;&amp; $date &gt;=2 &amp;&amp; $hour &gt;=6 &amp;&amp; $hour &lt;=18&gt;&gt;&lt;&lt;set $choice to 0,$mss = 1.5 &gt;&gt;&lt;&lt;goto &quot;主线D2&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $loc == &quot;小镇&quot; &amp;&amp; $mss == 2 &amp;&amp; $msstat == 0 &amp;&amp; $date &gt;=6 &amp;&amp; $hour &gt;=6 &amp;&amp; $hour &lt;=12&gt;&gt;&lt;&lt;set $choice to 0,$mss = 5.5 &gt;&gt;&lt;&lt;goto &quot;主线D6&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $mss == 2 &amp;&amp; $loc == &quot;你的小屋&quot;&gt;&gt;&lt;&lt;set $choice to 0,$mss = 2.5 &gt;&gt;&lt;&lt;goto &quot;主线D3&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $msstat == &quot;新的开始2&quot;&gt;&gt;&lt;&lt;if $top.has(&#39;毛皮大衣&#39;)&gt;&gt;&lt;&lt;set $msstat = &quot;新的开始3&quot;&gt;&gt;&lt;&lt;notify 5s&gt;&gt;&lt;font color=&quot;BD5786&quot;&gt;☆完成任务：新的开始阶段II☆&lt;/font&gt;&lt;&lt;/notify&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $msstat == &quot;新的开始2&quot; &amp;&amp; $top.has(&#39;毛皮大衣&#39;)&gt;&gt;&lt;&lt;set $msstat = &quot;新的开始3&quot;&gt;&gt;&lt;&lt;notify 5s&gt;&gt;&lt;font color=&quot;BD5786&quot;&gt;☆完成任务：新的开始阶段II☆&lt;/font&gt;&lt;&lt;/notify&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $msstat == &quot;新的开始3&quot; &amp;&amp; $feather &gt;= 300&gt;&gt;&lt;&lt;set $msstat = &quot;新的开始完成&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;notify 5s&gt;&gt;&lt;font color=&quot;BD5786&quot;&gt;☆完成任务：新的开始阶段III☆&lt;/font&gt;&lt;&lt;/notify&gt;&gt;&lt;&lt;goto &quot;任务完成&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
@@ -9872,7 +9871,8 @@ Seisi不知道从何处叼出一堆物品丢给你: &quot;这些是岛上先到�
 &lt;&lt;if $lostsheep[0] == 1&gt;&gt;&lt;&lt;link ◈「找羊」 era互动&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;link ◈「钓鱼」 钓鱼&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 沙地&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="旅店" tags="" position="200,700" size="100,100">&lt;&lt;if $loc != &quot;旅店&quot;&gt;&gt;&lt;&lt;set $loc = &quot;旅店&quot;&gt;&gt;&lt;&lt;set $minute to $minute+ random(1,3)&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $item.has(&#39;旅店钥匙&#39;) &amp;&amp; $home != &quot;旅店&quot;&gt;&gt;前台的女孩在漫不经心的翻着手里的时尚杂志, 见到你进门也只是问了句: &quot;几号房? &quot; 你看了看钥匙, 读出了上面的数字, 女孩离开座位准备带你去你的房间&lt;br&gt;&lt;&lt;linkreplace ▷「进房」&gt;&gt;你跟着女孩来到二楼, 用钥匙打开了一个老式门锁, 眼前是一个狭小的单人间, 但看起来设施齐全, 起码对于它的价格来说已经足够了&lt;br&gt;你获得了在旅店的临时住所&lt;&lt;set $home to &quot;旅店&quot;&gt;&gt;
+&lt;&lt;link ▷「离开」 沙地&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="旅店" tags="" position="200,700" size="100,100">&lt;&lt;set $loc = &quot;旅店&quot;&gt;&gt;&lt;&lt;set $minute to $minute+ random(1,3)&gt;&gt;
+&lt;&lt;if $item.has(&#39;旅店钥匙&#39;) &amp;&amp; $home != &quot;旅店&quot;&gt;&gt;前台的女孩在漫不经心的翻着手里的时尚杂志, 见到你进门也只是问了句: &quot;几号房? &quot; 你看了看钥匙, 读出了上面的数字, 女孩离开座位准备带你去你的房间&lt;br&gt;&lt;&lt;linkreplace ▷「进房」&gt;&gt;你跟着女孩来到二楼, 用钥匙打开了一个老式门锁, 眼前是一个狭小的单人间, 但看起来设施齐全, 起码对于它的价格来说已经足够了&lt;br&gt;你获得了在旅店的临时住所&lt;&lt;set $home to &quot;旅店&quot;&gt;&gt;
 &lt;br&gt;&lt;&lt;link ▷「继续」 家&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;&lt;br&gt;
 &lt;&lt;elseif $home == &quot;旅店&quot; &amp;&amp; $choice == &quot;付钱&quot;&gt;&gt;
 你交付了10鸟羽，女孩离开座位准备带你去你的房间&lt;&lt;set $feather -= 10&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;set $innpay = 1&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;br&gt;
