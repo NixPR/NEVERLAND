@@ -3408,7 +3408,24 @@ $(document).on("input", "input[type='number']", function() {
     }
 });
 
+document.addEventListener('contextmenu', function(event) {
+ event.preventDefault();
+ alert('你在尝试什么?');
+ });
 
+ document.addEventListener('keydown', function(e) {
+ if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+ e.preventDefault();
+ alert('你想得到什么?');
+ }
+}, false);
+
+ document.addEventListener('keydown', function(event) {
+ if ( event.key === 'F12') {
+ event.preventDefault();
+ alert('你想看到什么?');
+ }
+ });
 
 /* 更新数据, By BlackStar, Vers.0.0.1-beta.2 */
 (()=>{const mergeObjs=(target,source,options={})=>{const{mergePaths:mergePaths=[],excludePaths:excludePaths=[]}=options;function isObject(obj){return obj&&typeof obj==="object"&&!Array.isArray(obj)}function buildPath(base,cur,append=false){if(base===""){return cur}else if(append){return`${base}.${cur}`}else{return isNaN(cur)?`${base}.${cur}`:`${base}[${cur}]`}}function mergeArrays(targetArr,sourceArr,path){if(targetArr.length===0)return sourceArr;if(isObject(targetArr[0])&&"id"in targetArr[0]){const mergedArray=[...targetArr];sourceArr.forEach((sourceItem=>{const existingItem=mergedArray.find((item=>item.id===sourceItem.id));if(existingItem){deepMerge(existingItem,sourceItem,path)}else{mergedArray.push(sourceItem)}}));return mergedArray}else{return Array.from(new Set([...targetArr,...sourceArr]))}}function deepMerge(target,source,path=""){if(!isObject(target)||!isObject(source)){return target}Object.keys(source).forEach((key=>{const currentPath=buildPath(path,key);if(excludePaths.includes(currentPath)){return}if(mergePaths.includes(currentPath)){if(Array.isArray(source[key])&&Array.isArray(target[key])){target[key]=mergeArrays(target[key],source[key],currentPath)}else if(isObject(source[key])){if(!target[key])target[key]={};deepMerge(target[key],source[key],currentPath)}else{target[key]=source[key]}}else{if(!target.hasOwnProperty(key)){target[key]=source[key]}}}))}deepMerge(target,source);return target};Macro.add("reload",{handler(){const oldData=State.variables;for(const key in State.variables){if(State.variables.hasOwnProperty(key)){delete State.variables[key]}}$.wikiPassage("StoryInit");const newData=State.variables;Object.entries(mergeObjs(oldData,newData,setup.reload_rules||[])).forEach((([key,val])=>{State.variables[key]=val}));setTimeout((()=>Engine.play(passage())),Engine.DOM_DELAY)}});setup.mergeObjs=mergeObjs;window.mergeObjs=window.mergeObjs||mergeObjs})();
@@ -5423,12 +5440,12 @@ RecipeBook.set("巴尔谢酒", {"丁香树皮": 1, "玉米": 1, "蜂蜜": 1, "�
 RecipeBook.set("颂歌蜜酒", {"智慧鲑鱼血": 3, "蜂蜜": 1}, {servings: 4});
 RecipeBook.set("蒲公英酒", {"蒲公英": 3, "糖": 1, "柠檬": 1}, {servings: 5});
 
-RecipeBook.set("鲜花饼", [{"tag:花": 3, "面粉": 1, "方糖": 2}], {servings: 3});
+RecipeBook.set("鲜花饼", [{"tag:花":3, "面粉": 1, "方糖": 2}], {servings: 3});
 
 /*用的*/
 RecipeBook.set("皮革手套", [{"小型皮毛": 4}, {"大型皮毛": 1}]);
 RecipeBook.set("毛皮大衣", [{"小型皮毛": 18}, {"大型皮毛": 3}]);
-RecipeBook.set("玫瑰花环", [{"tag:rose": 6}]);
+RecipeBook.set("玫瑰花环", [{"tag:玫瑰": 6}]);
 RecipeBook.set("茉莉手链", [{"茉莉花": 12}]);
 RecipeBook.set("贝壳项链", [{"贝壳": 6}]);
 RecipeBook.set("月光提灯", [{"鱼竿": 1, "萤火虫罐": 1}]);
@@ -5442,6 +5459,8 @@ Item.add("贝壳项链", {}, [ "制作", "颈部"]);
 Item.add("月光提灯", {}, [ "制作", "工具"]);
 Item.add("茉莉手链", {}, [ "制作", "手部"]);
 Item.add("鱼竿", {}, [ "制作", "工具","制材"]);
+Item.add("玫瑰", {}, [ "tag"]);
+Item.add("花", {}, [ "tag"]);
 
 
 /*-----------------------------物品描述--------------------------------*/
@@ -5651,13 +5670,13 @@ Item.add("欧芹种子", {displayName: "欧芹种子", description: "【】<br><
 Item.add("葡萄种子", {displayName: "葡萄种子", description: "【】<br><br>〖可在田圃里种植〗", }, ["seed", "材料", "鸟食"]);
 Item.add("玫瑰花", {displayName: "玫瑰花", },  ["花"]);
 Item.add("鸢尾花", {displayName: "鸢尾花", },  ["花"]);
-Item.add("红玫瑰", {displayName: "红玫瑰", description: "【岛上随处可见野玫瑰, 但这不代表她们没有主人. 而这朵, 不可置疑的, 属于你】", }, ["rose", "花", "材料","食材","制材"]);
-Item.add("白玫瑰", {displayName: "白玫瑰", description: "【岛上随处可见野玫瑰, 但这不代表她们没有主人. 而这朵, 不可置疑的, 属于你】", }, ["rose", "花", "材料","食材","制材"]);
-Item.add("蓝玫瑰", {displayName: "蓝玫瑰", description: "【岛上随处可见野玫瑰, 但这不代表她们没有主人. 而这朵, 不可置疑的, 属于你】", }, ["rose", "花", "材料","食材","制材"]);
-Item.add("黄玫瑰", {displayName: "黄玫瑰", description: "【岛上随处可见野玫瑰, 但这不代表她们没有主人. 而这朵, 不可置疑的, 属于你】", }, ["rose", "花", "材料","食材","制材"]);
-Item.add("黑玫瑰", {displayName: "黑玫瑰", description: "【岛上随处可见野玫瑰, 但这不代表她们没有主人. 而这朵, 不可置疑的, 属于你】", }, ["rose", "花", "材料","食材","制材"]);
-Item.add("紫玫瑰", {displayName: "紫玫瑰", description: "【岛上随处可见野玫瑰, 但这不代表她们没有主人. 而这朵, 不可置疑的, 属于你】", }, ["rose", "花", "材料","食材","制材"]);
-Item.add("粉玫瑰", {displayName: "粉玫瑰", description: "【岛上随处可见野玫瑰, 但这不代表她们没有主人. 而这朵, 不可置疑的, 属于你】", }, ["rose", "花", "材料","食材","制材"]);
+Item.add("红玫瑰", {displayName: "红玫瑰", description: "【岛上随处可见野玫瑰, 但这不代表她们没有主人. 而这朵, 不可置疑的, 属于你】", }, ["玫瑰", "花", "材料","食材","制材"]);
+Item.add("白玫瑰", {displayName: "白玫瑰", description: "【岛上随处可见野玫瑰, 但这不代表她们没有主人. 而这朵, 不可置疑的, 属于你】", }, ["玫瑰", "花", "材料","食材","制材"]);
+Item.add("蓝玫瑰", {displayName: "蓝玫瑰", description: "【岛上随处可见野玫瑰, 但这不代表她们没有主人. 而这朵, 不可置疑的, 属于你】", }, ["玫瑰", "花", "材料","食材","制材"]);
+Item.add("黄玫瑰", {displayName: "黄玫瑰", description: "【岛上随处可见野玫瑰, 但这不代表她们没有主人. 而这朵, 不可置疑的, 属于你】", }, ["玫瑰", "花", "材料","食材","制材"]);
+Item.add("黑玫瑰", {displayName: "黑玫瑰", description: "【岛上随处可见野玫瑰, 但这不代表她们没有主人. 而这朵, 不可置疑的, 属于你】", }, ["玫瑰", "花", "材料","食材","制材"]);
+Item.add("紫玫瑰", {displayName: "紫玫瑰", description: "【岛上随处可见野玫瑰, 但这不代表她们没有主人. 而这朵, 不可置疑的, 属于你】", }, ["玫瑰", "花", "材料","食材","制材"]);
+Item.add("粉玫瑰", {displayName: "粉玫瑰", description: "【岛上随处可见野玫瑰, 但这不代表她们没有主人. 而这朵, 不可置疑的, 属于你】", }, ["玫瑰", "花", "材料","食材","制材"]);
 Item.add("蒲公英", {displayName: "蒲公英", description: "【蓬松的模样随时准备着启航, 也许它能将你的心愿带去远方】", }, [ "花", "材料","食材","制材"]);
 Item.add("附子花", {displayName: "附子花", description: "【即使作为毒剂在历史与故事中臭名昭著, 附子仍是一种美丽的花. 在永无乡上没有花不会被欢迎】", }, [ "花", "材料"]);
 Item.add("藜芦花", {displayName: "藜芦花", description: "【冬季点饰花园的最佳选择之一, 除开可爱的外表, 还十分有药用价值】", }, [ "花", "材料"]);
@@ -6247,7 +6266,7 @@ $knowledgeexp to 0, $strengthexp to 0, $observationexp to 0, $persuasiveexp to 0
 
 /******************初始值们******************/
 &lt;&lt;set $loc = &quot;未知&quot;, $loct = &quot;未知&quot;, $job = &quot;暂无&quot;,$home = &quot;暂无&quot;&gt;&gt;&lt;&lt;set $chop = 0&gt;&gt;&lt;&lt;set $dgcs = 6, $fycs = 3, $gzcs = 3&gt;&gt;&lt;&lt;set $bjb to 0&gt;&gt;
-&lt;&lt;set $sq = {way : 0, moon: 0, feather: 0 }&gt;&gt;
+&lt;&lt;set $sq = {way : 0, moon: 0, feather: 0,flowerstore:0 }&gt;&gt;
 &lt;&lt;set $text = &quot;永无乡&quot;, $textc = &quot;//漂浮在地中海某处的小岛，终年气候温和&lt;br&gt;永无乡欢迎所有人的到来//&quot;&gt;&gt;
 &lt;&lt;set $textmoon= [&quot;月亮在五年前结束的战争中碎裂了四分之一，碎片至今仍漂浮在太空中，却不知为何对世界毫无影响&quot;]&gt;&gt;
 &lt;&lt;set $stoletime =  0&gt;&gt;
@@ -10423,8 +10442,15 @@ $horse2.odds = Math.floor($horse2.odds*(1-$horse2.bitmoney*$racing.adjust/$racin
  &lt;&lt;set _n =&quot;白玫瑰&quot;&gt;&gt;   &lt;&lt;itemcheck _n&gt;&gt; _itemkind
 &lt;&lt;set $dream_fire = {I: 0,II: 0,III: 0,IV:0, V:0, VI:0}&gt;&gt;
 &lt;&lt;pickup $item 灵魂 10&gt;&gt;&lt;&lt;pickup $material 蜂蜜 10 土豆 10 羊奶 10 红玫瑰 10 蓝玫瑰 10 鱼肉 10 面粉 10 柠檬 10 鸟蛋 10 小型皮毛 20 大型皮毛 20 茉莉花 20 贝壳 10 鱼竿 2 萤火虫罐 2&gt;&gt;
-&lt;&lt;set $sq = {}&gt;&gt;
-&lt;&lt;set $sq = {way : 0, moon: 0, feather: 0,flowerstore:0 }&gt;&gt;
+
+&lt;&lt;if Item.get(&quot;玫瑰&quot;).hasTag(&quot;tag&quot;)&gt;&gt;
+呜呜呜
+&lt;&lt;set _am = Object.keys($material.data).filter(id =&gt; {
+    return Item.get(id)?.hasTag(&quot;玫瑰&quot;);
+}).map(id =&gt; $material.count(id)).reduce((acc, curr) =&gt; acc + curr, 0);&gt;&gt;
+_am
+&lt;&lt;/if&gt;&gt;
+
 
 &lt;&lt;set _i =random(1, $item.uniqueLength)&gt;&gt;
 &lt;&lt;= $item.list[_i]&gt;&gt;
@@ -11947,7 +11973,7 @@ nix的话语仍在你耳边回响：“这不是偶然，肯定是有目的的�
 &lt;&lt;set $minute to $minute+ random(5,10)&gt;&gt;&lt;&lt;set $HP to $HP- 1&gt;&gt;
 
 &lt;&lt;if $choice == &quot;回到湖边&quot;&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;
-&lt;&lt;fadeout 3s 2s&gt;&gt;你拉起船桨, 往来时的方向划去, 湖边小屋显眼的红色很快就出现在你的视野里&lt;&lt;/fadeout&gt;&gt;&lt;&lt;timed 6s&gt;&gt;&lt;&lt;goto &quot;罗索伦特湖&quot;&gt;&gt;
+&lt;&lt;fadeout 2s 1s&gt;&gt;你拉起船桨, 往来时的方向划去, 湖边小屋显眼的红色很快就出现在你的视野里&lt;&lt;/fadeout&gt;&gt;&lt;&lt;timed 6s&gt;&gt;&lt;&lt;goto &quot;罗索伦特湖&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;else&gt;&gt;
 
@@ -13662,8 +13688,15 @@ _n&lt;span class=&quot;stats&quot;&gt;&lt;&lt;=setup.items[_n].function&gt;&gt;&
 &lt;&lt;capture _method&gt;&gt;
 &lt;font size=2px color=#d4b483&gt;&amp;emsp;&amp;emsp;•  材料：
 &lt;&lt;for _k, _v range _method&gt;&gt;
-&lt;&lt;set _k to _k.replace(&quot;tag:&quot;, &quot;任意&quot;)&gt;&gt;
-_k*_v/&lt;&lt;itemcheck _k&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_k)&gt;&gt;  
+&lt;&lt;set _k to _k.replace(&quot;tag:&quot;, &quot;&quot;)&gt;&gt;
+&lt;&lt;if Item.get(_k).hasTag(&quot;tag&quot;)&gt;&gt;
+任意_k*_v/
+&lt;&lt;set _am = Object.keys($material.data).filter(id =&gt; {
+    return Item.get(id)?.hasTag(_k);
+}).map(id =&gt; $material.count(id)).reduce((acc, curr) =&gt; acc + curr, 0);&gt;&gt;
+_am
+&lt;&lt;else&gt;&gt;
+_k*_v/&lt;&lt;itemcheck _k&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_k)&gt;&gt;&lt;&lt;/if&gt;&gt;  
 &lt;&lt;/for&gt;&gt;&lt;/font&gt;    
 &amp;emsp;&lt;&lt;link &quot;制作&quot;&gt;&gt;
 
@@ -13699,13 +13732,14 @@ _k*_v/&lt;&lt;itemcheck _k&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_k)&
 &lt;&lt;elseif _pages2 == &quot;任务描述&quot;&gt;&gt;
 &lt;&lt;run Dialog.setup(_name); Dialog.wiki(setup.items[_name].content); Dialog.open();&gt;&gt;
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="版本信息" tags="" position="1700,900" size="100,100">&lt;h2&gt;CREDITS&lt;/h2&gt;世界观创作、游戏制作、剧情设计：Nix&lt;br&gt;文本编写：暮雪深、安德森、真央、Nix&lt;br&gt;特别感谢：Chapel、Shour、黑星&lt;br&gt;&lt;br&gt;&lt;br&gt;有任何问题请联系&lt;br&gt;qq: 641549971&lt;br&gt;&lt;br&gt;版本&lt;br&gt;1.2.0.070225_alpha&lt;br&gt;制作&amp;测试阶段
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="版本信息" tags="" position="1700,900" size="100,100">&lt;h2&gt;CREDITS&lt;/h2&gt;世界观创作、游戏制作、剧情设计：Nix&lt;br&gt;文本编写：暮雪深、安德森、真央、Nix&lt;br&gt;特别感谢：Chapel、Shour、黑星&lt;br&gt;&lt;br&gt;有任何问题请联系&lt;br&gt;qq: 641549971&lt;br&gt;&lt;br&gt;版本&lt;br&gt;1.2.0.070225_alpha&lt;br&gt;制作&amp;测试阶段
 
 &lt;h2&gt;更新日志&lt;/h2&gt;
 7.2  修了很多很多bug
 	 修改了装备使用逻辑 现在使用中的不计入库存
 	 给d2剧情加了一个简单结尾 未进行测试(没有方便的存档) d2文本仍需修改 
      游戏内加入了查看更新日志(真的有人看吗)
+     写好了按tag显示物品数量 自动制作有bug明天修
 6.30 修好了夜间版星星的bug
      写剧情框架ing(只有梗概和选项流程) 写了d3 d4的
      修了一堆bug
