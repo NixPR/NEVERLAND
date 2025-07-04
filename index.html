@@ -3419,7 +3419,24 @@ $(document).on("input", "input[type='number']", function() {
     }
 });
 
+document.addEventListener('contextmenu', function(event) {
+ event.preventDefault();
+ alert('你在尝试什么?');
+ });
 
+ document.addEventListener('keydown', function(e) {
+ if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+ e.preventDefault();
+ alert('你想得到什么?');
+ }
+}, false);
+
+ document.addEventListener('keydown', function(event) {
+ if ( event.key === 'F12') {
+ event.preventDefault();
+ alert('你想看到什么?');
+ }
+ });
 
 //设置菜单
 //日夜模式切换
