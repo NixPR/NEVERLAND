@@ -353,7 +353,7 @@ transform: scale(.90);
 	display: none;
     overflow: auto;
   	margin: auto;
-    min-width: 20em;
+    min-width: 35em;
     max-width: 35em;
 	z-index: 100100;
 	position: fixed;
@@ -401,10 +401,10 @@ transform: scale(.90);
 }
 /* 弹窗内 */
 #ui-dialog-body {
-      font-family: "打字机"; 
+    font-family: "打字机"; 
 	height: calc(100% - 3rem); 
-   min-height:20vh;
- max-height:80vh;
+    min-height:20vh;
+ 	max-height:80vh;
     border-radius:var(--radius-intense);
 	border: transparent;
 	text-align: left;
@@ -1116,7 +1116,6 @@ html.bleached body #ui-dialog-close, body.bleached #ui-dialog-close {
 	background-color: transparent;}
 /* 弹窗主体 */
 html.bleached body #ui-dialog-body, body.bleached #ui-dialog-body {
-  max-height:80vh;
   color:var(--fontcolor-dark);  
   background-color: var(--background-light);
 table {
@@ -2177,7 +2176,7 @@ ul.simple-inventory-list{
   list-style:none;
   padding: .3rem .3rem .3rem 0.6rem;
   display: grid;
-  grid-template-columns: 1.8fr 0.8fr 0.6fr 0.6fr 1fr;
+  grid-template-columns: 1.5fr 0.8fr 0.6fr 0.6fr 1fr;
 }
 .simple-inventory-listing:nth-child(2n){
   background-color: var(--background-goldengray);
@@ -2197,10 +2196,13 @@ html.bleached {
 #ui-dialog {
     min-width: 20em;
     max-width: 35em;
+    max-height: 35em;
+    top: 100px;
 }
 #ui-dialog-body {
     min-width: 20em;
-	padding: 5px;
+	padding: 20px 5px;
+	max-height: 30em;
 }
   
 
@@ -7258,8 +7260,7 @@ seisi好像早就知道了你的意图，发出警报一样的啸叫，张开翅
 
 选择：
 继续留意岛上的变化，看看是否会有任何回应。你决定观察一段时间，看看回信是否会激起岛上某些奇异的反应，或许这将是揭开真相的一把钥匙。
-去找Era，聊聊你收到的信件，看看他是否有任何看法。Era对永无乡的了解深刻，你决定去找他，或许他能给你一些新的线索，帮助你破解这封回信带来的谜团。*/</tw-passagedata><tw-passagedata pid="27" name="书籍" tags="" position="1700,300" size="100,100">
-&lt;&lt;inv $book drop inspect stack filter&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="买药" tags="" position="1100,800" size="100,100">还没写
+去找Era，聊聊你收到的信件，看看他是否有任何看法。Era对永无乡的了解深刻，你决定去找他，或许他能给你一些新的线索，帮助你破解这封回信带来的谜团。*/</tw-passagedata><tw-passagedata pid="27" name="书籍" tags="" position="1700,300" size="100,100">&lt;&lt;inv $book drop inspect stack filter&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="买药" tags="" position="1100,800" size="100,100">还没写
 
 &lt;&lt;link ▷「返回」 医院&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="交谈" tags="nobr" position="2200,400" size="100,100">&lt;&lt;if $npc == &quot;埃拉&quot;&gt;&gt;
 /*初见*/
@@ -10867,8 +10868,7 @@ _n&lt;/div&gt;
 /*******************/
 &lt;/div&gt;
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="96" name="物品" tags="" position="1700,100" size="100,100">&lt;&lt;reopen&gt;&gt;
-&lt;&lt;inv $item use drop inspect stack filter&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="猎户小屋" tags="" position="600,500" size="100,100">&lt;&lt;if $dn == 0&gt;&gt;【小屋的门紧闭着】&lt;&lt;else&gt;&gt;&lt;&lt;set $loc = &quot;猎户小屋&quot;&gt;&gt;&lt;&lt;timeWidget&gt;&gt;&lt;&lt;set $minute to $minute+ random(5,10)&gt;&gt;&lt;&lt;set $HP to $HP- 1&gt;&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543075_TIdlSzs9pMDM0hD.jpg&quot; width=100%&gt;
+</tw-passagedata><tw-passagedata pid="96" name="物品" tags="" position="1700,100" size="100,100">&lt;&lt;reopen&gt;&gt;&lt;&lt;inv $item use drop inspect stack filter&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="猎户小屋" tags="" position="600,500" size="100,100">&lt;&lt;if $dn == 0&gt;&gt;【小屋的门紧闭着】&lt;&lt;else&gt;&gt;&lt;&lt;set $loc = &quot;猎户小屋&quot;&gt;&gt;&lt;&lt;timeWidget&gt;&gt;&lt;&lt;set $minute to $minute+ random(5,10)&gt;&gt;&lt;&lt;set $HP to $HP- 1&gt;&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543075_TIdlSzs9pMDM0hD.jpg&quot; width=100%&gt;
 &lt;font color=#D4A34C&gt;//猎户小屋建在草甸的一处小林地上, 起初只用于民居, 在重建时出于便利改为了公共建筑, 存放岛上的肉食储蓄. 小屋的屋檐下整齐悬挂着烟熏肉, 一张毛色黯红的鹿皮作为装饰装订在木门上//&lt;/font&gt;
 
 
@@ -10878,8 +10878,7 @@ _n&lt;/div&gt;
 ▸▹ ✾ ✾ ✾ ✾ ✾ ✾ ◃◂
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;link ▷「离开」 贝雷河&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="材料" tags="" position="1700,400" size="100,100">
-&lt;&lt;inv $material use drop inspect stack filter&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="界面" tags="nobr UIBarhide" position="100,1200" size="100,100">&lt;center&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87542752_OTAoFb7FjfGxA9I.png&quot; width=100%&gt;&lt;br&gt;
+&lt;&lt;link ▷「离开」 贝雷河&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="材料" tags="" position="1700,400" size="100,100">&lt;&lt;inv $material use drop inspect stack filter&gt;&gt;</tw-passagedata><tw-passagedata pid="99" name="界面" tags="nobr UIBarhide" position="100,1200" size="100,100">&lt;center&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87542752_OTAoFb7FjfGxA9I.png&quot; width=100%&gt;&lt;br&gt;
 &lt;h1&gt;-NEVERLAND- 「永无乡」&lt;/h1&gt;&lt;br&gt;
 是©Nix P. R. 创作的&lt;br&gt;
 &lt;兽人&gt;&lt;现实半架空&gt;&lt;多元神话&gt;&lt;低魔&gt;世界观&lt;br&gt;
@@ -12698,8 +12697,7 @@ $npc收下了你的礼物
 
 ✧「磨坊帮工」&lt;br&gt;&lt;br&gt;
 
-&lt;&lt;link ▷「离开」 草甸&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="食物" tags="" position="1700,200" size="100,100">
-&lt;&lt;inv $food use drop inspect stack filter&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="高地" tags="nobr" position="400,400" size="100,100">&lt;&lt;if $loc != &quot;高地&quot;&gt;&gt;&lt;&lt;set $loc = &quot;高地&quot;&gt;&gt;&lt;&lt;set $minute += random(5,10)&gt;&gt;&lt;&lt;set $HP to $HP- 1&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;link ▷「离开」 草甸&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="137" name="食物" tags="" position="1700,200" size="100,100">&lt;&lt;inv $food use drop inspect stack filter&gt;&gt;</tw-passagedata><tw-passagedata pid="138" name="高地" tags="nobr" position="400,400" size="100,100">&lt;&lt;if $loc != &quot;高地&quot;&gt;&gt;&lt;&lt;set $loc = &quot;高地&quot;&gt;&gt;&lt;&lt;set $minute += random(5,10)&gt;&gt;&lt;&lt;set $HP to $HP- 1&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;audio &quot;mainBGM&quot; unmute&gt;&gt;
 &lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543101_EspOXZWRg0VWkcL.jpg&quot; width=100% class=&quot;pic&quot;&gt;
 &lt;font color=#D4A34C&gt;//&quot;它的全名其实是&quot;拓荒者高地&quot;, 跟我的屋子一样的来历, 但是现在大家都只说&quot;去高地&quot;. 不被需要的事物就是这样吧, 他们离去, 他们消失, 他们被从群体的记忆中抹去. &quot;//&lt;/font&gt;
@@ -13831,11 +13829,11 @@ _k*_v/&lt;&lt;itemcheck _k&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_k)&
 1.2.0.070425_alpha&lt;br&gt;制作&amp;测试阶段&lt;br&gt;有任何问题请联系&lt;br&gt;qq: 641549971&lt;br&gt;
 &lt;h2&gt;更新日志&lt;/h2&gt;
 7.4  恢复体力现在会有弹窗提示
-	 修好了布尔盖酒任务解锁bug
-     整理了琼初见对话
+	 修好了布尔盖酒任务解锁bug、琼初见对话、天上人间流程
      增加了版本更新功能 位于右侧边栏最底部 游戏内使用
-     自动制作现在可以扣除tag分类的材料了
+     自动制作现在可以扣除tag分类的材料了 依旧是顺位扣除 明天重写
      增加了体力耗尽跳转事件1
+     修改了手机版弹窗显示问题
 7.2  修了很多很多bug
 	 修改了装备使用逻辑 现在使用中的不计入库存
 	 给d2剧情加了一个简单结尾 未进行测试(没有方便的存档) d2文本仍需修改 
