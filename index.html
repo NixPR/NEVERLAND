@@ -9282,7 +9282,8 @@ $fireplace.fuelT</tw-passagedata><tw-passagedata pid="45" name="天上人间" ta
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="描述" tags="nobr" position="100,200" size="100,100">/*装备*/
 &lt;&lt;set setup.items[&#39;无&#39;] to {name: &#39;无&#39;,
     description: &#39;//无, 没有, 不//&#39;,
-       function: &#39;卸下当前装备&#39;
+    function: &#39;卸下当前装备&#39;,
+    content: &#39;//无, 没有, 不//&#39;
 }&gt;&gt;
 &lt;&lt;set setup.items[&#39;鱼竿&#39;] to {name: &#39;鱼竿&#39;,
     description: &#39;简易的自制鱼竿，能看出制作者手法熟练&#39;,
@@ -9364,8 +9365,6 @@ $fireplace.fuelT</tw-passagedata><tw-passagedata pid="45" name="天上人间" ta
     function: &#39;话术+2&#39;}&gt;&gt;
     
 /*******任务*********/
-&lt;&lt;set setup.items[&#39;无&#39;] to {
-    content: &#39;//无, 没有, 不//&#39;}&gt;&gt;
 &lt;&lt;set setup.items[&#39;新的开始&#39;] to {
     content: &#39;//你踏上了永无乡, 成为了她的新居民, 但是接下来呢? 你会选择什么样的生活?//&lt;br&gt;&lt;hr class=&quot;hr-fade-content&quot;&gt;&lt;&lt;if $msstat == &quot;新的开始1&quot;&gt;&gt;✎【领鸟羽】每日在&lt;b style=&quot;color:#cb8530&quot;&gt;我这里&lt;/b&gt;可以领一次鸟羽，很简单，三岁小孩都能做到，我说的对吗，$nn?&lt;&lt;elseif $msstat == &quot;新的开始2&quot;&gt;&gt;✔︎【领鸟羽】看来你已经完成了这项, 每天一次的免费鸟羽, 换在别的地方哪有这种美事&lt;br&gt;✎【做一些服装】你看起来轻飘飘的, 就好像...什么也没穿. 服装不仅是装饰品, 它们还能给你提供属性加成. 你可以去玛丽亚的店里买一件, 但我更推荐自己做一件, 毕竟这才是任务安排. 去小镇的&lt;b style=&quot;color:#51b606&quot;&gt;工坊&lt;/b&gt;那儿做件&lt;b style=&quot;color:#ff6f23&quot;&gt;皮毛大衣&lt;/b&gt;吧, &lt;&lt;elseif $msstat == &quot;新的开始3&quot;&gt;&gt;✔︎【领鸟羽】看来你已经完成了这项, 每天一次的免费鸟羽, 换在别的地方哪有这种美事&lt;br&gt;✔︎【做一些服装】看看你，已经作出了自己的第一件大....哦，恭维的话还是让别人来说吧&lt;br&gt;✎【赚一些鸟羽】不要去折磨那些可怜的鸟儿, 我们不用他们的羽毛. 鸟羽是永无乡上的货币, 和其他硬币别无一二, 喏, 我刚给你的就是. 你可以用它买到这个岛上的许多东西, 当然也有它买不到的东西, 现在还不是说这些的时候&lt;br&gt;至于该怎么挣钱, 你随时可以来询问我「赚钱指南」, 别担心这不收费, 但你要真心想感谢我, 一些点心不算过分吧?&lt;br&gt;&lt;br&gt;&lt;b&gt;〖获得300鸟羽以完成此项〗&lt;/b&gt;&lt;&lt;/if&gt;&gt;&lt;hr class=&quot;hr-fade-content&quot;&gt;&#39;}&gt;&gt;
 &lt;&lt;set setup.items[&#39;【已完成】新的开始&#39;] to {
