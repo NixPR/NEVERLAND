@@ -3459,7 +3459,7 @@ $(document).on("input", "input[type='number']", function() {
     }
 });
 
-/*document.addEventListener('contextmenu', function(event) {
+document.addEventListener('contextmenu', function(event) {
  event.preventDefault();
  alert('你在尝试什么?');
  });
@@ -3476,7 +3476,7 @@ $(document).on("input", "input[type='number']", function() {
  event.preventDefault();
  alert('你想看到什么?');
  }
- });*/
+ });
 
 //设置菜单
 //日夜模式切换
@@ -10941,10 +10941,14 @@ _n&lt;/div&gt;
 /*******************/
 &lt;/div&gt;
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="95" name="物品" tags="" position="1700,100" size="100,100">&lt;&lt;reopen&gt;&gt;&lt;&lt;inv $item use drop inspect stack filter&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="猎户小屋" tags="" position="600,500" size="100,100">&lt;&lt;if $dn == 0&gt;&gt;小屋的门紧闭着&lt;&lt;else&gt;&gt;&lt;&lt;set $loc = &quot;猎户小屋&quot;&gt;&gt;&lt;&lt;timeWidget&gt;&gt;&lt;&lt;set $minute to $minute+ random(5,10)&gt;&gt;&lt;&lt;set $HP to $HP- 1&gt;&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543075_TIdlSzs9pMDM0hD.jpg&quot; width=100%&gt;
+</tw-passagedata><tw-passagedata pid="95" name="物品" tags="" position="1700,100" size="100,100">&lt;&lt;reopen&gt;&gt;&lt;&lt;inv $item use drop inspect stack filter&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="猎户小屋" tags="nobr" position="600,500" size="100,100">&lt;&lt;if $dn == 0&gt;&gt;小屋的门紧闭着&lt;&lt;else&gt;&gt;&lt;&lt;set $loc = &quot;猎户小屋&quot;&gt;&gt;&lt;&lt;timeWidget&gt;&gt;&lt;&lt;set $minute to $minute+ random(5,10)&gt;&gt;&lt;&lt;set $HP to $HP- 1&gt;&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543075_TIdlSzs9pMDM0hD.jpg&quot; width=100%&gt;
 &lt;font color=#D4A34C&gt;//猎户小屋建在草甸的一处小林地上, 起初只用于民居, 在重建时出于便利改为了公共建筑, 存放岛上的肉食储蓄. 小屋的屋檐下整齐悬挂着烟熏肉, 一张毛色黯红的鹿皮作为装饰装订在木门上//&lt;/font&gt;
 
 
+&lt;&lt;if $week == 1&gt;&gt;
+
+
+&lt;&lt;/if&gt;&gt;
 
 
 ▸▹ ✾ ✾ ✾ ✾ ✾ ✾ ◃◂
@@ -14026,7 +14030,7 @@ _j*_v/&lt;&lt;itemcheck _j&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_j)&
 自我审视</tw-passagedata><tw-passagedata pid="162" name="版本更新" tags="" position="400,0" size="100,100">&lt;&lt;do&gt;&gt;当前版本：1.2.0.&lt;&lt;=$test&gt;&gt;25_alpha
 最新版本：1.2.0.80325_alpha
 
-&lt;&lt;link 更新版本&gt;&gt;&lt;&lt;set $sleepnt = 0, $drowner = 12, $resonance = 0&gt;&gt;&lt;&lt;set $test = 726&gt;&gt;&lt;&lt;notify 3s&gt;&gt;已更新至最新版本&lt;&lt;/notify&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link 更新版本&gt;&gt;&lt;&lt;set $sleepnt = 0, $drowner = 12, $resonance = 0&gt;&gt;&lt;&lt;set $test = 803&gt;&gt;&lt;&lt;notify 3s&gt;&gt;已更新至最新版本&lt;&lt;/notify&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
 (已触发内容的更新无法同步，测试阶段不建议长期游玩)
 &lt;&lt;/do&gt;&gt;
 &lt;h2&gt;更新日志&lt;/h2&gt;
