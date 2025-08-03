@@ -5601,6 +5601,7 @@ Item.add("鹅卵石", {displayName: "鹅卵石", description: '【】', }, [ "�
 Item.add("沙币", {displayName: "沙币", description: '【】', }, [ "物品"]);
 Item.add("沙子", {displayName: "沙子", description: '【】', }, [ "物品"]);
 Item.add("海螺壳", {displayName: "海螺壳", description: '【】', }, [ "物品"]);
+Item.add("胶卷", {displayName: "胶卷", description: '【】', }, [ "物品"]);
 
 /***鱼***/
 Item.add("海鳌虾", {displayName: "海鳌虾", description: '【硕大的虾钳子保持着它的锋利，沉稳的重量让人感受到它的力量】', }, ["eralove", "fishy", "fish"]);
@@ -8572,9 +8573,7 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;linkreplace ❖生火&gt;&gt;&lt;&lt;include &quot;添加燃料&quot;&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
 
-&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 家&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-
-$fireplace.fuelT</tw-passagedata><tw-passagedata pid="45" name="天上人间" tags="nobr" position="800,400" size="100,100">&lt;&lt;if $choice == &quot;指名&quot;&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 家&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="45" name="天上人间" tags="nobr" position="800,400" size="100,100">&lt;&lt;if $choice == &quot;指名&quot;&gt;&gt;
 &lt;&lt;if $HP lt 22&gt;&gt;【你感到些许疲惫, 做事情力不从心. 你最好去吃点东西休息一下, 充足的睡眠没有坏处】&lt;br&gt;&lt;br&gt;
 
 &lt;&lt;else&gt;&gt;▸▹ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾◃◂&lt;br&gt;
@@ -8662,7 +8661,7 @@ $fireplace.fuelT</tw-passagedata><tw-passagedata pid="45" name="天上人间" ta
 &lt;&lt;audio &quot;mainBGM&quot; unmute&gt;&gt;
 
 &lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543238_2HNM8SE1A9tkwRc.jpg&quot; width=100% class=&quot;pic&quot;&gt;
-&lt;font color=#D4A34C&gt;//永无乡的小镇由Nix的祖父当年亲自选址规划建立, 选址于贝雷河下游的平原河谷中, 平均海拔高度122英尺. 岛上的居民大多居住在此, 店铺和重要建筑, 如银行、医院都聚集于此, 集市也只在小镇的广场上举行//&lt;/font&gt;
+&lt;font color=#D4A34C&gt;//永无乡的小镇由枘朴小姐的祖父当年亲自选址规划建立, 选址于贝雷河下游的平原河谷中, 平均海拔高度122英尺. 岛上的居民大多居住在此, 店铺和重要建筑, 如银行、医院都聚集于此, 集市也只在小镇的广场上举行//&lt;/font&gt;
 
 &lt;br&gt;
 &lt;&lt;NPCloc&gt;&gt;
@@ -13991,6 +13990,19 @@ _j*_v/&lt;&lt;itemcheck _j&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_j)&
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="160" name="版本信息" tags="" position="1700,900" size="100,100">&lt;h2&gt;版本&lt;/h2&gt;
 1.2.0.070525_alpha&lt;br&gt;制作&amp;测试阶段&lt;br&gt;有任何问题请联系&lt;br&gt;qq: 641549971&lt;br&gt;
 &lt;h2&gt;更新日志&lt;/h2&gt;
+8.3  调整了角色
+7.29 提示文字效果改动
+	 增加了巴尔韦克老爷的初见对话
+7.27 修改埃拉交谈ing
+7.26 录入了之前写的几个随机事件 写了一堆打猎遭遇
+	 增加了午睡 改了一下时间分段
+7.23 写了两个散步遭遇事件
+7.22 写了观鸟的一部分文本
+	 补充了火之梦0号
+7.17 完成了观鸟的流程框架 文本未补完
+	 完成了喂鸟差分以及夜织鸟宠物的获取
+	 把未完成任务从数组改写成对象 建议开新档
+7.16 在获取新的提问项时增加了提示弹窗
 7.5	 修改了图书馆借书的流程
 	 在完善日常活动的文本 增加了一些风景文本 写了三个散步遭遇事件
 7.4  恢复体力现在会有弹窗提示
