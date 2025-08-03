@@ -1748,6 +1748,12 @@ grid-template-columns: 1fr 1fr 1fr 1.3fr;align-items: center;justify-items: star
 
 
 /************************* 灵魂样式*************************/
+@keyframes soulfloat {
+	50% {
+		-webkit-transform: translateY(-1.8em);
+		transform: translateY(-1.8em)
+	}
+}
 #bluesoul
 {
 text-align: right;
@@ -1762,6 +1768,7 @@ background-position: bottom 5px right 0px;
 background-attachment: local;
 pointer-events: none;
    z-index: 0;
+animation: soulfloat ease-in-out 3.5s 0s infinite;
 }
 
 #goldsoul
@@ -1778,6 +1785,7 @@ background-position: bottom 5px right 0px;
 background-attachment: local;
 pointer-events: none;
  z-index: 0;
+animation: soulfloat ease-in-out 3.5s 0s infinite;
 }
 
 #redsoul
@@ -1794,6 +1802,7 @@ background-position: bottom 5px right 0px;
 background-attachment: local;
 pointer-events: none;
    z-index: 0;
+animation: soulfloat ease-in-out 3.5s 0s infinite;
 }
 
 #coldsoul
@@ -1809,6 +1818,7 @@ background-repeat: no-repeat;
 background-position: bottom 5px right 0px;
 background-attachment: local;
 pointer-events: none;
+animation: soulfloat ease-in-out 3.5s 0s infinite;
 }
 
 #bloodsoul
@@ -1824,6 +1834,7 @@ background-repeat: no-repeat;
 background-position: bottom 5px right 0px;
 background-attachment: local;
 pointer-events: none;
+animation: soulfloat ease-in-out 3.5s 0s infinite;
 }
 
 #solidsoul
@@ -1839,6 +1850,7 @@ background-repeat: no-repeat;
 background-position: bottom 5px right 0px;
 background-attachment: local;
 pointer-events: none;
+animation: soulfloat ease-in-out 3.5s 0s infinite;
 }
 
 #fermentsoul
@@ -1854,6 +1866,7 @@ background-repeat: no-repeat;
 background-position: bottom 5px right 0px;
 background-attachment: local;
 pointer-events: none;
+animation: soulfloat ease-in-out 3.5s 0s infinite;
 }
 
 #hungersoul
@@ -1869,6 +1882,7 @@ background-repeat: no-repeat;
 background-position: bottom 5px right 0px;
 background-attachment: local;
 pointer-events: none;
+animation: soulfloat ease-in-out 3.5s 0s infinite;
 }
 
 #lightlesssoul
@@ -1884,6 +1898,7 @@ background-repeat: no-repeat;
 background-position: bottom 5px right 0px;
 background-attachment: local;
 pointer-events: none;
+animation: soulfloat ease-in-out 3.5s 0s infinite;
 }
 /*月亮*/
 #moon {display: flex;
@@ -1953,21 +1968,15 @@ pointer-events: none;
 	display: inline-block;
 }
 /*上下晃*/
-@-webkit-keyframes rumble {
-	50% {
-		-webkit-transform: translateY(-.2em);
-		transform: translateY(-.2em)
-	}
-}
 @keyframes rumble {
 	50% {
-		-webkit-transform: translateY(-.2em);
-		transform: translateY(-.2em)
+		-webkit-transform: translateY(-.3em);
+		transform: translateY(-.3em)
 	}
 }
 .rumble {
-	-webkit-animation: rumble linear 0.1s 0s infinite;
-	animation: rumble linear 0.1s 0s infinite;
+	-webkit-animation: rumble linear 1.8s 0s infinite;
+	animation: rumble linear 1.8s 0s infinite;
 	display:inline-block;
 }
 /*浮雕*/
@@ -2003,17 +2012,32 @@ pointer-events: none;
 		-0.2em 0em 0.5em  rgba(255,170,0,0.6),
 		0.2em  0em 0.5em  rgba(255,170,0,0.5);
 }
+
 .loveblur {
-	color: transparent;
-   display: flex;
-	position: relative;
+  color: transparent;
+  display: flex;
+  position: relative;
   justify-content: center;
-    flex-direction: row;
-	text-shadow:
-		0em    0em 0.02em rgba(219,142,136,0.75),
-		-0.2em 0em 0.5em  rgba(219,142,136,0.6),
-		0.2em  0em 0.5em  rgba(219,142,136,0.5);
+  flex-direction: row;
+  /* 添加动画属性 */
+  animation: loveBlink 1.8s infinite ease-in-out;
 }
+/* 为粉色模糊效果创建专属动画 */
+@keyframes loveBlink {
+  0%, 100% {
+    text-shadow:
+      0em    0em 0.02em rgba(219,142,136,0.75),
+      -0.2em 0em 0.5em  rgba(219,142,136,0.6),
+      0.2em  0em 0.5em  rgba(219,142,136,0.5);
+  }
+  50% {
+    text-shadow:
+      0em    0em 0.02em rgba(219,142,136,0.95),   /* 提高中心透明度 */
+      -0.2em 0em 1.5em  rgba(219,142,136,0.8),    /* 增加模糊半径和透明度 */
+      0.2em  0em 1.5em  rgba(219,142,136,0.8);    /* 增加模糊半径和透明度 */
+  }
+}
+
 .traitblur {
 	color: transparent;
   display: flex;
@@ -2025,17 +2049,33 @@ pointer-events: none;
 		-0.2em 0em 0.5em  rgba(147,189,98,0.6),
 		0.2em  0em 0.5em  rgba(147,189,98,0.5);
 }
+
 .badblur {
-	color: transparent;
+  color: transparent;
   display: flex;
-	position: relative;
+  position: relative;
   justify-content: center;
-    flex-direction: row;
-	text-shadow:
-		0em    0em 0.02em rgba(186,48,48,0.75),
-		-0.2em 0em 0.5em  rgba(186,48,48,0.6),
-		0.2em  0em 0.5em  rgba(186,48,48,0.5);
+  flex-direction: row;
+  /* 添加动画属性 */
+  animation: blink 1.5s infinite ease-in-out;
 }
+
+/* 关键帧动画 */
+@keyframes blink {
+  0%, 100% {
+    text-shadow:
+      0em    0em 0.02em rgba(186,48,48,0.75),
+      -0.2em 0em 0.5em  rgba(186,48,48,0.6),
+      0.2em  0em 0.5em  rgba(186,48,48,0.5);
+  }
+  50% {
+    text-shadow:
+      0em    0em 0.02em rgba(186,48,48,0.9),    /* 提高透明度 */
+      -0.2em 0em 1.2em  rgba(186,48,48,0.7),    /* 增加模糊半径 */
+      0.2em  0em 1.2em  rgba(186,48,48,0.7);    /* 增加模糊半径 */
+  }
+}
+
 .mirror {
 	display: inline-block;
 	transform: scaleX(-1);
@@ -3400,7 +3440,7 @@ border: 1px solid #d4c4b5;
 
 Config.history.controls = true;/* 开启回退 */
 Config.history.maxStates = 6;/* 回退步数 */
-Config.saves.slots = 2;/* 存档数 */
+Config.saves.slots = 3;/* 存档数 */
 
 /* 侧边栏显示 */
 $(document).on(':passageend', (ev) => {
@@ -3419,7 +3459,7 @@ $(document).on("input", "input[type='number']", function() {
     }
 });
 
-document.addEventListener('contextmenu', function(event) {
+/*document.addEventListener('contextmenu', function(event) {
  event.preventDefault();
  alert('你在尝试什么?');
  });
@@ -3436,7 +3476,7 @@ document.addEventListener('contextmenu', function(event) {
  event.preventDefault();
  alert('你想看到什么?');
  }
- });
+ });*/
 
 //设置菜单
 //日夜模式切换
@@ -3454,6 +3494,46 @@ Setting.addToggle("Theme", {
 	onInit   : setup.settingTheme,
 	onChange : setup.settingTheme
 });
+
+/* mousetrap v1.6.5 craig.is/killing/mice 快捷键*/
+(function(q,u,c){function v(a,b,g){a.addEventListener?a.addEventListener(b,g,!1):a.attachEvent("on"+b,g)}function z(a){if("keypress"==a.type){var b=String.fromCharCode(a.which);a.shiftKey||(b=b.toLowerCase());return b}return n[a.which]?n[a.which]:r[a.which]?r[a.which]:String.fromCharCode(a.which).toLowerCase()}function F(a){var b=[];a.shiftKey&&b.push("shift");a.altKey&&b.push("alt");a.ctrlKey&&b.push("ctrl");a.metaKey&&b.push("meta");return b}function w(a){return"shift"==a||"ctrl"==a||"alt"==a||
+"meta"==a}function A(a,b){var g,d=[];var e=a;"+"===e?e=["+"]:(e=e.replace(/\+{2}/g,"+plus"),e=e.split("+"));for(g=0;g<e.length;++g){var m=e[g];B[m]&&(m=B[m]);b&&"keypress"!=b&&C[m]&&(m=C[m],d.push("shift"));w(m)&&d.push(m)}e=m;g=b;if(!g){if(!p){p={};for(var c in n)95<c&&112>c||n.hasOwnProperty(c)&&(p[n[c]]=c)}g=p[e]?"keydown":"keypress"}"keypress"==g&&d.length&&(g="keydown");return{key:m,modifiers:d,action:g}}function D(a,b){return null===a||a===u?!1:a===b?!0:D(a.parentNode,b)}function d(a){function b(a){a=
+a||{};var b=!1,l;for(l in p)a[l]?b=!0:p[l]=0;b||(x=!1)}function g(a,b,t,f,g,d){var l,E=[],h=t.type;if(!k._callbacks[a])return[];"keyup"==h&&w(a)&&(b=[a]);for(l=0;l<k._callbacks[a].length;++l){var c=k._callbacks[a][l];if((f||!c.seq||p[c.seq]==c.level)&&h==c.action){var e;(e="keypress"==h&&!t.metaKey&&!t.ctrlKey)||(e=c.modifiers,e=b.sort().join(",")===e.sort().join(","));e&&(e=f&&c.seq==f&&c.level==d,(!f&&c.combo==g||e)&&k._callbacks[a].splice(l,1),E.push(c))}}return E}function c(a,b,c,f){k.stopCallback(b,
+b.target||b.srcElement,c,f)||!1!==a(b,c)||(b.preventDefault?b.preventDefault():b.returnValue=!1,b.stopPropagation?b.stopPropagation():b.cancelBubble=!0)}function e(a){"number"!==typeof a.which&&(a.which=a.keyCode);var b=z(a);b&&("keyup"==a.type&&y===b?y=!1:k.handleKey(b,F(a),a))}function m(a,g,t,f){function h(c){return function(){x=c;++p[a];clearTimeout(q);q=setTimeout(b,1E3)}}function l(g){c(t,g,a);"keyup"!==f&&(y=z(g));setTimeout(b,10)}for(var d=p[a]=0;d<g.length;++d){var e=d+1===g.length?l:h(f||
+A(g[d+1]).action);n(g[d],e,f,a,d)}}function n(a,b,c,f,d){k._directMap[a+":"+c]=b;a=a.replace(/\s+/g," ");var e=a.split(" ");1<e.length?m(a,e,b,c):(c=A(a,c),k._callbacks[c.key]=k._callbacks[c.key]||[],g(c.key,c.modifiers,{type:c.action},f,a,d),k._callbacks[c.key][f?"unshift":"push"]({callback:b,modifiers:c.modifiers,action:c.action,seq:f,level:d,combo:a}))}var k=this;a=a||u;if(!(k instanceof d))return new d(a);k.target=a;k._callbacks={};k._directMap={};var p={},q,y=!1,r=!1,x=!1;k._handleKey=function(a,
+d,e){var f=g(a,d,e),h;d={};var k=0,l=!1;for(h=0;h<f.length;++h)f[h].seq&&(k=Math.max(k,f[h].level));for(h=0;h<f.length;++h)f[h].seq?f[h].level==k&&(l=!0,d[f[h].seq]=1,c(f[h].callback,e,f[h].combo,f[h].seq)):l||c(f[h].callback,e,f[h].combo);f="keypress"==e.type&&r;e.type!=x||w(a)||f||b(d);r=l&&"keydown"==e.type};k._bindMultiple=function(a,b,c){for(var d=0;d<a.length;++d)n(a[d],b,c)};v(a,"keypress",e);v(a,"keydown",e);v(a,"keyup",e)}if(q){var n={8:"backspace",9:"tab",13:"enter",16:"shift",17:"ctrl",
+18:"alt",20:"capslock",27:"esc",32:"space",33:"pageup",34:"pagedown",35:"end",36:"home",37:"left",38:"up",39:"right",40:"down",45:"ins",46:"del",91:"meta",93:"meta",224:"meta"},r={106:"*",107:"+",109:"-",110:".",111:"/",186:";",187:"=",188:",",189:"-",190:".",191:"/",192:"`",219:"[",220:"\\",221:"]",222:"'"},C={"~":"`","!":"1","@":"2","#":"3",$:"4","%":"5","^":"6","&":"7","*":"8","(":"9",")":"0",_:"-","+":"=",":":";",'"':"'","<":",",">":".","?":"/","|":"\\"},B={option:"alt",command:"meta","return":"enter",
+escape:"esc",plus:"+",mod:/Mac|iPod|iPhone|iPad/.test(navigator.platform)?"meta":"ctrl"},p;for(c=1;20>c;++c)n[111+c]="f"+c;for(c=0;9>=c;++c)n[c+96]=c.toString();d.prototype.bind=function(a,b,c){a=a instanceof Array?a:[a];this._bindMultiple.call(this,a,b,c);return this};d.prototype.unbind=function(a,b){return this.bind.call(this,a,function(){},b)};d.prototype.trigger=function(a,b){if(this._directMap[a+":"+b])this._directMap[a+":"+b]({},a);return this};d.prototype.reset=function(){this._callbacks={};
+this._directMap={};return this};d.prototype.stopCallback=function(a,b){if(-1<(" "+b.className+" ").indexOf(" mousetrap ")||D(b,this.target))return!1;if("composedPath"in a&&"function"===typeof a.composedPath){var c=a.composedPath()[0];c!==a.target&&(b=c)}return"INPUT"==b.tagName||"SELECT"==b.tagName||"TEXTAREA"==b.tagName||b.isContentEditable};d.prototype.handleKey=function(){return this._handleKey.apply(this,arguments)};d.addKeycodes=function(a){for(var b in a)a.hasOwnProperty(b)&&(n[b]=a[b]);p=null};
+d.init=function(){var a=d(u),b;for(b in a)"_"!==b.charAt(0)&&(d[b]=function(b){return function(){return a[b].apply(a,arguments)}}(b))};d.init();q.Mousetrap=d;"undefined"!==typeof module&&module.exports&&(module.exports=d);"function"===typeof define&&define.amd&&define(function(){return d})}})("undefined"!==typeof window?window:null,"undefined"!==typeof window?document:null);
+
+const debounce = (func, delay) => {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => func.apply(this, args), delay);
+  };
+};
+
+function bindKeyToClick(key, selector, debounceDelay = 300) {
+  const handleKeyPress = debounce(() => {
+    const element = $(selector);
+    if (element.length && !element.prop('disabled')) {
+      element.trigger('click');
+    }
+  }, debounceDelay);
+  Mousetrap.bind(key, handleKeyPress);
+}
+
+
+$(document).ready(() => {
+  bindKeyToClick('q', '#history-backward', 200);
+  bindKeyToClick('e', '#history-forward', 200);
+});
+
+
+/*   end 快捷键   */
+
 
 /*   弹窗切换   */
 window.changemap = function(page, ID) {
@@ -3735,7 +3815,7 @@ const $loadButton = jQuery("<button>")
  
   
 /************存档其他处理************/
-Config.saves.maxSlotSaves = 3;
+Config.saves.maxSlotSaves = 4;
 /*****！！！！如果要预设存档描述，映射表放在这里！！！！****/
 Save.onSave.add(function (save) {
     // 获取预设的存档描述或使用当前段落名
@@ -5712,7 +5792,8 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 &lt;&lt;link ◈「查询赛事」 赛马详情&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 ✧「马场帮工」 &lt;br&gt;&lt;br&gt;
 
-&lt;&lt;link ▷「离开」 草甸&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="NPC" tags="nobr" position="2200,200" size="100,100">&lt;div id=&quot;idcard&quot;&gt;
+&lt;&lt;link ▷「离开」 草甸&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="NPC" tags="nobr" position="2200,200" size="100,100">&lt;&lt;reopen&gt;&gt;
+&lt;div id=&quot;idcard&quot;&gt;
 &lt;table style=&quot;width:100%; border-style: none;&quot;&gt;
 &lt;tbody align=&quot;center&quot;&gt;
 &lt;tr&gt;&lt;td rowspan=6 style=&quot;width:60%&quot;&gt;
@@ -5727,14 +5808,14 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 &lt;div id=&quot;chatextcard&quot;&gt;&lt;center&gt;◄ ✻ ✻ ✻ ✻ ✻ ✻ ✻ ✻ ✻ ►&lt;/center&gt;&lt;br&gt;
 
 &lt;&lt;if $npc == &quot;埃拉&quot;&gt;&gt;
- 永无乡上唯一的羊倌, 话语间充斥着他曾经真假难辨的海盗故事, 若有谁表现出感兴趣, 便能兴致勃勃的讲上一个钟头. 似乎很早就来到了岛上, 日复一日的在草甸上放着羊, 也许这就是他怀念岛外生活的原因? 
-&lt;br&gt;
-&lt;&lt;link ❖交谈 交谈&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+永无乡上唯一的羊倌，似乎很早就来到了岛上，日复一日的在草甸上放着羊。他对羊群尽职尽责，如照料至亲一般照顾着每一只绵羊，却与岛上的居民来往甚浅。没多少猫知道他的过去，这在永无乡上倒不是什么问题，只是当他摘下他那老旧破烂、皮革因日晒而开裂的船长帽，抛下羊群，凝视着天际线时，他看起来有一个故事要讲述
+&lt;br&gt;&lt;br&gt;
+&lt;&lt;link ❖交谈 交谈&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1, $choice = 0&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ❖赠送&gt;&gt;
     &lt;&lt;if $NPCinfo[$npc].gift ==0&gt;&gt;
-    &lt;&lt;run Dialog.setup(&quot;送礼物给$npc&quot;);
-      Dialog.wiki(Story.get(&quot;赠送&quot;).processText());
-      Dialog.open();&gt;&gt;
+    &lt;&lt;set _pages = &quot;赠送&quot;&gt;&gt;
+    &lt;&lt;Dialog title=&quot;赠送&quot; passage=&quot;赠送&quot;&gt;&gt;
+    &lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;if $loc == &quot;草甸&quot;&gt;&gt;&lt;&lt;link ❖放羊 era互动&gt;&gt;&lt;&lt;set $choice = &quot;放羊&quot;, $npc to 0&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
@@ -5750,7 +5831,6 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 &lt;&lt;if $NPCinfo[$npc].love &gt;= 0 &amp;&amp; $NPCinfo[$npc].love &lt;= 80&gt;&gt;
 &lt;&lt;link ❖赠送&gt;&gt;&lt;&lt;if $NPCinfo[$npc].gift == 1&gt;&gt;&lt;&lt;run Dialog.setup(送礼物给奥里).processText()); Dialog.wiki(&quot;奥里今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
 &lt;&lt;else&gt;&gt;&lt;&lt;run   Dialog.setup(&quot;送礼物给奥里&quot;); Dialog.wiki(Story.get(&quot;赠送&quot;).processText()); Dialog.open();&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;br&gt;
 
 &lt;&lt;if $npc == &quot;安德森&quot;&gt;&gt;
 安德森看上去像是什么游戏或是小说里经典的神秘人——虽然他确实很神秘，但却不够经典。他几乎全身都被那个斗篷盖住，只有在他到处乱动时才能隐隐约约看到他的身体
@@ -5765,19 +5845,9 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 ❖赠送&lt;br&gt;
 ❖特别的餐点&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $npc == &quot;琼&quot;&gt;&gt;
-一个瘦瘦高高的男青年，蓬松的长卷发，深蓝色的大眼睛。身上常年披着白色的僧袍，由金腰带和肩扣固定在身上，一打眼看过去却像是什么也没穿。他有一条不太听话的大尾巴，时常从僧袍底下钻出来，扫他自己的蔷薇色的鼻尖
-&lt;br&gt;
-&lt;&lt;link ❖交谈 交谈&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ❖提交鱼油&gt;&gt;&lt;&lt;set $choice = &quot;提交鱼油&quot;&gt;&gt;&lt;&lt;run
-  Dialog.setup(&quot;出售渔获&quot;);
-  Dialog.wiki(Story.get(&quot;兑换&quot;).processText());
-  Dialog.open();
-&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
-
 &lt;&lt;if $npc == &quot;奥提斯&quot;&gt;&gt;
 你从未见过奥提斯离开图书馆, 他仿佛只存于在那张小小的书桌后面, 日以继夜地写着他的小说, 也许某一天, 你能看到那个故事的结局
-&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ❖交谈 交谈&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ❖赠送&gt;&gt;
     &lt;&lt;if $NPCinfo[$npc].gift ==0&gt;&gt;
@@ -5791,7 +5861,7 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 
 &lt;&lt;if $npc == &quot;佩拉大夫&quot;&gt;&gt;
 即使岛主为他在小镇的街口安排了一间带有田地的平房, 佩拉大夫更多时候是住在医院的. 他就在装有换气扇的那面墙旁挂起了吊床, 将药瓶稀稀散散地放上物架, 在书桌上摊开他不知要写给谁的空白信纸. 要问起来, 他的回答永远是: &quot;早晚的事&quot;
-&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ❖交谈 交谈&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ❖买药 买药&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ❖赠送&gt;&gt;
@@ -5804,7 +5874,7 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 &lt;&lt;if $dxdsstat == 4&gt;&gt;&lt;br&gt;&lt;&lt;link ❖点心代送 支线选项&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $npc == &quot;萨巴夫人&quot;&gt;&gt;
-萨巴夫人已经老去, 她毕生掌握的智慧如今就像阳光下的泡沫, 但好在她仍熟稔各类作物的培育, 也很乐意在午后三点的时候和你分享她新抄写的诗&lt;br&gt;
+萨巴夫人已经老去, 她毕生掌握的智慧如今就像阳光下的泡沫, 但好在她仍熟稔各类作物的培育, 也很乐意在午后三点的时候和你分享她新抄写的诗&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ❖交谈 交谈&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ❖赠送&gt;&gt;
     &lt;&lt;if $NPCinfo[$npc].gift ==0&gt;&gt;
@@ -5817,7 +5887,7 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $npc == &quot;特里特&quot;&gt;&gt;
-一位饱经风霜的老猫, 岁月和战争都毫不吝啬的在他身上留下痕迹——他的右眼因战败而变得空洞, 另一只眼也因为年老覆上了白翳, 黑色的皮毛已渐渐泛白, 安着木制假肢的左腿让他再也不能自如的应对本该成为他归宿的大海, 如今的Tret只剩下他血脉里斯拉夫的威严, 和案板上待宰的鱼肉&lt;br&gt;
+一位饱经风霜的老猫, 岁月和战争都毫不吝啬的在他身上留下痕迹——他的右眼因战败而变得空洞, 另一只眼也因为年老覆上了白翳, 黑色的皮毛已渐渐泛白, 安着木制假肢的左腿让他再也不能自如的应对本该成为他归宿的大海, 如今的Tret只剩下他血脉里斯拉夫的威严, 和案板上待宰的鱼肉&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ❖交谈 交谈&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ❖赠送&gt;&gt;
     &lt;&lt;if $NPCinfo[$npc].gift ==0&gt;&gt;
@@ -5829,7 +5899,7 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 &lt;&lt;if $dxdsstat == 2&gt;&gt;&lt;br&gt;&lt;&lt;link ❖点心代送 支线选项&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $npc == &quot;玛丽亚小姐&quot;&gt;&gt;
-一位时尚、优雅和精致的女士, 她的品味在永无乡上无人能及, 但你最好不要问起她和那些女孩的关系, 亦或是她的珠宝的来历，只是享受她精心剪裁设计的服装就好, 那是猫族能穿上的最美的服装
+一位时尚、优雅和精致的女士, 她的品味在永无乡上无人能及, 但你最好不要问起她和那些女孩的关系, 亦或是她的珠宝的来历，只是享受她精心剪裁设计的服装就好, 那是猫族能穿上的最美的服装&lt;br&gt;
 &lt;br&gt;
 &lt;&lt;link ❖交谈 交谈&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt; 
 &lt;&lt;link ❖赠送&gt;&gt;
@@ -5843,7 +5913,7 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 
 &lt;&lt;if $npc == &quot;巴尔韦克老爷&quot;&gt;&gt;
 大家都这么叫他，巴尔韦克老爷，但在这并不看重世俗身份的永无乡上，这样的称谓带来的也不全是好处。他似乎在岛上有一些故交，起码有其他猫在照顾他的起居，因为他对打猎已经到了近乎痴迷的地步，只要是在清醒的时刻，他都更乐意将时间荒废在狩猎场上，仿佛一旦停下，他生命里那些不堪回忆的事情就会找上他
-&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ❖交谈 交谈&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;   
 &lt;&lt;link ❖赠送&gt;&gt;
     &lt;&lt;if $NPCinfo[$npc].gift ==0&gt;&gt;
@@ -5856,7 +5926,7 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 
 &lt;&lt;if $npc == &quot;欧马卡特&quot;&gt;&gt;
 他出现的地方，猫们甚至愿意拉起一条警戒，因为欧马卡特就是一个彻头彻尾的骗子，而他甚至不是为了骗你的钱。如果是这样倒也还好，世上多的是这种骗子，而欧马卡特仿佛就是出于这个原因，决定他永远也不要当那种骗子，他不满足于只骗走你的午餐，他还要夺走你的笑容，你的好心情，你的最后一丝希望，而到最后，你甚至还会觉得这理所应当
-&lt;br&gt;
+&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ❖交谈 交谈&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;   
 &lt;&lt;link ❖赠送&gt;&gt;
     &lt;&lt;if $NPCinfo[$npc].gift ==0&gt;&gt;
@@ -5910,7 +5980,7 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 
 &lt;&lt;widget &quot;npclove&quot;&gt;&gt;
 &lt;&lt;set $NPCinfo[$npc].love += _args[0]&gt;&gt;
-@@.loveblur;$npc对你的好感增加了@@
+@@.loveblur;&lt;div class=&quot;rumble&quot;&gt;❥ $npc对你的好感增加了&lt;/div&gt;@@
 &lt;&lt;/widget&gt;&gt;
 
 
@@ -5920,8 +5990,8 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 &lt;&lt;if $hour &gt;= 8 &amp;&amp; $hour &lt;= 17 &amp;&amp; $rd != 1&gt;&gt;
 &lt;&lt;set $NPCinfo[&quot;埃拉&quot;].loc =&quot;草甸&quot; ,$NPCinfo[&quot;埃拉&quot;].dis = &quot;正在放牧羊群&quot;&gt;&gt;
 &lt;&lt;elseif $hour &lt;=23 &amp;&amp; $hour &gt;=18&gt;&gt;
-&lt;&lt;set $NPCinfo[&quot;埃拉&quot;].loc =[&quot;沙地&quot;,&quot;小镇&quot;,&quot;礁岩区&quot;,&quot;主港口&quot;,&quot;副港口&quot;,&quot;断桥&quot;,&quot;酒馆&quot;,&quot;天上人间&quot;,&quot;酒馆&quot;,&quot;酒馆&quot;,&quot;酒馆&quot;,&quot;酒馆&quot;].random() , $NPCinfo[&quot;埃拉&quot;].dis = &quot;似乎在闲逛&quot;&gt;&gt;
-&lt;&lt;elseif $hour &lt;=4 &amp;&amp; $week == 6&gt;&gt;
+&lt;&lt;set $NPCinfo[&quot;埃拉&quot;].loc =&quot;酒馆&quot;, $NPCinfo[&quot;埃拉&quot;].dis = &quot;在独自喝着朗姆酒&quot;&gt;&gt;
+&lt;&lt;elseif $hour &lt;=4 &amp;&amp; $week == 6 &amp;&amp; $NPCinfo[&quot;埃拉&quot;].love &gt;=50&gt;&gt;
 &lt;&lt;set $NPCinfo[&quot;埃拉&quot;].loc = &quot;集会&quot;&gt;&gt;
 &lt;&lt;else&gt;&gt;&lt;&lt;set $NPCinfo[&quot;埃拉&quot;].loc =&quot;羊舍&quot;, $NPCinfo[&quot;埃拉&quot;].dis = &quot;正在羊舍里休息&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $NPCinfo[&quot;埃拉&quot;].chat == 0&gt;&gt;&lt;&lt;set $NPCinfo[&quot;埃拉&quot;].dis = &quot; 那似乎就是在你刚刚上岛时一直盯着你的猫. 要去和他聊聊吗? &quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
@@ -5931,10 +6001,6 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
   Dialog.open();&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;$NPCinfo[&quot;埃拉&quot;].dis&lt;&lt;/if&gt;&gt;
 
 
-&lt;&lt;if $oriloc == $loc&gt;&gt;&lt;br&gt;&lt;&lt;link &quot;✣「奥里」&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;奥里&quot;&gt;&gt;&lt;&lt;run Dialog.setup($npc);
-  Dialog.wiki(Story.get(&quot;NPC&quot;).processText());
-  Dialog.open();&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;的身影出现在不远处, 一如既往的忙于送信. 要上去打个招呼吗?&lt;&lt;/if&gt;&gt;
-
 &lt;&lt;if $amberloc == $loc&gt;&gt;&lt;br&gt;&lt;&lt;link &quot;✣「琥珀夫人」&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;琥珀夫人&quot;&gt;&gt;&lt;&lt;run Dialog.setup($npc);
   Dialog.wiki(Story.get(&quot;NPC&quot;).processText());
   Dialog.open();&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
@@ -5942,10 +6008,13 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 
 &lt;&lt;if $hour &lt;=16 &amp;&amp; $hour &gt;=11 &amp;&amp; $weather != &quot;海雾&quot; &amp;&amp; $rd == 0&gt;&gt;
 &lt;&lt;set $NPCinfo[&quot;萨巴夫人&quot;].loc =&quot;小镇&quot;, $NPCinfo[&quot;萨巴夫人&quot;].dis = &quot;正在长椅上晒着太阳&quot;&gt;&gt;
-&lt;&lt;elseif $hour &lt;=10 &amp;&amp; $hour&gt;20&gt;&gt;&lt;&lt;set $spaloc =&quot;家&quot;&gt;&gt;&lt;&lt;elseif $hour &gt;=16&gt;&gt;
-&lt;&lt;set $NPCinfo[&quot;萨巴夫人&quot;].loc =&quot;图书馆&quot;, $NPCinfo[&quot;萨巴夫人&quot;].dis = &quot;坐在图书馆的一角抄写着诗篇&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;elseif $hour &lt;=10 &amp;&amp; $hour&gt;20&gt;&gt;&lt;&lt;set $spaloc =&quot;家&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;set $NPCinfo[&quot;萨巴夫人&quot;].loc =&quot;图书馆&quot;, $NPCinfo[&quot;萨巴夫人&quot;].dis = &quot;坐在图书馆的一角抄写着诗篇&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $NPCinfo[&quot;萨巴夫人&quot;].chat == 0 &amp;&amp; $loc ==&quot;小镇&quot;&gt;&gt;&lt;&lt;set $NPCinfo[&quot;萨巴夫人&quot;].dis = &quot;一位坐在长椅上晒太阳的老猫出现在你的视野里, 她手握着一支破旧的羽毛笔, 在一本厚重的抄写本上缓缓书写着. 那是萨巴夫人, 一位精于种植、热爱诗歌的女士, 如果你有合适的诗集, 可以跟她换些种子&quot;&gt;&gt;
+&lt;&lt;elseif $NPCinfo[&quot;萨巴夫人&quot;].chat == 0 &amp;&amp; $loc ==&quot;图书馆&quot;&gt;&gt;&lt;&lt;set $NPCinfo[&quot;萨巴夫人&quot;].dis = &quot;一位坐在图书馆的一角的老猫出现在你的视野里, 她手握着一支破旧的羽毛笔, 在一本厚重的抄写本上缓缓书写着. 那是萨巴夫人, 一位精于种植、热爱诗歌的女士, 如果你有合适的诗集, 可以跟她换些种子&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $NPCinfo[&quot;萨巴夫人&quot;].chat != 0 &amp;&amp; $NPCinfo[&quot;萨巴夫人&quot;].loc == $loc&gt;&gt;&lt;br&gt;&lt;&lt;link &quot;✣「 萨巴夫人」&quot;&gt;&gt;&lt;&lt;set $npc to &quot;萨巴夫人&quot;&gt;&gt;
+&lt;&lt;if $NPCinfo[&quot;萨巴夫人&quot;].loc == $loc&gt;&gt;&lt;br&gt;&lt;&lt;link &quot;✣「 萨巴夫人」&quot;&gt;&gt;&lt;&lt;set $npc to &quot;萨巴夫人&quot;&gt;&gt;
 &lt;&lt;run Dialog.setup($npc);
   Dialog.wiki(Story.get(&quot;NPC&quot;).processText());
   Dialog.open();&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;$NPCinfo[&quot;萨巴夫人&quot;].dis&lt;&lt;/if&gt;&gt;
@@ -5990,7 +6059,7 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 &lt;&lt;elseif $hour &lt;=18 &amp;&amp; $hour &gt;=6&gt;&gt;
 &lt;&lt;set $NPCinfo[&quot;巴尔韦克老爷&quot;].loc =[&quot;草甸&quot;,&quot;高地&quot;,&quot;贝雷河&quot;,&quot;秋毛岗&quot;,&quot;罗索伦特湖&quot;].random(), $NPCinfo[&quot;巴尔韦克老爷&quot;].dis = &quot;在不远处举着猎枪，寻觅猎物&quot;&gt;&gt;
 &lt;&lt;elseif $hour &gt;18 &amp;&amp; $hour &lt;=20&gt;&gt;
-&lt;&lt;set $NPCinfo[&quot;巴尔韦克老爷&quot;].loc = &quot;酒馆&quot;, $NPCinfo[&quot;巴尔韦克老爷&quot;].dis = &quot;在角落里独自喝着蜜酒&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;set $NPCinfo[&quot;巴尔韦克老爷&quot;].loc = &quot;酒馆&quot;, $NPCinfo[&quot;巴尔韦克老爷&quot;].dis = &quot;在猫群中默默喝着蜜酒&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $NPCinfo[&quot;巴尔韦克老爷&quot;].loc == $loc&gt;&gt;&lt;br&gt;&lt;&lt;link &quot;✣「巴尔韦克老爷」&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;巴尔韦克老爷&quot;&gt;&gt;&lt;&lt;run Dialog.setup($npc);
   Dialog.wiki(Story.get(&quot;NPC&quot;).processText());
@@ -6123,11 +6192,11 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 &lt;&lt;if $hunger &gt;=6 &amp;&amp; $HP &lt;= 50&gt;&gt;❗你有一种陌生的&lt;font color=#BA3030&gt;//饥饿感//&lt;/font&gt;, 也许吃点东西就会好些❗&lt;br&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $resonance &lt;= 6&gt;&gt;
-🔔“铛—— 铛—— 铛—— ” 你听见远处的钟楼传来钟声，模糊，沉重，遥不可及。
-&lt;&lt;if $hour == 6 &amp;&amp; $bellring1 == 0&gt;&gt;&lt;&lt;set $bellring1 = 1&gt;&gt;//永无乡的太阳要升起了//
-&lt;&lt;elseif $hour == 12 &amp;&amp; $bellring2 == 0&gt;&gt;&lt;&lt;set $bellring2 = 1&gt;&gt;//一定快到正午了//
-&lt;&lt;elseif $hour == 18 &amp;&amp; $bellring3 == 0&gt;&gt;&lt;&lt;set $bellring3 = 1&gt;&gt;//夜织鸟们纷纷归巢了//&lt;&lt;/if&gt;&gt;
-🔔&lt;br&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $hour == 6 &amp;&amp; $bellring1 == 0&gt;&gt;&lt;&lt;set $bellring1 = 1&gt;&gt;🔔“铛—— 铛—— 铛—— ” 你听见远处的钟楼传来钟声，模糊，沉重，遥不可及。//永无乡的太阳要升起了//🔔&lt;br&gt;
+&lt;&lt;elseif $hour == 12 &amp;&amp; $bellring2 == 0&gt;&gt;&lt;&lt;set $bellring2 = 1&gt;&gt;🔔“铛—— 铛—— 铛—— ” 你听见远处的钟楼传来钟声，模糊，沉重，遥不可及。//一定快到正午了//🔔&lt;br&gt;
+&lt;&lt;elseif $hour == 18 &amp;&amp; $bellring3 == 0&gt;&gt;&lt;&lt;set $bellring3 = 1&gt;&gt;🔔“铛—— 铛—— 铛—— ” 你听见远处的钟楼传来钟声，模糊，沉重，遥不可及。//夜织鸟们纷纷归巢了//🔔&lt;br&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $lostsheep[0] == 1&gt;&gt;🐏那只羊上哪去了？你必须在今天内找到它🐏&lt;br&gt;&lt;&lt;/if&gt;&gt;
 
@@ -6299,7 +6368,7 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 &lt;/ScrollView&gt;
 
 &lt;&lt;set setup.items to {}&gt;&gt; 
-&lt;&lt;set $test to 705&gt;&gt; 
+&lt;&lt;set $test to 803&gt;&gt; 
 
 /******************属性值们******************/
 &lt;&lt;set $luck to random(35,95)&gt;&gt;&lt;&lt;set $sin to 0&gt;&gt;
@@ -6308,7 +6377,7 @@ $knowledgeexp to 0, $strengthexp to 0, $observationexp to 0, $persuasiveexp to 0
 &lt;&lt;set $player = {knowledge: 0, strength: 0, observation: 0, persuasive: 0, wound: 0, dread: 0, nightmare: 0, suspicion : 0, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy: 0}&gt;&gt;
 
 /******************初始值们******************/
-&lt;&lt;set $loc = &quot;未知&quot;, $loct = &quot;未知&quot;, $job = &quot;暂无&quot;,$home = &quot;暂无&quot;&gt;&gt;&lt;&lt;set $chop = 0&gt;&gt;&lt;&lt;set $dgcs = 6, $fycs = 3, $gzcs = 3&gt;&gt;&lt;&lt;set $bjb to 0&gt;&gt;
+&lt;&lt;set $loc = &quot;未知&quot;, $loct = &quot;未知&quot;, $job = &quot;暂无&quot;,$home = &quot;暂无&quot;, $resonance = 0&gt;&gt;&lt;&lt;set $chop = 0&gt;&gt;&lt;&lt;set $dgcs = 6, $fycs = 3, $gzcs = 3&gt;&gt;&lt;&lt;set $bjb to 0&gt;&gt;
 &lt;&lt;set $sq = {way : 0, moon: 0, feather: 0}&gt;&gt;
 &lt;&lt;set $text = &quot;永无乡&quot;, $textc = &quot;//漂浮在地中海某处的小岛，终年气候温和&lt;br&gt;永无乡欢迎所有人的到来//&quot;&gt;&gt;
 &lt;&lt;set $textmoon= [&quot;月亮在五年前结束的战争中碎裂了四分之一，碎片至今仍漂浮在太空中，却不知为何对世界毫无影响&quot;]&gt;&gt;
@@ -6316,15 +6385,15 @@ $knowledgeexp to 0, $strengthexp to 0, $observationexp to 0, $persuasiveexp to 0
 &lt;&lt;set $textcard= [&quot;永无乡&quot;,&quot;猫族&quot;,&quot;东风&quot;,&quot;月亮&quot;,&quot;羽墨&quot;]&gt;&gt;
 &lt;&lt;set _now to new Date()&gt;&gt;
 &lt;&lt;set $innpay = 1, $date to 1, $month = _now.getMonth()+1, $day = _now.getDate(), $lny to 0, $week to 7, $hour to 7, $minute to 0, $dtr to 0, $dtr1 to 0, $dtr2 to 0, $weather to &quot;晴天&quot;, $wind to &quot;东风&quot;, $npc = 0, $msstat = &quot;初始&quot;&gt;&gt;
-&lt;&lt;set $sheep to 27, $boat to 6&gt;&gt;&lt;&lt;set $lostsheep = [0, 0]&gt;&gt;
-&lt;&lt;set $land1 =[],  $land2 =[], $land3 =[], $land4 =[], $land5 =[], $land6 =[]&gt;&gt;&lt;&lt;set $achv = [], $story = [], $storydone = [], $storymiss = []&gt;&gt;
+&lt;&lt;set $sheep to 27, $boat to 6, $sleepnt = 0, $sleept = 0, $drowner = 12&gt;&gt;&lt;&lt;set $lostsheep = [0, 0]&gt;&gt;
+&lt;&lt;set $land1 =[],  $land2 =[], $land3 =[], $land4 =[], $land5 =[], $land6 =[]&gt;&gt;&lt;&lt;set $achv = [], $story = {}, $storydone = [], $storymiss = []&gt;&gt;
 &lt;&lt;set $bellring1 = 0, $bellring2 = 0, $bellring3 = 0&gt;&gt; 
 &lt;&lt;set $fireplace = {&quot;addT&quot;: 0, &quot;fuelT&quot;: 0, &quot;burningT&quot;: 0}&gt;&gt;
 &lt;&lt;set $land1.push({name: &#39;无&#39;, stat: 0}),  $land2.push({name: &#39;无&#39;, stat: 0}), $land3.push({name: &#39;无&#39;, stat: 0}), $land4.push({name: &#39;无&#39;, stat: 0}), $land5.push({name: &#39;无&#39;, stat: 0}), $land6.push({name: &#39;无&#39;, stat: 0})&gt;&gt;
 &lt;&lt;set $fireplace = {addT: 0, fuelT: 0, burningT: 0, scale:0}&gt;&gt;
 &lt;&lt;set $dailyjob = []&gt;&gt;
 
-&lt;&lt;set $dream_fire = {I: 0,II: 0,III: 0,IV:0, V:0, VI:0}&gt;&gt;
+&lt;&lt;set $dream_fire = {zero:0, I: 0,II: 0,III: 0,IV:0, V:0, VI:0}&gt;&gt;
 
 /******************赛马******************/
 &lt;&lt;set $racing ={}, $horse1 = {}, $horse2 = {}&gt;&gt;
@@ -6380,7 +6449,7 @@ $knowledgeexp to 0, $strengthexp to 0, $observationexp to 0, $persuasiveexp to 0
 &lt;&lt;pickup $house &quot;断弦的吉他&quot; 1 &quot;天文望远镜&quot; 1 &quot;字迹模糊的短诗&quot; 1 &quot;老照片&quot; 1 &quot;信纸&quot; 10 &quot;羽毛笔&quot; 12 &quot;甘草袋&quot; 6&gt;&gt;
 
 /******************成就们******************/
-&lt;&lt;set $cancatch = 0, $lotus = 0, $foxrelease = 0, $antrelease = 0, $crushbugs = 0, $fishcollect= [], $gball= [], $preycollect= [], $winecollect= [], $birdcollect= [], $flowercollect= [], $drinkcollect= [], $foodcollect= []&gt;&gt;
+&lt;&lt;set $cancatch = 0, $lotus = 0, $foxrelease = 0, $antrelease = 0, $crushbugs = 0, $feednw = 0, $fishcollect= [], $gball= [], $preycollect= [], $winecollect= [], $birdcollect= [], $flowercollect= [], $drinkcollect= [], $foodcollect= []&gt;&gt;
 
 /******************NPC们******************/
 &lt;&lt;set $rdmnpc = [&quot;金发的女商&quot;,&quot;温和的农夫&quot;,&quot;独臂的将军&quot;,&quot;静坐的少女&quot;,&quot;手巧的青年&quot;,&quot;爱讲故事的叔叔&quot;,&quot;煎药的老猫&quot;,&quot;吹笛子的男孩&quot;,&quot;衣衫褴褛的船夫&quot;,&quot;沉默的舞者&quot;,&quot;好脾气的太太&quot;,&quot;一尘不染的洗衣工&quot;,&quot;赤脚走路的母猫&quot;,&quot;穿红裙子的母猫&quot;,&quot;高高在上的磨坊主&quot;,&quot;多管闲事的渔夫&quot;,&quot;多病的老书商&quot;,&quot;雨天散步的鸟贩&quot;,&quot;自言自语的木雕师&quot;,&quot;站在桥头的女孩&quot;,&quot;站在树后的猎人&quot;,&quot;头戴鲜花的少女&quot;,&quot;手捧水罐的公猫&quot;,&quot;穿蛇皮裙的母猫&quot;,&quot;种向日葵的老猫&quot;]&gt;&gt;
@@ -6524,15 +6593,23 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 &lt;&lt;link 点这里 萤火虫&gt;&gt;&lt;&lt;set $qte to true&gt;&gt;&lt;&lt;set $succ = 0, $num to random(4,8)&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 &lt;/center&gt;</tw-passagedata><tw-passagedata pid="14" name="era互动" tags="nobr" position="2300,100" size="100,100">&lt;&lt;if $lostsheep[0] == 1 &amp;&amp; $sheeploc == $loc&gt;&gt;
-【一团白色的身影出现在前方, 你终于找到了走失的绵羊, 把它带回了羊群还给Era】&lt;&lt;set $lostsheep[0] = 0, $sheep +=1, $choice to &quot;放羊&quot;&gt;&gt;&lt;br&gt;&lt;br&gt;
+一团白色的身影出现在前方, 你终于找到了走失的绵羊, 把它带回了羊群还给Era&lt;&lt;set $lostsheep[0] = 0, $sheep +=1, $choice to &quot;放羊&quot;&gt;&gt;&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「去找Era」 草甸&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;elseif $lostsheep[0] == 1&gt;&gt;
-【你走遍了整个地区, 没有看到一撮羊毛. 去别的地方试试运气吧】&lt;br&gt;&lt;br&gt;
+&lt;&lt;set _m to random(1,5)&gt;&gt;
+&lt;&lt;if _m == 5&gt;&gt;
+&lt;&lt;if !$sq.facksheep&gt;&gt;&lt;&lt;set $sq.facksheep = 0&gt;&gt;&lt;&lt;notify 3s&gt;&gt;Seisi提问新增“羊羔鞭挞”&lt;&lt;/notify&gt;&gt;你远远的看见一个绵羊形状的东西, 甚至还在埋头吃草, 但当你走近时才发现, 那只&quot;羊&quot;由一条根茎连接到泥土里. 这不是你要找的羊. 你觉得最好离它远点
+&lt;&lt;else&gt;&gt;
+你远远的看见一个绵羊形状的生物正在埋头吃草, 这不是一幅你能很快遗忘的诡异画面. 那株植物的羔羊盯着你, 似乎已经看穿了你下一步的行动
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;
+你走遍了整个地区, 没有看到一撮羊毛. 去别的地方试试运气吧&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;放羊&quot; &amp;&amp; $fycs == 0&gt;&gt;【Era觉得你今天已经做得够多了, 去找点其他事做或者休息一下吧】&lt;br&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;elseif $choice == &quot;放羊&quot; &amp;&amp; $fycs == 0&gt;&gt;Era觉得你今天已经做得够多了, 去找点其他事做或者休息一下吧&lt;br&gt;
 &lt;br&gt;
 &lt;&lt;link ▷「返回」 草甸&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;放羊&quot;&gt;&gt;&lt;&lt;set _n to random(1,15)&gt;&gt;&lt;&lt;set $fycs -= 1&gt;&gt; &lt;&lt;set _rpe = [&quot;【你接过Era的牧羊杖, 晃着铃铛朝羊群走去. 他们专心致志地啃着草地, 丝毫没有注意到已经更换了牧羊者】&quot;,&quot;【Era很高兴自己能去休息会了, 他找了块舒服的石头躺上去, 有一搭没一搭的跟你聊着, 在你要离开这片草场的时候把帽子盖到脸上, 睡了过去】&quot;].random()&gt;&gt;_rpe&lt;br&gt;
+&lt;&lt;elseif $choice == &quot;放羊&quot;&gt;&gt;&lt;&lt;set _n to random(1,15)&gt;&gt;&lt;&lt;set $fycs -= 1&gt;&gt; &lt;&lt;set _rpe = [&quot;你接过Era的牧羊杖, 晃着铃铛朝羊群走去. 他们专心致志地啃着草地, 丝毫没有注意到已经更换了牧羊者】&quot;,&quot;【Era很高兴自己能去休息会了, 他找了块舒服的石头躺上去, 有一搭没一搭的跟你聊着, 在你要离开这片草场的时候把帽子盖到脸上, 睡了过去】&quot;].random()&gt;&gt;_rpe&lt;br&gt;
 &lt;br&gt;
 &lt;&lt;timed 4s t8n&gt;&gt;【你将羊群领到一处又一处的新鲜草地. 
 &lt;&lt;if _n &lt;=10 &amp;&amp; $player.nightmare &lt;= 55&gt;&gt;
@@ -6595,7 +6672,7 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 &lt;&lt;print [&quot;用那种眼神看着我做什么, 快点去睡觉, 这里没有睡前故事&quot;,&quot;我看得出那副表情, 小鬼. 你在想: 白天已经受得够多了, 拜托别让我在梦里也见到老Seisi&quot;,&quot;愿你今夜无梦. 要是见到它们中的哪位了, 记得别多嘴&quot;,&quot;你在希望我回应你这样的寒暄吗? 真不知道你从哪来的错觉以为我会关心你的事情. 不过要放心, 当你睡觉的时候, 我会继续以超乎你所能想象的高贵和智慧来驾驭存在的复杂性. 如果你能理解这个概念,那就做个好梦吧&quot;,&quot;晚安, 世界终于从你没完没了的闲聊中休息片刻了&quot;,&quot;睡眠, 多么古怪啊. 逃离现实几个小时一定让你心情愉悦. 别担心, 我还会在这里, 好在早上用我超凡的智力来启发你&quot;,&quot;这是给你的一条建议——要大胆做梦, 因为这是你在微不足道的存在中最接近实现任何重大成就的机会&quot;].random()&gt;&gt;
 &lt;&lt;elseif $hour &gt;=6 &amp;&amp; $hour &lt;=9&gt;&gt;
 &lt;&lt;print [&quot;一早就遇见你这样冒失的家伙, 今天想必不会好到哪儿去&quot;,&quot;如果早晨真的很美好, 我就不必忍受你们这样下等生物平凡的寒暄了&quot;,&quot;我发现早晨被高估了, 就像你在社交礼仪上的尝试一样&quot;,&quot;你说早上好? 比起无意义的礼节, 多关注你的新一天吧, 毕竟没有第二个人会去在意&quot;].random()&gt;&gt;
-&lt;&lt;elseif $hour &gt;=12 &amp;&amp; $hour &lt;=14&gt;&gt;
+&lt;&lt;elseif $hour &gt;=11 &amp;&amp; $hour &lt;=14&gt;&gt;
 嘘, 安静...你难道不知道现在是规定的午睡时间吗
 &lt;&lt;elseif $hour &gt;=21 || $hour ==0&gt;&gt;
 &lt;&lt;set _rpl= [&quot;你好, 亲爱的$nn. 我多么希望你的存在不像你的问候这么平凡&quot;,&quot;晚上好, 小毛球. 让我猜猜看, 你今天又过得一事无成&quot;,&quot;哦, $nn, 一天到晚殷殷恳恳地到处给别人问好&quot;,&quot;晚上好, 小鬼. 你的礼貌和你的智力一样微弱. 我想我该感激你用你的平庸来逗我开心&quot;,&quot;无论是早上、中午还是深夜, 你的讨好对我来说都毫无作用&quot;].random()&gt;&gt;_rpl
@@ -6694,6 +6771,7 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 &lt;br&gt;地点活动&lt;br&gt;
 &lt;&lt;if $lostsheep[0] == 1&gt;&gt;&lt;&lt;link ◈「找羊」 era互动&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;link ◈「钓鱼」 钓鱼&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ◈「散步」 散步&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;br&gt;继续前往&lt;br&gt;
 &lt;&lt;link ✧「灯塔」 灯塔&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ✧「仓库」&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
@@ -6744,7 +6822,7 @@ demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情�
 &lt;&lt;next 5s t8n&gt;&gt;Seisi的这番话让你几乎要重新审视你对这只老鸟的看法了, 直到它扇着翅膀飞到你的头上, 眼看着就要啄上你的眼珠了&lt;br&gt;&lt;br&gt;
 &lt;&lt;next 3s t8n&gt;&gt;@@.seisitalk;&quot;还愣着干什么! 现在, 去开启你的新生活吧, 但别忘了, 我会一直看着你的, $name. &quot;@@&lt;br&gt;&lt;br&gt;
 &lt;&lt;next 2s t8n&gt;&gt;&lt;font color=&quot;CF7C34&quot;&gt;✶开启任务【主线】新的开始✶&lt;/font&gt;
-&lt;&lt;set $story.push(&quot;新的开始&quot;)&gt;&gt;&lt;&lt;set $mss = 1&gt;&gt;
+&lt;&lt;set $story[&quot;新的开始&quot;] = &quot;新的开始1&quot;&gt;&gt;&lt;&lt;set $mss = 1&gt;&gt;
 &lt;&lt;set $msstat = &quot;新的开始1&quot;&gt;&gt;&lt;&lt;set $msname = &quot;新的开始&quot;&gt;&gt;
 &lt;&lt;set $firsts = 1&gt;&gt;
 &lt;&lt;set $map = 1&gt;&gt;
@@ -7196,7 +7274,7 @@ seisi好像早就知道了你的意图，发出警报一样的啸叫，张开翅
 讠青 小心 岛 上白勺雪
   亻尔的 月月友
 
-&lt;&lt;set $sq.snow = 0&gt;&gt;
+&lt;&lt;set $sq.snow = 0&gt;&gt;&lt;&lt;notify 3s&gt;&gt;Seisi提问新增“雪”&lt;&lt;/notify&gt;&gt;
 奇怪的信件，你从回忆里找不出可能的寄信方。
 &lt;&lt;next 2s t8n&gt;&gt;
 &lt;&lt;link ▷「丢掉」 主线D4&gt;&gt;&lt;&lt;set $choice to &quot;丢掉&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
@@ -7346,22 +7424,57 @@ $(document).on(&quot;input&quot;, &quot;input[type=&#39;number&#39;]&quot;, func
     }
 });
 &lt;/script&gt;</tw-passagedata><tw-passagedata pid="29" name="交谈" tags="nobr" position="2200,400" size="100,100">&lt;&lt;if $npc == &quot;埃拉&quot;&gt;&gt;
+
 /*初见*/
 &lt;&lt;if $NPCinfo[$npc].chat == 1&gt;&gt;
-Era像是才注意到你在周围一样, 从发呆中回过神来: &quot;啊, 是你, 新来的家伙. &quot;他给了你一个无可挑剔的微笑, &quot;岛上的生活怎么样, 希望没让你太失望. Nix一直说, 这里的生活是最好的生活, 你觉得呢?&quot;&lt;br&gt;&lt;br&gt;
-⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「是」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;是&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「不是」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;不是&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「还不知道」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;还不知道&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
+埃拉像是并不期待会有猫来跟他搭话一样，半响才从发呆中回过神来，他迟疑一下，给了你一个疲惫的微笑: &lt;br&gt;&lt;br&gt;
+&quot;啊, 是你, 新来的家伙. &quot;他伸手扶了一下船长帽，上面的羽毛随着他的动作摇晃，&quot;我听说了，你是受到岛主的邀请而来的。觉得岛上的生活怎么样？希望没让你太失望。枘朴小姐一直说，这里的生活是最好的生活，你觉得呢？&quot;&lt;br&gt;&lt;br&gt;
+&lt;&lt;do&gt;&gt;
+&lt;&lt;if $choice == 0&gt;&gt;
+&lt;&lt;link ▷「是」&gt;&gt;&lt;&lt;set $choice to &quot;是&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「不是」&gt;&gt;&lt;&lt;set $choice to &quot;不是&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「还不知道」&gt;&gt;&lt;&lt;set $choice to &quot;还不知道&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;else&gt;&gt;
+&lt;&lt;if $choice == &quot;是&quot;&gt;&gt;
+他眯起眼睛笑了一下，目光看向别处。“你能这样想，就最好不过了。永无乡是个很大的地方, 你总会过上你想要的生活。”他抬了一下帽檐，示意自己要回到放牧羊群的工作中去了。
+&lt;&lt;addpexp 3&gt;&gt;&lt;&lt;addsocial 1&gt;&gt;
+&lt;&lt;elseif $choice == &quot;不是&quot;&gt;&gt;
+&quot;是嘛, 那太可惜了。不过好在这儿的日子很漫长, 你也许会慢慢适应她，就像我一样。&quot;他若有所思的看着你，但视线仿佛已经抵达了另一处地方。&lt;br&gt;
+&lt;&lt;npcwaves 2&gt;&gt;
+&lt;&lt;elseif $choice == &quot;还不知道&quot;&gt;&gt;&lt;&lt;pickup $item &quot;海螺号角&quot; 1&gt;&gt;
+&quot;那不要紧. 永无乡是个很大的地方, 你总会过上你想要的生活. &quot;他边说边翻找着什么, 很快就从包里拿出来一个海螺, 递到你面前. &quot;这算是一点乔迁礼, 拿着吧. &quot;
+&lt;&lt;set _itemobtain = &quot;海螺号角 * 1&quot;&gt;&gt;
+&lt;&lt;itemobtain&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;set $npc = 0, $choice = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;
+
 /*日常*/
-&lt;&lt;elseif $loc == &quot;草甸&quot;&gt;&gt;&lt;&lt;set _rpl= [&quot;【Era向你抬了抬帽檐示好: “日安, $nn. 不错的天气. 相信我, 阳光在这个岛上尤为珍贵. ”】&quot;,&quot;【“很不错的羽毛, 不是吗? ”Era得意的展示着自己的羽毛帽, “这是大洋对面国度的公主亲手赠给我的. ” 他向你故作神秘的眨了下眼】&quot;,&quot;【“羊是种很聪明的生物, 他们知道在面对结局时自己怎样都无能为力, 于是愉快的享受当下. ” 不知怎得, 你从Era的语气里听出了一点羡慕的意味】&quot;,&quot;【Era用帽子遮着脸, 看起来在进行他日常的工作中小憩, 在你决定离开不再继续打扰时, 却看见他抖了抖尾巴, 似乎是在回应你】&quot;].random()&gt;&gt;_rpl
+/*放羊*/
+&lt;&lt;elseif $loc == &quot;草甸&quot;&gt;&gt;
+&lt;&lt;set _rpl= [&quot;埃拉向你抬了抬帽檐示好: “日安, $nn. 不错的天气. 相信我, 阳光在这个岛上尤为珍贵. ”&quot;,&quot;“很不错的羽毛, 不是吗? ”埃拉得意的展示着自己的羽毛帽, “这是大洋对面国度的公主亲手赠给我的. ” 他向你故作神秘的眨了下眼&quot;,&quot;“羊是种很聪明的生物, 他们知道在面对结局时自己怎样都无能为力, 于是愉快的享受当下. ” 不知怎得, 你从Era的语气里听出了一点羡慕的意味&quot;,&quot;埃拉用帽子遮着脸, 看起来在进行他日常的工作中小憩, 在你决定离开不再继续打扰时, 却看见他抖了抖尾巴, 似乎是在回应你&quot;].random()&gt;&gt;_rpl
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $loc == &quot;酒馆&quot;&gt;&gt;&lt;&lt;set _rpl= [&quot;【“看来有人很会享受夜晚啊. ”Era晃晃手里的酒杯冲你问好】&quot;,&quot;【“要说好酒, 我只认东南海那边的椰子酒, 那是我最爱的一次出海、之一! 我们带回来足足能喝上三十个月的酒, 这儿的酒跟那些比起来, 一文不值! ”你非常肯定Era已经开始说醉话了】&quot;,&quot;【“啊, 工作一天后小酌一杯, 他们说得对, 我确实爱这部分的生活. ”】&quot;].random()&gt;&gt;_rpl
+&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
+/*羊舍*/
+&lt;&lt;elseif $loc == &quot;羊舍&quot;&gt;&gt;
+&lt;&lt;set _rpl= [&quot;埃拉正在为羊们梳理毛发，他语气轻柔，不知是在对你讲话，还是仅仅在自言自语：“这只最近脾气不好，总是冲着东边叫，梳毛能让它安静下来。”&quot;,&quot;埃拉望着不远处一只蹦蹦跳跳的小羊羔，眼神有些发散：“有些季节，新来...新生的羊羔会格外多，我想我很久之前就不去记它们的年龄了。”&quot;,&quot;埃拉正在分拣草料喂给羊群，绵羊们围着他打转，他看着就像被簇拥在云端之上：“别抢，别抢，你们都会分到的。”&quot;,&quot;埃拉坐在墙边抚摸着羊儿，他语气轻柔，不知是在对羊讲话，还是仅仅在自言自语：“这里很安全...你们在这里很安全。”&quot;].random()&gt;&gt;_rpl
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
+/*喝酒*/
+&lt;&lt;elseif $loc == &quot;酒馆&quot;&gt;&gt;
+&lt;&lt;if $day%6 == 0&gt;&gt;
+埃拉神情疲惫地抿了一口酒，喃喃道：“今晚花了些时间才把羊群安抚下来，每次到了这样的日子，它们仿佛都能知道要发生什么。”
+&lt;&lt;else&gt;&gt;
+&lt;&lt;if $mss &lt;= 23&gt;&gt;
+&lt;&lt;set _rpl= [&quot;“看来有人很会享受夜晚啊. ”埃拉晃晃手里的酒杯冲你问好，“我可以请你喝酒，但要找热闹的话，我这可不算是什么有趣的选择。”他抿下一口朗姆酒，视线瞟向别处。&quot;,&quot;见到是你，一直在沉默喝酒的埃拉突然打开话匣子：“要说好酒，我只认东南海那边的椰子酒，那是我最爱的一次出海、之一! 我们带回来足足能喝上三十个月的酒，这儿的酒跟那些比起来，一文不值! ”你非常肯定他已经开始说醉话了。&quot;,&quot;埃拉低头盯着杯中泛起涟漪的酒液，咂了咂嘴唇：“啊，要换做以前，我在岸上可喝不下酒...朗姆酒，没了浪声，可就没了它的滋味。”&quot;].random()&gt;&gt;_rpl
+&lt;&lt;elseif $mss &lt;= 46&gt;&gt;
+11
+&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
+/*溶洞*/
 &lt;&lt;elseif $loc == &quot;溶洞&quot;&gt;&gt;
-&lt;&lt;if $erafirstcavec != 1&gt;&gt;【啊，欢迎啊。虽然看起来破破烂烂，但这里就是我的“家”了。我知道你心里或许正嫌弃着门口挡路的荆棘、寒冷的直冲人面门的海风，以及这简陋的陈设。但这对我来说已经算是个温暖的窝了】&lt;&lt;set $erafirstcavec == 1&gt;&gt;
+&lt;&lt;if $erafirstcavec != 1&gt;&gt;啊，欢迎啊。虽然看起来破破烂烂，但这里就是我的“家”了。我知道你心里或许正嫌弃着门口挡路的荆棘、寒冷的直冲人面门的海风，以及这简陋的陈设。但这对我来说已经算是个温暖的窝了&lt;&lt;set $erafirstcavec == 1&gt;&gt;
 ⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
 &lt;&lt;link ▷「看上去很不错」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;看上去很不错&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「确实简陋」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;不是&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -7369,67 +7482,6 @@ Era像是才注意到你在周围一样, 从发呆中回过神来: &quot;啊, �
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $npc == &quot;奥里&quot;&gt;&gt;&lt;&lt;set _s to random(1,7)&gt;&gt;
-/*初见*/
-&lt;&lt;if $NPCinfo[$npc].chat == 0&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat = 1&gt;&gt;
-你刚踏入小镇，一只蓝灰色的母猫就跳到了你面前。“你好，是……新来的？”眼前的女孩伸出手与你打了招呼，接着又笑着绕着你转了一圈，“那——欢迎你来到永无乡！我是这里的信者，想要送信之类的都可以来找我~”她说着，正好转到你面前，同时伸出了一只手&lt;br&gt;&lt;br&gt;
-&lt;&lt;timed 3s t8n8&gt;&gt;“很高兴认识你，我是Orionis。叫我奥里就可以啦~”&lt;br&gt;&lt;br&gt;
-⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「握住她的手」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;握住她的手&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「犹豫」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;犹豫&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「抱住她」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;抱住她&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/timed&gt;&gt;
-/*日常*/
-&lt;&lt;elseif $choice == &quot;我来帮你&quot;&gt;&gt;
-【“哇！真的吗？谢谢你的好意，不过这是我的工作，我相信我能做好。”她笑了笑，“能够看到收信人的笑脸，我也很满意啦~那可是海岸之外的人送来的，带有‘家’的信！”】 
-&lt;&lt;elseif $choice == &quot;每天都有很多信吗&quot;&gt;&gt;
-【“嗯，因为从镇子去到外面稍微有点难度，所以与外界的沟通大部分都是通过信件。永无乡只有我一个信者，所以看起来数量就有点多。”奥里拍了拍存放信件的腰包，“不过，之后有机会的话，或许会找个帮手！”】 
-&lt;&lt;elseif $choice == &quot;你喜欢海吗&quot;&gt;&gt;
-【“喜欢！”她毫不犹豫的回答道，“但，也没有那么喜欢。只是看海会觉得，心会跟着一起平静下来。”说着，她回头眨了眨眼，做了个鬼脸，“我不会游泳，所以也只能看看啦！”】
-&lt;&lt;elseif $choice == &quot;去喝下午茶&quot;&gt;&gt;
-【“好呀~既然是邀请，那我就愉快的接下啦！”她笑着伸出手拍了拍你的手掌，“走吧走吧！今天会有什么样的甜品呢？好期待~”】
-&lt;&lt;elseif $choice == &quot;？&quot;&gt;&gt;
-【“我在唱歌啦哈哈哈，有被吓到吗？”】
-&lt;&lt;elseif $choice == &quot;不分昼夜&quot;&gt;&gt;
-【哦！你很懂嘛！接下去要一起唱哦！”】
-&lt;&lt;elseif $choice == &quot;你讨厌神明吗&quot;&gt;&gt;
-【“嗯，很讨厌。也不能说是讨厌？总之，很讨厌那样的万能感。倒不是说嫉妒，只是觉得一整个世界都被栓在了神明身上，很累吧。”】
-&lt;&lt;elseif $choice == &quot;不允许你这么说神明&quot;&gt;&gt;
-【你有喜欢的神明吗？嗯……不过我还是坚定地，讨厌着万能的神明哦。神明和信徒，信徒和世界，被束缚着，束缚着……咦……？啊，没什么。”】
-&lt;&lt;elseif $NPCinfo[&quot;奥里&quot;].love &lt;=19&gt;&gt;
-&lt;&lt;set _s to random(1,7)&gt;&gt;
-&lt;&lt;if _s ==1&gt;&gt;【“今天需要送的信还有……一、二、三、四……嗯……看样子还要加油了！”】&lt;br&gt;&lt;br&gt;⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「我来帮你」 交谈&gt;&gt;&lt;&lt;set $choice to &quot;我来帮你&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「每天都有很多信吗」 交谈&gt;&gt;&lt;&lt;set $choice to &quot;每天都有很多信吗&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif _s ==2&gt;&gt;【“嗯……今天该做些什么呢？有机会的话要不要一起去看海？”】&lt;br&gt;&lt;br&gt;⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「你喜欢海吗」 交谈&gt;&gt;&lt;&lt;set $choice to &quot;你喜欢海吗&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「去喝下午茶吗」 交谈&gt;&gt;&lt;&lt;set $choice to &quot;去喝下午茶&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif _s ==2&gt;&gt;【“嗯……今天该做些什么呢？有机会的话要不要一起去看海？”】&lt;br&gt;&lt;br&gt;⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「你喜欢海吗」 交谈&gt;&gt;&lt;&lt;set $choice to &quot;你喜欢海吗&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「去喝下午茶吗」 交谈&gt;&gt;&lt;&lt;set $choice to &quot;去喝下午茶&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif _s ==3&gt;&gt;【“在这样的天气去海边呼吸新鲜空气，会觉得整个人都被净化了。”】
-&lt;&lt;elseif _s ==4&gt;&gt;【“哼哼~哼哼哼~啊，我在唱歌。要一起吗？”】&lt;br&gt;&lt;br&gt;⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「你喜欢海吗」 交谈&gt;&gt;&lt;&lt;set $choice to &quot;你喜欢海吗&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「去喝下午茶吗」 交谈&gt;&gt;&lt;&lt;set $choice to &quot;去喝下午茶&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif _s ==5&gt;&gt;【“金星的舞蹈！”】&lt;br&gt;&lt;br&gt;⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「？」 交谈&gt;&gt;&lt;&lt;set $choice to &quot;？&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「不分昼夜！」 交谈&gt;&gt;&lt;&lt;set $choice to &quot;不分昼夜&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif _s ==6&gt;&gt;【“朗姆和死亡，对你来说是同义词。”】&lt;br&gt;&lt;br&gt;⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「？」 交谈&gt;&gt;&lt;&lt;set $choice to &quot;？&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「不分昼夜！」 交谈&gt;&gt;&lt;&lt;set $choice to &quot;不分昼夜&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif _s ==7&gt;&gt;【“神明啊……真是无聊的东西。”】&lt;br&gt;&lt;br&gt;⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「你讨厌神明吗」 交谈&gt;&gt;&lt;&lt;set $choice to &quot;你讨厌神明吗&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「不允许你这么说神明」 交谈&gt;&gt;&lt;&lt;set $choice to &quot;不允许你这么说神明&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;if $npc == &quot;安德森&quot;&gt;&gt;
-/*初见*/
-&lt;&lt;if $NPCinfo[$npc].chat == 1&gt;&gt;
-【“哎呀，你好呀？”你看到他歪歪头，毫无距离感的凑上来打量你“没见过的脸——你先别说！”他连忙捂住你的嘴，虽然看不到他的脸，但你能够明显的感受到他跳脱的情绪，他清亮的嗓音在你耳边响起，虽然声调很高，但明显可以辨认出是男性“你是新来的！”紧接着他就松开你向后撤去，猫呢——？】&lt;br&gt;&lt;br&gt;
-⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「寻找」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;寻找&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;离开&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;else&gt;&gt;没写
-&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $npc == &quot;特里特&quot;&gt;&gt;
 /*初见*/
@@ -7439,8 +7491,12 @@ Era像是才注意到你在周围一样, 从发呆中回过神来: &quot;啊, �
 &lt;&lt;link ▷「我是永无乡的新居民」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;新居民&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「拿出鱼篓」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;拿出鱼篓&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「打扰了」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;打扰了&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
+/*初见*/
 &lt;&lt;else&gt;&gt;没写
+
+
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+
 
 &lt;&lt;if $npc == &quot;玛丽亚小姐&quot;&gt;&gt;
 /*初见*/
@@ -7452,18 +7508,16 @@ Era像是才注意到你在周围一样, 从发呆中回过神来: &quot;啊, �
 &lt;&lt;else&gt;&gt;没写
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
+
 &lt;&lt;if $npc == &quot;奥提斯&quot;&gt;&gt;
 /*初见*/
 &lt;&lt;if $NPCinfo[$npc].chat == 1&gt;&gt;&lt;&lt;set $NPCinfo[$npc].love = 8&gt;&gt;
-奥提斯在你发出第三声呼喊时才终于迷茫的从他的书稿上抬起头来，厚重的镜片后的小眼睛半天才将视线落在你身上: &quot;哦, 嘿, 你好, 我猜我之前没见过你. &quot;&lt;br&gt;&lt;br&gt;他似乎想从扶手椅上站起来和你握手, 但无奈于腹部的脂肪在和书桌的博弈中败下阵来, &quot;抱歉这里有点拥挤, 我指我的书桌——&quot; 他尴尬的环视了一下四周, &quot;好吧, 还有整个图书馆. 岛主把这里全权交给我打理, 但是我好像有点沉迷写作了... &quot;&lt;br&gt;&lt;br&gt;
+奥提斯在你发出第三声呼喊时才终于迷茫的从他的书稿上抬起头来，厚重的镜片后的小眼睛半天才将视线落在你身上: &quot;哦, 嘿, 你好, 我猜我之前没见过你. &quot;&lt;br&gt;&lt;br&gt;
+他似乎想从扶手椅上站起来和你握手, 但无奈于腹部的脂肪在和书桌的博弈中败下阵来, &quot;抱歉这里有点拥挤, 我指我的书桌——&quot; 他尴尬的环视了一下四周, &quot;好吧, 还有整个图书馆. 岛主把这里全权交给我打理, 但是我好像有点沉迷写作了... &quot;&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「你在写什么」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;你在写什么&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;else&gt;&gt;没写
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $npc == &quot;Daisy&quot;&gt;&gt;
-/*初见*/
-没写
-&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $npc == &quot;琥珀夫人&quot;&gt;&gt;
 /*初见*/
@@ -7476,15 +7530,17 @@ Era像是才注意到你在周围一样, 从发呆中回过神来: &quot;啊, �
 &lt;&lt;else&gt;&gt;&lt;&lt;set _rpl= [&quot;【“什么是爱？就是那已错过的，被遗忘的，将堕落的东西。一切的一切中唯独无法被拯救的就是爱。”】&quot;,&quot;【“噢，我可以毫不夸张地告诉你，要是你来得正巧，你就能在我的酒馆里见到几乎全小镇的猫。”】&quot;,&quot;【“我？我不觉得死后会有什么魂灵，只有酒精才能让人安生】&quot;].random()&gt;&gt;_rpl
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
+
 &lt;&lt;if $npc == &quot;萨巴夫人&quot;&gt;&gt;
 /*初见*/
 &lt;&lt;if $NPCinfo[$npc].chat == 1&gt;&gt;&lt;&lt;set $NPCinfo[$npc].love = 1&gt;&gt;
-她缓缓抬头, 阳光将她笼罩着, 光线勾勒出来她衰老的躯体. &quot;你来了, &quot; 她的声音让你想起那种最经典的外婆的形象, &quot;这儿的阳光总让我忘了时间走得有多快. &quot;&lt;br&gt;&lt;br&gt;
+她缓缓抬头，阳光将她笼罩着，光线勾勒出来她衰老的躯体。&quot;你来了，&quot; 她的声音让你想起那种最经典的外婆的形象，&quot;这儿的阳光总让我忘了时间走得有多快。&quot;&lt;br&gt;&lt;br&gt;
 ⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「你在等我？」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;你在等我&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「你在写诗吗」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;你在写诗吗&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link ▷「&quot;你在等我?&quot;」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;你在等我&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「&quot;你在写诗吗?&quot;」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;你在写诗吗&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;else&gt;&gt;没写
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+
 
 &lt;&lt;if $npc == &quot;佩拉大夫&quot;&gt;&gt;
 /*初见*/
@@ -7497,31 +7553,50 @@ Era像是才注意到你在周围一样, 从发呆中回过神来: &quot;啊, �
 &lt;&lt;else&gt;&gt;没写
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $npc == &quot;琼&quot;&gt;&gt;
-/*初见教堂*/
-&lt;&lt;if $NPCinfo[&quot;琼&quot;].chat == 0 &amp;&amp; $loc == &quot;教堂&quot;&gt;&gt;陆陆续续离开的群猫中，坐在第一排的白色猫咪显得格外突兀。那件看起来有些古怪的黑色修女服与教堂间的气氛格格不入。
-&lt;br&gt;&lt;br&gt;白猫低着头看着地面，雪白的波浪卷毛垂下来挡住了本来能从修女服下露出来的半张脸&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;离开&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「搭话」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;搭话&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-/*初见酒馆*/
-&lt;&lt;elseif $NPCinfo[&quot;琼&quot;].chat == 0 &amp;&amp; $loc == &quot;酒馆&quot;&gt;&gt;白色的天使。那是你第一眼看到他时所能想到的最好的描述。他不应该出现在这里的，那张小桌子周身的氛围是那么宁静，与酒馆的躁动气氛格格不入。灯光照耀下，他仿佛有着鎏金的幻彩皮毛，蓬松的尾巴搭在自己的腿上，尾尖似乎在腿间轻轻晃动&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「在别处坐下」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;在别处坐下&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「在他对面坐下」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;在他对面坐下&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-/*初见贝雷河*/
-/*认识后教堂第一次对话*/
-&lt;&lt;elseif $jofirstcc != 1 &amp;&amp; $loc == &quot;教堂&quot;&gt;&gt;那不是琼么？你有点疑惑，看到他仰着头正在祷告。他的祷告是虔诚的，默然的，粉红色的小鼻子对着圣坛上的神父，结束后你听见很小声的“Amen”&lt;br&gt;&lt;br&gt;
-⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「离开」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;离开&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「上前搭话」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;上前搭话&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-/*认识后酒馆第一次对话*/
-&lt;&lt;elseif $jofirstpc != 1 &amp;&amp; $loc == &quot;酒馆&quot;&gt;&gt;那是琼。酒馆里并不明亮的黄色灯光把他染成了沉郁的金色，你看到有发光的东西在粉红色的掌垫上滚动着&lt;br&gt;&lt;br&gt;
-⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「找别的地方坐下」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;找别的地方坐下&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「坐到他对面」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;坐到他对面&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-/*日常灯塔*/
-&lt;&lt;elseif $loc == &quot;主港口灯塔&quot;&gt;&gt;
-&lt;&lt;set _rpl= [&quot;【“没有钓到鱼吗？别难过。”他拍了拍你的肩膀：“海上的时令总是变化无常的，等到洋流向岸的时候再来吧。”】&quot;,&quot;【“鱼油还有，灯塔可以再亮很久！”他翘起尾巴，耳朵兴奋地抖动着：“如果你有多余的鱼油当然更好啦！”】&quot;,&quot;【如果你有蒲公英的话我就原谅你来打扰我，”他毛茸茸的脸鼓成了一个毛球，“漂亮的小鱼也可以吧。”】&quot;,&quot;【他疑惑地看着你，指了指身后的灯塔：“这里是灯塔，不卖糖果的。”】&quot;].random()&gt;&gt;_rpl
-&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="30" name="任务完成" tags="nobr" position="1900,500" size="100,100">&lt;&lt;if $msstat == &quot;新的开始完成&quot;&gt;&gt;你刚收起赚到的鸟羽，就看到Seisi跳到上了你的肩头，爪子里抓着一卷羊皮纸。它一直都在附近吗? 你等着Seisi开始它的讲话
+
+&lt;&lt;if $npc == &quot;巴尔韦克老爷&quot;&gt;&gt;
+
+/*初见*/
+&lt;&lt;if $NPCinfo[$npc].chat == 1&gt;&gt;
+你不清楚岛上为何都叫他老爷，他看起来一点贵族的样子都没有，更像一棵干枯又粗狂的古树，顽固不化的站立在北风中。&lt;br&gt;&lt;br&gt;
+此时的巴尔韦克老爷正蹲伏在他新猎获的猎物上，徒手从那毫无生气的肉块中挖出弹头。他应该是注意到有谁走近了，不紧不慢的站起身来，最终那近乎有七英尺的高大身型几乎要将你视线里的全部光线阻拦。&lt;br&gt;&lt;br&gt;
+他看都没看一眼被笼罩进阴影的你，随意用树叶擦了一下双手的血迹，抱起猎枪，头也不回的走了，只抛下一句：“这鹿归你了。” 
+&lt;br&gt;&lt;br&gt;
+&lt;&lt;do&gt;&gt;
+&lt;&lt;if $choice == 0&gt;&gt;
+&lt;&lt;link ▷「离开」&gt;&gt;&lt;&lt;set $choice to &quot;离开&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「道谢」&gt;&gt;&lt;&lt;set $choice to &quot;道谢&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「默默收下」&gt;&gt;&lt;&lt;set $choice to &quot;默默收下&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「&quot;我也是猎手&quot;」&gt;&gt;&lt;&lt;set $choice to &quot;我也是猎手&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;else&gt;&gt;
+&lt;&lt;if $choice == &quot;离开&quot;&gt;&gt;
+奇怪的礼物。&lt;br&gt;&lt;br&gt;
+地上那摊仍在淌血的尸块散发出的气味让你反胃。你快步走开了。
+&lt;&lt;elseif $choice == &quot;道谢&quot;&gt;&gt;
+你向着巴尔韦克老爷的背影喊出道谢的话。老猎手最终还是没有回应你，他挥挥手，招来了空中盘着的两只渡鸦，向更远处走去。
+&lt;&lt;npclove 1&gt;&gt;&lt;&lt;addsocial 1&gt;&gt;
+等你竭尽全力从猎物身上搜刮出仍有价值的部分后，巴尔韦克老爷早已不见踪影。
+&lt;&lt;pickup $material &quot;兽肉&quot; 4 &quot;大型皮毛&quot; 1&gt;&gt;&lt;&lt;set _itemobtain = &quot;兽肉 * 4 大型皮毛 * 1&quot;&gt;&gt;&lt;&lt;itemobtain&gt;&gt;
+&lt;&lt;elseif $choice == &quot;默默收下&quot;&gt;&gt;
+你不知道该说些什么，但让一头新鲜死掉的鹿就这样浪费在这儿实在说不过去。等你竭尽全力从猎物身上搜刮出仍有价值的部分后，巴尔韦克老爷早已不见踪影。
+&lt;&lt;pickup $material &quot;兽肉&quot; 6 &quot;大型皮毛&quot; 3 &quot;鹿角&quot; 1&gt;&gt;&lt;&lt;set _itemobtain = &quot;兽肉 * 5 大型皮毛 * 3 鹿角 * 1&quot;&gt;&gt;&lt;&lt;itemobtain&gt;&gt;
+&lt;&lt;elseif $choice == &quot;我也是猎手&quot;&gt;&gt;
+你向着巴尔韦克老爷的背影解释你同为猎手的身份。一开始你以为他到最后都不打算正眼看你一次，但老猎手还是在几步后停住，接着不知为何，用他戴着眼罩的那一侧回头看你。你本不该从这样的角度里感受到任何视线，但那像被盯上的猎物一般的感觉却在之后很久也挥之不去。&lt;br&gt;&lt;br&gt;
+两三个心跳后，他冲你点点头，结束了这场审视。&lt;br&gt;&lt;br&gt;
+“我很期待能多个对手。”他最终对你说。
+&lt;&lt;npclove 3&gt;&gt;&lt;&lt;addsocial 1&gt;&gt;&lt;&lt;traitaddwaves &quot;自信&quot; 1&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;set $npc to 0, $choice = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;
+
+/*日常*/
+&lt;&lt;else&gt;&gt;没写
+
+&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+
+
+
+</tw-passagedata><tw-passagedata pid="30" name="任务完成" tags="nobr" position="1900,500" size="100,100">&lt;&lt;if $msstat == &quot;新的开始完成&quot;&gt;&gt;你刚收起赚到的鸟羽，就看到Seisi跳到上了你的肩头，爪子里抓着一卷羊皮纸。它一直都在附近吗? 你等着Seisi开始它的讲话
 &lt;br&gt;&lt;br&gt;
 @@.seisitalk;“看起来你相当勤劳, 我们也履行了诺言，现在有一批空房已经清理了出来, 这是你的安家许可证, 再付上300鸟羽, 你就能在永无乡拥有一栋独立的小屋了, 当然, 去不去住的选择权都在你”@@
 &lt;br&gt;&lt;br&gt;
@@ -7694,13 +7769,13 @@ Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里�
 
 
 /*换鱼油*/
-&lt;&lt;elseif $loc == &quot;主港口灯塔&quot;&gt;&gt;
+&lt;&lt;elseif $loc == &quot;灯塔&quot;&gt;&gt;
 &lt;&lt;if $item.has(&#39;鱼油&#39;)&gt;&gt;“噢，好呀。”琼从屋里抱出一个玻璃罐子，“倒在这里吧。这些鱼油能让灯塔再亮上几个小时。”
 &lt;&lt;set _tmpf to $item.count(&#39;鱼油&#39;)&gt;&gt;
 &lt;&lt;set _tmpf1 to $item.count(&#39;鱼油&#39;)&gt;&gt;
 &lt;&lt;set $feather to $feather+ _tmpf&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;drop $item &quot;鱼油&quot; _tmpf1&gt;&gt;&lt;br&gt;
 &lt;font color=#4E84BA&gt;✧你获得了_tmpf枚鸟羽✧&lt;/font&gt;
-&lt;&lt;else&gt;&gt;【你穷迫的翻找背包, 然而一瓶鱼油都没有如你所愿的出现在你的手里】
+&lt;&lt;else&gt;&gt;你穷迫的翻找背包, 然而一瓶鱼油都没有如你所愿的出现在你的手里
 &lt;&lt;/if&gt;&gt;
 
 
@@ -7766,14 +7841,7 @@ Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里�
 &lt;&lt;/do&gt;&gt;
 
 &lt;&lt;button[[开始故事]]&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="35" name="初见对话" tags="nobr" position="2200,300" size="100,100">&lt;&lt;if $npc == &quot;埃拉&quot;&gt;&gt;
-&lt;&lt;if $choice == &quot;是&quot;&gt;&gt;&lt;&lt;set _rpl= [&quot;【“那就太好了. 永无乡是个很大的地方, 你总会过上你想要的生活. ”】&quot;,&quot;【“那就太好了. 永无乡是个很大的地方, 你总会过上你想要的生活, 至少他们是这样说的.” Era向你挤挤眼, 又恢复到之前轻松的表情】&quot;,&quot;【“那就太好了. 永无乡是个很大的地方, 你总会过上你想要的生活, 或者像我一样, 每天就跟这些绵羊为伴.”】&quot;].random()&gt;&gt;_rpl
-&lt;&lt;addpexp 3&gt;&gt;&lt;&lt;addsocial 1&gt;&gt;
-&lt;&lt;elseif $choice == &quot;不是&quot;&gt;&gt;【&quot;是嘛, 那太可惜了, 不过好在这儿的日子很漫长, 你也许会慢慢适应她, 就像我一样. &quot;】&lt;br&gt;
-&lt;&lt;npcwaves 2&gt;&gt;
-&lt;&lt;elseif $choice == &quot;还不知道&quot;&gt;&gt;&lt;&lt;pickup $item &quot;海螺号角&quot; 1&gt;&gt;【&quot;那不要紧. 永无乡是个很大的地方, 你总会过上你想要的生活. &quot;他边说边翻找着什么, 很快就从包里拿出来一个海螺, 递到你面前. &quot;这算是一点乔迁礼, 拿着吧. &quot;】
-&lt;font color=#4E84BA&gt;✧你获得海螺号角 * 1✧&lt;/font&gt;
-
-&lt;&lt;elseif $choice == &quot;看上去很不错&quot;&gt;&gt;【“没必要整那套客套话. 我想想该如何招待你，酒怎么样？我私藏了几瓶老酒，在岛上可是买不到的”Era看上去是真的很高兴你的到访】
+&lt;&lt;if $choice == &quot;看上去很不错&quot;&gt;&gt;【“没必要整那套客套话. 我想想该如何招待你，酒怎么样？我私藏了几瓶老酒，在岛上可是买不到的”Era看上去是真的很高兴你的到访】
 &lt;&lt;addpexp 1&gt;&gt;&lt;&lt;addsocial 1&gt;&gt;&lt;&lt;npcwaves 2&gt;&gt;
 
 &lt;&lt;elseif $choice == &quot;确实简陋&quot;&gt;&gt;【“真诚或许是种美德, 我的朋友, 但在这里，真诚能换取到的东西不止是真心或是羁绊……仇恨与黑暗中的鬼魅也会循着味道而来，摧毁你的真诚。如果不想被吞噬干净，最好学聪明点哦】&lt;br&gt;&lt;&lt;set $player.cautious -= 1&gt;&gt;&lt;font color=#FFAA00&gt;你的谨慎降低了1级&lt;/font&gt;
@@ -7781,69 +7849,7 @@ Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里�
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「继续」 $loc&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $npc == &quot;奥里&quot;&gt;&gt;
-&lt;&lt;if $choice == &quot;握住她的手&quot;&gt;&gt;【奥里很高兴地握住你的手上下摆动着：“那，如果你对这里还不是很熟悉的话，我可以带你逛一圈！这里没有我不知道的地方。”她看上去笑得很开心，一红一蓝的眸子中此刻似乎只倒映着你，错觉？等你回过神来的时候，她牵着你的手指了指城镇的方向，“来吧，想去哪？”】&lt;&lt;addsocial 1&gt;&gt;
-&lt;&lt;elseif $choice == &quot;犹豫&quot;&gt;&gt;【“噢！抱歉，大概是我来太自来熟了？”她收回了手并且往后退了一步，你们之间的距离回到了最标准的社交距离。她仍然笑着，两只手顺势背到身后，脚尖点地，“不过不用太拘束，在这个地方只要做你自己就好了。总之……欢迎来到永无乡。”】&lt;br&gt;
-&lt;&lt;set $social -= 1&gt;&gt;&lt;font color=#FFAA00&gt;你的社会属性减少了1级&lt;/font&gt;
-&lt;&lt;elseif $choice == &quot;抱住她&quot;&gt;&gt;【被你突如其来的举动吓了一跳？奥里愣了一会儿，便同样笑着抱住了你——以朋友之间的方式：“看样子你也和我一样？真高兴认识你！”她拍了拍你的背，你们两这才从友好的拥抱状态中离开，奥里笑了笑，“虽然想要抱着一起转圈圈，不过那样的话对我们来说太早了？”她用开玩笑的口吻说道，一红一蓝的眸子笑得弯了起来，“欢迎来到永无乡，不介意的话要不要一起享用下午茶？”】&lt;br&gt;
-&lt;&lt;npcwaves 2&gt;&gt;&lt;&lt;addsexp 1&gt;&gt;&lt;&lt;addoexp 1&gt;&gt;
-&lt;&lt;/if&gt;&gt;&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「继续」 小镇&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $npc == &quot;安德森&quot;&gt;&gt;
-&lt;&lt;if $choice == &quot;寻找&quot;&gt;&gt;&lt;&lt;set $nmhgd +=1&gt;&gt;
-&lt;&lt;set _a to setup.getStat(&quot;observation&quot;)/10*100&gt;&gt;&lt;&lt;checkWidget&gt;&gt;&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;【你发现就那么一小会功夫他就窜到了你的身后，一个飞扑就扑在了你的背上，环住的你肩膀将头凑到你的脸旁边“对不对对不对？我猜对了没！”】&lt;&lt;npcwaves&gt;&gt;&lt;&lt;set $observationexp += 2&gt;&gt;&lt;&lt;addoexp&gt;&gt;&lt;br&gt;
-⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「是」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;是&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「否」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;否&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;else&gt;&gt;
-&lt;&lt;set _a to setup.getStat(&quot;strength&quot;)/10*100&gt;&gt;&lt;&lt;checkWidget&gt;&gt;&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;【你被身后传来的巨大力道扑了个猝不及防，你踉跄了两步，稳住身体，还没缓过神就被凑到脸旁的他吓了一跳，他环住你的脖颈，像是小鸟一般叽叽喳喳的“对不对对不对？我猜对了没！”】&lt;&lt;set $strengthexp += 2&gt;&gt;&lt;&lt;addsexp&gt;&gt;
-&lt;br&gt;
-⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「是」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;是&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「否」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;否&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;else&gt;&gt;【你被身后传来的巨大力道扑了个猝不及防，无法控制的向前倾斜，就在你还没作出什么反应就要被扑倒在地上时，你的耳边传来了他的声音，叽叽喳喳的乱叫着&quot;哎呀，你没事吧？&quot;他抓着的衣领硬生生把你拖拽在了原地，勉强的站稳了&quot;所以我猜对了吗？&quot;】&lt;br&gt;&lt;br&gt;
-⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「是」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;是&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「否」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;否&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $choice == &quot;离开&quot;&gt;&gt;
-&lt;&lt;set _a to setup.getStat(&quot;strength&quot;)/10*100&gt;&gt;&lt;&lt;checkWidget&gt;&gt;&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;【你被身后传来的巨大力道扑了个猝不及防，你踉跄了两步，稳住身体，还没缓过神就被凑到脸旁的他吓了一跳，他环住你的脖颈，像是小鸟一般叽叽喳喳的“对不对对不对？我猜对了没！”】&lt;&lt;set $strengthexp += 2&gt;&gt;&lt;&lt;addsexp&gt;&gt;
-&lt;br&gt;
-⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「是」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;是&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「否」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;否&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;else&gt;&gt;【你被身后传来的巨大力道扑了个猝不及防，无法控制的向前倾斜，就在你还没作出什么反应就要被扑倒在地上时，你的耳边传来了他的声音，叽叽喳喳的乱叫着&quot;哎呀，你没事吧？&quot;他抓着的衣领硬生生把你拖拽在了原地，勉强的站稳了&quot;所以我猜对了吗？&quot;】&lt;br&gt;&lt;br&gt;
-⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「是」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;是&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「否」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;否&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;elseif $choice == &quot;是&quot;&gt;&gt;&lt;&lt;set $nmhgd +=2&gt;&gt;【&quot;太好了！&quot;一副很开心的样子张开手臂，做出了个&quot;好耶&quot;的姿势，接着握住了你的手“其实我有件事想要拜托你。”】&lt;&lt;npcwaves&gt;&gt;
-&lt;&lt;timed 3s t8n&gt;&gt;【他接着说道“我丢了一样东西，所以希望你能帮我找回来——”】&lt;br&gt;&lt;br&gt;
-⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「你丢了什么」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;你丢了什么&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「我不！」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;我不&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「保持沉默」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;保持沉默&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/timed&gt;&gt;
-&lt;&lt;elseif $choice == &quot;否&quot;&gt;&gt;【&quot;哎——真的吗？你没骗我？&quot;他将信将疑的凑到你的面前紧紧的盯着你，不知道是在仔细看你的样貌还是在辨认你是否在说谎，正在你准备做些什么或是说些什么时，他重新站好在你面前“不过那些都不重要！”】
-&lt;&lt;timed 3s t8n&gt;&gt;【他接着说道“我丢了一样东西，所以希望你能帮我找回来——”】&lt;br&gt;&lt;br&gt;
-⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「你丢了什么」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;你丢了什么&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「我不！」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;我不&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「保持沉默」 初见对话&gt;&gt;&lt;&lt;set $choice to &quot;保持沉默&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/timed&gt;&gt;
-&lt;&lt;elseif $choice == &quot;你丢了什么&quot;&gt;&gt;【“一个怀表，没什么特别的，如果一定要说的话，那就是看上去很值钱！”他想了想又加了一句:“如果找到怀表的话，说不定会有秘密惊喜也说不定哦？希望你能够期待一下！”】&lt;br&gt;&lt;br&gt;
-&lt;&lt;timed 3s t8n&gt;&gt;【他像是默认你同意了他的请求，对你挥挥手，已经准备要走了，难道他只是为了说这件事吗？——你不由得冒出了这样的想法，随后就听到他继续说“不用太认真找哦——随便找找就好了！”】&lt;&lt;pickup $ss &quot;怀表&quot; 1&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;br&gt;
-〖开启任务【寻物】怀表〗&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 $loc&gt;&gt;&lt;&lt;set $npc to 0, set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/timed&gt;&gt;
-&lt;&lt;elseif $choice == &quot;我不&quot;&gt;&gt;【“哦……”他有些失落的应了一声，但还是说“如果你想随时可以帮我找……”他想了想又加了一句:“如果找到怀表的话，说不定会有秘密惊喜也说不定哦？希望你能够期待一下！”】&lt;br&gt;&lt;br&gt;
-&lt;&lt;timed 3s t8n&gt;&gt;【他像是默认你同意了他的请求，对你挥挥手，已经准备要走了，难道他只是为了说这件事吗？——你不由得冒出了这样的想法，随后就听到他继续说“不用太认真找哦——随便找找就好了！”】&lt;&lt;pickup $ss &quot;怀表&quot; 1&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;br&gt;
-〖开启任务【寻物】怀表〗&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 $loc&gt;&gt;&lt;&lt;set $npc to 0, set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/timed&gt;&gt;
-&lt;&lt;elseif $choice == &quot;保持沉默&quot;&gt;&gt;【“不要不理我嘛！！”他没有在意你的寡言，继续说道“我丢的是一个怀表，，没什么特别的，如果一定要说的话，那就是看上去很值钱！”他想了想又加了一句:“如果找到怀表的话，说不定会有秘密惊喜也说不定哦？希望你能够期待一下！”】&lt;br&gt;&lt;br&gt;
-&lt;&lt;timed 3s t8n&gt;&gt;【他像是默认你同意了他的请求，对你挥挥手，已经准备要走了，难道他只是为了说这件事吗？——你不由得冒出了这样的想法，随后就听到他继续说“不用太认真找哦——随便找找就好了！”】&lt;&lt;pickup $ss &quot;怀表&quot; 1&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;br&gt;
-〖开启任务【寻物】怀表〗&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 $loc&gt;&gt;&lt;&lt;set $npc to 0, set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/timed&gt;&gt;
-
-&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $npc == &quot;特里特&quot;&gt;&gt;
 &lt;&lt;if $choice == &quot;新居民&quot;&gt;&gt;
@@ -7958,100 +7964,6 @@ Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里�
 
 
 
-&lt;&lt;if $npc == &quot;琼&quot; &gt;&gt;
-
-&lt;&lt;if $NPCinfo[&quot;琼&quot;].chat == 0&gt;&gt;&lt;&lt;set $NPCinfo[&quot;琼&quot;].chat +=1&gt;&gt;
-/*初见教堂*/
-&lt;&lt;if $choice == &quot;离开&quot;&gt;&gt;当你转身离开的时候，他还在原处坐着，像一尊沉默的雕像&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「继续」 小镇&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;搭话&quot;&gt;&gt;&lt;&lt;set $josxd += 1&gt;&gt;他抬起头，将前额的长发拨开，用绸缎一样的声音问道：“您好？”你看到那双深蓝色的眼睛里仿佛有消逝的星光。“您有什么事吗？”&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「道歉并离开」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;道歉并离开&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「“出去聊聊？”」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;出去聊聊&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「问他的名字」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;问他的名字&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;道歉并离开&quot;&gt;&gt;听到你说认错了猫，他点了点头，疑惑地看着你离开&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「继续」 小镇&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;出去聊聊&quot;&gt;&gt;&lt;&lt;set $NPCinfo[&quot;琼&quot;].love += 1&gt;&gt;他笑了一下，摇摇头拒绝了你：“对不起，我还要做礼拜呢。”说完他低下头去，粉红色的掌垫合在一起&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「继续」 小镇&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;问他的名字&quot;&gt;&gt;&lt;&lt;set $NPCinfo[&quot;琼&quot;].love += 2&gt;&gt;“琼，Joan Esposito。”不只是声音，他说话的习惯也像一个十几岁的小孩子，甚至不会在意你没有做自我介绍，也并不问你是谁。“安静些吧，这里是教堂。”你看到他在胸口画了一个十字，喃喃说了些什么，不再理你&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「继续」 小镇&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-/*初见酒馆*/
-&lt;&lt;elseif $choice == &quot;在别处坐下&quot;&gt;&gt;酒馆的气氛很快让你迷醉其中，一晃神之间，再看向之前白色的天使所在的位置，你已经找不到任何踪迹。但似乎有一丝纯洁的气息仍旧留在那块空间里&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「继续」 酒馆&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;在他对面坐下&quot;&gt;&gt;你坐下时看到白猫缩了一下爪子，深蓝色地眼睛里露出一丝犹豫。而后他捧起啤酒杯喝了一口，轻轻砸砸嘴&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「保持沉默」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;保持沉默&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「与他搭话」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;与他搭话&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;保持沉默&quot;&gt;&gt;他和你面对面各自饮酒，等到啤酒杯被喝空了，他起身离开了酒馆&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 酒馆&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;与他搭话&quot;&gt;&gt;&lt;&lt;set $NPCinfo[&quot;琼&quot;].chat +=1&gt;&gt;
-“唔，琼，我叫Joan Esposito。”他说到，声音呈现出一种异样的孩子气，尾巴尖也快活地翘上了桌子，被他用爪子摁住，“你是谁？”&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「告诉他你的名字」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;你的名字&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「“这不重要”」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;这不重要&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;你的名字&quot;&gt;&gt;&lt;&lt;set $NPCinfo[$npc].love += 2&gt;&gt;
-“很高兴认识你，”琼向你伸出爪子，你看到粉嫩的掌垫上躺着一块闪烁着光芒的贝壳。“这个就当做见面礼吧。”&lt;&lt;pickup $item &quot;五彩贝&quot; 1&gt;&gt;&lt;br&gt;
-&lt;font color=#4E84BA&gt;✧你获得五彩贝 * 1✧&lt;/font&gt;
-&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 酒馆&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;这不重要&quot;&gt;&gt;&lt;&lt;set $jofirstc = 1&gt;&gt;“哦。”你的警惕态度似乎让琼有些不快，但他也只是松开了自己的尾巴尖，低下头去喝酒了。毕竟，对于酒馆里的每一只猫来说，其实都没有必要去尝试熟悉彼此
-&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 酒馆&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
-
-/*认识后教堂第一次对话*/
-&lt;&lt;if $jofirstcc != 1 &amp;&amp; $loc ==&quot;教堂&quot;&gt;&gt;&lt;&lt;if $choice == &quot;离开&quot;&gt;&gt;琼闭着眼睛，没有看到你&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「继续」 小镇&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;上前搭话&quot;&gt;&gt;&lt;&lt;set $NPCinfo[$npc].love += 2&gt;&gt;“是$nn啊。来做礼拜么？”琼偏着头看着你，柔软的毛发顺在脸颊一侧，“听说花店上新了蒲公英……”他略带期待地眨了眨眼睛，“有机会的话，帮我带一枝好么？”你本想回答，却在他的眼睛里看到期盼落空，游轮沉入大海&lt;br&gt;&lt;br&gt;
-⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「保持沉默」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;保持沉默&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「答应送他蒲公英」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;蒲公英&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「保持向他索要购买蒲公英的钱沉默」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;索要购买蒲公英的钱&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;保持沉默&quot;&gt;&gt;&lt;&lt;set $NPCinfo[$npc].love = 1&gt;&gt;【琼似乎习惯于没有回答的请求，他轻轻低吟着不知名的音乐，开始了下一轮祷告】&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 教堂&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;蒲公英&quot;&gt;&gt;&lt;&lt;set $jofirstcc = 1&gt;&gt;&lt;&lt;set $NPCinfo[$npc].love += 2&gt;&gt;【琼有些诧异地看着你，好像你的回答完全出乎他的意料，似乎他本不准备应对这样的场面。良久，他掏出一个银十字架放在桌上：“谢谢你。”他微微躬身致谢，却站起来走到了椅子的另一边坐下】&lt;&lt;pickup $item &quot;银色十字架&quot; 1&gt;&gt;
-&lt;font color=#4E84BA&gt;✧你获得了银色十字架*1✧&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 教堂&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;索要购买蒲公英的钱&quot;&gt;&gt;&lt;&lt;set $jofirstcc = 1, $josxd -= 2&gt;&gt;【“如果这样的话，就算了吧。”你的话似乎在琼的意料之中，他坦然地说道：“我没有钱。”】&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 教堂&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
-
-/*认识后酒馆第一次对话*/
-&lt;&lt;if $jofirstpc != 1 &amp;&amp; $loc ==&quot;酒馆&quot;&gt;&gt;
-&lt;&lt;if $choice == &quot;找别的地方坐下&quot;&gt;&gt;【有猫坐到了琼的对面和他说话，当他离开的时候，桌上的啤酒杯彻底空了。琼端起杯子走向吧台续杯】&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「继续」 酒馆&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;坐到他对面&quot;&gt;&gt;&lt;&lt;set $jofirstpc = 1&gt;&gt;&lt;&lt;set $NPCinfo[$npc].love += 2&gt;&gt;【深蓝色的眼睛看向你：“来这里放松吗？酒馆是好地方、美酒也是好东西……但是待久了会堕落的，要小心哦。”】&lt;br&gt;&lt;br&gt;
-⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「自顾自做事」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;自顾自做事&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「为什么这么说」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;为什么这么说&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「怎么会在酒馆」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;怎么会在酒馆&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;自顾自做事&quot;&gt;&gt;【琼一边玩手里的东西一边慢慢地把半杯酒喝干了。端着杯子走向吧台续杯】&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「继续」 酒馆&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;为什么这么说&quot;&gt;&gt;【“美酒会蒙蔽你的心智，让人做出万劫不复的事。”琼的眼神落在酒馆的一个角落里，“盛大的宴会，成十成百的沉醉。绫罗加身，瞳仁映着血色，不知是天使还是魔鬼在唱歌。”】&lt;br&gt;&lt;br&gt;
-⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「岔开话题」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;岔开话题&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「听他说下去」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;听他说下去&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;怎么会在酒馆&quot;&gt;&gt;【“面对大海太久也会生病，医生不能治疗的病。”琼说着摊开爪子，掌垫上躺着一块流光溢彩的贝壳：“这是我在海滩上找到的，我想把它送给喜欢它的人，你要么？”】&lt;br&gt;&lt;br&gt;
-⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「接受」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;接受&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「拒绝」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;拒绝&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;岔开话题&quot;&gt;&gt;【“啊，你说酒馆的装饰吗？”琼一下子回过神，晃了晃脑袋，蓬松的毛在空气中颤抖着，“我更喜欢家乡的风格……嗯，要有彩色的装饰、天顶画、金色的吊灯还有彩色的拼花大理石。”】&lt;br&gt;&lt;br&gt;
-⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「你的家乡？」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;你的家乡&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「哦」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;哦&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;听他说下去&quot;&gt;&gt;【“金色的大厅，灰色的世界。”琼托着腮帮子，脸蛋被推上去，把一边眼睛挤成了一条可爱的小缝：“我梦见鲜血遍地，神父告诉我，那不过是酒醉兴致多。”呢喃的语调里流转着一重隐约的旋律，他突然正色起来：“所以，不要喝酒。”】&lt;br&gt;&lt;&lt;set $social to $social+ 2&gt;&gt;&lt;font color=#FFAA00&gt;你的社会属性提升了2级&lt;/font&gt;&lt;br&gt;&lt;br&gt;
-⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「小酌怡情」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;小酌怡情&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「嗯嗯好的」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;嗯嗯好的&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「那你怎么也喝？」&gt;&gt;&lt;&lt;goto &quot;初见对话&quot;&gt;&gt;&lt;&lt;set $choice to &quot;那你怎么也喝&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;你的家乡&quot;&gt;&gt;【“嗯，灰色的意大利。”他晃了一下头，低头喝酒】&lt;&lt;set $persuasiveexp +=1&gt;&gt;&lt;&lt;addpexp&gt;&gt;&lt;br&gt;&lt;br&gt;
-&lt;&lt;set $jofirstpc = 1&gt;&gt;&lt;&lt;link ▷「继续」 酒馆&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;哦&quot;&gt;&gt;【“当然，现在这样也很好。”他笑了笑，低头喝酒】&lt;br&gt;&lt;br&gt;
-&lt;&lt;set $jofirstpc = 1&gt;&gt;&lt;&lt;link ▷「继续」 酒馆&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;小酌怡情&quot;&gt;&gt;【他像小孩子一样撇了一下嘴，抱着杯子换了一个角落】&lt;br&gt;&lt;br&gt;
-&lt;&lt;set $jofirstpc = 1&gt;&gt;&lt;&lt;link ▷「继续」 酒馆&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;嗯嗯好的&quot;&gt;&gt;【“不要敷衍我啦。”他对你皱起鼻子，“不要喝酒。”说着端起酒杯喝了一大口】&lt;br&gt;&lt;br&gt;
-&lt;&lt;set $jofirstpc = 1&gt;&gt;&lt;&lt;link ▷「继续」 酒馆&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;那你怎么也喝&quot;&gt;&gt;【“是苹果汁。”他笑出了一对小虎牙，抱紧了自己的啤酒杯：“不过不能分给你喝，你要是不开心的话……我送你这个漂亮的贝壳吧。”】&lt;&lt;pickup $item &quot;五彩贝&quot; 1&gt;&gt;&lt;br&gt;
-&lt;font color=#4E84BA&gt;✧你获得五彩贝 * 1✧&lt;/font&gt;&lt;br&gt;&lt;br&gt;
-&lt;&lt;set $jofirstpc = 1&gt;&gt;&lt;&lt;link ▷「继续」 酒馆&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;接受&quot;&gt;&gt;【“你喜欢？”琼的眼睛亮了一下，你不知道那是不是酒馆灯光带来的错觉，“那送给你！”】&lt;&lt;pickup $item &quot;五彩贝&quot; 1&gt;&gt;&lt;br&gt;
-&lt;font color=#4E84BA&gt;✧你获得五彩贝 * 1✧&lt;/font&gt;&lt;br&gt;&lt;br&gt;
-&lt;&lt;set $jofirstpc = 1&gt;&gt;&lt;&lt;link ▷「继续」 酒馆&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;拒绝&quot;&gt;&gt;【“……不喜欢吗？”琼耷拉下耳朵，转而举起杯子：“那要尝尝苹果汁吗？”】&lt;br&gt;&lt;br&gt;
-&lt;&lt;set $jofirstpc = 1&gt;&gt;&lt;&lt;link ▷「继续」 酒馆&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;/if&gt;&gt;
 </tw-passagedata><tw-passagedata pid="36" name="副港口" tags="nobr" position="300,500" size="100,100">&lt;&lt;if $loc != &quot;副港口&quot;&gt;&gt;&lt;&lt;set $loc = &quot;副港口&quot;&gt;&gt;&lt;&lt;set $minute to $minute+ random(5,10)&gt;&gt;&lt;&lt;set $HP to $HP- 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543219_PYG6MbOJqaUdTL1.jpg&quot; width=100% class=&quot;pic&quot;&gt;
 &lt;font color=#D4A34C&gt;//贝雷河的东入海口被建造成了永无乡的副港口, 用于居民出海捕鱼//&lt;/font&gt;
 &lt;br&gt;当前角色&lt;&lt;NPCloc&gt;&gt;
@@ -8059,6 +7971,7 @@ Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里�
 &lt;&lt;if $lostsheep[0] == 1&gt;&gt;&lt;&lt;link ◈「找羊」 era互动&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;link ◈「出海」 海域&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ◈「钓鱼」 钓鱼&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ◈「散步」 散步&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;br&gt;继续前往&lt;br&gt;
 &lt;&lt;link ✧「鱼铺」 鱼铺&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ✧「栈桥」 栈桥&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
@@ -8068,7 +7981,7 @@ Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里�
 &lt;&lt;link ♢「礁岩区」 礁岩区&gt;&gt;&lt;&lt;/link&gt;&gt;
 </tw-passagedata><tw-passagedata pid="37" name="医院" tags="nobr" position="600,600" size="100,100">&lt;h3&gt;@@.emboss;医院@@&lt;/h3&gt;
 &lt;font color=#D4A34C&gt;【开放时间：上午~下午】&lt;/font&gt;&lt;br&gt;
-&lt;&lt;if $hour &gt;= 9 &amp;&amp; $hour &lt; 17&gt;&gt;
+&lt;&lt;if $hour &gt;= 8 &amp;&amp; $hour &lt; 18&gt;&gt;
 &lt;&lt;set $loc = &quot;医院&quot;, $minute += random(3,8)&gt;&gt;//你穿过医院那条昏暗的走廊和两侧数不尽的虚掩木门的空房间, 最终在尽头找到了这栋建筑里唯一的光源. 佩拉大夫正在吱呀作响的换气扇下的吊床里躺着, 毫不期待你的到来//&lt;br&gt;
 &lt;&lt;NPCloc&gt;&gt;
 &lt;br&gt;
@@ -8126,8 +8039,8 @@ Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里�
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;bird&quot;&gt;&gt;
-&lt;&lt;if _birdfood !=0 &amp;&amp; $birdcollect.count(_bird) !=1 &amp;&amp; $bcm ==1&gt;&gt;
-你的图鉴上似乎还没有这种鸟，现在正是记录它们的好时机&lt;br&gt;&lt;&lt;linkreplace ▷「记录品种」&gt;&gt;&lt;&lt;include &quot;观鸟&quot;&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if _birdfood !=0 &amp;&amp; $birdcollect.count(_bird) !=1 &amp;&amp; $tool.has(&#39;徕卡相机&#39;)&gt;&gt;
+你的图鉴上似乎还没有这种鸟，现在正是记录它们的好时机&lt;br&gt;&lt;&lt;linkreplace ▷「记录品种」&gt;&gt;&lt;br&gt;&lt;&lt;include &quot;观鸟&quot;&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &#39;material&#39;&gt;&gt;
@@ -8171,42 +8084,42 @@ Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里�
 &lt;&lt;widget &quot;prey&quot;&gt;&gt;
 &lt;&lt;set $minute += random(3,10)&gt;&gt;&lt;&lt;set _s to random(1,63)&gt;&gt;
 /**基础**/
-&lt;&lt;if _s &lt;= 14&gt;&gt;【一只灰兔出现在你的视野里, 你举起手里的枪】&lt;&lt;set $tmpmaterial to &quot;灰兔&quot;&gt;&gt;
-&lt;&lt;elseif _s &lt;= 30&gt;&gt;【一只田鼠出现在你的视野里, 你举起手里的枪】&lt;&lt;set $tmpmaterial to &quot;田鼠&quot;&gt;&gt;
-&lt;&lt;elseif _s &lt;= 35&gt;&gt;【一只黄鼬出现在你的视野里, 你举起手里的枪】&lt;&lt;set $tmpmaterial to &quot;黄鼬&quot;&gt;&gt;
-&lt;&lt;elseif _s &lt;= 36&gt;&gt;【一只罕见的白鼬出现在你的视野里, 你犹豫片刻, 举起了手里的枪】&lt;&lt;set $tmpmaterial to &quot;白鼬&quot;&gt;&gt;
-&lt;&lt;elseif _s &lt;= 45&gt;&gt;【一只松鸡出现在你的视野里, 你举起手里的枪】&lt;&lt;set $tmpmaterial to &quot;松鸡&quot;&gt;&gt;
-&lt;&lt;elseif _s &lt;= 48&gt;&gt;【一群赤鹿出现在你的视野里, 如果你要狩猎这种体型的动物, 光有耐心和技术是远远不够的】&lt;&lt;set $tmpmaterial to &quot;赤鹿&quot;&gt;&gt;
-&lt;&lt;elseif _s &lt;= 53&gt;&gt;【一只红狐出现在你的视野里, 看来这里不止有你一个猎手. 你举起手里的枪, 对准了红狐】&lt;&lt;set $tmpmaterial to &quot;红狐&quot;&gt;&gt;
+&lt;&lt;if _s &lt;= 14&gt;&gt;一只灰兔出现在你的视野里, 你举起手里的枪&lt;&lt;set $tmpmaterial to &quot;灰兔&quot;&gt;&gt;
+&lt;&lt;elseif _s &lt;= 30&gt;&gt;一只田鼠出现在你的视野里, 你举起手里的枪&lt;&lt;set $tmpmaterial to &quot;田鼠&quot;&gt;&gt;
+&lt;&lt;elseif _s &lt;= 35&gt;&gt;一只黄鼬出现在你的视野里, 你举起手里的枪&lt;&lt;set $tmpmaterial to &quot;黄鼬&quot;&gt;&gt;
+&lt;&lt;elseif _s &lt;= 36&gt;&gt;一只罕见的白鼬出现在你的视野里, 你犹豫片刻, 举起了手里的枪&lt;&lt;set $tmpmaterial to &quot;白鼬&quot;&gt;&gt;
+&lt;&lt;elseif _s &lt;= 45&gt;&gt;一只松鸡出现在你的视野里, 你举起手里的枪&lt;&lt;set $tmpmaterial to &quot;松鸡&quot;&gt;&gt;
+&lt;&lt;elseif _s &lt;= 48&gt;&gt;一群赤鹿出现在你的视野里, 如果你要狩猎这种体型的动物, 光有耐心和技术是远远不够的&lt;&lt;set $tmpmaterial to &quot;赤鹿&quot;&gt;&gt;
+&lt;&lt;elseif _s &lt;= 53&gt;&gt;一只红狐出现在你的视野里, 看来这里不止有你一个猎手. 你举起手里的枪, 对准了红狐&lt;&lt;set $tmpmaterial to &quot;红狐&quot;&gt;&gt;
 &lt;&lt;else&gt;&gt;
 
 &lt;&lt;if $loc == &quot;草甸&quot;&gt;&gt;
 &lt;&lt;set _r to random(1,10)&gt;&gt;
-&lt;&lt;if _r &lt;= 2&gt;&gt;【一群野马出现在你的视野里, 你辨认出这是居住在岛屿的马群, 岛主明令禁止狩猎】&lt;br&gt;⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;▷「打猎野马」&lt;br&gt;▷「离开」
+&lt;&lt;if _r &lt;= 2&gt;&gt;一群野马出现在你的视野里, 你辨认出这是居住在岛屿的马群, 岛主明令禁止狩猎
 &lt;&lt;set $tmpmaterial to &quot;野马&quot;&gt;&gt;
-&lt;&lt;elseif _r &lt;= 6&gt;&gt;【一群狍子出现在你的视野里, 他们似乎毫无察觉猎手的存在. 你举起手里的枪】&lt;&lt;set $tmpmaterial to &quot;狍子&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;【在你目光所及之处没有一只活物. 也许下次会更幸运些】
+&lt;&lt;elseif _r &lt;= 6&gt;&gt;一群狍子出现在你的视野里, 他们似乎毫无察觉猎手的存在. 你举起手里的枪&lt;&lt;set $tmpmaterial to &quot;狍子&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;set $tmpmaterial = 0&gt;&gt;在你目光所及之处没有一只活物. 也许下次会更幸运些
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $loc == &quot;秋毛岗&quot;&gt;&gt;
 &lt;&lt;set _r to random(1,15)&gt;&gt;
-&lt;&lt;if _r &lt;= 9&gt;&gt;【一头野猪出现在你的视野里, 你举起手里的枪】&lt;&lt;set $tmpmaterial to &quot;野猪&quot;&gt;&gt;
-&lt;&lt;elseif _r &lt;= 10&gt;&gt;【一只游隼向你扑来】&lt;&lt;set $tmpmaterial to &quot;游隼&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;【在你目光所及之处没有一只活物. 也许下次会更幸运些】
+&lt;&lt;if _r &lt;= 9&gt;&gt;一头野猪出现在你的视野里, 你举起手里的枪&lt;&lt;set $tmpmaterial to &quot;野猪&quot;&gt;&gt;
+&lt;&lt;elseif _r &lt;= 10&gt;&gt;一只游隼向你扑来&lt;&lt;set $tmpmaterial to &quot;游隼&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;set $tmpmaterial = 0&gt;&gt;在你目光所及之处没有一只活物. 也许下次会更幸运些
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $loc == &quot;贝雷河&quot; || $loc == &quot;罗索伦特湖&quot;&gt;&gt;
 &lt;&lt;set _r to random(1,10)&gt;&gt;
-&lt;&lt;if _r &lt;= 4&gt;&gt;【一群野鸭出现在你的视野里, 你举起手里的枪】&lt;&lt;set $tmpmaterial to &quot;野鸭&quot;&gt;&gt;
-&lt;&lt;elseif _r &lt;= 8&gt;&gt;【一群鹌鹑出现在你的视野里, 你举起手里的枪】&lt;&lt;set $tmpmaterial to &quot;鹌鹑&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;【在你目光所及之处没有一只活物. 也许下次会更幸运些】
+&lt;&lt;if _r &lt;= 4&gt;&gt;一群野鸭出现在你的视野里, 你举起手里的枪&lt;&lt;set $tmpmaterial to &quot;野鸭&quot;&gt;&gt;
+&lt;&lt;elseif _r &lt;= 8&gt;&gt;一群鹌鹑出现在你的视野里, 你举起手里的枪&lt;&lt;set $tmpmaterial to &quot;鹌鹑&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;set $tmpmaterial = 0&gt;&gt;在你目光所及之处没有一只活物. 也许下次会更幸运些
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $loc == &quot;高地&quot;&gt;&gt;
 &lt;&lt;set _r to random(1,10)&gt;&gt;
-&lt;&lt;if _r &lt;= 4&gt;&gt;【一群雷鸟出现在你的视野里, 你举起手里的枪】&lt;&lt;set $tmpmaterial to &quot;雷鸟&quot;&gt;&gt;
-&lt;&lt;elseif _r &lt;= 7&gt;&gt;【几只野山羊出现在你的视野里, 你举起手里的枪】&lt;&lt;set $tmpmaterial to &quot;山羊&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;【在你目光所及之处没有一只活物. 也许下次会更幸运些】
+&lt;&lt;if _r &lt;= 4&gt;&gt;一群雷鸟出现在你的视野里, 你举起手里的枪&lt;&lt;set $tmpmaterial to &quot;雷鸟&quot;&gt;&gt;
+&lt;&lt;elseif _r &lt;= 7&gt;&gt;几只野山羊出现在你的视野里, 你举起手里的枪&lt;&lt;set $tmpmaterial to &quot;山羊&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;set $tmpmaterial = 0&gt;&gt;在你目光所及之处没有一只活物. 也许下次会更幸运些
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -8224,6 +8137,42 @@ Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里�
 &lt;&lt;elseif Item.get(_itemn).hasTag(&quot;fuelD&quot;)&gt;&gt;
 &lt;&lt;set $fireplace.fuelT += 20&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/widget&gt;&gt;
+
+
+&lt;&lt;widget &quot;dreams&quot;&gt;&gt;
+&lt;&lt;set _s to random(1,20)&gt;&gt;
+/*特殊梦判断*/
+&lt;&lt;if $fpfirst ==1 &amp;&amp; $dream_fire.I ==0&gt;&gt;
+&lt;&lt;goto &quot;火之梦&quot;&gt;&gt;
+
+&lt;&lt;else&gt;&gt;
+/*一般梦判断*/
+&lt;&lt;if setup.getStat(&quot;nightmare&quot;) &lt;= 3&gt;&gt;
+&lt;&lt;if _s &lt;= 12&gt;&gt;&lt;&lt;set $choice to &quot;一般梦&quot;&gt;&gt;
+&lt;&lt;elseif _s &lt;= 19&gt;&gt;&lt;&lt;set $choice to &quot;美梦&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;set $choice to &quot;噩梦&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if setup.getStat(&quot;nightmare&quot;) &lt;= 6&gt;&gt;
+&lt;&lt;if _s &lt;= 10&gt;&gt;&lt;&lt;set $choice to &quot;一般梦&quot;&gt;&gt;
+&lt;&lt;elseif _s &lt;= 15&gt;&gt;&lt;&lt;set $choice to &quot;美梦&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;set $choice to &quot;噩梦&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;elseif setup.getStat(&quot;nightmare&quot;) &lt;= 12&gt;&gt;
+&lt;&lt;if _s &lt;= 8&gt;&gt;&lt;&lt;set $choice to &quot;一般梦&quot;&gt;&gt;
+&lt;&lt;elseif _s &lt;= 12&gt;&gt;&lt;&lt;set $choice to &quot;美梦&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;set $choice to &quot;噩梦&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;elseif setup.getStat(&quot;nightmare&quot;) &lt;= 20&gt;&gt;
+&lt;&lt;if _s &lt;= 4&gt;&gt;&lt;&lt;set $choice to &quot;一般梦&quot;&gt;&gt;
+&lt;&lt;elseif _s &lt;= 8&gt;&gt;&lt;&lt;set $choice to &quot;美梦&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;set $choice to &quot;噩梦&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;else&gt;&gt;&lt;&lt;set $choice to &quot;噩梦&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;goto &quot;梦&quot;&gt;&gt;
+
+&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
 
 
 &lt;&lt;widget &quot;hazelocs&quot;&gt;&gt;
@@ -8268,7 +8217,7 @@ Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里�
 &lt;br&gt;&lt;br&gt;
 你隐约听见了心跳声，沉稳，缓慢，来自水底，但你不觉得那有什么不妥。
 &lt;&lt;case 11&gt;&gt;
-破败的石阶延伸至塌陷的高台，浮雕着一个你从未见过的生物盘踞其上，本该作为生物眼睛的宝石早已不见，但不知为何你觉得，那应该是绿色的。
+破败的石阶延伸至塌陷的高台，浮雕着一个你从未见过的生物盘踞其上，本该作为生物眼睛的宝石早已不见，但不知为何你觉得，那应该是&lt;&lt;linkreplace &quot;@@color:green;绿色@@&quot;&gt;&gt;绿色&lt;&lt;pickup $material &quot;龙舌兰&quot; 1&gt;&gt;&lt;&lt;notify 3s&gt;&gt;获得龙舌兰*1&lt;&lt;/notify&gt;&lt;&lt;/linkreplace&gt;&gt;的。
 &lt;br&gt;&lt;br&gt;
 空气中弥漫着淡淡的腥甜气息，你的脚步声在台阶间踌躇，回荡，有些神情恍惚，周围隐隐传来蛇鳞摩擦的轻响。
 &lt;&lt;case 12&gt;&gt;
@@ -8341,9 +8290,9 @@ Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里�
 
 &lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="40" name="咖啡馆" tags="nobr" position="500,600" size="100,100">&lt;h3&gt;@@.emboss;咖啡馆@@&lt;/h3&gt;
 &lt;font color=#D4A34C&gt;【营业时间 早晨~黄昏】&lt;/font&gt;&lt;br&gt;
-&lt;&lt;if $hour &gt;= 7 &amp;&amp; $hour &lt; 21&gt;&gt;
+&lt;&lt;if $hour &gt;= 6 &amp;&amp; $hour &lt; 20&gt;&gt;
 &lt;&lt;set $loc = &quot;咖啡馆&quot;, $minute += random(3,8)&gt;&gt;
-&lt;&lt;if $storydone.count(&#39;【已完成】点心代送&#39;) &gt; 0 || $dxdsstat &gt;= 1 || $date &lt; 2&gt;&gt;
+&lt;&lt;if $storydone.count(&#39;【已完成】点心代送&#39;) &gt; 0 || $story[&quot;点心代送&quot;] &gt;= 1 || $date &lt; 2&gt;&gt;
 //你踏进这家精致的小店, 咖啡的醇香扑面而来，店内的灯光明亮而温暖. &quot;欢迎光临! &quot; 老板娘小小的身影在柜台后忙碌着，但还是不忘热情地欢迎进店的客人//&lt;br&gt;
 
 &lt;br&gt;地点活动&lt;br&gt;
@@ -8358,7 +8307,7 @@ Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里�
 &lt;&lt;link ▷「回到小镇」 小镇&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 
-&lt;&lt;elseif $dxdsstat == 0 &amp;&amp; $story.count(&#39;点心代送&#39;) &gt; 0&gt;&gt;&quot;你回来了! &quot;老板娘朝你招招手, &quot;再次感谢你, 一定很辛苦. 给, 这是一点犒劳. &quot;她递给你一个朗姆冰淇淋, 甜甜的笑起来: &quot;还有这里的一整盒! &quot;&lt;&lt;set $storydone.push(&quot;【已完成】点心代送&quot;)&gt;&gt;&lt;&lt;set $story.deleteFirst(&quot;点心代送&quot;)&gt;&gt;&lt;br&gt;&lt;br&gt;
+&lt;&lt;elseif $story[&quot;点心代送&quot;] == 0 &amp;&amp; $story.count(&#39;点心代送&#39;) &gt; 0&gt;&gt;&quot;你回来了! &quot;老板娘朝你招招手, &quot;再次感谢你, 一定很辛苦. 给, 这是一点犒劳. &quot;她递给你一个朗姆冰淇淋, 甜甜的笑起来: &quot;还有这里的一整盒! &quot;&lt;&lt;set $storydone.push(&quot;【已完成】点心代送&quot;)&gt;&gt;&lt;&lt;set $story.deleteFirst(&quot;点心代送&quot;)&gt;&gt;&lt;br&gt;&lt;br&gt;
 &lt;&lt;pickup $food &quot;朗姆葡萄酥卷&quot; 1 &quot;黑巧小蛋糕&quot; 4 &quot;朗姆冰淇淋&quot; 2&gt;&gt;&lt;&lt;set _itemobtain = &quot;朗姆葡萄酥卷*1，黑巧小蛋糕*4，朗姆冰淇淋*2&quot;&gt;&gt;
 &lt;&lt;itemobtain&gt;&gt;
 
@@ -8416,14 +8365,18 @@ Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里�
 你下意识地攥紧衣角，想快点离开这片地方。
 &lt;&lt;/if&gt;&gt;&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「返回」 花田&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
 
-&lt;&lt;elseif $loc == &quot;泡泡布提&quot;&gt;&gt;没写&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「返回」 泡泡布提&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;if $loc == &quot;泡泡布提&quot;&gt;&gt;没写&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「返回」 泡泡布提&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;elseif $loc == &quot;拓荒者木屋&quot;&gt;&gt;没写&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「返回」 拓荒者木屋&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;if $loc == &quot;拓荒者木屋&quot;&gt;&gt;没写&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「返回」 拓荒者木屋&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
 
-&lt;&lt;elseif $loc == &quot;小镇&quot;&gt;&gt;&lt;&lt;set _birdfood = 0&gt;&gt;
+&lt;&lt;if $loc == &quot;小镇&quot;&gt;&gt;&lt;&lt;set _birdfood = 0&gt;&gt;
 一些鸟儿正在广场上闲庭信步，等待着猫们慷慨解囊
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;do tag &quot;喂食&quot;&gt;&gt;
@@ -8443,37 +8396,71 @@ _item1 × &lt;&lt;=$food.count(_item1)&gt;&gt;
 &lt;&lt;set _m += 1&gt;&gt;
 _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;&lt;capture _item2&gt;&gt;
-&lt;&lt;link &quot;喂食&quot;&gt;&gt;&lt;&lt;drop $material _item2 1&gt;&gt;&lt;&lt;set _birdfood = _item2&gt;&gt;&lt;&lt;redo &quot;喂食&quot;&gt;&gt;
+&lt;&lt;link &quot;喂食&quot;&gt;&gt;&lt;&lt;if !$sq.feedbirds&gt;&gt;&lt;&lt;set $sq.feedbirds = 0&gt;&gt;&lt;&lt;notify 3s&gt;&gt;Seisi提问新增“鸟群”&lt;&lt;/notify&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;drop $material _item2 1&gt;&gt;&lt;&lt;set _birdfood = _item2&gt;&gt;&lt;&lt;redo &quot;喂食&quot;&gt;&gt;
 &lt;&lt;/link&gt;&gt;&lt;&lt;/capture&gt;&gt;&lt;br&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/for&gt;&gt;
-&lt;&lt;if _m == 0&gt;&gt;【你翻找口袋, 似乎没有什么能引起鸟群的兴趣，也许你该准备充分点儿再来】
-&lt;&lt;else&gt;&gt;【你翻找口袋, 已经有一些迫不及待的鸟儿围了上来】&lt;&lt;/if&gt;&gt;
+&lt;&lt;if _m == 0&gt;&gt;你翻找口袋, 似乎没有什么能引起鸟群的兴趣，也许你该准备充分点儿再来
+&lt;&lt;else&gt;&gt;你翻找口袋, 已经有一些迫不及待的鸟儿围了上来&lt;&lt;/if&gt;&gt;
+
 &lt;&lt;if _birdfood == 0&gt;&gt;
-&lt;&lt;elseif _birdfood == &quot;面包片&quot;&gt;&gt;&lt;br&gt;&lt;br&gt;你将面包片撕碎，撒在
-&lt;&lt;elseif _birdfood == &quot;田鼠&quot;&gt;&gt;&lt;br&gt;&lt;br&gt;你刚把田鼠掏出来（这最好别让其他猫看见，你不想解释）
-&lt;&lt;elseif Item.get(_birdfood).hasTag(&quot;seed&quot;)&gt;&gt;&lt;br&gt;&lt;br&gt;你撒出一把种子，吸引来了一群&lt;&lt;set _bird = [&quot;鸽子&quot;,&quot;夜织鸟&quot;].random()&gt;&gt;_bird
+&lt;&lt;elseif _birdfood == &quot;面包片&quot;&gt;&gt;&lt;br&gt;&lt;br&gt;你将面包片撕碎，撒在小镇的石板路上，几只&lt;&lt;set _bird = [&quot;鸽子&quot;,&quot;乌鸦&quot;,&quot;斑鸠&quot;].random()&gt;&gt;_bird围了上来
+&lt;&lt;elseif _birdfood == &quot;田鼠&quot;&gt;&gt;&lt;br&gt;&lt;br&gt;你刚把田鼠掏出来（这最好别让其他猫看见，你不想解释），一只&lt;&lt;set _bird = [&quot;伯劳&quot;,&quot;乌鸦&quot;,&quot;红隼&quot;].random()&gt;&gt;_bird
+&lt;&lt;elseif _birdfood == &quot;蜜蜂&quot;&gt;&gt;&lt;br&gt;&lt;br&gt;你刚一掏出兜里的蜜蜂，一只蜂虎就从树上飞下叼走了这顿可口的小零食
+&lt;&lt;elseif Item.get(_birdfood).hasTag(&quot;seed&quot;)&gt;&gt;
+
+&lt;&lt;if $hour &gt;=4 &amp;&amp; $hour &lt;=7 || ($hour &gt;=17 &amp;&amp; $hour &lt;=20)&gt;&gt;&lt;&lt;set $feednw += 1&gt;&gt;
+&lt;br&gt;&lt;br&gt;你撒出一把种子，吸引来了一群夜织鸟，他们灰褐色的羽毛在此刻的光线角度下折射出绚丽的色彩
+&lt;&lt;if $feednw &gt;= 5 &amp;&amp; !$pet.has(&#39;夜织鸟&#39;)&gt;&gt;
+&lt;&lt;set _a to setup.getStat(&quot;observation&quot;)/65*100&gt;&gt;&lt;&lt;checkWidget&gt;&gt;
+&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
+&lt;&lt;pickup $pet &quot;夜织鸟&quot; 1&gt;&gt;&lt;&lt;set $haspet = 1&gt;&gt;
+一只夜织鸟突然离开鸟群，跳到你的肩膀上，它那大胆亲密的模样，似乎已经与你熟络无比。也许今后它也愿意一只跟随你
+&lt;&lt;set _itemobtain = &quot;夜织鸟 * 1&quot;&gt;&gt;
+&lt;&lt;itemobtain&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;&lt;br&gt;&lt;br&gt;你撒出一把种子，吸引来了一群&lt;&lt;set _bird = [&quot;鸽子&quot;,&quot;冠蓝鸦&quot;,&quot;灰喜鹊&quot;,&quot;斑鸠&quot;,&quot;乌鸦&quot;].random()&gt;&gt;_bird
 &lt;&lt;/if&gt;&gt;
+
+&lt;&lt;elseif Item.get(_birdfood).hasTag(&quot;bug&quot;)&gt;&gt;&lt;br&gt;&lt;br&gt;你刚一掏出兜里的虫子，一只&lt;&lt;set _bird = [&quot;蓝山雀&quot;,&quot;冠蓝鸦&quot;,&quot;乌鸫&quot;,&quot;灰喜鹊&quot;,&quot;乌鸦&quot;].random()&gt;&gt;_bird就从树上飞下叼走了这顿可口的小零食
+&lt;&lt;elseif Item.get(_birdfood).hasTag(&quot;fruit&quot;)&gt;&gt;&lt;br&gt;&lt;br&gt;你将水果放置掌心，不时有一些鸟儿飞过啄食，但只有一只&lt;&lt;set _bird = [&quot;斑鸠&quot;,&quot;乌鸫&quot;,&quot;灰喜鹊&quot;,&quot;乌鸦&quot;].random()&gt;&gt;_bird敢于落在你的手上，最终叼走了剩下的食物
+&lt;&lt;/if&gt;&gt;
+
+/*特殊情况判断*/
+&lt;&lt;if _bird == &quot;斑鸠&quot;&gt;&gt;
+111
+&lt;&lt;/if&gt;&gt;
+
+
 &lt;&lt;bird&gt;&gt;
 &lt;&lt;/do&gt;&gt;
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「返回」 小镇&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
 
-&lt;&lt;elseif $loc == &quot;沙地&quot;&gt;&gt;你用&lt;&lt;=[&quot;红色的&quot;,&quot;黑色的&quot;,&quot;金色的&quot;,&quot;橙色的&quot;,&quot;靛蓝色的&quot;,&quot;红黄相间的&quot;,&quot;红黑相间的&quot;,&quot;黄白相间的&quot;,&quot;五颜六色的&quot;].random()&gt;&gt;沙子堆了一个&lt;&lt;=[&quot;古典城堡&quot;,&quot;林间小屋&quot;,&quot;金字塔&quot;,&quot;大教堂&quot;,&quot;永无乡&quot;,&quot;地上古墓&quot;,&quot;魔法城堡&quot;,&quot;地下城&quot;,&quot;豪华别墅&quot;].random()&gt;&gt;! 你做得&lt;&lt;set _s to random(1,20)&gt;&gt;&lt;&lt;if _s &lt;=3&gt;&gt;很好, 你的作品是整个沙地最亮眼的!&lt;&lt;elseif _s &lt;=12&gt;&gt;还不错, 你很满意你的作品&lt;&lt;else&gt;&gt;不太好, 但这仍很有趣&lt;&lt;/if&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「返回」 沙地&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;if $loc == &quot;沙地&quot;&gt;&gt;你用&lt;&lt;=[&quot;红色的&quot;,&quot;黑色的&quot;,&quot;金色的&quot;,&quot;橙色的&quot;,&quot;靛蓝色的&quot;,&quot;红黄相间的&quot;,&quot;红黑相间的&quot;,&quot;黄白相间的&quot;,&quot;五颜六色的&quot;].random()&gt;&gt;沙子堆了一个&lt;&lt;=[&quot;古典城堡&quot;,&quot;林间小屋&quot;,&quot;金字塔&quot;,&quot;大教堂&quot;,&quot;永无乡&quot;,&quot;地上古墓&quot;,&quot;魔法城堡&quot;,&quot;地下城&quot;,&quot;豪华别墅&quot;].random()&gt;&gt;! 你做得&lt;&lt;set _s to random(1,20)&gt;&gt;&lt;&lt;if _s &lt;=3&gt;&gt;很好, 你的作品是整个沙地最亮眼的!&lt;&lt;elseif _s &lt;=12&gt;&gt;还不错, 你很满意你的作品&lt;&lt;else&gt;&gt;不太好, 但这仍很有趣&lt;&lt;/if&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「返回」 沙地&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;elseif $loc == &quot;鱼铺&quot;&gt;&gt;【Tret收下押金, 带你到渔船停靠的岸边, 有$boat条木船停泊在此, Tret把其中一只推进海浪里. &quot;今天之内, 她都是你的了,&quot; 他浓厚的口音让你差点没听清接下来的话, &quot;六点之前回来, 夜里的海上不安全. &quot;】&lt;br&gt;&lt;br&gt;
+
+&lt;&lt;if $loc == &quot;鱼铺&quot;&gt;&gt;【Tret收下押金, 带你到渔船停靠的岸边, 有$boat条木船停泊在此, Tret把其中一只推进海浪里. &quot;今天之内, 她都是你的了,&quot; 他浓厚的口音让你差点没听清接下来的话, &quot;六点之前回来, 夜里的海上不安全. &quot;】&lt;br&gt;&lt;br&gt;
 &lt;&lt;set $bboat = 1, $boat -=1, $feather -=50&gt;&gt;&lt;&lt;redo&gt;&gt;
 &lt;&lt;link ▷「返回」 副港口&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;elseif $loc == &quot;副港口&quot;&gt;&gt;【你远远的就看到Tret已经把你的押金放到了鱼铺的橱窗上, 直到你离开, 渔夫还在昏暗的屋子里干着活】&lt;br&gt;&lt;br&gt;
+
+&lt;&lt;if $loc == &quot;副港口&quot;&gt;&gt;【你远远的就看到Tret已经把你的押金放到了鱼铺的橱窗上, 直到你离开, 渔夫还在昏暗的屋子里干着活】&lt;br&gt;&lt;br&gt;
 &lt;&lt;set $bboat = 0, $boat +=1, $feather +=50&gt;&gt;&lt;&lt;redo&gt;&gt;
 &lt;&lt;link ▷「返回」 副港口&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;elseif $loc == &quot;天上人间&quot;&gt;&gt;【你远远的就看到Tret已经把你的押金放到了鱼铺的橱窗上, 直到你离开, 渔夫还在昏暗的屋子里干着活】&lt;br&gt;&lt;br&gt;
+
+&lt;&lt;if $loc == &quot;天上人间&quot;&gt;&gt;【你远远的就看到Tret已经把你的押金放到了鱼铺的橱窗上, 直到你离开, 渔夫还在昏暗的屋子里干着活】&lt;br&gt;&lt;br&gt;
 &lt;&lt;set $bboat = 0, $boat +=1, $feather +=50&gt;&gt;&lt;&lt;redo&gt;&gt;
 &lt;&lt;link ▷「返回」 副港口&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;elseif $loc == &quot;图书馆&quot;&gt;&gt;&lt;&lt;set $minute += random(3,10)&gt;&gt;不大的图书馆为了存放书籍, 几乎没留出多少转身的空间, 你在层层叠叠的书架间寻找着感兴趣的内容&lt;br&gt;&lt;br&gt;&lt;&lt;set _s to random(1,10)&gt;&gt;
+
+&lt;&lt;if $loc == &quot;图书馆&quot;&gt;&gt;&lt;&lt;set $minute += random(3,10)&gt;&gt;不大的图书馆为了存放书籍, 几乎没留出多少转身的空间, 你在层层叠叠的书架间寻找着感兴趣的内容&lt;br&gt;&lt;br&gt;&lt;&lt;set _s to random(1,10)&gt;&gt;
 &lt;&lt;if _s &lt;=8&gt;&gt;&lt;&lt;set $choice = $books.pluck()&gt;&gt;
 &lt;&lt;else&gt;&gt;&lt;&lt;set $choice = $godstory.pluck()&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -8486,8 +8473,10 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;&lt;link ▷「放回」 图书馆&gt;&gt;&lt;&lt;if _s &lt;=8&gt;&gt;&lt;&lt;set $books.push($choice)&gt;&gt;
 &lt;&lt;else&gt;&gt;&lt;&lt;set $godstory.push($choice)&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;set $choice =0&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;elseif $loc == &quot;酒馆&quot;&gt;&gt;&lt;&lt;set _s to random(1,20)&gt;&gt;
+
+&lt;&lt;if $loc == &quot;酒馆&quot;&gt;&gt;&lt;&lt;set _s to random(1,20)&gt;&gt;
 &lt;&lt;if $choice == &quot;唱歌&quot; &amp;&amp; _s &lt;20&gt;&gt;
 &lt;&lt;set _rpl= [&quot;【你清唱了一首你最熟悉的歌。大家似乎对此不太感兴趣，仍然是各聊各的，只不过声音压低了些。但表演结束时，几乎每个人都跟着琥珀夫人鼓起了掌】&quot;,&quot;【你抱着弦琴唱了一首民谣，尽管你的声音算不上天籁，但平和的旋律与质朴的歌词不同程度地触动了在场的酒客。这次的表演是以独唱开始，以合唱结束。曲毕的时候，几乎每个人都在鼓掌，几乎每个人都在向你致意】&quot;,&quot;【你歌颂了也许未获得的，也许已拥有的，也许错过了的爱。一开始进行得很顺利，你感情饱满，观众也乐意听下去。但到快结尾的副歌部分时，有些喝高了的猫开始扯着嗓子和你一起唱，导致你差点找不到正确的调子。不过，表演还算是比较圆满地结束了，看起来大家并不在意那鬼哭狼嚎般的小插曲，姑且把这当作是赞扬吧】&quot;,&quot;【你的歌曲中充满了希望，自由，痛苦和爱等理想事物。这次的表演看起来并没有激起什么反响，甚至在结束时没有任何猫为之鼓掌。你回到座位，正琢磨着是哪个环节出现问题时，突然发现整个酒馆明显地安静了许多，就连一向健谈的琥珀夫人也是沉默的】&quot;,&quot;【你唱了首歌，反响平平】&quot;,&quot;【你唱了首对技巧要求极高的歌，虽然大家都惊讶于你的唱法，但最后反响平平】&quot;].random()&gt;&gt;_rpl
 &lt;&lt;elseif $choice == &quot;唱歌&quot;&gt;&gt;【不知为何，你还是怯场了。喉头上下滚动，可你就是一句话都说不出来。有几个人在喝倒彩。你窘迫极了，灰溜溜地跑下舞台，找了个角落里的位置缩在里面】&lt;br&gt;
@@ -8505,7 +8494,6 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;&lt;link ▷「演奏」 地点活动&gt;&gt;&lt;&lt;set $choice to &quot;演奏&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 酒馆&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="43" name="湖中" tags="nobr" position="1100,500" size="100,100">&lt;&lt;if $loc == &quot;湖中&quot;&gt;&gt;
 你正在湖中央, 接下来要做点什么?&lt;br&gt; &lt;br&gt;   
 &lt;&lt;link ◈「钓鱼」 钓鱼&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
@@ -8668,7 +8656,7 @@ $fireplace.fuelT</tw-passagedata><tw-passagedata pid="45" name="天上人间" ta
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="47" name="小镇" tags="nobr" position="100,400" size="100,100">&lt;&lt;set $loc = &quot;小镇&quot;&gt;&gt;&lt;&lt;set $minute += random(10,20)&gt;&gt;&lt;&lt;set $HP -= 1&gt;&gt;
 
 &lt;&lt;if $dn ==1&gt;&gt;
-&lt;&lt;if $NPCinfo[&quot;奥里&quot;].chat == 0&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;奥里&quot;&gt;&gt;&lt;&lt;goto &quot;交谈&quot;&gt;&gt;
+&lt;&lt;if $NPCinfo[&quot;奥里&quot;].chat == 0&gt;&gt;&lt;&lt;set $npc to &quot;奥里&quot;&gt;&gt;&lt;&lt;goto &quot;交谈&quot;&gt;&gt;
 
 &lt;&lt;else&gt;&gt;
 &lt;&lt;audio &quot;mainBGM&quot; unmute&gt;&gt;
@@ -8805,6 +8793,12 @@ $fireplace.fuelT</tw-passagedata><tw-passagedata pid="45" name="天上人间" ta
 &lt;&lt;else&gt;&gt;
 &lt;&lt;set _rst = &quot;大失败&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+
+&lt;&lt;widget &quot;checkrage&quot;&gt;&gt;
+&lt;&lt;set _t to random(_args[1],_args[2])&gt;&gt;&lt;&lt;set _r to setup.getStat(_args[0])*_t/10&gt;&gt;&lt;&lt;set _a to setup.getStat(_args[0])/_r*100&gt;&gt;&lt;&lt;set _b to _a/6&gt;&gt;
+&lt;&lt;checkWidget&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="49" name="工坊" tags="nobr" position="100,700" size="100,100">&lt;&lt;if $choice == &quot;左侧门&quot;&gt;&gt;//推门进去，看到门口堆着整整齐齐的小酒坛子，而后一眼看到宽敞的房间里被各式各样的木头堆得满满的，刨锯斧锉摆在一张大木头台子上，窗台上摆着一排可爱的木头小摆件，能看见漆成红顶子的小灯塔和被旁边敲锤子的震动弄得晃晃悠悠的摇摇马摆件。窗边的工作台上，工坊的木匠安山——一只高大健壮的狸花猫——正一手握着凿子一手拿着锤子凿一块木头，对你的到来浑然不觉//
 &lt;br&gt;&lt;br&gt;
 /*&lt;&lt;link&quot; ✣「NPC 安山」 &quot; &quot;工坊&quot;&gt;&gt;&lt;&lt;set $npc to &quot;安山&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;*/
@@ -8863,21 +8857,21 @@ $fireplace.fuelT</tw-passagedata><tw-passagedata pid="45" name="天上人间" ta
 
 &lt;&lt;next 3s t8n&gt;&gt;在你的这段回忆走到终点时，列车终于在笛声和蒸汽中向你驶来。你随手扔掉了海报折页，你不再需要它了。你真正的//金奖券//，通往永无乡的船票，此时正安稳的待在你的贴身衣兜里，它将带你前往真正的梦幻之境，哪怕只能有十天的时间。
 
-&lt;&lt;button[[启程]]&gt;&gt;&lt;&lt;set $hour +=2&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="开枪" tags="nobr" position="1100,400" size="100,100">&lt;&lt;set _n to random(1,20)&gt;&gt;&lt;&lt;set _rpe = [&quot;【真可惜, 你错过了时机】&quot;,&quot;【真可惜, 你打偏了】&quot;,&quot;【看起来它觉得你决定放它一马, 飞快地从你的视线里消失了】&quot;].random()&gt;&gt;
+&lt;&lt;button[[启程]]&gt;&gt;&lt;&lt;set $hour +=2&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="52" name="开枪" tags="nobr" position="1100,400" size="100,100">&lt;&lt;set _n to random(1,20)&gt;&gt;&lt;&lt;set _rpe = [&quot;真可惜, 你错过了时机&quot;,&quot;真可惜, 你打偏了&quot;,&quot;看起来它觉得你决定放它一马, 飞快地从你的视线里消失了&quot;].random()&gt;&gt;
 
 &lt;&lt;if $tmpmaterial == &quot;田鼠&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;田鼠&quot;)&gt;&gt;
 &lt;&lt;if _n&lt;=19&gt;&gt;111
 &lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $tmpmaterial == &quot;灰兔&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;灰兔&quot;)&gt;&gt;
-&lt;&lt;if _n&lt;=17&gt;&gt;【短暂的瞄准后, 你击中了灰兔】&lt;br&gt;
+&lt;&lt;if _n&lt;=17&gt;&gt;短暂的瞄准后, 你击中了灰兔&lt;br&gt;
 &lt;&lt;pickup $material &quot;小型皮毛&quot; 1 &quot;兽肉&quot; 1&gt;&gt;&lt;&lt;set _itemobtain = &quot;兽肉*1 小型皮毛* 1 &quot;&gt;&gt;&lt;&lt;itemobtain&gt;&gt;
-&lt;&lt;elseif _n&lt;=18&gt;&gt;特殊【短暂的瞄准后, 你击中了灰兔】&lt;br&gt;
+&lt;&lt;elseif _n&lt;=18&gt;&gt;特殊短暂的瞄准后, 你击中了灰兔&lt;br&gt;
 &lt;&lt;pickup $material &quot;小型皮毛&quot; 1 &quot;兽肉&quot; 1&gt;&gt;&lt;&lt;set _itemobtain = &quot;兽肉*1 小型皮毛* 1 &quot;&gt;&gt;&lt;&lt;itemobtain&gt;&gt;
 &lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $tmpmaterial == &quot;黄鼬&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;黄鼬&quot;)&gt;&gt;
-&lt;&lt;if _n&lt;=16&gt;&gt;【短暂的瞄准后, 你击中了黄鼬】&lt;br&gt;
+&lt;&lt;if _n&lt;=16&gt;&gt;短暂的瞄准后, 你击中了黄鼬&lt;br&gt;
 &lt;&lt;pickup $material &quot;兽肉&quot; 2 &quot;小型皮毛&quot; 1&gt;&gt;&lt;&lt;set _itemobtain = &quot;兽肉*2 小型皮毛* 1 &quot;&gt;&gt;&lt;&lt;itemobtain&gt;&gt;
 &lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif $tmpmaterial == &quot;白鼬&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;白鼬&quot;)&gt;&gt;
@@ -8910,7 +8904,7 @@ $fireplace.fuelT</tw-passagedata><tw-passagedata pid="45" name="天上人间" ta
 &lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $tmpmaterial == &quot;野马&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;野马&quot;)&gt;&gt;
-【这毫无戒备心的美丽生物, 明知着你的存在, 但直到你枪响前一刻还在安心地向你走来. 现在它倒在地上, 银血如它惊恐的同伴一样四散】&lt;br&gt;
+这毫无戒备心的美丽生物, 明知着你的存在, 但直到你枪响前一刻还在安心地向你走来. 现在它倒在地上, 银血如它惊恐的同伴一样四散&lt;br&gt;
 &lt;&lt;pickup $material &quot;银血&quot; 1&gt;&gt;&lt;&lt;set _itemobtain = &quot;银血*1 &quot;, $sin += 30&gt;&gt;&lt;&lt;itemobtain&gt;&gt;
 
 &lt;&lt;elseif $tmpmaterial == &quot;野猪&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;狍子&quot;)&gt;&gt;
@@ -8930,19 +8924,23 @@ $fireplace.fuelT</tw-passagedata><tw-passagedata pid="45" name="天上人间" ta
 &lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $tmpmaterial == &quot;鹌鹑&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;鹌鹑&quot;)&gt;&gt;
-&lt;&lt;if _n&lt;=13&gt;&gt;【短暂的瞄准后, 你击中了鹌鹑】&lt;br&gt;
+&lt;&lt;if _n&lt;=13&gt;&gt;短暂的瞄准后, 你击中了鹌鹑&lt;br&gt;
 &lt;&lt;pickup $material &quot;禽肉&quot; 1 &quot;尾羽&quot; 1&gt;&gt;&lt;&lt;set _itemobtain = &quot;禽肉*1 尾羽*1 &quot;&gt;&gt;&lt;&lt;itemobtain&gt;&gt;
-&lt;&lt;elseif _n&lt;=16&gt;&gt;【短暂的瞄准后，你击中了鹌鹑，在你前去拾起你的猎物时，这个可怜生灵留在世间的最后一比遗产也赫然摆在你面前】&lt;br&gt;&lt;&lt;set _r to random(3,5)&gt;&gt;
+&lt;&lt;elseif _n&lt;=16&gt;&gt;短暂的瞄准后，你击中了鹌鹑，在你前去拾起你的猎物时，这个可怜生灵留在世间的最后一比遗产也赫然摆在你面前&lt;br&gt;&lt;&lt;set _r to random(3,5)&gt;&gt;
 &lt;&lt;pickup $material &quot;禽肉&quot; 1 &quot;尾羽&quot; 1 &quot;鸟蛋&quot; _r&gt;&gt;&lt;&lt;set _itemobtain = &quot;禽肉*1 尾羽* 1 鸟蛋*_r&quot;&gt;&gt;&lt;&lt;itemobtain&gt;&gt;
 &lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $tmpmaterial == &quot;野鸭&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;野鸭&quot;)&gt;&gt;
-&lt;&lt;if _n&lt;=14&gt;&gt;【短暂的瞄准后, 你击中了野鸭】&lt;br&gt;
+&lt;&lt;if _n&lt;=14&gt;&gt;短暂的瞄准后, 你击中了野鸭&lt;br&gt;
 &lt;&lt;pickup $material &quot;禽肉&quot; 1 &quot;鸭绒&quot; 1&gt;&gt;&lt;&lt;set _itemobtain = &quot;兽肉*4 羊绒*2 &quot;&gt;&gt;&lt;&lt;itemobtain&gt;&gt;
 &lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;/if&gt;&gt;
-&lt;br&gt;&lt;&lt;link ▷「继续」 打猎&gt;&gt;&lt;&lt;set $tmpmaterial to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;br&gt;&lt;&lt;link ▷「继续」 打猎&gt;&gt;
+&lt;&lt;set _m to random(1,12)&gt;&gt;
+&lt;&lt;if _n == 1&gt;&gt;&lt;&lt;set $choice = &quot;打猎结束&quot;&gt;&gt;&lt;&lt;goto &quot;打猎遭遇&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;set $tmpmaterial to 0&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;
 </tw-passagedata><tw-passagedata pid="53" name="得失" tags="widget nobr" position="300,200" size="100,100">&lt;&lt;widget &quot;buy&quot;&gt;&gt;
     &lt;&lt;set _item to _args[0]&gt;&gt;
     &lt;&lt;set _price to setup.item.get(_item) || 1&gt;&gt;
@@ -9140,6 +9138,19 @@ $fireplace.fuelT</tw-passagedata><tw-passagedata pid="45" name="天上人间" ta
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;link ◈「拿走」 小镇&gt;&gt;&lt;&lt;itemcheck _item&gt;&gt;&lt;&lt;gainitem _itemkind&gt;&gt;&lt;&lt;set $choice = 0&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「离开」 小镇&gt;&gt;&lt;&lt;set $choice = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;widget &quot;catchsoul&quot;&gt;&gt;
+&lt;&lt;if _soul == &quot;红色&quot;&gt;&gt;&lt;&lt;set _sn = &quot;龙裔&quot;&gt;&gt;
+&lt;&lt;elseif _soul == &quot;蓝色&quot;&gt;&gt;&lt;&lt;set _sn = &quot;健全&quot;&gt;&gt;
+&lt;&lt;elseif _soul == &quot;绯红色&quot;&gt;&gt;&lt;&lt;set _sn = &quot;染血&quot;&gt;&gt;
+&lt;&lt;elseif _soul == &quot;冰蓝色&quot;&gt;&gt;&lt;&lt;set _sn = &quot;寒冷&quot;&gt;&gt;
+&lt;&lt;elseif _soul == &quot;紫色&quot;&gt;&gt;&lt;&lt;set _sn = &quot;凝固&quot;&gt;&gt;
+&lt;&lt;elseif _soul == &quot;灰绿色&quot;&gt;&gt;&lt;&lt;set _sn = &quot;发酵&quot;&gt;&gt;
+&lt;&lt;elseif _soul == &quot;黑色&quot;&gt;&gt;&lt;&lt;set _sn = &quot;饥饿&quot;&gt;&gt;
+&lt;&lt;elseif _soul == &quot;灰色&quot;&gt;&gt;&lt;&lt;set _sn = &quot;无光&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;pickup $material &quot;_sn的灵魂&quot; 1&gt;&gt;&lt;&lt;set _itemobtain = &quot;_sn的灵魂*1&quot;&gt;&gt;&lt;&lt;itemobtain&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="54" name="成就" tags="" position="1800,300" size="100,100">&lt;&lt;achievementspopup&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="打工" tags="nobr" position="1200,500" size="100,100">&lt;&lt;set _s to random(1,8)&gt;&gt;&lt;&lt;set _m to random(5,15)&gt;&gt;&lt;&lt;set _n to random(8,20)&gt;&gt;
 &lt;&lt;if $HP lt 8&gt;&gt;&lt;font color=#BA3030&gt;你感到些许疲惫, 做事情力不从心. 你最好去吃点东西休息一下, 充足的睡眠没有坏处&lt;/font&gt;&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「返回」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -9215,41 +9226,47 @@ $fireplace.fuelT</tw-passagedata><tw-passagedata pid="45" name="天上人间" ta
 &lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;elseif $HP lt 2&gt;&gt;&lt;font color=#BA3030&gt;你感到些许疲惫, 做事情力不从心. 你最好去吃点东西休息一下, 充足的睡眠没有坏处&lt;/font&gt;&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $item.count(&#39;火药&#39;) &lt;= 0&gt;&gt;【你的枪膛空空如也, 去猎户小屋看看吧】&lt;br&gt;&lt;br&gt;
+&lt;&lt;elseif $item.count(&#39;火药&#39;) &lt;= 0&gt;&gt;你的枪膛空空如也, 去猎户小屋看看吧&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;else&gt;&gt;
 &lt;&lt;set $HP to $HP- 3&gt;&gt;&lt;&lt;drop $item &quot;火药&quot; 1&gt;&gt;
 拥有火药：&lt;&lt;=$item.count(&#39;火药&#39;)&gt;&gt;&lt;br&gt;
-【你在$loc寻着猎物】
+你在$loc寻着猎物
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;timed 2s t8n&gt;&gt;
-&lt;br&gt;&lt;br&gt;
-&lt;&lt;prey&gt;&gt;&lt;br&gt;
-&lt;&lt;linkreplace ▷「开枪」&gt;&gt;&lt;&lt;include &quot;开枪&quot;&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
-&lt;br&gt;
-&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;if $tmpmaterial == &quot;红狐&quot;&gt;&gt;&lt;&lt;set $foxrelease +=1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;set _r to random(1,8)&gt;&gt;
+&lt;&lt;if _r &lt;=1&gt;&gt;&lt;&lt;set $choice = 0&gt;&gt;
+&lt;&lt;include &quot;打猎遭遇&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+&lt;&lt;prey&gt;&gt;&lt;br&gt;&lt;br&gt;
+&lt;&lt;if $tmpmaterial == 0&gt;&gt;&lt;&lt;link ▷「继续」 打猎&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;linkreplace ▷「开枪」&gt;&gt;&lt;&lt;include &quot;开枪&quot;&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;if $tmpmaterial == &quot;红狐&quot;&gt;&gt;&lt;&lt;set $foxrelease +=1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/timed&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="57" name="找个座位" tags="nobr" position="1200,400" size="100,100">&lt;&lt;set _s to random(1,100)&gt;&gt;
 &lt;&lt;if $loc == &quot;酒馆&quot;&gt;&gt;
 
-&lt;&lt;if $NPCinfo[&quot;琼&quot;].chat == 0 &amp;&amp; $NPCinfo[&quot;琼&quot;].loc == &quot;酒馆&quot;&gt;&gt;&lt;&lt;set $npc to &quot;琼&quot;&gt;&gt;&lt;&lt;goto &quot;交谈&quot;&gt;&gt;
-&lt;&lt;elseif $jofirstpc !== 1 &amp;&amp; $NPCinfo[&quot;琼&quot;].loc == &quot;酒馆&quot;&gt;&gt;&lt;&lt;set $npc to &quot;琼&quot;&gt;&gt;&lt;&lt;goto &quot;交谈&quot;&gt;&gt;
-
-&lt;&lt;elseif _s &lt;= 40 &amp;&amp; $storydone.count(&#39;【已完成】布尔盖酒&#39;) !== 1 &amp;&amp; $story.count(&#39;布尔盖酒&#39;) !== 1 &amp;&amp; $storymiss.count(&#39;【已放弃】布尔盖酒&#39;) !== 1 &amp;&amp; $date &gt;= 3 &amp;&amp; date &lt;= 20&gt;&gt;
+&lt;&lt;if _s &lt;= 40 &amp;&amp; $storydone.count(&#39;【已完成】布尔盖酒&#39;) !== 1 &amp;&amp; $story.count(&#39;布尔盖酒&#39;) !== 1 &amp;&amp; $storymiss.count(&#39;【已放弃】布尔盖酒&#39;) !== 1 &amp;&amp; $date &gt;= 3 &amp;&amp; date &lt;= 20&gt;&gt;
 你还没来得及坐稳，一只毛发凌乱的灰猫不知道从哪个角落出现，就要爬上你的木桌。你认出来了他，这是一直在岛上无业的流浪猫。你记得他们称他为寇尼——岛上几乎猫尽皆知的酒鬼, 赊账到琥珀夫人已经不再试图从他那儿要来酒钱, 还好心地给他提供了酒馆角落的桌椅当作夜晚栖身的地方. 没谁知道他是如何流浪到的永无乡, 岛主曾经给他供给过几次资助, 但一切物资到他手里都会被换成酒水, 仿佛那才是他的生命之源。&lt;br&gt;&lt;br&gt;你想赶在彻底扫兴之前换一处座位，寇尼却抓住你的肩膀，用因饮酒过度而嘶哑的嗓音对你低吼着:&lt;br&gt;&lt;br&gt;&quot;酒, 布尔盖酒, 你有吗... &quot;&lt;br&gt;&lt;br&gt;醉汉的话语酒气熏天，而你也从未在岛上见到过什么布尔盖酒&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「推开」 支线选项&gt;&gt;&lt;&lt;set $choice to &quot;推开&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「询问布尔盖酒」 支线选项&gt;&gt;&lt;&lt;set $choice to &quot;询问布尔盖酒&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+
 &lt;&lt;else&gt;&gt;
 你在吧台找了个座位坐下, 酒馆里还有不少猫在喝酒, 其中有一些你熟悉的身影
 &lt;br&gt;
-&lt;&lt;NPCloc&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;NPCloc&gt;&gt;
+
+&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;/if&gt;&gt;
 
 
 &lt;&lt;if $loc == &quot;教堂&quot;&gt;&gt;你在教堂里找了个座位坐下
-&lt;&lt;if $hour &lt;= 11 &amp;&amp; $minute &lt;= 40 &amp;&amp; $week == 7&gt;&gt;
 没写
-&lt;&lt;/if&gt;&gt;
+
 
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;&lt;br&gt;
@@ -9317,9 +9334,13 @@ $fireplace.fuelT</tw-passagedata><tw-passagedata pid="45" name="天上人间" ta
     description: &#39;仿佛有群星流淌&#39;,
     function: &#39;话术+4 自信+4 享乐+2&#39;
 }&gt;&gt;
-&lt;&lt;set setup.items[&#39;关节指环&#39;] to {name: &#39;关节指环&#39;,
-    description: &#39;做工精致的手部装饰品，金属的指套可以将手指包裹而不失美感，镂空与花纹也彰显着完美主义者的执着，关节处的弹簧互相衔接着，最后来到腕部皮质的手环，相互嵌套，将武器与饰品完美融合&#39;,
-    function: &#39;力量+2 观察+2&#39;
+&lt;&lt;set setup.items[&#39;猫眼石吊坠&#39;] to {name: &#39;猫眼石吊坠&#39;,
+    description: &#39;一枚沉重，造型昂贵的黄绿色猫眼石&#39;,
+    function: &#39;观察+3&#39;
+}&gt;&gt;
+&lt;&lt;set setup.items[&#39;铆钉马靴&#39;] to {name: &#39;铆钉马靴&#39;,
+    description: &#39;镶满铆钉的马靴，由动物筋腱编制在一起，看起来绝不舒适，但那显然也并不是它的目的&#39;,
+    function: &#39;力量+3&#39;
 }&gt;&gt;
 &lt;&lt;set setup.items[&#39;蛇骷戒指&#39;] to {name: &#39;蛇骷戒指&#39;,
     description: &#39;由拉浮闪石锻造成的戒指, 按原任所有者的要求做成了猫族头骨与两根交叉骨的样式, 一条毒蛇盘绕其中, 内部刻着 &quot;Memento Mori&quot;&#39;,
@@ -9358,7 +9379,9 @@ $fireplace.fuelT</tw-passagedata><tw-passagedata pid="45" name="天上人间" ta
 &lt;&lt;set setup.items[&#39;月光提灯&#39;] to {name: &#39;月光提灯&#39;,
     description: &#39;散发着并非来自燃烧的光源，清冷，暗淡，如月一般&#39;,
     function: &#39;观察+4&#39;}&gt;&gt;
-    
+&lt;&lt;set setup.items[&#39;徕卡相机&#39;] to {name: &#39;徕卡相机&#39;,
+    description: &#39;一个略显磨损、黄铜质感、造型极其精密的便携相机，镜头深邃，顶部取景器折叠着，散发着微弱而温暖的金属光泽，弹簧预紧时发出细微而悦耳的“咔嗒”声&#39;,
+    function: &#39;观察+2 学识+1&#39;}&gt;&gt; 
     
 &lt;&lt;set setup.items[&#39;夜织鸟&#39;] to {name: &#39;夜织鸟&#39;,
     description: &#39;随处可见的鸟类，麻雀般大小，有着一身朴素的灰褐色羽毛，会在日出日落时分聚集起来鸣叫&#39;,
@@ -9574,31 +9597,32 @@ Seisi不知道从何处叼出一堆物品丢给你: &quot;这些是岛上先到�
 
 &lt;&lt;link ▷「返回」 家&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="支线选项" tags="nobr" position="1900,400" size="100,100">&lt;&lt;if $loc == &quot;咖啡馆&quot;&gt;&gt;
 
-/*支线点心代送*/
+/*点心代送*/
 &lt;&lt;if $choice == &quot;有什么推荐&quot;&gt;&gt;
 &lt;&lt;set $ab += 1, $storymiss.push(&quot;【已放弃】点心代送&quot;)&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;
-【&quot;朗姆葡萄酥卷! 那是我的最爱. &quot;她放下了点心盒, 向你推荐起来】&lt;br&gt;&lt;&lt;link ✧「查看菜单」 兑换&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 小镇&gt;&gt;&lt;&lt;/link&gt;&gt;
+&quot;朗姆葡萄酥卷! 那是我的最爱. &quot;她放下了点心盒, 向你推荐起来&lt;br&gt;&lt;&lt;link ✧「查看菜单」 兑换&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 小镇&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;elseif $choice == &quot;四盒点心&quot;&gt;&gt;
-【&quot;什么? 哦, 你是说这些. &quot;老板娘看起来差点忘了手里还拎着点心盒, &quot;这是要给岛上居民送去的, 但我现在太忙了, 所以打算先放在柜台, 等晚上关门再去....哎呀, 到时候应该都会凉了吧...&quot;她像是第一次意识到这个问题, 声音渐渐小了下去】&lt;br&gt;&lt;br&gt;
+&quot;什么? 哦, 你是说这些. &quot;老板娘看起来差点忘了手里还拎着点心盒, &quot;这是要给岛上居民送去的, 但我现在太忙了, 所以打算先放在柜台, 等晚上关门再去....哎呀, 到时候应该都会凉了吧...&quot;她像是第一次意识到这个问题, 声音渐渐小了下去&lt;br&gt;&lt;br&gt;
 ⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
 &lt;&lt;link ▷「我可以帮忙」 支线选项&gt;&gt;&lt;&lt;set $choice to &quot;我可以帮忙&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「那太糟了」 支线选项&gt;&gt;&lt;&lt;set $choice to &quot;那太糟了&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;我可以帮忙&quot;&gt;&gt;&lt;&lt;set $story.push(&quot;点心代送&quot;)&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;set $dxdsstat = 4&gt;&gt;
-【老板娘的眼睛瞬间闪烁起来, 蓬松的尾巴也不受控制的开始摇晃. &quot;真的吗? 这真是太好了, 这是我今天听到的最好的消息! 他们住的离这里都不远, 有些就在小镇上. &quot;她飞快地写下订单的地址, 塞进对应的点心盒里, 检查一番后, 把盒子交给了你, 愉快的说道: &quot;等你回来, 今后三天的点餐都免费! &quot;】&lt;br&gt;&lt;br&gt;〖开启任务【派送】点心代送〗&lt;br&gt;&lt;br&gt;
+&lt;&lt;elseif $choice == &quot;我可以帮忙&quot;&gt;&gt;&lt;&lt;set $story[&quot;点心代送&quot;] = 4&gt;&gt;&lt;&lt;storyget &quot;【派送】点心代送&quot;&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;
+老板娘的眼睛瞬间闪烁起来, 蓬松的尾巴也不受控制的开始摇晃. &quot;真的吗? 这真是太好了, 这是我今天听到的最好的消息! 他们住的离这里都不远, 有些就在小镇上. &quot;她飞快地写下订单的地址, 塞进对应的点心盒里, 检查一番后, 把盒子交给了你.
+&lt;br&gt;&lt;br&gt;
 &lt;&lt;button &quot;查看详情&quot;&gt;&gt;&lt;&lt;set _pages = &quot;任务&quot;&gt;&gt;
 &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;
-&lt;&lt;/Dialog&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;br&gt;&lt;br&gt;
+&lt;&lt;/Dialog&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「返回」 咖啡馆&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;elseif $choice == &quot;那太糟了&quot;&gt;&gt;
-【老板娘的眼睛不知所措的闪烁了几下, 最终定格在你身上. &quot;亲爱的, 能请你帮忙代我送去吗, 等你回来, 今天内的点餐我都免费. &quot;】&lt;br&gt;
+老板娘的眼睛不知所措的闪烁了几下, 最终定格在你身上. &quot;亲爱的, 能请你帮忙代我送去吗, 等你回来, 今天内的点餐我都免费. &quot;&lt;br&gt;
 &lt;br&gt;⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
 &lt;&lt;link ▷「接受」 支线选项&gt;&gt;&lt;&lt;set $choice to &quot;接受&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「拒绝」 支线选项&gt;&gt;&lt;&lt;set $choice to &quot;拒绝&quot;, $abs +=1&gt;&gt;&lt;&lt;/link&gt;&gt;(这个选项会直接结束事件)
-&lt;&lt;elseif $choice == &quot;接受&quot;&gt;&gt;&lt;&lt;set $story.push(&quot;点心代送&quot;)&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;set $dxdsstat = 4&gt;&gt;
-【&quot;万分感谢! 他们住的离这里都不远, 有些就在小镇上. &quot;她飞快地写下订单的地址, 塞进对应的点心盒里, 检查一番后, 把盒子交给了你】&lt;br&gt;〖开启任务【派送】点心代送〗&lt;br&gt;
+&lt;&lt;elseif $choice == &quot;接受&quot;&gt;&gt;&lt;&lt;set $story[&quot;点心代送&quot;] = 4&gt;&gt;&lt;&lt;storyget &quot;【派送】点心代送&quot;&gt;&gt;&lt;set $choice to 0&gt;&gt;
+【&quot;万分感谢! 他们住的离这里都不远, 有些就在小镇上. &quot;她飞快地写下订单的地址, 塞进对应的点心盒里, 检查一番后, 把盒子交给了你】&lt;br&gt;&lt;br&gt;
 &lt;&lt;button &quot;查看详情&quot;&gt;&gt;&lt;&lt;set _pages = &quot;任务&quot;&gt;&gt;
 &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;
-&lt;&lt;/Dialog&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;br&gt;&lt;br&gt;
+&lt;&lt;/Dialog&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「返回」 咖啡馆&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;elseif $choice == &quot;拒绝&quot;&gt;&gt;&lt;&lt;set $ab += 1, $storymiss.push(&quot;【已放弃】点心代送&quot;)&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;
 【&quot;没关系, 这个要求是太过分了. &quot;她放下了点心盒, 换上了营业时候的微笑, &quot;你还没有看过点单吧, 我非常推荐黑巧小蛋糕哦! &quot;】&lt;br&gt;&lt;&lt;link ✧「查看菜单」 购入&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 小镇&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -9624,7 +9648,7 @@ Seisi不知道从何处叼出一堆物品丢给你: &quot;这些是岛上先到�
 &lt;&lt;elseif $choice == &quot;接受&quot;&gt;&gt;
 那些玉雕看上去久失保养, 因年代久远而失去了原有的色泽, 但若好好清洗擦拭一番, 必定能卖上好价钱. 心中的天秤略作比较, 你决定接下这个流浪汉的请求. 一杯酒有多难做?&lt;br&gt;&lt;br&gt;
 &lt;&lt;timed 2s t8n&gt;&gt;Coni听到你的灾中抢救出来的手稿, 上面用潦草的英语在原文旁写着注释. 这是布尔盖酒的配方&lt;br&gt;&lt;br&gt;
-&lt;&lt;set $story.push(&quot;布尔盖酒&quot;)&gt;&gt;
+&lt;&lt;set $story[&quot;布尔盖酒&quot;] = 0&gt;&gt;
 &lt;&lt;pickup $item &quot;布尔盖酒配方&quot; 1&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;set _itemobtain = &quot;布尔盖酒配方 * 1&quot;&gt;&gt;
 &lt;&lt;itemobtain&gt;&gt;
 &lt;&lt;storyget &quot;【制作】布尔盖酒&quot;&gt;&gt;
@@ -9640,18 +9664,37 @@ Seisi不知道从何处叼出一堆物品丢给你: &quot;这些是岛上先到�
 &lt;&lt;/if&gt;&gt;
 
 
+&lt;&lt;if $loc == &quot;拓荒者木屋&quot;&gt;&gt;
 
+&lt;&lt;if $choice == &quot;观鸟&quot;&gt;&gt;
+&quot;我听到Seisi是怎么描述你的了, &quot;她在你开口前就知道了你的来意，&quot;说实话，我一直在找像你一样的猫. &quot;在你被领至那舒适到能将猫吞噬的毛绒沙发上后，你明白房间里的其他东西也都如同她一般在等待你的到来。茶几上摆着一台金属制相机，造型古旧，但能明显看出在被持有者精心保管着。
 
-&lt;&lt;if $dxdsstat == 3 &amp;&amp; $npc == &quot;埃拉&quot;&gt;&gt;埃拉接过盒子, 什么也没说的直接打开了包装, 拿起一块咬了上去, 接着把盒子递到你面前: &quot;尝一块吗? 我很喜欢这个口味. &quot;&lt;br&gt;&lt;br&gt;&lt;&lt;pickup $food &quot;朗姆葡萄酥卷&quot; 1&gt;&gt;&lt;&lt;set $dxdsstat = 2&gt;&gt;&lt;font color=#4E84BA&gt;✧你获得朗姆葡萄酥卷*1✧&lt;/font&gt;&lt;br&gt;【你送达了第二盒点心, 查看任务获得提示】&lt;br&gt;&lt;br&gt;
+它是为你准备的。
+
+枘朴小姐拉开了沙发一旁的藤椅坐了下来，拿起相机，带着怀念的语气继续了你们的对话。
+
+&quot;这是一件, 怎么说呢, 来自朋友的纪念品. 我这些年来也用它记录下来了&quot;                             
+
+&quot;这是我仅剩的一些胶卷了, 不过你可以在主港口的仓库那下订单, 每周六都有货轮靠岸. &quot;
+她
+&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;pickup $tool &quot;徕卡相机&quot; 1&gt;&gt;&lt;&lt;pickup $item &quot;胶卷&quot; 6&gt;&gt;&lt;&lt;set _itemobtain = &quot;徕卡相机 * 1、胶卷 * 6&quot;&gt;&gt;
+&lt;&lt;itemobtain&gt;&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;&lt;link ▷「继续」 木屋内部&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+/*点心代送分支*/
+&lt;&lt;if $story[&quot;点心代送&quot;] == 3 &amp;&amp; $npc == &quot;埃拉&quot;&gt;&gt;埃拉接过盒子, 什么也没说的直接打开了包装, 拿起一块咬了上去, 接着把盒子递到你面前: &quot;尝一块吗? 我很喜欢这个口味. &quot;&lt;br&gt;&lt;br&gt;&lt;&lt;pickup $food &quot;朗姆葡萄酥卷&quot; 1&gt;&gt;&lt;&lt;set $dxdsstat = 2&gt;&gt;&lt;font color=#4E84BA&gt;✧你获得朗姆葡萄酥卷*1✧&lt;/font&gt;&lt;br&gt;你送达了第二盒点心, 查看任务获得提示&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「返回」 草甸&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $dxdsstat == 4&gt;&gt;他这才从吊床上起身, 很难说不是在偷懒, 但看在他年纪的份上, 你觉得也不能过于责怪. 你把属于他的那盒放到桌上, 他简单的说了句&quot;谢谢&quot;便没有下文. 他看上去急着把你送出门&lt;br&gt;&lt;br&gt;&lt;&lt;set $dxdsstat = 3&gt;&gt;【你送达了第一盒点心, 查看任务获得提示】&lt;br&gt;&lt;br&gt;
+&lt;&lt;elseif $story[&quot;点心代送&quot;] == 4 &amp;&amp; $npc == &quot;佩拉大夫&quot;&gt;&gt;他这才从吊床上起身, 很难说不是在偷懒, 但看在他年纪的份上, 你觉得也不能过于责怪. 你把属于他的那盒放到桌上, 他简单的说了句&quot;谢谢&quot;便没有下文. 他看上去急着把你送出门&lt;br&gt;&lt;br&gt;&lt;&lt;set $dxdsstat = 3&gt;&gt;你送达了第一盒点心, 查看任务获得提示&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「返回」 医院&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $dxdsstat == 2&gt;&gt;
-&lt;&lt;if $loc == &quot;鱼铺&quot;&gt;&gt;【特里特不紧不慢的切完手上的鱼, 摘掉满是鱼鳞和血迹的手套才来拿走点心, 他白翳覆盖的眼睛居高临下的看了你一眼, 你以为自己会被吓到, 但感受到的只有谢意】&lt;br&gt;&lt;&lt;set $dxdsstat = 1&gt;&gt;【你送达了第三盒点心, 查看任务获得提示】
-&lt;&lt;else&gt;&gt;【特里特不紧不慢的收起鱼钩上的鱼才来拿走点心, 他白翳覆盖的眼睛居高临下的看了你一眼, 你以为自己会被吓到, 但感受到的只有谢意】&lt;br&gt;&lt;&lt;set $dxdsstat = 1&gt;&gt;【你送达了第三盒点心, 查看任务获得提示】
+&lt;&lt;elseif $story[&quot;点心代送&quot;] == 2 &amp;&amp; $npc == &quot;特里特&quot;&gt;&gt;
+&lt;&lt;if $loc == &quot;鱼铺&quot;&gt;&gt;特里特不紧不慢的切完手上的鱼, 摘掉满是鱼鳞和血迹的手套才来拿走点心, 他白翳覆盖的眼睛居高临下的看了你一眼, 你以为自己会被吓到, 但感受到的只有谢意&lt;br&gt;&lt;&lt;set $dxdsstat = 1&gt;&gt;你送达了第三盒点心, 查看任务获得提示
+&lt;&lt;else&gt;&gt;特里特不紧不慢的收起鱼钩上的鱼才来拿走点心, 他白翳覆盖的眼睛居高临下的看了你一眼, 你以为自己会被吓到, 但感受到的只有谢意&lt;br&gt;&lt;&lt;set $dxdsstat = 1&gt;&gt;你送达了第三盒点心, 查看任务获得提示
 &lt;&lt;/if&gt;&gt;&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「返回」 $loc&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $dxdsstat == 1&gt;&gt;【&quot;哦! 是我定的点心, 怎么现在才到, 我都快饿死了. &quot;奥提斯二话不说的打开包装开始享用, 丝毫不顾及这里是图书馆, 而他是管理员. 你忍住了提醒他咖啡馆就在图书馆隔壁这件事】&lt;br&gt;&lt;&lt;set $dxdsstat = 0&gt;&gt;【你送达了第四盒点心, 查看任务获得提示】&lt;br&gt;&lt;br&gt;
+&lt;&lt;elseif $story[&quot;点心代送&quot;] == 1 &amp;&amp; $npc == &quot;奥提斯&quot;&gt;&gt;&quot;哦! 是我定的点心, 怎么现在才到, 我都快饿死了. &quot;奥提斯二话不说的打开包装开始享用, 丝毫不顾及这里是图书馆, 而他是管理员. 你忍住了提醒他咖啡馆就在图书馆隔壁这件事&lt;br&gt;&lt;&lt;set $dxdsstat = 0&gt;&gt;你送达了第四盒点心, 查看任务获得提示&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「返回」 图书馆&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="63" name="收杆" tags="nobr" position="1100,200" size="100,100">&lt;&lt;set $minute to $minute+ random(3,10)&gt;&gt;&lt;&lt;set _m to random(1,10)&gt;&gt;&lt;&lt;set _s to random(1,100)&gt;&gt;&lt;&lt;set _n to random(1,10)&gt;&gt;
@@ -9720,43 +9763,13 @@ Seisi不知道从何处叼出一堆物品丢给你: &quot;这些是岛上先到�
 &lt;&lt;set $loc = &quot;教堂&quot;, $minute += random(3,8)&gt;&gt;
 &lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/102970253_g2QdKnJVU00HcTZ.png&quot; width=100% class=&quot;pic&quot;&gt;
 //教堂位于镇中心, 是岛上最早建立起来的一批建筑物, 比起这个称呼它看上去更像一座石堡. 起初这里并不是用来信奉任何神明的, 由当年那些巫师中的顶尖工匠建造, 因为当时是战争年代,岛上的人们焦虑无法安定下来,所以内部比较宽大, 采光性好, 让任何去教堂礼拜的人都能感到舒适安逸. 之后镇上的建筑都是围绕她建造//&lt;br&gt;&lt;br&gt;
-&lt;&lt;if $hour &lt;= 11 &amp;&amp; $minute &lt;= 40 &amp;&amp; $week == 7&gt;&gt;
-&lt;&lt;timed 2s t8n&gt;&gt;你在圣坛的一侧看到一只裹着黑色修女服的高个子白猫，站在主教的斜前方，沉默地垂着眼睛面对着明亮的大厅，白猫站在那里清唱，歌声让整个六边形的教堂笼罩在静谧圣洁的气氛里&lt;br&gt;
-&lt;&lt;next 2s t8n&gt;&gt;
-&lt;&lt;if $jofirstcexp != 1&gt;&gt;
-&lt;&lt;set _a to setup.getStat(&quot;knowledge&quot;)/12*100&gt;&gt;&lt;&lt;checkWidget&gt;&gt;
-&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
-你能听出这童声一样的嗓子并非普通歌手所能拥有的&lt;br&gt;&lt;&lt;addkexp 1&gt;&gt;&lt;&lt;else&gt;&gt;你觉得它比以往所听过的所有圣歌更清越&lt;br&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;next 2s t8n&gt;&gt;&lt;br&gt;一曲唱罢了白猫从圣坛旁边走下来，坐到第一排的空位上安静地做礼拜，并不因为中午的到来离开去用餐或者怎么样&lt;br&gt;
-&lt;&lt;next 2s t8n&gt;&gt;
-&lt;&lt;if $jofirstcexp != 1&gt;&gt;&lt;&lt;set $jofirstcexp = 1&gt;&gt;
-&lt;&lt;set _a to setup.getStat(&quot;observation&quot;)/12*100&gt;&gt;&lt;&lt;checkWidget&gt;&gt;
-&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
-你注意到白猫有着一张男性化的面孔&lt;br&gt;&lt;&lt;addoexp 1&gt;&gt;&lt;br&gt;
-&lt;&lt;/if&gt;&gt;&lt;br&gt;
-&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;next 1s t8n&gt;&gt;&lt;br&gt;&lt;br&gt;
-&lt;&lt;NPCloc&gt;&gt;
-&lt;br&gt;
-&lt;&lt;if $bjb == 0&gt;&gt;&lt;&lt;link ◈「领取物资」 补给包&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ✧「找个座位」 找个座位&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ✧「查看约柜」 约柜&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;br&gt;
-&lt;&lt;set _m to random(1,10)&gt;&gt;
-&lt;&lt;link ▷「离开」&gt;&gt;&lt;&lt;set $loc = &quot;小镇&quot;&gt;&gt;&lt;&lt;if $NPCinfo[&quot;琼&quot;].chat == 0 &amp;&amp; _m &lt;= 4&gt;&gt;&lt;&lt;set $npc to &quot;琼&quot;&gt;&gt;&lt;&lt;goto &quot;交谈&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;goto &quot;小镇&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/timed&gt;&gt;
-
-&lt;&lt;else&gt;&gt;
 &lt;&lt;if $bjb == 0&gt;&gt;&lt;&lt;link ◈「领取物资」 补给包&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;link ✧「找个座位」 找个座位&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ✧「查看约柜」 约柜&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「离开」 小镇&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="66" name="散步" tags="nobr" position="1000,100" size="100,100">&lt;&lt;if $weather == &quot;暴雨&quot;&gt;&gt;
 现在的雨太大了, 不是散步的好天气
 &lt;&lt;elseif $HP lt 1&gt;&gt;
@@ -9773,7 +9786,7 @@ Seisi不知道从何处叼出一堆物品丢给你: &quot;这些是岛上先到�
 &lt;&lt;timed 4s&gt;&gt;&lt;&lt;set $loc to $locs&gt;&gt;&lt;&lt;goto $loc&gt;&gt;&lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;elseif _wlkr lt 85&gt;&gt;&lt;&lt;goto &quot;散步掉落&quot;&gt;&gt;
-&lt;&lt;elseif _wlkr lt 95&gt;&gt;&lt;&lt;set $choice = 0&gt;&gt;&lt;&lt;goto &quot;普通遭遇&quot;&gt;&gt;
+&lt;&lt;elseif _wlkr lt 95&gt;&gt;&lt;&lt;set $choice = 0&gt;&gt;&lt;&lt;goto &quot;散步遭遇&quot;&gt;&gt;
 &lt;&lt;elseif _wlkr &lt;=100&gt;&gt;&lt;&lt;goto &quot;散步特殊事件&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="67" name="散步掉落" tags="nobr" position="1000,300" size="100,100">&lt;&lt;set $minute += random(1,3)&gt;&gt;&lt;&lt;set _m to random(1,10)&gt;&gt;&lt;&lt;set _s to random(1,100)&gt;&gt;&lt;&lt;set _n to random(1,5)&gt;&gt;&lt;&lt;set _o to random(3,10)&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;
 你在$loc散步&lt;br&gt;&lt;br&gt;
@@ -9829,9 +9842,15 @@ Seisi不知道从何处叼出一堆物品丢给你: &quot;这些是岛上先到�
 &lt;&lt;link ▷「继续」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;else&gt;&gt;隐约间看到一个扎窝在灌木里的鸟巢, 里面躺着几枚鸟蛋, 没附近没看到大鸟的踪影&lt;br&gt;&lt;br&gt;
 ⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「拿走」 日常行动&gt;&gt;&lt;&lt;set $choice to &quot;鸟蛋&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;linkreplace ▷「拿走」&gt;&gt;
+&lt;&lt;set _r = random(1,3)&gt;&gt;
+&lt;&lt;pickup $material 鸟蛋 _r&gt;&gt;
+离你最近的那枚鸟蛋成为了你的幸运儿
+&lt;&lt;set _itemobtain = &quot;鸟蛋 * _r&quot;&gt;&gt;
+&lt;&lt;itemobtain&gt;&gt;
+&lt;&lt;/linkreplace&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
-▷「离开」&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif _s &lt;= 78&gt;&gt;
 &lt;&lt;set _t to random(25,40)&gt;&gt;&lt;&lt;set _r to $luck*_t/10&gt;&gt;&lt;&lt;set _a to $luck/_r*100&gt;&gt;&lt;&lt;checkWidget&gt;&gt;
@@ -10012,9 +10031,6 @@ Seisi不知道从何处叼出一堆物品丢给你: &quot;这些是岛上先到�
 
 &lt;&lt;elseif $choice == &quot;丢掉&quot;&gt;&gt;
 你丢掉了手里的毒蘑菇, 继续着自己的事情
-&lt;&lt;elseif $choice == &quot;鸟蛋&quot;&gt;&gt;&lt;&lt;pickup $material 鸟蛋 1&gt;&gt;
-离你最近的那枚鸟蛋成为了你的幸运儿
-&lt;font color=#4E84BA&gt;✧你获得鸟蛋 * 1✧&lt;/font&gt;
 &lt;&lt;elseif $choice == &quot;毒蘑菇&quot;&gt;&gt;&lt;&lt;pickup $material 毒蘑菇 1&gt;&gt;
 毒蘑菇也有毒蘑菇的用途
 &lt;font color=#4E84BA&gt;✧你获得毒蘑菇 * 1✧&lt;/font&gt;
@@ -10080,13 +10096,18 @@ Seisi不知道从何处叼出一堆物品丢给你: &quot;这些是岛上先到�
 &lt;/center&gt;
 &lt;/div&gt;&lt;br&gt;
 &lt;b&gt;收集进度&lt;/b&gt;&lt;br&gt;
-🐟&lt;&lt;button &quot;钓鱼图鉴&quot;&gt;&gt;
-&lt;&lt;Dialog title=&quot;钓鱼图鉴&quot; passage=&quot;钓鱼图鉴&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;&lt;&lt;/button&gt;&gt;：&lt;&lt;=$fishcollect.length&gt;&gt; / 33&lt;br&gt;
-🦌狩猎图鉴：&lt;&lt;=$preycollect.length&gt;&gt; / 19&lt;br&gt;
-🐦‍⬛观鸟图鉴：&lt;&lt;=$birdcollect.length&gt;&gt; / 16&lt;br&gt;
-🌹花卉图鉴：&lt;&lt;=$flowercollect.length&gt;&gt; / 27&lt;br&gt;
-🍷酿酒配方：&lt;&lt;=$drinkcollect.length&gt;&gt; / 6&lt;br&gt;
-🥞烹饪配方：&lt;&lt;=$foodcollect.length&gt;&gt; / 48
+🐟&lt;&lt;button &quot;钓鱼图鉴&quot;&gt;&gt;&lt;&lt;set _pages = &quot;钓鱼&quot;&gt;&gt;
+&lt;&lt;Dialog title=&quot;钓鱼图鉴&quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;&lt;&lt;/button&gt;&gt;：&lt;&lt;=$fishcollect.length&gt;&gt; / 33&lt;br&gt;
+🦌&lt;&lt;button &quot;狩猎图鉴&quot;&gt;&gt;&lt;&lt;set _pages = &quot;狩猎&quot;&gt;&gt;
+&lt;&lt;Dialog title=&quot;狩猎图鉴&quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;&lt;&lt;/button&gt;&gt;：&lt;&lt;=$preycollect.length&gt;&gt; / 19&lt;br&gt;
+🐦‍⬛&lt;&lt;button &quot;观鸟图鉴&quot;&gt;&gt;&lt;&lt;set _pages = &quot;观鸟&quot;&gt;&gt;
+&lt;&lt;Dialog title=&quot;观鸟图鉴&quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;&lt;&lt;/button&gt;&gt;：&lt;&lt;=$birdcollect.length&gt;&gt; / 23&lt;br&gt;
+🌹&lt;&lt;button &quot;花卉图鉴&quot;&gt;&gt;&lt;&lt;set _pages = &quot;花卉&quot;&gt;&gt;
+&lt;&lt;Dialog title=&quot;花卉图鉴&quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;&lt;&lt;/button&gt;&gt;：&lt;&lt;=$flowercollect.length&gt;&gt; / 27&lt;br&gt;
+🍷&lt;&lt;button &quot;酿酒配方&quot;&gt;&gt;&lt;&lt;set _pages = &quot;酿酒&quot;&gt;&gt;
+&lt;&lt;Dialog title=&quot;酿酒配方&quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;&lt;&lt;/button&gt;&gt;：&lt;&lt;=$drinkcollect.length&gt;&gt; / 6&lt;br&gt;
+🥞&lt;&lt;button &quot;烹饪配方&quot;&gt;&gt;&lt;&lt;set _pages = &quot;烹饪&quot;&gt;&gt;
+&lt;&lt;Dialog title=&quot;烹饪配方&quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;&lt;&lt;/button&gt;&gt;：&lt;&lt;=$foodcollect.length&gt;&gt; / 48
 &lt;br&gt;&lt;br&gt;
 &lt;b&gt;即将到来的事件&lt;/b&gt;&lt;br&gt;
 &lt;&lt;if $bjb == 0&gt;&gt;⭐礼拜日  夜晚前  &lt;&lt;link 教堂 教堂&gt;&gt;&lt;&lt;/link&gt;&gt;  领取每周供给&lt;br&gt;&lt;&lt;/if&gt;&gt;
@@ -10104,6 +10125,7 @@ Seisi不知道从何处叼出一堆物品丢给你: &quot;这些是岛上先到�
 &lt;&lt;set _progress6 to $abs/20, _progress06 to $abs&gt;&gt;
 
 &lt;&lt;if setup.getStat(&quot;heartless&quot;) lt 50 &amp;&amp; setup.getStat(&quot;bloody&quot;) lt 50 &amp;&amp; setup.getStat(&quot;confidence&quot;) lt 50 &amp;&amp; setup.getStat(&quot;enjoy&quot;) lt 50 &amp;&amp; $hunger lt 24 &amp;&amp; $abs lt 20 &amp;&amp; $fame lt 24 &gt;&gt;
+
 &lt;&lt;if $soul == &quot;蓝色&quot;&gt;&gt;
 &lt;span id=&quot;bluesoul&quot;&gt;&lt;/span&gt;
 &lt;&lt;elseif $soul == &quot;红色&quot;&gt;&gt;
@@ -10143,6 +10165,7 @@ Seisi不知道从何处叼出一堆物品丢给你: &quot;这些是岛上先到�
 	&lt;&lt;set $hour = $hour - 24&gt;&gt;
 	&lt;&lt;set $week +=1&gt;&gt;
     &lt;&lt;set $date +=1, $lny to 0, $day +=1&gt;&gt;&lt;&lt;set $dtr to 0, $dtr1 to 0, $dtr2 to 0&gt;&gt;&lt;&lt;set $sleept = 0&gt;&gt;&lt;&lt;set $dgcs = 6, $fycs = 3, $gzcs = 3&gt;&gt;&lt;&lt;set $innpay = 0&gt;&gt;&lt;&lt;set $eragift = 1&gt;&gt;&lt;&lt;set $origift = 1&gt;&gt;&lt;&lt;set $bellring1 = 0, $bellring2 = 0, $bellring3 = 0&gt;&gt; 
+    &lt;&lt;if $date%6 == 0&gt;&gt;&lt;&lt;set $sheep -= random(1,3)&gt;&gt;&lt;&lt;/if&gt;&gt;
     &lt;&lt;if $lostsheep[0] ==1&gt;&gt;&lt;&lt;set $lostsheep[0] = 2&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;set 
 $horse1.bitamount = random(5,11), $horse1.bitmoney = $horse1.bitamount*$horse1.price, 
@@ -10153,7 +10176,7 @@ $horse1.odds = Math.floor($horse1.odds*(1-$horse1.bitmoney*$racing.adjust/$racin
 $horse2.odds = Math.floor($horse2.odds*(1-$horse2.bitmoney*$racing.adjust/$racing.bitmoney)*100)/100&gt;&gt;
 
 &lt;&lt;set $dailyjob = []&gt;&gt;&lt;&lt;dailyjob&gt;&gt;&lt;&lt;dailyjob&gt;&gt;&lt;&lt;dailyjob&gt;&gt;
-&lt;&lt;set $NPCinfo[&quot;埃拉&quot;].gift = 0, $NPCinfo[&quot;特里特&quot;].gift = 0, $NPCinfo[&quot;奥提斯&quot;].gift = 0, $NPCinfo[&quot;玛丽亚小姐&quot;].gift = 0, $NPCinfo[&quot;佩拉大夫&quot;].gift = 0&gt;&gt;
+&lt;&lt;set $NPCinfo[&quot;埃拉&quot;].gift = 0, $NPCinfo[&quot;特里特&quot;].gift = 0, $NPCinfo[&quot;奥提斯&quot;].gift = 0, $NPCinfo[&quot;玛丽亚小姐&quot;].gift = 0, $NPCinfo[&quot;佩拉大夫&quot;].gift = 0, $NPCinfo[&quot;巴尔韦克老爷&quot;].gift = 0, $NPCinfo[&quot;萨巴夫人&quot;].gift = 0&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $month ==4 &amp;&amp; $day &gt;=31 || $month ==6 &amp;&amp; $day &gt;=31 || $month ==9 &amp;&amp; $day &gt;=31 || $month ==11 &amp;&amp; $day &gt;=31&gt;&gt;&lt;&lt;set $month +=1, $day =1&gt;&gt;
@@ -10219,27 +10242,21 @@ $horse2.odds = Math.floor($horse2.odds*(1-$horse2.bitmoney*$racing.adjust/$racin
     
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $hour &gt;= 1 &amp;&amp; $hour &lt; 3 &gt;&gt;
+&lt;&lt;if $hour &gt;= 2 &amp;&amp; $hour &lt; 4 &gt;&gt;
 &lt;&lt;set $time = &quot;午夜&quot;&gt;&gt;
-&lt;&lt;elseif $hour &gt;= 3 &amp;&amp; $hour &lt; 5 &gt;&gt;
+&lt;&lt;elseif $hour &gt;= 4 &amp;&amp; $hour &lt; 6 &gt;&gt;
 &lt;&lt;set $time = &quot;黎明&quot;&gt;&gt;
-&lt;&lt;elseif $hour &gt;= 5 &amp;&amp; $hour &lt; 7&gt;&gt;
-&lt;&lt;set $time = &quot;日出&quot;&gt;&gt;
-&lt;&lt;elseif $hour &gt;= 7 &amp;&amp; $hour &lt; 9 &gt;&gt;
+&lt;&lt;elseif $hour &gt;= 6 &amp;&amp; $hour &lt; 8&gt;&gt;
 &lt;&lt;set $time = &quot;早晨&quot;&gt;&gt;
-&lt;&lt;elseif $hour &gt;= 9 &amp;&amp; $hour &lt; 11 &gt;&gt;
+&lt;&lt;elseif $hour &gt;= 8 &amp;&amp; $hour &lt; 12 &gt;&gt;
 &lt;&lt;set $time = &quot;上午&quot;&gt;&gt;
-&lt;&lt;elseif $hour &gt;= 11 &amp;&amp; $hour &lt; 13 &gt;&gt;
+&lt;&lt;elseif $hour &gt;= 12 &amp;&amp; $hour &lt; 14 &gt;&gt;
 &lt;&lt;set $time = &quot;正午&quot;&gt;&gt;
-&lt;&lt;elseif $hour &gt;= 13 &amp;&amp; $hour &lt; 15 &gt;&gt;
-&lt;&lt;set $time = &quot;午后&quot;&gt;&gt;
-&lt;&lt;elseif $hour &gt;= 15 &amp;&amp; $hour &lt; 17 &gt;&gt;
+&lt;&lt;elseif $hour &gt;= 14 &amp;&amp; $hour &lt; 18 &gt;&gt;
 &lt;&lt;set $time = &quot;下午&quot;&gt;&gt;
-&lt;&lt;elseif $hour &gt;= 17 &amp;&amp; $hour &lt; 19 &gt;&gt;
-&lt;&lt;set $time = &quot;日落&quot;&gt;&gt;
-&lt;&lt;elseif $hour &gt;= 19 &amp;&amp; $hour &lt; 21 &gt;&gt;
+&lt;&lt;elseif $hour &gt;= 18 &amp;&amp; $hour &lt; 20 &gt;&gt;
 &lt;&lt;set $time = &quot;黄昏&quot;&gt;&gt;
-&lt;&lt;elseif $hour &gt;= 21 &amp;&amp; $hour &lt; 23 &gt;&gt;
+&lt;&lt;elseif $hour &gt;= 20 &amp;&amp; $hour &lt; 22 &gt;&gt;
 &lt;&lt;set $time = &quot;入夜&quot;&gt;&gt;
 &lt;&lt;else&gt;&gt;
 &lt;&lt;set $time = &quot;夜晚&quot;&gt;&gt;
@@ -10363,12 +10380,12 @@ $horse2.odds = Math.floor($horse2.odds*(1-$horse2.bitmoney*$racing.adjust/$racin
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="76" name="木屋内部" tags="nobr" position="400,700" size="100,100">&lt;&lt;timed 2s t8n&gt;&gt;&lt;&lt;if $nixloc == &quot;拓荒者木屋&quot;&gt;&gt;
 &lt;&lt;audio &quot;NixBGM&quot; loop play&gt;&gt;
 
-【你来到了拓荒者木屋, 枘朴小姐给你开了门, 进去坐坐吧】&lt;br&gt;
+你来到了拓荒者木屋, 枘朴小姐给你开了门, 进去坐坐吧&lt;br&gt;
 &lt;br&gt;&lt;br&gt;
-
+&lt;&lt;if $sq.feedbirds == 1&gt;&gt;&lt;&lt;link ❖「观鸟爱好者」 支线选项&gt;&gt;&lt;&lt;set $choice = &quot;观鸟&quot;, $sq.feedbirds = 2&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;br&gt;
 &lt;&lt;link ❖「今日工作」 打工&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;br&gt;
-✧「做客」&lt;br&gt;
-&lt;&lt;else&gt;&gt;【你来到了拓荒者木屋, 没有谁应门, 也许你该换个时间】&lt;&lt;/if&gt;&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="77" name="木屋提问" tags="" position="700,1200" size="100,100">&lt;&lt;set _q = 0&gt;&gt;&lt;&lt;do&gt;&gt;&lt;&lt;if _q == 0&gt;&gt;&quot;&quot;他们说, 你总能在永无乡找到你想要的. 我希望你也会找到你想要的生活. &quot;枘朴小姐满怀期望的冲你眨眨眼. 你谢过她的祝福, 但仍有疑问
+
+&lt;&lt;else&gt;&gt;你来到了拓荒者木屋, 没有谁应门, 也许你该换个时间&lt;&lt;/if&gt;&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="77" name="木屋提问" tags="" position="700,1200" size="100,100">&lt;&lt;set _q = 0&gt;&gt;&lt;&lt;do&gt;&gt;&lt;&lt;if _q == 0&gt;&gt;&quot;&quot;他们说, 你总能在永无乡找到你想要的. 我希望你也会找到你想要的生活. &quot;枘朴小姐满怀期望的冲你眨眨眼. 你谢过她的祝福, 但仍有疑问
 
 ⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘
 &lt;&lt;link▷「我能找到什么」&gt;&gt;&lt;&lt;set _q = 1&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -10430,7 +10447,7 @@ $horse2.odds = Math.floor($horse2.odds*(1-$horse2.bitmoney*$racing.adjust/$racin
 
 &lt;&lt;timed 3s t8n&gt;&gt;枘朴小姐拎着钥匙回来了, 胡须上粘到了一些灰尘, 她抖抖胡须, 把钥匙交给了你
 &lt;&lt;pickup $item &quot;旅店钥匙&quot; 1&gt;&gt;&lt;&lt;set _itemobtain = &quot;旅店钥匙 * 1&quot;&gt;&gt;&lt;&lt;itemobtain&gt;&gt;
-&lt;&lt;next 4s t8n&gt;&gt;你注意到她手中还有一些东西. 她将那些物品一一摆放在你面前. &quot;这些是岛上的居民给你准备的礼物, 以表达我们最真挚的诚意. 你可以从中任选一件. &quot;
+&lt;&lt;next 4s t8n&gt;&gt;你注意到她手中还有一些东西. 她将那些物品一一摆放在你面前. &quot;这些是我们在等待你来时为你准备的礼物, 以表达我们最真挚的诚意. 你可以从中任选一件. &quot;
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;next 3s t8n&gt;&gt;
 &lt;&lt;do&gt;&gt;
@@ -10443,19 +10460,19 @@ $horse2.odds = Math.floor($horse2.odds*(1-$horse2.bitmoney*$racing.adjust/$racin
 &lt;&lt;next 3s t8n&gt;&gt;[[▷「离开木屋」|主线D1结束]]&lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;else&gt;&gt;⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
-&lt;&lt;link ▷「鲜花诗集」&gt;&gt;&lt;&lt;set $choice to &quot;选择&quot;&gt;&gt;&lt;&lt;set _itemobtain = &quot;鲜花诗集 * 1&quot;&gt;&gt;&lt;&lt;pickup $book &quot;鲜花诗集&quot; 1&gt;&gt;&lt;&lt;set $xhsjusable = 2&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;(赠自Nix, 首次阅读后获得学识点数10)&lt;br&gt;
-&lt;&lt;link ▷「火漆印章」&gt;&gt;&lt;&lt;set $choice to &quot;选择&quot;&gt;&gt;&lt;&lt;set _itemobtain = &quot;火漆印章 * 1&quot;&gt;&gt;&lt;&lt;pickup $item &quot;火漆印章&quot; 1&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;(赠自奥里, 首次使用后获得观察点数10)&lt;br&gt;
-&lt;&lt;link ▷「关节指环」&gt;&gt;&lt;&lt;set $choice to &quot;选择&quot;&gt;&gt;&lt;&lt;set _itemobtain = &quot;关节指环 * 1&quot;&gt;&gt;&lt;&lt;pickup $hand &quot;关节指环&quot; 1&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;(赠自Andersen, 装备后力量+2, 话术+2)&lt;br&gt;
+&lt;&lt;link ▷「鲜花诗集」&gt;&gt;&lt;&lt;set $choice to &quot;选择&quot;&gt;&gt;&lt;&lt;set _itemobtain = &quot;鲜花诗集 * 1&quot;&gt;&gt;&lt;&lt;pickup $book &quot;鲜花诗集&quot; 1&gt;&gt;&lt;&lt;set $xhsjusable = 2&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;(赠自枘朴小姐, 首次阅读后获得学识点数10)&lt;br&gt;
+&lt;&lt;link ▷「火漆印章」&gt;&gt;&lt;&lt;set $choice to &quot;选择&quot;&gt;&gt;&lt;&lt;set _itemobtain = &quot;火漆印章 * 1&quot;&gt;&gt;&lt;&lt;pickup $item &quot;火漆印章&quot; 1&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;(赠自奥提斯, 首次使用后获得观察点数10)&lt;br&gt;
+&lt;&lt;link ▷「猫眼石吊坠」&gt;&gt;&lt;&lt;set $choice to &quot;选择&quot;&gt;&gt;&lt;&lt;set _itemobtain = &quot;猫眼石吊坠 * 1&quot;&gt;&gt;&lt;&lt;pickup $neck &quot;猫眼石吊坠&quot; 1&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;(赠自翡翠小姐, 装备后话术+3)&lt;br&gt;
+&lt;&lt;link ▷「铆钉马靴」&gt;&gt;&lt;&lt;set $choice to &quot;选择&quot;&gt;&gt;&lt;&lt;set _itemobtain = &quot;铆钉马靴 * 1&quot;&gt;&gt;&lt;&lt;pickup $foot &quot;铆钉马靴&quot; 1&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;(赠自贝鲁姆公爵，装备后力量+3, 话术+2)&lt;br&gt;
 
 &lt;&lt;if $nn == &quot;Nix&quot;&gt;&gt;&lt;&lt;pickup $hand &quot;蛇骷戒指&quot; 1&gt;&gt;&lt;&lt;pickup $book &quot;律法之书&quot; 1&gt;&gt;&lt;&lt;pickup $tool &quot;短镰&quot; 1&gt;&gt;&lt;&lt;set $seisihgd = 100&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;/do&gt;&gt;
 
 &lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="79" name="未完成" tags="nobr" position="1900,100" size="100,100">&lt;&lt;reopen&gt;&gt;
-&lt;&lt;if !$clue || $story == []&gt;&gt;暂无任务&lt;&lt;else&gt;&gt;
+&lt;&lt;if !$clue || $story == {}&gt;&gt;暂无任务&lt;&lt;else&gt;&gt;
 
-&lt;&lt;for _i to 0; _i lt $story.length;  _i++&gt;&gt;
+&lt;&lt;for _name, _amount range $story&gt;&gt;
 &lt;div style=&quot;padding: 2px; display: grid; grid-template-columns: 2fr 1fr 1fr; text-align: center;&quot;&gt;
-&lt;&lt;set _name= $story[_i]&gt;&gt;
 &lt;&lt;capture _name&gt;&gt;
 &lt;span&gt;&lt;b&gt;_name&lt;/b&gt;&lt;/span&gt;
 &lt;span&gt;&lt;&lt;button 查看&gt;&gt;
@@ -10468,6 +10485,7 @@ $horse2.odds = Math.floor($horse2.odds*(1-$horse2.bitmoney*$racing.adjust/$racin
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="80" name="杂货铺" tags="nobr" position="100,600" size="100,100">&lt;h3&gt;@@.emboss;杂货铺@@&lt;/h3&gt;
 &lt;font color=#D4A34C&gt;【营业时间：上午~下午】&lt;/font&gt;&lt;br&gt;
 &lt;br&gt;
+&lt;&lt;if $hour &gt;= 8 &amp;&amp; $hour &lt; 18&gt;&gt;
 &lt;&lt;set $loc = &quot;杂货铺&quot;, $minute += random(3,8)&gt;&gt;
 你推开杂货铺陈旧的木门, 老板乔什躺在柜台后的摇椅上, 看着像睡着了
 &lt;br&gt;&lt;br&gt;
@@ -10477,7 +10495,7 @@ $horse2.odds = Math.floor($horse2.odds*(1-$horse2.bitmoney*$racing.adjust/$racin
   Dialog.wiki(Story.get(&quot;兑换&quot;).processText());
   Dialog.open();
 &gt;&gt;&lt;&lt;/link&gt;&gt;
-
+&lt;&lt;/if&gt;&gt;
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「离开」 小镇&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="81" name="栈桥" tags="nobr" position="800,600" size="100,100">&lt;&lt;set $minute += random(2,5)&gt;&gt;&lt;&lt;set $loc = &quot;栈桥&quot;&gt;&gt;
 &lt;&lt;NPCloc&gt;&gt;
@@ -10569,8 +10587,7 @@ _am
 &lt;&lt;set _i =random(1, $item.uniqueLength)&gt;&gt;
 &lt;&lt;= $item.list[_i]&gt;&gt;
 
-&lt;&lt;pickup $pet &quot;夜织鸟&quot; 1&gt;&gt;
-&lt;&lt;set $haspet = 1&gt;&gt;
+
 
 &lt;div id=&quot;qte&quot;&gt;
 &lt;&lt;button &amp;nbsp;&gt;&gt;&lt;&lt;/button&gt;&gt;
@@ -10603,7 +10620,7 @@ _am
 饥饿 &lt;&lt;link&quot; +1 &quot; &quot;测试&quot;&gt;&gt;&lt;&lt;set $hunger += 1&gt;&gt;&lt;&lt;/link&gt;&gt;
 放弃任务 &lt;&lt;link&quot; +1 &quot; &quot;测试&quot;&gt;&gt;&lt;&lt;set $abs += 1&gt;&gt;&lt;&lt;/link&gt;&gt;
 
-【你来到后院】
+你来到后院
 &lt;&lt;link ♢「苗圃1」 种地&gt;&gt;&lt;&lt;set $choice to &quot;land1&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link ♢「苗圃2」 种地&gt;&gt;&lt;&lt;set $choice to &quot;land2&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link ♢「苗圃3」 种地&gt;&gt;&lt;&lt;set $choice to &quot;land3&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -10616,8 +10633,11 @@ _am
 @@.blur;This text should be blurred@@
 @@.blurrier;This text should be blurrier@@
 @@.goodblur;This text should be smeared@@
+@@.badblur;This text should be smeared@@
+@@.traitblur;This text should be smeared@@
 @@.mirror;This text should be mirrored@@
 @@.upside-down;This text should be upside-down@@
+@@.loveblur;&lt;div class=&quot;rumble&quot;&gt;$npc对你的好感增加了&lt;/div&gt;@@
 
 &lt;&lt;set _now to new Date()&gt;&gt;
 
@@ -10779,8 +10799,12 @@ Second: &lt;&lt;= _now.getSeconds()&gt;&gt;</tw-passagedata><tw-passagedata pid=
 灰色混凝土的灯塔矗立在海岸边上，最上头亮光的是一个黑色圆锥顶的小房子。灯塔光滑的外壁不像是任何生物能爬上去的样子，却不知道为什么留下了许多凹陷的痕迹。每到入夜或者风雨袭来的时候，灯塔里就会亮起一束刺破阴沉天空的明黄光芒
 &lt;br&gt;&lt;br&gt;
 在灯塔脚下的小木屋里住着这座灯塔的看守琼，他是一只白色的瘦高个儿猫咪。当你敲响小屋的门以后，看起来轻薄的木门吱呀一声打开了，里面走出来披着白袍的琼。他眨眼看着你，用孩童一样的嗓音说道：“你好？我是灯塔的看守琼，有什么事儿吗？”
-&lt;br&gt;
-&lt;&lt;NPCloc&gt;&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;&lt;link ❖提交鱼油&gt;&gt;&lt;&lt;set $choice = &quot;提交鱼油&quot;&gt;&gt;&lt;&lt;run
+  Dialog.setup(&quot;提交鱼油&quot;);
+  Dialog.wiki(Story.get(&quot;兑换&quot;).processText());
+  Dialog.open();
+&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;br&gt;
 &lt;br&gt;
 ♢「远眺」
@@ -10931,8 +10955,10 @@ _n&lt;/div&gt;
 /*******************/
 &lt;/div&gt;
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="95" name="物品" tags="" position="1700,100" size="100,100">&lt;&lt;reopen&gt;&gt;&lt;&lt;inv $item use drop inspect stack filter&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="猎户小屋" tags="" position="600,500" size="100,100">&lt;&lt;if $dn == 0&gt;&gt;【小屋的门紧闭着】&lt;&lt;else&gt;&gt;&lt;&lt;set $loc = &quot;猎户小屋&quot;&gt;&gt;&lt;&lt;timeWidget&gt;&gt;&lt;&lt;set $minute to $minute+ random(5,10)&gt;&gt;&lt;&lt;set $HP to $HP- 1&gt;&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543075_TIdlSzs9pMDM0hD.jpg&quot; width=100%&gt;
+</tw-passagedata><tw-passagedata pid="95" name="物品" tags="" position="1700,100" size="100,100">&lt;&lt;reopen&gt;&gt;&lt;&lt;inv $item use drop inspect stack filter&gt;&gt;</tw-passagedata><tw-passagedata pid="96" name="猎户小屋" tags="" position="600,500" size="100,100">&lt;&lt;if $dn == 0&gt;&gt;小屋的门紧闭着&lt;&lt;else&gt;&gt;&lt;&lt;set $loc = &quot;猎户小屋&quot;&gt;&gt;&lt;&lt;timeWidget&gt;&gt;&lt;&lt;set $minute to $minute+ random(5,10)&gt;&gt;&lt;&lt;set $HP to $HP- 1&gt;&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543075_TIdlSzs9pMDM0hD.jpg&quot; width=100%&gt;
 &lt;font color=#D4A34C&gt;//猎户小屋建在草甸的一处小林地上, 起初只用于民居, 在重建时出于便利改为了公共建筑, 存放岛上的肉食储蓄. 小屋的屋檐下整齐悬挂着烟熏肉, 一张毛色黯红的鹿皮作为装饰装订在木门上//&lt;/font&gt;
+
+
 
 
 ▸▹ ✾ ✾ ✾ ✾ ✾ ✾ ◃◂
@@ -10942,11 +10968,23 @@ _n&lt;/div&gt;
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;link ▷「离开」 贝雷河&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="97" name="材料" tags="" position="1700,400" size="100,100">&lt;&lt;inv $material use drop inspect stack filter&gt;&gt;</tw-passagedata><tw-passagedata pid="98" name="界面" tags="nobr UIBarhide" position="100,1200" size="100,100">&lt;center&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87542752_OTAoFb7FjfGxA9I.png&quot; width=100%&gt;&lt;br&gt;
-&lt;h1&gt;-NEVERLAND- 「永无乡」&lt;/h1&gt;&lt;br&gt;
-是©Nix P. R. 创作的&lt;br&gt;
+&lt;h1&gt;-NEVERLAND- 「永无乡」&lt;/h1&gt;
+有©Nix P. R. 创作的&lt;br&gt;
 &lt;兽人&gt;&lt;现实半架空&gt;&lt;多元神话&gt;&lt;低魔&gt;世界观&lt;br&gt;
-此游戏为基于-NEVERLAND- 世界观而开发的企划专属游戏, 禁止任何形式的私人传播&lt;br&gt;
-&lt;br&gt;
+此游戏为基于-NEVERLAND- 世界观而开发的专属游戏, 禁止任何形式的私人传播&lt;br&gt;
+
+
+&lt;h1&gt;游玩指南&lt;/h1&gt;
+
+游戏tag：crpg、剧情向、无恋爱元素&lt;br&gt;&lt;br&gt;
+
+目前处于开发阶段，新内容可能与旧存档不兼容，不建议长期游玩。&lt;br&gt;
+手机版与夜间版的界面都未优化，谨慎使用。&lt;br&gt;&lt;br&gt;
+
+✶️本游戏目前使用gitpage发布，图片使用图床，若有加载缓慢的问题建议科学上网。在内容完成后会发布本地版本。&lt;br&gt;
+✶️游戏存档只有3个手动槽位和1个自动槽位，默认储存在浏览器缓存内，若清理缓存会丢失，建议后期游玩时导出到本地保存。&lt;br&gt;
+✶️所有延迟显示的字体效果都可以点击任意界面跳过。历史回溯只能后退6个页面，后退/前进的键盘快捷键为Q/E。&lt;br&gt;
+✶️游戏内进行技能鉴定的选项无文字提示，不显示成功奖励。&lt;br&gt;&lt;br&gt;
 
 &lt;div class=&quot;startui&quot;&gt;&lt;hr class=&quot;hr-fade-content&quot;&gt;
 &lt;&lt;if Save.browser.size &gt; 0&gt;&gt;
@@ -11518,44 +11556,21 @@ Save.browser.continue()
     renderInterface();
   });
 })();
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="102" name="睡觉" tags="autosave" position="1400,100" size="100,100">&lt;&lt;if $sleept == 1&gt;&gt;你不久前才从梦中醒来, 丝毫没有困意, 也许你该继续手头的工作
-&lt;&lt;link ▷「返回」 家&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;else&gt;&gt;&lt;&lt;set _s to random(1,20)&gt;&gt;
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="102" name="睡觉" tags="autosave nobr" position="1400,100" size="100,100">&lt;&lt;if $hour &gt;=11 &amp;&amp; $hour &lt;=14 &amp;&amp; $sleepnt == 0&gt;&gt;
 &lt;&lt;set $hour = $hour + $sleepc&gt;&gt;
-&lt;&lt;fadeout 3s 2s&gt;&gt;你拉上窗帘, 拍软了枕头, 关掉桌灯, 钻进了被窝里&lt;&lt;/fadeout&gt;&gt;&lt;&lt;set $sleept = 1&gt;&gt;
-&lt;&lt;timed 6s&gt;&gt;
-
-/*特殊梦判断*/
-&lt;&lt;if $fpfirst ==1 &amp;&amp; $dream_fire.I ==0&gt;&gt;
-&lt;&lt;goto &quot;火之梦&quot;&gt;&gt;
-
+&lt;&lt;fadeout 3s 2s&gt;&gt;
+你厌倦了日光, 便拉上窗帘, 关进窗户, 把阳光隔绝在外。接着, 你拍软枕头, 钻进被窝里, 在一天中最适宜的时候开始了你的午觉。
+&lt;&lt;/fadeout&gt;&gt;&lt;&lt;set $sleepnt = 1&gt;&gt;
+&lt;&lt;timed 6s&gt;&gt;&lt;&lt;dreams&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;elseif $sleept == 0&gt;&gt;
+&lt;&lt;set $hour = $hour + $sleepc&gt;&gt;
+&lt;&lt;fadeout 3s 2s&gt;&gt;
+你拉上窗帘, 拍软了枕头, 关掉桌灯, 钻进了被窝里。
+&lt;&lt;/fadeout&gt;&gt;&lt;&lt;set $sleept = 1&gt;&gt;
+&lt;&lt;timed 6s&gt;&gt;&lt;&lt;dreams&gt;&gt;&lt;&lt;/timed&gt;&gt;
 &lt;&lt;else&gt;&gt;
-/*一般梦判断*/
-&lt;&lt;if setup.getStat(&quot;nightmare&quot;) &lt;= 3&gt;&gt;
-&lt;&lt;if _s &lt;= 12&gt;&gt;&lt;&lt;set $choice to &quot;一般梦&quot;&gt;&gt;
-&lt;&lt;elseif _s &lt;= 19&gt;&gt;&lt;&lt;set $choice to &quot;美梦&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;&lt;&lt;set $choice to &quot;噩梦&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;if setup.getStat(&quot;nightmare&quot;) &lt;= 6&gt;&gt;
-&lt;&lt;if _s &lt;= 10&gt;&gt;&lt;&lt;set $choice to &quot;一般梦&quot;&gt;&gt;
-&lt;&lt;elseif _s &lt;= 15&gt;&gt;&lt;&lt;set $choice to &quot;美梦&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;&lt;&lt;set $choice to &quot;噩梦&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif setup.getStat(&quot;nightmare&quot;) &lt;= 12&gt;&gt;
-&lt;&lt;if _s &lt;= 8&gt;&gt;&lt;&lt;set $choice to &quot;一般梦&quot;&gt;&gt;
-&lt;&lt;elseif _s &lt;= 12&gt;&gt;&lt;&lt;set $choice to &quot;美梦&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;&lt;&lt;set $choice to &quot;噩梦&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif setup.getStat(&quot;nightmare&quot;) &lt;= 20&gt;&gt;
-&lt;&lt;if _s &lt;= 4&gt;&gt;&lt;&lt;set $choice to &quot;一般梦&quot;&gt;&gt;
-&lt;&lt;elseif _s &lt;= 8&gt;&gt;&lt;&lt;set $choice to &quot;美梦&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;&lt;&lt;set $choice to &quot;噩梦&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;else&gt;&gt;&lt;&lt;set $choice to &quot;噩梦&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;goto &quot;梦&quot;&gt;&gt;
-
-&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/timed&gt;&gt;
+你不久前才从梦中醒来, 丝毫没有困意, 也许你该继续手头的工作
+&lt;&lt;link ▷「返回」 家&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="103" name="礁岩区" tags="nobr" position="100,500" size="100,100">&lt;&lt;if $loc != &quot;礁岩区&quot;&gt;&gt;&lt;&lt;set $loc = &quot;礁岩区&quot;&gt;&gt;&lt;&lt;set $minute to $minute+ random(5,10)&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;font color=#D4A34C&gt;//位于小岛东南方的一片礁石遍布的浅海, 礁岩海岸间隐藏着大大小小的海蚀洞穴//&lt;br&gt;&lt;/font&gt;
 &lt;br&gt;
@@ -12113,8 +12128,8 @@ nix的话语仍在你耳边回响：“这不是偶然，肯定是有目的的�
 &lt;br&gt;
 
 &lt;br&gt;&lt;&lt;link ▷「离开」 草甸&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="112" name="花店" tags="nobr" position="200,600" size="100,100">&lt;h3&gt;@@.emboss;花店@@&lt;/h3&gt;
-&lt;font color=#D4A34C&gt;【营业时间 礼拜三 日出~日落】&lt;/font&gt;&lt;br&gt;
-&lt;&lt;if $sq.flowerstore == 0&gt;&gt;&lt;&lt;set $sq.flowerstore = 0&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;font color=#D4A34C&gt;【营业时间 礼拜三 早晨~黄昏】&lt;/font&gt;&lt;br&gt;
+&lt;&lt;if !$sq.flowerstore&gt;&gt;&lt;&lt;set $sq.flowerstore = 0&gt;&gt;&lt;&lt;notify 3s&gt;&gt;Seisi提问新增“花店”&lt;&lt;/notify&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $nixloc != &quot;花店&quot;&gt;&gt;花店的门紧闭着，你看见门口的告示说花店仅在礼拜三开门&lt;br&gt;
 &lt;&lt;else&gt;&gt;&lt;&lt;set $loc = &quot;花店&quot;, $minute += random(3,8)&gt;&gt;
 //你踏进这家一周只开一天的店, 旺盛生长的花草堆满了室内有限的空间. 枘朴小姐正坐在透光的玻璃窗下, 整理着一束干花//&lt;br&gt;
@@ -12137,10 +12152,10 @@ nix的话语仍在你耳边回响：“这不是偶然，肯定是有目的的�
 
 &lt;&lt;link ▷「离开」 高地&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="114" name="草甸" tags="nobr" position="200,400" size="100,100">&lt;&lt;set $loc = &quot;草甸&quot;&gt;&gt;&lt;&lt;set $minute += random(10,20)&gt;&gt;&lt;&lt;set $HP -= 1&gt;&gt;
 &lt;&lt;audio &quot;mainBGM&quot; unmute&gt;&gt;&lt;&lt;set _n to random(5,15)&gt;&gt;
-&lt;&lt;if $choice == &quot;拒绝&quot;&gt;&gt;故事的内容是他那亦真亦假的海盗生涯, 而你已经听过无数遍, 你有些不耐烦的拒绝了Era. 你更想要实质性的回报&lt;br&gt;
+&lt;&lt;if $choice == &quot;拒绝&quot;&gt;&gt;故事的内容是他那亦真亦假的海盗生涯, 而你已经听过无数遍, 你有些不耐烦的拒绝了埃拉. 你更想要实质性的回报&lt;br&gt;
 &lt;font color=#4E84BA&gt;✧你获得_n枚鸟羽✧&lt;/font&gt;&lt;&lt;set $feather += _n&gt;&gt;&lt;&lt;redo&gt;&gt;
 &lt;&lt;elseif $lostsheep[0] == 2&gt;&gt;
-你仍未找到前一天丢失的绵羊, 也许那可怜的家畜已经成为了某个猎手的晚餐. Era从羊圈里走出来, 脸上写满了失望&lt;br&gt;&lt;br&gt;⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
+你仍未找到前一天丢失的绵羊, 也许那可怜的家畜已经成为了某个猎手的晚餐. 埃拉从羊圈里走出来, 脸上写满了失望&lt;br&gt;&lt;br&gt;⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
 &lt;&lt;link ▷「交罚金」 特殊选项&gt;&gt;&lt;&lt;set $choice to &quot;交罚金&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;if $sin &gt;=50 || $player.heartless &gt;= 12&gt;&gt;&lt;br&gt;&lt;&lt;link ▷「无视他」 特殊选项&gt;&gt;&lt;&lt;set $choice to &quot;无视他&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif $choice == &quot;放羊&quot; &amp;&amp; $lostsheep[0] != 1&gt;&gt;
@@ -12248,16 +12263,17 @@ function qteChange() {
 &lt;br&gt;&lt;&lt;link ▷「猎枪」&gt;&gt;&lt;&lt;set $choice to &quot;猎枪&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/timed&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="117" name="装备" tags="" position="1700,600" size="100,100">&lt;&lt;set setup.tool = new Map([
- [&quot;无&quot;, {knowledge : 0, strength : 0, observation : 0, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy : 0}],
+ 	 [&quot;无&quot;, {knowledge : 0, strength : 0, observation : 0, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy : 0}],
     [&quot;鱼竿&quot;, {knowledge : 0, strength : 0, observation : 1, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy : 0}],
     [&quot;猎枪&quot;, {knowledge : 0, strength : 1, observation : 0, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy : 0}],
-	[&quot;短镰&quot;, {knowledge : 0, strength : 8, observation : 0, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, bloody: 4, confidence : 0, generous: 0, enjoy : 0}],
+	 [&quot;短镰&quot;, {knowledge : 0, strength : 8, observation : 0, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, bloody: 4, confidence : 0, generous: 0, enjoy : 0}],
     [&quot;月光提灯&quot;, {knowledge : 0, strength : 0, observation : 4, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy : 0}],
     [&quot;獠牙匕首&quot;, {knowledge : 0, strength : 3, observation : 0, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy : 0}],
+    [&quot;徕卡相机&quot;, {knowledge : 1, strength : 0, observation : 2, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy : 0}],
 ])&gt;&gt;
 
 &lt;&lt;set setup.head = new Map([
- [&quot;无&quot;, {knowledge : 0, strength : 0, observation : 0, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy : 0}],
+	 [&quot;无&quot;, {knowledge : 0, strength : 0, observation : 0, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy : 0}],
     [&quot;玫瑰花环&quot;, {knowledge : 0, strength : 0, observation : 1, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy : 1}],
     [&quot;蜡染方巾&quot;, {knowledge : 2, strength : 0, observation : 4, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 2, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy : 0}],
 ])&gt;&gt;
@@ -12266,6 +12282,7 @@ function qteChange() {
  [&quot;无&quot;, {knowledge : 0, strength : 0, observation : 0, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy : 0}],
     [&quot;贝壳项链&quot;, {knowledge : 0, strength : 0, observation : 0, persuasive : 1, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy : 0}],
     [&quot;吊坠项链&quot;, {knowledge : 0, strength : 0, observation : 2, persuasive : 4, wound : 0, dread : 0, nightmare : 0, suspicion : 2, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy : 0}],
+    [&quot;猫眼石吊坠&quot;, {knowledge : 0, strength : 0, observation : 0, persuasive : 3, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy : 0}],
 ])&gt;&gt;
 
 &lt;&lt;set setup.top = new Map([
@@ -12279,7 +12296,6 @@ function qteChange() {
 &lt;&lt;set setup.hand = new Map([
  [&quot;无&quot;, {knowledge : 0, strength : 0, observation : 0, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy : 0}],
     [&quot;蛇骷戒指&quot;, {knowledge : 6, strength : 0, observation : 6, persuasive : 0, wound : 0, dread : 0, nightmare : 3, suspicion : 0, cautious: 0, heartless: 3, bloody: 0, confidence : 0, generous: 0, enjoy : 0}],
-	[&quot;关节指环&quot;, {knowledge : 0, strength : 2, observation : 0, persuasive : 2, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy : 0}],
     [&quot;皮革手套&quot;, {knowledge : 0, strength : 2, observation : 0, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy : 0}],
     [&quot;铂金戒指&quot;, {knowledge : 4, strength : 0, observation : 0, persuasive : 2, wound : 0, dread : 0, nightmare : 0, suspicion : 2, cautious: 0, heartless: 0, bloody: 0, confidence : 0, generous: 0, enjoy : 0}],
 ])&gt;&gt;
@@ -12419,52 +12435,43 @@ function qteChange() {
         &lt;div class=&quot;history&quot;&gt;
             最近赛果：第4场 - 2号马胜（赔率2.50）
         &lt;/div&gt;
-    &lt;/div&gt;</tw-passagedata><tw-passagedata pid="123" name="赠送" tags="nobr" position="2200,500" size="100,100">▸▹ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾◃◂&lt;br&gt;
+    &lt;/div&gt;</tw-passagedata><tw-passagedata pid="123" name="赠送" tags="nobr" position="2200,500" size="100,100">&lt;&lt;reopen&gt;&gt;
 &lt;&lt;for _i to 0; _i lt $item.uniqueLength;  _i++&gt;&gt;
 &lt;&lt;set _itemn = $item.list[_i]&gt;&gt;
-◈_itemn × &lt;&lt;=$item.count(_itemn)&gt;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+◈_itemn * &lt;&lt;=$item.count(_itemn)&gt;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
 &lt;&lt;capture _itemn&gt;&gt;
 &lt;&lt;link &quot;赠送&quot;&gt;&gt;&lt;&lt;set $gift = _itemn&gt;&gt;&lt;&lt;set $NPCinfo[$npc].gift = 1&gt;&gt;&lt;&lt;drop $item _itemn 1&gt;&gt;&lt;&lt;goto &quot;赠送回复&quot;&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/capture&gt;&gt;&lt;br&gt;
 &lt;&lt;/for&gt;&gt;
 &lt;&lt;for _i to 0; _i lt $food.uniqueLength;  _i++&gt;&gt;
 &lt;&lt;set _itemn = $food.list[_i]&gt;&gt;
-◈_itemn × &lt;&lt;=$food.count(_itemn)&gt;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+◈_itemn * &lt;&lt;=$food.count(_itemn)&gt;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
 &lt;&lt;capture _itemn&gt;&gt;
 &lt;&lt;link &quot;赠送&quot;&gt;&gt;&lt;&lt;set $gift = _itemn&gt;&gt;&lt;&lt;set $NPCinfo[$npc].gift = 1&gt;&gt;&lt;&lt;drop $food _itemn 1&gt;&gt;&lt;&lt;goto &quot;赠送回复&quot;&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/capture&gt;&gt;&lt;br&gt;
 &lt;&lt;/for&gt;&gt;
 &lt;&lt;for _i to 0; _i lt $book.uniqueLength;  _i++&gt;&gt;
 &lt;&lt;set _itemn = $book.list[_i]&gt;&gt;
-◈_itemn × &lt;&lt;=$book.count(_itemn)&gt;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+◈_itemn * &lt;&lt;=$book.count(_itemn)&gt;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
 &lt;&lt;capture _itemn&gt;&gt;
 &lt;&lt;link &quot;赠送&quot;&gt;&gt;&lt;&lt;set $gift = _itemn&gt;&gt;&lt;&lt;set $NPCinfo[$npc].gift = 1&gt;&gt;&lt;&lt;drop $book _itemn 1&gt;&gt;&lt;&lt;goto &quot;赠送回复&quot;&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/capture&gt;&gt;&lt;br&gt;
 &lt;&lt;/for&gt;&gt;
 &lt;&lt;for _i to 0; _i lt $material.uniqueLength;  _i++&gt;&gt;
 &lt;&lt;set _itemn = $material.list[_i]&gt;&gt;
-◈_itemn × &lt;&lt;=$material.count(_itemn)&gt;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+◈_itemn * &lt;&lt;=$material.count(_itemn)&gt;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
 &lt;&lt;capture _itemn&gt;&gt;
 &lt;&lt;link &quot;赠送&quot;&gt;&gt;&lt;&lt;set $gift = _itemn&gt;&gt;&lt;&lt;set $NPCinfo[$npc].gift = 1&gt;&gt;&lt;&lt;drop $material _itemn 1&gt;&gt;&lt;&lt;goto &quot;赠送回复&quot;&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/capture&gt;&gt;&lt;br&gt;
-&lt;&lt;/for&gt;&gt;
-▸▹ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾◃◂&lt;br&gt;</tw-passagedata><tw-passagedata pid="124" name="赠送回复" tags="nobr" position="2200,600" size="100,100">&lt;&lt;set _m to random(3,5)&gt;&gt;&lt;&lt;set _n to random(1,3)&gt;&gt;
+&lt;&lt;/for&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="赠送回复" tags="nobr" position="2200,600" size="100,100">&lt;&lt;set _m to random(3,5)&gt;&gt;&lt;&lt;set _n to random(1,3)&gt;&gt;
 &lt;&lt;if $npc == &quot;埃拉&quot;&gt;&gt;&lt;&lt;set $eragift = 0&gt;&gt;
-&lt;&lt;if Item.get($gift).hasTag(&quot;eralove&quot;)&gt;&gt;&lt;&lt;set $NPCinfo[$npc].love += _m&gt;&gt;【埃拉收下了你的礼物】&lt;br&gt;&lt;font color=#DB8E88&gt;❥埃拉对你的好感度增加了&lt;/font&gt;
-&lt;&lt;elseif Item.get($gift).hasTag(&quot;eralike&quot;)&gt;&gt;&lt;&lt;set $erahgd += _n&gt;&gt;【埃拉收下了你的礼物】&lt;br&gt;&lt;font color=#DB8E88&gt;❥埃拉对你的好感度增加了&lt;/font&gt;
+&lt;&lt;if Item.get($gift).hasTag(&quot;eralove&quot;)&gt;&gt;&lt;&lt;set $NPCinfo[$npc].love += _m&gt;&gt;【埃拉收下了你的礼物】&lt;br&gt;&lt;&lt;npcwave _m&gt;&gt;
+&lt;&lt;elseif Item.get($gift).hasTag(&quot;eralike&quot;)&gt;&gt;&lt;&lt;set $erahgd += _n&gt;&gt;【埃拉收下了你的礼物】&lt;br&gt;&lt;&lt;npcwave _n&gt;&gt;
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;erahate&quot;)&gt;&gt;&lt;&lt;set $erahgd -= _n&gt;&gt;【埃拉收下了你的礼物】&lt;br&gt;&lt;font color=#5F6B78&gt;💔Era对你的好感度降低了&lt;/font&gt;
 &lt;&lt;elseif $gift == &quot;蓝宝石&quot;&gt;&gt;&lt;&lt;set $erahgd += 10&gt;&gt;暗示自己的船沉船是枘朴小姐背地操控&lt;br&gt;&lt;font color=#DB8E88&gt;❥埃拉对你的好感度增加了&lt;/font&gt;
-&lt;&lt;else&gt;&gt;&lt;&lt;set $erahgd +=1&gt;&gt;【埃拉收下了你的礼物】&lt;br&gt;&lt;font color=#DB8E88&gt;❥埃拉对你的好感度增加了&lt;/font&gt;
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;elseif $npc == &quot;奥里&quot;&gt;&gt;&lt;&lt;set $eragift = 0&gt;&gt;
-&lt;&lt;if Item.get($gift).hasAnyTags(&quot;bow&quot;, &quot;sweet&quot;)&gt;&gt;&lt;&lt;set $NPCinfo[$npc].love += _m&gt;&gt;
-【奥里收下了你的礼物】&lt;br&gt;&lt;font color=#DB8E88&gt;❥奥里对你的好感度增加了&lt;/font&gt;
-&lt;&lt;elseif Item.get($gift).hasTag(&quot;eralike&quot;)&gt;&gt;&lt;&lt;set $NPCinfo[$npc].love += _n&gt;&gt;【奥里收下了你的礼物】&lt;br&gt;&lt;font color=#DB8E88&gt;❥奥里对你的好感度增加了&lt;/font&gt;
-&lt;&lt;elseif Item.get($gift).hasAnyTags(&quot;laji&quot;, &quot;bug&quot;)&gt;&gt;&lt;&lt;set $NPCinfo[$npc].love -= _n&gt;&gt;【奥里收下了你的礼物】&lt;br&gt;&lt;font color=#5F6B78&gt;💔奥里对你的好感度降低了&lt;/font&gt;
-&lt;&lt;else&gt;&gt;&lt;&lt;set $NPCinfo[$npc].love += 1&gt;&gt;【奥里收下了你的礼物】&lt;br&gt;&lt;font color=#DB8E88&gt;❥奥里对你的好感度增加了&lt;/font&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;set $erahgd +=1&gt;&gt;【埃拉收下了你的礼物】&lt;br&gt;&lt;&lt;npcwave 1&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;else&gt;&gt;
 &lt;&lt;set $NPCinfo[$npc].love += 1&gt;&gt;
 $npc收下了你的礼物
-
+&lt;&lt;npclove 1&gt;&gt;
 
 
 &lt;&lt;/if&gt;&gt;
@@ -12525,7 +12532,7 @@ $npc收下了你的礼物
 &lt;&lt;link ◈「写信」 写信&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;link ▷「离开」 家&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="127" name="酒馆" tags="nobr" position="300,600" size="100,100">&lt;h3&gt;@@.emboss;杜松子酒馆@@&lt;/h3&gt;
 &lt;font color=#D4A34C&gt;【营业时间：上午~午夜】&lt;/font&gt;&lt;br&gt;
-&lt;&lt;if $hour &gt;= 9 || $hour &lt; 3&gt;&gt;
+&lt;&lt;if $hour &gt;= 8 || $hour &lt; 3&gt;&gt;
 &lt;&lt;set $loc = &quot;酒馆&quot;, $minute += random(3,8)&gt;&gt;
 &lt;&lt;audio &quot;mainBGM&quot; mute&gt;&gt;
 &lt;&lt;audio &quot;pubBGM&quot; loop play&gt;&gt;
@@ -12574,6 +12581,7 @@ $npc收下了你的礼物
 &lt;&lt;if $sq.feather &lt; 1&gt;&gt;&lt;&lt;link &quot;✧鸟羽&quot;&gt;&gt;&lt;&lt;set _qst = &quot;鸟羽&quot;, $sq.feather = 1&gt;&gt;&lt;&lt;redo &quot;问题列表&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $sq.flowerstore == 0&gt;&gt;&lt;&lt;link &quot;✧花店&quot;&gt;&gt;&lt;&lt;set _qst = &quot;花店&quot;, $sq.flowerstore = 1&gt;&gt;&lt;&lt;redo &quot;问题列表&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $sq.snow == 0&gt;&gt;&lt;&lt;link &quot;✧雪&quot;&gt;&gt;&lt;&lt;set _qst = &quot;雪&quot;, $sq.snow = 1&gt;&gt;&lt;&lt;redo &quot;问题列表&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $sq.feedbirds == 0&gt;&gt;&lt;&lt;link &quot;✧鸟群&quot;&gt;&gt;&lt;&lt;set _qst = &quot;鸟群&quot;, $sq.feedbirds = 1&gt;&gt;&lt;&lt;redo &quot;问题列表&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;link &quot;✧岛上时间&quot;&gt;&gt;&lt;&lt;set _qst = &quot;时间&quot;&gt;&gt;&lt;&lt;redo &quot;问题列表&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link &quot;✧属性值&quot;&gt;&gt;&lt;&lt;set _qst = &quot;属性值&quot;&gt;&gt;&lt;&lt;redo &quot;问题列表&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link &quot;✧物品&quot;&gt;&gt;&lt;&lt;set _qst = &quot;物品&quot;&gt;&gt;&lt;&lt;redo &quot;问题列表&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
@@ -12603,8 +12611,11 @@ $npc收下了你的礼物
 &lt;&lt;set $textcard.pushUnique(&quot;雪&quot;)&gt;&gt;
 雪? 永无乡上只有一种雪, 至于你想的那种, 真是抱歉, 永无乡上没有冬天.
 
+&lt;&lt;elseif _qst == &quot;鸟群&quot;&gt;&gt;
+你对喂鸟感兴趣？瞧瞧我们，收获了一位鸟类爱好者，平时到也不见你对我的贡品有多上心。要是你就是只喜欢那些愚笨的，头脑简单的造粪机，永无乡上可是有得你看的。去拓荒者木屋找岛主吧，她也许有一些你在这种无趣的小活动里用得上的东西.
+
 &lt;&lt;elseif _qst == &quot;属性值&quot;&gt;&gt;
-永无乡上的居民拥有四种&lt;b&gt;基础属性&lt;/b&gt;, 也就是创建角色时分配的技能点, 与四种只有在异常时才会显示的&lt;b&gt;负面属性&lt;/b&gt;, 以及随机获取的&lt;b&gt;特质&lt;/b&gt;. 
+永无乡上的居民拥有四种&lt;b&gt;技能属性&lt;/b&gt;, 也就是创建角色时分配的技能点, 与四种只有在异常时才会显示的&lt;b&gt;负面属性&lt;/b&gt;, 以及六种随机获取的&lt;b&gt;特质&lt;/b&gt;. 
 &lt;br&gt;&lt;br&gt;
 属性关系到你在永无乡上的各方各面, 其中最直接的是故事中的选项, 而最重要的是你的//灵魂//状态.
 &lt;br&gt;&lt;br&gt;
@@ -12690,16 +12701,9 @@ $npc收下了你的礼物
 &lt;span&gt;&lt;&lt;if $pageS !=&quot;end&quot;&gt;&gt;&lt;&lt;button &#39;&lt;i class=&quot;fa-solid fa-arrow-right fa-xl&quot;&gt;&lt;/i&gt;&#39;&gt;&gt;&lt;&lt;set $page+=1&gt;&gt;&lt;&lt;redo &quot;阅读&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;/span&gt;
 &lt;/div&gt;&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="133" name="随便逛逛" tags="nobr" position="1200,600" size="100,100">&lt;&lt;set _s to random(1,100)&gt;&gt;
 &lt;&lt;if $loc == &quot;小镇&quot;&gt;&gt;
-&lt;&lt;if $spaloc == &quot;小镇&quot; &amp;&amp;  $NPCinfo[&quot;萨巴夫人&quot;].chat == 0&gt;&gt;
-你在小镇上漫无目的的闲逛着, 一位坐在长椅上晒太阳的老猫出现在你的视野里, 她手握着一支破旧的羽毛笔, 在一本厚重的抄写本上缓缓书写着. 那是萨巴夫人, 一位精于种植、热爱诗歌的女士, 如果你有合适的诗集, 可以跟她换些种子&lt;br&gt;&lt;br&gt;
-&lt;&lt;link &quot;✣「 萨巴夫人」&quot;&gt;&gt;&lt;&lt;set $npc to &quot;萨巴夫人&quot;&gt;&gt;
-&lt;&lt;run Dialog.setup($npc);
-  Dialog.wiki(Story.get(&quot;NPC&quot;).processText());
-  Dialog.open();&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 小镇&gt;&gt;&lt;&lt;/link&gt;&gt;
 
-&lt;&lt;elseif _s &lt;= 14&gt;&gt;
-&lt;&lt;set $choice = 0&gt;&gt;&lt;&lt;goto &quot;普通遭遇&quot;&gt;&gt;
+&lt;&lt;if _s &lt;= 14&gt;&gt;
+&lt;&lt;set $choice = 0&gt;&gt;&lt;&lt;goto &quot;散步遭遇&quot;&gt;&gt;
 
 &lt;&lt;elseif $dn == 1&gt;&gt;
 &lt;&lt;if $social&lt;=5&gt;&gt;&lt;&lt;lockedhouse&gt;&gt;
@@ -12911,10 +12915,45 @@ $npc收下了你的礼物
 
 选择献祭则猫族死亡
 选择信奉则猫族成为神明的信徒 
-*/</tw-passagedata><tw-passagedata pid="144" name="观鸟" tags="nobr" position="1100,700" size="100,100">&lt;&lt;if _bird == &quot;鸽子&quot;&gt;&gt;
+*/</tw-passagedata><tw-passagedata pid="144" name="观鸟" tags="nobr" position="1100,700" size="100,100">&lt;&lt;if $item.count(&#39;胶卷&#39;) &gt;= 1&gt;&gt;
+&lt;&lt;drop $item &quot;胶卷&quot; 1&gt;&gt;
+&lt;&lt;set $birdcollect.pushUnique(_bird)&gt;&gt;
+&lt;&lt;if _bird == &quot;鸽子&quot;&gt;&gt;
+鸽子们在埋头挑挑拣拣，啄食着自己心仪的食物，不时又有从别处飞来的鸽群加入它们。&lt;br&gt;&lt;br&gt;
+//*咔嚓*//你按下快门，几只胆小的鸽子在声音响起时被惊起，飞向了远处。
+&lt;&lt;elseif _bird == &quot;蓝山雀&quot;&gt;&gt;
+待你取出相机，那只蓝山雀已不见踪影，你抬头向一旁的树梢望去，搜索它的痕迹。被树叶遮挡的缝隙间跳跃着一点鲜艳的蓝色，你意识到它正在枝叶间搜寻着食物，显然你刚刚给它的那些还不够填满这只小毛球的大胃袋。&lt;br&gt;&lt;br&gt;
+//*咔嚓*//你拍下了蓝山雀歪着头打量你的景象，小脑袋里仿佛在思考你是否还会给它更多的虫子。
+&lt;&lt;elseif _bird == &quot;冠蓝鸦&quot;&gt;&gt;
+你伸手去拿相机，冠蓝鸦们似乎被你这样的举动惊吓，头上的蓝色羽冠四散炸开，几只一同展开翅膀，飞回了天空，盘旋在上方，似乎还对食物恋恋不舍。&lt;br&gt;&lt;br&gt;
+//*咔嚓*//你拍下了冠蓝鸦在空中盘飞的景象。
+&lt;&lt;elseif _bird == &quot;夜织鸟&quot;&gt;&gt;
+&lt;&lt;if $hour &gt;=4 &amp;&amp; $hour &lt;=7 &gt;&gt;
+更多的夜织鸟向你聚集过来，它们像迎接新日一般迎接你的到来，短促尖锐的声音充斥你的耳蜗。&lt;br&gt;&lt;br&gt;
+//*咔嚓*//你拍下了夜织鸟们在日出中簇拥着你的景象。
+&lt;&lt;elseif $hour &gt;=17 &amp;&amp; $hour &lt;=20&gt;&gt;
+来吃食的夜织鸟愈发稀少，它们结伴成群的飞离你，向四周的巢穴归去，落日的光线在鸟群短促尖锐的声音中逐渐昏暗。&lt;br&gt;&lt;br&gt;
+//*咔嚓*//你拍下了夜织鸟们在日落中归巢的景象。
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;elseif _bird == &quot;乌鸫&quot;&gt;&gt;
+你拿出相机时就又有一只乌鸫飞来落在地上，而先前叼走食物的乌鸫也注意到了这位入侵者，它又飞回，落在了距离入侵者几步的位置。它低下了头，橘黄色的喙几乎碰到了地面，一同垂下的还有它的尾巴。入侵者站在原地打量着它，不时看向他处。看见威胁无用，它向入侵者跑去。&lt;br&gt;&lt;br&gt;
+//*咔嚓*//你拍下了乌鸫驱赶入侵者的景象。
+&lt;&lt;elseif _bird == &quot;乌鸦&quot;&gt;&gt;
 
+&lt;&lt;elseif _bird == &quot;金色鹩哥&quot;&gt;&gt;
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="145" name="跳转事件" tags="nobr" position="2100,1000" size="100,100">&lt;&lt;if $choice == &quot;晕倒&quot;&gt;&gt;
+&lt;&lt;elseif _bird == &quot;白鸦&quot;&gt;&gt;
+
+&lt;&lt;elseif _bird == &quot;无眼乌鸦&quot;&gt;&gt;
+
+&lt;&lt;elseif _bird == &quot;渡鸦&quot;&gt;&gt;
+
+&lt;&lt;elseif _bird == &quot;灰喜鹊&quot;&gt;&gt;
+没写
+
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;你按下快门，按钮却直坠到底，发出干瘪的吱呀声，如同咬空的捕兽夹。你需要更多的胶卷。
+&lt;&lt;/if&gt;&gt;&lt;br&gt;&lt;br&gt;</tw-passagedata><tw-passagedata pid="145" name="跳转事件" tags="nobr" position="2100,1000" size="100,100">&lt;&lt;if $choice == &quot;晕倒&quot;&gt;&gt;
 你耗尽了所剩无几的力气，记忆中的最后一幕，是世界天旋地转着在你眼前消失。不知过去多久，在你醒来时，你正安稳的躺在你的住所中，Seisi站在你的胸口上，居高临下的看着你。
 &lt;br&gt;&lt;br&gt;
 &quot;你觉得你在这里是什么大人物，不是吗？&quot;它的声音像木锯一样嘶哑，这往往预示着这只老鸟正处于坏心情，&quot;你照顾不好自己，晕倒在岛上某个旮旯角落，还要把这弄得众人皆知。你知道抬你回来耽误了我们多少猫的时间吗？岛主还要我守在这儿，等着你醒来，确保你真的是平安无事。好像我存在就是为了做这种事。&quot;
@@ -12944,12 +12983,37 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/do&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-</tw-passagedata><tw-passagedata pid="146" name="火之梦" tags="nobr" position="1500,200" size="100,100">&lt;&lt;if $fpfirst ==1 &amp;&amp; $dream_fire.I ==0&gt;&gt;
+</tw-passagedata><tw-passagedata pid="146" name="火之梦" tags="nobr" position="1500,200" size="100,100">&lt;&lt;if $mss &gt;= 2 &amp;&amp; $dream_fire.zero ==0&gt;&gt;
+&lt;&lt;set $dream_fire.zero == 1&gt;&gt;&lt;&lt;eatfood 50&gt;&gt;
+你有些茫然。&lt;br&gt;&lt;br&gt;
+
+&lt;&lt;timed 2s t8n&gt;&gt;你以前好像来过这里。&lt;br&gt;
+&lt;&lt;next 2s t8n&gt;&gt;但记忆就像被一堵厚重的金属墙阻隔起来，转向，分流，从大海进入了另一支溪流，仿佛水母身体上不同的触须，毫无思想的伸展出去。&lt;br&gt;&lt;br&gt;
+
+&lt;&lt;next 4s t8n&gt;&gt;你记不清你到底是水母，还是水母的触须。&lt;br&gt;&lt;br&gt;
+
+&lt;&lt;next 3s t8n&gt;&gt;你也记不清你在这里待了多久，这里冰冷，黑暗，触手可及。&lt;br&gt;
+&lt;&lt;next 3s t8n&gt;&gt;这里不是你来自的地方。&lt;br&gt;&lt;br&gt;
+
+&lt;&lt;next 2s t8n&gt;&gt;//这里是你所属于的地方。//&lt;br&gt;&lt;br&gt;
+
+&lt;&lt;next 2s t8n&gt;&gt;从你无法记起的时刻开始，你就属于这里，直至你无法叙述的时刻为止，你都属于这里。&lt;br&gt;
+&lt;&lt;next 4s t8n&gt;&gt;//永恒//的归宿。&lt;br&gt;&lt;br&gt;
+
+&lt;&lt;next 3s t8n&gt;&gt;你在这个想法的安慰下缓缓醒来。&lt;br&gt;&lt;br&gt;
+
+&lt;&lt;next 2s t8n&gt;&gt;&lt;&lt;link ▷「继续」&gt;&gt;&lt;&lt;goto &quot;家&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/timed&gt;&gt;
+
+&lt;&lt;/if&gt;&gt;
+
+
+&lt;&lt;if $fpfirst ==1 &amp;&amp; $dream_fire.I ==0&gt;&gt;
 /*I-第一次点燃壁炉*/
 &lt;&lt;set $dream_fire.I == 1&gt;&gt;&lt;&lt;eatfood 50&gt;&gt;
-&lt;&lt;timed 2s t8n&gt;&gt;你点燃了壁炉。&lt;br&gt;&lt;br&gt;
+你点燃了壁炉。&lt;br&gt;&lt;br&gt;
 
-&lt;&lt;next 3s t8n&gt;&gt;这很好。壁炉温暖，明亮，壁炉就是你所需的。&lt;br&gt;&lt;br&gt;
+&lt;&lt;timed 2s t8n&gt;&gt;这很好。壁炉温暖，明亮，壁炉就是你所需的。&lt;br&gt;&lt;br&gt;
 
 &lt;&lt;next 4s t8n&gt;&gt;//壁炉就是你所在的。//&lt;br&gt;&lt;br&gt;
 
@@ -12967,8 +13031,10 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 
 &lt;&lt;next 2s t8n&gt;&gt;&lt;&lt;link ▷「继续」&gt;&gt;&lt;&lt;goto &quot;家&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;elseif $mss == &quot;篝火晚会结束&quot; &amp;&amp; $dream_fire.II ==0&gt;&gt;
+
+&lt;&lt;if $mss &gt;= 4.5 &amp;&amp; $dream_fire.II ==0&gt;&gt;
 /*II-篝火晚会*/
 &lt;&lt;set $dream_fire.II == 1&gt;&gt;
 你在篝火旁跳舞。
@@ -12991,10 +13057,10 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 
 
 直到你醒来的时候你的一部分还在歌唱。
+&lt;&lt;/if&gt;&gt;
 
 
-
-&lt;&lt;elseif $mss == &quot;篝火晚会结束&quot; &amp;&amp; $dream_fire.III ==0&gt;&gt;
+&lt;&lt;if $mss == &quot;篝火晚会结束&quot; &amp;&amp; $dream_fire.III ==0&gt;&gt;
 III-杂货铺失火
 
 你很痛苦。
@@ -13016,7 +13082,7 @@ III-杂货铺失火
 
 于是你尖叫着醒来，意识到自己从未有这么多的渴望。
 
-
+&lt;&lt;/if&gt;&gt;
 
 
 IV-被要求离岛
@@ -13308,7 +13374,7 @@ XIII-她？
 她沉默不语，而你，你匍匐，你行走，你在亮光面前只能跟随，你说，我将一切奉献于您。
 
 她推开门，或者是其他什么东西，一个你暂时还无法理解的东西。她问你为什么要这样做，她说她不会让你那样做。
-于是你把她留在了那个冰冷，黑暗，触手可及的地方。孤身一人。
+于是你把她留在了那个冰冷，黑暗，牢不可破的地方。孤身一人。
 
 你离开了她，你离开了——
 
@@ -13325,7 +13391,7 @@ XIII-她？
 
 
 
-你醒来的时候，岛上的海风正在温柔的与海浪交织，你觉得这在某种角度听起来，也许就像歌唱。
+你醒来的时候，岛上的南风正在温柔的与海浪交织，你觉得这在某种角度听起来，也许就像歌唱。
 
 
 
@@ -13335,7 +13401,6 @@ XIII-她？
 
 你，你们——不，你和他，还是他和它？
 
-&lt;&lt;/if&gt;&gt;
 </tw-passagedata><tw-passagedata pid="147" name="玫瑰花园" tags="" position="1500,300" size="100,100">你做了一朵关于玫瑰花的梦。
 
 在梦中，你是那朵玫瑰。你是什么颜色的？你不确定，你还没有固定下颜色，也许是因为你还没有生长为一朵玫瑰花。
@@ -13426,13 +13491,15 @@ XIII-她？
 有猫在你推门而入后伸手扶住了图书馆那向内开启的门。
 
 图书馆里的光线雀跃地落到物质表面，紧接着奔向你，几个心跳后，你在逆光中看清了在你身后踌躇的猫正是$tnn。他看上去倒很乐意见到你，仿佛这是一个他一直在等待的与你相遇的契机。
-
-你不知道该怎么处理这个想法。
-
+&lt;&lt;do&gt;&gt;
+&lt;&lt;if $choice == 0&gt;&gt;
 &lt;&lt;link ▷「打招呼」 主线D4&gt;&gt;&lt;&lt;set $choice to &quot;打招呼&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「无视他」 主线D4&gt;&gt;&lt;&lt;set $choice to &quot;无视他&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「无视他」 主线D4&gt;&gt;&lt;&lt;set $choice to &quot;无视他&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 
-你有些迟疑的意识到，此时的馆内没有其他猫在场。这也没什么可奇怪的，这里狭小，拥挤，带着一丝挥之不去的旧日的哀伤，没几只猫愿意在这里过多逗留；只是当往常似乎时刻都在沉迷书写的奥提斯也缺席的时候，你才发觉你对那笔尖摩擦纸面的沙沙声是多么怀念。
+&lt;&lt;elseif $choice == &quot;打招呼&quot;&gt;&gt;
+
+
+你有些迟疑的意识到，此时的馆内没有其他猫在场。这也没什么可奇怪的，这里狭小，拥挤，带着一丝挥之不去的死寂，没几只猫愿意在这里过多逗留；只是当往常似乎时刻都在沉迷书写的奥提斯也缺席的时候，你才发觉你对那笔尖摩擦纸面的沙沙声是多么怀念。
 
 
 
@@ -13441,8 +13508,8 @@ XIII-她？
 &lt;&lt;link ▷「询问奥里」 主线D4&gt;&gt;&lt;&lt;set $choice to &quot;询问奥里&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 
-
-
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;
 
 
 
@@ -13757,7 +13824,31 @@ XIII-她？
   Dialog.wiki(Story.get(&quot;兑换&quot;).processText());
   Dialog.open();
 &gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="157" name="钓鱼图鉴" tags="" position="1800,500" size="100,100">1111111</tw-passagedata><tw-passagedata pid="158" name="报纸" tags="" position="1200,900" size="100,100"></tw-passagedata><tw-passagedata pid="159" name="制作" tags="nobr" position="1400,600" size="100,100">&lt;center&gt;&lt;h1&gt;工坊制作台&lt;/h1&gt;
+&lt;&lt;elseif _pages == &quot;钓鱼&quot;&gt;&gt;
+&lt;&lt;for _i to 0; _i lt $fishcollect.length;  _i++&gt;&gt;
+&lt;&lt;=$fishcollect[_i]&gt;&gt;
+&lt;&lt;/for&gt;&gt;
+&lt;&lt;elseif _pages == &quot;狩猎&quot;&gt;&gt;
+&lt;&lt;for _i to 0; _i lt $preycollect.length;  _i++&gt;&gt;
+&lt;&lt;=$preycollect[_i]&gt;&gt;
+&lt;&lt;/for&gt;&gt;
+&lt;&lt;elseif _pages == &quot;观鸟&quot;&gt;&gt;
+&lt;&lt;for _i to 0; _i lt $birdcollect.length;  _i++&gt;&gt;
+&lt;&lt;=$birdcollect[_i]&gt;&gt;
+&lt;&lt;/for&gt;&gt;
+&lt;&lt;elseif _pages == &quot;花卉&quot;&gt;&gt;
+&lt;&lt;for _i to 0; _i lt $flowercollect.length;  _i++&gt;&gt;
+&lt;&lt;=$flowercollect[_i]&gt;&gt;
+&lt;&lt;/for&gt;&gt;
+&lt;&lt;elseif _pages == &quot;酿酒&quot;&gt;&gt;
+&lt;&lt;for _i to 0; _i lt $drinkcollect.length;  _i++&gt;&gt;
+&lt;&lt;=$drinkcollect[_i]&gt;&gt;
+&lt;&lt;/for&gt;&gt;
+&lt;&lt;elseif _pages == &quot;烹饪&quot;&gt;&gt;
+&lt;&lt;for _i to 0; _i lt $foodcollect.length;  _i++&gt;&gt;
+&lt;&lt;=$foodcollect[_i]&gt;&gt;
+&lt;&lt;/for&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="157" name="报纸" tags="" position="1200,900" size="100,100">永无乡周报</tw-passagedata><tw-passagedata pid="158" name="制作" tags="nobr" position="1400,600" size="100,100">&lt;center&gt;&lt;h1&gt;工坊制作台&lt;/h1&gt;
 &lt;hr&gt;&lt;/center&gt;
 &lt;&lt;link ▷「离开」 工坊&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;br&gt;
 &lt;&lt;set _tmp = {}&gt;&gt;
@@ -13892,16 +13983,16 @@ _j*_v/&lt;&lt;itemcheck _j&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_j)&
 &lt;/div&gt;
 &lt;/div&gt;
 
-</tw-passagedata><tw-passagedata pid="160" name="弹窗导向页2" tags="" position="2300,1000" size="100,100">&lt;&lt;if _pages2 == &quot;兑换鱼饵成功&quot;&gt;&gt;
+</tw-passagedata><tw-passagedata pid="159" name="弹窗导向页2" tags="" position="2300,1000" size="100,100">&lt;&lt;if _pages2 == &quot;兑换鱼饵成功&quot;&gt;&gt;
 &lt;&lt;run Dialog.setup(&quot;兑换鱼饵&quot;);Dialog.wiki(&quot;你获得了鱼饵 * $amt2&quot;);Dialog.open();&gt;&gt;
 &lt;&lt;elseif _pages2 == &quot;任务描述&quot;&gt;&gt;
 &lt;&lt;run Dialog.setup(_name); Dialog.wiki(setup.items[_name].content); Dialog.open();&gt;&gt;
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="161" name="版本信息" tags="" position="1700,900" size="100,100">&lt;h2&gt;版本&lt;/h2&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="160" name="版本信息" tags="" position="1700,900" size="100,100">&lt;h2&gt;版本&lt;/h2&gt;
 1.2.0.070525_alpha&lt;br&gt;制作&amp;测试阶段&lt;br&gt;有任何问题请联系&lt;br&gt;qq: 641549971&lt;br&gt;
 &lt;h2&gt;更新日志&lt;/h2&gt;
 7.5	 修改了图书馆借书的流程
-	 在完善日常活动的文本 增加了一些风景文本 写了三个普通遭遇事件
+	 在完善日常活动的文本 增加了一些风景文本 写了三个散步遭遇事件
 7.4  恢复体力现在会有弹窗提示
 	 修好了布尔盖酒任务解锁bug、琼初见对话、天上人间流程
      增加了版本更新功能 位于右侧边栏最底部 游戏内使用
@@ -13927,21 +14018,34 @@ _j*_v/&lt;&lt;itemcheck _j&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_j)&
      开始使用黑星的弹窗宏
 
 
-&lt;h2&gt;CREDITS&lt;/h2&gt;世界观创作、游戏制作、剧情设计：Nix&lt;br&gt;文本编写：暮雪深、安德森、真央、Nix&lt;br&gt;特别感谢：Chapel、Shour、黑星&lt;br&gt;</tw-passagedata><tw-passagedata pid="162" name="浴室" tags="" position="1300,700" size="100,100">更换头像
+&lt;h2&gt;CREDITS&lt;/h2&gt;世界观创作、游戏制作、剧情设计：Nix&lt;br&gt;文本编写：暮雪深、安德森、真央、Nix&lt;br&gt;特别感谢：Chapel、Shour、黑星&lt;br&gt;</tw-passagedata><tw-passagedata pid="161" name="浴室" tags="" position="1300,700" size="100,100">更换头像
 &lt;&lt;do tag &quot;1&quot;&gt;&gt;输入 图床链接 记得点确认&lt;&lt;print &#39;&lt;img src=&quot; &#39; + $avatar + &#39; &quot; width=30% class=&quot;picr&quot;&gt;&#39;&gt;&gt;&lt;&lt;/do&gt;&gt;
 &lt;&lt;textbox &quot;_img&quot; &quot;&quot; autofocus&gt;&gt; &lt;&lt;link 确认&gt;&gt;&lt;&lt;set $avatar = _img&gt;&gt;&lt;&lt;redo &quot;1&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 药柜
 
-自我审视</tw-passagedata><tw-passagedata pid="163" name="版本更新" tags="" position="400,0" size="100,100">&lt;&lt;do&gt;&gt;当前版本：1.2.0.&lt;&lt;=$test&gt;&gt;25_alpha
-最新版本：1.2.0.70525_alpha
+自我审视</tw-passagedata><tw-passagedata pid="162" name="版本更新" tags="" position="400,0" size="100,100">&lt;&lt;do&gt;&gt;当前版本：1.2.0.&lt;&lt;=$test&gt;&gt;25_alpha
+最新版本：1.2.0.80325_alpha
 
-&lt;&lt;link 更新版本&gt;&gt;&lt;&lt;set $books = [&quot;布尔芬奇故事集&quot;,&quot;缠结之森的故事&quot;,&quot;变形记&quot;,&quot;奥德赛&quot;,&quot;伊利亚特&quot;,&quot;尼伯龙根之歌&quot;,&quot;诗体埃达&quot;,&quot;吉尔伽美什史诗&quot;,&quot;卢加尔班达史诗&quot;,&quot;霍诺里乌斯的宣誓&quot;,&quot;智者的正道&quot;,&quot;赫耳墨斯文集&quot;,&quot;所罗门之钥&quot;,&quot;自然的至高奥秘&quot;,&quot;恶魔伪君主制&quot;,&quot;大阿尔伯特&quot;,&quot;小阿尔伯特&quot;,&quot;黑母鸡&quot;,&quot;真魔法书&quot;,&quot;红色巨龙&quot;, &quot;历史绪论&quot;,&quot;来自金色草地&quot;,&quot;英国民间故事&quot;,&quot;德国民间故事&quot;,&quot;波兰民间故事&quot;,&quot;匈牙利民间故事&quot;,&quot;浮士德博士的生死悲剧史&quot;,&quot;十日谈&quot;,&quot;爱丽丝梦游仙境&quot;,&quot;一千零一夜&quot;,&quot;兰巴丹的女士们&quot;,&quot;罗兰之歌&quot;,&quot;贝奥武甫&quot;,&quot;牧歌&quot;,&quot;农事诗&quot;,&quot;埃涅阿斯纪&quot;]&gt;&gt;&lt;&lt;set $godstory = [&quot;黄金泪&quot;,&quot;失落之剑&quot;,&quot;生命之不朽&quot;,&quot;光的长子&quot;,&quot;言与真&quot;,&quot;浪与追寻&quot;,&quot;欲望的下行&quot;,&quot;风暴之心&quot;,&quot;水之智慧&quot;,&quot;藤蔓来自地底&quot;,&quot;二十花之书&quot;,&quot;血与创造&quot;,&quot;为黎明而献的血&quot;,&quot;镜中的讥讽者&quot;,&quot;兔与醉迷之殿&quot;,&quot;爱与心的束缚&quot;]&gt;&gt;&lt;&lt;set $test = 705&gt;&gt;&lt;&lt;notify 3s&gt;&gt;已更新至最新版本&lt;&lt;/notify&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link 更新版本&gt;&gt;&lt;&lt;set $sleepnt = 0, $drowner = 12, $resonance = 0&gt;&gt;&lt;&lt;set $test = 726&gt;&gt;&lt;&lt;notify 3s&gt;&gt;已更新至最新版本&lt;&lt;/notify&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
 (已触发内容的更新无法同步，测试阶段不建议长期游玩)
 &lt;&lt;/do&gt;&gt;
 &lt;h2&gt;更新日志&lt;/h2&gt;
+8.3  调整了角色
+7.29 提示文字效果改动
+	 增加了巴尔韦克老爷的初见对话
+7.27 修改埃拉交谈ing
+7.26 录入了之前写的几个随机事件 写了一堆打猎遭遇
+	 增加了午睡 改了一下时间分段
+7.23 写了两个散步遭遇事件
+7.22 写了观鸟的一部分文本
+	 补充了火之梦0号
+7.17 完成了观鸟的流程框架 文本未补完
+	 完成了喂鸟差分以及夜织鸟宠物的获取
+	 把未完成任务从数组改写成对象 建议开新档
+7.16 在获取新的提问项时增加了提示弹窗
 7.5	 修改了图书馆借书的流程
-	 在完善日常活动的文本 增加了一些风景文本 写了三个普通遭遇事件
+	 在完善日常活动的文本 增加了一些风景文本 写了三个散步遭遇事件
 7.4  恢复体力现在会有弹窗提示
 	 修好了布尔盖酒任务解锁bug、琼初见对话、天上人间流程
      增加了版本更新功能 位于右侧边栏最底部 游戏内使用
@@ -13964,11 +14068,11 @@ _j*_v/&lt;&lt;itemcheck _j&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_j)&
 6.27 完成了日志描述梗概、白雾地点文本、赏花文本差分
      修改了白雾遭遇的框架
      写了一个死亡结局的文本
-     开始使用黑星的弹窗宏</tw-passagedata><tw-passagedata pid="164" name="提示" tags="nobr widget" position="1800,900" size="100,100">&lt;&lt;widget &quot;eatfood&quot;&gt;&gt;&lt;&lt;set $HP += _args[0]&gt;&gt;&lt;&lt;notify 3s&gt;&gt;体力恢复_args[0]点&lt;&lt;/notify&gt;&gt;&lt;&lt;/widget&gt;&gt;
+     开始使用黑星的弹窗宏</tw-passagedata><tw-passagedata pid="163" name="提示" tags="nobr widget" position="1800,900" size="100,100">&lt;&lt;widget &quot;eatfood&quot;&gt;&gt;&lt;&lt;set $HP += _args[0]&gt;&gt;&lt;&lt;notify 3s&gt;&gt;体力恢复_args[0]点&lt;&lt;/notify&gt;&gt;&lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;storyget&quot;&gt;&gt;&lt;center&gt;&lt;font color=&quot;CF7C34&quot;&gt;✶开启任务✶_args[0]&lt;/font&gt;&lt;/center&gt;&lt;&lt;/widget&gt;&gt;
 
-&lt;&lt;widget &quot;badthing&quot;&gt;&gt;&lt;center&gt;&lt;font color=#BA3030&gt;_args[0]&lt;/font&gt;&lt;/center&gt;&lt;&lt;/widget&gt;&gt;
+&lt;&lt;widget &quot;badthing&quot;&gt;&gt;@@.badblur;_args[0]@@&lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;itemobtain&quot;&gt;&gt;
 &lt;span id=&quot;obtain&quot;&gt;✧ 你获得了_itemobtain &amp;nbsp;✧&lt;/span&gt;
@@ -13980,9 +14084,9 @@ _j*_v/&lt;&lt;itemcheck _j&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_j)&
 
 &lt;&lt;widget &quot;lessfeather&quot;&gt;&gt;
 &lt;&lt;run Dialog.setup(&quot;制作&quot;);Dialog.wiki(&quot;你的鸟羽不足&quot;);Dialog.open();&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="165" name="普通遭遇" tags="nobr" position="1100,900" size="100,100">&lt;&lt;set _s to random(1,100)&gt;&gt;
-
-&lt;&lt;if _s &lt;= 20 &amp;&amp; ($loc == &quot;草甸&quot; || $loc == &quot;秋毛岗&quot; || $loc == &quot;高地&quot; || $loc == &quot;罗索伦特湖&quot;) &gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="164" name="散步遭遇" tags="nobr" position="1000,1000" size="100,100">&lt;&lt;set _s to random(1,100)&gt;&gt;
+/*野猪*/
+&lt;&lt;if _s &lt;= 8 &amp;&amp; ($loc == &quot;草甸&quot; || $loc == &quot;秋毛岗&quot; || $loc == &quot;高地&quot; || $loc == &quot;罗索伦特湖&quot;) &gt;&gt;
 一头毛发粗乱、体型硕大的野猪猛地从灌木中冲了出来，獠牙泛着冷光，眼里带着狂躁与不安。显然不是简单的偶遇。
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;do&gt;&gt;
@@ -13995,8 +14099,7 @@ _j*_v/&lt;&lt;itemcheck _j&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_j)&
 &lt;&lt;checkWidget&gt;&gt;
 &lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
 它身侧出现了出一道血口。你清楚的让野猪明白了你强于它，它痛嚎着狼狈逃窜。
-&lt;&lt;if random(1,5) &lt;= 2&gt;&gt;你夺走了它的一枚獠牙。&lt;&lt;pickup $material &quot;獠牙&quot; 1&gt;&gt;&lt;&lt;set _itemobtain = &quot;獠牙*1&quot;&gt;&gt;&lt;&lt;itemobtain&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;addsexp 1&gt;&gt;
+&lt;&lt;addsexp 2&gt;&gt;&lt;&lt;if random(1,5) &lt;= 2&gt;&gt;你夺走了它的一枚獠牙。&lt;&lt;pickup $material &quot;獠牙&quot; 1&gt;&gt;&lt;&lt;set _itemobtain = &quot;獠牙*1&quot;&gt;&gt;&lt;&lt;itemobtain&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;else&gt;&gt;
 你勇气可嘉，但也只是徒劳。野猪庞大的身躯将你撞倒在地，它的獠牙撕裂了你臂膀，见到你躺在地上无力反抗的样子，它满意的扬长而去。&lt;br&gt;
 &lt;&lt;set $player.wound +=3&gt;&gt;&lt;&lt;badthing &quot;你的伤口增加了3级&quot;&gt;&gt;
@@ -14016,7 +14119,79 @@ _j*_v/&lt;&lt;itemcheck _j&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_j)&
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/do&gt;&gt;
 
-&lt;&lt;elseif _s &lt;= 40&gt;&gt;
+/*落水*/
+&lt;&lt;elseif _s &lt;= 10 &amp;&amp; ($loc == &quot;沙地&quot; || $loc == &quot;主港口&quot; || $loc == &quot;副港口&quot;)&gt;&gt;
+一声尖叫从前方传来，你跑上前去，看到一只还没八岁大的小猫就要被海浪卷走，而他的父母惊慌失措地站在岸边求救。该怎么办? 你要怎么做?
+&lt;br&gt;&lt;br&gt;
+&lt;&lt;do&gt;&gt;
+&lt;&lt;if $choice == 0&gt;&gt;
+&lt;&lt;link ▷「围观」&gt;&gt;&lt;&lt;set $choice to &quot;围观&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「救援」&gt;&gt;&lt;&lt;set $choice to &quot;救援&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;elseif $choice == &quot;围观&quot;&gt;&gt;你和一些好事者站在一起，讥笑的看着眼前的场景，笑声里夹杂这对这对粗心父母的评头论足。
+&lt;&lt;checkrage persuasive 18 32&gt;&gt;
+&lt;&lt;if _rst == &quot;大成功&quot;&gt;&gt;
+你越说越来劲，在指责的同时提出了几点海边危机的处理方法，有几个围观者甚至给了你赞许的目光。治安官最终赶到，救起了落水的孩子前。
+&lt;&lt;addpexp 3&gt;&gt;
+&lt;&lt;else&gt;&gt;
+治安官赶到了，在救起落水的孩子前，他没忘给一旁幸灾乐祸的你们来上一棍。
+&lt;&lt;set $social -=1&gt;&gt;&lt;&lt;badthing &quot;你的社交属性降低了1级&quot;&gt;&gt;
+&lt;&lt;set $player.wound +=1&gt;&gt;&lt;&lt;badthing &quot;你的伤口增加了1级&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;elseif $choice == &quot;救援&quot;&gt;&gt;
+你来不及思考了，不顾在场的还有围观者，脱下外套就跳进海里。
+&lt;&lt;checkrage strength 20 30&gt;&gt;
+&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
+当你再次浮上水面时, 手臂里抱着那个落水的孩子. 群众为你欢呼, 快要吓哭的父母接过了孩子, 当然没忘记给你报酬以表示感谢。
+&lt;&lt;set $feather += 100, _itemobtain = &quot;鸟羽 * 100&quot;&gt;&gt;&lt;&lt;itemobtain&gt;&gt;
+&lt;&lt;addsexp 3&gt;&gt;&lt;&lt;addsocial 1&gt;&gt;
+&lt;&lt;else&gt;&gt;
+你绝望的意识到在凶猛的潮流里, 哪怕是要救出一个小孩都不是易事, 你试图抓住他的手, 可下一秒迎面而来的浪潮让你也迷失在海里, 等到治安官赶到, 
+&lt;&lt;if random(1,3)==1&gt;&gt;只有你被从海中救出。&lt;&lt;set $drowner +=1&gt;&gt;&lt;&lt;else&gt;&gt;他将你们一同从海中救出。&lt;&lt;/if&gt;&gt;
+&lt;&lt;addsexp 1&gt;&gt;&lt;&lt;addsocial 1&gt;&gt;
+&lt;&lt;set $player.wound +=1&gt;&gt;&lt;&lt;badthing &quot;你的伤口增加了1级&quot;&gt;&gt;
+&lt;&lt;set $player.dread +=1&gt;&gt;&lt;&lt;badthing &quot;你的恐惧增加了1级&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/do&gt;&gt;
+
+/*抢劫*/
+&lt;&lt;elseif _s &lt;= 10 &amp;&amp; $loc == &quot;小镇&quot; &amp;&amp; $dn == 0&gt;&gt;
+夜晚的小镇寂静无声，唯一的异响来自远处两只蹑手蹑脚的公猫，他们砸碎了玛丽小姐的店铺一侧的窗户，自以为四下无猫的钻了进去。必须在他们逃走之前做出行动! 
+&lt;br&gt;&lt;br&gt;
+&lt;&lt;do&gt;&gt;
+&lt;&lt;if $choice == 0&gt;&gt;
+&lt;&lt;link ▷「阻止」&gt;&gt;&lt;&lt;set $choice to &quot;阻止&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「报警」&gt;&gt;&lt;&lt;set $choice to &quot;报警&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;elseif $choice == &quot;阻止&quot;&gt;&gt;
+&lt;&lt;checkrage strength 24 40&gt;&gt;
+&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
+两个小偷还在店里, 围着玛丽小姐的首饰柜手忙脚乱的撬着锁, 没发现你的存在. 你轻身翻过窗口, 在对方来得及反应前将其中一个制服, 而他那胆小鬼同伙则在发现无路可逃后束手就擒. 警官会带来你们各自应得的惩罚和奖励。
+&lt;&lt;set $feather += 20, _itemobtain = &quot;鸟羽 * 20&quot;&gt;&gt;&lt;&lt;itemobtain&gt;&gt;
+&lt;&lt;addsexp 3&gt;&gt;&lt;&lt;addsocial 1&gt;&gt;
+&lt;&lt;else&gt;&gt;
+拐入xx巷的转弯比梅林的胡子更加弯曲，你的鞋子在黑夜的土地上打滑，直接跌进了一旁的稻草堆里。你可能会得到一位业界资深的喜剧家的赞赏，但警官绝对不会喜欢这个。
+&lt;&lt;set $social -=1&gt;&gt;&lt;&lt;badthing &quot;你的社交属性降低了1级&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;elseif $choice == &quot;报警&quot;&gt;&gt;
+两个小偷还在店里，围着玛丽小姐的首饰柜手忙脚乱的撬着锁，没发现你的存在。你大步冲向警亭，晃醒了还在打瞌睡的执勤警官，但等你们到场时, 一切都太晚了。
+&lt;&lt;addsocial 1&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;elseif $choice == &quot;报警&quot;&gt;&gt;
+冒险阻止抢劫可不在你的每日计划内. 没有其他猫在场目击, 就这样悄悄走开不会收到责备, 责任全在失职的警官们
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/do&gt;&gt;
+
+/*醉汉*/
+&lt;&lt;elseif _s &lt;= 20&gt;&gt;
 一个摇摇欲坠的身影吸引了你的视线——他的衣装破旧不堪，手里拎着半瓶酒，含糊地自言自语着那些醉汉们一贯的呓语。接着，他迷茫的双眼注意到你，不论你身上有多少钱，他似乎都决心将其据为己有。
 &lt;br&gt;&lt;br&gt;
 他猛然向你扑来。
@@ -14067,7 +14242,8 @@ _j*_v/&lt;&lt;itemcheck _j&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_j)&
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/do&gt;&gt;
 
-&lt;&lt;elseif _s &lt;= 70&gt;&gt;
+/*友人间的争吵*/
+&lt;&lt;elseif _s &lt;= 30&gt;&gt;
 争执声在几条尾巴开外就已经传到了你的耳中，看客也如鱼群般聚集起来，你奋力挤进，看到了在视线中心的两猫。一位衣着灯芯绒衬衫，一位身穿平整的西装，看着都是颇具教养，所以他们争论的内容让你不敢置信：&quot;你得为上次的饭菜付了钱才能再来我家的聚会！&quot;&lt;br&gt;&lt;br&gt;
 &quot;付钱？明明是你邀请我的！&quot;&lt;br&gt;&lt;br&gt;
 &quot;谁想到你能吃那么多！&quot;&lt;br&gt;&lt;br&gt;
@@ -14082,7 +14258,7 @@ _j*_v/&lt;&lt;itemcheck _j&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_j)&
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;elseif $choice == &quot;劝和&quot;&gt;&gt;
 你插进他们之间，开口向他们讲述道理。
-&lt;&lt;set _t to random(24,38)&gt;&gt;&lt;&lt;set _r to setup.getStat(&quot;persuasive&quot;)*_t/10&gt;&gt;&lt;&lt;set _a to setup.getStat(&quot;persuasive&quot;)/_r*100&gt;&gt;&lt;&lt;checkWidget&gt;&gt;
+&lt;&lt;checkrage persuasive 24 38&gt;&gt;
 &lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
 你坚定的语调缓和了气氛，双方的情绪逐渐平稳，争吵结束了。两猫化解了矛盾，重归于好。
 &lt;&lt;addpexp 1&gt;&gt;&lt;&lt;addsocial 1&gt;&gt;
@@ -14102,6 +14278,119 @@ _j*_v/&lt;&lt;itemcheck _j&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_j)&
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/do&gt;&gt;
 
+/*羔羊*/
+&lt;&lt;elseif _s &lt;= 35&gt;&gt;
+耳边传来一阵微弱的叫声，很快就在空旷的环境中消弭下去，就在你要继续前行时，又一声在你身旁颤抖着响起。你拨开脚边的草丛，一只看起来还不出几月大的羊羔就蜷缩在里面，它看起来虚弱又无助，急需回到羊群的庇护中。&lt;br&gt;&lt;br&gt;
+&lt;&lt;do&gt;&gt;
+&lt;&lt;if $choice == 0&gt;&gt;
+&lt;&lt;link ▷「救助」&gt;&gt;&lt;&lt;set $choice to &quot;救助&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「离开」&gt;&gt;&lt;&lt;set $choice to &quot;离开&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;if setup.getStat(&quot;bloody&quot;) &gt;= 2&gt;&gt;&lt;&lt;link ▷「猎杀」&gt;&gt;&lt;&lt;set $choice to &quot;猎杀&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;elseif $choice == &quot;救助&quot;&gt;&gt;
+你伸手去抱起羊羔，这可怜的小家伙毫不反抗，即使经历了一系列让它最终变成这副模样的事情，小羊仍然柔软又温暖。你轻声安抚着它，接着便开始设法让你俩安全抵达羊舍。&lt;br&gt;&lt;br&gt;
+小羊很乖巧，这是最庆幸的事，但通往羊舍的路似乎并不想顺从你的心意。永无乡上的道路大多接近自由生长的状态，这也许就是自然的本色，但此时它们变成了你的阻碍，蜿蜒，曲折，被草丛淹没，就在下一个拐角处，你感到脚腕扭过了一个不自然的弯度。
+&lt;&lt;checkrage strength 12 25&gt;&gt;
+&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
+你及时调整重心，将你和羊羔从一场疼痛的灾难中解救出来，小羊安稳的躺在你的怀抱里。&lt;br&gt;
+&lt;&lt;addsexp 1&gt;&gt;
+&lt;&lt;else&gt;&gt;
+你没能站稳，身体失去重心，跌向了坚实的地面，在摔倒之前，你紧紧抱住小羊，用身体护住它。&lt;br&gt;&lt;br&gt;
+&lt;&lt;set $player.wound +=1&gt;&gt;&lt;&lt;badthing &quot;你的伤口增加了1级&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+等你来到羊舍，向埃拉说明事情经过并将小羊交给他时，他脸上却并没有寻回迷失羊羔的喜悦。他动作娴熟的检查着小羊的身体状况，在确认一切无事后闭上眼睛长舒一口气，接着便撑起疲惫的双眼向你道谢。照顾羊群一定把他累坏了。&lt;&lt;set $sheep +=1&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 草甸&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;elseif $choice == &quot;离开&quot;&gt;&gt;
+你不想揽上这个麻烦，那羊羔看上去糟糕透了，说不定在你把它送回去的路上就会死去。你不需要手上多出来一个死去的动物。
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;elseif $choice == &quot;猎杀&quot;&gt;&gt;
+待宰的羔羊，这就是第一个在你脑海中浮现的想法，于是你高举手中的$toolSlot，准备将它应得的命运赐给它。
+&lt;&lt;checkrage strength 24 40&gt;&gt;
+&lt;&lt;if _rst == &quot;大成功&quot;&gt;&gt;
+羊羔在你的动作停止时一声不吭的死去了，正如它不声不响的来到这个世界，血液飞溅到你的脸上，衣物上，你毫不在意，但其他猫可不这样想。&lt;br&gt;&lt;&lt;set $social -= 2&gt;&gt;&lt;&lt;set $player.suspicion  +=3&gt;&gt;
+&lt;&lt;addsexp 3&gt;&gt;&lt;&lt;badthing &quot;你的怀疑增加了3级&quot;&gt;&gt;&lt;&lt;badthing &quot;你的社会属性降低了2级&quot;&gt;&gt;
+一个&lt;&lt;set _soul = [&quot;红色&quot;,&quot;蓝色&quot;,&quot;绯红色&quot;,&quot;冰蓝色&quot;,&quot;紫色&quot;,&quot;灰绿色&quot;,&quot;黑色&quot;,&quot;灰色&quot;,&quot;蓝色&quot;,&quot;蓝色&quot;,&quot;蓝色&quot;,&quot;蓝色&quot;].random()&gt;&gt;_soul的灵魂跃然在你眼前，
+&lt;&lt;if $item.has(&#39;玻璃瓶&#39;)&gt;&gt;你将它装进玻璃瓶。
+&lt;&lt;catchsoul&gt;&gt;&lt;&lt;drop item &quot;玻璃瓶&quot; 1&gt;&gt;
+&lt;&lt;else&gt;&gt;
+在你来得及找到容器去盛载之前，它就消失的无影无踪了。
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;elseif _rst == &quot;成功&quot;&gt;&gt;
+你的一击没能让小羊立即死去，它惨叫着想起身逃跑，鲜血从它颈部的伤口涌出，同它的叫声一般四散开去。有其他猫在向这边走来，你已经失去了解决此事的最佳时机。
+&lt;&lt;set $player.suspicion  +=1&gt;&gt;
+&lt;&lt;addsexp 1&gt;&gt;&lt;&lt;badthing &quot;你的怀疑增加了1级&quot;&gt;&gt;&lt;br&gt;
+&lt;&lt;else&gt;&gt;
+恍然间，你失去重心，手中的工具被地心引力牵引，竟转向砸向你自己。羊羔被你这样的举动惊得大叫，有其他猫在向这边走来，你只能狼狈离开。
+&lt;&lt;set $player.wound +=1&gt;&gt;&lt;&lt;badthing &quot;你的伤口增加了1级&quot;&gt;&gt;
+&lt;&lt;set $player.suspicion +=1&gt;&gt;&lt;&lt;badthing &quot;你的怀疑增加了1级&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/do&gt;&gt;
+
+/*下棋*/
+&lt;&lt;elseif _s &lt;= 45&gt;&gt;
+不远处的树荫下，两只老猫正在几名旁观者注视中下着国际象棋，棋盘边摆放着两个小罐子，其中一个已经有了不少鸟羽。等你走近时，听到右边的老者无奈的嘟囔着：“底裤都要被你赢去喽....”&lt;br&gt;&lt;br&gt;
+&lt;&lt;do&gt;&gt;
+&lt;&lt;if $choice == 0&gt;&gt;
+&lt;&lt;link ▷「指点右边」&gt;&gt;&lt;&lt;set $choice to &quot;指点右边&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「夸赞左边」&gt;&gt;&lt;&lt;set $choice to &quot;夸赞左边&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「围观」&gt;&gt;&lt;&lt;set $choice to &quot;围观&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;elseif $choice == &quot;围观&quot;&gt;&gt;
+你看了一会，
+&lt;&lt;if random(1,5) &lt;=4&gt;&gt;不出意外的，左边的老者一路乘胜追击，又赢下了一局。
+&lt;&lt;else&gt;&gt;意料之外的，右边的老者灵光闪现，竟在快结束时反败为胜，喜悦跃然在他脸上，比那填进他的小罐子里的鸟羽更让你为之庆贺。&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;elseif $choice == &quot;指点右边&quot;&gt;&gt;
+你观察了一会现在的棋局，接着便自信的为右边的老者指出了下一步，
+&lt;&lt;if $social &lt;= 15&gt;&gt;老猫却不领情的瞪了你一眼，告诫你围观者不该干预棋局，周围的猫们都连连附和。
+&lt;&lt;else&gt;&gt;
+&lt;&lt;checkrage knowledge 22 38&gt;&gt;
+&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
+老猫按你指出的路线一一落子，局势瞬间逆转，很快便以右边取胜结束。老者长舒一口气，享受着许久未得的胜利的喜悦，感激的把这场赢得的赌资塞给你。
+&lt;&lt;set $feather += 40&gt;&gt;你获得了40鸟羽
+&lt;&lt;addkexp 1&gt;&gt;&lt;&lt;addsocial 1&gt;&gt;
+&lt;&lt;else&gt;&gt;
+老猫按你指出的路线一一落子，水平却依旧不及对手，有一些甚至可能还不如老者自己来下。他埋怨地看了你一眼，示意你要为这局败棋付出赌资。
+&lt;&lt;set $social -=1, $feather -= 20&gt;&gt;&lt;&lt;badthing &quot;你的社交属性降低了1级&quot;&gt;&gt;&lt;&lt;badthing &quot;你失去了20鸟羽&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;elseif $choice == &quot;夸赞左边&quot;&gt;&gt;
+&lt;&lt;checkrage persuasive 18 30&gt;&gt;
+你用你能想到的赞美之词将左边的老者一顿夸赞，
+&lt;&lt;if _rst == &quot;大成功&quot;&gt;&gt;
+老猫听了你的话，脸上的得意更浓了，他轻蔑的拿起棋子走出下一步，在落子时才意识到自己沉浸在你的赞美之中，走错了棋。伴着众猫的一阵起哄，右边的老者抓住这个机会，最终获得胜利。
+&lt;&lt;addpexp 3&gt;&gt;&lt;&lt;addsocial 1&gt;&gt;
+&lt;&lt;elseif _rst == &quot;成功&quot;&gt;&gt;
+老猫听了你的话，脸上的得意更浓了，他像是为了给你展示一般，迅速的结束了这场对局，还不忘挑眉看你一眼，仿佛在让你学着点。
+&lt;&lt;else&gt;&gt;
+老猫却对你这蹩脚的恭维毫不在意，对你摆摆手，右边的老者似乎也不满意你的言辞，但仍专注于棋盘。没有猫愿意搭理你。
+&lt;&lt;set $social -=1&gt;&gt;&lt;&lt;badthing &quot;你的社交属性降低了1级&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/do&gt;&gt;
+
+
+&lt;&lt;elseif _s &lt;= 55&gt;&gt;
+眼前的斜坡上
+
+&lt;&lt;elseif _s &lt;= 65&gt;&gt;
+向日葵
+
+&lt;&lt;elseif _s &lt;= 75&gt;&gt;
+通向小镇的小路上，你看到温和的农夫正蹲在地上，他身旁那筐要送往小镇的果蔬篮翻了，大半洒了一地。几颗熟透的葡萄被踩扁了，汁水淌在他脚边。站在一旁的是个神情愧疚的小男孩，显然是罪魁祸首。
+&lt;br&gt;&lt;br&gt;
+农夫没说话，只是望着地上的葡萄，然后望了你一眼。
+
+/*抢劫醉汉*/
+&lt;&lt;elseif _s &lt;= 85&gt;&gt;
+在这附近的阴沟里睡着了？他需要教育。你这是在帮他的忙！但他是谁，当他不在三英寸的街道泥泞中打鼾时？
+
+
 &lt;&lt;else&gt;&gt;没写
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
 
@@ -14109,6 +14398,215 @@ _j*_v/&lt;&lt;itemcheck _j&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_j)&
 
 
 
+
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="165" name="打猎遭遇" tags="nobr" position="1100,1000" size="100,100">&lt;&lt;set _s to random(1,100), _t to random(1,100)&gt;&gt;
+/*打猎结束后被抢夺*/
+&lt;&lt;if $choice == &quot;打猎结束&quot;&gt;&gt;
+狐狸/游隼/伯劳/乌鸦
+&lt;&lt;if _t &lt;= 25&gt;&gt;
+狐狸
+&lt;&lt;/if&gt;&gt;
+
+/*野猪 15*/
+&lt;&lt;elseif _s &lt;= 15&gt;&gt;
+一头毛发粗乱、体型硕大的野猪猛地从灌木中冲了出来，獠牙泛着冷光，眼里带着狂躁与不安。显然不是简单的偶遇。
+&lt;br&gt;&lt;br&gt;
+&lt;&lt;do&gt;&gt;
+&lt;&lt;if $choice == 0&gt;&gt;
+&lt;&lt;link ▷「迎击」&gt;&gt;&lt;&lt;set $choice to &quot;迎击&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「躲藏」&gt;&gt;&lt;&lt;set $choice to &quot;躲藏&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;elseif $choice == &quot;迎击&quot;&gt;&gt;你握紧手中的$toolSlot，咬紧牙关，趁野猪冲近的一刻侧身一扑。
+&lt;&lt;set _t to random(18,30)&gt;&gt;&lt;&lt;set _r to setup.getStat(&quot;strength&quot;)*_t/10&gt;&gt;&lt;&lt;set _a to setup.getStat(&quot;strength&quot;)/_r*100&gt;&gt;&lt;&lt;set _b to _a/6&gt;&gt;
+&lt;&lt;checkWidget&gt;&gt;
+&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
+它身侧出现了出一道血口。你清楚的让野猪明白了你强于它，它痛嚎着狼狈逃窜。
+&lt;&lt;addsexp 2&gt;&gt;&lt;&lt;if random(1,5) &lt;= 2&gt;&gt;你夺走了它的一枚獠牙。&lt;&lt;pickup $material &quot;獠牙&quot; 1&gt;&gt;&lt;&lt;set _itemobtain = &quot;獠牙*1&quot;&gt;&gt;&lt;&lt;itemobtain&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;
+你勇气可嘉，但也只是徒劳。野猪庞大的身躯将你撞倒在地，它的獠牙撕裂了你臂膀，见到你躺在地上无力反抗的样子，它满意的扬长而去。&lt;br&gt;
+&lt;&lt;set $player.wound +=3&gt;&gt;&lt;&lt;badthing &quot;你的伤口增加了3级&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;elseif $choice == &quot;躲藏&quot;&gt;&gt;
+你迅速扫视四周，寻找可以利用的地势或障碍。
+&lt;&lt;set _t to random(18,30)&gt;&gt;&lt;&lt;set _r to setup.getStat(&quot;observation&quot;)*_t/10&gt;&gt;&lt;&lt;set _a to setup.getStat(&quot;observation&quot;)/_r*100&gt;&gt;&lt;&lt;checkWidget&gt;&gt;
+&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
+一块凸起的岩石像是救世主一般出现在你眼前，你迅速躲入其后，野猪扑了个空，恼怒地转了几圈，最终悻悻离开。
+&lt;&lt;addoexp 1&gt;&gt;
+&lt;&lt;else&gt;&gt;
+在你四下寻找，犹豫之际，野猪已冲至眼前，你根本来不及逃脱。你被野猪庞大的身躯撞倒在地，它的獠牙撕裂了你臂膀，见到你躺在地上无力反抗的样子，它满意的扬长而去。
+&lt;&lt;set $player.wound +=3&gt;&gt;&lt;&lt;badthing &quot;你的伤口增加了3级&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/do&gt;&gt;
+
+/*羔羊 10*/
+&lt;&lt;elseif _s &lt;= 25&gt;&gt;
+耳边传来一阵微弱的叫声，很快就在空旷的环境中消弭下去，你举起猎枪搜寻着声音来源。又一声在你身旁颤抖着响起。你拨开脚边的草丛，一只看起来还不出几月大的羊羔就蜷缩在里面，它看起来虚弱又无助，急需回到羊群的庇护中。&lt;br&gt;&lt;br&gt;
+&lt;&lt;do&gt;&gt;
+&lt;&lt;if $choice == 0&gt;&gt;
+&lt;&lt;link ▷「救助」&gt;&gt;&lt;&lt;set $choice to &quot;救助&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「离开」&gt;&gt;&lt;&lt;set $choice to &quot;离开&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;if setup.getStat(&quot;bloody&quot;) &gt;= 2&gt;&gt;&lt;&lt;link ▷「猎杀」&gt;&gt;&lt;&lt;set $choice to &quot;猎杀&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;elseif $choice == &quot;救助&quot;&gt;&gt;
+你伸手去抱起羊羔，这可怜的小家伙毫不反抗，即使经历了一系列让它最终变成这副模样的事情，小羊仍然柔软又温暖。你轻声安抚着它，接着便开始设法让你俩安全抵达羊舍。&lt;br&gt;&lt;br&gt;
+小羊很乖巧，这是最庆幸的事，但通往羊舍的路似乎并不想顺从你的心意。永无乡上的道路大多接近自由生长的状态，这也许就是自然的本色，但此时它们变成了你的阻碍，蜿蜒，曲折，被草丛淹没，就在下一个拐角处，你感到脚腕扭过了一个不自然的弯度。
+&lt;&lt;checkrage strength 12 25&gt;&gt;
+&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
+你及时调整重心，将你和羊羔从一场疼痛的灾难中解救出来，小羊安稳的躺在你的怀抱里。&lt;br&gt;
+&lt;&lt;addsexp 1&gt;&gt;
+&lt;&lt;else&gt;&gt;
+你没能站稳，身体失去重心，跌向了坚实的地面，在摔倒之前，你紧紧抱住小羊，用身体护住它。&lt;br&gt;&lt;br&gt;
+&lt;&lt;set $player.wound +=1&gt;&gt;&lt;&lt;badthing &quot;你的伤口增加了1级&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+等你来到羊舍，向埃拉说明事情经过并将小羊交给他时，他脸上却并没有寻回迷失羊羔的喜悦。他动作娴熟的检查着小羊的身体状况，在确认一切无事后闭上眼睛长舒一口气，接着便撑起疲惫的双眼向你道谢。照顾羊群一定把他累坏了。&lt;&lt;set $sheep +=1&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 草甸&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;elseif $choice == &quot;离开&quot;&gt;&gt;
+你不想揽上这个麻烦，那羊羔看上去糟糕透了，说不定在你把它送回去的路上就会死去。你不需要手上多出来一个死去的动物。
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;elseif $choice == &quot;猎杀&quot;&gt;&gt;
+待宰的羔羊，这就是第一个在你脑海中浮现的想法，于是你高举手中的$toolSlot，准备将它应得的命运赐给它。
+&lt;&lt;checkrage strength 24 40&gt;&gt;
+&lt;&lt;if _rst == &quot;大成功&quot;&gt;&gt;
+羊羔在你的动作停止时一声不吭的死去了，正如它不声不响的来到这个世界，血液飞溅到你的脸上，衣物上，你毫不在意，但其他猫可不这样想。&lt;br&gt;&lt;&lt;set $social -= 2&gt;&gt;&lt;&lt;set $player.suspicion  +=3&gt;&gt;
+&lt;&lt;addsexp 3&gt;&gt;&lt;&lt;badthing &quot;你的怀疑增加了3级&quot;&gt;&gt;&lt;&lt;badthing &quot;你的社会属性降低了2级&quot;&gt;&gt;
+一个&lt;&lt;set _soul = [&quot;红色&quot;,&quot;蓝色&quot;,&quot;绯红色&quot;,&quot;冰蓝色&quot;,&quot;紫色&quot;,&quot;灰绿色&quot;,&quot;黑色&quot;,&quot;灰色&quot;,&quot;蓝色&quot;,&quot;蓝色&quot;,&quot;蓝色&quot;,&quot;蓝色&quot;].random()&gt;&gt;_soul的灵魂跃然在你眼前，
+&lt;&lt;if $item.has(&#39;玻璃瓶&#39;)&gt;&gt;你将它装进玻璃瓶。
+&lt;&lt;catchsoul&gt;&gt;&lt;&lt;drop item &quot;玻璃瓶&quot; 1&gt;&gt;
+&lt;&lt;else&gt;&gt;
+在你来得及找到容器去盛载之前，它就消失的无影无踪了。
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;elseif _rst == &quot;成功&quot;&gt;&gt;
+你的一击没能让小羊立即死去，它惨叫着想起身逃跑，鲜血从它颈部的伤口涌出，同它的叫声一般四散开去。有其他猫在向这边走来，你已经失去了解决此事的最佳时机。
+&lt;&lt;set $player.suspicion  +=1&gt;&gt;
+&lt;&lt;addsexp 1&gt;&gt;&lt;&lt;badthing &quot;你的怀疑增加了1级&quot;&gt;&gt;&lt;br&gt;
+&lt;&lt;else&gt;&gt;
+恍然间，你失去重心，手中的工具被地心引力牵引，竟转向砸向你自己。羊羔被你这样的举动惊得大叫，有其他猫在向这边走来，你只能狼狈离开。
+&lt;&lt;set $player.wound +=1&gt;&gt;&lt;&lt;badthing &quot;你的伤口增加了1级&quot;&gt;&gt;
+&lt;&lt;set $player.suspicion +=1&gt;&gt;&lt;&lt;badthing &quot;你的怀疑增加了1级&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/do&gt;&gt;
+
+/*毒蛇 15*/
+&lt;&lt;elseif _s &lt;= 40&gt;&gt;
+你掀起一条倒下的藤蔓时，手背突然被什么冰冷湿滑的东西扫过，身上的毛发本能的竖起。——一条亮蓝色的蟒蛇正缠在枝上，立起身子盯着你。
+&lt;br&gt;&lt;br&gt;
+&lt;&lt;do&gt;&gt;
+&lt;&lt;if $choice == 0&gt;&gt;
+&lt;&lt;link ▷「后退」&gt;&gt;&lt;&lt;set $choice to &quot;后退&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「猎杀」&gt;&gt;&lt;&lt;set $choice to &quot;猎杀&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;elseif $choice == &quot;后退&quot;&gt;&gt;
+你屏住呼吸，握紧手中的$toolSlot，小心翼翼的向后退步，视线不敢离开蟒蛇身一寸，生怕它在你看不到的角度发起攻击。
+&lt;&lt;checkrage observation 20 35&gt;&gt;
+&lt;&lt;if _rst == &quot;大失败&quot;&gt;&gt;
+碎石出现在你毫无准备的时刻，你在惊呼中跌倒，蟒蛇显然也受到惊吓，弓起身子飞速向你的方向扑来，在你的胳膊上留下两个剧烈灼痛的伤口。
+&lt;&lt;set $player.wound +=1&gt;&gt;&lt;&lt;badthing &quot;你的伤口增加了1级&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+一步接一步，直到你再也不能从草叶间看出那突兀的蓝色。你终于安全了。
+&lt;&lt;addoexp 1&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;elseif $choice == &quot;猎杀&quot;&gt;&gt;
+你几乎是下意识的举起手中的$toolSlot，瞄准，扣动扳机，
+&lt;&lt;checkrage observation 25 40&gt;&gt;
+&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
+子弹似乎精准无误的击中了你的猎物，但它并没有像你所期待的那样成为你的战利品，只是飞快的从阴影中逃走了。
+&lt;&lt;addoexp 1&gt;&gt;
+&lt;&lt;else&gt;&gt;
+你的瞄准失误了，这一击仅仅是将蟒蛇吓了一跳，它弓起身子飞速向你的方向扑来，在你的胳膊上留下两个剧烈灼痛的伤口。
+&lt;&lt;set $player.wound +=1&gt;&gt;&lt;&lt;badthing &quot;你的伤口增加了1级&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/do&gt;&gt;
+
+/*误杀 10*/
+&lt;&lt;elseif _s &lt;= 50&gt;&gt;
+你听见不远处“砰”一声枪响，接着便是猫族痛苦的哀嚎声。一个年轻猫正慌张地奔过来，看着草丛里挣扎的身影：“我、我以为是只鹿！帮帮我——我该怎么办？”
+&lt;br&gt;&lt;br&gt;
+&lt;&lt;do&gt;&gt;
+&lt;&lt;if $choice == 0&gt;&gt;
+&lt;&lt;link ▷「帮忙」&gt;&gt;&lt;&lt;set $choice to &quot;帮忙&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「离开」&gt;&gt;&lt;&lt;set $choice to &quot;离开&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;elseif $choice == &quot;帮忙&quot;&gt;&gt;
+你来到年轻猫身边，扒开草丛，一个中年猫正躺在地上，情绪激动的辱骂着你们这些打猎的，看起来并没有伤到要害。
+&lt;&lt;checkrage knowledge 20 40&gt;&gt;
+&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
+你熟练的为他包扎好
+&lt;&lt;addkexp 2&gt;&gt;&lt;&lt;addsocial 1&gt;&gt;
+&lt;&lt;else&gt;&gt;
+
+&lt;&lt;set $social -=1&gt;&gt;&lt;&lt;badthing &quot;你的社交属性降低了1级&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;elseif $choice == &quot;离开&quot;&gt;&gt;
+你默默退后几步，远离那片动静。耳边传来一声闷响，不知是补枪还是倒地的声音。
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/do&gt;&gt;
+
+/*泥坑 15*/
+&lt;&lt;elseif _s &lt;= 65&gt;&gt;
+你专注的追踪着猎物，却忽然脚下一软，一步跨入了泥坑中。你用力挣扎了几下，却越陷越深。
+&lt;br&gt;&lt;br&gt;
+&lt;&lt;do&gt;&gt;
+&lt;&lt;if $choice == 0&gt;&gt;
+&lt;&lt;link ▷「俯身爬出」&gt;&gt;&lt;&lt;set $choice to &quot;俯身爬出&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「呼救」&gt;&gt;&lt;&lt;set $choice to &quot;呼救&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;elseif $choice == &quot;俯身爬出&quot;&gt;&gt;
+你趴在地上，分散受力，寻找着泥坑中吸力最薄弱的角度，
+&lt;&lt;checkrage observation 16 28&gt;&gt;
+&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
+你很快就掌握了这之中的技巧，然后轻松一用力，便从泥坑中脱身出来。
+&lt;&lt;addoexp 2&gt;&gt;
+&lt;&lt;else&gt;&gt;
+这并不容易，荒野求生不是你的长项，最终，在漫长的努力后，你拔出了已经脱臼的小腿，感到筋疲力尽。&lt;br&gt;
+&lt;&lt;set $player.wound +=1&gt;&gt;&lt;&lt;badthing &quot;你的伤口增加了1级&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;elseif $choice == &quot;呼救&quot;&gt;&gt;
+你开口呼救，祈祷这附近有其他猫在。
+&lt;&lt;checkrage persuasive 20 40&gt;&gt;
+&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
+很快便有猫回应了你，你在他的帮助下脱险了。
+&lt;&lt;addpexp 1&gt;&gt;
+&lt;&lt;else&gt;&gt;
+一旁的灌木丛传来低沉的野兽喘息声却表明，回应你的似乎并不是你所期待的。
+&lt;&lt;set $player.wound +=3&gt;&gt;&lt;&lt;badthing &quot;你的伤口增加了3级&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/do&gt;&gt;
+
+/*骨堆 15*/
+&lt;&lt;elseif _s &lt;= 80&gt;&gt;
+111
+
+/*倒下的树 12*/
+&lt;&lt;elseif _s &lt;= 92&gt;&gt;
+111
+
+/*特殊 8*/
+&lt;&lt;else&gt;&gt;
+/*追踪脚印 湖边 蝾螈活着的时候可重复触发*/
+&lt;&lt;if $loc == &quot;罗索伦特湖&quot; &amp;&amp; $monster.xol == 1&gt;&gt;
+111
+
+&lt;&lt;else&gt;&gt;&lt;&lt;goto &quot;打猎遭遇&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 &lt;&lt;/if&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
