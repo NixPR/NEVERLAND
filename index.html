@@ -5997,12 +5997,12 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 &lt;&lt;else&gt;&gt;&lt;&lt;set $NPCinfo[&quot;埃拉&quot;].loc =&quot;羊舍&quot;, $NPCinfo[&quot;埃拉&quot;].dis = &quot;正在羊舍里休息&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $NPCinfo[&quot;埃拉&quot;].chat == 0&gt;&gt;&lt;&lt;set $NPCinfo[&quot;埃拉&quot;].dis = &quot; 那似乎就是在你刚刚上岛时一直盯着你的猫. 要去和他聊聊吗? &quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $NPCinfo[&quot;埃拉&quot;].loc == $loc&gt;&gt;&lt;br&gt;&lt;&lt;link &quot;✣「埃拉」&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;埃拉&quot;&gt;&gt;&lt;&lt;run Dialog.setup($npc);
+&lt;&lt;if $NPCinfo[&quot;埃拉&quot;].loc == $loc&gt;&gt;&lt;br&gt;&lt;&lt;link &quot;✣「埃拉」&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;埃拉&quot;, $choice = 0&gt;&gt;&lt;&lt;run Dialog.setup($npc);
   Dialog.wiki(Story.get(&quot;NPC&quot;).processText());
   Dialog.open();&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;$NPCinfo[&quot;埃拉&quot;].dis&lt;&lt;/if&gt;&gt;
 
 
-&lt;&lt;if $amberloc == $loc&gt;&gt;&lt;br&gt;&lt;&lt;link &quot;✣「琥珀夫人」&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;琥珀夫人&quot;&gt;&gt;&lt;&lt;run Dialog.setup($npc);
+&lt;&lt;if $amberloc == $loc&gt;&gt;&lt;br&gt;&lt;&lt;link &quot;✣「琥珀夫人」&quot;&gt;&gt;&lt;&lt;set $npc to &quot;琥珀夫人&quot;, $choice = 0&gt;&gt;&lt;&lt;run Dialog.setup($npc);
   Dialog.wiki(Story.get(&quot;NPC&quot;).processText());
   Dialog.open();&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 
@@ -6015,30 +6015,17 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 &lt;&lt;elseif $NPCinfo[&quot;萨巴夫人&quot;].chat == 0 &amp;&amp; $loc ==&quot;图书馆&quot;&gt;&gt;&lt;&lt;set $NPCinfo[&quot;萨巴夫人&quot;].dis = &quot;一位坐在图书馆的一角的老猫出现在你的视野里, 她手握着一支破旧的羽毛笔, 在一本厚重的抄写本上缓缓书写着. 那是萨巴夫人, 一位精于种植、热爱诗歌的女士, 如果你有合适的诗集, 可以跟她换些种子&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $NPCinfo[&quot;萨巴夫人&quot;].loc == $loc&gt;&gt;&lt;br&gt;&lt;&lt;link &quot;✣「 萨巴夫人」&quot;&gt;&gt;&lt;&lt;set $npc to &quot;萨巴夫人&quot;&gt;&gt;
+&lt;&lt;if $NPCinfo[&quot;萨巴夫人&quot;].loc == $loc&gt;&gt;&lt;br&gt;&lt;&lt;link &quot;✣「 萨巴夫人」&quot;&gt;&gt;&lt;&lt;set $npc to &quot;萨巴夫人&quot;, $choice = 0&gt;&gt;
 &lt;&lt;run Dialog.setup($npc);
   Dialog.wiki(Story.get(&quot;NPC&quot;).processText());
   Dialog.open();&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;$NPCinfo[&quot;萨巴夫人&quot;].dis&lt;&lt;/if&gt;&gt;
-
-
-&lt;&lt;if $hour &gt;=21 &amp;&amp; $hour &lt;=23&gt;&gt;&lt;&lt;set $NPCinfo[&quot;琼&quot;].loc =&quot;酒馆&quot;, $NPCinfo[&quot;琼&quot;].dis = &quot;正盯着自己的酒杯发呆&quot;&gt;&gt;
-&lt;&lt;elseif $hour &lt;= 11 &amp;&amp; $minute &lt;= 40 &amp;&amp; $week == 7 &amp;&amp; $NPCinfo[&quot;琼&quot;].chat &gt;0 &gt;&gt;
-&lt;&lt;set $NPCinfo[&quot;琼&quot;].loc =&quot;教堂&quot;, $NPCinfo[&quot;琼&quot;].dis = &quot;正在教堂里做礼拜&quot;&gt;&gt;
-&lt;&lt;elseif $hour &lt;=17 &amp;&amp; $hour &gt;=10&gt;&gt;
-&lt;&lt;set $NPCinfo[&quot;琼&quot;].loc =&quot;灯塔&quot;, $NPCinfo[&quot;琼&quot;].dis = &quot;在小屋里&quot;&gt;&gt;
-&lt;&lt;elseif $week !=7&gt;&gt;&lt;&lt;set $NPCinfo[&quot;琼&quot;].loc =[&quot;贝雷河&quot;,&quot;家&quot;].random(), $NPCinfo[&quot;琼&quot;].dis = &quot;在做着自己的事情&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;if $jofirstc == 1 &amp;&amp; $NPCinfo[&quot;琼&quot;].loc == $loc&gt;&gt;&lt;br&gt;&lt;&lt;link &quot;✣「琼」&quot;&gt;&gt;&lt;&lt;set $npc to &quot;琼&quot;&gt;&gt;&lt;&lt;run Dialog.setup($npc);
-  Dialog.wiki(Story.get(&quot;NPC&quot;).processText());
-  Dialog.open();&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;$NPCinfo[&quot;琼&quot;].dis&lt;&lt;/if&gt;&gt;
-
 
 &lt;&lt;if $hour &gt;=7 &amp;&amp; $hour &lt;=18&gt;&gt;
 &lt;&lt;set $NPCinfo[&quot;特里特&quot;].loc =&quot;鱼铺&quot;, $NPCinfo[&quot;特里特&quot;].dis = &quot;正在橱案边处理海鲜&quot;&gt;&gt;
 &lt;&lt;elseif $hour &lt;=2 &amp;&amp; $hour &gt;=19&gt;&gt;
 &lt;&lt;set $NPCinfo[&quot;特里特&quot;].loc =&quot;钓鱼&quot;, $NPCinfo[&quot;特里特&quot;].dis = &quot;在岸边钓鱼，看起来最好不要打扰他&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $NPCinfo[&quot;特里特&quot;].loc == $loc&gt;&gt;&lt;br&gt;&lt;&lt;link &quot;✣「特里特」&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;特里特&quot;&gt;&gt;&lt;&lt;run Dialog.setup($npc);
+&lt;&lt;if $NPCinfo[&quot;特里特&quot;].loc == $loc&gt;&gt;&lt;br&gt;&lt;&lt;link &quot;✣「特里特」&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;特里特&quot;, $choice = 0&gt;&gt;&lt;&lt;run Dialog.setup($npc);
   Dialog.wiki(Story.get(&quot;NPC&quot;).processText());
   Dialog.open();&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;$NPCinfo[&quot;特里特&quot;].dis&lt;&lt;/if&gt;&gt;
 
@@ -6049,7 +6036,7 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 &lt;&lt;set $NPCinfo[&quot;玛丽亚小姐&quot;].loc =[&quot;天上人间&quot;,&quot;黑市&quot;,&quot;沙地&quot;].random(), $NPCinfo[&quot;玛丽亚小姐&quot;].dis = &quot;的身影与你擦肩而过&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $NPCinfo[&quot;玛丽亚小姐&quot;].loc == $loc&gt;&gt;&lt;br&gt;
-&lt;&lt;link &quot;✣「玛丽亚小姐」&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;玛丽亚小姐&quot;&gt;&gt;
+&lt;&lt;link &quot;✣「玛丽亚小姐」&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;玛丽亚小姐&quot;, $choice = 0&gt;&gt;
 &lt;&lt;run Dialog.setup($npc);
   Dialog.wiki(Story.get(&quot;NPC&quot;).processText());
   Dialog.open();&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;$NPCinfo[&quot;玛丽亚小姐&quot;].dis&lt;&lt;/if&gt;&gt;
@@ -6062,7 +6049,7 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 &lt;&lt;elseif $hour &gt;18 &amp;&amp; $hour &lt;=20&gt;&gt;
 &lt;&lt;set $NPCinfo[&quot;巴尔韦克老爷&quot;].loc = &quot;酒馆&quot;, $NPCinfo[&quot;巴尔韦克老爷&quot;].dis = &quot;在猫群中默默喝着蜜酒&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $NPCinfo[&quot;巴尔韦克老爷&quot;].loc == $loc&gt;&gt;&lt;br&gt;&lt;&lt;link &quot;✣「巴尔韦克老爷」&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;巴尔韦克老爷&quot;&gt;&gt;&lt;&lt;run Dialog.setup($npc);
+&lt;&lt;if $NPCinfo[&quot;巴尔韦克老爷&quot;].loc == $loc&gt;&gt;&lt;br&gt;&lt;&lt;link &quot;✣「巴尔韦克老爷」&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;巴尔韦克老爷&quot;, $choice = 0&gt;&gt;&lt;&lt;run Dialog.setup($npc);
   Dialog.wiki(Story.get(&quot;NPC&quot;).processText());
   Dialog.open();&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;$NPCinfo[&quot;巴尔韦克老爷&quot;].dis&lt;&lt;/if&gt;&gt;
   
@@ -7558,7 +7545,7 @@ $(document).on(&quot;input&quot;, &quot;input[type=&#39;number&#39;]&quot;, func
 &lt;&lt;if $npc == &quot;巴尔韦克老爷&quot;&gt;&gt;
 
 /*初见*/
-&lt;&lt;if $NPCinfo[$npc].chat == 1&gt;&gt;
+&lt;&lt;if $NPCinfo[$npc].chat == 1 &amp;&amp; $loc != &quot;酒馆&quot;&gt;&gt;
 你不清楚岛上为何都叫他老爷，他看起来一点贵族的样子都没有，更像一棵干枯又粗狂的古树，顽固不化的站立在北风中。&lt;br&gt;&lt;br&gt;
 此时的巴尔韦克老爷正蹲伏在他新猎获的猎物上，徒手从那毫无生气的肉块中挖出弹头。他应该是注意到有谁走近了，不紧不慢的站起身来，最终那近乎有七英尺的高大身型几乎要将你视线里的全部光线阻拦。&lt;br&gt;&lt;br&gt;
 他看都没看一眼被笼罩进阴影的你，随意用树叶擦了一下双手的血迹，抱起猎枪，头也不回的走了，只抛下一句：“这鹿归你了。” 
@@ -12460,11 +12447,11 @@ function qteChange() {
 &lt;&lt;link &quot;赠送&quot;&gt;&gt;&lt;&lt;set $gift = _itemn&gt;&gt;&lt;&lt;set $NPCinfo[$npc].gift = 1&gt;&gt;&lt;&lt;drop $material _itemn 1&gt;&gt;&lt;&lt;goto &quot;赠送回复&quot;&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/capture&gt;&gt;&lt;br&gt;
 &lt;&lt;/for&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="赠送回复" tags="nobr" position="2200,600" size="100,100">&lt;&lt;set _m to random(3,5)&gt;&gt;&lt;&lt;set _n to random(1,3)&gt;&gt;
 &lt;&lt;if $npc == &quot;埃拉&quot;&gt;&gt;&lt;&lt;set $eragift = 0&gt;&gt;
-&lt;&lt;if Item.get($gift).hasTag(&quot;eralove&quot;)&gt;&gt;&lt;&lt;set $NPCinfo[$npc].love += _m&gt;&gt;【埃拉收下了你的礼物】&lt;br&gt;&lt;&lt;npcwave _m&gt;&gt;
-&lt;&lt;elseif Item.get($gift).hasTag(&quot;eralike&quot;)&gt;&gt;&lt;&lt;set $erahgd += _n&gt;&gt;【埃拉收下了你的礼物】&lt;br&gt;&lt;&lt;npcwave _n&gt;&gt;
+&lt;&lt;if Item.get($gift).hasTag(&quot;eralove&quot;)&gt;&gt;&lt;&lt;set $NPCinfo[$npc].love += _m&gt;&gt;【埃拉收下了你的礼物】&lt;br&gt;&lt;&lt;npcwaves _m&gt;&gt;
+&lt;&lt;elseif Item.get($gift).hasTag(&quot;eralike&quot;)&gt;&gt;&lt;&lt;set $erahgd += _n&gt;&gt;【埃拉收下了你的礼物】&lt;br&gt;&lt;&lt;npcwaves _n&gt;&gt;
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;erahate&quot;)&gt;&gt;&lt;&lt;set $erahgd -= _n&gt;&gt;【埃拉收下了你的礼物】&lt;br&gt;&lt;font color=#5F6B78&gt;💔Era对你的好感度降低了&lt;/font&gt;
 &lt;&lt;elseif $gift == &quot;蓝宝石&quot;&gt;&gt;&lt;&lt;set $erahgd += 10&gt;&gt;暗示自己的船沉船是枘朴小姐背地操控&lt;br&gt;&lt;font color=#DB8E88&gt;❥埃拉对你的好感度增加了&lt;/font&gt;
-&lt;&lt;else&gt;&gt;&lt;&lt;set $erahgd +=1&gt;&gt;【埃拉收下了你的礼物】&lt;br&gt;&lt;&lt;npcwave 1&gt;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;set $erahgd +=1&gt;&gt;【埃拉收下了你的礼物】&lt;br&gt;&lt;&lt;npcwaves 1&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;else&gt;&gt;
@@ -14388,19 +14375,18 @@ _j*_v/&lt;&lt;itemcheck _j&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_j)&
 
 
 &lt;&lt;elseif _s &lt;= 55&gt;&gt;
-眼前的斜坡上
+斜坡&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 &lt;&lt;elseif _s &lt;= 65&gt;&gt;
-向日葵
+向日葵&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 &lt;&lt;elseif _s &lt;= 75&gt;&gt;
 通向小镇的小路上，你看到温和的农夫正蹲在地上，他身旁那筐要送往小镇的果蔬篮翻了，大半洒了一地。几颗熟透的葡萄被踩扁了，汁水淌在他脚边。站在一旁的是个神情愧疚的小男孩，显然是罪魁祸首。
 &lt;br&gt;&lt;br&gt;
 农夫没说话，只是望着地上的葡萄，然后望了你一眼。
+&lt;br&gt;&lt;br&gt;没写完
 
-/*抢劫醉汉*/
-&lt;&lt;elseif _s &lt;= 85&gt;&gt;
-在这附近的阴沟里睡着了？他需要教育。你这是在帮他的忙！但他是谁，当他不在三英寸的街道泥泞中打鼾时？
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 
 &lt;&lt;else&gt;&gt;没写
