@@ -6251,10 +6251,6 @@ window.defineAchievement("hunt", "狂猎敕令", "2222", "⭐", "琥珀窖藏" )
 
 
 /*------------NPC行程----------------*/
-&lt;&lt;if $hour &gt;=6 &amp;&amp; $hour &lt;=17&gt;&gt;&lt;&lt;set $oriloc = [&quot;罗索伦特湖&quot;,&quot;草甸&quot;,&quot;沙地&quot;,&quot;贝雷河&quot;,&quot;小镇&quot;,&quot;礁岩区&quot;,&quot;主港口&quot;,&quot;副港口&quot;,&quot;断桥&quot;,&quot;秋毛岗&quot;,&quot;拓荒者木屋&quot;].random()&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set $oriloc = &quot;仓库&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;if $hour &gt;=6 &amp;&amp; $hour &lt;=21&gt;&gt;&lt;&lt;set $nmloc = [&quot;罗索伦特湖&quot;,&quot;草甸&quot;,&quot;沙地&quot;,&quot;贝雷河&quot;,&quot;小镇&quot;,&quot;礁岩区&quot;,&quot;主港口&quot;,&quot;副港口&quot;,&quot;断桥&quot;,&quot;秋毛岗&quot;,&quot;拓荒者木屋&quot;].random()&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set $nmloc = &quot;天上人间&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
-
 &lt;&lt;if $hour &gt;=8 &amp;&amp; $hour &lt;=18 &amp;&amp; $week ==3&gt;&gt;&lt;&lt;set $nixloc =&quot;花店&quot;&gt;&gt;&lt;&lt;elseif $hour &gt;=8 &amp;&amp; $hour &lt;=18&gt;&gt;&lt;&lt;set $nixloc =&quot;拓荒者木屋&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set _w to random(1,15)&gt;&gt;&lt;&lt;if _w &lt;=3&gt;&gt;&lt;&lt;set $nixloc = &quot;献祭&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set $nixloc = &quot;不在&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 
@@ -6445,11 +6441,8 @@ $knowledgeexp to 0, $strengthexp to 0, $observationexp to 0, $persuasiveexp to 0
 
 &lt;&lt;set $NPCinfo to {
    &quot;埃拉&quot;: {name: &quot;Era&quot;, age: 27, hometown: &quot;西班牙&quot;, id: &quot;羊倌&quot;, home: &quot;草甸&quot;, img: &quot;https://f2.toyhou.se/file/f2-toyhou-se/images/95498951_qB9XiZ5yT88KHqA.png&quot;, love: 0, knowledge: 42, strength: 53, observation: 77, persuasive: 96, kind: &quot;猫族&quot;, chat: 0, gift : 0, loc:0, dis:0 },
-    &quot;奥里&quot;: {name: &quot;Ori&quot;, age: 18, hometown: &quot;墨西哥&quot;, id: &quot;信者&quot;, home: &quot;副港口灯塔房&quot;, img: &quot;&quot;, love: 0, knowledge: 0, strength: 0, observation: 0, persuasive: 0, kind: &quot;猫族&quot;, chat: 0, gift : 0 , loc:0, dis:0 },
-    &quot;安德森&quot;: {name: &quot;Anderson&quot;, age: 18, hometown: &quot;苏俄&quot;, id: &quot;未知&quot;, home: &quot;罗索伦特湖&quot;, img: &quot;&quot;, love: 0, knowledge: 0, strength: 0, observation: 0, persuasive: 0, kind: &quot;猫族&quot;, chat: 0, gift : 0 },
     &quot;奥提斯&quot;: {name: &quot;Otis&quot;, age: 37, hometown: &quot;格陵兰岛&quot;, id: &quot;作家&quot;, home: &quot;图书馆&quot;, img: &quot;&quot;, love: 0, knowledge: 0, strength: 0, observation: 0, persuasive: 0, kind: &quot;狮鹫&quot;, chat: 0, gift : 0, loc:&quot;图书馆&quot;, dis:&quot;一如既往坐在小桌后埋头忙碌地书写着&quot;  },
     &quot;佩拉大夫&quot;: {name: &quot;Perramo T. M. Colina&quot;, age: 56, hometown: &quot;哥伦比亚&quot;, id: &quot;大夫&quot;, home: &quot;小镇&quot;, img: &quot;&quot;, love: 0, knowledge: 0, strength: 0, observation: 0, persuasive: 0, kind: &quot;猫族&quot;, chat: 0, gift : 0, loc:0, dis:0  },
-    &quot;琼&quot;: {name: &quot;Joan Esposito&quot;, age: 28, hometown: &quot;意大利&quot;, id: &quot;主港口灯塔看守&quot;, home: &quot;贝雷河&quot;, img: &quot;&quot;, love: 0, knowledge: 0, strength: 0, observation: 0, persuasive: 0, kind: &quot;恶魔&quot;, chat: 0, gift : 0, loc:0, dis:0  },
     &quot;琥珀夫人&quot;: {name: &quot;Mrs.Amber&quot;, age: &quot;秘密&quot;, hometown: &quot;法国&quot;, id: &quot;酒馆老板&quot;, home: &quot;小镇&quot;, img: &quot;&quot;, love: 0, knowledge: 0, strength: 0, observation: 0, persuasive: 0, kind: &quot;恶魔&quot;, chat: 0, gift : 0, loc:0, dis:0  },
    &quot;萨巴夫人&quot;: {name: &quot;Nanibgal Nispa&quot;, age: 63, hometown: &quot;伊拉克王国&quot;, id: &quot;农学家&quot;, home: &quot;小镇&quot;, img: &quot;&quot;, love: 0, knowledge: 0, strength: 0, observation: 0, persuasive: 0, kind: &quot;神明&quot;, chat: 0, gift : 0, state: 26, loc:0, dis:0  },
     &quot;特里特&quot;: {name: &quot;Tret&#39;yak Veselov&quot;, age: 58, hometown: &quot;苏俄&quot;, id: &quot;鱼铺店主&quot;, home: &quot;副港口&quot;, img: &quot;&quot;, love: 0, knowledge: 0, strength: 0, observation: 0, persuasive: 0, kind: &quot;神明&quot;, chat: 0, gift : 0, state: 33, loc:0, dis:0  },
@@ -8642,9 +8635,6 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="47" name="小镇" tags="nobr" position="100,400" size="100,100">&lt;&lt;set $loc = &quot;小镇&quot;&gt;&gt;&lt;&lt;set $minute += random(10,20)&gt;&gt;&lt;&lt;set $HP -= 1&gt;&gt;
 
 &lt;&lt;if $dn ==1&gt;&gt;
-&lt;&lt;if $NPCinfo[&quot;奥里&quot;].chat == 0&gt;&gt;&lt;&lt;set $npc to &quot;奥里&quot;&gt;&gt;&lt;&lt;goto &quot;交谈&quot;&gt;&gt;
-
-&lt;&lt;else&gt;&gt;
 &lt;&lt;audio &quot;mainBGM&quot; unmute&gt;&gt;
 
 &lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543238_2HNM8SE1A9tkwRc.jpg&quot; width=100% class=&quot;pic&quot;&gt;
@@ -8674,7 +8664,6 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;&lt;link ✧「咖啡馆」 咖啡馆&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ✧「图书馆」 图书馆&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ✧「泡泡布提」 泡泡布提&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;else&gt;&gt;现在是夜间, 镇子里一片寂静, 大家都休息了, 你也应该回家了&lt;br&gt;
 &lt;br&gt;继续前往&lt;br&gt;
