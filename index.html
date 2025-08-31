@@ -4194,7 +4194,7 @@ $(document).on("input", "input[type='number']", function() {
     }
 });
 
-document.addEventListener('contextmenu', function(event) {
+/*document.addEventListener('contextmenu', function(event) {
  event.preventDefault();
  alert('你在尝试什么?');
  });
@@ -4211,7 +4211,7 @@ document.addEventListener('contextmenu', function(event) {
  event.preventDefault();
  alert('你想看到什么?');
  }
- });
+ });*/
 
 
  /*-----------------界面汉化-----------------*/
@@ -6619,7 +6619,7 @@ $(document).on(&quot;input&quot;, &quot;input[type=&#39;number&#39;]&quot;, func
 &lt;&lt;do&gt;&gt;
 &lt;div class=&quot;fish-interface&quot;&gt;
 &lt;&lt;for _item, _amount range $material.table&gt;&gt;
-&lt;&lt;if Item.get(_item).hasTag(&quot;fish&quot;)&gt;&gt;
+&lt;&lt;if Item.get(_item).hasTag(&quot;鱼&quot;)&gt;&gt;
 &lt;&lt;set _m =1&gt;&gt;
 &lt;&lt;chopfish _item _amount&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
@@ -6632,7 +6632,7 @@ $(document).on(&quot;input&quot;, &quot;input[type=&#39;number&#39;]&quot;, func
 &lt;&lt;do&gt;&gt;
 &lt;div class=&quot;fish-interface&quot;&gt;
 &lt;&lt;for _item, _amount range $material.table&gt;&gt;
-&lt;&lt;if Item.get(_item).hasTag(&quot;fish&quot;)&gt;&gt;
+&lt;&lt;if Item.get(_item).hasTag(&quot;鱼&quot;)&gt;&gt;
 &lt;&lt;set _m =1&gt;&gt;
 &lt;&lt;sellfish _item _amount&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
@@ -6644,10 +6644,10 @@ $(document).on(&quot;input&quot;, &quot;input[type=&#39;number&#39;]&quot;, func
 
 /*换鱼油*/
 &lt;&lt;elseif $loc == &quot;灯塔&quot;&gt;&gt;
-&lt;&lt;if $item.has(&#39;鱼油&#39;)&gt;&gt;“噢，好呀。”琼从屋里抱出一个玻璃罐子，“倒在这里吧。这些鱼油能让灯塔再亮上几个小时。”
-&lt;&lt;set _tmpf to $item.count(&#39;鱼油&#39;)&gt;&gt;
-&lt;&lt;set _tmpf1 to $item.count(&#39;鱼油&#39;)&gt;&gt;
-&lt;&lt;set $feather to $feather+ _tmpf&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;drop $item &quot;鱼油&quot; _tmpf1&gt;&gt;&lt;br&gt;
+&lt;&lt;if $material.has(&#39;鱼油&#39;)&gt;&gt;“噢，好呀。”琼从屋里抱出一个玻璃罐子，“倒在这里吧。这些鱼油能让灯塔再亮上几个小时。”
+&lt;&lt;set _tmpf to $material.count(&#39;鱼油&#39;)&gt;&gt;
+&lt;&lt;set _tmpf1 to $material.count(&#39;鱼油&#39;)&gt;&gt;
+&lt;&lt;set $feather to $feather+ _tmpf&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;drop $material &quot;鱼油&quot; _tmpf1&gt;&gt;&lt;br&gt;
 &lt;font color=#4E84BA&gt;✧你获得了_tmpf枚鸟羽✧&lt;/font&gt;
 &lt;&lt;else&gt;&gt;你穷迫的翻找背包, 然而一瓶鱼油都没有如你所愿的出现在你的手里
 &lt;&lt;/if&gt;&gt;
@@ -7087,7 +7087,43 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 直到你将所有的东西都从铁盒里掏出，你想你最终还是找到了它。
 &lt;&lt;/if&gt;&gt;
 
-死亡结算</tw-passagedata><tw-passagedata pid="20" name="沙龙" tags="" position="500,1000" size="100,100"></tw-passagedata><tw-passagedata pid="21" name="测试" tags="" position="800,200" size="100,100">&lt;span id=&quot;coldsoul&quot;&gt;&lt;/span&gt;
+死亡结算</tw-passagedata><tw-passagedata pid="20" name="沙龙" tags="" position="500,1000" size="100,100"></tw-passagedata><tw-passagedata pid="21" name="测试" tags="" position="800,200" size="100,100">&lt;&lt;set _progress1 to setup.getStat(&quot;heartless&quot;)/24, _progress01 to setup.getStat(&quot;heartless&quot;)&gt;&gt; 
+&lt;&lt;set _progress2 to setup.getStat(&quot;curiosity&quot;)/24, _progress02 to setup.getStat(&quot;curiosity&quot;)&gt;&gt;
+&lt;&lt;set _progress3 to setup.getStat(&quot;bold&quot;)/24, _progress03 to setup.getStat(&quot;bold&quot;)&gt;&gt;
+&lt;&lt;set _progress4 to setup.getStat(&quot;enjoy&quot;)/24, _progress04 to setup.getStat(&quot;enjoy&quot;)&gt;&gt;
+&lt;&lt;set _progress5 to $hunger/24, _progress05 to $hunger&gt;&gt;
+&lt;&lt;set _progress6 to $abs/12, _progress06 to $abs&gt;&gt;
+
+&lt;&lt;if setup.getStat(&quot;heartless&quot;) lt 24 &amp;&amp; setup.getStat(&quot;curiosity&quot;) lt 24 &amp;&amp; setup.getStat(&quot;bold&quot;) lt 24 &amp;&amp; setup.getStat(&quot;enjoy&quot;) lt 24 &amp;&amp; $hunger lt 24 &amp;&amp; $abs lt 12 &amp;&amp; $fame lt 24 &gt;&gt;
+
+&lt;&lt;if $soul == &quot;蓝色&quot;&gt;&gt;
+&lt;span id=&quot;bluesoul&quot;&gt;&lt;/span&gt;
+&lt;&lt;elseif $soul == &quot;红色&quot;&gt;&gt;
+&lt;span id=&quot;redsoul&quot;&gt;&lt;/span&gt;
+&lt;&lt;elseif $soul == &quot;金色&quot;&gt;&gt;
+&lt;span id=&quot;goldsoul&quot;&gt;&lt;/span&gt;&lt;&lt;/if&gt;&gt;
+&lt;span id=&quot;coldsoul&quot; @style=&quot; &#39;z-index:&#39; +_progress01+&#39;;&#39; + &#39;opacity:&#39; +_progress1+&#39;;&#39;&quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;bloodsoul&quot; @style=&quot; &#39;opacity:&#39; +_progress2+&#39;;&#39; + &#39;z-index:&#39; +_progress02+&#39;;&#39; &quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;solidsoul&quot; @style=&quot; &#39;opacity:&#39; +_progress3+&#39;;&#39; + &#39;z-index:&#39; +_progress03+&#39;;&#39; &quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;fermentsoul&quot; @style=&quot; &#39;opacity:&#39; +_progress4+&#39;;&#39; + &#39;z-index:&#39; +_progress04+&#39;;&#39; &quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;hungersoul&quot; @style=&quot; &#39;opacity:&#39; +_progress5+&#39;;&#39; + &#39;z-index:&#39; +_progress05+&#39;;&#39; &quot;&gt;&lt;/span&gt;
+&lt;span id=&quot;lightlesssoul&quot; @style=&quot; &#39;opacity:&#39; +_progress6+&#39;;&#39; + &#39;z-index:&#39; +_progress06+&#39;;&#39; &quot;&gt;&lt;/span&gt;
+&lt;&lt;elseif $fame == 24&gt;&gt;
+&lt;span id=&quot;goldsoul&quot;&gt;&lt;/span&gt;
+&lt;&lt;elseif setup.getStat(&quot;heartless&quot;) &gt;= 24&gt;&gt;
+&lt;span id=&quot;coldsoul&quot;&gt;&lt;/span&gt;
+&lt;&lt;elseif setup.getStat(&quot;curiosity&quot;) &gt;= 24&gt;&gt;
+&lt;span id=&quot;bloodsoul&quot;&gt;&lt;/span&gt;
+&lt;&lt;elseif setup.getStat(&quot;bold&quot;) &gt;= 24&gt;&gt;
+&lt;span id=&quot;solidsoul&quot;&gt;&lt;/span&gt;
+&lt;&lt;elseif setup.getStat(&quot;enjoy&quot;) &gt;= 24&gt;&gt;
+&lt;span id=&quot;fermentsoul&quot;&gt;&lt;/span&gt;
+&lt;&lt;elseif $hunger &gt;= 24&gt;&gt;
+&lt;span id=&quot;hungersoul&quot;&gt;&lt;/span&gt;
+&lt;&lt;elseif $abs &gt;= 12&gt;&gt;
+&lt;span id=&quot;lightlesssoul&quot;&gt;&lt;/span&gt;
+
+&lt;&lt;/if&gt;&gt;
 
 $needt1  $nt
 &lt;&lt;if Item.get(&quot;丝带白玫瑰&quot;).hasTag(&quot;花&quot;)&gt;&gt;111&lt;&lt;/if&gt;&gt;
