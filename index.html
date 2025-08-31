@@ -7087,7 +7087,9 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 直到你将所有的东西都从铁盒里掏出，你想你最终还是找到了它。
 &lt;&lt;/if&gt;&gt;
 
-死亡结算</tw-passagedata><tw-passagedata pid="20" name="沙龙" tags="" position="500,1000" size="100,100"></tw-passagedata><tw-passagedata pid="21" name="测试" tags="" position="800,200" size="100,100">$needt1  $nt
+死亡结算</tw-passagedata><tw-passagedata pid="20" name="沙龙" tags="" position="500,1000" size="100,100"></tw-passagedata><tw-passagedata pid="21" name="测试" tags="" position="800,200" size="100,100">&lt;span id=&quot;coldsoul&quot;&gt;&lt;/span&gt;
+
+$needt1  $nt
 &lt;&lt;if Item.get(&quot;丝带白玫瑰&quot;).hasTag(&quot;花&quot;)&gt;&gt;111&lt;&lt;/if&gt;&gt;
 &lt;&lt;if Item.get(&quot;小型皮毛&quot;).hasTag(&quot;材料&quot;)&gt;&gt;111&lt;&lt;/if&gt;&gt;
 &lt;&lt;if Item.get(&quot;小型皮毛&quot;).hasTag(&quot;制材&quot;)&gt;&gt;111&lt;&lt;/if&gt;&gt;
@@ -8365,7 +8367,7 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 &lt;&lt;if $loc == &quot;草甸&quot;&gt;&gt;&lt;&lt;link ❖放羊 埃拉互动&gt;&gt;&lt;&lt;set $choice = &quot;放羊&quot;, $npc to 0&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $NPCinfo[$npc].love &gt;= 16 &amp;&amp; $NPCinfo[$npc].love &lt;= 85&gt;&gt;&lt;&lt;link ❖讲个故事 era互动&gt;&gt;&lt;&lt;set $choice = &quot;讲个故事&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $NPCinfo[$npc].love &gt;= 86 &amp;&amp; $NPCinfo[$npc].love &lt;= 99&gt;&gt;&lt;&lt;link ❖造船 era互动&gt;&gt;&lt;&lt;set $choice = &quot;造船&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $dxdsstat == 3&gt;&gt;&lt;&lt;link ❖点心代送 支线选项&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $story[&quot;点心代送&quot;] == 3&gt;&gt;&lt;&lt;link ❖点心代送 支线选项&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 /***************苏菲******************/
 &lt;&lt;if $npc == &quot;苏菲&quot;&gt;&gt;
@@ -8374,9 +8376,8 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 &lt;&lt;link ❖交谈 交谈&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ❖赠送&gt;&gt;
     &lt;&lt;if $NPCinfo[$npc].gift ==0&gt;&gt;
-    &lt;&lt;run Dialog.setup(&quot;送礼物给$npc&quot;);
-      Dialog.wiki(Story.get(&quot;赠送&quot;).processText());
-      Dialog.open();&gt;&gt;
+    &lt;&lt;set _pages = &quot;物品&quot;, $choice = &quot;赠送&quot;&gt;&gt;
+    &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;/if&gt;&gt;
@@ -8389,12 +8390,11 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 &lt;&lt;link ❖买药 买药&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ❖赠送&gt;&gt;
     &lt;&lt;if $NPCinfo[$npc].gift ==0&gt;&gt;
-    &lt;&lt;run Dialog.setup(&quot;送礼物给$npc&quot;);
-      Dialog.wiki(Story.get(&quot;赠送&quot;).processText());
-      Dialog.open();&gt;&gt;
+    &lt;&lt;set _pages = &quot;物品&quot;, $choice = &quot;赠送&quot;&gt;&gt;
+    &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;if $dxdsstat == 4&gt;&gt;&lt;br&gt;&lt;&lt;link ❖点心代送 支线选项&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $story[&quot;点心代送&quot;] == 4&gt;&gt;&lt;br&gt;&lt;&lt;link ❖点心代送 支线选项&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 /***************公爵夫人******************/
 
@@ -8403,9 +8403,8 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 &lt;&lt;link ❖交谈 交谈&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1, $choice = 0&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ❖赠送&gt;&gt;
     &lt;&lt;if $NPCinfo[$npc].gift ==0&gt;&gt;
-    &lt;&lt;run Dialog.setup(&quot;送礼物给$npc&quot;);
-      Dialog.wiki(Story.get(&quot;赠送&quot;).processText());
-      Dialog.open();&gt;&gt;
+    &lt;&lt;set _pages = &quot;物品&quot;, $choice = &quot;赠送&quot;&gt;&gt;
+    &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 ❖酿酒&lt;br&gt;
@@ -8419,13 +8418,12 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 &lt;&lt;link ❖交谈 交谈&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ❖赠送&gt;&gt;
     &lt;&lt;if $NPCinfo[$npc].gift ==0&gt;&gt;
-    &lt;&lt;run Dialog.setup(&quot;送礼物给$npc&quot;);
-      Dialog.wiki(Story.get(&quot;赠送&quot;).processText());
-      Dialog.open();&gt;&gt;
+    &lt;&lt;set _pages = &quot;物品&quot;, $choice = &quot;赠送&quot;&gt;&gt;
+    &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 ❖还书
-&lt;&lt;if $dxdsstat == 1&gt;&gt;&lt;br&gt;&lt;&lt;link ❖点心代送 支线选项&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $story[&quot;点心代送&quot;] == 1&gt;&gt;&lt;br&gt;&lt;&lt;link ❖点心代送 支线选项&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 /***************萨巴夫人******************/
 
@@ -8434,9 +8432,8 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 &lt;&lt;link ❖交谈 交谈&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ❖赠送&gt;&gt;
     &lt;&lt;if $NPCinfo[$npc].gift ==0&gt;&gt;
-    &lt;&lt;run Dialog.setup(&quot;送礼物给$npc&quot;);
-      Dialog.wiki(Story.get(&quot;赠送&quot;).processText());
-      Dialog.open();&gt;&gt;
+    &lt;&lt;set _pages = &quot;物品&quot;, $choice = &quot;赠送&quot;&gt;&gt;
+    &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 ❖交换诗集
@@ -8449,12 +8446,11 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 &lt;&lt;link ❖交谈 交谈&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ❖赠送&gt;&gt;
     &lt;&lt;if $NPCinfo[$npc].gift ==0&gt;&gt;
-    &lt;&lt;run Dialog.setup(&quot;送礼物给$npc&quot;);
-      Dialog.wiki(Story.get(&quot;赠送&quot;).processText());
-      Dialog.open();&gt;&gt;
+    &lt;&lt;set _pages = &quot;物品&quot;, $choice = &quot;赠送&quot;&gt;&gt;
+    &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;if $dxdsstat == 2&gt;&gt;&lt;br&gt;&lt;&lt;link ❖点心代送 支线选项&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $story[&quot;点心代送&quot;] == 2&gt;&gt;&lt;br&gt;&lt;&lt;link ❖点心代送 支线选项&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 /***************玛丽亚小姐******************/
 
@@ -8464,9 +8460,8 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 &lt;&lt;link ❖交谈 交谈&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt; 
 &lt;&lt;link ❖赠送&gt;&gt;
     &lt;&lt;if $NPCinfo[$npc].gift ==0&gt;&gt;
-    &lt;&lt;run Dialog.setup(&quot;送礼物给$npc&quot;);
-      Dialog.wiki(Story.get(&quot;赠送&quot;).processText());
-      Dialog.open();&gt;&gt;
+    &lt;&lt;set _pages = &quot;物品&quot;, $choice = &quot;赠送&quot;&gt;&gt;
+    &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;/if&gt;&gt;  
@@ -8479,9 +8474,8 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 &lt;&lt;link ❖交谈 交谈&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;   
 &lt;&lt;link ❖赠送&gt;&gt;
     &lt;&lt;if $NPCinfo[$npc].gift ==0&gt;&gt;
-    &lt;&lt;run Dialog.setup(&quot;送礼物给$npc&quot;);
-      Dialog.wiki(Story.get(&quot;赠送&quot;).processText());
-      Dialog.open();&gt;&gt;
+    &lt;&lt;set _pages = &quot;物品&quot;, $choice = &quot;赠送&quot;&gt;&gt;
+    &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;/if&gt;&gt;  
@@ -8494,9 +8488,8 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 &lt;&lt;link ❖交谈 交谈&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;   
 &lt;&lt;link ❖赠送&gt;&gt;
     &lt;&lt;if $NPCinfo[$npc].gift ==0&gt;&gt;
-    &lt;&lt;run Dialog.setup(&quot;送礼物给$npc&quot;);
-      Dialog.wiki(Story.get(&quot;赠送&quot;).processText());
-      Dialog.open();&gt;&gt;
+    &lt;&lt;set _pages = &quot;物品&quot;, $choice = &quot;赠送&quot;&gt;&gt;
+    &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;/if&gt;&gt; 
@@ -8509,9 +8502,8 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 &lt;&lt;link ❖交谈 交谈&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;   
 &lt;&lt;link ❖赠送&gt;&gt;
     &lt;&lt;if $NPCinfo[$npc].gift ==0&gt;&gt;
-    &lt;&lt;run Dialog.setup(&quot;送礼物给$npc&quot;);
-      Dialog.wiki(Story.get(&quot;赠送&quot;).processText());
-      Dialog.open();&gt;&gt;
+    &lt;&lt;set _pages = &quot;物品&quot;, $choice = &quot;赠送&quot;&gt;&gt;
+    &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;/if&gt;&gt;     
@@ -12756,7 +12748,9 @@ XIII-她？
 
 药柜
 
-自我审视</tw-passagedata><tw-passagedata pid="104" name="种地" tags="nobr" position="1300,400" size="100,100">&lt;&lt;if $choice == &quot;land1&quot; &amp;&amp; $land1[0].stat == 0 || $choice == &quot;land2&quot; &amp;&amp; $land2[0].stat == 0 || $choice == &quot;land3&quot; &amp;&amp; $land3[0].stat == 0 || $choice == &quot;land4&quot; &amp;&amp; $land4[0].stat == 0 || $choice == &quot;land5&quot; &amp;&amp; $land5[0].stat == 0 || $choice == &quot;land6&quot; &amp;&amp; $land6[0].stat == 0&gt;&gt;
+自我审视
+
+&lt;&lt;link ▷「返回」 家&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="104" name="种地" tags="nobr" position="1300,400" size="100,100">&lt;&lt;if $choice == &quot;land1&quot; &amp;&amp; $land1[0].stat == 0 || $choice == &quot;land2&quot; &amp;&amp; $land2[0].stat == 0 || $choice == &quot;land3&quot; &amp;&amp; $land3[0].stat == 0 || $choice == &quot;land4&quot; &amp;&amp; $land4[0].stat == 0 || $choice == &quot;land5&quot; &amp;&amp; $land5[0].stat == 0 || $choice == &quot;land6&quot; &amp;&amp; $land6[0].stat == 0&gt;&gt;
 
 ▸▹ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾◃◂&lt;br&gt;
 &lt;&lt;for _i to 0; _i lt $material.uniqueLength;  _i++&gt;&gt;
