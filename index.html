@@ -6692,7 +6692,7 @@ $(document).on(&quot;input&quot;, &quot;input[type=&#39;number&#39;]&quot;, func
 &lt;&lt;do&gt;&gt;
 &lt;div class=&quot;fish-interface&quot;&gt;
 &lt;&lt;for _item, _amount range $material.table&gt;&gt;
-&lt;&lt;if Item.get(_item).hasTag(&quot;sacrifice&quot;)&gt;&gt;
+&lt;&lt;if Item.get(_item).hasTag(&quot;祭品&quot;)&gt;&gt;
 &lt;&lt;sellsacrifice _item _amount&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
 &lt;/div&gt;&lt;&lt;/do&gt;&gt;
@@ -6859,7 +6859,7 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;&lt;elseif _birdfood == &quot;面包片&quot;&gt;&gt;&lt;br&gt;&lt;br&gt;你将面包片撕碎，撒在小镇的石板路上，几只&lt;&lt;set _bird = [&quot;鸽子&quot;,&quot;乌鸦&quot;,&quot;斑鸠&quot;].random()&gt;&gt;_bird围了上来
 &lt;&lt;elseif _birdfood == &quot;田鼠&quot;&gt;&gt;&lt;br&gt;&lt;br&gt;你刚把田鼠掏出来（这最好别让其他猫看见，你不想解释），一只&lt;&lt;set _bird = [&quot;伯劳&quot;,&quot;乌鸦&quot;,&quot;红隼&quot;].random()&gt;&gt;_bird
 &lt;&lt;elseif _birdfood == &quot;蜜蜂&quot;&gt;&gt;&lt;br&gt;&lt;br&gt;你刚一掏出兜里的蜜蜂，一只蜂虎就从树上飞下叼走了这顿可口的小零食
-&lt;&lt;elseif Item.get(_birdfood).hasTag(&quot;seed&quot;)&gt;&gt;
+&lt;&lt;elseif Item.get(_birdfood).hasTag(&quot;种子&quot;)&gt;&gt;
 
 &lt;&lt;if $hour &gt;=4 &amp;&amp; $hour &lt;=7 || ($hour &gt;=17 &amp;&amp; $hour &lt;=20)&gt;&gt;&lt;&lt;set $feednw += 1&gt;&gt;
 &lt;br&gt;&lt;br&gt;你撒出一把种子，吸引来了一群夜织鸟，他们灰褐色的羽毛在此刻的光线角度下折射出绚丽的色彩
@@ -6874,8 +6874,8 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;&lt;else&gt;&gt;&lt;br&gt;&lt;br&gt;你撒出一把种子，吸引来了一群&lt;&lt;set _bird = [&quot;鸽子&quot;,&quot;冠蓝鸦&quot;,&quot;灰喜鹊&quot;,&quot;斑鸠&quot;,&quot;乌鸦&quot;].random()&gt;&gt;_bird
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;elseif Item.get(_birdfood).hasTag(&quot;bug&quot;)&gt;&gt;&lt;br&gt;&lt;br&gt;你刚一掏出兜里的虫子，一只&lt;&lt;set _bird = [&quot;蓝山雀&quot;,&quot;冠蓝鸦&quot;,&quot;乌鸫&quot;,&quot;灰喜鹊&quot;,&quot;乌鸦&quot;].random()&gt;&gt;_bird就从树上飞下叼走了这顿可口的小零食
-&lt;&lt;elseif Item.get(_birdfood).hasTag(&quot;fruit&quot;)&gt;&gt;&lt;br&gt;&lt;br&gt;你将水果放置掌心，不时有一些鸟儿飞过啄食，但只有一只&lt;&lt;set _bird = [&quot;斑鸠&quot;,&quot;乌鸫&quot;,&quot;灰喜鹊&quot;,&quot;乌鸦&quot;].random()&gt;&gt;_bird敢于落在你的手上，最终叼走了剩下的食物
+&lt;&lt;elseif Item.get(_birdfood).hasTag(&quot;虫子&quot;)&gt;&gt;&lt;br&gt;&lt;br&gt;你刚一掏出兜里的虫子，一只&lt;&lt;set _bird = [&quot;蓝山雀&quot;,&quot;冠蓝鸦&quot;,&quot;乌鸫&quot;,&quot;灰喜鹊&quot;,&quot;乌鸦&quot;].random()&gt;&gt;_bird就从树上飞下叼走了这顿可口的小零食
+&lt;&lt;elseif Item.get(_birdfood).hasTag(&quot;水果&quot;)&gt;&gt;&lt;br&gt;&lt;br&gt;你将水果放置掌心，不时有一些鸟儿飞过啄食，但只有一只&lt;&lt;set _bird = [&quot;斑鸠&quot;,&quot;乌鸫&quot;,&quot;灰喜鹊&quot;,&quot;乌鸦&quot;].random()&gt;&gt;_bird敢于落在你的手上，最终叼走了剩下的食物
 &lt;&lt;/if&gt;&gt;
 
 /*特殊情况判断*/
@@ -12791,7 +12791,7 @@ XIII-她？
 ▸▹ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾◃◂&lt;br&gt;
 &lt;&lt;for _i to 0; _i lt $material.uniqueLength;  _i++&gt;&gt;
 &lt;&lt;set _itemn = $material.list[_i]&gt;&gt;
-&lt;&lt;if Item.get(_itemn).hasTag(&quot;seed&quot;)&gt;&gt;
+&lt;&lt;if Item.get(_itemn).hasTag(&quot;种子&quot;)&gt;&gt;
 ◈_itemn × &lt;&lt;=$material.count(_itemn)&gt;&gt;
 &lt;&lt;capture _itemn&gt;&gt;
 &lt;&lt;link &quot;种植&quot;&gt;&gt;&lt;&lt;drop $material _itemn 1&gt;&gt;&lt;&lt;seed&gt;&gt;
@@ -12866,7 +12866,7 @@ XIII-她？
 &lt;&lt;elseif  $flower == &quot;鸢尾花&quot;&gt;&gt;&lt;&lt;set _flower= [&quot;红色鸢尾花&quot;,&quot;橙色鸢尾花&quot;,&quot;蓝色鸢尾花&quot;,&quot;紫色鸢尾花&quot;,&quot;红色鸢尾花&quot;,&quot;青色鸢尾花&quot;,&quot;蓝色鸢尾花&quot;,&quot;紫色鸢尾花&quot;,&quot;绿色鸢尾花&quot;,&quot;红色鸢尾花&quot;,&quot;橙色鸢尾花&quot;,&quot;青色鸢尾花&quot;,&quot;蓝色鸢尾花&quot;,&quot;紫色鸢尾花&quot;,&quot;绿色鸢尾花&quot;].random()&gt;&gt;&lt;&lt;pickup $item _flower _n&gt;&gt;
 【你小心翼翼的摘下盛开的$flower】&lt;br&gt;
 &lt;font color=#4E84BA&gt;✧你获得_flower * 1✧&lt;/font&gt;&lt;br&gt;&lt;br&gt;
-&lt;&lt;elseif Item.get($flower).hasTag(&quot;flower&quot;)&gt;&gt;【你小心翼翼的摘下盛开的$flower】&lt;br&gt;&lt;&lt;pickup $item $flower _n&gt;&gt;
+&lt;&lt;elseif Item.get($flower).hasTag(&quot;花&quot;)&gt;&gt;【你小心翼翼的摘下盛开的$flower】&lt;br&gt;&lt;&lt;pickup $item $flower _n&gt;&gt;
 &lt;font color=#4E84BA&gt;✧你获得$flower * _n✧&lt;/font&gt;&lt;br&gt;&lt;br&gt;
 &lt;&lt;else&gt;&gt;&lt;&lt;pickup $food $flower _n&gt;&gt;
 &lt;font color=#4E84BA&gt;✧你收获了$flower * _n✧&lt;/font&gt;&lt;br&gt;&lt;br&gt;
@@ -14956,7 +14956,7 @@ $msname&lt;br&gt;
 &lt;&lt;set _num to $item.uniqueLength&gt;&gt;
 &lt;&lt;for _i to random(0, _num)&gt;&gt;
 &lt;&lt;set _itemn = $item.list[_i]&gt;&gt;
-&lt;&lt;if Item.get(_itemn).hasTag(&quot;cantlose&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;
+&lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;
 &lt;&lt;drop $item _itemn 1&gt;&gt;&lt;&lt;pickup $nest _itemn 1&gt;&gt;
 &lt;&lt;break&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
 
@@ -14964,7 +14964,7 @@ $msname&lt;br&gt;
 &lt;&lt;set _num to $food.uniqueLength&gt;&gt;
 &lt;&lt;for _i to random(0, _num)&gt;&gt;
 &lt;&lt;set _itemn = $food.list[_i]&gt;&gt;
-&lt;&lt;if Item.get(_itemn).hasTag(&quot;cantlose&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;
+&lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;
 &lt;&lt;drop $food _itemn 1&gt;&gt;&lt;&lt;pickup $nest _itemn 1&gt;&gt;
 &lt;&lt;break&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
 
@@ -14972,7 +14972,7 @@ $msname&lt;br&gt;
 &lt;&lt;set _num to $book.uniqueLength&gt;&gt;
 &lt;&lt;for _i to random(0, _num)&gt;&gt;
 &lt;&lt;set _itemn = $book.list[_i]&gt;&gt;
-&lt;&lt;if Item.get(_itemn).hasTag(&quot;cantlose&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;
+&lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;
 &lt;&lt;drop $book _itemn 1&gt;&gt;&lt;&lt;pickup $nest _itemn 1&gt;&gt;
 &lt;&lt;break&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
 
@@ -14980,7 +14980,7 @@ $msname&lt;br&gt;
 &lt;&lt;set _num to $material.uniqueLength&gt;&gt;
 &lt;&lt;for _i to random(0, _num)&gt;&gt;
 &lt;&lt;set _itemn = $material.list[_i]&gt;&gt;
-&lt;&lt;if Item.get(_itemn).hasTag(&quot;cantlose&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;
+&lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;
 &lt;&lt;drop $material _itemn 1&gt;&gt;&lt;&lt;pickup $nest _itemn 1&gt;&gt;
 &lt;&lt;break&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
 &lt;&lt;elseif  _s ==5&gt;&gt;
@@ -14988,7 +14988,7 @@ $msname&lt;br&gt;
 &lt;&lt;set _num to $material.uniqueLength&gt;&gt;
 &lt;&lt;for _i to random(0, _num)&gt;&gt;
 &lt;&lt;set _itemn = $material.list[_i]&gt;&gt;
-&lt;&lt;if Item.get(_itemn).hasTag(&quot;cantlose&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;
+&lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;&lt;&lt;else&gt;&gt;
 &lt;&lt;drop $material _itemn 1&gt;&gt;&lt;&lt;pickup $nest _itemn 1&gt;&gt;
 &lt;&lt;break&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;
 
