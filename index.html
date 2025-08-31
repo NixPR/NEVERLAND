@@ -1398,7 +1398,7 @@ background-repeat: no-repeat;
 background-position: bottom 5px right 0px;
 background-attachment: local;
 pointer-events: none;
-   z-index: 0;
+   z-index: 1100;
 animation: soulfloat ease-in-out 3.5s 0s infinite;
 }
 
@@ -1415,7 +1415,7 @@ background-repeat: no-repeat;
 background-position: bottom 5px right 0px;
 background-attachment: local;
 pointer-events: none;
- z-index: 0;
+ z-index: 1100;
 animation: soulfloat ease-in-out 3.5s 0s infinite;
 }
 
@@ -1432,7 +1432,7 @@ background-repeat: no-repeat;
 background-position: bottom 5px right 0px;
 background-attachment: local;
 pointer-events: none;
-   z-index: 0;
+   z-index: 1100;
 animation: soulfloat ease-in-out 3.5s 0s infinite;
 }
 
@@ -1449,6 +1449,7 @@ background-repeat: no-repeat;
 background-position: bottom 5px right 0px;
 background-attachment: local;
 pointer-events: none;
+   z-index: 1100;
 animation: soulfloat ease-in-out 3.5s 0s infinite;
 }
 
@@ -1465,6 +1466,7 @@ background-repeat: no-repeat;
 background-position: bottom 5px right 0px;
 background-attachment: local;
 pointer-events: none;
+   z-index: 1100;
 animation: soulfloat ease-in-out 3.5s 0s infinite;
 }
 
@@ -1481,6 +1483,7 @@ background-repeat: no-repeat;
 background-position: bottom 5px right 0px;
 background-attachment: local;
 pointer-events: none;
+   z-index: 1100;
 animation: soulfloat ease-in-out 3.5s 0s infinite;
 }
 
@@ -1497,6 +1500,7 @@ background-repeat: no-repeat;
 background-position: bottom 5px right 0px;
 background-attachment: local;
 pointer-events: none;
+   z-index: 1100;
 animation: soulfloat ease-in-out 3.5s 0s infinite;
 }
 
@@ -1513,6 +1517,7 @@ background-repeat: no-repeat;
 background-position: bottom 5px right 0px;
 background-attachment: local;
 pointer-events: none;
+   z-index: 1100;
 animation: soulfloat ease-in-out 3.5s 0s infinite;
 }
 
@@ -1529,6 +1534,7 @@ background-repeat: no-repeat;
 background-position: bottom 5px right 0px;
 background-attachment: local;
 pointer-events: none;
+   z-index: 1100;
 animation: soulfloat ease-in-out 3.5s 0s infinite;
 }
 /*月亮*/
@@ -7087,45 +7093,7 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 直到你将所有的东西都从铁盒里掏出，你想你最终还是找到了它。
 &lt;&lt;/if&gt;&gt;
 
-死亡结算</tw-passagedata><tw-passagedata pid="20" name="沙龙" tags="" position="500,1000" size="100,100"></tw-passagedata><tw-passagedata pid="21" name="测试" tags="" position="800,200" size="100,100">&lt;&lt;set _progress1 to setup.getStat(&quot;heartless&quot;)/24, _progress01 to setup.getStat(&quot;heartless&quot;)&gt;&gt; 
-&lt;&lt;set _progress2 to setup.getStat(&quot;curiosity&quot;)/24, _progress02 to setup.getStat(&quot;curiosity&quot;)&gt;&gt;
-&lt;&lt;set _progress3 to setup.getStat(&quot;bold&quot;)/24, _progress03 to setup.getStat(&quot;bold&quot;)&gt;&gt;
-&lt;&lt;set _progress4 to setup.getStat(&quot;enjoy&quot;)/24, _progress04 to setup.getStat(&quot;enjoy&quot;)&gt;&gt;
-&lt;&lt;set _progress5 to $hunger/24, _progress05 to $hunger&gt;&gt;
-&lt;&lt;set _progress6 to $abs/12, _progress06 to $abs&gt;&gt;
-
-&lt;&lt;if setup.getStat(&quot;heartless&quot;) lt 24 &amp;&amp; setup.getStat(&quot;curiosity&quot;) lt 24 &amp;&amp; setup.getStat(&quot;bold&quot;) lt 24 &amp;&amp; setup.getStat(&quot;enjoy&quot;) lt 24 &amp;&amp; $hunger lt 24 &amp;&amp; $abs lt 12 &amp;&amp; $fame lt 24 &gt;&gt;
-
-&lt;&lt;if $soul == &quot;蓝色&quot;&gt;&gt;
-&lt;span id=&quot;bluesoul&quot;&gt;&lt;/span&gt;
-&lt;&lt;elseif $soul == &quot;红色&quot;&gt;&gt;
-&lt;span id=&quot;redsoul&quot;&gt;&lt;/span&gt;
-&lt;&lt;elseif $soul == &quot;金色&quot;&gt;&gt;
-&lt;span id=&quot;goldsoul&quot;&gt;&lt;/span&gt;&lt;&lt;/if&gt;&gt;
-&lt;span id=&quot;coldsoul&quot; @style=&quot; &#39;z-index:&#39; +_progress01+&#39;;&#39; + &#39;opacity:&#39; +_progress1+&#39;;&#39;&quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;bloodsoul&quot; @style=&quot; &#39;opacity:&#39; +_progress2+&#39;;&#39; + &#39;z-index:&#39; +_progress02+&#39;;&#39; &quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;solidsoul&quot; @style=&quot; &#39;opacity:&#39; +_progress3+&#39;;&#39; + &#39;z-index:&#39; +_progress03+&#39;;&#39; &quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;fermentsoul&quot; @style=&quot; &#39;opacity:&#39; +_progress4+&#39;;&#39; + &#39;z-index:&#39; +_progress04+&#39;;&#39; &quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;hungersoul&quot; @style=&quot; &#39;opacity:&#39; +_progress5+&#39;;&#39; + &#39;z-index:&#39; +_progress05+&#39;;&#39; &quot;&gt;&lt;/span&gt;
-&lt;span id=&quot;lightlesssoul&quot; @style=&quot; &#39;opacity:&#39; +_progress6+&#39;;&#39; + &#39;z-index:&#39; +_progress06+&#39;;&#39; &quot;&gt;&lt;/span&gt;
-&lt;&lt;elseif $fame == 24&gt;&gt;
-&lt;span id=&quot;goldsoul&quot;&gt;&lt;/span&gt;
-&lt;&lt;elseif setup.getStat(&quot;heartless&quot;) &gt;= 24&gt;&gt;
-&lt;span id=&quot;coldsoul&quot;&gt;&lt;/span&gt;
-&lt;&lt;elseif setup.getStat(&quot;curiosity&quot;) &gt;= 24&gt;&gt;
-&lt;span id=&quot;bloodsoul&quot;&gt;&lt;/span&gt;
-&lt;&lt;elseif setup.getStat(&quot;bold&quot;) &gt;= 24&gt;&gt;
-&lt;span id=&quot;solidsoul&quot;&gt;&lt;/span&gt;
-&lt;&lt;elseif setup.getStat(&quot;enjoy&quot;) &gt;= 24&gt;&gt;
-&lt;span id=&quot;fermentsoul&quot;&gt;&lt;/span&gt;
-&lt;&lt;elseif $hunger &gt;= 24&gt;&gt;
-&lt;span id=&quot;hungersoul&quot;&gt;&lt;/span&gt;
-&lt;&lt;elseif $abs &gt;= 12&gt;&gt;
-&lt;span id=&quot;lightlesssoul&quot;&gt;&lt;/span&gt;
-
-&lt;&lt;/if&gt;&gt;
-
-$needt1  $nt
+死亡结算</tw-passagedata><tw-passagedata pid="20" name="沙龙" tags="" position="500,1000" size="100,100"></tw-passagedata><tw-passagedata pid="21" name="测试" tags="" position="800,200" size="100,100">$needt1  $nt
 &lt;&lt;if Item.get(&quot;丝带白玫瑰&quot;).hasTag(&quot;花&quot;)&gt;&gt;111&lt;&lt;/if&gt;&gt;
 &lt;&lt;if Item.get(&quot;小型皮毛&quot;).hasTag(&quot;材料&quot;)&gt;&gt;111&lt;&lt;/if&gt;&gt;
 &lt;&lt;if Item.get(&quot;小型皮毛&quot;).hasTag(&quot;制材&quot;)&gt;&gt;111&lt;&lt;/if&gt;&gt;
@@ -14546,14 +14514,14 @@ $msname&lt;br&gt;
 
 &lt;&lt;if !$soul&gt;&gt;
 &lt;&lt;else&gt;&gt;
-&lt;&lt;set _progress1 to setup.getStat(&quot;heartless&quot;)/24, _progress01 to setup.getStat(&quot;heartless&quot;)&gt;&gt; 
-&lt;&lt;set _progress2 to setup.getStat(&quot;curiosity&quot;)/24, _progress02 to setup.getStat(&quot;curiosity&quot;)&gt;&gt;
-&lt;&lt;set _progress3 to setup.getStat(&quot;bold&quot;)/24, _progress03 to setup.getStat(&quot;bold&quot;)&gt;&gt;
-&lt;&lt;set _progress4 to setup.getStat(&quot;enjoy&quot;)/24, _progress04 to setup.getStat(&quot;enjoy&quot;)&gt;&gt;
+&lt;&lt;set _progress1 to setup.getStat(&quot;heartless&quot;)/24, _progress01 to setup.getStat(&quot;heartless&quot;)*200&gt;&gt; 
+&lt;&lt;set _progress2 to setup.getStat(&quot;curiosity&quot;)/24, _progress02 to setup.getStat(&quot;curiosity&quot;)*200&gt;&gt;
+&lt;&lt;set _progress3 to setup.getStat(&quot;bold&quot;)/24, _progress03 to setup.getStat(&quot;bold&quot;)*200&gt;&gt;
+&lt;&lt;set _progress4 to setup.getStat(&quot;enjoy&quot;)/24, _progress04 to setup.getStat(&quot;enjoy&quot;)*200&gt;&gt;
 &lt;&lt;set _progress5 to $hunger/24, _progress05 to $hunger&gt;&gt;
 &lt;&lt;set _progress6 to $abs/12, _progress06 to $abs&gt;&gt;
 
-&lt;&lt;if setup.getStat(&quot;heartless&quot;) lt 24 &amp;&amp; setup.getStat(&quot;curiosity&quot;) lt 24 &amp;&amp; setup.getStat(&quot;bold&quot;) lt 24 &amp;&amp; setup.getStat(&quot;enjoy&quot;) lt 24 &amp;&amp; $hunger lt 24 &amp;&amp; $abs lt 12 &amp;&amp; $fame lt 24 &gt;&gt;
+&lt;&lt;if setup.getStat(&quot;heartless&quot;) lt 24 &amp;&amp; setup.getStat(&quot;curiosity&quot;) lt 24 &amp;&amp; setup.getStat(&quot;bold&quot;) lt 24 &amp;&amp; setup.getStat(&quot;enjoy&quot;) lt 24 &amp;&amp; $hunger lt 24 &amp;&amp; $abs lt 12&gt;&gt;
 
 &lt;&lt;if $soul == &quot;蓝色&quot;&gt;&gt;
 &lt;span id=&quot;bluesoul&quot;&gt;&lt;/span&gt;
