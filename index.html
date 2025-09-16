@@ -5848,6 +5848,7 @@ RecipeBook.set("黄油", {"羊奶": 1}, {servings: 3});
 RecipeBook.set("方糖", {"蜂蜜": 1}, {servings: 6});
 RecipeBook.set("煎蛋", {"鸟蛋": 1});
 RecipeBook.set("鱼油", {"鱼肉": 1}, {servings: 2});
+RecipeBook.set("无花果蜜饯", {"无花果": 1, "方糖": 1});
 RecipeBook.set("柠香三文鱼", {"白鲑鱼": 1, "柠檬": 1});
 RecipeBook.set("茄汁鲈鱼", {"黑鲈鱼": 1, "番茄": 2});
 RecipeBook.set("蜂蜜柠檬水", {"蜂蜜": 1, "柠檬": 1});
@@ -5855,7 +5856,6 @@ RecipeBook.set("炸薯条", {"土豆": 1, "鱼油": 1}, {servings: 5});
 RecipeBook.set("炸鱼", {"面粉": 1, "鱼肉": 1, "鱼油": 1}, {servings: 2});
 RecipeBook.set("土豆泥", {"土豆": 1, "黄油": 1}, {servings: 2});
 RecipeBook.set("炸鱼薯条", {"炸鱼": 1, "炸薯条": 1});
-
 RecipeBook.set("土豆蛋饼", {"土豆": 1, "黄油": 1, "鸟蛋": 1}, {servings: 2});
 RecipeBook.set("浆果馅饼", {"浆果": 5, "面粉": 1, "黄油": 1, "糖": 3}, {servings: 4});
 RecipeBook.set("番茄浓汤", {"番茄": 1, "土豆": 1, "洋葱": 1, "羊奶": 1});
@@ -6515,7 +6515,7 @@ Item.add("律法之书", {displayName: "律法之书", description: "【】<br><
 Item.add("笔记残页", {displayName: "笔记残页", description: "【】<br><br><<link \"❖阅读\">><<run Dialog.setup(\"阅读\");Dialog.wiki(\"【】<<set $knowledgeexp +=10>><<addkexpWidget>>\");Dialog.open();>><</link>></center><<iwd \"笔记残页\">>" , handler: null, consumable: null, function: null, store: null, price: 12 , weight: 0.01},["读物", "不可丢弃", null, null, null, null, "fuelC"]);
 Item.add("布尔盖酒配方", {displayName: "布尔盖酒配方", description: "<br><center>//龙舌兰之心，发酵三日//</center><br>这上面就写了这么多了'<<iwd \"布尔盖酒配方\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["读物", "配方", null, null, null, null, "fuelC"]);
 
-</script><tw-tag name="UIBarhide" color="green"></tw-tag><tw-tag name="init" color="green"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="widget" color="orange"></tw-tag><tw-tag name="autosave" color="blue"></tw-tag><tw-tag name="nobr" color="yellow"></tw-tag><tw-passagedata pid="1" name="demo结语" tags="" position="2000,1000" size="100,100">&lt;center&gt;
+</script><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="widget" color="orange"></tw-tag><tw-tag name="nobr" color="yellow"></tw-tag><tw-tag name="autosave" color="blue"></tw-tag><tw-tag name="init" color="green"></tw-tag><tw-tag name="UIBarhide" color="green"></tw-tag><tw-passagedata pid="1" name="demo结语" tags="" position="2000,1000" size="100,100">&lt;center&gt;
 
 demo的游戏内容到此结束, 包含一个主线任务、三段主线剧情、一个支线任务、四个可攻略角色、七个一般角色、六个成就、五条线索
 
@@ -8531,7 +8531,7 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 &lt;&lt;elseif $NPCinfo[&quot;萨巴夫人&quot;].chat == 0 &amp;&amp; $loc ==&quot;图书馆&quot;&gt;&gt;&lt;&lt;set $NPCinfo[&quot;萨巴夫人&quot;].dis = &quot;一位坐在图书馆的一角的老猫出现在你的视野里, 她手握着一支破旧的羽毛笔, 在一本厚重的抄写本上缓缓书写着. 那是萨巴夫人, 一位精于种植、热爱诗歌的女士, 如果你有合适的诗集, 可以跟她换些种子&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $NPCinfo[&quot;萨巴夫人&quot;].loc == $loc&gt;&gt;&lt;br&gt;&lt;&lt;link &quot;✣「 萨巴夫人」&quot;&gt;&gt;&lt;&lt;set $npc to &quot;萨巴夫人&quot;, $choice = 0&gt;&gt;
+&lt;&lt;if $NPCinfo[&quot;萨巴夫人&quot;].loc == $loc&gt;&gt;&lt;br&gt;&lt;&lt;link &quot;✣「 萨巴夫人」&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;萨巴夫人&quot;, $choice = 0&gt;&gt;
 &lt;&lt;run Dialog.setup($npc);
   Dialog.wiki(Story.get(&quot;NPC&quot;).processText());
   Dialog.open();&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;$NPCinfo[&quot;萨巴夫人&quot;].dis&lt;&lt;/if&gt;&gt;
@@ -9203,6 +9203,7 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 &lt;&lt;elseif $choice == &quot;离开&quot;&gt;&gt;
 
 &lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;
+/*
 【要修改！】
 
 选择 A. “……我拒绝。”
@@ -9225,12 +9226,12 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 欧马卡特： （眼睛亮起危险的光，向前倾身）“哦？我喜欢主动的。乐子多的是…比如，猜猜我手里的骰子点数？赌注嘛…先欠着，怎么样？” （他的笑容扩大）
 
 选择 C. （直接离开）
-欧马卡特： （对着你的背影提高音量，语气带着嘲弄）“明智的选择！今天你赢走了你的‘无趣’，但记住，我随时等着兑换你的‘好奇心’！”
+欧马卡特： （对着你的背影提高音量，语气带着嘲弄）“明智的选择！今天你赢走了你的‘无趣’，但记住，我随时等着兑换你的‘好奇心’！”*/
 
 
 &lt;&lt;/if&gt;&gt;
 /********日常********/
-&lt;&lt;else&gt;&gt;【要修改！】
+&lt;&lt;else&gt;&gt;/*【要修改！】
 . 充满诱惑的陷阱
 “嘿，别摆出那副苦大仇深的样子。生命是诸神掷出的骰子，落地前谁也不知道点数…何不赌一把？我们不赌钱，那太俗气…我们赌点更有趣的，比如…你明天的好运气？” （他的声音如同温暖的毒药，眼神却冰冷如镜）
 
@@ -9244,7 +9245,7 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 “工作？为了一点点可怜的鱼干就把自己累得皮毛暗淡？不不不，那才是最大的骗局，亲爱的。我的职业远比那高尚——我贩卖‘真相’，虽然味道有点苦，但保证新鲜刺激。” （他张开爪子，仿佛在展示一件无形的商品）
 
 6. 意味深长的告别
-“这就走了？真遗憾，我差点就能把你最后那点天真也骗到手了。不过没关系，我们很快会再见的…毕竟，像你这样还抱着‘希望’这种硬通货的傻瓜，可不多了。” （他笑着冲你挥手，身影仿佛融入阴影与烟雾，渐渐模糊）
+“这就走了？真遗憾，我差点就能把你最后那点天真也骗到手了。不过没关系，我们很快会再见的…毕竟，像你这样还抱着‘希望’这种硬通货的傻瓜，可不多了。” （他笑着冲你挥手，身影仿佛融入阴影与烟雾，渐渐模糊）*/还没写
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $state == &quot;投资船长&quot;&gt;&gt;【要修改！】
@@ -9380,7 +9381,7 @@ C. 沉默离开 （认亏）
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;trethate&quot;)&gt;&gt;特里特的脸色瞬间阴沉下来，独眼中流露出毫不掩饰的厌恶。“拿开。”他压抑脾气的模样宛如能将你吞噬的海啸。&lt;&lt;npchate 2&gt;&gt;
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;观赏鱼&quot;)&gt;&gt;特里特皱起眉头，拎起那条可怜的鱼儿：“这玩意属于大海吗？不。属于餐桌吗？也不。”他拒绝了你的礼物。&lt;&lt;npchate 1&gt;&gt;
 &lt;&lt;else&gt;&gt;
-&lt;&lt;set _rpl= [&quot;特里特没有接过礼物，只是看了看，然后又把注意力放回手中的鱼上：“我不需要这个。你自己留着吧。”&quot;,&quot;特里特接过礼物，但没有打开，直接放在了柜台下面：“放这吧。我还有很多活要干。”&quot;].random()&gt;&gt;_rpl
+&lt;&lt;set _rpl= [&quot;特里特接过礼物，只是看了看，然后又把注意力放回手中的鱼上：“我不需要这个。你自己留着吧。”&quot;,&quot;特里特接过礼物，但没有打开，直接放在了柜台下面：“放这吧。我还有很多活要干。”&quot;].random()&gt;&gt;_rpl
 &lt;&lt;npclove 1&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -9406,21 +9407,10 @@ $npc收下了你的礼物
 /***************奥提斯******************/
 &lt;&lt;elseif $npc == &quot;奥提斯&quot;&gt;&gt;【要修改！】
 &lt;&lt;if $gift == &quot;榛子咖啡&quot;&gt;&gt;
-他的蓝眼睛在看到咖啡豆的包装时瞬间亮了起来，鼻尖微微抽动。他暂时放下了笔，用两只胖爪子郑重地接过）
-
-“哦？这是……！来自‘墙外’的豆子，通过‘特殊渠道’弄到的？真是难得。”
-（他凑近深深吸了一口香气，露出一副极其陶醉的表情）
-“嗯…这醇厚的香气，是知识与灵感的味道…不对，这么说太俗套了。应该说是‘能让混沌的思绪沉淀为清晰字句的催化剂’。”
-（他抬头看你，眼神中带着罕见的、真正的赞赏）
-“你为这个故事…咳，我是说，为我…提供了一个强大的推进力。很好…很好。我想，下一个章节的思维会因此而格外流畅。谢了。”
+奥提斯看到榛子咖啡的包装，眼睛仿佛瞬间从厚厚的眼镜片后亮了起来，他的鼻尖微微抽动，暂时放下了笔，伸出两只手郑重地接过：“哦？这是...！你特意为我搞来的？真是感谢！”他凑近深深吸了一口香气，露出一副极其陶醉的表情，“嗯...这醇厚的香气，是知识与灵感的味道…不对，这么说太俗套了。应该说是‘能让混沌的思绪沉淀为清晰字句的催化剂’。我想，下一个章节的思维会因此而格外流畅。”他抬头看你，仿佛在此刻的某个瞬间，他察觉到了你身上某种不存在的品质，“现在我得说，我手上的故事也许会变得格外出色呢，都得感谢你，我的朋友！”&lt;&lt;npclove _m&gt;&gt;
 &lt;&lt;elseif $gift == &quot;无花果蜜饯&quot;&gt;&gt;
-他的目光几乎是“黏”在了那盒蜜饯上，写作的手完全停了下来。他努力想保持平静，但微微晃动的尾巴尖出卖了他的渴望）
-
-“呵…‘那位大人’门前的果实制成的蜜饯。你倒是弄到了不错的东西。”
-（他小心地捏起一块，对着灯光看了看晶莹的糖霜，仿佛在鉴赏一件艺术品）
-“甜味饱满，质地软糯，最重要的是——不会掉渣，完美符合书房礼仪。这是最不会打扰叙事进程的补给品。”
-（他咬了一小口，满足地眯起眼睛，发出咕噜声）
-&lt;&lt;elseif Item.get($gift).hasTag(&quot;咖啡&quot;)&gt;&gt;
+他的目光几乎黏在了你手里的蜜饯上，写作的手完全停了下来。他努力想保持平静，但微微晃动的尾巴尖出卖了他的渴望：“啊，无花果蜜饯...想必是你自己制作的，岛上懂得欣赏这口味的猫可不多。”，他小心地捏起一块，对着光亮看着皱缩的表皮上覆盖的糖霜，口水快要滴到稿纸上，“甜味饱满，质地软糯，最重要的是——不会掉渣，完美符合书房礼仪。这是最不会打扰写作的补给品！”他咬了一小口，满足地眯起眼睛，发出一阵咕噜声。&lt;&lt;npclove _m&gt;&gt;
+/*&lt;&lt;elseif Item.get($gift).hasTag(&quot;咖啡&quot;) || $gift != &quot;蓝山咖啡&quot;&gt;&gt;
 他的鼻子会微微抽动一下，目光从稿纸上抬起，短暂地停留在咖啡上）
 
 “嗯。一份及时的‘燃料补给’。虽然比不上某些‘特定产地’的稀有品种，但其提神醒脑的核心功能值得肯定。”
@@ -9432,32 +9422,38 @@ $npc收下了你的礼物
 “哦？一份糖分摄入。虽然其原料和工艺的‘传奇性’有待商榷，但作为刺激多巴胺分泌、短暂提升创作愉悦感的工具，它达标了。”
 （他会用爪子把甜食拨到一旁，优先保护稿纸）
 “等我处理完这个棘手的对话描写再来‘处理’它。你可以放下了。”
-
+*/
 &lt;&lt;else&gt;&gt;
+$npc收下了你的礼物
+&lt;&lt;npclove 1&gt;&gt;
+/*
 他会暂时停下笔，用那双湛蓝而淡漠的眼睛扫一眼物品，似乎在快速为其“分类归档”）
 
 “一件……‘中性道具’。”
 （他可能会用笔尖轻轻碰一下物品，评估它在故事中的潜在用途）
 “缺乏强烈的叙事冲突性，也未见独特的象征意义。其功能更倾向于背景装饰而非推动情节。”
 （他轻轻呼了口气，似乎觉得有点无聊）
-“暂且‘归档’吧。或许某天某个次要角色会需要它。辛苦了。”
+“暂且‘归档’吧。或许某天某个次要角色会需要它。辛苦了。”*/
 &lt;&lt;/if&gt;&gt;
 
 /***************公爵夫人******************/
-&lt;&lt;elseif $npc == &quot;公爵夫人&quot;&gt;&gt;/*【要修改！】最喜欢：图拉特、岛民的遗物、砾盐；喜欢：店里没有的酒、附子花；讨厌：朗姆酒、附子花之外的花、不含酒精的饮料、方糖*/
+&lt;&lt;elseif $npc == &quot;公爵夫人&quot;&gt;&gt;/*【要补充！】最喜欢：图拉特、岛民的遗物、砾盐；喜欢：店里没有的酒(单独写)、附子花；讨厌：朗姆酒、附子花之外的花、不含酒精的饮料、方糖*/
 &lt;&lt;if $gift == &quot;图拉特&quot;&gt;&gt;
 公爵夫人在看到那蠕动的生物时，没有反感，反而有一种极度贪婪的光芒闪烁在她的绿眸中，但又迅速被她用狂热的赞美掩盖：“哦！我亲爱的！你从哪儿找到这么...完美的礼物？”她停顿了一下，仿佛突然意识到自己即将用词不当，“我得立刻把它送到...嗯...酒窖里去。谢谢你，亲爱的，你总是能给我带来最大的惊喜！”&lt;&lt;npclove _m&gt;&gt;
+&lt;&lt;elseif $gift == &quot;砾盐&quot;&gt;&gt;
+公爵夫人捏起一小撮盐，在指尖搓捻，感受其独特的质感，随后露出一个深邃而了然的微笑：“啊...来自天上的馈赠。我认得这种独特的‘风味’，它能让平淡的酒也变得...颇有风味，让猫忘却所有无关的琐碎。” &lt;&lt;npclove _m&gt;&gt;
 &lt;&lt;elseif $gift == &quot;附子花&quot;&gt;&gt;&lt;&lt;npclove _n&gt;&gt;
 公爵夫人拿起那株美丽却致命的花朵，放在鼻尖下深深嗅吸，露出一个危险而迷人的微笑：“美丽的危险，危险的美丽…我最喜欢这种矛盾结合体了。它的‘特性’如此强烈，只需一点点，就能让一杯平凡的酒变得…刻骨铭心。一份非常…特别的礼物，我很喜欢。”
-
 &lt;&lt;elseif $gift == &quot;朗姆酒&quot;&gt;&gt;
 公爵夫人旋转着瓶身查看标签，然后轻轻放在一旁，露出一个略带歉意的微笑：“哦，亲爱的，真是谢谢你的心意。不过，我的酒馆更专注于提供一些...风格更独特的烈酒。这瓶朗姆或许更适合接受不了高度数的猫品尝呢。” &lt;&lt;npchate 1&gt;&gt;
 &lt;&lt;elseif $gift == &quot;方糖&quot;&gt;&gt;
 公爵夫人看着你递来的礼物，甚至没有伸手接过：“多么精致而甜蜜的小东西啊。但它过于完美的甜腻，会掩盖掉酒液本身复杂的层次感和真实的韵味。在我的领域，我们更倾向于欣赏那些...嗯...更原始、更强烈的本味。”&lt;&lt;npchate 1&gt;&gt;
-
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;花&quot;) &amp;&amp; $gift != &quot;附子花&quot;&gt;&gt;
 公爵夫人接过花束，闭上眼眸，表情沉醉地轻嗅了一下，随即将它插在吧台的一个杯子里：“真是鲜艳欲滴啊。可惜它们娇嫩的生命力，与我这里浓烈的酒香和喧嚣的气氛相比，显得有些....难以长久。但我依然感谢这份带来不同气息的礼物。”&lt;&lt;npchate 1&gt;&gt;
-
+&lt;&lt;elseif Item.get($gift).hasTag(&quot;饮料&quot;)&gt;&gt;
+公爵夫人看着你递出的礼物，露出一个宽容却又带着一丝无奈的笑容：“亲爱的，你真是体贴。不过在这里，我们相信唯有经过时间发酵的精华，才能真正慰藉灵魂。这些甜美的饮品，或许可以留给街头嬉闹的孩子们？&lt;&lt;npchate 1&gt;&gt;
+&lt;&lt;else&gt;&gt;
+&lt;&lt;set _rpl= [&quot;公爵夫人接过礼物，绿眼睛微微弯起，露出一个真诚而愉悦的笑容：“哎呀，真是份意外的惊喜！虽然我这老派的口味可能一时想不到怎么用它，但这份心意本身就像一杯恰到好处的开胃酒，令人心情愉悦。谢谢你，亲爱的，总是这么有心。”&quot;,&quot;公爵夫人拿起物品，饶有兴致地把玩了一下，随即发出一阵闷热的笑声，仿佛雨季的风穿过树林：“哈，这可真有意思！我的脑子光围着酒瓶和酒杯转了，差点忘了世界上还有这样有趣的小东西。很好，它会给吧台增添一点新的话题。感谢你为我这枯燥的老板娘带来一丝新鲜感。”&quot;,&quot;公爵夫人轻轻抚摸着礼物，眼神变得柔和，语气中带着恰到好处的感动：“哦，我亲爱的...你总能注意到这些细节。这份被惦记的温暖，比任何陈年美酒都更让人沉醉。我会为它找个特别的位置安放的，我保证。”&quot;].random()&gt;&gt;_rpl
 &lt;&lt;/if&gt;&gt;
 
 
@@ -13727,7 +13723,8 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;&lt;if $dn ==1&gt;&gt;
 &lt;&lt;if $NPCinfo[&quot;苏菲&quot;].chat == 0&gt;&gt;&lt;&lt;set $loct = $loc, $choice = 0, $NPCinfo[&quot;苏菲&quot;].chat =1, $state =&quot;问候&quot;&gt;&gt;&lt;&lt;goto 苏菲互动&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;audio &quot;mainBGM&quot; unmute&gt;&gt;
-&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543238_2HNM8SE1A9tkwRc.jpg&quot; width=100% class=&quot;pic&quot;&gt;
+&lt;&lt;set _img = [&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543238_2HNM8SE1A9tkwRc.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107289998_uUZko4FFCaGo1ct.jpg&quot;].random()&gt;&gt;
+&lt;&lt;print &#39;&lt;img src=&quot; &#39; + _img + &#39; &quot; width=100% class=&quot;pic&quot;&gt;&#39;&gt;&gt;
 &lt;font color=#D4A34C&gt;//永无乡的小镇由枘朴小姐的祖父当年亲自选址规划建立, 选址于贝雷河下游的平原河谷中, 平均海拔高度122英尺. 岛上的居民大多居住在此, 店铺和重要建筑, 如银行、医院都聚集于此, 集市也只在小镇的广场上举行//&lt;/font&gt;
 &lt;&lt;else&gt;&gt;
 &lt;&lt;if $NPCinfo[&quot;欧马卡特&quot;].chat == 0&gt;&gt;&lt;&lt;set $loct = $loc, $choice = 0, $NPCinfo[&quot;欧马卡特&quot;].chat =1, $state =&quot;问候&quot;&gt;&gt;&lt;&lt;goto 欧马卡特互动&gt;&gt;&lt;&lt;/if&gt;&gt;
@@ -14497,7 +14494,8 @@ function qteChange() {
 &lt;&lt;link 返回 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="深林边缘" tags="nobr" position="600,800" size="100,100">&lt;&lt;set $loc = &quot;深林边缘&quot;, $minute += random(5,10)&gt;&gt;&lt;&lt;losehp 1&gt;&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="深林边缘" tags="nobr" position="600,800" size="100,100">&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107289050_39JN0vcVYou6qfr.jpg&quot; width=100% class=&quot;pic&quot;&gt;
+&lt;&lt;set $loc = &quot;深林边缘&quot;, $minute += random(5,10)&gt;&gt;&lt;&lt;losehp 1&gt;&gt;
 &lt;&lt;set _s to random(1,5)&gt;&gt;&lt;&lt;if setup.getStat(&quot;knowledge&quot;) &gt;= 6 &amp;&amp; _s &lt;=2 &amp;&amp; $wellfirst != 1&gt;&gt;&lt;&lt;goto &quot;许愿井&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;font color=#D4A34C&gt;//深林是一片庞大的温带森林, 占据着永无乡西部的大部分土地, 常年白雾缭绕。里面的树木繁密而高大, 似乎都已生长百年之久, 其中盘踞着数目可观的危险生物, 居民严禁进入深林//&lt;/font&gt;&lt;br&gt;
@@ -14530,7 +14528,8 @@ function qteChange() {
 &lt;&lt;link ▷「离开」 深林边缘&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="151" name="草甸" tags="nobr" position="200,400" size="100,100">&lt;&lt;set $loc = &quot;草甸&quot;&gt;&gt;&lt;&lt;set $minute += random(10,20)&gt;&gt;&lt;&lt;losehp 1&gt;&gt;
 &lt;&lt;audio &quot;mainBGM&quot; unmute&gt;&gt;
-&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543119_kFc4jWGEE9lHRil.jpg&quot; width=100%  class=&quot;image-mask&quot;&gt;&lt;br&gt;
+&lt;&lt;set _img = [&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543119_kFc4jWGEE9lHRil.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107289864_Y13ljQczCwaVg9v.jpg&quot;].random()&gt;&gt;
+&lt;&lt;print &#39;&lt;img src=&quot; &#39; + _img + &#39; &quot; width=100% class=&quot;image-mask&quot;&gt;&#39;&gt;&gt;
 &lt;font color=#D4A34C&gt;//尽管永无乡大部分面积都在被茂盛生长的草地覆盖着，但只有贝雷河南面临海的那面草地才是岛民俗称的草甸, 因为平坦且临海, 马场与风车都选址在此, 埃拉的羊群也安置在这里//&lt;/font&gt;
 &lt;br&gt;
 &lt;&lt;NPCloc&gt;&gt;&lt;&lt;homeloc&gt;&gt;
@@ -14740,7 +14739,7 @@ function qteChange() {
 &lt;&lt;link ♢「贝雷河」 贝雷河&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ♢「主港口」 主港口&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ♢「礁岩区」 礁岩区&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="163" name="秋毛岗" tags="nobr" position="600,400" size="100,100">&lt;&lt;if $loc != &quot;秋毛岗&quot;&gt;&gt;&lt;&lt;set $loc = &quot;秋毛岗&quot;&gt;&gt;&lt;&lt;timeWidget&gt;&gt;&lt;&lt;set $minute to $minute+ random(5,10)&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;font color=#D4A34C&gt;//秋毛岗是永无乡高地上最高的一座山岗, 即使这样, 它的海拔也只有374.06英尺. 这里可以俯瞰小镇的全貌//&lt;/font&gt;
+&lt;font color=#D4A34C&gt;//秋毛岗是永无乡高地上最高的一座山岗，即使这样，它的海拔也只有374.06英尺。这里可以俯瞰小镇的全貌——朝东向望去，小镇密集的屋顶，岛间交错的小路，即使是最远处的沙地和被极度压缩的海岸线，也都能一收眼底，而向后看去，那浓密漆黑的深林和南方高耸的山脉，仿佛永无乡与外界天然的屏障。//&lt;/font&gt;
 &lt;br&gt;
 &lt;&lt;NPCloc&gt;&gt;
 &lt;br&gt;地点活动&lt;br&gt;
@@ -14754,8 +14753,8 @@ function qteChange() {
 &lt;br&gt;其他地区&lt;br&gt;
 &lt;&lt;link ♢「高地」 高地&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;</tw-passagedata><tw-passagedata pid="165" name="拓荒者木屋" tags="nobr" position="400,500" size="100,100">&lt;&lt;set $loc = &quot;拓荒者木屋&quot;&gt;&gt;&lt;&lt;set $minute += random(5,10)&gt;&gt;
 &lt;&lt;audio &quot;mainBGM&quot; unmute&gt;&gt;
-
-&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543090_MgvNmETrLnnkikY.jpg&quot; width=100% class=&quot;pic&quot;&gt;
+&lt;&lt;set _img = [&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543090_MgvNmETrLnnkikY.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107289875_lK0qovQEb3zQBfH.jpg&quot;].random()&gt;&gt;
+&lt;&lt;print &#39;&lt;img src=&quot; &#39; + _img + &#39; &quot; width=100% class=&quot;image-mask&quot;&gt;&#39;&gt;&gt;
 &lt;font color=#D4A34C&gt;//&quot;这里原本是当年第一批到来者初登岛时临时搭建的一间小木屋, 由于远离水源, 在小镇建成后便成了储物室. 你可以把这里看做一个路标, 一个歇脚处, 木屋随时欢迎你的拜访, 但就目前来说, 她同时还是我的家, 我会在这里迎接每一个登岛的居民. &quot;//&lt;/font&gt;
 &lt;br&gt;
 &lt;&lt;NPCloc&gt;&gt;
@@ -14811,7 +14810,8 @@ Seisi此时正一脸凶狠的趴在窝里，看上去随时准备攻击你。
 &lt;&lt;set _rpe = [&quot;Seisi正把脑袋埋在翅膀里酣睡，对你的靠近毫无察觉。&quot;,&quot;Seisi正在窝里梳理羽毛，丝毫没有要搭理你的意思。&quot;].random()&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;link ❖摸seisi seisi&gt;&gt;&lt;&lt;set $seisistate = &quot;抚摸&quot;&gt;&gt;&lt;&lt;/link&gt;&gt; 
-&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 木屋内部&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="花田" tags="nobr" position="" size="">&lt;&lt;set $minute += random(8,15)&gt;&gt;&lt;&lt;set $loc = &quot;花田&quot;&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 木屋内部&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="花田" tags="nobr" position="" size="">&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107289786_12xLpMVLs7ThNkj.jpg&quot; width=100% class=&quot;pic&quot;&gt;
+&lt;&lt;set $minute += random(8,15)&gt;&gt;&lt;&lt;set $loc = &quot;花田&quot;&gt;&gt;
 高地上这片绵延几英里的山坡，被岛主规划成了一片花儿自由生长的田地，其间肆意生长的野生花簇与精心栽培的名贵品种和谐地交织在一起，引来成群的蜜蜂。&lt;br&gt;
 &lt;&lt;if $choice == &quot;浇花&quot;&gt;&gt;&lt;br&gt;&lt;&lt;losehp 4&gt;&gt;&lt;&lt;set $minute += random(4,8)&gt;&gt;&lt;&lt;set _rpe = [&quot;你沿着花田里不明显的小径慢步走着, 尽量确保每一块田地都受到了浇灌. 等你走完最后一片花田时, 水壶里的酸性水恰好用完&quot;,&quot;你埋身繁密的花丛中, 努力辨识着不该存在的杂草, 那些顽固而毫无用处的植物被你一株株连根拔起&quot;].random()&gt;&gt;_rpe&lt;br&gt;&lt;br&gt;
 &lt;&lt;set $gzcs to $gzcs- 1&gt;&gt;&lt;&lt;link ▷「回到木屋」 木屋内部&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -15766,7 +15766,13 @@ $msname&lt;br&gt;
   &lt;tr&gt;&lt;td style=&quot;width:50%&quot;&gt;&lt;center&gt;❥ $NPCinfo[&quot;苏菲&quot;].love&lt;/center&gt;&lt;/td&gt;
   &lt;td style=&quot;width:50%&quot;&gt;&lt;center&gt;--&lt;/center&gt;&lt;/td&gt;&lt;/tr&gt;
   &lt;tr&gt;&lt;td colspan=2&gt;
-  &lt;font size=2px&gt;&lt;&lt;if $NPCinfo[&quot;苏菲&quot;].love &lt;=10&gt;&gt;1111&lt;&lt;elseif  $NPCinfo[&quot;苏菲&quot;].love &lt;=20&gt;&gt;还没写&lt;&lt;/if&gt;&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;font size=2px&gt;
+  &lt;&lt;if $NPCinfo[&quot;苏菲&quot;].love &lt;=10&gt;&gt; 苏菲对你展现出的是岛民标配的热情与友善。她会主动打招呼，笑容和对其他猫一样热烈，递送信件的动作也同样麻利。只是偶尔，在她转身离去前，会不经意地瞥见她的目光正巧落在你身上。你似乎经常在岛民那得到这样的关注，你没法分辨她的是哪一种
+  &lt;&lt;elseif  $NPCinfo[&quot;苏菲&quot;].love &lt;=20&gt;&gt;她现在已经能很自然地叫出你的名字，并会在送信途中特意放慢脚步，微笑着和你多聊上几句天气或是岛上的趣闻。她的关心显得真诚而周到，时常会问起“岛上生活还习惯吗？”或是“昨晚休息得如何？”，仿佛一位细心的老朋友，让人不由得心生暖意。她开始更频繁地使用“好朋友”这个词来称呼你，一切都显得那么自然而然
+  &lt;&lt;elseif  $NPCinfo[&quot;苏菲&quot;].love &lt;=30&gt;&gt;她与你的互动变得更加亲切。有时她会从口袋里掏出用油纸包好的小点心塞给你，声称是“正好多了一份”。你们相遇的次数明显增多了，无论是在码头、小镇还是小路上，她总是笑着出现，和你并肩走上一段，聊一聊她听到的岛上趣事
+  &lt;&lt;elseif  $NPCinfo[&quot;苏菲&quot;].love &lt;=40&gt;&gt;她与你分享的内容变得更为深入。她会像是想起什么似的，告诉你一些关于不为人知又无伤大雅的小秘密——比如某条通向优美风景的小径，或是某棵结着特别果实的树木的位置。她的目光时常会密切地追随着你，仿佛透过你在遥想某种美好的图景
+  &lt;&lt;elseif  $NPCinfo[&quot;苏菲&quot;].love &lt;=50&gt;&gt;还没写
+  &lt;&lt;/if&gt;&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;/table&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 
 
@@ -15793,7 +15799,7 @@ $msname&lt;br&gt;
 &lt;table style=&quot;width:100%&quot;&gt;
   &lt;tr&gt;&lt;th&gt;&lt;center&gt;特里特   &lt;font size=1px color=#ABA49B&gt;//$NPCinfo[&quot;特里特&quot;].id//&lt;/font&gt;&lt;/center&gt;&lt;/th&gt;&lt;/tr&gt;
   &lt;tr&gt;&lt;td&gt;
-  &lt;font size=2px&gt;&lt;center&gt;Tret&lt;&lt;set _sxd = $NPCinfo[&quot;特里特&quot;].love&gt;&gt;&lt;&lt;sxdgod&gt;&gt;&lt;/center&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;font size=2px&gt;&lt;center&gt;特里特&lt;&lt;set _sxd = $NPCinfo[&quot;特里特&quot;].love&gt;&gt;&lt;&lt;sxdgod&gt;&gt;&lt;/center&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;/table&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $NPCinfo[&quot;玛丽亚小姐&quot;].chat &gt; 0&gt;&gt;
@@ -15843,6 +15849,13 @@ $msname&lt;br&gt;
   &lt;tr&gt;&lt;th&gt;&lt;center&gt;欧马卡特   &lt;font size=1px color=#ABA49B&gt;//$NPCinfo[&quot;欧马卡特&quot;].id//&lt;/font&gt;&lt;/center&gt;&lt;/th&gt;&lt;/tr&gt;
   &lt;tr&gt;&lt;td&gt;
   &lt;font size=2px&gt;&lt;center&gt;欧马卡特&lt;&lt;set _sxd = $NPCinfo[&quot;欧马卡特&quot;].love&gt;&gt;&lt;&lt;sxdkind&gt;&gt;&lt;/center&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $NPCinfo[&quot;路娜&quot;].chat &gt; 0&gt;&gt;
+&lt;table style=&quot;width:100%&quot;&gt;
+  &lt;tr&gt;&lt;th&gt;&lt;center&gt;路娜   &lt;font size=1px color=#ABA49B&gt;//$NPCinfo[&quot;路娜&quot;].id//&lt;/font&gt;&lt;/center&gt;&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;
+  &lt;font size=2px&gt;&lt;center&gt;路娜&lt;&lt;set _sxd = $NPCinfo[&quot;路娜&quot;].love&gt;&gt;&lt;&lt;sxdkind&gt;&gt;&lt;/center&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;/table&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;br&gt;
