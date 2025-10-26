@@ -3391,6 +3391,37 @@ box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
     padding: 0px 25px 0px 25px;
     margin-top: 10px;
 }
+
+
+.mailbox-container {
+            max-width: 95%;
+            background: #f9f5eb;
+            border: 15px solid #d4c4a8;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.15),
+                inset 0 0 30px rgba(255, 255, 255, 0.8);
+            position: relative;
+            padding: 30px;
+            border-radius: 5px;
+        }
+
+.mailbox-container::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border: 2px solid #a78b6d;
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+.tabs {
+            display: flex;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
 /* twine-user-stylesheet #6: "story/css\\06-文字效果.css" */
   /************************* 文字效果*************************/
 /* 醉酒文字 */
@@ -6728,6 +6759,25 @@ window.startRaceAnimation = function () {
 
 
 })(); 
+
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            // 标签切换功能
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    tab.classList.add('active');
+                    const tabId = tab.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
 /* twine-user-script #8: "story/js\\06-recipe.js" */
 /*------------------------制作---------------------------*/
 /*吃的*/
@@ -7473,7 +7523,7 @@ Item.add("战争与和平", {displayName: "战争与和平", description: "托�
 Item.add("傲慢与偏见", {displayName: "傲慢与偏见", description: "简·奥斯汀的社会小说，以伊丽莎白与达西的情感纠葛折射出阶层与性格的冲突<<readbook \"傲慢与偏见\">><<iwd \"傲慢与偏见\">>" , handler: null, consumable: null, function: null, store: 1, price: 5 , weight: 1.2},["读物", "图书馆", null, null, null, null, "fuelA"]);
 Item.add("堂吉诃德", {displayName: "堂吉诃德", description: "塞万提斯的长篇小说，描写一个痴迷骑士故事的乡绅，化身为游侠骑士的荒诞冒险<<readbook \"堂吉诃德\">><<iwd \"堂吉诃德\">>" , handler: null, consumable: null, function: null, store: 1, price: 5 , weight: 0.8},["读物", "图书馆", null, null, null, null, "fuelA"]);
 
-</script><tw-tag name="autosave" color="blue"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="init" color="green"></tw-tag><tw-tag name="UIBarhide" color="green"></tw-tag><tw-tag name="widget" color="orange"></tw-tag><tw-tag name="nobr" color="yellow"></tw-tag><tw-passagedata pid="1" name="demo结语" tags="" position="2000,1000" size="100,100">&lt;center&gt;
+</script><tw-tag name="widget" color="orange"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="init" color="green"></tw-tag><tw-tag name="UIBarhide" color="green"></tw-tag><tw-tag name="nobr" color="yellow"></tw-tag><tw-tag name="autosave" color="blue"></tw-tag><tw-passagedata pid="1" name="demo结语" tags="" position="2000,1000" size="100,100">&lt;center&gt;
 
 demo的游戏内容到此结束, 主要内容有5段主线剧情、3个主线任务、3段支线剧情、2个支线任务、12个可互动角色、13个成就、7条线索
 
@@ -10055,7 +10105,7 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 /********初见********/
 &lt;&lt;if $NPCinfo[$npc].chat == 1 &amp;&amp; $loc != &quot;酒馆&quot;&gt;&gt;
 你不清楚岛上为何都叫他老爷，他看起来一点贵族的样子都没有，更像一棵干枯又粗狂的古树，顽固不化的站立在北风中。&lt;br&gt;&lt;br&gt;
-此时的@@.odintalk巴尔韦克老爷@@正蹲伏在他新猎获的猎物上，徒手从那毫无生气的肉块中挖出弹头。他应该是注意到有谁走近了，不紧不慢的站起身来，最终那近乎有七英尺的高大身型几乎要将你视线里的全部光线阻拦。&lt;br&gt;&lt;br&gt;
+此时的@@.odintalk;巴尔韦克老爷@@正蹲伏在他新猎获的猎物上，徒手从那毫无生气的肉块中挖出弹头。他应该是注意到有谁走近了，不紧不慢的站起身来，最终那近乎有七英尺的高大身型几乎要将你视线里的全部光线阻拦。&lt;br&gt;&lt;br&gt;
 他看都没看一眼被笼罩进阴影的你，随意用树叶擦了一下双手的血迹，抱起猎枪，头也不回的走了，只抛下一句：“这鹿归你了。” 
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;do&gt;&gt;
@@ -10090,13 +10140,13 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 /*日常*/
 &lt;&lt;elseif $NPCinfo[&quot;巴尔韦克老爷&quot;].loc != &quot;酒馆&quot; &amp;&amp; $NPCinfo[&quot;巴尔韦克老爷&quot;].loc != &quot;拓荒者木屋&quot;&gt;&gt;
 &lt;&lt;if $weather == &quot;雷阵雨&quot;&gt;&gt;
-@@.odintalk巴尔韦克老爷@@少见的没有在瞄准，而是静静地站在一片空地上，仰着头，任由雨点打湿他的皮毛：“你听见了吗？这雷声...虚弱，混乱，毫无目的。只是在云层里徒劳地翻滚。”他低下头，不再理会你。
+@@.odintalk;巴尔韦克老爷@@少见的没有在瞄准，而是静静地站在一片空地上，仰着头，任由雨点打湿他的皮毛：“你听见了吗？这雷声...虚弱，混乱，毫无目的。只是在云层里徒劳地翻滚。”他低下头，不再理会你。
 &lt;&lt;else&gt;&gt;
-&lt;&lt;set _rpl= [&quot;@@.odintalk巴尔韦克老爷@@头也不回，专注地架着枪，目光锐利地盯着远处的树丛：“如果你不是来送死的猎物，就别站在我的枪线上碍事。我可不想因为你而分心，错过今天的战利品。”他微微调整角度，语气不容置疑，“闭嘴，或者离开。”&quot;,&quot;@@.odintalk巴尔韦克老爷@@瞥了一眼你，似乎觉得不论你因何而来，此时都是上演一场捕猎课的好时机：“看到北边坡上那棵断牙似的枯树了吗？你来的路上，是不是闻到除了泥土和腐叶之外的气味？比如，野猪的骚臭，或者....雷电的味道？”&quot;].random()&gt;&gt;_rpl
+&lt;&lt;set _rpl= [&quot;@@.odintalk;巴尔韦克老爷@@头也不回，专注地架着枪，目光锐利地盯着远处的树丛：“如果你不是来送死的猎物，就别站在我的枪线上碍事。我可不想因为你而分心，错过今天的战利品。”他微微调整角度，语气不容置疑，“闭嘴，或者离开。”&quot;,&quot;@@.odintalk;巴尔韦克老爷@@瞥了一眼你，似乎觉得不论你因何而来，此时都是上演一场捕猎课的好时机：“看到北边坡上那棵断牙似的枯树了吗？你来的路上，是不是闻到除了泥土和腐叶之外的气味？比如，野猪的骚臭，或者....雷电的味道？”&quot;].random()&gt;&gt;_rpl
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;set $npc = 0, $choice = 0, $state = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;elseif $NPCinfo[&quot;巴尔韦克老爷&quot;].loc == &quot;酒馆&quot;&gt;&gt;
-此时的@@.odintalk巴尔韦克老爷@@身边已经摆上了数目可观的空酒杯，他肩膀微微垮下，在饮空又一杯蜜酒后将酒杯重重的摔到桌上，完全没有理会你。很快，有猫将下一杯盛满的蜜酒端给了他。
+此时的@@.odintalk;巴尔韦克老爷@@身边已经摆上了数目可观的空酒杯，他肩膀微微垮下，在饮空又一杯蜜酒后将酒杯重重的摔到桌上，完全没有理会你。很快，有猫将下一杯盛满的蜜酒端给了他。
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;set $npc = 0, $choice = 0, $state = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;else&gt;&gt;没写&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;set $npc = 0, $choice = 0, $state = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 
@@ -11385,7 +11435,7 @@ Seisi从壁炉台上离开，飞越过你，落到了门框上，依旧保持着
 &lt;&lt;link ▷「跟上前去」&gt;&gt;&lt;&lt;set $choice to &quot;跟上前去&quot;&gt;&gt;&lt;&lt;redo &quot;1&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「不予理会」&gt;&gt;&lt;&lt;set $choice to &quot;不予理会&quot;&gt;&gt;&lt;&lt;redo &quot;1&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;（路线内容未实装）
 &lt;&lt;elseif $choice == &quot;不予理会&quot;&gt;&gt;
-&lt;&lt;set $msd = 4&gt;&gt;
+&lt;&lt;set $msd = 4,$msstat = &quot;第一幕&quot;&gt;&gt;
 &lt;&lt;link ▷「继续」 小镇&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;elseif $choice == &quot;跟上前去&quot;&gt;&gt;
 /*你刚刚踏入图书馆，就有猫紧挨着你，伸手扶住了那扇向内开启的门。&lt;br&gt;&lt;br&gt;
@@ -11531,11 +11581,11 @@ $tnn持续的翻书声充斥着图书馆的空间。你恍然发现，此时的�
 &lt;&lt;link ▷「同意」 主线D4&gt;&gt;&lt;&lt;set $choice to &quot;同意&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「拒绝」 主线D4&gt;&gt;&lt;&lt;set $choice to &quot;拒绝&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 /*第五页*/
-&lt;&lt;elseif $choice == &quot;同意&quot;&gt;&gt;&lt;&lt;set $msd =4&gt;&gt;
+&lt;&lt;elseif $choice == &quot;同意&quot;&gt;&gt;&lt;&lt;set $msd =4,$msstat = &quot;第一幕&quot;&gt;&gt;
 “您同意了？太好了。”他紧绷的肩膀放松下来，之前的紧张荡然无存，晃动着尾巴尖，像得到新年礼物的小猫一样喜悦，“那我们就说好了。后天早上，我在小镇等你。”&lt;br&gt;&lt;br&gt;
 他说完这些，便裹紧大衣，离开了图书馆。&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「继续」 图书馆&gt;&gt;&lt;&lt;set $choice to 0, $state = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;拒绝&quot;&gt;&gt;&lt;&lt;set $msd =4&gt;&gt;
+&lt;&lt;elseif $choice == &quot;拒绝&quot;&gt;&gt;&lt;&lt;set $msd =4,$msstat = &quot;第一幕&quot;&gt;&gt;
 $tnn看上去有些惊讶，仿佛从来没考虑过你会拒绝。&lt;br&gt;&lt;br&gt;
 “哦！哦....”他摸摸鼻子，耳朵有些不知所措的伏下去，“好吧。这没事，这没关系...”他望向一侧，神情焦急，似乎在思考着挽回局面的对策：“您要是改变主意了，后天早上，我会在小镇等您...”&lt;br&gt;&lt;br&gt;
 他说完这些，便裹紧大衣，离开了图书馆。&lt;br&gt;&lt;br&gt;
@@ -14871,7 +14921,8 @@ Dialog.open();&gt;&gt;
 
 
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「继续」&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;goto &quot;家&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="89" name="火之梦" tags="nobr" position="" size="">&lt;&lt;if $msd &gt;= 2 &amp;&amp; $dream_fire.zero ==0&gt;&gt;
+&lt;&lt;link ▷「继续」&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;goto &quot;家&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="89" name="火之梦" tags="nobr" position="" size="">&lt;&lt;set _tmplock =0&gt;&gt;
+&lt;&lt;if $msd &gt;= 2 &amp;&amp; $dream_fire.zero ==0&gt;&gt;
 &lt;&lt;set $dream_fire.zero = 1, _tmplock =1&gt;&gt;&lt;&lt;eatfood 50&gt;&gt;
 你有些茫然。&lt;br&gt;&lt;br&gt;
 
@@ -14892,7 +14943,7 @@ Dialog.open();&gt;&gt;
 
 &lt;&lt;next 2s t8n&gt;&gt;
 &lt;&lt;if !$sq.dream || $sq.dream !=1&gt;&gt;&lt;&lt;set $sq.dream = 0&gt;&gt;&lt;&lt;notify 3s&gt;&gt;Seisi提问新增“梦境”&lt;&lt;/notify&gt;&gt;
-&lt;&lt;elseif $book.has(&#39;梦日记&#39;)&gt;&gt;
+&lt;&lt;elseif $book.has(&#39;梦日记&#39;) &amp;&amp; $bedside == &quot;捕梦网&quot;&gt;&gt;
 &lt;&lt;set _date = $month+&quot;月&quot;+$day+&quot;日的梦境...&quot;&gt;&gt;
 &lt;&lt;textbox &quot;_dreamname&quot; _date autofocus&gt;&gt; &lt;&lt;link 记录梦境&gt;&gt;&lt;&lt;set $dream.push({name: _dreamname, tag: &quot;火之梦0&quot;, date: &quot;$month月$day日&quot;})&gt;&gt;&lt;&lt;set $itemweight.dreamdiary += 0.01&gt;&gt;&lt;&lt;run UI.alert(&quot;梦境已记录&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;/if&gt;&gt;
@@ -14925,7 +14976,7 @@ Dialog.open();&gt;&gt;
 
 &lt;&lt;next 2s t8n&gt;&gt;
 &lt;&lt;if !$sq.dream || $sq.dream !=1&gt;&gt;&lt;&lt;set $sq.dream = 0&gt;&gt;&lt;&lt;notify 3s&gt;&gt;Seisi提问新增“梦境”&lt;&lt;/notify&gt;&gt;
-&lt;&lt;elseif $book.has(&#39;梦日记&#39;)&gt;&gt;
+&lt;&lt;elseif $book.has(&#39;梦日记&#39;) &amp;&amp; $bedside == &quot;捕梦网&quot;&gt;&gt;
 &lt;&lt;set _date = $month+&quot;月&quot;+$day+&quot;日的梦境...&quot;&gt;&gt;
 &lt;&lt;textbox &quot;_dreamname&quot; _date autofocus&gt;&gt; &lt;&lt;link 记录梦境&gt;&gt;&lt;&lt;set $dream.push({name: _dreamname, tag: &quot;火之梦1&quot;, date: &quot;$month月$day日&quot;})&gt;&gt;&lt;&lt;set $itemweight.dreamdiary += 0.01&gt;&gt;&lt;&lt;run UI.alert(&quot;梦境已记录&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;br&gt;
@@ -14958,7 +15009,7 @@ Dialog.open();&gt;&gt;
 
 直到你醒来的时候你的一部分还在歌唱。
 &lt;&lt;if !$sq.dream || $sq.dream !=1&gt;&gt;&lt;&lt;set $sq.dream = 0&gt;&gt;&lt;&lt;notify 3s&gt;&gt;Seisi提问新增“梦境”&lt;&lt;/notify&gt;&gt;
-&lt;&lt;elseif $book.has(&#39;梦日记&#39;)&gt;&gt;
+&lt;&lt;elseif $book.has(&#39;梦日记&#39;) &amp;&amp; $bedside == &quot;捕梦网&quot;&gt;&gt;
 &lt;&lt;set _date = $month+&quot;月&quot;+$day+&quot;日的梦境...&quot;&gt;&gt;
 &lt;&lt;textbox &quot;_dreamname&quot; _date autofocus&gt;&gt; &lt;&lt;link 记录梦境&gt;&gt;&lt;&lt;set $dream.push({name: _dreamname, tag: &quot;火之梦2&quot;, date: &quot;$month月$day日&quot;})&gt;&gt;&lt;&lt;set $itemweight.dreamdiary += 0.01&gt;&gt;&lt;&lt;run UI.alert(&quot;梦境已记录&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;/if&gt;&gt;
@@ -14984,11 +15035,11 @@ Dialog.open();&gt;&gt;
 
 &lt;&lt;next 2s t8n&gt;&gt;你必须尖叫。&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
 
-&lt;&lt;next 2s t8n&gt;&gt;于是你尖叫着醒来，意识到自己从未有这么多的渴望。
+&lt;&lt;next 2s t8n&gt;&gt;于是你尖叫着醒来，意识到自己从未有这么多的渴望。&lt;br&gt;&lt;br&gt;
 &lt;&lt;next 2s t8n&gt;&gt;&lt;&lt;if !$sq.dream || $sq.dream !=1&gt;&gt;&lt;&lt;set $sq.dream = 0&gt;&gt;&lt;&lt;notify 3s&gt;&gt;Seisi提问新增“梦境”&lt;&lt;/notify&gt;&gt;
-&lt;&lt;elseif $book.has(&#39;梦日记&#39;)&gt;&gt;
+&lt;&lt;elseif $book.has(&#39;梦日记&#39;) &amp;&amp; $bedside == &quot;捕梦网&quot;&gt;&gt;
 &lt;&lt;set _date = $month+&quot;月&quot;+$day+&quot;日的梦境...&quot;&gt;&gt;
-&lt;&lt;textbox &quot;_dreamname&quot; _date autofocus&gt;&gt; &lt;&lt;link 记录梦境&gt;&gt;&lt;&lt;set $dream.push({name: _dreamname, tag: &quot;火之梦3&quot;, date: &quot;$month月$day日&quot;})&gt;&gt;&lt;&lt;set $itemweight.dreamdiary += 0.01&gt;&gt;&lt;&lt;run UI.alert(&quot;梦境已记录&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;textbox &quot;_dreamname&quot; _date autofocus&gt;&gt; &lt;&lt;link 记录梦境&gt;&gt;&lt;&lt;set $dream.push({name: _dreamname, tag: &quot;火之梦3&quot;, date: &quot;$month月$day日&quot;})&gt;&gt;&lt;&lt;set $itemweight.dreamdiary += 0.01&gt;&gt;&lt;&lt;run UI.alert(&quot;梦境已记录&quot;)&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;br&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;link ▷「继续」 家&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/timed&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -16043,7 +16094,7 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 家&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;else&gt;&gt;
 门外&lt;br&gt;&lt;&lt;audio &quot;homeBGM&quot; loop play&gt;&gt;&lt;&lt;audio &quot;mainBGM&quot; mute&gt;&gt;
-&lt;&lt;link ❖信箱 信箱&gt;&gt;&lt;&lt;set $choice to &quot;信箱&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ❖信箱 信箱&gt;&gt;&lt;&lt;set $choice = &quot;收信&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ❖苗圃 苗圃&gt;&gt;&lt;&lt;set $choice to &quot;苗圃&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;br&gt;客厅&lt;br&gt;
 &lt;&lt;link ❖壁炉 壁炉&gt;&gt;&lt;&lt;set $choice to &quot;壁炉&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
@@ -16176,12 +16227,21 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;&lt;else&gt;&gt;
 你不久前才从梦中醒来, 丝毫没有困意, 也许你该继续手头的工作。&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「返回」 家&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="118" name="信箱" tags="nobr" position="1300,200" size="100,100">&lt;&lt;set $receivemail = []&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="118" name="信箱" tags="nobr" position="1300,200" size="100,100">&lt;center&gt;&lt;h1&gt;信箱&lt;/h1&gt;&lt;div style=&quot;float: left;&quot;&gt;&lt;&lt;link ▷「离开」 家&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/div&gt;
+&lt;hr&gt;&lt;/center&gt;&lt;br&gt;
+&lt;&lt;set $choice = &quot;收信&quot;&gt;&gt;
 
-/*&lt;&lt;set $receivemail.push({name: &#39;测试员&#39;, date: &#39;Jun $showday&#39;, content: &#39;测试测试&#39;, title: &#39;这是一封测试&#39;})&gt;&gt;*/
+/*&lt;&lt;link 收信&gt;&gt;&lt;&lt;set $receivemail.push({name: &#39;测试员&#39;, date: &#39;Jun $showday&#39;, content: &#39;测试测试&#39;, title: &#39;这是一封测试&#39;})&gt;&gt;&lt;&lt;/link&gt;&gt;*/
 
 
-收信箱&lt;br&gt;&lt;br&gt;
+&lt;div class=&quot;tabs&quot;&gt;
+&lt;&lt;button 收信箱&gt;&gt;&lt;&lt;set $choice = &quot;收信&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/button&gt;&gt;   
+&lt;&lt;button 寄信箱&gt;&gt;&lt;&lt;set $choice = &quot;寄信&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/button&gt;&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;mailbox-container&quot;&gt;
+&lt;&lt;do&gt;&gt;
+&lt;&lt;if $choice == &quot;收信&quot;&gt;&gt;
 &lt;div id=&quot;envelope-container&quot;&gt;
 &lt;&lt;for _i to 0; _i lt $receivemail.length; _i++&gt;&gt;
 &lt;a data-passage=&quot;读信&quot; id=&quot;envelope-link&quot;&gt;
@@ -16207,8 +16267,9 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;/a&gt;
 &lt;&lt;/for&gt;&gt;&lt;/div&gt;
 
-&lt;br&gt;&lt;br&gt;
-寄信箱
+
+&lt;&lt;elseif $choice == &quot;寄信&quot;&gt;&gt;
+&lt;div class=&quot;tab-content&quot; id=&quot;outbox&quot;&gt;
 &lt;div class=&quot;mailbox&quot;&gt;
 &lt;&lt;for _i to 0; _i lt $sendmail.length; _i++&gt;&gt;
 &lt;div class=&quot;mailinfo&quot;&gt;
@@ -16221,10 +16282,10 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;/span&gt;&lt;/div&gt;&lt;br&gt;
 &lt;&lt;/capture&gt;&gt;
 &lt;&lt;/for&gt;&gt;&lt;/div&gt;
-
+&lt;/div&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;&lt;/div&gt;
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ◈「写信」 写信&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;link ▷「离开」 家&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="119" name="读信" tags="" position="1400,200" size="100,100">&lt;&lt;run
+&lt;&lt;link ◈「写信」&gt;&gt;&lt;&lt;/link&gt;&gt;（未实装）</tw-passagedata><tw-passagedata pid="119" name="读信" tags="" position="1400,200" size="100,100">&lt;&lt;run
   Dialog.setup($receivemail[$ei].title);
   Dialog.wiki(&quot;$receivemail[$ei].content&quot;);
   Dialog.open();
@@ -16471,19 +16532,27 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;&lt;redo&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/capture&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/for&gt;&gt;
-&lt;/span&gt;&lt;br&gt;&lt;hr class=&quot;hr-fade-content&quot;&gt;</tw-passagedata><tw-passagedata pid="128" name="苗圃" tags="nobr" position="" size="">你来到后院&lt;br&gt;&lt;br&gt;
+&lt;/span&gt;&lt;br&gt;&lt;hr class=&quot;hr-fade-content&quot;&gt;</tw-passagedata><tw-passagedata pid="128" name="苗圃" tags="nobr" position="" size="">&lt;center&gt;&lt;h1&gt;小屋后院&lt;/h1&gt;&lt;div style=&quot;float: left;&quot;&gt;&lt;&lt;link ▷「离开」 家&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/div&gt;
+&lt;hr&gt;&lt;/center&gt;&lt;br&gt;
 &lt;&lt;do&gt;&gt;
 &lt;div class=&quot;recipes-section&quot;&gt;
-&lt;div&gt;&lt;h2 class=&quot;section-title&quot;&gt;苗圃I&lt;/h2&gt; 作物：
-&lt;&lt;if $land1.stat !== 0&gt;&gt;&lt;&lt;set _itemn = $land1.name&gt;&gt;_itemn
-&lt;&lt;if ($land1.watert !== 0 &amp;&amp; $land1.watert &gt; $nt) || $rd ==1&gt;&gt;【已灌溉】&lt;&lt;/if&gt;&gt;&lt;/div&gt;
+&lt;h3 class=&quot;section-title&quot;&gt;苗圃I&lt;/h3&gt;&amp;emsp;&amp;emsp;
+&lt;font size=2px color=#ABA49B&gt;作物:
+&lt;&lt;if $land1.stat !== 0&gt;&gt;&lt;&lt;set _itemn = $land1.name&gt;&gt;_itemn&lt;&lt;else&gt;&gt;无&lt;&lt;/if&gt;&gt;
+&lt;&lt;if ($land1.watert !== 0 &amp;&amp; $land1.watert &gt; $nt) || $rd ==1&gt;&gt;【已灌溉】&lt;&lt;/if&gt;&gt;&lt;/font&gt;
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;if $land1.stat == 1&gt;&gt;
+&lt;&lt;if $land1.stat == 0&gt;&gt;
+&lt;&lt;link ❖种植&gt;&gt;&lt;&lt;set $choice = &quot;land1&quot;&gt;&gt;&lt;&lt;run
+  Dialog.setup(&quot;种植苗圃1&quot;);
+  Dialog.wiki(Story.get(&quot;种地&quot;).processText());
+  Dialog.open();
+&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;elseif $land1.stat == 1&gt;&gt;
 _itemn的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;elseif $land1.stat == 2&gt;&gt;
 天哪, 它发芽了, 快看那几片小叶子, 它就是本世纪最伟大的_itemn&lt;br&gt;【想到它会成为一株伟大的】
 &lt;&lt;elseif $land1.stat == 3&gt;&gt;
-【_itemn正在生长】别吵了我看到了. 我得说, 它长得比你都要健康【看到_itemn在健康生长, 让你充满了决心】
+【_itemn正在生长，看到_itemn在健康生长, 让你充满了决心】
 &lt;&lt;elseif $land1.stat == 4&gt;&gt;
 【_itemn已经成株】
 &lt;&lt;elseif $land1.stat == 5&gt;&gt;
@@ -16499,25 +16568,28 @@ _itemn的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;if ($land1.watert !== 0 &amp;&amp; $land1.watert &gt; $nt) || $rd ==1&gt;&gt;&lt;&lt;else&gt;&gt;
 &lt;&lt;link ❖浇灌&gt;&gt;&lt;&lt;set $choice = &quot;land1&quot;&gt;&gt;&lt;&lt;run
-  Dialog.setup(&quot;种植苗圃1&quot;);
+  Dialog.setup(&quot;种植苗圃I&quot;);
   Dialog.wiki(Story.get(&quot;浇灌&quot;).processText());
   Dialog.open();
 &gt;&gt;&lt;&lt;/link&gt;&gt;  
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;link ❖拔除&gt;&gt;&lt;&lt;set $land1.name = &quot;无&quot;, $land1.stat = 0&gt;&gt;&lt;&lt;run UI.alert(&quot;&lt;center&gt;苗圃1中作物已移除&lt;/center&gt;&quot;)&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;else&gt;&gt;无&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ❖种植&gt;&gt;&lt;&lt;set $choice = &quot;land1&quot;&gt;&gt;&lt;&lt;run
-  Dialog.setup(&quot;种植苗圃1&quot;);
+&lt;br&gt;
+&lt;/div&gt;&lt;br&gt;
+
+&lt;div class=&quot;recipes-section&quot;&gt;
+&lt;h3 class=&quot;section-title&quot;&gt;苗圃II&lt;/h3&gt;&amp;emsp;&amp;emsp;
+&lt;font size=2px color=#ABA49B&gt;作物:
+&lt;&lt;if $land2.stat !== 0&gt;&gt;&lt;&lt;set _itemn = $land2.name&gt;&gt;_itemn&lt;&lt;else&gt;&gt;无&lt;&lt;/if&gt;&gt;
+&lt;&lt;if ($land2.watert !== 0 &amp;&amp; $land2.watert &gt; $nt) || $rd ==1&gt;&gt;【已灌溉】&lt;&lt;/if&gt;&gt;&lt;/font&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;&lt;if $land2.stat == 0&gt;&gt;
+&lt;&lt;link ❖种植&gt;&gt;&lt;&lt;set $choice = &quot;land2&quot;&gt;&gt;&lt;&lt;run
+  Dialog.setup(&quot;种植苗圃II&quot;);
   Dialog.wiki(Story.get(&quot;种地&quot;).processText());
   Dialog.open();
 &gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/if&gt;&gt;&lt;br&gt;&lt;br&gt;
-&lt;/div&gt;
-〖&lt;b&gt;苗圃2&lt;/b&gt;〗作物：
-&lt;&lt;if $land2.stat !== 0&gt;&gt;&lt;&lt;set _itemn = $land2.name&gt;&gt;_itemn
-&lt;&lt;if ($land2.watert !== 0 &amp;&amp; $land2.watert &gt; $nt) || $rd ==1&gt;&gt;【已灌溉】&lt;&lt;/if&gt;&gt;    
-&lt;br&gt;&lt;br&gt;
-&lt;&lt;if $land2.stat == 1&gt;&gt;
+&lt;&lt;elseif $land2.stat == 1&gt;&gt;
 _itemn的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;elseif $land2.stat == 2&gt;&gt;
 天哪, 它发芽了, 快看那几片小叶子, 它就是本世纪最伟大的_itemn&lt;br&gt;【想到它会成为一株伟大的】
@@ -16544,19 +16616,21 @@ _itemn的种子正安静地躺在土壤里&lt;br&gt;
 &gt;&gt;&lt;&lt;/link&gt;&gt;  
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;link ❖拔除&gt;&gt;&lt;&lt;set $land2.name = &quot;无&quot;, $land2.stat = 0&gt;&gt;&lt;&lt;run UI.alert(&quot;&lt;center&gt;苗圃2中作物已移除&lt;/center&gt;&quot;)&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;else&gt;&gt;无&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ❖种植&gt;&gt;&lt;&lt;set $choice = &quot;land2&quot;&gt;&gt;&lt;&lt;run
-  Dialog.setup(&quot;种植苗圃2&quot;);
+&lt;br&gt;&lt;/div&gt;&lt;br&gt;
+
+&lt;div class=&quot;recipes-section&quot;&gt;
+&lt;h3 class=&quot;section-title&quot;&gt;苗圃III&lt;/h3&gt;&amp;emsp;&amp;emsp;
+&lt;font size=2px color=#ABA49B&gt;作物:
+&lt;&lt;if $land3.stat !== 0&gt;&gt;&lt;&lt;set _itemn = $land3.name&gt;&gt;_itemn&lt;&lt;else&gt;&gt;无&lt;&lt;/if&gt;&gt;
+&lt;&lt;if ($land3.watert !== 0 &amp;&amp; $land3.watert &gt; $nt) || $rd ==1&gt;&gt;【已灌溉】&lt;&lt;/if&gt;&gt;&lt;/font&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;&lt;if $land3.stat == 0&gt;&gt;
+&lt;&lt;link ❖种植&gt;&gt;&lt;&lt;set $choice = &quot;land3&quot;&gt;&gt;&lt;&lt;run
+  Dialog.setup(&quot;种植苗圃III&quot;);
   Dialog.wiki(Story.get(&quot;种地&quot;).processText());
   Dialog.open();
 &gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/if&gt;&gt;&lt;br&gt;&lt;br&gt;
-
-〖&lt;b&gt;苗圃3&lt;/b&gt;〗作物：
-&lt;&lt;if $land3.stat !== 0&gt;&gt;&lt;&lt;set _itemn = $land3.name&gt;&gt;_itemn
-&lt;&lt;if ($land3.watert !== 0 &amp;&amp; $land3.watert &gt; $nt) || $rd ==1&gt;&gt;【已灌溉】&lt;&lt;/if&gt;&gt;    
-&lt;br&gt;&lt;br&gt;
-&lt;&lt;if $land3.stat == 1&gt;&gt;
+&lt;&lt;elseif $land3.stat == 1&gt;&gt;
 _itemn的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;elseif $land3.stat == 2&gt;&gt;
 天哪, 它发芽了, 快看那几片小叶子, 它就是本世纪最伟大的_itemn&lt;br&gt;【想到它会成为一株伟大的】
@@ -16583,15 +16657,8 @@ _itemn的种子正安静地躺在土壤里&lt;br&gt;
 &gt;&gt;&lt;&lt;/link&gt;&gt;  
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;link ❖拔除&gt;&gt;&lt;&lt;set $land3.name = &quot;无&quot;, $land3.stat = 0&gt;&gt;&lt;&lt;run UI.alert(&quot;&lt;center&gt;苗圃3中作物已移除&lt;/center&gt;&quot;)&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;else&gt;&gt;无&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ❖种植&gt;&gt;&lt;&lt;set $choice = &quot;land3&quot;&gt;&gt;&lt;&lt;run
-  Dialog.setup(&quot;种植苗圃3&quot;);
-  Dialog.wiki(Story.get(&quot;种地&quot;).processText());
-  Dialog.open();
-&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/if&gt;&gt;&lt;br&gt;&lt;br&gt;
-&lt;&lt;/do&gt;&gt;
-&lt;&lt;link ▷「回家」 家&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="采摘" tags="nobr" position="" size="">&lt;&lt;set _n to random(1,3)&gt;&gt;
+&lt;br&gt;&lt;/div&gt;&lt;br&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="采摘" tags="nobr" position="" size="">&lt;&lt;set _n to random(1,3)&gt;&gt;
 &lt;&lt;if $flower == &quot;玫瑰花&quot;&gt;&gt;&lt;&lt;set _flower= [&quot;红玫瑰&quot;,&quot;白玫瑰&quot;,&quot;蓝玫瑰&quot;,&quot;黄玫瑰&quot;].random()&gt;&gt;
 你小心翼翼的摘下盛开的$flower
 &lt;&lt;gainitem _flower _n&gt;&gt;&lt;&lt;itemobtain &quot;_flower * _n&quot;&gt;&gt;
@@ -17420,6 +17487,7 @@ function qteChange() {
 &lt;&lt;link ♢「罗索伦特湖」 罗索伦特湖&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="161" name="钟塔" tags="nobr" position="" size="">&lt;&lt;set $loc = &quot;钟塔&quot;, $minute += random(2,4)&gt;&gt;
 防火会钟塔矗立在深林边缘，作为防火士的住所和岛上安全的守望者。塔顶巨大的铜钟每日敲响三次，声音传遍岛屿，为居民们报响时间。
 &lt;br&gt;&lt;br&gt;
+&lt;&lt;if !$ORGinfo[&quot;防火会&quot;].reputation&gt;&gt;&lt;&lt;set $ORGinfo[&quot;防火会&quot;].reputation = 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 值班的防火士礼貌地请你离开。
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;link ♢「深林边缘」 深林边缘&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="许愿井" tags="nobr" position="" size="">&lt;&lt;set $recording[&quot;许愿井&quot;]=1&gt;&gt;
@@ -17836,13 +17904,13 @@ $racing.bitamount = $horse[0].bitamount+$horse[1].bitamount+$horse[2].bitamount+
 $racing.bitmoney = $horse[0].bitmoney+$horse[1].bitmoney+$horse[2].bitmoney+$horse[3].bitmoney+$horse[4].bitmoney+$horse[5].bitmoney+$horse[6].bitmoney+$horse[7].bitmoney&gt;&gt;
 &lt;&lt;set 
 $horse[0].odds = Math.floor($horse[0].odds*(1-$horse[0].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100, 
-$horse[1].odds = Math.floor($horse[0].odds*(1-$horse[1].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
-$horse[2].odds = Math.floor($horse[0].odds*(1-$horse[2].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
-$horse[3].odds = Math.floor($horse[0].odds*(1-$horse[3].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
-$horse[4].odds = Math.floor($horse[0].odds*(1-$horse[4].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
-$horse[5].odds = Math.floor($horse[0].odds*(1-$horse[5].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
-$horse[6].odds = Math.floor($horse[0].odds*(1-$horse[6].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
-$horse[7].odds = Math.floor($horse[0].odds*(1-$horse[7].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100&gt;&gt;
+$horse[1].odds = Math.floor($horse[1].odds*(1-$horse[1].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
+$horse[2].odds = Math.floor($horse[2].odds*(1-$horse[2].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
+$horse[3].odds = Math.floor($horse[3].odds*(1-$horse[3].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
+$horse[4].odds = Math.floor($horse[4].odds*(1-$horse[4].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
+$horse[5].odds = Math.floor($horse[5].odds*(1-$horse[5].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
+$horse[6].odds = Math.floor($horse[6].odds*(1-$horse[6].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
+$horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100&gt;&gt;
 
 /******************背包们******************/
 &lt;&lt;newinv $item&gt;&gt;&lt;&lt;newinv $food&gt;&gt;&lt;&lt;newinv $material&gt;&gt;&lt;&lt;newinv $book&gt;&gt;&lt;&lt;newinv $bookshelf&gt;&gt;&lt;&lt;newinv $cupboard&gt;&gt;
@@ -17925,6 +17993,13 @@ $horse[7].odds = Math.floor($horse[0].odds*(1-$horse[7].bitmoney*$racing.adjust/
     &quot;贝尔&quot;: {name: &quot;$tnn&quot;, age: &quot;∞&quot;, hometown: &quot;古希腊&quot;, id: &quot;你的拯救者&quot;, home: &quot;未知&quot;, img: &quot;&quot;, love: 0, knowledge: 72, strength: 43, observation: 68, persuasive: 48, kind: &quot;猫族&quot;, chat: 0, gift : 0, loc:0, dis:0  },
     &quot;苏菲&quot;: {name: &quot;Sophie&quot;, age: 23, hometown: &quot;波兰&quot;, id: &quot;信使&quot;, home: &quot;小镇教堂&quot;, img: &quot;https://f2.toyhou.se/file/f2-toyhou-se/images/108403242_HN41lNentA1QHiZ.png&quot;, love: 0, knowledge: 68, strength: 38, observation: 80, persuasive: 75, kind: &quot;猫族&quot;, chat: 0, gift : 0, loc:0, dis:0  },
     &quot;路娜&quot;: {name: &quot;Luna&quot;, age: 8, hometown: &quot;匈牙利&quot;, id: &quot;迷路的孩子...?&quot;, home: &quot;未知&quot;, img: &quot;&quot;, love: 0, knowledge: 100, strength: 30, observation: 100, persuasive: 50, kind: &quot;融合神&quot;, chat: 0, gift : 0, loc:0, dis:0  },
+}&gt;&gt;
+
+
+&lt;&lt;set $ORGinfo to {
+    &quot;防火会&quot;: {member: 3, leader: &quot;无&quot;},
+    &quot;遗忘诗社&quot;: {member: 3, leader: &quot;无&quot;},
+    &quot;离岛派&quot;: {member: 3, leader: &quot;无&quot;}
 }&gt;&gt;</tw-passagedata><tw-passagedata pid="184" name="装备初始" tags="init" position="" size="">&lt;&lt;set $savedSlots to {
     &quot;日常&quot;: {headSlot: &quot;无&quot;, neckSlot: &quot;无&quot;, topSlot: &quot;无&quot;, handSlot: &quot;无&quot;, pantsSlot: &quot;无&quot;, footSlot: &quot;无&quot;, toolSlot: &quot;无&quot;, petSlot: &quot;无&quot; },
     &quot;沙龙&quot;: {headSlot: &quot;无&quot;, neckSlot: &quot;无&quot;, topSlot: &quot;无&quot;, handSlot: &quot;无&quot;, pantsSlot: &quot;无&quot;, footSlot: &quot;无&quot;, toolSlot: &quot;无&quot;, petSlot: &quot;无&quot; },
@@ -18110,6 +18185,7 @@ if (ndef $player[stat]) {throw new Error(`Invalid stat: ${stat}`);}
 (已触发内容的更新无法同步，测试阶段不建议长期游玩)
 &lt;&lt;/do&gt;&gt;&lt;br&gt;
 &lt;&lt;include &quot;更新日志&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="189" name="更新日志" tags="" position="" size="">&lt;h2&gt;更新日志&lt;/h2&gt;
+10.26 增加了床头功能，调整了田圃和邮箱的界面
 10.25 完成了D5剧情 测试完毕
 10.24 增加了一些细节文本
      增加了无花果自然生长的逻辑
@@ -18264,7 +18340,7 @@ if (ndef $player[stat]) {throw new Error(`Invalid stat: ${stat}`);}
   Dialog.open();&gt;&gt;
 &lt;&lt;/link&gt;&gt;
 
-&lt;&lt;link &#39;&lt;i class=&quot;fa-solid fa-feather-pointed&quot; style=&quot;font-size: 1.3em;&quot;&gt;&lt;/i&gt;&#39;&gt;&gt;&lt;&lt;if $seisistate != &quot;生气&quot;&gt;&gt;&lt;&lt;set $seisistate = 0&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;run
+&lt;&lt;link &#39;&lt;i class=&quot;fa-solid fa-feather-pointed&quot; style=&quot;font-size: 1.3em;&quot;&gt;&lt;/i&gt;&#39;&gt;&gt;&lt;&lt;if $seisistate != &quot;生气1&quot; &amp;&amp; $seisistate !=&quot;生气2&quot; &amp;&amp; $seisistate !=&quot;生气3&quot;&gt;&gt;&lt;&lt;set $seisistate = 0&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;run
   Dialog.setup(&quot;Seisinofoaga&quot;);
   Dialog.wiki(Story.get(&quot;seisi&quot;).processText());
   Dialog.open();
@@ -18742,10 +18818,10 @@ $msname&lt;br&gt;
 &lt;td style=&quot;width:50%&quot;&gt;&lt;center&gt;--&lt;/center&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td colspan=2&gt;
 &lt;font size=2px&gt;
-&lt;&lt;if $resonancebael &lt;=10&gt;&gt;你们仅有几面之缘。他看着像是哪个富贵家庭中涉世未深的
-&lt;&lt;elseif $resonancebael &lt;=20&gt;&gt;【施工中】
-&lt;&lt;elseif $resonancebael &lt;=30&gt;&gt;【施工中】
-&lt;&lt;elseif $resonancebael &lt;=90&gt;&gt;你是他，他也是你，你们也是■■
+&lt;&lt;if $msd &gt;=66&gt;&gt;你是他，他也是你，你们也是■■
+&lt;&lt;elseif $msd &gt;=4&gt;&gt;一只古怪的猫，这是你目前对他的全部想法。他看着像是哪个富贵家庭中涉世未深的子嗣，却又毫无礼节和教养，甚至大字不识，还在用着你取的名字。你难以想象这样的他要怎样在社会中生活，也许这就是他来永无乡的原因？
+&lt;&lt;elseif $msd &gt;=2&gt;&gt;一只古怪的猫，这是你目前对他的全部想法。他看着像是哪个富贵家庭中涉世未深的子嗣，却又毫无礼节和教养，甚至大字不识，还在用着你取的名字。你难以想象这样的他要怎样在社会中生活，也许这就是他来永无乡的原因？
+&lt;&lt;elseif $resonancebael &lt;=90&gt;&gt;
 
 
 &lt;&lt;/if&gt;&gt;&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;
@@ -18882,7 +18958,11 @@ $msname&lt;br&gt;
 &lt;/table&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;br&gt;
-&lt;b&gt;&lt;center&gt;组织&lt;/center&gt;&lt;/b&gt;&lt;br&gt;</tw-passagedata><tw-passagedata pid="201" name="成就" tags="" position="1800,300" size="100,100">&lt;&lt;achievementspopup&gt;&gt;</tw-passagedata><tw-passagedata pid="202" name="线索" tags="" position="1800,400" size="100,100">&lt;&lt;if !$clue || $clue == []&gt;&gt;暂无线索&lt;&lt;else&gt;&gt;
+&lt;b&gt;&lt;center&gt;组织&lt;/center&gt;&lt;/b&gt;&lt;br&gt;
+
+&lt;&lt;if $ORGinfo[&quot;防火会&quot;].reputation &gt;= 0&gt;&gt;
+防火会
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="201" name="成就" tags="" position="1800,300" size="100,100">&lt;&lt;achievementspopup&gt;&gt;</tw-passagedata><tw-passagedata pid="202" name="线索" tags="" position="1800,400" size="100,100">&lt;&lt;if !$clue || $clue == []&gt;&gt;暂无线索&lt;&lt;else&gt;&gt;
 &lt;center&gt;&lt;&lt;for _i to 0; _i lt $clue.length;  _i++&gt;&gt;
 &lt;&lt;if $msd &gt;5 &amp;&amp; (($clue[_i].name ==&quot;防火士头盔&quot; &amp;&amp; $clue[_i].dscr ==&quot;你发现在头盔内部有紫色的颗粒物&quot;) || ($clue[_i].name ==&quot;防火士的死因&quot; &amp;&amp; $clue[_i].dscr ==&quot;你没在死去的防火士身上发现致命伤和挣扎的痕迹&quot;))&gt;&gt;
 &lt;div class=&quot;write&quot;&gt;&lt;span class=&quot;blur&quot;&gt;&amp;nbsp;•&amp;nbsp;&lt;&lt;= $clue[_i].name&gt;&gt;：&lt;&lt;= $clue[_i].dscr&gt;&gt;&amp;nbsp;•&amp;nbsp;&lt;/span&gt;&lt;/div&gt;
@@ -19520,7 +19600,7 @@ $msname&lt;br&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="216" name="梦境判断" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;dreams&quot;&gt;&gt;
 /*特殊梦判断*/
-&lt;&lt;if ($msd &gt;= 2 &amp;&amp; $dream_fire.zero ==0) || ($fpfirst ==1 &amp;&amp; $dream_fire.I ==0)&gt;&gt;
+&lt;&lt;if ($msd &gt;= 2 &amp;&amp; $dream_fire.zero ==0) || ($fpfirst ==1 &amp;&amp; $dream_fire.I ==0) || ($msd &gt;= 5 &amp;&amp; $dream_fire.III ==0)&gt;&gt;
 &lt;&lt;goto &quot;火之梦&quot;&gt;&gt;
 
 &lt;&lt;else&gt;&gt;
@@ -19961,13 +20041,13 @@ $racing.bitmoney = $horse[0].bitmoney+$horse[1].bitmoney+$horse[2].bitmoney+$hor
 &gt;&gt;
 &lt;&lt;set 
 $horse[0].odds = Math.floor($horse[0].odds*(1-$horse[0].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100, 
-$horse[1].odds = Math.floor($horse[0].odds*(1-$horse[1].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
-$horse[2].odds = Math.floor($horse[0].odds*(1-$horse[2].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
-$horse[3].odds = Math.floor($horse[0].odds*(1-$horse[3].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
-$horse[4].odds = Math.floor($horse[0].odds*(1-$horse[4].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
-$horse[5].odds = Math.floor($horse[0].odds*(1-$horse[5].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
-$horse[6].odds = Math.floor($horse[0].odds*(1-$horse[6].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
-$horse[7].odds = Math.floor($horse[0].odds*(1-$horse[7].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100&gt;&gt;
+$horse[1].odds = Math.floor($horse[1].odds*(1-$horse[1].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
+$horse[2].odds = Math.floor($horse[2].odds*(1-$horse[2].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
+$horse[3].odds = Math.floor($horse[3].odds*(1-$horse[3].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
+$horse[4].odds = Math.floor($horse[4].odds*(1-$horse[4].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
+$horse[5].odds = Math.floor($horse[5].odds*(1-$horse[5].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
+$horse[6].odds = Math.floor($horse[6].odds*(1-$horse[6].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
+$horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100&gt;&gt;
 
 
 &lt;&lt;set $dailyjob = []&gt;&gt;&lt;&lt;dailyjob&gt;&gt;&lt;&lt;dailyjob&gt;&gt;&lt;&lt;dailyjob&gt;&gt;
@@ -20077,13 +20157,13 @@ $racing.bitamount = $horse[0].bitamount+$horse[1].bitamount+$horse[2].bitamount+
 $racing.bitmoney = $horse[0].bitmoney+$horse[1].bitmoney+$horse[2].bitmoney+$horse[3].bitmoney+$horse[4].bitmoney+$horse[5].bitmoney+$horse[6].bitmoney+$horse[7].bitmoney&gt;&gt;
 &lt;&lt;set 
 $horse[0].odds = Math.floor($horse[0].odds*(1-$horse[0].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100, 
-$horse[1].odds = Math.floor($horse[0].odds*(1-$horse[1].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
-$horse[2].odds = Math.floor($horse[0].odds*(1-$horse[2].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
-$horse[3].odds = Math.floor($horse[0].odds*(1-$horse[3].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
-$horse[4].odds = Math.floor($horse[0].odds*(1-$horse[4].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
-$horse[5].odds = Math.floor($horse[0].odds*(1-$horse[5].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
-$horse[6].odds = Math.floor($horse[0].odds*(1-$horse[6].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
-$horse[7].odds = Math.floor($horse[0].odds*(1-$horse[7].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100&gt;&gt;
+$horse[1].odds = Math.floor($horse[1].odds*(1-$horse[1].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
+$horse[2].odds = Math.floor($horse[2].odds*(1-$horse[2].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
+$horse[3].odds = Math.floor($horse[3].odds*(1-$horse[3].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
+$horse[4].odds = Math.floor($horse[4].odds*(1-$horse[4].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
+$horse[5].odds = Math.floor($horse[5].odds*(1-$horse[5].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
+$horse[6].odds = Math.floor($horse[6].odds*(1-$horse[6].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
+$horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100&gt;&gt;
 
 
 &lt;&lt;/if&gt;&gt;
