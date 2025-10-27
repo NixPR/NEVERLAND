@@ -266,6 +266,10 @@ input, textarea, select {
     border-radius:var(--radius-subtle);
     border: transparent;
 }
+#ui-dialog-body.settings input[type=range][id|=setting-control] {
+    max-width: 35vw;
+    min-width: 15vw;
+}
 select:hover {
     background-color:var(--fontcolor-dark);
     border: transparent;
@@ -289,7 +293,9 @@ select option {
 #menu-item-restart {
         display: none; }
 #story {
-        margin-top: 0.5em; }
+        margin-top: 0.5em;
+      margin-left: 18em;
+}
 #ui-bar-body>:not(:first-child) {
     margin-top: 0em;
 }
@@ -1193,6 +1199,9 @@ table, th, td {
     border-radius: var(--radius-moderate);
 }
 td:hover {background-color: #EDE3DE;}
+table:nth-child(2n){
+  background-color: #EDE3DE;
+}
 }
 /* 右侧边栏link */
 html.bleached body #right-ui-bar a, body.bleached #right-ui-bar a {
@@ -1778,7 +1787,7 @@ button #right-ui-bar-toggle {
 }
 /*间隔*/
 #story {
-	margin-right: 20em;
+	margin-right: 18em;
 }
 #right-ui-bar.stowed {
 	right: -17.6em;
@@ -1795,10 +1804,10 @@ button #right-ui-bar-toggle {
     transition: all .3s ease-out;
 }
 #right-ui-bar~#story {
-    margin-right: 20em;
+    margin-right: 18em;
 }
 html.night #right-ui-bar~#story {
-    margin-right: 32em;
+    margin-right: 30em;
 }
 .delayed {
     opacity: 0;
@@ -5115,6 +5124,62 @@ setup.settingClickAnimation = function() {
 
 })();
 /* twine-user-script #3: "story/js\\01-setting.js" */
+/* ====== 字体大小设置（实时不闪回版） ====== */
+(function () {
+  window.setup = window.setup || {};
+
+  // 应用字体大小函数
+  setup.applyFontSize = function (size) {
+    const px = parseInt(size, 10) || 15;
+    $("#story, .passage").css("font-size", px + "px");
+    if (typeof State !== "undefined" && State && State.variables) {
+      State.variables.fontSize = px;
+    }
+  };
+
+  // 页面加载完后立即应用当前设置
+  $(document).one(":storyready", function () {
+    const initial = (typeof State.variables.fontSize !== "undefined") ? settings.FontSize : 15;
+    setup.applyFontSize(initial);
+  });
+
+  // 每次 passage 渲染后应用（防止被覆盖）
+  $(document).on(":passagedisplay", function () {
+    const sz = (typeof settings !== "undefined" && settings.FontSize) ? settings.FontSize : State.variables.fontSize || 15;
+    setup.applyFontSize(sz);
+  });
+
+  // 添加字体大小设置（带实时生效）
+  Setting.addRange("FontSize", {
+    label: "文字大小",
+    min: 14,
+    max: 18,
+    step: 1,
+    default: 16,
+    onInit: function () {
+      const val = settings.FontSize;
+      setup.applyFontSize(val);
+      State.variables.fontSize = val;
+    },
+    onChange: function () {
+      // 实时响应滑块变化，但稍微延迟，避免 SugarCube UI 刷新时闪回默认
+      const val = settings.FontSize;
+      setup.applyFontSize(val);
+      State.variables.fontSize = val;
+    }
+  });
+
+  // 当设置界面关闭时再次强制恢复字体
+  $(document).on(":dialogclose", function () {
+    if (typeof settings !== "undefined" && settings.FontSize) {
+      setup.applyFontSize(settings.FontSize);
+    }
+  });
+
+})();
+
+
+
 //设置菜单
 // 添加点击动画开关（使用 Setting.addToggle）
 Setting.addToggle("ClickAnimation", {
@@ -5197,6 +5262,7 @@ onChange: function () {
     }
   }
 });
+
 /* twine-user-script #4: "story/js\\02-ui.js" */
 /*   弹窗切换   */
 window.changemap = function(page, ID) {
@@ -7271,28 +7337,28 @@ Item.add("沙丁鱼", {displayName: "沙丁鱼", description: "<<iwd \"沙丁鱼
 Item.add("乌贼", {displayName: "乌贼", description: "安静地躺在鱼篓中，柔软的身体随着动作微微晃动，隐隐透出一丝墨色<<iwd \"乌贼\">>" , handler: null, consumable: null, function: "false", store: null, price: 6 , weight: 0.7},["材料", "鱼", null, "一般", null, null, "fuelA"]);
 Item.add("无须鳕鱼", {displayName: "无须鳕鱼", description: "<<iwd \"无须鳕鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 6 , weight: 0.5},["材料", "鱼", null, "一般", null, null, "fuelA"]);
 Item.add("鳕鱼", {displayName: "鳕鱼", description: "身形宽大而饱满, 能做出一顿美餐<<iwd \"鳕鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 6 , weight: 0.3},["材料", "鱼", null, "一般", null, null, "fuelA"]);
-Item.add("红蝎鱼", {displayName: "红蝎鱼", description: "刺状鳍微微张开，暗红色的身体透出一股危险的气息<<iwd \"红蝎鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 3 , weight: 0.3},["材料", "鱼", null, null, "常见", null, "fuelA"]);
+Item.add("红蝎鱼", {displayName: "红蝎鱼", description: "刺状鳍微微张开，暗红色的身体透出一股危险的气息<<iwd \"红蝎鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 4 , weight: 0.3},["材料", "鱼", null, null, "常见", null, "fuelA"]);
 Item.add("鲻鱼", {displayName: "鲻鱼", description: "灰色身躯光滑且修长，鳞片紧密排列，泛着冷冽的光泽<<iwd \"鲻鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 8 , weight: 0.45},["材料", "鱼", null, null, "一般", null, "fuelA"]);
 Item.add("鹦哥鱼", {displayName: "鹦哥鱼", description: "像鹦鹉一样颜色艳丽, 仿佛海洋的活力凝聚于此<<iwd \"鹦哥鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 6 , weight: 0.25},["材料", "鱼", "观赏鱼", null, "常见", null, "fuelA"]);
 Item.add("比目鱼", {displayName: "比目鱼", description: "<<iwd \"比目鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 6 , weight: 0.2},["材料", "鱼", null, null, "一般", null, "fuelA"]);
-Item.add("凤尾鱼", {displayName: "凤尾鱼", description: "<<iwd \"凤尾鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 2 , weight: 0.1},["材料", "鱼", null, null, "一般", null, "fuelA"]);
+Item.add("凤尾鱼", {displayName: "凤尾鱼", description: "<<iwd \"凤尾鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 3 , weight: 0.1},["材料", "鱼", null, null, "一般", null, "fuelA"]);
 Item.add("彩虹濑鱼", {displayName: "彩虹濑鱼", description: "<<iwd \"彩虹濑鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 15 , weight: 0.25},["材料", "鱼", "观赏鱼", null, "常见", null, "fuelA"]);
-Item.add("纹首鮨", {displayName: "纹首鮨", description: "<<iwd \"纹首鮨\">>" , handler: null, consumable: null, function: "false", store: null, price: 7 , weight: 0.3},["材料", "鱼", null, null, "一般", null, "fuelA"]);
-Item.add("鲱鱼", {displayName: "鲱鱼", description: "<<iwd \"鲱鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 4 , weight: 0.5},["材料", "食材", "鱼", null, "一般", null, "fuelA"]);
-Item.add("鳗鱼", {displayName: "鳗鱼", description: "狭长的身体滑腻蜷缩在鱼篓中，闪着黏湿的光泽<br><br>〖鱼缸占据空间 2〗<<iwd \"鳗鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 4 , weight: 0.01},["材料", "鱼", null, "鱼缸", "常见", null, "fuelA"]);
-Item.add("泥鳅", {displayName: "泥鳅", description: "小巧灵活的泥鳅尾部微微摆动，似乎随时准备钻出鱼篓<br><br>〖鱼缸占据空间 1〗<<iwd \"泥鳅\">>" , handler: null, consumable: null, function: "false", store: null, price: 2 , weight: 0.01},["材料", "鱼", null, "鱼缸", "一般", null, "fuelA"]);
-Item.add("欧鳊", {displayName: "欧鳊", description: "鳞片的细密在微微反射着光，折射出淡淡的银光<br><br>〖鱼缸占据空间 2〗<<iwd \"欧鳊\">>" , handler: null, consumable: null, function: "false", store: null, price: 5 , weight: 1.05},["材料", "鱼", null, "鱼缸", "一般", null, "fuelA"]);
-Item.add("黑鲈鱼", {displayName: "黑鲈鱼", description: "厚实身躯充满力量，暗色的鳞片如黑夜般深邃<br><br>〖鱼缸占据空间 2〗<<iwd \"黑鲈鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 6 , weight: 0.7},["材料", "食材", "鱼", "鱼缸", "一般", null, "fuelA"]);
-Item.add("雅罗鱼", {displayName: "雅罗鱼", description: "纤细轮廓透着柔和的光泽，宛如湖面映照的月光<br><br>〖鱼缸占据空间 1〗<<iwd \"雅罗鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 2 , weight: 0.2},["材料", "鱼", null, "鱼缸", "一般", null, "fuelA"]);
-Item.add("鲤鱼", {displayName: "鲤鱼", description: "硕大厚实，橙红色的鳞片在微光下依然醒目<br><br>〖鱼缸占据空间 2〗<<iwd \"鲤鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 4 , weight: 0.8},["材料", "鱼", null, "鱼缸", "一般", null, "fuelA"]);
-Item.add("虾虎鱼", {displayName: "虾虎鱼", description: "虾虎鱼小巧灵活，身体紧贴着鱼篓，散发着淡淡的光泽<br><br>〖鱼缸占据空间 1〗<<iwd \"虾虎鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 2 , weight: 0.02},["材料", "鱼", null, "鱼缸", "一般", null, "fuelA"]);
-Item.add("白鲑鱼", {displayName: "白鲑鱼", description: "银白色鳞片在微光中闪耀，身形修长且充满力量<br><br>〖鱼缸占据空间 2〗<<iwd \"白鲑鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 6 , weight: 0.6},["材料", "食材", "鱼", "鱼缸", "一般", null, "fuelA"]);
+Item.add("纹首鮨", {displayName: "纹首鮨", description: "<<iwd \"纹首鮨\">>" , handler: null, consumable: null, function: "false", store: null, price: 8 , weight: 0.3},["材料", "鱼", null, null, "一般", null, "fuelA"]);
+Item.add("鲱鱼", {displayName: "鲱鱼", description: "<<iwd \"鲱鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 5 , weight: 0.5},["材料", "食材", "鱼", null, "一般", null, "fuelA"]);
+Item.add("鳗鱼", {displayName: "鳗鱼", description: "狭长的身体滑腻蜷缩在鱼篓中，闪着黏湿的光泽<br><br>〖鱼缸占据空间 2〗<<iwd \"鳗鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 5 , weight: 0.01},["材料", "鱼", null, "鱼缸", "常见", null, "fuelA"]);
+Item.add("泥鳅", {displayName: "泥鳅", description: "小巧灵活的泥鳅尾部微微摆动，似乎随时准备钻出鱼篓<br><br>〖鱼缸占据空间 1〗<<iwd \"泥鳅\">>" , handler: null, consumable: null, function: "false", store: null, price: 3 , weight: 0.01},["材料", "鱼", null, "鱼缸", "一般", null, "fuelA"]);
+Item.add("欧鳊", {displayName: "欧鳊", description: "鳞片的细密在微微反射着光，折射出淡淡的银光<br><br>〖鱼缸占据空间 2〗<<iwd \"欧鳊\">>" , handler: null, consumable: null, function: "false", store: null, price: 6 , weight: 1.05},["材料", "鱼", null, "鱼缸", "一般", null, "fuelA"]);
+Item.add("黑鲈鱼", {displayName: "黑鲈鱼", description: "厚实身躯充满力量，暗色的鳞片如黑夜般深邃<br><br>〖鱼缸占据空间 2〗<<iwd \"黑鲈鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 8 , weight: 0.7},["材料", "食材", "鱼", "鱼缸", "一般", null, "fuelA"]);
+Item.add("雅罗鱼", {displayName: "雅罗鱼", description: "纤细轮廓透着柔和的光泽，宛如湖面映照的月光<br><br>〖鱼缸占据空间 1〗<<iwd \"雅罗鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 3 , weight: 0.2},["材料", "鱼", null, "鱼缸", "一般", null, "fuelA"]);
+Item.add("鲤鱼", {displayName: "鲤鱼", description: "硕大厚实，橙红色的鳞片在微光下依然醒目<br><br>〖鱼缸占据空间 2〗<<iwd \"鲤鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 5 , weight: 0.8},["材料", "鱼", null, "鱼缸", "一般", null, "fuelA"]);
+Item.add("虾虎鱼", {displayName: "虾虎鱼", description: "虾虎鱼小巧灵活，身体紧贴着鱼篓，散发着淡淡的光泽<br><br>〖鱼缸占据空间 1〗<<iwd \"虾虎鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 3 , weight: 0.02},["材料", "鱼", null, "鱼缸", "一般", null, "fuelA"]);
+Item.add("白鲑鱼", {displayName: "白鲑鱼", description: "银白色鳞片在微光中闪耀，身形修长且充满力量<br><br>〖鱼缸占据空间 2〗<<iwd \"白鲑鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 8 , weight: 0.6},["材料", "食材", "鱼", "鱼缸", "一般", null, "fuelA"]);
 Item.add("虹鳟鱼", {displayName: "虹鳟鱼", description: "鳞片如彩虹般绚丽，色彩在背包中微微流动<br><br>〖鱼缸占据空间 2〗<<iwd \"虹鳟鱼\">>" , handler: null, consumable: null, function: "false", store: null, price: 15 , weight: 0.5},["材料", "鱼", null, "鱼缸", "一般", null, "fuelA"]);
 Item.add("螃蟹", {displayName: "螃蟹", description: "<<iwd \"螃蟹\">><<iwd \"螃蟹\">>" , handler: null, consumable: null, function: "false", store: null, price: 2 , weight: 0.02},["材料", "鱼", null, null, "一般", null, "fuelA"]);
 Item.add("扇贝", {displayName: "扇贝", description: "<<iwd \"扇贝\">><<iwd \"扇贝\">>" , handler: null, consumable: null, function: "false", store: null, price: 2 , weight: 0.02},["材料", "鱼", null, null, "一般", null, "fuelA"]);
-Item.add("鱼肉", {displayName: "鱼肉", description: "来自新鲜的鱼!<<iwd \"鱼肉\">>" , handler: null, consumable: null, function: "false", store: null, price: 2 , weight: 0.02},["材料", "食材", "祭品", null, "fishy", null, "fuelA"]);
-Item.add("禽肉", {displayName: "禽肉", description: " 无论是林间的野雉还是湖上的肥鸭，禽肉总是餐桌上不可或缺的部分<<iwd \"禽肉\">>" , handler: null, consumable: null, function: "false", store: null, price: 2 , weight: 0.02},["材料", "食材", "祭品", null, "meaty", null, "fuelA"]);
-Item.add("兽肉", {displayName: "兽肉", description: "带着生命力和一丝血性的尊严<<iwd \"兽肉\">>" , handler: null, consumable: null, function: "false", store: null, price: 2 , weight: 0.02},["材料", "食材", "祭品", null, "meaty", null, "fuelA"]);
+Item.add("鱼肉", {displayName: "鱼肉", description: "来自新鲜的鱼!<<iwd \"鱼肉\">>" , handler: null, consumable: null, function: "false", store: null, price: 3 , weight: 0.02},["材料", "食材", "祭品", null, "fishy", null, "fuelA"]);
+Item.add("禽肉", {displayName: "禽肉", description: " 无论是林间的野雉还是湖上的肥鸭，禽肉总是餐桌上不可或缺的部分<<iwd \"禽肉\">>" , handler: null, consumable: null, function: "false", store: null, price: 3 , weight: 0.02},["材料", "食材", "祭品", null, "meaty", null, "fuelA"]);
+Item.add("兽肉", {displayName: "兽肉", description: "带着生命力和一丝血性的尊严<<iwd \"兽肉\">>" , handler: null, consumable: null, function: "false", store: null, price: 3 , weight: 0.02},["材料", "食材", "祭品", null, "meaty", null, "fuelA"]);
 Item.add("鸟蛋", {displayName: "鸟蛋", description: "不管是煎是煮，鸟蛋总是锅子里最先投降的那个 <<iwd \"鸟蛋\">>" , handler: null, consumable: null, function: "false", store: null, price: 2 , weight: 0.01},["材料", "食材", null, null, null, null, "fuelA"]);
 Item.add("鱼油", {displayName: "鱼油", description: " 鱼油能让油灯发光、皮革柔软，还能让你的皮毛健康柔顺<<iwd \"鱼油\">>" , handler: null, consumable: null, function: "false", store: null, price: 1 , weight: 0.01},["材料", "食材", "烹饪", "油", "fishy", null, "fuelA"]);
 Item.add("黄油", {displayName: "黄油", description: "羊奶的黄金变体，一块优质的黄油能让黑面包变成盛宴，让土豆拥有灵魂<<iwd \"黄油\">>" , handler: null, consumable: null, function: "false", store: null, price: 1 , weight: 0.01},["材料", "食材", "烹饪", "油", null, null, "fuelA"]);
@@ -7525,7 +7591,7 @@ Item.add("战争与和平", {displayName: "战争与和平", description: "托�
 Item.add("傲慢与偏见", {displayName: "傲慢与偏见", description: "简·奥斯汀的社会小说，以伊丽莎白与达西的情感纠葛折射出阶层与性格的冲突<<readbook \"傲慢与偏见\">><<iwd \"傲慢与偏见\">>" , handler: null, consumable: null, function: null, store: 1, price: 5 , weight: 1.2},["读物", "图书馆", null, null, null, null, "fuelA"]);
 Item.add("堂吉诃德", {displayName: "堂吉诃德", description: "塞万提斯的长篇小说，描写一个痴迷骑士故事的乡绅，化身为游侠骑士的荒诞冒险<<readbook \"堂吉诃德\">><<iwd \"堂吉诃德\">>" , handler: null, consumable: null, function: null, store: 1, price: 5 , weight: 0.8},["读物", "图书馆", null, null, null, null, "fuelA"]);
 
-</script><tw-tag name="autosave" color="blue"></tw-tag><tw-tag name="init" color="green"></tw-tag><tw-tag name="UIBarhide" color="green"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="widget" color="orange"></tw-tag><tw-tag name="nobr" color="yellow"></tw-tag><tw-passagedata pid="1" name="demo结语" tags="" position="2000,1000" size="100,100">&lt;center&gt;
+</script><tw-tag name="init" color="green"></tw-tag><tw-tag name="UIBarhide" color="green"></tw-tag><tw-tag name="widget" color="orange"></tw-tag><tw-tag name="nobr" color="yellow"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="autosave" color="blue"></tw-tag><tw-passagedata pid="1" name="demo结语" tags="" position="2000,1000" size="100,100">&lt;center&gt;
 
 demo的游戏内容到此结束, 主要内容有5段主线剧情、3个主线任务、3段支线剧情、2个支线任务、12个可互动角色、13个成就、7条线索
 
@@ -9406,8 +9472,9 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 
 /***************放羊******************/
 &lt;&lt;if $state == &quot;放羊&quot;&gt;&gt;
-&lt;&lt;if $$NPCinfo[&quot;埃拉&quot;].love&lt;= 10&gt;&gt;
-埃拉打量了一下你，谢绝了你的好意。
+&lt;&lt;if $NPCinfo[&quot;埃拉&quot;].love&lt;= 10&gt;&gt;
+埃拉打量了一下你，谢绝了你的好意。他还不够信任你。&lt;br&gt;&lt;br&gt;
+&lt;&lt;link ▷「返回」 草甸&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;elseif $fycs == 0&gt;&gt;
 埃拉觉得你今天已经做得够多了, 去找点其他事做或者休息一下吧。
 &lt;br&gt;&lt;br&gt;
@@ -14233,7 +14300,8 @@ Dialog.open();&gt;&gt;
 &lt;&lt;set _t to random(15,20)&gt;&gt;&lt;&lt;set _r to $strength*_t/10&gt;&gt;&lt;&lt;set _a to $strength/_r*100&gt;&gt;
 &lt;&lt;checkWidget&gt;&gt;
 &lt;&lt;if _rst == &quot;大失败&quot;&gt;&gt;
-却不小心划伤了自己&lt;&lt;set $player.wound to $player.wound+ 1&gt;&gt;
+却不小心划伤了自己&lt;&lt;set $player.wound to $player.wound+ 1&gt;&gt;&lt;br&gt;&lt;br&gt;
+&lt;&lt;link ▷「继续」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;else&gt;&gt;得到了_n个浆果&lt;&lt;gainitem &quot;浆果&quot; _n&gt;&gt;&lt;br&gt;&lt;&lt;itemobtain &quot;浆果 * _n&quot;&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「继续」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
@@ -15562,7 +15630,7 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
   &lt;div id=&quot;betting-section&quot;&gt;&lt;/div&gt;
   &lt;script&gt;renderHorseCards();&lt;/script&gt;
 
-&lt;&lt;if $week ==4&gt;&gt;
+&lt;&lt;if $week ==4 &amp;&amp; $hour &gt;=14 &amp;&amp; $hour &lt;=18 &amp;&amp; $recording[&quot;赛马&quot;]==&quot;未开始&quot;&gt;&gt;
     &lt;&lt;button &quot;观看赛马&quot;&gt;&gt;
     &lt;&lt;if $selectedHorseIndex == null&gt;&gt;&lt;&lt;run UI.alert(&quot;请先下注并选择一匹马！&quot;)&gt;&gt;
      &lt;&lt;else&gt;&gt;
@@ -15571,7 +15639,7 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="95" name="赛马进行" tags="nobr" position="" size="">&lt;h2&gt;比赛进行中…&lt;/h2&gt;
 &lt;div class=&quot;race-track&quot;&gt;&lt;/div&gt;
 
-&lt;script&gt;startRaceAnimation();&lt;/script&gt;</tw-passagedata><tw-passagedata pid="96" name="赛马结果" tags="nobr" position="" size="">&lt;h2&gt;比赛结果&lt;/h2&gt;
+&lt;script&gt;startRaceAnimation();&lt;/script&gt;</tw-passagedata><tw-passagedata pid="96" name="赛马结果" tags="nobr" position="" size="">&lt;h2&gt;比赛结果&lt;/h2&gt;&lt;&lt;set $recording[&quot;赛马&quot;]=&quot;已结束&quot;&gt;&gt;
 获胜马匹：&lt;&lt;print $raceWinner&gt;&gt;  
 奖金：&lt;&lt;print $prize&gt;&gt;  
 当前余额：&lt;&lt;print $ashes&gt;&gt;
@@ -16091,7 +16159,7 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 
 &lt;&lt;else&gt;&gt;&lt;&lt;set $loc to &quot;你的小屋&quot;, $loct to &quot;你的小屋&quot;&gt;&gt;
 
-你打开房门, 踏进你在$home的小屋. 欢迎回家! &lt;br&gt;&lt;br&gt;
+你打开房门, 踏进你在$home的小屋. 欢迎回家! &lt;br&gt;&lt;br&gt;&lt;&lt;set $choice = 0&gt;&gt;
 &lt;&lt;set _s to random(1,30)&gt;&gt;
 &lt;&lt;if _s == 1&gt;&gt;
 &lt;&lt;set _stuff = [&quot;蝴蝶&quot;,&quot;蜜蜂&quot;,&quot;蜘蛛&quot;,&quot;蚂蚁&quot;].random()&gt;&gt;啊! 有只_stuff在你的家里。它是怎么进来的？&lt;br&gt;&lt;br&gt;
@@ -16114,7 +16182,7 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 家&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;
 &lt;&lt;elseif $recording[&quot;许愿井&quot;] == 1 &amp;&amp; _s&lt;=4&gt;&gt;
-啊！有只飞蛾在你的家里。它也许是从许愿井跟着你回来的？&lt;&lt;set $recording[&quot;许愿井&quot;] = 0&gt;&gt;
+啊！有只飞蛾在你的家里。它也许是从许愿井跟着你回来的？&lt;&lt;set $recording[&quot;许愿井&quot;] = 0&gt;&gt;&lt;br&gt;&lt;br&gt;
 &lt;&lt;do tag &quot;bug&quot;&gt;&gt;
 &lt;&lt;if $choice == 0&gt;&gt;
 &lt;&lt;link ▷「捏死」&gt;&gt;&lt;&lt;set $choice to &quot;捏死&quot;&gt;&gt;&lt;&lt;redo &quot;bug&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
@@ -16122,13 +16190,11 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;&lt;link ▷「放进口袋」&gt;&gt;&lt;&lt;set $choice to &quot;飞蛾&quot;&gt;&gt;&lt;&lt;redo &quot;bug&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;elseif $choice == &quot;捏死&quot;&gt;&gt;&lt;&lt;set $crushbugs +=1&gt;&gt;
 你把虫子从身上摘下来，用手指轻轻挤压，毫不费力地压扁了这个小家伙。又一场胜利。
-&lt;&lt;if _stuff == &quot;蚂蚁&quot;&gt;&gt;&lt;&lt;set $antrelese = false&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 家&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;elseif $choice == &quot;丢出去&quot;&gt;&gt;
 你捡起虫子，把它丢出家门，虫子沿着一道抛物线飞了出去，紧接着一个完美落地。祈祷你们俩不会再碰面了。
-&lt;&lt;if _stuff == &quot;蚂蚁&quot; &amp;&amp; $antrelese != false&gt;&gt;&lt;&lt;set $antrelese += 1&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 家&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice ==&quot;蝴蝶&quot; || $choice ==&quot;蜜蜂&quot; || $choice ==&quot;蜘蛛&quot; || $choice ==&quot;蚂蚁&quot;&gt;&gt;
+&lt;&lt;elseif $choice ==&quot;飞蛾&quot;&gt;&gt;
 你把虫子捡起来，装进了口袋。&lt;br&gt;
 &lt;&lt;gainitem $choice 1&gt;&gt;&lt;&lt;itemobtain &quot;$choice * 1&quot;&gt;&gt;
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 家&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -16256,17 +16322,17 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;&lt;/for&gt;&gt;
 
 &lt;&lt;/if&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="117" name="睡觉" tags="autosave nobr" position="" size="">&lt;&lt;if $hour &gt;=11 &amp;&amp; $hour &lt;=14 &amp;&amp; $sleepnt == 0&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="117" name="睡觉" tags="autosave nobr" position="" size="">&lt;&lt;if $hour &gt;=11 &amp;&amp; $hour &lt;=14 &amp;&amp; $sleepnt == 1&gt;&gt;
 &lt;&lt;set $hour = $hour + $sleepc&gt;&gt;
 &lt;&lt;fadeout 3s 2s&gt;&gt;
 你厌倦了日光, 便拉上窗帘, 关进窗户, 把阳光隔绝在外。接着, 你拍软枕头, 钻进被窝里, 在一天中最适宜的时候开始了你的午觉。
-&lt;&lt;/fadeout&gt;&gt;&lt;&lt;set $sleepnt = 1&gt;&gt;
+&lt;&lt;/fadeout&gt;&gt;&lt;&lt;set $sleepnt -= 1, $sleeptime+=1&gt;&gt;
 &lt;&lt;timed 6s&gt;&gt;&lt;&lt;dreams&gt;&gt;&lt;&lt;/timed&gt;&gt;
-&lt;&lt;elseif $sleept == 0&gt;&gt;
+&lt;&lt;elseif $sleept &gt;= 1&gt;&gt;
 &lt;&lt;set $hour = $hour + $sleepc&gt;&gt;
 &lt;&lt;fadeout 3s 2s&gt;&gt;
 你拉上窗帘, 拍软了枕头, 关掉桌灯, 钻进了被窝里。 
-&lt;&lt;/fadeout&gt;&gt;&lt;&lt;set $sleept = 1&gt;&gt;
+&lt;&lt;/fadeout&gt;&gt;&lt;&lt;set $sleept -= 1, $sleeptime+=1&gt;&gt;
 &lt;&lt;timed 6s&gt;&gt;&lt;&lt;dreams&gt;&gt;&lt;&lt;/timed&gt;&gt;
 &lt;&lt;else&gt;&gt;
 你不久前才从梦中醒来, 丝毫没有困意, 也许你该继续手头的工作。&lt;br&gt;&lt;br&gt;
@@ -17877,7 +17943,7 @@ Seisi此时正一脸凶狠的趴在窝里，看上去随时准备攻击你。&lt
 &lt;/ScrollView&gt;
 
 &lt;&lt;set setup.items to {}&gt;&gt; 
-&lt;&lt;set $test to 1025&gt;&gt; 
+&lt;&lt;set $test to 1027&gt;&gt; 
 &lt;&lt;set $hideui = 0&gt;&gt;
 /******************属性值们******************/
 &lt;&lt;set $luck to random(35,95)&gt;&gt;
@@ -17888,7 +17954,7 @@ $sin to 0, $resonancefire = 0, $resonancebael = 0&gt;&gt;
 &lt;&lt;set $godstyle = {bloodthirsty:0, majesty:0, peaceful:0, stead:0}&gt;&gt;
 
 /******************初始值们******************/
-&lt;&lt;set $itemweight = {dreamdiary:0.03, firebloom : 0.02, bookshelf:0, cupboard:2.96}, $firebloom =[], $dream =[]&gt;&gt;
+&lt;&lt;set $itemweight = {dreamdiary:0.03, firebloom : 0.02, bookshelf:0, cupboard:2.96}, $firebloom =[], $dream =[]&gt;&gt;&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;set $fontSize =16&gt;&gt;
 &lt;&lt;set $loc = &quot;未知&quot;, $loct = &quot;未知&quot;, $job = &quot;暂无&quot;,$home = &quot;暂无&quot;, $avatar = &quot;https://f2.toyhou.se/file/f2-toyhou-se/images/108251338_WycNJsCuPu3j39s.png&quot;, $choice =0,
 $chop = 0, $dgcs = 6, $fycs = 3, $gzcs = 3, $bjb to 0, $Owuotake = 0&gt;&gt;
 &lt;&lt;set $sq = {way : 0, moon: 0, ashes: 0}&gt;&gt;
@@ -17899,7 +17965,7 @@ $chop = 0, $dgcs = 6, $fycs = 3, $gzcs = 3, $bjb to 0, $Owuotake = 0&gt;&gt;
 &lt;&lt;set $textcard= [&quot;永无乡&quot;,&quot;猫族&quot;,&quot;南风&quot;,&quot;月亮&quot;,&quot;羽墨&quot;]&gt;&gt;
 &lt;&lt;set _now to new Date()&gt;&gt;
 &lt;&lt;set $innpay = 1, $date to 1, $month = 6, $day = 14, $dailyash to 0, $week to 7, $hour to 7, $minute to 0, $dtr to 0, $dtr1 to 0, $dtr2 to 0, $weather to &quot;晴天&quot;, $wind to &quot;东风&quot;, $npc = 0, $msstat = &quot;初始&quot;&gt;&gt;
-&lt;&lt;set $sheep to 27, $boat to 6, $sleepnt = 0, $sleept = 0, $drowner = 12&gt;&gt;&lt;&lt;set $lostsheep = [0, 0]&gt;&gt;
+&lt;&lt;set $sheep to 27, $boat to 6, $sleepnt = 1, $sleept = 2, $drowner = 12&gt;&gt;&lt;&lt;set $lostsheep = [0, 0]&gt;&gt;
 &lt;&lt;set $land1 = {name: &#39;无&#39;, stat: 0, needt:0, watert:0},  $land2 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}, $land3 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}, $land4 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}, $land5 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}, $land6 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}&gt;&gt;
 &lt;&lt;set $achv = [], $story = {}, $storydone = [], $storymiss = [], $clue = []&gt;&gt;
 &lt;&lt;set $bellring1 = 0, $bellring2 = 0, $bellring3 = 0&gt;&gt; 
@@ -18169,7 +18235,7 @@ $chop = 0, $dgcs = 6, $fycs = 3, $gzcs = 3, $bjb to 0, $Owuotake = 0&gt;&gt;
 &lt;&lt;set $textcard= [&quot;永无乡&quot;,&quot;猫族&quot;,&quot;南风&quot;,&quot;月亮&quot;,&quot;羽墨&quot;]&gt;&gt;
 &lt;&lt;set _now to new Date()&gt;&gt;
 &lt;&lt;set $innpay = 1, $date to 1, $month = 6, $day = 14, $dailyash to 0, $week to 7, $hour to 7, $minute to 0, $dtr to 0, $dtr1 to 0, $dtr2 to 0, $weather to &quot;晴天&quot;, $wind to &quot;东风&quot;, $npc = 0, $msstat = &quot;初始&quot;&gt;&gt;
-&lt;&lt;set $sheep to 27, $boat to 6, $sleepnt = 0, $sleept = 0, $drowner = 12&gt;&gt;&lt;&lt;set $lostsheep = [0, 0]&gt;&gt;
+&lt;&lt;set $sheep to 27, $boat to 6, $sleept = 2, $sleepnt = 1, $drowner = 12&gt;&gt;&lt;&lt;set $lostsheep = [0, 0]&gt;&gt;
 &lt;&lt;set $land1 = {name: &#39;无&#39;, stat: 0, needt:0, watert:0},  $land2 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}, $land3 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}, $land4 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}, $land5 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}, $land6 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}&gt;&gt;
 &lt;&lt;set $achv = [], $story = {}, $storydone = [], $storymiss = [], $clue = []&gt;&gt;
 &lt;&lt;set $bellring1 = 0, $bellring2 = 0, $bellring3 = 0&gt;&gt; 
@@ -18370,12 +18436,13 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 &lt;h2&gt;CREDITS&lt;/h2&gt;世界观创作、游戏制作、剧情设计、角色设计、文本编写：Nix&lt;br&gt;特别感谢：Chapel、Shour、黑星&lt;br&gt;
 
 &lt;&lt;include &quot;更新日志&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="189" name="版本更新" tags="" position="400,0" size="100,100">&lt;&lt;do&gt;&gt;当前版本：0.25&lt;&lt;=$test&gt;&gt;
-最新版本：0.251025&lt;br&gt;
+最新版本：0.251027&lt;br&gt;
 &lt;&lt;link 更新版本&gt;&gt;
-&lt;&lt;set $test = 1025&gt;&gt;&lt;&lt;set $recording = {settleday:0, fig: 3}&gt;&gt;&lt;&lt;pickup $cupboard &quot;砂盐&quot; 10&gt;&gt;&lt;&lt;drop $cupboard &quot;砾盐&quot; 10&gt;&gt; &lt;&lt;notify 3s&gt;&gt;已更新至最新版本&lt;&lt;/notify&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;set $test = 1025&gt;&gt;&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;set $fontSize =16&gt;&gt;&lt;&lt;notify 3s&gt;&gt;已更新至最新版本&lt;&lt;/notify&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
 (已触发内容的更新无法同步，测试阶段不建议长期游玩)
 &lt;&lt;/do&gt;&gt;&lt;br&gt;
 &lt;&lt;include &quot;更新日志&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="190" name="更新日志" tags="" position="" size="">&lt;h2&gt;更新日志&lt;/h2&gt;
+10..27 增加调节字体大小功能，修了很多很多bug
 10.26 增加了床头功能，调整了田圃和邮箱的界面
 10.25 完成了D5剧情 测试完毕
 10.24 增加了一些细节文本
@@ -18633,6 +18700,11 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 
 &lt;&lt;if $date &lt;= $celltime +1 &amp;&amp; $hour &lt;12 &amp;&amp; $loc != &quot;牢房&quot;&gt;&gt;&lt;&lt;goto 牢房&gt;&gt;&lt;&lt;/if&gt;&gt;
 
+&lt;&lt;if !$sleeptime&gt;&gt;&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $sleeptime &gt;=3&gt;&gt;&lt;&lt;set $player.wound -=1,$sleeptime =0&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if !$fontSize&gt;&gt;&lt;&lt;set $fontSize =16&gt;&gt;&lt;&lt;/if&gt;&gt;
+
+
 /*------------NPC行程----------------*/
 &lt;&lt;if $hour &gt;=8 &amp;&amp; $hour &lt;=18 &amp;&amp; $week ==3&gt;&gt;&lt;&lt;set $nixloc =&quot;花店&quot;&gt;&gt;&lt;&lt;elseif $hour &gt;=8 &amp;&amp; $hour &lt;=18&gt;&gt;&lt;&lt;set $nixloc =&quot;拓荒者木屋&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set _w to random(1,15)&gt;&gt;&lt;&lt;if _w &lt;=3&gt;&gt;&lt;&lt;set $nixloc = &quot;献祭&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set $nixloc = &quot;不在&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
@@ -18849,11 +18921,11 @@ $msname&lt;br&gt;
 	&lt;&lt;option &quot;沙龙&quot;&gt;&gt;
 	&lt;&lt;option &quot;工作&quot;&gt;&gt;
 &lt;&lt;/listbox&gt;&gt;
-&lt;br&gt;&lt;&lt;link &#39;&lt;span style=&quot;font-size: 0.8em;&quot;&gt;◎ 保存&lt;/span&gt;&#39;&gt;&gt;
+&lt;br&gt;&lt;&lt;link &#39;&lt;span style=&quot;font-size: 0.8em;&quot;&gt;✧ 保存&lt;/span&gt;&#39;&gt;&gt;
 &lt;&lt;set $savedSlots[_slotSelect].headSlot = $headSlot, $savedSlots[_slotSelect].neckSlot = $neckSlot, $savedSlots[_slotSelect].topSlot = $topSlot, $savedSlots[_slotSelect].handSlot = $handSlot, $savedSlots[_slotSelect].pantsSlot = $pantsSlot, $savedSlots[_slotSelect].footSlot = $footSlot, $savedSlots[_slotSelect].toolSlot = $toolSlot&gt;&gt;
 &lt;&lt;run UI.alert(&quot;套装已保存&quot;)&gt;&gt;&lt;&lt;redo&gt;&gt;
 &lt;&lt;/link&gt;&gt;
-&lt;&lt;link &#39;&lt;span style=&quot;font-size: 0.8em;&quot;&gt;◎ 套用&lt;/span&gt;&#39;&gt;&gt;
+&lt;&lt;link &#39;&lt;span style=&quot;font-size: 0.8em;&quot;&gt;✦ 套用&lt;/span&gt;&#39;&gt;&gt;
 &lt;&lt;run setup.equip(&quot;tool&quot;, $savedSlots[_slotSelect].toolSlot)&gt;&gt;
 &lt;&lt;run setup.equip(&quot;head&quot;, $savedSlots[_slotSelect].headSlot)&gt;&gt;
 &lt;&lt;run setup.equip(&quot;neck&quot;, $savedSlots[_slotSelect].neckSlot)&gt;&gt;
@@ -19170,7 +19242,7 @@ $msname&lt;br&gt;
 &lt;div style=&quot;float: right;&quot;&gt;&lt;&lt;link ♢「漫步」&gt;&gt;&lt;&lt;wanderWidget&gt;&gt;&lt;&lt;goto $locs&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;     &lt;&lt;link ♢「回家」&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;if $home == &quot;旅店&quot;&gt;&gt;&lt;&lt;goto &quot;旅店&quot;&gt;&gt;&lt;&lt;elseif $home == &quot;暂无&quot;&gt;&gt;&lt;&lt;run Dialog.setup(&quot;回家&quot;);Dialog.wiki(&quot;你还没有住所&quot;);Dialog.open();&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;goto &quot;家&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;</tw-passagedata><tw-passagedata pid="205" name="装备栏" tags="nobr" position="" size="">&lt;table style=&quot;border-style: none;&quot;&gt;
 &lt;tbody font size=2px align=&quot;left&quot;&gt;
 
-&lt;tr&gt;&lt;td style=&quot;width:30%&quot;&gt;&amp;emsp;&amp;emsp;&lt;&lt;button &quot;手持&quot;&gt;&gt;&lt;&lt;set _eqchoice = &quot;手持&quot;&gt;&gt;&lt;&lt;run Dialog.setup(&quot;更换手持工具&quot;);Dialog.wiki(Story.get(&quot;更换装备&quot;).processText());Dialog.open()&gt;&gt;&lt;&lt;/button&gt;&gt;&amp;emsp;
+&lt;tr&gt;&lt;td style=&quot;width:30%&quot;&gt;&amp;emsp;&amp;emsp;&lt;&lt;button &#39;手持&#39;&gt;&gt;&lt;&lt;set _eqchoice = &quot;手持&quot;&gt;&gt;&lt;&lt;run Dialog.setup(&quot;更换手持工具&quot;);Dialog.wiki(Story.get(&quot;更换装备&quot;).processText());Dialog.open()&gt;&gt;&lt;&lt;/button&gt;&gt;&amp;emsp;
 &lt;span class=&quot;tip&quot;&gt;&lt;b&gt;&lt;&lt;= $toolSlot&gt;&gt;&lt;/b&gt;&lt;span class=&quot;tiptext&quot;&gt;&lt;b&gt;$toolSlot&lt;/b&gt;&lt;br&gt;&lt;font size=1px color=#D4A34C&gt;&lt;&lt;=Item.get($toolSlot).function&gt;&gt;&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;&lt;=Item.get($toolSlot).description&gt;&gt;&lt;/span&gt;&lt;/span&gt;
 &lt;/td&gt;&lt;/tr&gt;
  
@@ -19626,48 +19698,39 @@ $msname&lt;br&gt;
 
 &lt;&lt;if _s ==1&gt;&gt;
 &lt;&lt;set _num to $item.uniqueLength - 1&gt;&gt;
-&lt;&lt;if _num == 0&gt;&gt;&lt;&lt;lost&gt;&gt;
-&lt;&lt;else&gt;&gt;
-&lt;&lt;for _i to random(0, _num)&gt;&gt;
+&lt;&lt;if _num == 0&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
+&lt;&lt;set _i to random(0, _num)&gt;&gt;
 &lt;&lt;set _itemn = $item.list[_i]&gt;&gt;
-&lt;&lt;if !Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;
-&lt;&lt;capture  _itemn&gt;&gt;
+&lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
 &lt;&lt;dropitem _itemn 1&gt;&gt;&lt;&lt;pickup $nest _itemn 1&gt;&gt;
-&lt;&lt;/capture&gt;&gt;
-&lt;&lt;break&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif  _s ==2&gt;&gt;
 &lt;&lt;set _num to $food.uniqueLength - 1&gt;&gt;
 &lt;&lt;if _num == 0&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
-&lt;&lt;for _i to random(0, _num)&gt;&gt;
+&lt;&lt;set _i to random(0, _num)&gt;&gt;
 &lt;&lt;set _itemn = $food.list[_i]&gt;&gt;
-&lt;&lt;if !Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;
-&lt;&lt;capture  _itemn&gt;&gt;
+&lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
 &lt;&lt;dropitem _itemn 1&gt;&gt;&lt;&lt;pickup $nest _itemn 1&gt;&gt;
-&lt;&lt;/capture&gt;&gt;
-&lt;&lt;break&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif  _s ==3&gt;&gt;
 &lt;&lt;set _num to $book.uniqueLength - 1&gt;&gt;
 &lt;&lt;if _num == 0&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
-&lt;&lt;for _i to random(0, _num)&gt;&gt;
+&lt;&lt;set _i to random(0, _num)&gt;&gt;
 &lt;&lt;set _itemn = $book.list[_i]&gt;&gt;
-&lt;&lt;if !Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;
-&lt;&lt;capture  _itemn&gt;&gt;
+&lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
 &lt;&lt;dropitem _itemn 1&gt;&gt;&lt;&lt;pickup $nest _itemn 1&gt;&gt;
-&lt;&lt;/capture&gt;&gt;
-&lt;&lt;break&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif  _s ==4&gt;&gt;
 &lt;&lt;set _num to $material.uniqueLength - 1&gt;&gt;
 &lt;&lt;if _num == 0&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
-&lt;&lt;for _i to random(0, _num)&gt;&gt;
+&lt;&lt;set _i to random(0, _num)&gt;&gt;
 &lt;&lt;set _itemn = $material.list[_i]&gt;&gt;
-&lt;&lt;if !Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;
-&lt;&lt;capture  _itemn&gt;&gt;
+&lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
 &lt;&lt;dropitem _itemn 1&gt;&gt;&lt;&lt;pickup $nest _itemn 1&gt;&gt;
-&lt;&lt;/capture&gt;&gt;
-&lt;&lt;break&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/for&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
@@ -20212,7 +20275,7 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;&lt;if $hour &gt;= 24&gt;&gt;
 	&lt;&lt;set $hour = $hour - 24&gt;&gt;
 	&lt;&lt;set $week +=1&gt;&gt;
-    &lt;&lt;set $date +=1, $dailyash to 0, $day +=1&gt;&gt;&lt;&lt;set $dtr to 0, $dtr1 to 0, $dtr2 to 0, $recording[&quot;无花果&quot;] +=1&gt;&gt;&lt;&lt;set $sleept = 0, $sleepnt = 0&gt;&gt;&lt;&lt;set $dgcs = 6, $fycs = 3, $gzcs = 3,$recording.fig +=1&gt;&gt;&lt;&lt;set $innpay = 0&gt;&gt;&lt;&lt;set $eragift = 1&gt;&gt;&lt;&lt;set $origift = 1&gt;&gt;&lt;&lt;set $bellring1 = 0, $bellring2 = 0, $bellring3 = 0&gt;&gt; 
+    &lt;&lt;set $date +=1, $dailyash to 0, $day +=1&gt;&gt;&lt;&lt;set $dtr to 0, $dtr1 to 0, $dtr2 to 0, $recording[&quot;无花果&quot;] +=1&gt;&gt;&lt;&lt;set $sleept = 2, $sleepnt = 1&gt;&gt;&lt;&lt;set $dgcs = 6, $fycs = 3, $gzcs = 3,$recording.fig +=1&gt;&gt;&lt;&lt;set $innpay = 0&gt;&gt;&lt;&lt;set $eragift = 1&gt;&gt;&lt;&lt;set $origift = 1&gt;&gt;&lt;&lt;set $bellring1 = 0, $bellring2 = 0, $bellring3 = 0&gt;&gt; 
     &lt;&lt;if $date%6 == 0&gt;&gt;&lt;&lt;set $sheep -= random(1,3)&gt;&gt;&lt;&lt;/if&gt;&gt;
     &lt;&lt;if $lostsheep[0] ==1&gt;&gt;&lt;&lt;set $lostsheep[0] = 2&gt;&gt;&lt;&lt;/if&gt;&gt;
 
@@ -20363,6 +20426,8 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 	&lt;&lt;set $week = 1&gt;&gt;
 	&lt;&lt;set $bjb to 0, $Owuotake = 0&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $week == 3&gt;&gt;&lt;&lt;set $recording[&quot;赛马&quot;]=&quot;未开始&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $hour &gt;= 2 &amp;&amp; $hour &lt; 4 &gt;&gt;
 &lt;&lt;set $time = &quot;午夜&quot;&gt;&gt;
