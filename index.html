@@ -7253,6 +7253,7 @@ Item.add("银血", {displayName: "银血", description: "<<iwd \"银血\">>" , h
 Item.add("田鼠骨头", {displayName: "田鼠骨头", description: "<<iwd \"田鼠骨头\">>" , handler: null, consumable: null, function: null, store: null, price: 1 , weight: 0.01},["材料", "制材", "骨头", null, null, null, "fuelD"]);
 Item.add("山鸡骨头", {displayName: "山鸡骨头", description: "<<iwd \"山鸡骨头\">>" , handler: null, consumable: null, function: null, store: null, price: 1 , weight: 0.04},["材料", "制材", "骨头", null, null, null, "fuelD"]);
 Item.add("野兔骨头", {displayName: "野兔骨头", description: "<<iwd \"野兔骨头\">>" , handler: null, consumable: null, function: null, store: null, price: 1 , weight: 0.02},["材料", "制材", "骨头", null, null, null, "fuelD"]);
+Item.add("羽刃", {displayName: "羽刃", description: "<<iwd \"羽刃\">>" , handler: null, consumable: null, function: null, store: null, price: 1 , weight: 0.2},["材料", "制材", "骨头", null, null, null, "fuelD"]);
 Item.add("鱼骨", {displayName: "鱼骨", description: "别小看这些弯弯绕绕的小东西，质地上佳的鱼骨锋利如刀，渔夫们会把它磨成鱼钩<<iwd \"鱼骨\">>" , handler: null, consumable: null, function: null, store: null, price: 1 , weight: 0.02},["材料", "制材", "骨头", null, null, null, "fuelD"]);
 Item.add("獠牙", {displayName: "獠牙", description: " 坚硬而弯曲的野猪獠牙、沾着泥土和松脂的气息，是一个猎手实力的最佳证明<<iwd \"獠牙\">>" , handler: null, consumable: null, function: null, store: null, price: 6 , weight: 0.04},["材料", "制材", "骨头", null, null, null, "fuelD"]);
 Item.add("绒毛鳟鱼", {displayName: "绒毛鳟鱼", description: "通体覆盖着浓密白色绒毛的鳟鱼，看着就像水中的绵羊。<<iwd \"绒毛鳟鱼\">>" , handler: null, consumable: null, function: null, store: null, price: 50 , weight: 0.7},["材料", "鱼", null, "稀有", null, null, "fuelA"]);
@@ -10559,7 +10560,7 @@ $npc收下了你的礼物
 &lt;br&gt;
 &lt;&lt;timed 3s t8n&gt;&gt;&lt;div style=&quot;padding:0em, 1em;  text-align: center; border-radius: 8px; color:#D4A34C; font-size: 1.2em;&quot;&gt;欢迎来到永无乡，永远的朋友&lt;/div&gt;
 &lt;br&gt;
-&lt;&lt;next 3s t8n&gt;&gt;你四下环顾, 与你同行的猫们或是已经提着行李向小岛走去, 或是在朋友的迎接下交谈甚欢, 对比之下你独自的身影显得有些落寞。与此同时, 你很难不&lt;font color=#D4A34C&gt;注意&lt;/font&gt;到, 猫群里有一只@@.ellatalk;带着草帽的半黑脸虎斑猫@@持续地朝你的方向投来目光。你猜他是岛上的居民。
+&lt;&lt;next 3s t8n&gt;&gt;你四下环顾, 与你同行的猫们或是已经提着行李向小岛走去, 或是在朋友的迎接下交谈甚欢, 对比之下你独自的身影显得有些落寞。与此同时, 你很难不&lt;font color=#D4A34C&gt;注意&lt;/font&gt;到, 猫群里有一只@@.ellatalk;戴着草帽的半黑脸虎斑猫@@持续地朝你的方向投来目光。你猜他是岛上的居民。
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;next 5s t8n&gt;&gt;正在你疑惑为何没有猫来指导你下一步该做什么时, 一只金色的鹩哥不知道什么时候已经落在了你的肩膀上, 猛地揪着你的耳朵, 还在发出一种禽类独有的啸叫声。一时间你不知道耳朵的疼痛和鹩哥聒噪的声音哪个让你更痛苦。
 &lt;br&gt;&lt;br&gt;
@@ -13687,7 +13688,7 @@ Dialog.open();&gt;&gt;
 &lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;/if&gt;&gt;
-&lt;br&gt;</tw-passagedata><tw-passagedata pid="79" name="打猎遭遇" tags="nobr" position="1100,1000" size="100,100">&lt;&lt;set _s to random(1,100), _t to random(1,3)&gt;&gt;
+&lt;br&gt;</tw-passagedata><tw-passagedata pid="79" name="打猎遭遇" tags="nobr" position="1100,1000" size="100,100">&lt;&lt;set _s to random(1,74), _t to random(1,3)&gt;&gt;
 &lt;&lt;if $choice == &quot;打猎结束&quot;&gt;&gt;
 /*打猎结束后被抢夺*/
 你正准备拾起你的战利品离开，
@@ -13702,7 +13703,7 @@ Dialog.open();&gt;&gt;
 &lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;set $tmpmaterial to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 /*野猪 15*/
-&lt;&lt;elseif _s &lt;= 15&gt;&gt;
+&lt;&lt;elseif _s &lt;= 8&gt;&gt;
 一头毛发粗乱、体型硕大的野猪猛地从灌木中冲了出来，獠牙泛着冷光，眼里带着狂躁与不安。显然不是简单的偶遇。
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;do&gt;&gt;
@@ -13736,7 +13737,7 @@ Dialog.open();&gt;&gt;
 &lt;&lt;/do&gt;&gt;
 
 /*羔羊 10*/
-&lt;&lt;elseif _s &lt;= 25&gt;&gt;
+&lt;&lt;elseif _s &lt;= 15&gt;&gt;
 耳边传来一阵微弱的叫声，很快就在空旷的环境中消弭下去，就在你要继续前行时，又一声在你身旁颤抖着响起。你拨开脚边的草丛，一只看起来还不出几月大的羊羔就蜷缩在里面，它看起来虚弱又无助，急需回到羊群的庇护中。&lt;br&gt;&lt;br&gt;
 &lt;&lt;do&gt;&gt;
 &lt;&lt;if $choice == 0&gt;&gt;
@@ -13788,7 +13789,7 @@ Dialog.open();&gt;&gt;
 &lt;&lt;/do&gt;&gt;
 
 /*毒蛇 15*/
-&lt;&lt;elseif _s &lt;= 40&gt;&gt;
+&lt;&lt;elseif _s &lt;= 25&gt;&gt;
 你掀起一条倒下的藤蔓时，手背突然被什么冰冷湿滑的东西扫过，身上的毛发本能的竖起。——一条亮蓝色的蟒蛇正缠在枝上，立起身子盯着你。
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;do&gt;&gt;
@@ -13822,7 +13823,7 @@ Dialog.open();&gt;&gt;
 &lt;&lt;/do&gt;&gt;
 
 /*误杀 10*/
-&lt;&lt;elseif _s &lt;= 50&gt;&gt;
+&lt;&lt;elseif _s &lt;= 32&gt;&gt;
 你听见不远处“砰”一声枪响，接着便是猫族痛苦的哀嚎声。一个年轻猫正慌张地奔过来，看着草丛里挣扎的身影：“我、我以为是只鹿！帮帮我——我该怎么办？”
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;do&gt;&gt;
@@ -13849,7 +13850,7 @@ Dialog.open();&gt;&gt;
 &lt;&lt;/do&gt;&gt;
 
 /*骨堆 15*/
-&lt;&lt;elseif _s &lt;= 65&gt;&gt;
+&lt;&lt;elseif _s &lt;= 40&gt;&gt;
 你拨开茂密的蕨叶，来到了一小片不自然的空地，空地中央堆着摊被啃噬得一干二净的骨头，周遭还有一些残留的爪印。看来这里不只有你一个猎手。
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;do&gt;&gt;
@@ -13876,7 +13877,7 @@ Dialog.open();&gt;&gt;
 &lt;&lt;/do&gt;&gt;
 
 /*倒下的树 12*/
-&lt;&lt;elseif _s &lt;= 77 &amp;&amp; $loc == &quot;秋毛岗&quot;&gt;&gt;
+&lt;&lt;elseif _s &lt;= 48 &amp;&amp; $loc == &quot;秋毛岗&quot;&gt;&gt;
 你追踪着猎物，沿着被苔藓覆盖的小径前行，一棵倒下的大树却挡住了你的道路。四周都是浓密的灌木和荆棘，你寻觅着可能的道路。
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;do&gt;&gt;
@@ -13917,7 +13918,7 @@ Dialog.open();&gt;&gt;
 111&lt;&lt;/if&gt;&gt;*/
 
 /*醉汉睡着 夜间 诡异度50*/
-&lt;&lt;elseif _s &lt;= 85 &amp;&amp; $dn ==0&gt;&gt;
+&lt;&lt;elseif _s &lt;= 60 &amp;&amp; $dn ==0&gt;&gt;
 
 你追踪着猎物，拐进一条昏暗的小路，只有夜空中的星点见证着你的存在。不远处，一个不成猫形的轮廓蜷缩在路边，酒气混杂着夜风扑面而来，鼾声震天。他肮脏的外套口袋半敞着，一些尘羽从里面露了出来，在星光下格外亮眼。&lt;br&gt;&lt;br&gt;
 &lt;&lt;do&gt;&gt;
@@ -13985,7 +13986,47 @@ Dialog.open();&gt;&gt;
 &lt;&lt;/do&gt;&gt;
 
 /*泥坑 15*/
-&lt;&lt;elseif _s &lt;= 100&gt;&gt;
+&lt;&lt;elseif _s &lt;= 66&gt;&gt;
+你的头顶突然传来密集的振翅声，其间伴随着一种类似金属碰撞的声响，刺耳又违和。接着，从你看不见的树冠上，数只翼展惊人的猛禽从枯树上俯冲而下。它们的飞羽闪烁着尖锐的金属光泽，鸟喙呈现出黄铜般的质感，直冲你飞来。&lt;br&gt;&lt;br&gt;
+&lt;&lt;do&gt;&gt;
+&lt;&lt;if $choice == 0&gt;&gt;
+&lt;&lt;link ▷「猎杀」&gt;&gt;&lt;&lt;set $choice to &quot;猎杀&quot;&gt;&gt;&lt;&lt;audio &quot;diceroll&quot; play&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「躲避」&gt;&gt;&lt;&lt;set $choice to &quot;躲避&quot;&gt;&gt;&lt;&lt;audio &quot;diceroll&quot; play&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;elseif $choice == &quot;猎杀&quot;&gt;&gt;
+你没有忘记此次出行的目的，即使面对这般危机的景象，仍举起来手中的猎枪。
+&lt;&lt;checkrage strength 28 35&gt;&gt;
+&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
+你在慌乱中的瞄准却幸运地击中了其中一只的腹部，它的同伴在枪响时四散逃开。你小心翼翼地捡起战利品，注意不被它的羽毛碰到。这鸟肉腥臭无比，但它们的翅膀却可以拿来当上好的武器。
+&lt;&lt;gainitem &quot;羽刃&quot; 3&gt;&gt;&lt;&lt;itemobtain &quot;羽刃 * 3&quot;&gt;&gt;
+&lt;&lt;addsexp 2&gt;&gt;
+&lt;&lt;else&gt;&gt;
+你慌乱瞄准，子弹飞出了一个滑稽的弧度，所幸的是鸟群都被你的枪响惊飞，不再将你视作猎物。
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续打猎」 打猎&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;elseif $choice == &quot;躲避&quot;&gt;&gt;
+你急忙俯身向侧边翻滚，
+&lt;&lt;checkrage strength 10 15&gt;&gt;
+&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
+&lt;&lt;checkrage observation 20 30&gt;&gt;
+&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
+滚进了一旁的灌木中。鸟群低空盘旋了一阵，未能在视野中找到它们所寻的猎物，鸣叫着飞离了。
+&lt;&lt;addsexp 1&gt;&gt;&lt;&lt;addoexp 1&gt;&gt;
+&lt;&lt;else&gt;&gt;
+滚进了一旁的灌木中。鸟群低空盘旋了一阵，未能在视野中找到它们所寻的猎物，鸣叫着飞离了。等你确认安全爬出灌木后，才发现你的四肢被灌木中的荆棘划出了几道伤口。
+&lt;&lt;addsexp 1&gt;&gt;&lt;&lt;addbadexp &quot;伤口&quot; 1&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续打猎」 打猎&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;else&gt;&gt;
+却不及鸟群的迅速，它们的利爪扑空，翅膀仍命中了目标——你的四肢被那锋利的飞羽划出了数到伤口，鲜血止不住地外流。你爬进一旁的灌木，等待着鸟群远去。
+&lt;&lt;addbadexp &quot;伤口&quot; 1&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续打猎」 打猎&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/do&gt;&gt;
+
+
+/*泥坑 15*/
+&lt;&lt;elseif _s &lt;= 74&gt;&gt;
 你专注的追踪着猎物，却忽然脚下一软，一步跨入了泥坑中。你用力挣扎了几下，却越陷越深。
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;do&gt;&gt;
@@ -16553,20 +16594,20 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;&lt;elseif $land1.stat == 1&gt;&gt;
 _itemn的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;elseif $land1.stat == 2&gt;&gt;
-天哪, 它发芽了, 快看那几片小叶子, 它就是本世纪最伟大的_itemn&lt;br&gt;【想到它会成为一株伟大的】
+天哪, 它发芽了, 快看那几片小叶子, 它就是本世纪最伟大的_itemn&lt;br&gt;
 &lt;&lt;elseif $land1.stat == 3&gt;&gt;
-【_itemn正在生长，看到_itemn在健康生长, 让你充满了决心】
+【_itemn正在生长】看到_itemn在健康生长, 让你充满了决心&lt;br&gt;
 &lt;&lt;elseif $land1.stat == 4&gt;&gt;
 【_itemn已经成株】
 &lt;&lt;elseif $land1.stat == 5&gt;&gt;
-&lt;&lt;if Item.get(_itemn).hasTag(&quot;花&quot;)&gt;&gt;【_itemn结出了花蕾】
+&lt;&lt;if Item.get(_itemn).hasTag(&quot;花&quot;)&gt;&gt;【_itemn结出了花蕾】&lt;br&gt;
 &lt;&lt;else&gt;&gt;
-【_itemn已经开花】&lt;&lt;/if&gt;&gt;
+【_itemn已经开花】&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif $land1.stat == 6&gt;&gt;
-&lt;&lt;if Item.get(_itemn).hasTag(&quot;花&quot;)&gt;&gt;【_itemn已经开花】
-&lt;&lt;elseif _item == &quot;龙舌兰&quot;&gt;&gt;【长出了一株健壮的龙舌兰】
+&lt;&lt;if Item.get(_itemn).hasTag(&quot;花&quot;)&gt;&gt;【_itemn已经开花】&lt;br&gt;
+&lt;&lt;elseif _item == &quot;龙舌兰&quot;&gt;&gt;【长出了一株健壮的龙舌兰】&lt;br&gt;
 &lt;&lt;else&gt;&gt;
-【_itemn已经结果】&lt;&lt;/if&gt;&gt;
+【_itemn已经结果】&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;link ❖采摘 采摘&gt;&gt;&lt;&lt;set $flower=_itemn&gt;&gt;&lt;&lt;set $land1.name = &quot;无&quot;, $land1.stat = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;if ($land1.watert !== 0 &amp;&amp; $land1.watert &gt; $nt) || $rd ==1&gt;&gt;&lt;&lt;else&gt;&gt;
@@ -16576,7 +16617,7 @@ _itemn的种子正安静地躺在土壤里&lt;br&gt;
   Dialog.open();
 &gt;&gt;&lt;&lt;/link&gt;&gt;  
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;link ❖拔除&gt;&gt;&lt;&lt;set $land1.name = &quot;无&quot;, $land1.stat = 0&gt;&gt;&lt;&lt;run UI.alert(&quot;&lt;center&gt;苗圃1中作物已移除&lt;/center&gt;&quot;)&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;if $land1.stat != 0&gt;&gt;&lt;&lt;link ❖拔除&gt;&gt;&lt;&lt;set $land1.name = &quot;无&quot;, $land1.stat = 0&gt;&gt;&lt;&lt;run UI.alert(&quot;&lt;center&gt;苗圃1中作物已移除&lt;/center&gt;&quot;)&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;br&gt;
 &lt;/div&gt;&lt;br&gt;
 
@@ -16595,20 +16636,20 @@ _itemn的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;elseif $land2.stat == 1&gt;&gt;
 _itemn的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;elseif $land2.stat == 2&gt;&gt;
-天哪, 它发芽了, 快看那几片小叶子, 它就是本世纪最伟大的_itemn&lt;br&gt;【想到它会成为一株伟大的】
+天哪, 它发芽了, 快看那几片小叶子, 它就是本世纪最伟大的_itemn&lt;br&gt;
 &lt;&lt;elseif $land2.stat == 3&gt;&gt;
-【_itemn正在生长】别吵了我看到了. 我得说, 它长得比你都要健康【看到_itemn在健康生长, 让你充满了决心】
+【_itemn正在生长】看到_itemn在健康生长, 让你充满了决心&lt;br&gt;
 &lt;&lt;elseif $land2.stat == 4&gt;&gt;
-【_itemn已经成株】
+【_itemn已经成株】&lt;br&gt;
 &lt;&lt;elseif $land2.stat == 5&gt;&gt;
-&lt;&lt;if Item.get(_itemn).hasTag(&quot;花&quot;)&gt;&gt;【_itemn结出了花蕾】
+&lt;&lt;if Item.get(_itemn).hasTag(&quot;花&quot;)&gt;&gt;【_itemn结出了花蕾】&lt;br&gt;
 &lt;&lt;else&gt;&gt;
-【_itemn已经开花】&lt;&lt;/if&gt;&gt;
+【_itemn已经开花】&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif $land2.stat == 6&gt;&gt;
-&lt;&lt;if Item.get(_itemn).hasTag(&quot;花&quot;)&gt;&gt;【_itemn已经开花】
-&lt;&lt;elseif _item == &quot;龙舌兰&quot;&gt;&gt;【长出了一株健壮的龙舌兰】
+&lt;&lt;if Item.get(_itemn).hasTag(&quot;花&quot;)&gt;&gt;【_itemn已经开花】&lt;br&gt;
+&lt;&lt;elseif _item == &quot;龙舌兰&quot;&gt;&gt;【长出了一株健壮的龙舌兰】&lt;br&gt;
 &lt;&lt;else&gt;&gt;
-【_itemn已经结果】&lt;&lt;/if&gt;&gt;
+【_itemn已经结果】&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;link ❖采摘 采摘&gt;&gt;&lt;&lt;set $flower=_itemn&gt;&gt;&lt;&lt;set $land2.name = &quot;无&quot;, $land2.stat = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;if ($land2.watert !== 0 &amp;&amp; $land2.watert &gt; $nt) || $rd ==1&gt;&gt;&lt;&lt;else&gt;&gt;
@@ -16618,7 +16659,7 @@ _itemn的种子正安静地躺在土壤里&lt;br&gt;
   Dialog.open();
 &gt;&gt;&lt;&lt;/link&gt;&gt;  
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;link ❖拔除&gt;&gt;&lt;&lt;set $land2.name = &quot;无&quot;, $land2.stat = 0&gt;&gt;&lt;&lt;run UI.alert(&quot;&lt;center&gt;苗圃2中作物已移除&lt;/center&gt;&quot;)&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;if $land2.stat != 0&gt;&gt;&lt;&lt;link ❖拔除&gt;&gt;&lt;&lt;set $land2.name = &quot;无&quot;, $land2.stat = 0&gt;&gt;&lt;&lt;run UI.alert(&quot;&lt;center&gt;苗圃2中作物已移除&lt;/center&gt;&quot;)&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;br&gt;&lt;/div&gt;&lt;br&gt;
 
 &lt;div class=&quot;recipes-section&quot;&gt;
@@ -16636,20 +16677,20 @@ _itemn的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;elseif $land3.stat == 1&gt;&gt;
 _itemn的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;elseif $land3.stat == 2&gt;&gt;
-天哪, 它发芽了, 快看那几片小叶子, 它就是本世纪最伟大的_itemn&lt;br&gt;【想到它会成为一株伟大的】
+天哪, 它发芽了, 快看那几片小叶子, 它就是本世纪最伟大的_itemn&lt;br&gt;
 &lt;&lt;elseif $land3.stat == 3&gt;&gt;
-【_itemn正在生长】别吵了我看到了. 我得说, 它长得比你都要健康【看到_itemn在健康生长, 让你充满了决心】
+【_itemn正在生长】看到_itemn在健康生长, 让你充满了决心&lt;br&gt;
 &lt;&lt;elseif $land3.stat == 4&gt;&gt;
 【_itemn已经成株】
 &lt;&lt;elseif $land3.stat == 5&gt;&gt;
-&lt;&lt;if Item.get(_itemn).hasTag(&quot;花&quot;)&gt;&gt;【_itemn结出了花蕾】
+&lt;&lt;if Item.get(_itemn).hasTag(&quot;花&quot;)&gt;&gt;【_itemn结出了花蕾】&lt;br&gt;
 &lt;&lt;else&gt;&gt;
-【_itemn已经开花】&lt;&lt;/if&gt;&gt;
+【_itemn已经开花】&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif $land3.stat == 6&gt;&gt;
-&lt;&lt;if Item.get(_itemn).hasTag(&quot;花&quot;)&gt;&gt;【_itemn已经开花】
-&lt;&lt;elseif _item == &quot;龙舌兰&quot;&gt;&gt;【长出了一株健壮的龙舌兰】
+&lt;&lt;if Item.get(_itemn).hasTag(&quot;花&quot;)&gt;&gt;【_itemn已经开花】&lt;br&gt;
+&lt;&lt;elseif _item == &quot;龙舌兰&quot;&gt;&gt;【长出了一株健壮的龙舌兰】&lt;br&gt;
 &lt;&lt;else&gt;&gt;
-【_itemn已经结果】&lt;&lt;/if&gt;&gt;
+【_itemn已经结果】&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;link ❖采摘 采摘&gt;&gt;&lt;&lt;set $flower=_itemn&gt;&gt;&lt;&lt;set $land3.name = &quot;无&quot;, $land3.stat = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;if ($land3.watert !== 0 &amp;&amp; $land3.watert &gt; $nt) || $rd ==1&gt;&gt;&lt;&lt;else&gt;&gt;
@@ -16659,7 +16700,7 @@ _itemn的种子正安静地躺在土壤里&lt;br&gt;
   Dialog.open();
 &gt;&gt;&lt;&lt;/link&gt;&gt;  
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;link ❖拔除&gt;&gt;&lt;&lt;set $land3.name = &quot;无&quot;, $land3.stat = 0&gt;&gt;&lt;&lt;run UI.alert(&quot;&lt;center&gt;苗圃3中作物已移除&lt;/center&gt;&quot;)&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;if $land3.stat != 0&gt;&gt;&lt;&lt;link ❖拔除&gt;&gt;&lt;&lt;set $land3.name = &quot;无&quot;, $land3.stat = 0&gt;&gt;&lt;&lt;run UI.alert(&quot;&lt;center&gt;苗圃3中作物已移除&lt;/center&gt;&quot;)&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;br&gt;&lt;/div&gt;&lt;br&gt;
 &lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="采摘" tags="nobr" position="" size="">&lt;&lt;set _n to random(1,3)&gt;&gt;
 &lt;&lt;if $flower == &quot;玫瑰花&quot;&gt;&gt;&lt;&lt;set _flower= [&quot;红玫瑰&quot;,&quot;白玫瑰&quot;,&quot;蓝玫瑰&quot;,&quot;黄玫瑰&quot;].random()&gt;&gt;
@@ -18701,7 +18742,7 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 &lt;&lt;notify 3s&gt;&gt;酒窖中酿造的_n进入了新阶段&lt;&lt;/notify&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="195" name="界面" tags="nobr UIBarhide" position="100,1200" size="100,100">&lt;center&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87542752_OTAoFb7FjfGxA9I.png&quot; width=100%&gt;&lt;br&gt;
 &lt;h1&gt;-NEVERLAND- 「永无乡」&lt;/h1&gt;
-有©Nix P. R. 创作的&lt;br&gt;
+由©Nix P. R. 创作的&lt;br&gt;
 &lt;兽人&gt;&lt;现实半架空&gt;&lt;多元神话&gt;&lt;低魔&gt;世界观&lt;br&gt;
 此游戏为基于-NEVERLAND- 世界观而开发的专属游戏, 禁止任何形式的私人传播&lt;br&gt;
 
