@@ -7443,6 +7443,7 @@ Item.add("血腥玛格丽特", {displayName: "血腥玛格丽特", description: 
 Item.add("法国75号", {displayName: "法国75号", description: "<br><br>〖使用后体力+4〗<<iwd \"伏特加\">>" , handler: "<<set $drunk+=2>><<eatfood 4>><<loseweight 0.5>>", consumable: "true", function: "false", store: 12, price: 4 , weight: 0.5},["食物", "酒", null, null, null, null, "fuelA"]);
 Item.add("伏特加", {displayName: "伏特加", description: "<br><br>〖使用后体力+4〗<<iwd \"伏特加\">>" , handler: "<<set $drunk+=2>><<eatfood 4>><<loseweight 0.5>>", consumable: "true", function: "false", store: 12, price: 4 , weight: 0.5},["食物", "食材", "酒", null, null, null, "fuelA"]);
 Item.add("红茶", {displayName: "红茶", description: "<br><br>〖使用后体力+1〗<<iwd \"路易红茶\">>" , handler: "<<eatfood 1>><<loseweight 0.6>>", consumable: "true", function: "false", store: 6, price: 2 , weight: 0.6},["食物", "茶", null, null, null, null, "fuelA"]);
+Item.add("麦芽酒", {displayName: "麦芽酒", description: "<br><br>〖使用后体力+4〗<<iwd \"麦芽酒\">>" , handler: "<<set $drunk+=2>><<eatfood 4>><<loseweight 0.5>>", consumable: "true", function: "false", store: 12, price: 4 , weight: 0.5},["食物", "酿酒", "酒", null, null, null, "fuelA"]);
 Item.add("黑麦啤酒", {displayName: "黑麦啤酒", description: "<br><br>〖使用后体力+4〗<<iwd \"黑麦啤酒\">>" , handler: "<<set $drunk+=2>><<eatfood 4>><<loseweight 0.5>>", consumable: "true", function: "false", store: 12, price: 4 , weight: 0.5},["食物", "酿酒", "酒", null, null, null, "fuelA"]);
 Item.add("战时乐观主义派", {displayName: "战时乐观主义派", description: "粗糙麦壳制的馅饼，里面勉强能看出一些果蔬和肉块的形状。据老乔什说，这名为“战时乐观主义派”（简称”乐观派“），是他最初在2019年的冬季，在战壕里靠着四处收集来的材料发明而成，内容物不限于剪报上的胜利宣言、士兵家书里的错别字以及防毒面具滤芯中的蒲公英种子。他还声称，最初乐观派被他制作成了颇为前卫的三角造型，但由于口碑不佳，最终还是向最经典的圆形妥协<br><br>〖使用后体力+12，恐惧-2〗<<iwd \"战时乐观主义派\">>" , handler: "<<eatfood 12>><<losebadexp \"恐惧\" 2>><<notify 3s>>你的恐惧降低了2点<</notify>><<loseweight 06>>", consumable: "true", function: "false", store: null, price: 6 , weight: 0.6},["食物", "烹饪", "派", null, "meaty", "trethate", "fuelA"]);
 Item.add("榛子咖啡", {displayName: "榛子咖啡", description: "一杯来自欧洲大陆的咖啡，经过精心烘焙，融入了榛果的独特香气。只能通过主港口的仓库定期订购<br><br>〖食用后体力+10 学识点数+3〗<<iwd \"榛子咖啡\">>" , handler: "<<run Dialog.setup('饮用榛子咖啡');Dialog.wiki('细腻而温暖的咖啡带着榛果的香气充斥你的口腔，驱散了疲惫与困惑。你的思绪变得清晰，曾经某些不解的思绪此刻似乎也变得更加了然');Dialog.open();>><<set $coffin+=1>><<addkexp 3>><<eatfood 10>><<loseweight 0.4>>", consumable: "true", function: "false", store: null, price: 20 , weight: 0.4},["食物", "咖啡", null, null, null, null, "fuelS"]);
@@ -7500,7 +7501,7 @@ Item.add("海螺号角", {displayName: "海螺号角", description: "加工过�
 Item.add("安家许可证", {displayName: "安家许可证", description: "<<if $home ==\"暂无\" ||  $home ==\"旅店\">><br><<set _home to [\"小镇\",\"草甸\",\"沙地\",\"高地\",\"贝雷河\",\"秋毛岗\",\"罗索伦特湖\"]>>住址:<<listbox \"_homeop\">> <<optionsfrom _home>> <</listbox>> <<button \"确认\">><<if $ashes lt 200>><<run UI.alert(\"你的尘羽不足\")>><<else>><<set $ashes -= 200, $home = _homeop>><<run Dialog.setup(\"安家\");Dialog.wiki(\"$nn现在住在$home! 回家看看吧\");Dialog.open();>><<set $loc = $home>><<goto \"安家\">><</if>><</button>><<else>>你在永无乡的居住许可。<</if>><<iwd \"安家许可证\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.05},["物品", "不可丢弃", null, null, null, null, "fuelA"]);
 Item.add("幸运兔脚", {displayName: "幸运兔脚", description: "由炭火和咒语制成, 包含着一个生灵的牺牲, 可以帮你逃脱一次厄运<<iwd \"幸运兔脚\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.08},["物品", "附魔", "抵御", null, null, null, "fuelS"]);
 Item.add("鹿角十字架", {displayName: "鹿角十字架", description: "鹿角模样的十字架, 在本该十字交叉的上端延伸出了形状近似的鹿角, 握在手里十分有分量<<iwd \"鹿角十字架\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.1},["物品", "骨头", null, null, null, null, "fuelS"]);
-Item.add("火漆印章", {displayName: "火漆印章", description: "看上去似乎是使用银来制作的火漆印章，没有过多的装饰，看上去非常简便。只是印章的部分使用了非常复杂的花纹，看上去像是某种魔咒<<iwd \"火漆印章\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.04},["物品", "不可丢弃", null, null, null, null, "fuelB"]);
+Item.add("火漆印章", {displayName: "火漆印章", description: "银制的火漆印章，有着永无乡的纹样<<iwd \"火漆印章\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.04},["物品", "不可丢弃", null, null, null, null, "fuelB"]);
 Item.add("灵魂罐", {displayName: "灵魂罐", description: "不知为何, 灵魂在永无乡似乎没那么容易消散, 你甚至可以用容器去储存它, 但千万别带在身边<<iwd \"灵魂罐\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.54},["物品", null, null, null, null, null, "fuelS"]);
 Item.add("粉红色小卡片", {displayName: "粉红色小卡片", description: "底色并非粉色的小小卡片，上面用明显到刺眼的字体写着天上人间这几个字，而底部则是写着联系方式，底图则是个漂亮的女性，躺在沙发上摆弄着姿势，将卡片翻到背面，你可以发现那是一个简易地图，重点标识了店面位置——夜间小镇的一条寂静的小巷<<iwd \"粉红色小卡片\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["物品", null, null, null, null, null, "fuelC"]);
 Item.add("旅店钥匙", {displayName: "旅店钥匙", description: "属于小镇的旅店里某一间房的钥匙, 上面写着<<=$bmon>><<=$bday>>号<<iwd \"旅店钥匙\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.02},["物品", "不可丢弃", null, null, null, null, "fuelD"]);
@@ -9384,8 +9385,8 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="白雾狩猎" tags="nobr widget" position="" size="">&lt;&lt;widget &quot;hunter&quot;&gt;&gt;
 &lt;&lt;set $attributes to {
     &quot;attr1&quot;: setup.getStat(&quot;heartless&quot;),
-    &quot;attr2&quot;: setup.getStat(&quot;bloody&quot;),
-    &quot;attr3&quot;: setup.getStat(&quot;confidence&quot;),
+    &quot;attr2&quot;: setup.getStat(&quot;curiosity&quot;),
+    &quot;attr3&quot;: setup.getStat(&quot;bold&quot;),
     &quot;attr4&quot;: setup.getStat(&quot;enjoy&quot;)
 }&gt;&gt;
 &lt;&lt;set $maxValue to Math.max(...Object.values($attributes))&gt;&gt;
@@ -10533,7 +10534,7 @@ $npc收下了你的礼物
 
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「继续」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="34" name="创建角色" tags="nobr UIBarhide" position="" size="">&lt;style&gt;#listbox-bmon{width: 4.5em;}#listbox-bday{width: 4em;}&lt;/style&gt;
+&lt;&lt;link ▷「继续」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="34" name="创建角色" tags="nobr UIBarhide" position="" size="">&lt;style&gt;#listbox-bmon{width: 4.5em;}#listbox-bday{width: 4.5em;}#listbox-hometown{width: 5em;}&lt;/style&gt;
 &lt;h2&gt;基本信息&lt;/h2&gt;    
 &lt;br&gt;头像:&lt;br&gt;
 &lt;nobr&gt;&lt;img id=&quot;avatar-preview&quot; class=&quot;picr&quot; @src=&quot;$avatar&quot; 
@@ -10579,10 +10580,8 @@ $npc收下了你的礼物
  	&lt;&lt;textbox &quot;$nn&quot; &quot;&quot;&gt;&gt; &lt;br&gt;
 年龄: &lt;br&gt;
  	&lt;&lt;textbox &quot;$age&quot; &quot;&quot;&gt;&gt;&lt;br&gt;
-故乡: &lt;br&gt;
- 	&lt;&lt;textbox &quot;$hometown&quot; &quot;&quot;&gt;&gt;&lt;&lt;if !$hometown&gt;&gt; &lt;&lt;set $hometown to &quot;未知&quot;&gt;&gt;&lt;&lt;/if&gt;&gt; &lt;br&gt;
-身份: &lt;br&gt;
- 	&lt;&lt;textbox &quot;$id&quot; &quot;&quot;&gt;&gt;&lt;&lt;if !$id&gt;&gt; &lt;&lt;set $id to &quot;无&quot;&gt;&gt;&lt;&lt;/if&gt;&gt; &lt;br&gt;
+&lt;&lt;set _nation to [&quot;西欧&quot;,&quot;东欧&quot;,&quot;北欧&quot;,&quot;南欧&quot;,&quot;北美&quot;,&quot;南美&quot;,&quot;中东&quot;]&gt;&gt;来自: &lt;br&gt;
+&lt;&lt;listbox &quot;$hometown&quot;&gt;&gt; &lt;&lt;optionsfrom _nation&gt;&gt; &lt;&lt;/listbox&gt;&gt;&lt;br&gt;
 &lt;&lt;set _bdays to [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;,&quot;13&quot;,&quot;14&quot;,&quot;15&quot;,&quot;16&quot;,&quot;17&quot;,&quot;18&quot;,&quot;19&quot;,&quot;20&quot;,&quot;21&quot;,&quot;22&quot;,&quot;23&quot;,&quot;24&quot;,&quot;25&quot;,&quot;26&quot;,&quot;27&quot;,&quot;28&quot;,&quot;29&quot;,&quot;30&quot;,&quot;31&quot;]&gt;&gt;&lt;&lt;set _bmons to [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;]&gt;&gt;生日:&lt;br&gt;
 &lt;&lt;listbox &quot;$bmon&quot;&gt;&gt; &lt;&lt;optionsfrom _bmons&gt;&gt; &lt;&lt;/listbox&gt;&gt;   &lt;&lt;listbox &quot;$bday&quot;&gt;&gt; &lt;&lt;optionsfrom _bdays&gt;&gt; &lt;&lt;/listbox&gt;&gt;&lt;br&gt;
 称呼:&lt;br&gt;
@@ -10773,10 +10772,10 @@ $npc收下了你的礼物
 &lt;&lt;next 2s t8n&gt;&gt;
 &lt;&lt;do&gt;&gt;
 &lt;&lt;if $choice == &quot;继续&quot;&gt;&gt;
-&lt;&lt;link ▷「鲜花诗集」&gt;&gt;&lt;&lt;set $choice to &quot;选择&quot;&gt;&gt;&lt;&lt;set _itemobtain = &quot;鲜花诗集 * 1&quot;&gt;&gt;&lt;&lt;gainitem &quot;鲜花诗集&quot; 1&gt;&gt;&lt;&lt;set $xhsjusable = 2&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;(赠自枘朴小姐, 首次阅读后获得学识点数10)&lt;br&gt;
-&lt;&lt;link ▷「火漆印章」&gt;&gt;&lt;&lt;set $choice to &quot;选择&quot;&gt;&gt;&lt;&lt;set _itemobtain = &quot;火漆印章 * 1&quot;&gt;&gt;&lt;&lt;gainitem &quot;火漆印章&quot; 1&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;(赠自奥提斯, 首次使用后获得观察点数10)&lt;br&gt;
-&lt;&lt;link ▷「猫眼石吊坠」&gt;&gt;&lt;&lt;set $choice to &quot;选择&quot;&gt;&gt;&lt;&lt;set _itemobtain = &quot;猫眼石吊坠 * 1&quot;&gt;&gt;&lt;&lt;gainitem &quot;猫眼石吊坠&quot; 1&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;(赠自翡翠小姐, 装备后话术+3)&lt;br&gt;
-&lt;&lt;link ▷「铆钉马靴」&gt;&gt;&lt;&lt;set $choice to &quot;选择&quot;&gt;&gt;&lt;&lt;set _itemobtain = &quot;铆钉马靴 * 1&quot;&gt;&gt;&lt;&lt;gainitem &quot;铆钉马靴&quot; 1&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;(赠自贝鲁姆大公，装备后力量+3)&lt;br&gt;
+&lt;&lt;link ▷「鲜花诗集」&gt;&gt;&lt;&lt;set $choice to &quot;选择&quot;&gt;&gt;&lt;&lt;set _itemobtain = &quot;鲜花诗集 * 1&quot;&gt;&gt;&lt;&lt;gainitem &quot;鲜花诗集&quot; 1&gt;&gt;&lt;&lt;set $xhsjusable = 2&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;(用永无乡最美的花朵写成的诗篇，赠自〖岛主〗@@.nixtalk;枘朴小姐@@)&lt;br&gt;
+&lt;&lt;link ▷「火漆印章」&gt;&gt;&lt;&lt;set $choice to &quot;选择&quot;&gt;&gt;&lt;&lt;set _itemobtain = &quot;火漆印章 * 1&quot;&gt;&gt;&lt;&lt;gainitem &quot;火漆印章&quot; 1&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;(有着永无乡纹样的银质印章，赠自〖图书管理员〗@@.otistalk;奥提斯@@)&lt;br&gt;
+&lt;&lt;link ▷「猫眼石吊坠」&gt;&gt;&lt;&lt;set $choice to &quot;选择&quot;&gt;&gt;&lt;&lt;set _itemobtain = &quot;猫眼石吊坠 * 1&quot;&gt;&gt;&lt;&lt;gainitem &quot;猫眼石吊坠&quot; 1&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;(造型昂贵的黄绿色猫眼石，赠自〖宝石商贩〗@@.emeraldtalk;翡翠小姐@@)&lt;br&gt;
+&lt;&lt;link ▷「铆钉马靴」&gt;&gt;&lt;&lt;set $choice to &quot;选择&quot;&gt;&gt;&lt;&lt;set _itemobtain = &quot;铆钉马靴 * 1&quot;&gt;&gt;&lt;&lt;gainitem &quot;铆钉马靴&quot; 1&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;(镶满铆钉的马靴，赠自〖军火商〗贝鲁姆大公)&lt;br&gt;
 
 &lt;&lt;if $nn == &quot;Nix&quot;&gt;&gt;&lt;&lt;set $seisihgd = 100, _gainitem = {&quot;蛇骷戒指&quot;:1, &quot;律法之书&quot;: 1,&quot;短镰&quot;: 1}&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt;&lt;&lt;/if&gt;&gt;
 
@@ -10896,7 +10895,7 @@ $npc收下了你的礼物
 &lt;&lt;next 4s t8n&gt;&gt;@@.seisitalk;&quot;最后，希望你明白，即使是叫永无乡，不管他们宣传的多么天花乱坠，这里从不是提供免费午餐的地方。你要自己赚取他们，午餐、住所、名誉，甚至权力。哦，有时候也许还有友情. 谁知道你在这个小到不起眼的小岛上会遇到什么。你可以跟他们建立关系，互换礼物，等时机到了，他们中的有些说不定还会为你付出生命。&quot;@@
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;next 5s t8n&gt;&gt;Seisi的这番话让你几乎要重新审视你对这只老鸟的看法了，直到它扇着翅膀飞到你的头上，眼看着就要啄上你的眼珠了。&lt;br&gt;&lt;br&gt;
-&lt;&lt;next 3s t8n&gt;&gt;@@.seisitalk;&quot;还愣着干什么! 现在，去开启你的新生活吧，但别忘了，我会一直看着你的，$name。&quot;@@&lt;br&gt;&lt;br&gt;
+&lt;&lt;next 3s t8n&gt;&gt;@@.seisitalk;&quot;还愣着干什么! 这里多得是无聊的事情供你打发时间。等你完成，我们差不多也能清理出一间空房。别忘了，我会一直看着你的，$name。&quot;@@&lt;br&gt;&lt;br&gt;
 &lt;&lt;storyget &quot;新的开始&quot;&gt;&gt;
 &lt;&lt;set $story[&quot;新的开始&quot;] = &quot;新的开始1&quot;&gt;&gt;&lt;&lt;set $msd = 1&gt;&gt;
 &lt;&lt;set $msstat = &quot;序章&quot;&gt;&gt;&lt;&lt;set $msname = &quot;新的开始&quot;&gt;&gt;
@@ -13239,33 +13238,59 @@ Dialog.open();&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="表演" tags="nobr" position="" size="">&lt;&lt;set _s to random(1,20)&gt;&gt;
 &lt;&lt;if $choice == &quot;唱歌&quot;&gt;&gt;
-&lt;&lt;if $social &lt;=5 &amp;&amp; $NPCinfo[&quot;公爵夫人&quot;].love&gt;= 10&gt;&gt;
-你清唱了一首你最熟悉的歌。大家似乎对此不太感兴趣，仍然是各聊各的，只不过声音压低了些。但表演结束时，几乎每个人都跟着公爵夫人鼓起了掌。
-&lt;&lt;elseif $social &gt;5&gt;&gt;
+&lt;&lt;if _s &lt;= 17&gt;&gt;
+&lt;&lt;set _rpl= [&quot;你歌颂了也许未获得的，也许已拥有的，也许错过了的爱。&lt;&lt;set _r =1&gt;&gt;&quot;,&quot;你清唱了一首你最熟悉的歌。&lt;&lt;set _r =2&gt;&gt;&quot;,&quot;你抱着弦琴唱了一首民谣，&lt;&lt;set _r =3&gt;&gt;&quot;,&quot;你的歌曲中充满了希望，自由，痛苦和爱等理想事物。&lt;&lt;set _r =4&gt;&gt;&quot;,&quot;你唱了首对技巧要求极高的歌，&lt;&lt;set _r =5&gt;&gt;&quot;].random()&gt;&gt;_rpl
 &lt;&lt;checkrage persuasive 15 30&gt;&gt;
-&lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
-你抱着弦琴唱了一首民谣，尽管你的声音算不上天籁，但平和的旋律与质朴的歌词不同程度地触动了在场的酒客。这次的表演是以独唱开始，以合唱结束。曲毕的时候，几乎每只猫都在鼓掌，几乎每只猫都在向你致意。
+&lt;&lt;if _rst == &quot;大成功&quot;&gt;&gt;
+尽管你的声音算不上天籁，但平和的旋律与质朴的歌词不同程度地触动了在场的酒客。这次的表演是以独唱开始，以合唱结束。曲毕的时候，几乎每只猫都在鼓掌，几乎每只猫都在向你致意。
+&lt;&lt;addpexp 2&gt;&gt;&lt;&lt;addsocial 1&gt;&gt;
+&lt;&lt;elseif _rst == &quot;成功&quot;&gt;&gt;
+到快结尾的副歌部分时，有些喝高了的猫开始扯着嗓子和你一起唱，导致你差点找不到正确的调子。不过，表演还算是比较圆满地结束了，看起来大家并不在意那鬼哭狼嚎般的小插曲，姑且把这当作是赞扬吧。
 &lt;&lt;addpexp 1&gt;&gt;
+&lt;&lt;elseif _rst == &quot;失败&quot;&gt;&gt;
+&lt;&lt;set _rpl= [&quot;大家似乎对此不太感兴趣，仍然是各聊各的，只不过声音压低了些。表演结束时，只有公爵夫人鼓起了掌。&quot;,&quot;虽然大家都惊讶于你的唱法，但最后反响平平，只有公爵夫人在结束时为你鼓起了掌。&quot;].random()&gt;&gt;_rpl
 &lt;&lt;else&gt;&gt;
-你抱着弦琴唱了一首民谣，尽管你的声音算不上天籁，
+这次的表演看起来并没有激起什么反响，甚至在结束时没有任何猫为之鼓掌。你回到座位，正琢磨着是哪个环节出现问题时，突然发现整个酒馆明显地安静了许多，就连一向健谈的公爵夫人也是沉默的。
+&lt;&lt;set $NPCinfo[&quot;公爵夫人&quot;].love -= 1&gt;&gt;
+@@.badblur;💔 公爵夫人对你的好感降低了@@
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;set _rpl= [&quot;】&quot;,&quot;【&quot;,&quot;你歌颂了也许未获得的，也许已拥有的，也许错过了的爱。一开始进行得很顺利，你感情饱满，观众也乐意听下去。但到快结尾的副歌部分时，有些喝高了的猫开始扯着嗓子和你一起唱，导致你差点找不到正确的调子。不过，表演还算是比较圆满地结束了，看起来大家并不在意那鬼哭狼嚎般的小插曲，姑且把这当作是赞扬吧】&quot;,&quot;【你的歌曲中充满了希望，自由，痛苦和爱等理想事物。这次的表演看起来并没有激起什么反响，甚至在结束时没有任何猫为之鼓掌。你回到座位，正琢磨着是哪个环节出现问题时，突然发现整个酒馆明显地安静了许多，就连一向健谈的公爵夫人也是沉默的&quot;,&quot;【你唱了首歌，反响平平】&quot;,&quot;【你唱了首对技巧要求极高的歌，虽然大家都惊讶于你的唱法，但最后反响平平】&quot;].random()&gt;&gt;_rpl
-&lt;&lt;elseif $choice == &quot;唱歌&quot;&gt;&gt;不知为何，你还是怯场了。喉头上下滚动，可你就是一句话都说不出来。有几个人在喝倒彩。你窘迫极了，灰溜溜地跑下舞台，找了个角落里的位置缩在里面】&lt;br&gt;
-&lt;&lt;timed 2s t8n&gt;&gt;“你这是怎么了？”公爵夫人挨着你坐下来。由于微妙的灯光，你还是看不见她的眼睛。“我能理解，在众目睽睽之下就算只是说句话也不是什么容易的事，何况还是表演呢。再说了，那些喝倒彩的东西并不完全是因为你表现差才这么做的，这些没教养的家伙为了给自己找些乐子可以对最优秀的表演者丢臭鸡蛋。我敢打赌，到了第二天他们根本不会记得今晚他们对谁喝了倒彩！好啦，别把这样的人放在心上，我相信你下次一定没问题的。喏，这杯麦芽汁算我请的，敬爱与音乐！”】&lt;br&gt;&lt;&lt;/timed&gt;&gt;
-&lt;&lt;timed 5s t8n&gt;&gt;“我要回吧台去啦，这么大个酒馆没人去管理可不行。有什么事的话就来吧台找我吧！别太消沉了，听到没有？”&lt;br&gt;&lt;&lt;pickup $food &quot;麦芽酒&quot; 1&gt;&gt;&lt;font color=#4E84BA&gt;✧你获得麦芽酒 * 1✧&lt;/font&gt;&lt;&lt;/timed&gt;&gt;
-&lt;&lt;elseif $choice == &quot;演奏&quot; &amp;&amp; _s &lt;20&gt;&gt;
-&lt;&lt;set _rpl= [&quot;【你弹了一支钢琴曲。曲毕，你从公爵夫人那里接过赞美和一小碟点心坐回座位。正在她重新打开留声机的当儿，有个客人私下向你抗议起来：“这里是酒馆，不是什么高级餐厅！下次你得搞点带劲儿的东西给我们听听，那才像话呢！好好考虑我的建议，伙计！”】&quot;,&quot;【你拉起了手风琴，沉浸在轻快的节奏，回旋式的韵律和乐器独特的音色里。曲毕，公爵夫人带头鼓起了掌，尽管有些人对你自我陶醉式的演奏并不怎么上心，而你确实错弹了几个音】&quot;,&quot;【你把挂在墙上的弦琴拿了下来。你完全认不出它到底是个什么乐器，这家伙一共有十二根弦，整个琴身看上去就像是连着脊柱的胸腔。你试着拨了个和弦，最后选择弹首你最有把握但是又谁都知道的老歌】&quot;,&quot;【遗憾的是，你实在是没法从酒馆里这几件看起来有些陈旧的乐器里挑出一个比较称手的出来。比起真正能够演奏的乐器，它们看起来更像是公爵夫人从哪个古董店里淘来的收藏品——尤其是那把极富“异域风情”的弦琴。你面露难色，看看观众，又看看公爵夫人，然后默默地走了回去。还好，下面的客人很快就把这名只是走了走台的怪人抛到脑后，就像是什么都没发生过一样】&quot;,&quot;【你表演了一首钢琴曲，反响平平】&quot;,&quot;【你表演了一首手风琴曲，反响平平】&quot;].random()&gt;&gt;_rpl
-&lt;&lt;elseif $choice == &quot;演奏&quot;&gt;&gt;【不知为何，你还是怯场了。你手指突然变得不那么利索了，僵硬得连根弦都拨不动，但大家可都在看着你呢！在三件乐器前面转了几圈后，你试探性地按下一个琴键——在可怕的寂静中，这声音甚至显得有些震耳欲聋。你窘迫极了，灰溜溜地在不怀好意的笑声中跑下舞台，找了个角落里的位置缩在里面】&lt;br&gt;
-&lt;&lt;timed 2s t8n&gt;&gt;【“你这是怎么了？”公爵夫人挨着你坐下来。由于微妙的灯光，你还是看不见她的眼睛。“我能理解，在众目睽睽之下就算只是说句话也不是什么容易的事，何况还是表演呢。再说了，那些喝倒彩的东西并不完全是因为你表现差才这么做的，这些没教养的家伙为了给自己找些乐子可以对最优秀的表演者丢臭鸡蛋。我敢打赌，到了第二天他们根本不会记得今晚他们对谁喝了倒彩！好啦，别把这样的人放在心上，我相信你下次一定没问题的。喏，这杯麦芽汁算我请的，敬爱与音乐！”】&lt;br&gt;&lt;&lt;/timed&gt;&gt;
-&lt;&lt;timed 5s t8n&gt;&gt;【“我要回吧台去啦，这么大个酒馆没人去管理可不行。有什么事的话就来吧台找我吧！别太消沉了，听到没有？”&lt;br&gt;&lt;&lt;pickup $food &quot;麦芽酒&quot; 1&gt;&gt;&lt;font color=#4E84BA&gt;✧你获得麦芽酒 * 1✧&lt;/font&gt;&lt;&lt;/timed&gt;&gt;
+
+&lt;&lt;else&gt;&gt;不知为何，你还是怯场了。喉头上下滚动，可你就是一句话都说不出来。有几只猫在喝倒彩。你窘迫极了，灰溜溜地跑下舞台，找了个角落里的位置缩在里面&lt;br&gt;&lt;br&gt;
+&lt;&lt;timed 2s t8n&gt;&gt;“亲爱的，这是怎么了？”@@.ductalk;公爵夫人@@挨着你坐下来，潮湿的暖意立刻笼罩住你，温暖而舒适，让你仿佛回到了还是小猫的时候，“那些家伙的话伤了你的心吗？别往心里去，我亲爱的，来这里的猫谁第二天还能记起自己说了些什么吗？大家都是来图一时的乐子和忘却，这里发生的事都只会留在这里。喏，这杯麦芽汁算我请的，敬酒精与音乐！”&lt;br&gt;
+&lt;&lt;gainitem &quot;麦芽酒&quot; 1&gt;&gt;&lt;&lt;itemobtain &quot;麦芽酒 * 1&quot;&gt;&gt;
+&lt;&lt;next 3s t8n&gt;&gt;“我要回吧台去啦，酒馆肯不能没猫管理。有任何事都来找我，别不好意思开口。”&lt;br&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;elseif $choice == &quot;演奏&quot;&gt;&gt;
+&lt;&lt;if _s &lt;= 17&gt;&gt;
+&lt;&lt;set _rpl= [&quot;你弹了一支钢琴曲。&quot;,&quot;你拉起了手风琴，沉浸在轻快的节奏，回旋式的韵律和乐器独特的音色里。&quot;,&quot;你拿起店中的一支紫色长笛，开始演奏。&quot;].random()&gt;&gt;_rpl
+&lt;&lt;checkrage persuasive 15 30&gt;&gt;
+&lt;&lt;if _rst == &quot;大成功&quot;&gt;&gt;
+曲毕，几乎每只猫都在鼓掌，几乎每只猫都在向你致意。
+&lt;&lt;addpexp 2&gt;&gt;&lt;&lt;addsocial 1&gt;&gt;
+&lt;&lt;elseif _rst == &quot;成功&quot;&gt;&gt;
+曲毕，尽管有些猫对你自我陶醉式的演奏并不怎么上心，而你又确实错弹了几个音，但大家还是在公爵夫人的带头下鼓起了掌。
+&lt;&lt;addpexp 1&gt;&gt;
+&lt;&lt;elseif _rst == &quot;失败&quot;&gt;&gt;
+&lt;&lt;set _rpl= [&quot;大家似乎对此不太感兴趣，仍然是各聊各的，只不过声音压低了些。表演结束时，只有公爵夫人鼓起了掌。&quot;,&quot;虽然大家都惊讶于你的唱法，但最后反响平平，只有公爵夫人在结束时为你鼓起了掌。&quot;].random()&gt;&gt;_rpl
 &lt;&lt;else&gt;&gt;
-&lt;&lt;set $choice to 0&gt;&gt;“噢，看样子你要和我的留声机抢饭碗啦？不，没关系的，舞台在那边，如果你没有带乐器的话可以用我们酒馆里的，希望你不会嫌弃——别怯场！我很期待你的表演哦！” 公爵夫人关掉留声机，目送你站上了舞台。酒馆内的嘈杂声渐渐停止了，你在众目睽睽之下拿起了麦克&lt;br&gt;你吞了吞口水，努力镇定下来。要表演些什么？&lt;br&gt;&lt;br&gt;
- ⋙⋙⋙⋙⋙⋙⋘⋘⋘⋘⋘⋘&lt;br&gt;
+这次的表演看起来并没有激起什么反响，甚至在结束时没有任何猫为之鼓掌。你回到座位，正琢磨着是哪个环节出现问题时，突然发现整个酒馆明显地安静了许多，就连一向健谈的公爵夫人也是沉默的。
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;else&gt;&gt;不知为何，你还是怯场了。喉头上下滚动，可你就是一句话都说不出来。有几只猫在喝倒彩。你窘迫极了，灰溜溜地跑下舞台，找了个角落里的位置缩在里面&lt;br&gt;&lt;br&gt;
+&lt;&lt;timed 2s t8n&gt;&gt;“亲爱的，这是怎么了？”@@.ductalk;公爵夫人@@挨着你坐下来，潮湿的暖意立刻笼罩住你，温暖而舒适，让你仿佛回到了还是小猫的时候，“那些家伙的话伤了你的心吗？别往心里去，我亲爱的，来这里的猫谁第二天还能记起自己说了些什么吗？大家都是来图一时的乐子和忘却，这里发生的事都只会留在这里。喏，这杯麦芽汁算我请的，敬酒精与音乐！”&lt;br&gt;
+&lt;&lt;gainitem &quot;麦芽酒&quot; 1&gt;&gt;&lt;&lt;itemobtain &quot;麦芽酒 * 1&quot;&gt;&gt;
+&lt;&lt;next 3s t8n&gt;&gt;“我要回吧台去啦，酒馆肯不能没猫管理。有任何事都来找我，别不好意思开口。”&lt;br&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;
+&lt;&lt;set $choice to 0&gt;&gt;
+&lt;&lt;if !$bycs&gt;&gt;&lt;&lt;set $bycs to 3&gt;&gt;
+&lt;&lt;elseif $bycs&gt;0&gt;&gt;
+“噢，看样子你要和我的留声机抢饭碗啦？不，没关系的，舞台在那边，如果你没有带乐器的话可以用我们酒馆里的，希望你不会嫌弃——别怯场！我很期待你的表演哦！” 公爵夫人关掉留声机，目送你站上了舞台。酒馆内的嘈杂声渐渐停止了，你在众猫瞩目之下拿起了麦克&lt;br&gt;你吞了吞口水，努力镇定下来。要表演些什么？&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「唱歌」 表演&gt;&gt;&lt;&lt;set $choice to &quot;唱歌&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「演奏」 表演&gt;&gt;&lt;&lt;set $choice to &quot;演奏&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 酒馆&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="兑换" tags="nobr" position="1200,300" size="100,100">&lt;&lt;reopen&gt;&gt;
+&lt;&lt;else&gt;&gt;公爵夫人拜拜手，说店里暂时不需要额外的音乐。
+&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 酒馆&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="兑换" tags="nobr" position="1200,300" size="100,100">&lt;&lt;reopen&gt;&gt;
 &lt;&lt;if $loc == &quot;鱼铺&quot;&gt;&gt;
 /*兑换鱼饵*/
 &lt;&lt;if $choice == &quot;兑换鱼饵&quot;&gt;&gt;
@@ -14941,18 +14966,7 @@ Dialog.open();&gt;&gt;
 &lt;&lt;else&gt;&gt;
 
 &lt;&lt;if $loc == &quot;草甸&quot;&gt;&gt;
-&lt;&lt;if $rd ==1 &amp;&amp; $dn ==1&gt;&gt;
-
-&lt;&lt;elseif $rd ==1 &amp;&amp; $dn ==0&gt;&gt;
-
-&lt;&lt;elseif $weather == &quot;海雾&quot;&gt;&gt;
-&lt;&lt;set _dscrb = [&quot;雾气环绕在你的四周，脚下的地面仿佛悬浮在云端，从雾里慢慢显现，又迅速被吞没。&quot;,&quot;阳光拼尽全力穿透这层海雾，却只在头顶留下一层模糊的亮光。&quot;].random()&gt;&gt;_dscrb
-&lt;&lt;elseif $rd ==0 &amp;&amp; $dn ==1&gt;&gt;
 一户四口之家铺开格纹毯子在草地上野餐，孩子们在远处追逐蝴蝶，母亲的帽子被一阵突来的风刮走，正笑着去追。
-&lt;&lt;else&gt;&gt;
-
-&lt;&lt;/if&gt;&gt;
-
 &lt;&lt;elseif $loc == &quot;副港口&quot;&gt;&gt;
 几个渔民坐在栈桥上，一边用木梭灵巧地修补渔网，一边用你陌生的语言大声争论着什么，不时爆发出阵阵笑声。 
 &lt;&lt;elseif $loc == &quot;主港口&quot;&gt;&gt;
@@ -14960,13 +14974,13 @@ Dialog.open();&gt;&gt;
 &lt;&lt;elseif $loc == &quot;沙地&quot;&gt;&gt;
 几只小猫正提着木桶在沙地上寻找贝壳和小螃蟹，他们的欢笑声被海风送到远方。
 &lt;&lt;elseif $loc == &quot;小镇&quot;&gt;&gt;
- 
+&lt;&lt;set _dscrb = [&quot;一群孩子在街道上追逐一个足球，他们欢快的喵喵声充斥着广场。&quot;,&quot;几只猫围在镇广场的告示栏前，谈论着新贴出的周报。&quot;,&quot;一位老妇坐在自家门前的台阶上，膝上放着一个大陶盆，正慢悠悠地剥着豆荚。&quot;].random()&gt;&gt;_dscrb
 &lt;&lt;elseif $loc == &quot;贝雷河&quot;&gt;&gt;
-一个水手醉倒在成堆的缆绳和木桶之间，他的帽子盖在脸上，怀里还紧紧抱着一个几乎空了的酒瓶。
+&lt;&lt;set _dscrb = [&quot;一个戴着宽檐帽的老猫坐在河边的折叠凳上，鱼竿斜插在泥里。&quot;,&quot;两位女士坐在河边，用力在石头上捶打浸湿的衣物，时不时聊一两句。&quot;,&quot;几个男孩赤着脚在河边的浅滩和石堆间翻找。&quot;].random()&gt;&gt;_dscrb
 &lt;&lt;elseif $loc == &quot;罗索伦特湖&quot;&gt;&gt;
-几只小猫正提着木桶在沙地上寻找贝壳和小螃蟹，他们的欢笑声被海风送到远方。
+&lt;&lt;set _dscrb = [&quot;一只苍鹭站在靠近岸边的浅水中，突然闪电般地将长喙刺入水下，叼起一条不停扭动的小鱼。&quot;,&quot;一个背着画板的年轻猫坐在湖边，正试图将湖对岸的风景和水中的倒影捕捉到画纸上。&quot;].random()&gt;&gt;_dscrb
 &lt;&lt;elseif $loc == &quot;高地&quot;&gt;&gt;
-一个水手醉倒在成堆的缆绳和木桶之间，他的帽子盖在脸上，怀里还紧紧抱着一个几乎空了的酒瓶。
+一对老夫妇正沿着小径散步。
 
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -16675,8 +16689,50 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;link ✧「照镜子」 照镜子&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「返回」 家&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="照镜子" tags="nobr" position="" size="">你走到浴室的梳妆镜前。镜面清晰地映照出你的身影，
-镜中的你一如既往。光线透过窗户，柔和地洒在你身上。&lt;br&gt;&lt;br&gt;/*根据融合度差分*/
+&lt;&lt;link ▷「返回」 家&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="123" name="照镜子" tags="nobr" position="" size="">你走到浴室的梳妆镜前。镜面清晰地映照出你的身影。&lt;br&gt;&lt;br&gt;
+&lt;div&gt;
+&lt;/div&gt;
+
+
+
+镜中的你一如既往。
+你有着&lt;&lt;if $soul == &quot;蓝色&quot;&gt;&gt;&lt;font color=#449DD6&gt;健全&lt;/font&gt;的蓝色&lt;&lt;elseif $soul == &quot;红色&quot;&gt;&gt;&lt;font color=#EC450A&gt;龙裔&lt;/font&gt;的红色
+&lt;&lt;elseif setup.getStat(&quot;heartless&quot;) &gt;= 24&gt;&gt;&lt;font color=#7BCDDC&gt;寒冷&lt;/font&gt;的冰蓝色
+&lt;&lt;elseif setup.getStat(&quot;curiosity&quot;) &gt;= 24&gt;&gt;&lt;font color=#82140C&gt;污秽&lt;/font&gt;的血色
+&lt;&lt;elseif setup.getStat(&quot;bold&quot;) &gt;= 24&gt;&gt;&lt;font color=#CD6DBB&gt;凝固&lt;/font&gt;的品红色
+&lt;&lt;elseif setup.getStat(&quot;enjoy&quot;) &gt;= 24&gt;&gt;&lt;font color=#b1c95c&gt;发酵&lt;/font&gt;的灰绿色
+&lt;&lt;elseif $hunger &gt;= 24&gt;&gt;&lt;font color=#4B4B4B&gt;饥饿&lt;/font&gt;的黑色
+&lt;&lt;elseif $abs &gt;= 24&gt;&gt;&lt;font color=#777777&gt;无光&lt;/font&gt;的灰色
+&lt;&lt;elseif $soul == &quot;金色&quot;&gt;&gt;&lt;font color=#FFD151&gt;融合神&lt;/font&gt;的金色&lt;&lt;/if&gt;&gt;灵魂
+&lt;&lt;if $soul == &quot;蓝色&quot; || $soul == &quot;金色&quot;&gt;&gt;
+
+&lt;&lt;set $solus to {
+    &quot;寒冷&quot;: setup.getStat(&quot;heartless&quot;),
+    &quot;凝固&quot;: setup.getStat(&quot;bold&quot;),
+    &quot;污秽&quot;: setup.getStat(&quot;curiosity&quot;),
+    &quot;发酵&quot;: setup.getStat(&quot;enjoy&quot;),
+    &quot;饥饿&quot;: $hunger,
+    &quot;无光&quot;: $abs
+}&gt;&gt;
+
+&lt;&lt;set $filtered = Object.keys($solus)
+    .filter(function(key) {
+        return $solus[key] &gt;= 6;
+    })
+    .sort(function(a, b) {
+        return $solus[b] - $solus[a];
+    })&gt;&gt;
+
+&lt;&lt;if $filtered.length &gt;0&gt;&gt;
+，可它近日在逐渐趋于&lt;&lt;=$filtered[0]&gt;&gt;
+&lt;&lt;if $filtered.length &gt;1&gt;&gt;&lt;&lt;set $filtered.deleteAt(0)&gt;&gt;
+  ，同时又有着&lt;&lt;print $filtered.join(&quot;、&quot;)&gt;&gt;的迹象。&lt;&lt;/if&gt;&gt;&lt;&lt;else&gt;&gt;。&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;，也许你得做点什么去除你灵魂上的瑕疵。
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;/*根据融合度差分*/
+
+
+
 &lt;&lt;link ▷「返回」 浴室&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="书柜" tags="nobr" position="" size="">橡木书柜收纳着你的藏书和读物，书架外侧挂着一盏煤油灯，方便夜间取阅。&lt;br&gt;
 &lt;&lt;do tag &quot;书柜&quot;&gt;&gt;
 〖书柜容量：$itemweight.bookshelf/10kg〗&lt;br&gt;&lt;br&gt;
@@ -18554,10 +18610,10 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 (已触发内容的更新无法同步，测试阶段不建议长期游玩)
 &lt;&lt;/do&gt;&gt;&lt;br&gt;
 &lt;&lt;include &quot;更新日志&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="189" name="更新日志" tags="" position="" size="">&lt;h2&gt;更新日志&lt;/h2&gt;
-10.27-29 增加调节字体大小功能，修了很多很多bug
-增加了一些风味性文本和事件
-修改了睡觉的逻辑
-增加了酒馆与他人饮酒的功能 文本待补充
+10.27-30 增加调节字体大小功能，修了很多很多bug
+增加了一些风味性文本和事件，加入了灵魂状态描述
+修改了睡觉的逻辑，酒馆表演的逻辑
+增加了酒馆与他人饮酒的功能，文本待补充
 10.26 增加了床头功能，调整了田圃和邮箱的界面
 10.25 完成了D5剧情 测试完毕
 10.24 增加了一些细节文本
@@ -19088,24 +19144,32 @@ $msname&lt;br&gt;
   &lt;tr&gt;&lt;td&gt;工作：$job&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
 &lt;br&gt;
 &lt;div id=&quot;chatextcard&quot;&gt;
-&lt;center&gt;✧&lt;b&gt;灵魂状态&lt;/b&gt;✧&lt;br&gt;&lt;&lt;if $soul == &quot;蓝色&quot;&gt;&gt;
-&lt;font color=#449DD6&gt; 健全&lt;/font&gt;
-&lt;&lt;elseif $soul == &quot;红色&quot;&gt;&gt;
-&lt;font color=#EC450A&gt; 龙裔&lt;/font&gt;
-&lt;&lt;elseif setup.getStat(&quot;heartless&quot;) &gt;= 50&gt;&gt;
-&lt;font color=#7BCDDC&gt; 寒冷&lt;/font&gt;
-&lt;&lt;elseif setup.getStat(&quot;curiosity&quot;) &gt;= 50&gt;&gt;
-&lt;font color=#82140C&gt; 污秽&lt;/font&gt;
-&lt;&lt;elseif setup.getStat(&quot;bold&quot;) &gt;= 50&gt;&gt;
-&lt;font color=#CD6DBB&gt; 凝固&lt;/font&gt;
-&lt;&lt;elseif setup.getStat(&quot;enjoy&quot;) &gt;= 50&gt;&gt;
-&lt;font color=#b1c95c&gt; 发酵&lt;/font&gt;
-&lt;&lt;elseif $hunger &gt;= 50&gt;&gt;
-&lt;font color=#4B4B4B&gt; 饥饿&lt;/font&gt;
-&lt;&lt;elseif $abs &gt;= 50&gt;&gt;
-&lt;font color=#777777&gt; 无光&lt;/font&gt;
-&lt;&lt;elseif $soul == &quot;金色&quot;&gt;&gt;
-&lt;font color=#FFD151&gt; 融合神&lt;/font&gt;&lt;&lt;/if&gt;&gt;的灵魂&lt;/center&gt;
+&lt;center&gt;✧&lt;b&gt;灵魂状态&lt;/b&gt;✧&lt;br&gt;你有着&lt;&lt;if $soul == &quot;蓝色&quot;&gt;&gt;&lt;font color=#449DD6&gt;健全&lt;/font&gt;的蓝色&lt;&lt;elseif $soul == &quot;红色&quot;&gt;&gt;&lt;font color=#EC450A&gt;龙裔&lt;/font&gt;的红色&lt;&lt;elseif setup.getStat(&quot;heartless&quot;) &gt;= 24&gt;&gt;&lt;font color=#7BCDDC&gt;寒冷&lt;/font&gt;的冰蓝色&lt;&lt;elseif setup.getStat(&quot;curiosity&quot;) &gt;= 24&gt;&gt;&lt;font color=#82140C&gt;污秽&lt;/font&gt;的血色&lt;&lt;elseif setup.getStat(&quot;bold&quot;) &gt;= 24&gt;&gt;&lt;font color=#CD6DBB&gt;凝固&lt;/font&gt;的品红色&lt;&lt;elseif setup.getStat(&quot;enjoy&quot;) &gt;= 24&gt;&gt;&lt;font color=#b1c95c&gt;发酵&lt;/font&gt;的灰绿色&lt;&lt;elseif $hunger &gt;= 24&gt;&gt;&lt;font color=#4B4B4B&gt;饥饿&lt;/font&gt;的黑色&lt;&lt;elseif $abs &gt;= 24&gt;&gt;&lt;font color=#777777&gt;无光&lt;/font&gt;的灰色&lt;&lt;elseif $soul == &quot;金色&quot;&gt;&gt;&lt;font color=#FFD151&gt;融合神&lt;/font&gt;的金色&lt;&lt;/if&gt;&gt;灵魂&lt;br&gt;
+&lt;&lt;if $soul == &quot;蓝色&quot; || $soul == &quot;金色&quot;&gt;&gt;
+
+&lt;&lt;set $solus to {
+    &quot;寒冷&quot;: setup.getStat(&quot;heartless&quot;),
+    &quot;凝固&quot;: setup.getStat(&quot;bold&quot;),
+    &quot;污秽&quot;: setup.getStat(&quot;curiosity&quot;),
+    &quot;发酵&quot;: setup.getStat(&quot;enjoy&quot;),
+    &quot;饥饿&quot;: $hunger,
+    &quot;无光&quot;: $abs
+}&gt;&gt;
+
+&lt;&lt;set $filtered = Object.keys($solus)
+    .filter(function(key) {
+        return $solus[key] &gt;= 6;
+    })
+    .sort(function(a, b) {
+        return $solus[b] - $solus[a];
+    })&gt;&gt;
+
+&lt;&lt;if $filtered.length &gt;0&gt;&gt;
+可它近日在逐渐趋于&lt;&lt;=$filtered[0]&gt;&gt;
+&lt;&lt;if $filtered.length &gt;1&gt;&gt;&lt;&lt;set $filtered.deleteAt(0)&gt;&gt;
+  ，同时又有着&lt;&lt;print $filtered.join(&quot;、&quot;)&gt;&gt;的迹象&lt;br&gt;也许你得做点什么去除你灵魂上的瑕疵&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;也许你得做点什么去除你灵魂上的瑕疵
+&lt;&lt;/if&gt;&gt;&lt;/center&gt;
 &lt;br&gt;
 &lt;center&gt;✦&lt;b&gt;专长&lt;/b&gt;✦&lt;br&gt;
 〖学识〗&lt;&lt;=setup.getStat(&quot;knowledge&quot;)&gt;&gt;   
