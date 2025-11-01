@@ -4536,7 +4536,7 @@ Config.ui.stowBarInitially = false;
 
 /* Recipes, Ver.0.3.2, By BlackStar */
 /// Build Date: 2025-07-04T14:40:02.674Z
-(()=>{function e(e,t){var n="undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(!n){if(Array.isArray(e)||(n=r(e))||t&&e&&"number"==typeof e.length){n&&(e=n);var i=0,o=function(){};return{s:o,n:function(){return i>=e.length?{done:!0}:{done:!1,value:e[i++]}},e:function(e){throw e},f:o}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var a,s=!0,u=!1;return{s:function(){n=n.call(e)},n:function(){var e=n.next();return s=e.done,e},e:function(e){u=!0,a=e},f:function(){try{s||null==n.return||n.return()}finally{if(u)throw a}}}}function t(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){var r=null==e?null:"undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(null!=r){var n,i,o,a,s=[],u=!0,c=!1;try{if(o=(r=r.call(e)).next,0===t){if(Object(r)!==r)return;u=!1}else for(;!(u=(n=o.call(r)).done)&&(s.push(n.value),s.length!==t);u=!0);}catch(e){c=!0,i=e}finally{try{if(!u&&null!=r.return&&(a=r.return(),Object(a)!==a))return}finally{if(c)throw i}}return s}}(e,t)||r(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function r(e,t){if(e){if("string"==typeof e)return n(e,t);var r={}.toString.call(e).slice(8,-1);return"Object"===r&&e.constructor&&(r=e.constructor.name),"Map"===r||"Set"===r?Array.from(e):"Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)?n(e,t):void 0}}function n(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=Array(t);r<t;r++)n[r]=e[r];return n}function i(e){return i="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},i(e)}function o(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,a(n.key),n)}}function a(e){var t=function(e,t){if("object"!=i(e)||!e)return e;var r=e[Symbol.toPrimitive];if(void 0!==r){var n=r.call(e,t||"default");if("object"!=i(n))return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===t?String:Number)(e)}(e,"string");return"symbol"==i(t)?t:t+""}!function(){"use strict";var r=Object.freeze({INCLUDES:"includes",EQUALS:"equals"});State.variables.recipe_save_data=State.variables.recipe_save_data||new Map;var n=function(){return State.variables.recipe_save_data},a={servings:1,successRate:100,priority:100,condition:r.INCLUDES,_unlock:!1},s={unlock:!1};setup.Conditions=r,window.Conditions=window.Conditions||r;var u=function(){return u=function e(t){var r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:[],o=arguments.length>2&&void 0!==arguments[2]?arguments[2]:clone(a),u=arguments.length>3&&void 0!==arguments[3]?arguments[3]:[];if(function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.id=t,"object"!==i(r)||"object"!==i(o))throw new Error("Invalid recipe definition");if(this.methods=r,Object.assign(this,Object.assign({},a,o)),!n().has(t)){var c,l=clone(s);l.unlock=null!==(c=o._unlock)&&void 0!==c&&c,n().set(t,l)}this._tags=u instanceof Array?u:"string"==typeof u?[u]:[]},(c=[{key:"unlock",get:function(){return n().get(this.id).unlock},set:function(e){n().get(this.id).unlock=e}},{key:"name",get:function(){return this.displayName||this.id},set:function(e){this.displayName=e}},{key:"tags",get:function(){return this._tags}},{key:"hasTag",value:function(e){return this._tags.includes(e)}},{key:"hasAllTags",value:function(e){return this._tags.includesAll(e)}},{key:"hasAnyTags",value:function(e){return this._tags.includesAny(e)}},{key:"validate",value:function(e){switch(this.condition){case r.EQUALS:return this.equals(e);case r.INCLUDES:return this.includes(e);default:throw new TypeError("Invalid condition type: ".concat(this.condition))}}},{key:"calculate",value:function(e,r){if(this.methods.length<=r)throw new Error("Unable to access recipe at index ".concat(r,", total number of available crafting methods is ").concat(this.ingredients.length));return Object.entries(this.methods[r]).reduce((function(r,n){var i=t(n,2),o=i[0],a=i[1];if(o.startsWith("tag:")){for(var s=o.substring(4),u=0,c=0,l=Object.entries(e);c<l.length;c++){var f=t(l[c],2),h=f[0],v=f[1],y=Item.get(h);y&&y.hasTag(s)&&(u+=v)}return Math.min(r,Math.floor(u/a))}var d=e[o];return Math.min(r,Math.floor(d/a))}),1/0)}},{key:"multiply",value:function(r,n){if(void 0!==n&&this.methods.length<=n)throw new Error("Unable to access recipe at index ".concat(n,", total number of available crafting methods is ").concat(this.ingredients.length));if("number"!=typeof r||r<=0)throw new Error("Invalid number of servings");var i,o=[],a=e(void 0!==n?[this.methods[n]]:this.methods);try{for(a.s();!(i=a.n()).done;){for(var s=i.value,u={},c=0,l=Object.entries(s);c<l.length;c++){var f=t(l[c],2),h=f[0],v=f[1];u[h]=v*r}o.push(u)}}catch(e){a.e(e)}finally{a.f()}return o}},{key:"includes",value:function(r){var n,i=e(this.methods);try{for(i.s();!(n=i.n()).done;){var o=n.value;if(Object.keys(r).length<Object.keys(o).length)return}}catch(e){i.e(e)}finally{i.f()}var a,s=e(this.methods.entries());try{for(s.s();!(a=s.n()).done;){var u=t(a.value,2),c=u[0],l=u[1],f=!0;for(var h in l)if(h.startsWith("tag:")){for(var v=h.substring(4),y=!1,d=0,p=Object.entries(r);d<p.length;d++){var g=t(p[d],2),b=g[0],m=g[1],k=Item.get(b);if(k&&k.hasTag(v)&&m>=l[h]){y=!0;break}}if(!y){f=!1;break}}else if(!r[h]||r[h]<l[h]){f=!1;break}if(f)return c}}catch(e){s.e(e)}finally{s.f()}}},{key:"cook",value:function(){if(100===this.successRate)return!0;var e=randomInt(1,100);return this.successRate>=e}},{key:"equals",value:function(r){var n,i=e(this.methods);try{for(i.s();!(n=i.n()).done;){var o=n.value;if(Object.keys(r).length<Object.keys(o).length)return}}catch(e){i.e(e)}finally{i.f()}var a,s=e(this.methods.entries());try{for(s.s();!(a=s.n()).done;){var u=t(a.value,2),c=u[0],l=u[1],f=!0;for(var h in l)if(h.startsWith("tag:")){for(var v=h.substring(4),y=0,d=0,p=Object.entries(r);d<p.length;d++){var g=t(p[d],2),b=g[0],m=g[1],k=Item.get(b);k&&k.hasTag(v)&&(y+=m)}if(y!==l[h]){f=!1;break}}else if(!r[h]||r[h]!==l[h]){f=!1;break}if(f)return c}}catch(e){s.e(e)}finally{s.f()}}}])&&o(u.prototype,c),l&&o(u,l),Object.defineProperty(u,"prototype",{writable:!1}),u;var u,c,l}();setup.Recipe=u,window.Recipe=window.Recipe||u}()})(),(()=>{function e(t){return e="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e(t)}function t(e,t){var r="undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(!r){if(Array.isArray(e)||(r=a(e))||t&&e&&"number"==typeof e.length){r&&(e=r);var n=0,i=function(){};return{s:i,n:function(){return n>=e.length?{done:!0}:{done:!1,value:e[n++]}},e:function(e){throw e},f:i}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var o,s=!0,u=!1;return{s:function(){r=r.call(e)},n:function(){var e=r.next();return s=e.done,e},e:function(e){u=!0,o=e},f:function(){try{s||null==r.return||r.return()}finally{if(u)throw o}}}}function r(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,i(n.key),n)}}function n(e,t,r){return(t=i(t))in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function i(t){var r=function(t,r){if("object"!=e(t)||!t)return t;var n=t[Symbol.toPrimitive];if(void 0!==n){var i=n.call(t,r||"default");if("object"!=e(i))return i;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===r?String:Number)(t)}(t,"string");return"symbol"==e(r)?r:r+""}function o(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){var r=null==e?null:"undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(null!=r){var n,i,o,a,s=[],u=!0,c=!1;try{if(o=(r=r.call(e)).next,0===t){if(Object(r)!==r)return;u=!1}else for(;!(u=(n=o.call(r)).done)&&(s.push(n.value),s.length!==t);u=!0);}catch(e){c=!0,i=e}finally{try{if(!u&&null!=r.return&&(a=r.return(),Object(a)!==a))return}finally{if(c)throw i}}return s}}(e,t)||a(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function a(e,t){if(e){if("string"==typeof e)return s(e,t);var r={}.toString.call(e).slice(8,-1);return"Object"===r&&e.constructor&&(r=e.constructor.name),"Map"===r||"Set"===r?Array.from(e):"Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)?s(e,t):void 0}}function s(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=Array(t);r<t;r++)n[r]=e[r];return n}!function(){"use strict";var i,a=function(){function n(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:new Map,r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:[];if(function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,n),!(t instanceof Map))throw new Error('Expected "recipes" to be an instance of Map');if(!Array.isArray(r))throw new Error('Expected "invs" to be an array');this.invs=r,this.ct=e,State.variables[this.ct]=State.variables[this.ct]||new Inventory,this.recipes=t,this._recipes=n.sort(t)}return i=n,a=[{key:"names",value:function(){return Array.from(this.recipes.keys())}},{key:"has",value:function(e){return this.recipes.has(e)}},{key:"hasItems",value:function(e){for(var t=State.variables[this.ct],r=0,n=Object.entries(e);r<n.length;r++){var i=o(n[r],2),a=i[0],s=i[1];if(a.startsWith("tag:")){for(var u=a.substring(4),c=!1,l=0,f=Object.entries(t.data);l<f.length;l++){var h=o(f[l],2),v=h[0],y=h[1],d=Item.get(v);if(d&&d.hasTag(u)&&y>=s){c=!0;break}}if(!c)return!1}else if(t.count(a)<s)return!1}return!0}},{key:"drop",value:function(e){for(var t=State.variables[this.ct],r=0,n=Object.entries(e);r<n.length;r++){var i=o(n[r],2),a=i[0],s=i[1];if(a.startsWith("tag:"))for(var u=a.substring(4),c=s,l=0,f=Object.entries(t.data);l<f.length;l++){var h=o(f[l],2),v=h[0],y=h[1];if(c<=0)break;var d=Item.get(v);if(d&&d.hasTag(u)){var p=Math.min(y,c);void 0===t.pickup?t.delete(v,p):t.drop(v,p),c-=p}}else void 0===t.pickup?t.delete(a,s):t.drop(a,s)}}},{key:"update",value:function(){this._recipes=n.sort(this.recipes)}},{key:"hasAllTags",value:function(){var e,r=[].slice.call(arguments).flat(1/0),n=[],i=t(this._recipes);try{for(i.s();!(e=i.n()).done;){var o=e.value;o.hasAllTags(r)&&n.push(o)}}catch(e){i.e(e)}finally{i.f()}return n}},{key:"searchIndex",value:function(e){for(var t=0,r=this._recipes.length-1;t<=r;){var n=Math.floor((t+r)/2);if(this._recipes[n].priority===e)return n;this._recipes[n].priority<e?t=n+1:r=n-1}return t}},{key:"insert",value:function(e,t,r,n){Array.isArray(t)||(t=[t]);var i=this.set(e,t,r,n),o=this.searchIndex(i.priority);this._recipes.splice(o,0,i)}},{key:"set",value:function(e,t,r,n){Array.isArray(t)||(t=[t]);var i=new Recipe(e,t,r,n);return this.recipes.set(e,i),i}},{key:"get",value:function(e){return this.recipes.get(e)}},{key:"calculate",value:function(e){var t=o(this.match(e),2),r=t[0],i=t[1];return void 0===r||void 0===i?[n.default_no_recipe,0]:[i.name,i.calculate(e,r)*i.servings]}},{key:"cook",value:function(r){var i=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1,a=o(this.match(r),2),s=a[0],u=a[1],c={id:"",success:!1,unlock:!1,exist:!1,servings:0,message:n.not_found};if(null==u&&null==s)"object"===e(r)&&Object.keys(r).forEach((function(e){return delete r[e]}));else if(u.unlock||"string"!=typeof r)if("string"==typeof r&&void 0===s){c.id=u.name,c.servings=0,c.success=!1,c.message=n.missing_materials;var l,f=t(u.multiply(i));try{for(f.s();!(l=f.n()).done;){var h=l.value;if(this.hasItems(h)){this.drop(h),c.success=!0,c.servings=i,c.message=n.success;break}}}catch(e){f.e(e)}finally{f.f()}}else void 0!==s&&void 0!==u&&(c.id=u.id,c.success=u.cook(),r.length=0,c.success?(c.servings=u.calculate(r,s),u.unlock?c.message=n.success:(c.message=n.unlocked_success,u.unlock=!0)):(c.servings=0,c.message=n.failure),Object.keys(r).forEach((function(e){return delete r[e]})));else c.id=u.name,c.success=!1,c.unlock=!1,c.message=n.not_unlocked;return u&&(c.servings*=u.servings),c}},{key:"cookSave",value:function(e,t){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:1,i=this.cook(t,r);return i.success&&n.pickup(e,i.id,i.servings),i}},{key:"match",value:function(r){if("object"!==e(r)||null===r){if("string"==typeof r){var n=this.recipes.get(r);return void 0===n?[void 0,void 0]:[void 0,n]}throw new Error("Invalid argument: ".concat(r))}var i,o=t(this._recipes);try{for(o.s();!(i=o.n()).done;){var a=i.value;if(!(a instanceof Recipe))throw new Error("Invalid Recipe: ".concat(a));var s=a.validate(r);if(void 0!==s)return[s,a]}}catch(e){o.e(e)}finally{o.f()}return[void 0,void 0]}},{key:"filter",value:function(e){if("undefined"==typeof filterObjs)throw new Error('The "filter-utils" is required but has not been imported');return filterObjs(this._recipes,e,(function(e,t){return!t.tags||e.methods.some((function(e){return Object.keys(e).some((function(e){var r,n;return null!==(r=null===(n=Item.get(e))||void 0===n?void 0:n.hasAnyTags(t.tags))&&void 0!==r&&r}))}))}))}},{key:"crafting_table",get:function(){return this.ct},set:function(e){this.ct=e,State.variables[this.ct]=State.variables[this.ct]||new Inventory}}],s=[{key:"sort",value:function(e){var t=Array.from(e.values()),r={};t.forEach((function(e){var t=void 0!==e.priority?e.priority:100;r[t]=(r[t]||0)+1}));var n=Object.keys(r).map(Number).sort((function(e,t){return e-t})),i={},o=0;n.forEach((function(e){i[e]=o,o+=r[e]}));for(var a=Array(t.length),s=t.length-1;s>=0;s--){var u=t[s],c=void 0!==u.priority?u.priority:100;a[i[c]]=u,i[c]++}return a}},{key:"pickup",value:function(e){if(!(e instanceof Inventory))throw new Error("Invalid inventory");for(var t=arguments.length,r=new Array(t>1?t-1:0),n=1;n<t;n++)r[n-1]=arguments[n];if(void 0!==e.pickup)return e.pickup.apply(e,r);for(var i,o=0;o<r.length-1;o+=2){var a=r[o],s=r[o+1];if(!a||!s)return i;if(!(i=e.store(a,s)).success)return i}}}],a&&r(i.prototype,a),s&&r(i,s),Object.defineProperty(i,"prototype",{writable:!1}),i;var i,a,s}();n(a,"success","制作成功"),n(a,"failure","制作失败"),n(a,"not_found","配方不存在"),n(a,"not_unlocked","配方未解锁"),n(a,"missing_materials","缺少材料"),n(a,"unlocked_success","配方成功解锁"),n(a,"default_no_recipe","无"),n(a,"crafting_table","crafting_table"),i=a,["success","failure","not_found","not_unlocked","missing_materials","unlocked_success","default_no_recipe"].forEach((function(e){Object.defineProperty(i.prototype,e,{get:function(){return i[e]},set:function(t){i[e]=t}})})),setup._RecipeBook=a,window._RecipeBook=window._RecipeBook||a,setup.RecipeBook=setup.RecipeBook||new a(a.crafting_table),window.RecipeBook=window.RecipeBook||setup.RecipeBook}()})(),(()=>{function e(e,r){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){var r=null==e?null:"undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(null!=r){var n,i,o,a,s=[],u=!0,c=!1;try{if(o=(r=r.call(e)).next,0===t){if(Object(r)!==r)return;u=!1}else for(;!(u=(n=o.call(r)).done)&&(s.push(n.value),s.length!==t);u=!0);}catch(e){c=!0,i=e}finally{try{if(!u&&null!=r.return&&(a=r.return(),Object(a)!==a))return}finally{if(c)throw i}}return s}}(e,r)||function(e,r){if(e){if("string"==typeof e)return t(e,r);var n={}.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?t(e,r):void 0}}(e,r)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function t(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=Array(t);r<t;r++)n[r]=e[r];return n}function r(e){return r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},r(e)}Macro.add("cook",{tags:null,handler:function(){if(this.args.length<1)return this.error("Not enough arguments provided. At least two arguments are required");var e,t=this.args[0];if("object"!==r(t)&&"string"!=typeof t||null===t)return this.error("Expected an object or a string, but received: "+r(t));if(this.args.length>=2){var n=this.args[1];if(!(n&&n instanceof Inventory))return this.error("Expected an instance of Inventory, but received: "+r(n));e=RecipeBook.cookSave(n,t,parseInt(this.args[2])||1)}else e=RecipeBook.cook(t);WikiVars({result:e},this)}}),Macro.add("filter_recipe",{tags:null,handler:function(){if(this.args.length<1)return this.error("Not enough arguments provided. At least two arguments are required.");var e=this.args[0];if(e&&"object"!==r(e))return this.error("Invalid input: 'filters' should be an object");var t=RecipeBook.filter(e);WikiVars({result:t},this)}}),Macro.add("recipes_with_tag",{handler:function(){if(this.args.length<1)return this.error("Not enough arguments provided. At least one tag is required");var e=RecipeBook.filter(this.args);WikiVars({result:e},this)}}),Macro.add("calculate",{tags:null,handler:function(){if(this.args.length<1)return this.error("Not enough arguments provided. At least one tag is required");var t=this.args[0];if("object"!==r(t))return this.error("Invalid argument: expected an object as the first argument");var n=e(RecipeBook.calculate(t),2),i=n[0],o=n[1];WikiVars({servings:o,name:i},this)}})})();
+(()=>{function e(e,t){var n="undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(!n){if(Array.isArray(e)||(n=r(e))||t&&e&&"number"==typeof e.length){n&&(e=n);var i=0,o=function(){};return{s:o,n:function(){return i>=e.length?{done:!0}:{done:!1,value:e[i++]}},e:function(e){throw e},f:o}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var a,s=!0,u=!1;return{s:function(){n=n.call(e)},n:function(){var e=n.next();return s=e.done,e},e:function(e){u=!0,a=e},f:function(){try{s||null==n.return||n.return()}finally{if(u)throw a}}}}function t(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){var r=null==e?null:"undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(null!=r){var n,i,o,a,s=[],u=!0,c=!1;try{if(o=(r=r.call(e)).next,0===t){if(Object(r)!==r)return;u=!1}else for(;!(u=(n=o.call(r)).done)&&(s.push(n.value),s.length!==t);u=!0);}catch(e){c=!0,i=e}finally{try{if(!u&&null!=r.return&&(a=r.return(),Object(a)!==a))return}finally{if(c)throw i}}return s}}(e,t)||r(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function r(e,t){if(e){if("string"==typeof e)return n(e,t);var r={}.toString.call(e).slice(8,-1);return"Object"===r&&e.constructor&&(r=e.constructor.name),"Map"===r||"Set"===r?Array.from(e):"Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)?n(e,t):void 0}}function n(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=Array(t);r<t;r++)n[r]=e[r];return n}function i(e){return i="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},i(e)}function o(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,a(n.key),n)}}function a(e){var t=function(e,t){if("object"!=i(e)||!e)return e;var r=e[Symbol.toPrimitive];if(void 0!==r){var n=r.call(e,t||"default");if("object"!=i(n))return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===t?String:Number)(e)}(e,"string");return"symbol"==i(t)?t:t+""}!function(){"use strict";var r=Object.freeze({INCLUDES:"includes",EQUALS:"equals"});State.variables.recipe_save_data=State.variables.recipe_save_data||new Map;var n=function(){return State.variables.recipe_save_data},a={servings:1,successRate:100,priority:100,condition:r.INCLUDES,_unlock:!1},s={unlock:!1};setup.Conditions=r,window.Conditions=window.Conditions||r;var u=function(){return u=function e(t){var r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:[],o=arguments.length>2&&void 0!==arguments[2]?arguments[2]:clone(a),u=arguments.length>3&&void 0!==arguments[3]?arguments[3]:[];if(function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.id=t,"object"!==i(r)||"object"!==i(o))throw new Error("Invalid recipe definition");if(this.methods=r,Object.assign(this,Object.assign({},a,o)),!n().has(t)){var c,l=clone(s);l.unlock=null!==(c=o._unlock)&&void 0!==c&&c,n().set(t,l)}this._tags=u instanceof Array?u:"string"==typeof u?[u]:[]},(c=[{key:"unlock",get:function(){return n().get(this.id).unlock},set:function(e){n().get(this.id).unlock=e}},{key:"name",get:function(){return this.displayName||this.id},set:function(e){this.displayName=e}},{key:"tags",get:function(){return this._tags}},{key:"hasTag",value:function(e){return this._tags.includes(e)}},{key:"hasAllTags",value:function(e){return this._tags.includesAll(e)}},{key:"hasAnyTags",value:function(e){return this._tags.includesAny(e)}},{key:"validate",value:function(e){switch(this.condition){case r.EQUALS:return this.equals(e);case r.INCLUDES:return this.includes(e);default:throw new TypeError("Invalid condition type: ".concat(this.condition))}}},{key:"calculate",value:function(e,r){if(this.methods.length<=r)throw new Error("Unable to access recipe at index ".concat(r,", total number of available crafting methods is ").concat(this.ingredients.length));return Object.entries(this.methods[r]).reduce((function(r,n){var i=t(n,2),o=i[0],a=i[1];if(o.startsWith("tag:")){for(var s=o.substring(4),u=0,c=0,l=Object.entries(e);c<l.length;c++){var f=t(l[c],2),h=f[0],v=f[1],y=Item.get(h);y&&y.hasTag(s)&&(u+=v)}return Math.min(r,Math.floor(u/a))}var d=e[o];return Math.min(r,Math.floor(d/a))}),1/0)}},{key:"multiply",value:function(r,n){if(void 0!==n&&this.methods.length<=n)throw new Error("Unable to access recipe at index ".concat(n,", total number of available crafting methods is ").concat(this.ingredients.length));if("number"!=typeof r||r<=0)throw new Error("Invalid number of servings");var i,o=[],a=e(void 0!==n?[this.methods[n]]:this.methods);try{for(a.s();!(i=a.n()).done;){for(var s=i.value,u={},c=0,l=Object.entries(s);c<l.length;c++){var f=t(l[c],2),h=f[0],v=f[1];u[h]=v*r}o.push(u)}}catch(e){a.e(e)}finally{a.f()}return o}},{key:"includes",value:function(r){var n,i=e(this.methods);try{for(i.s();!(n=i.n()).done;){var o=n.value;if(Object.keys(r).length<Object.keys(o).length)return}}catch(e){i.e(e)}finally{i.f()}var a,s=e(this.methods.entries());try{for(s.s();!(a=s.n()).done;){var u=t(a.value,2),c=u[0],l=u[1],f=!0;for(var h in l)if(h.startsWith("tag:")){for(var v=h.substring(4),y=!1,d=0,p=Object.entries(r);d<p.length;d++){var g=t(p[d],2),b=g[0],m=g[1],k=Item.get(b);if(k&&k.hasTag(v)&&m>=l[h]){y=!0;break}}if(!y){f=!1;break}}else if(!r[h]||r[h]<l[h]){f=!1;break}if(f)return c}}catch(e){s.e(e)}finally{s.f()}}},{key:"cook",value:function(){if(100===this.successRate)return!0;var e=randomInt(1,100);return this.successRate>=e}},{key:"equals",value:function(r){var n,i=e(this.methods);try{for(i.s();!(n=i.n()).done;){var o=n.value;if(Object.keys(r).length<Object.keys(o).length)return}}catch(e){i.e(e)}finally{i.f()}var a,s=e(this.methods.entries());try{for(s.s();!(a=s.n()).done;){var u=t(a.value,2),c=u[0],l=u[1],f=!0;for(var h in l)if(h.startsWith("tag:")){for(var v=h.substring(4),y=0,d=0,p=Object.entries(r);d<p.length;d++){var g=t(p[d],2),b=g[0],m=g[1],k=Item.get(b);k&&k.hasTag(v)&&(y+=m)}if(y!==l[h]){f=!1;break}}else if(!r[h]||r[h]!==l[h]){f=!1;break}if(f)return c}}catch(e){s.e(e)}finally{s.f()}}}])&&o(u.prototype,c),l&&o(u,l),Object.defineProperty(u,"prototype",{writable:!1}),u;var u,c,l}();setup.Recipe=u,window.Recipe=window.Recipe||u}()})(),(()=>{function e(t){return e="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e(t)}function t(e,t){var r="undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(!r){if(Array.isArray(e)||(r=a(e))||t&&e&&"number"==typeof e.length){r&&(e=r);var n=0,i=function(){};return{s:i,n:function(){return n>=e.length?{done:!0}:{done:!1,value:e[n++]}},e:function(e){throw e},f:i}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var o,s=!0,u=!1;return{s:function(){r=r.call(e)},n:function(){var e=r.next();return s=e.done,e},e:function(e){u=!0,o=e},f:function(){try{s||null==r.return||r.return()}finally{if(u)throw o}}}}function r(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,i(n.key),n)}}function n(e,t,r){return(t=i(t))in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function i(t){var r=function(t,r){if("object"!=e(t)||!t)return t;var n=t[Symbol.toPrimitive];if(void 0!==n){var i=n.call(t,r||"default");if("object"!=e(i))return i;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===r?String:Number)(t)}(t,"string");return"symbol"==e(r)?r:r+""}function o(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){var r=null==e?null:"undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(null!=r){var n,i,o,a,s=[],u=!0,c=!1;try{if(o=(r=r.call(e)).next,0===t){if(Object(r)!==r)return;u=!1}else for(;!(u=(n=o.call(r)).done)&&(s.push(n.value),s.length!==t);u=!0);}catch(e){c=!0,i=e}finally{try{if(!u&&null!=r.return&&(a=r.return(),Object(a)!==a))return}finally{if(c)throw i}}return s}}(e,t)||a(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function a(e,t){if(e){if("string"==typeof e)return s(e,t);var r={}.toString.call(e).slice(8,-1);return"Object"===r&&e.constructor&&(r=e.constructor.name),"Map"===r||"Set"===r?Array.from(e):"Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)?s(e,t):void 0}}function s(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=Array(t);r<t;r++)n[r]=e[r];return n}!function(){"use strict";var i,a=function(){function n(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:new Map,r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:[];if(function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,n),!(t instanceof Map))throw new Error('Expected "recipes" to be an instance of Map');if(!Array.isArray(r))throw new Error('Expected "invs" to be an array');this.invs=r,this.ct=e,State.variables[this.ct]=State.variables[this.ct]||new Inventory,this.recipes=t,this._recipes=n.sort(t)}return i=n,a=[{key:"names",value:function(){return Array.from(this.recipes.keys())}},{key:"has",value:function(e){return this.recipes.has(e)}},{key:"hasItems",value:function(e){for(var t=State.variables[this.ct],r=0,n=Object.entries(e);r<n.length;r++){var i=o(n[r],2),a=i[0],s=i[1];if(a.startsWith("tag:")){for(var u=a.substring(4),c=!1,l=0,f=Object.entries(t.data);l<f.length;l++){var h=o(f[l],2),v=h[0],y=h[1],d=Item.get(v);if(d&&d.hasTag(u)&&y>=s){c=!0;break}}if(!c)return!1}else if(t.count(a)<s)return!1}return!0}},{key:"drop",value:function(e){for(var t=State.variables[this.ct],r=0,n=Object.entries(e);r<n.length;r++){var i=o(n[r],2),a=i[0],s=i[1];if(a.startsWith("tag:"))for(var u=a.substring(4),c=s,l=0,f=Object.entries(t.data);l<f.length;l++){var h=o(f[l],2),v=h[0],y=h[1];if(c<=0)break;var d=Item.get(v);if(d&&d.hasTag(u)){var p=Math.min(y,c);void 0===t.pickup?t.delete(v,p):t.drop(v,p),c-=p}}else void 0===t.pickup?t.delete(a,s):t.drop(a,s)}}},{key:"update",value:function(){this._recipes=n.sort(this.recipes)}},{key:"hasAllTags",value:function(){var e,r=[].slice.call(arguments).flat(1/0),n=[],i=t(this._recipes);try{for(i.s();!(e=i.n()).done;){var o=e.value;o.hasAllTags(r)&&n.push(o)}}catch(e){i.e(e)}finally{i.f()}return n}},{key:"searchIndex",value:function(e){for(var t=0,r=this._recipes.length-1;t<=r;){var n=Math.floor((t+r)/2);if(this._recipes[n].priority===e)return n;this._recipes[n].priority<e?t=n+1:r=n-1}return t}},{key:"insert",value:function(e,t,r,n){Array.isArray(t)||(t=[t]);var i=this.set(e,t,r,n),o=this.searchIndex(i.priority);this._recipes.splice(o,0,i)}},{key:"set",value:function(e,t,r,n){Array.isArray(t)||(t=[t]);var i=new Recipe(e,t,r,n);return this.recipes.set(e,i),i}},{key:"get",value:function(e){return this.recipes.get(e)}},{key:"calculate",value:function(e){var t=o(this.match(e),2),r=t[0],i=t[1];return void 0===r||void 0===i?[n.default_no_recipe,0]:[i.name,i.calculate(e,r)*i.servings]}},{key:"cook",value:function(r){var i=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1,a=o(this.match(r),2),s=a[0],u=a[1],c={id:"",success:!1,unlock:!1,exist:!1,servings:0,message:n.not_found};if(null==u&&null==s)"object"===e(r)&&Object.keys(r).forEach((function(e){return delete r[e]}));else if(u.unlock||"string"!=typeof r)if("string"==typeof r&&void 0===s){c.id=u.name,c.servings=0,c.success=!1,c.message=n.missing_materials;var l,f=t(u.multiply(i));try{for(f.s();!(l=f.n()).done;){var h=l.value;if(this.hasItems(h)){this.drop(h),c.success=!0,c.servings=i,c.message=n.success;break}}}catch(e){f.e(e)}finally{f.f()}}else void 0!==s&&void 0!==u&&(c.id=u.id,c.success=u.cook(),r.length=0,c.success?(c.servings=u.calculate(r,s),u.unlock?c.message=n.success:(c.message=n.unlocked_success,u.unlock=!0)):(c.servings=0,c.message=n.failure),Object.keys(r).forEach((function(e){return delete r[e]})));else c.id=u.name,c.success=!1,c.unlock=!1,c.message=n.not_unlocked;return u&&(c.servings*=u.servings),c}},{key:"cookSave",value:function(e,t){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:1,i=this.cook(t,r);return i.success&&n.pickup(e,i.id,i.servings),i}},{key:"match",value:function(r){if("object"!==e(r)||null===r){if("string"==typeof r){var n=this.recipes.get(r);return void 0===n?[void 0,void 0]:[void 0,n]}throw new Error("Invalid argument: ".concat(r))}var i,o=t(this._recipes);try{for(o.s();!(i=o.n()).done;){var a=i.value;if(!(a instanceof Recipe))throw new Error("Invalid Recipe: ".concat(a));var s=a.validate(r);if(void 0!==s)return[s,a]}}catch(e){o.e(e)}finally{o.f()}return[void 0,void 0]}},{key:"filter",value:function(e){if("undefined"==typeof filterObjs)throw new Error('The "filter-utils" is required but has not been imported');return filterObjs(this._recipes,e,(function(e,t){return!t.tags||e.methods.some((function(e){return Object.keys(e).some((function(e){var r,n;return null!==(r=null===(n=Item.get(e))||void 0===n?void 0:n.hasAnyTags(t.tags))&&void 0!==r&&r}))}))}))}},{key:"crafting_table",get:function(){return this.ct},set:function(e){this.ct=e,State.variables[this.ct]=State.variables[this.ct]||new Inventory}}],s=[{key:"sort",value:function(e){var t=Array.from(e.values()),r={};t.forEach((function(e){var t=void 0!==e.priority?e.priority:100;r[t]=(r[t]||0)+1}));var n=Object.keys(r).map(Number).sort((function(e,t){return e-t})),i={},o=0;n.forEach((function(e){i[e]=o,o+=r[e]}));for(var a=Array(t.length),s=t.length-1;s>=0;s--){var u=t[s],c=void 0!==u.priority?u.priority:100;a[i[c]]=u,i[c]++}return a}},{key:"pickup",value:function(e){if(!(e instanceof Inventory))throw new Error("Invalid inventory");for(var t=arguments.length,r=new Array(t>1?t-1:0),n=1;n<t;n++)r[n-1]=arguments[n];if(void 0!==e.pickup)return e.pickup.apply(e,r);for(var i,o=0;o<r.length-1;o+=2){var a=r[o],s=r[o+1];if(!a||!s)return i;if(!(i=e.store(a,s)).success)return i}}}],a&&r(i.prototype,a),s&&r(i,s),Object.defineProperty(i,"prototype",{writable:!1}),i;var i,a,s}();n(a,"success","制作成功"),n(a,"failure","制作失败"),n(a,"not_found","配方不存在"),n(a,"not_unlocked","配方未解锁"),n(a,"missing_materials","缺少材料"),n(a,"unlocked_success","配方成功解锁"),n(a,"default_no_recipe","待探索"),n(a,"crafting_table","crafting_table"),i=a,["success","failure","not_found","not_unlocked","missing_materials","unlocked_success","default_no_recipe"].forEach((function(e){Object.defineProperty(i.prototype,e,{get:function(){return i[e]},set:function(t){i[e]=t}})})),setup._RecipeBook=a,window._RecipeBook=window._RecipeBook||a,setup.RecipeBook=setup.RecipeBook||new a(a.crafting_table),window.RecipeBook=window.RecipeBook||setup.RecipeBook}()})(),(()=>{function e(e,r){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){var r=null==e?null:"undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(null!=r){var n,i,o,a,s=[],u=!0,c=!1;try{if(o=(r=r.call(e)).next,0===t){if(Object(r)!==r)return;u=!1}else for(;!(u=(n=o.call(r)).done)&&(s.push(n.value),s.length!==t);u=!0);}catch(e){c=!0,i=e}finally{try{if(!u&&null!=r.return&&(a=r.return(),Object(a)!==a))return}finally{if(c)throw i}}return s}}(e,r)||function(e,r){if(e){if("string"==typeof e)return t(e,r);var n={}.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?t(e,r):void 0}}(e,r)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function t(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=Array(t);r<t;r++)n[r]=e[r];return n}function r(e){return r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},r(e)}Macro.add("cook",{tags:null,handler:function(){if(this.args.length<1)return this.error("Not enough arguments provided. At least two arguments are required");var e,t=this.args[0];if("object"!==r(t)&&"string"!=typeof t||null===t)return this.error("Expected an object or a string, but received: "+r(t));if(this.args.length>=2){var n=this.args[1];if(!(n&&n instanceof Inventory))return this.error("Expected an instance of Inventory, but received: "+r(n));e=RecipeBook.cookSave(n,t,parseInt(this.args[2])||1)}else e=RecipeBook.cook(t);WikiVars({result:e},this)}}),Macro.add("filter_recipe",{tags:null,handler:function(){if(this.args.length<1)return this.error("Not enough arguments provided. At least two arguments are required.");var e=this.args[0];if(e&&"object"!==r(e))return this.error("Invalid input: 'filters' should be an object");var t=RecipeBook.filter(e);WikiVars({result:t},this)}}),Macro.add("recipes_with_tag",{handler:function(){if(this.args.length<1)return this.error("Not enough arguments provided. At least one tag is required");var e=RecipeBook.filter(this.args);WikiVars({result:e},this)}}),Macro.add("calculate",{tags:null,handler:function(){if(this.args.length<1)return this.error("Not enough arguments provided. At least one tag is required");var t=this.args[0];if("object"!==r(t))return this.error("Invalid argument: expected an object as the first argument");var n=e(RecipeBook.calculate(t),2),i=n[0],o=n[1];WikiVars({servings:o,name:i},this)}})})();
 /* End Recipes */
 
 RecipeBook.crafting_table= 'material';
@@ -4686,27 +4686,27 @@ $(document).on(":passagerender", function (ev) {
 });
 
 
-// document.addEventListener('contextmenu', function(event) {
-//  event.preventDefault();
-//  });
+document.addEventListener('contextmenu', function(event) {
+ event.preventDefault();
+ });
 
-//  document.addEventListener('keydown', function(e) {
-//  if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
-//  e.preventDefault();
-//  }
-// }, false);
+ document.addEventListener('keydown', function(e) {
+ if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+ e.preventDefault();
+ }
+}, false);
 
-//  document.addEventListener('keydown', function(e) {
-//  if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-//  e.preventDefault();
-//  }
-// }, false);
+ document.addEventListener('keydown', function(e) {
+ if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+ e.preventDefault();
+ }
+}, false);
 
-//  document.addEventListener('keydown', function(event) {
-//  if ( event.key === 'F12') {
-//  event.preventDefault();
-//  }
-//  });
+ document.addEventListener('keydown', function(event) {
+ if ( event.key === 'F12') {
+ event.preventDefault();
+ }
+ });
 
  State.variables.avatar = localStorage.getItem('userAvatar');
 
@@ -6877,35 +6877,35 @@ RecipeBook.set("方糖", {"蜂蜜": 1}, {servings: 6});
 RecipeBook.set("煎蛋", {"鸟蛋": 1});
 RecipeBook.set("鱼油", {"鱼肉": 1}, {servings: 2});
 RecipeBook.set("无花果蜜饯", {"无花果": 1, "方糖": 1});
-RecipeBook.set("柠香三文鱼", {"白鲑鱼": 1, "柠檬": 1});
-RecipeBook.set("茄汁鲈鱼", {"黑鲈鱼": 1, "番茄": 2});
+RecipeBook.set("柠香三文鱼", {"白鲑鱼": 1, "柠檬": 1,"砂盐": 1});
+RecipeBook.set("茄汁鲈鱼", {"黑鲈鱼": 1, "番茄": 2,"砂盐": 1});
 RecipeBook.set("蜂蜜柠檬水", {"蜂蜜": 1, "柠檬": 1});
-RecipeBook.set("炸薯条", {"土豆": 1, "鱼油": 1}, {servings: 5});
-RecipeBook.set("炸鱼", {"面粉": 1, "鱼肉": 1, "鱼油": 1}, {servings: 2});
-RecipeBook.set("土豆泥", {"土豆": 1, "黄油": 1}, {servings: 2});
+RecipeBook.set("炸薯条", {"土豆": 1, "鱼油": 1,"砂盐": 1}, {servings: 5});
+RecipeBook.set("炸鱼", {"面粉": 1, "鱼肉": 1, "鱼油": 1,"砂盐": 1}, {servings: 2});
+RecipeBook.set("土豆泥", {"土豆": 1, "黄油": 1,"砂盐": 1}, {servings: 2});
 RecipeBook.set("炸鱼薯条", {"炸鱼": 1, "炸薯条": 1});
 RecipeBook.set("土豆蛋饼", {"土豆": 1, "黄油": 1, "鸟蛋": 1}, {servings: 2});
-RecipeBook.set("浆果馅饼", {"浆果": 5, "面粉": 1, "黄油": 1, "糖": 3}, {servings: 4});
-RecipeBook.set("番茄浓汤", {"番茄": 1, "土豆": 1, "洋葱": 1, "羊奶": 1});
-RecipeBook.set("扇贝汤", {"扇贝": 5, "洋葱": 1, "黄油": 1, "羊奶": 1});
-RecipeBook.set("红椒酿肉", {"兽肉": 2, "黄油": 1, "黑麦啤酒": 1, "辣椒": 1, "面粉": 1});
-RecipeBook.set("蘑菇鱼汤", {"tag:fishy": 1, "黄油": 1, "洋葱": 1, "毒蘑菇": 1, "面粉": 1}, {servings: 4});
-RecipeBook.set("苏格兰汤", {"鳕鱼": 1, "洋葱": 1, "土豆": 1, "羊奶": 1}, {servings: 3});
-RecipeBook.set("渔夫派", [{"鱼肉": 1, "胡萝卜": 1, "土豆泥": 1, "羊奶": 1, "黄油": 1, "洋葱": 1}, {"鱼肉": 1, "玉米": 1, "土豆泥": 1, "羊奶": 1, "黄油": 1, "洋葱": 1}], {servings: 4});
-RecipeBook.set("羊倌派", {"兽肉": 1, "胡萝卜": 1, "洋葱": 1, "土豆泥": 1, "羊奶": 1, "黄油": 1}, {servings: 4});
+RecipeBook.set("浆果馅饼", {"浆果": 3, "面粉": 1, "黄油": 1, "方糖": 1}, {servings: 4});
+RecipeBook.set("番茄浓汤", {"番茄": 1, "土豆": 1, "洋葱": 1, "羊奶": 1,"砂盐": 1}, {servings: 3});
+RecipeBook.set("扇贝汤", {"扇贝": 4, "洋葱": 1, "黄油": 1, "羊奶": 1,"砂盐": 1}, {servings: 3});
+RecipeBook.set("红椒酿肉", {"兽肉": 2, "黄油": 1, "黑麦啤酒": 1, "辣椒": 1, "面粉": 1,"砂盐": 1});
+RecipeBook.set("蘑菇鱼汤", {"tag:fishy": 1, "黄油": 1, "洋葱": 1, "毒蘑菇": 1, "面粉": 1,"砂盐": 1}, {servings: 4});
+RecipeBook.set("苏格兰汤", {"鳕鱼": 1, "洋葱": 1, "土豆": 1, "羊奶": 1,"砂盐": 1}, {servings: 3});
+RecipeBook.set("渔夫派", [{"鱼肉": 1, "胡萝卜": 1, "土豆泥": 1, "羊奶": 1, "黄油": 1, "洋葱": 1,"砂盐": 1}, {"鱼肉": 1, "玉米": 1, "土豆泥": 1, "羊奶": 1, "黄油": 1, "洋葱": 1}], {servings: 4});
+RecipeBook.set("羊倌派", {"兽肉": 1, "胡萝卜": 1, "洋葱": 1, "土豆泥": 1, "羊奶": 1, "黄油": 1,"砂盐": 1}, {servings: 4});
 RecipeBook.set("面包片", {"面粉": 1, "黄油": 1, "羊奶": 1, "方糖": 1}, {servings: 5});
 RecipeBook.set("法式吐司", {"面包片": 2, "鸟蛋": 1, "羊奶": 1, "黄油": 1}, {servings: 3});
-RecipeBook.set("蔬菜什锦", [{"洋葱": 2, "胡萝卜": 1, "欧芹": 1, "黄油": 1}, {"洋葱": 2, "胡萝卜": 1, "欧芹": 1, "黄油": 1, "番茄": 1}], {servings: 4});
+RecipeBook.set("蔬菜什锦", [{"洋葱": 2, "胡萝卜": 1, "玉米": 1, "黄油": 1}, {"洋葱": 2, "胡萝卜": 1, "玉米": 1, "黄油": 1, "番茄": 1}], {servings: 4});
 /*喝的*/
 RecipeBook.set("花茶", {"tag:花": 1, "方糖": 1}, {servings: 3});
 RecipeBook.set("牡丹花茶", {"牡丹花": 1, "方糖": 1}, {servings: 3});
 RecipeBook.set("无花果酒", {"无花果": 6, "柿子酒": 1, "黑蜂蜂蜜": 1}, {servings: 6});
 RecipeBook.set("巴尔谢酒", {"丁香树皮": 1, "玉米": 1, "蜂蜜": 1, "朗姆酒": 1}, {servings: 5});
 
-RecipeBook.set("蒲公英酒", {"蒲公英": 3, "糖": 1, "柠檬": 1}, {servings: 5});
+RecipeBook.set("蒲公英酒", {"蒲公英": 3, "方糖": 1, "柠檬": 1}, {servings: 5});
 RecipeBook.set("布尔盖酒", {"龙舌兰蜜": 1}, {servings: 3});
 
-RecipeBook.set("鲜花饼", [{"tag:花":3, "面粉": 1, "方糖": 2}], {servings: 3});
+RecipeBook.set("鲜花饼", [{"tag:花":3, "面粉": 1, "方糖": 1}], {servings: 3});
 
 /*用的*/
 RecipeBook.set("皮革手套", [{"小型皮毛": 4}, {"大型皮毛": 1}]);
@@ -6914,7 +6914,7 @@ RecipeBook.set("玫瑰花环", [{"tag:玫瑰": 6}]);
 RecipeBook.set("茉莉手链", [{"茉莉花": 12}]);
 RecipeBook.set("贝壳项链", [{"贝壳": 6}]);
 RecipeBook.set("月光提灯", [{"鱼竿": 1, "萤火虫罐": 1}]);
-
+RecipeBook.set("柿子酒", {"乌柿": 1, "方糖": 1}, {servings: 3});
 RecipeBook.update();
 /* twine-user-script #9: "story/js\\07-achieve.js" */
 /*---------------------------成就系统-------------------------*/
@@ -7413,7 +7413,7 @@ Item.add("无花果", {displayName: "无花果", description: "<br><br>〖食用
 Item.add("羊奶", {displayName: "羊奶", description: "新鲜的哺乳动物提取物<br><br>〖食用后体力+2〗<<iwd \"羊奶\">>" , handler: "<<eatfood 2>><<loseweight 0.2>>", consumable: "true", function: "false", store: null, price: 3 , weight: 0.2},["食物", "食材", null, null, "creamy", null, "fuelB"]);
 Item.add("煎蛋", {displayName: "煎蛋", description: "简单煎蛋<br><br>〖食用后体力+4〗<<iwd \"煎蛋\">>" , handler: "<<eatfood 4>><<loseweight  0.05>>", consumable: "true", function: "false", store: null, price: 2 , weight: 0.05},["食物", "食材", "烹饪", null, "meaty", null, "fuelA"]);
 Item.add("炸鱼", {displayName: "炸鱼", description: "<br><br>〖使用后体力+8〗<<iwd \"炸鱼\">>" , handler: "<<eatfood 8>><<loseweight 0.05>>", consumable: "true", function: "false", store: null, price: 4 , weight: 0.05},["食物", "食材", "烹饪", null, "fishy", null, "fuelA"]);
-Item.add("乌柿", {displayName: "乌柿", description: "生长在黑莲中的果实，通体乌黑，可以酿造柿子酒<br><br>〖使用后体力+8〗<<iwd \"乌柿\">>" , handler: "<<eatfood 8>><<set $lotus +=1>><<loseweight 0.05>>", consumable: "true", function: "false", store: null, price: 4 , weight: 0.05},["食物", "酿酒", null, null, null, null, "fuelS"]);
+Item.add("乌柿", {displayName: "乌柿", description: "生长在黑莲中的果实，通体乌黑，可以酿造柿子酒<br><br>〖使用后体力+4〗<<iwd \"乌柿\">>" , handler: "<<eatfood 4>><<set $lotus +=1>><<loseweight 0.05>>", consumable: "true", function: "false", store: null, price: 4 , weight: 0.05},["食物", "酿酒", null, null, null, null, "fuelS"]);
 Item.add("炸薯条", {displayName: "炸薯条", description: "<br><br>〖使用后体力+2〗<<iwd \"炸薯条\">>" , handler: "<<eatfood 2>><<loseweight 0.03>>", consumable: "true", function: "false", store: null, price: 2 , weight: 0.03},["食物", "食材", "烹饪", null, "fatty", null, "fuelA"]);
 Item.add("柠香三文鱼", {displayName: "柠香三文鱼", description: "<br><br>〖食用后体力+20〗<<iwd \"柠香三文鱼\">>" , handler: "<<eatfood 20>><<loseweight 0.3>>", consumable: "true", function: "false", store: null, price: 8 , weight: 0.3},["食物", "烹饪", null, null, "fishy", null, "fuelA"]);
 Item.add("茄汁鲈鱼", {displayName: "茄汁鲈鱼", description: "酸酸甜甜的番茄味几乎盖掉了鱼本来的气味。岛上流传一句话：“如果你分不清鱼是新鲜还是昨晚的，那就加番茄吧。”<br><br>〖食用后体力+20〗<<iwd \"茄汁鲈鱼\">>" , handler: "<<eatfood 20>><<loseweight 0.3>>", consumable: "true", function: "false", store: null, price: 8 , weight: 0.3},["食物", "烹饪", null, null, "fishy", null, "fuelA"]);
@@ -7434,9 +7434,11 @@ Item.add("红椒酿肉", {displayName: "红椒酿肉", description: "<br><br>〖
 Item.add("苏格兰汤", {displayName: "苏格兰汤", description: "粗糙的谷物，坚硬的根茎，隔夜的剩肉，这碗汤带着一股不屈的生命力。祝愿你永远都不需要依靠它来维持生命。<br><br>〖食用后体力+16〗<<iwd \"苏格兰汤\">>" , handler: "<<eatfood 16>><<loseweight 0.6>>", consumable: "true", function: "false", store: null, price: 8 , weight: 0.6},["食物", "烹饪", null, null, "fishy", null, "fuelA"]);
 Item.add("扇贝汤", {displayName: "扇贝汤", description: " <<iwd \"扇贝汤\">>" , handler: "<<eatfood 12>><<loseweight 0.6>>", consumable: "true", function: "false", store: null, price: 6 , weight: 0.6},["食物", "烹饪", null, null, "fishy", null, "fuelA"]);
 Item.add("蔬菜什锦", {displayName: "蔬菜什锦", description: " <<iwd \"蔬菜什锦\">>" , handler: "<<eatfood 8>><<loseweight 0.2>>", consumable: "true", function: "false", store: null, price: 4 , weight: 0.2},["食物", "烹饪", null, null, null, null, "fuelA"]);
+Item.add("无花果蜜饯", {displayName: "无花果蜜饯", description: " <<iwd \"无花果蜜饯\">>" , handler: "<<eatfood 8>><<loseweight 0.2>>", consumable: "true", function: "false", store: null, price: 6 , weight: 0.2},["食物", "烹饪", null, null, null, null, "fuelA"]);
 Item.add("羊倌派", {displayName: "羊倌派", description: "即使是叫这样的名字，但不论是从传统，还是埃拉的要求来说，这里面的都绝对不是羊肉。因为对埃拉而言，羊只能数，不能吃<br><br>〖食用后体力+24〗<<iwd \"羊倌派\">>" , handler: "<<eatfood 24>><<loseweight 0.5>>", consumable: "true", function: "false", store: 50, price: 12 , weight: 0.5},["食物", "烹饪", null, null, "meaty", null, "fuelA"]);
 Item.add("蜂蜜柠檬水", {displayName: "蜂蜜柠檬水", description: "<br><br>〖食用后体力+6〗<<iwd \"蜂蜜柠檬水\">>" , handler: "<<eatfood 6>><<loseweight 0.04>>", consumable: "true", function: "false", store: null, price: 2 , weight: 0.04},["食物", "食材", null, "蜂蜜", "sweet", null, "fuelB"]);
 Item.add("蜂蜜鲜奶", {displayName: "蜂蜜鲜奶", description: "<br><br>〖食用后体力+5〗<<iwd \"蜂蜜鲜奶\">>" , handler: "<<eatfood 5>><<loseweight 0.04>>", consumable: "true", function: "false", store: null, price: 2 , weight: 0.04},["食物", "食材", null, "蜂蜜", "creamy", null, "fuelB"]);
+Item.add("花茶", {displayName: "花茶", description: "<br><br>〖使用后体力+2〗<<iwd \"花茶\">>" , handler: "<<eatfood 1>><<loseweight 0.04>>", consumable: "true", function: "false", store: null, price: 2 , weight: 0.04},["食物", "食材", "茶", null, "floral", null, "fuelC"]);
 Item.add("牡丹花茶", {displayName: "牡丹花茶", description: "<br><br>〖使用后体力+1，噩梦-1〗<<iwd \"牡丹花茶\">>" , handler: "<<eatfood 1>><<losebadexp \"噩梦\" 1>><<notify 3s>>你的噩梦降低了1点<</notify>><<loseweight 0.04>>", consumable: "true", function: "false", store: null, price: 2 , weight: 0.04},["食物", "食材", "茶", null, "floral", null, "fuelC"]);
 Item.add("柿子酒", {displayName: "柿子酒", description: "乌黑醇香的家酿酒, 似乎是永无乡上的特产, 几乎每家每户都会在家中准备上这些口感甘甜的果酒, 也是赠礼的最佳选择<<iwd \"柿子酒\">><<if !$sq.lotus && $sq.lotus != 0>><<set $sq.lotus = 0>><<notify 3s>>Seisi提问新增“柿子酒”<</notify>><</if>>" , handler: "<<run Dialog.setup('饮用柿子酒');Dialog.wiki('有什么近似梦幻的东西滑进了你的嘴里, 然后是你的喉咙, 接着, 这种温暖而美妙的感觉扩散至了你的每一处知觉. 所有的悲痛, 所有的不幸, 似乎都已被这果酒洗刷. 等酒效过去, 你又回到了那个满是烦恼的世界');Dialog.open();>><<set $lotus += 1>><<if $lotus <= 24>><<set $player.nightmare -= 2>><<elseif $lotus <= 72>><<set $player.nightmare -= 1>><<elseif $lotus >= 241 && $lotus <=360>><<set $player.nightmare += 1>><<elseif $lotus <=666>><<set $player.nightmare += 1>><</if>><<loseweight 0.6>>", consumable: "true", function: "false", store: 6, price: 3 , weight: 0.6},["食物", "酒", "酿酒", null, null, null, "fuelS"]);
 Item.add("布尔盖酒", {displayName: "布尔盖酒", description: "<<iwd\"布尔盖酒\">>" , handler: "<<eatfood 8>><<loseweight 0.6>>", consumable: "true", function: "false", store: 3, price: 15 , weight: 0.6},["食物", "酒", null, null, null, null, "fuelA"]);
@@ -7617,7 +7619,7 @@ Item.add("战争与和平", {displayName: "战争与和平", description: "托�
 Item.add("傲慢与偏见", {displayName: "傲慢与偏见", description: "简·奥斯汀的社会小说，以伊丽莎白与达西的情感纠葛折射出阶层与性格的冲突<<readbook \"傲慢与偏见\">><<iwd \"傲慢与偏见\">>" , handler: null, consumable: null, function: null, store: 1, price: 5 , weight: 1.2},["读物", "图书馆", null, null, null, null, "fuelA"]);
 Item.add("堂吉诃德", {displayName: "堂吉诃德", description: "塞万提斯的长篇小说，描写一个痴迷骑士故事的乡绅，化身为游侠骑士的荒诞冒险<<readbook \"堂吉诃德\">><<iwd \"堂吉诃德\">>" , handler: null, consumable: null, function: null, store: 1, price: 5 , weight: 0.8},["读物", "图书馆", null, null, null, null, "fuelA"]);
 
-</script><tw-tag name="nobr" color="yellow"></tw-tag><tw-tag name="autosave" color="blue"></tw-tag><tw-tag name="init" color="green"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="UIBarhide" color="green"></tw-tag><tw-tag name="widget" color="orange"></tw-tag><tw-passagedata pid="1" name="demo结语" tags="" position="2000,1000" size="100,100">&lt;center&gt;
+</script><tw-tag name="UIBarhide" color="green"></tw-tag><tw-tag name="autosave" color="blue"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="init" color="green"></tw-tag><tw-tag name="nobr" color="yellow"></tw-tag><tw-tag name="widget" color="orange"></tw-tag><tw-passagedata pid="1" name="demo结语" tags="" position="2000,1000" size="100,100">&lt;center&gt;
 
 demo的游戏内容到此结束, 主要内容有5段主线剧情、3个主线任务、3段支线剧情、2个支线任务、12个可互动角色、13个成就、7条线索
 
@@ -9080,7 +9082,7 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/do&gt;&gt;
 &lt;/div&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="问题列表" tags="nobr" position="2100,200" size="100,100">&lt;&lt;if $sq.way &lt; 4&gt;&gt;&lt;&lt;link &quot;✧你是谁&quot;&gt;&gt;&lt;&lt;set _qst = &quot;你是谁&quot;, $sq.way +=1&gt;&gt;&lt;&lt;redo &quot;问题列表&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="问题列表" tags="nobr" position="2100,200" size="100,100">&lt;&lt;if $sq.way &lt; 2&gt;&gt;&lt;&lt;link &quot;✧你是谁&quot;&gt;&gt;&lt;&lt;set _qst = &quot;你是谁&quot;&gt;&gt;&lt;&lt;redo &quot;问题列表&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $sq.moon &lt; 1&gt;&gt;&lt;&lt;link &quot;✧月亮&quot;&gt;&gt;&lt;&lt;set _qst = &quot;月亮&quot;, $sq.moon = 1&gt;&gt;&lt;&lt;redo &quot;问题列表&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $sq.ashes &lt; 1&gt;&gt;&lt;&lt;link &quot;✧尘羽&quot;&gt;&gt;&lt;&lt;set _qst = &quot;尘羽&quot;, $sq.ashes = 1&gt;&gt;&lt;&lt;redo &quot;问题列表&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $sq.flowerstore == 0&gt;&gt;&lt;&lt;link &quot;✧花店&quot;&gt;&gt;&lt;&lt;set _qst = &quot;花店&quot;, $sq.flowerstore = 1&gt;&gt;&lt;&lt;redo &quot;问题列表&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
@@ -9099,12 +9101,9 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 &lt;br&gt;
 &lt;hr&gt;&lt;br&gt;
 &lt;&lt;do tag &quot;问题列表&quot;&gt;&gt;
-&lt;&lt;if _qst == &quot;你是谁&quot;&gt;&gt;
-&lt;&lt;if $sq.way ==1&gt;&gt;
+&lt;&lt;if _qst == &quot;你是谁&quot;&gt;&gt;&lt;&lt;set $sq.way =1&gt;&gt;
 愚昧的凡间生物, 居然连我庇护之神Seisinofoaga的名讳都不曾听过? 真是可惜, 你没机会见到万人称颂我的名字的场面了. 我是岛主的唯一的导师, 也是你的指引者，岛主不在的时候，这里一切听我的
-&lt;&lt;elseif $sq.way == 2&gt;&gt;
-111
-&lt;&lt;/if&gt;&gt;
+
 
 &lt;&lt;elseif _qst == &quot;月亮&quot;&gt;&gt;
 是的，它碎掉了，我还没瞎. 都这么些年了，你又不是第一次看到，别像个小崽子一样大惊小怪，况且这样对这里一点影响都没有, 有什么可担心的&lt;&lt;set $textmoon.push(&quot;“是的，它碎掉了，我还没瞎. 都这么些年了，你又不是第一次看到，别像个小崽子一样大惊小怪，况且这样对这里一点影响都没有, 有什么可担心的”&quot;)&gt;&gt;
@@ -11121,7 +11120,7 @@ $tnn对你的话似乎有些惊讶，他摸摸鼻子，耳朵前后转动几下�
 &lt;&lt;next 3s t8n&gt;&gt;于是你便明白了，这老鸟只是在讨食，如果这个过程能少些痛苦，你也许还能更享受它的表演。&lt;br&gt;&lt;br&gt;
 &lt;&lt;linkreplace ▷「&quot;在这里&quot;」&gt;&gt;
 &lt;&lt;if $food.uniqueLength &gt;0&gt;&gt;
-&lt;&lt;set _i =random(1, $food.uniqueLength)&gt;&gt;&lt;&lt;set _tmpn = $food.list[_i]&gt;&gt;&lt;&lt;dropitem _tmpn 1&gt;&gt;
+&lt;&lt;set _i =random(0, $food.uniqueLength-1)&gt;&gt;&lt;&lt;set _tmpn = $food.list[_i]&gt;&gt;&lt;&lt;dropitem _tmpn 1&gt;&gt;
 &lt;&lt;else&gt;&gt;&lt;&lt;set _tmpn = &quot;玫瑰花种子&quot;&gt;&gt;&lt;&lt;dropitem _tmpn 1&gt;&gt;&lt;&lt;/if&gt;&gt;
 你随意的从包里拿出一个_tmpn递给Seisi，甚至不确定鸟是否能够食用，而Seisi埋头啄了几下，立刻开始暴躁地在你头顶拍打翅膀，_tmpn从你手中滑落，啪地掉到了地上。&lt;br&gt;&lt;br&gt;
 &lt;&lt;timed 3s t8n&gt;&gt;@@.seisitalk;“少拿你们凡物的东西糊弄我！我要的可是正经的贡品！”@@ 它的嗓音听上去像木锯在咒骂。&lt;br&gt;&lt;br&gt;
@@ -11982,7 +11981,7 @@ $tnn看上去有些惊讶，仿佛从来没考虑过你会拒绝。&lt;br&gt;&lt
     content: &#39;&lt;hr class=&quot;hr-fade-content&quot;&gt;无, 没有, 不&lt;hr class=&quot;hr-fade-content&quot;&gt;&#39;}&gt;&gt;
 
 &lt;&lt;set setup.items[&#39;新的开始&#39;] to {
-    content: &#39;//你踏上了永无乡, 成为了她的新居民, 在拥有自己的小屋前，你有很多时间熟悉这里的环境//&lt;br&gt;&lt;hr class=&quot;hr-fade-content&quot;&gt;&lt;&lt;if $story[&quot;新的开始&quot;] == &quot;新的开始1&quot;&gt;&gt;✎【领尘羽】每日在&lt;b style=&quot;color:#cb8530&quot;&gt;我这里&lt;/b&gt;可以领一次尘羽，很简单，三岁小孩都能做到，我说的对吗，$nn?&lt;&lt;elseif $story[&quot;新的开始&quot;] == &quot;新的开始2&quot;&gt;&gt;✔︎【领尘羽】看来你已经完成了这项, 每天一次的免费尘羽, 换在别的地方哪有这种美事&lt;br&gt;✎【做一些服装】你看起来轻飘飘的, 就好像...什么也没穿。服装不仅是装饰品, 它们还能给你提供属性加成. 你可以去玛丽亚的店里买一件, 但我更推荐自己做一件, 毕竟这才是任务安排。去&lt;b style=&quot;color:#51b606&quot;&gt;贝雷河旁的裁缝铺&lt;/b&gt;那儿做件&lt;b style=&quot;color:#ff6f23&quot;&gt;皮毛大衣&lt;/b&gt;吧, &lt;&lt;elseif $story[&quot;新的开始&quot;] == &quot;新的开始3&quot;&gt;&gt;✔︎【领尘羽】看来你已经完成了这项, 每天一次的免费尘羽, 换在别的地方哪有这种美事&lt;br&gt;✔︎【做一些服装】看看你，已经作出了自己的第一件大....哦，恭维的话还是让别人来说吧&lt;br&gt;✎【赚一些尘羽】不要去折磨那些可怜的鸟儿, 我们不用他们的羽毛. 尘羽是永无乡上的货币, 和其他硬币别无一二, 喏, 我刚给你的就是. 你可以用它买到这个岛上的许多东西, 当然也有它买不到的东西, 现在还不是说这些的时候&lt;br&gt;至于该怎么挣钱, 你随时可以来询问我「赚钱指南」, 别担心这不收费, 但你要真心想感谢我, 一些点心不算过分吧?&lt;br&gt;&lt;br&gt;&lt;b&gt;〖获得300尘羽以完成此项〗&lt;/b&gt;&lt;&lt;/if&gt;&gt;&lt;hr class=&quot;hr-fade-content&quot;&gt;&#39;}&gt;&gt;
+    content: &#39;//你踏上了永无乡, 成为了她的新居民, 在拥有自己的小屋前，你有很多时间熟悉这里的环境，Seisi也给你列出了一些需要完成的事项//&lt;br&gt;&lt;hr class=&quot;hr-fade-content&quot;&gt;&lt;&lt;if $story[&quot;新的开始&quot;] == &quot;新的开始1&quot;&gt;&gt;✎【领尘羽】每日在&lt;b style=&quot;color:#cb8530&quot;&gt;我这里&lt;/b&gt;可以领一次尘羽，很简单，三岁小孩都能做到，我说的对吗，$nn?&lt;&lt;elseif $story[&quot;新的开始&quot;] == &quot;新的开始2&quot;&gt;&gt;✔︎【领尘羽】看来你已经完成了这项, 每天一次的免费尘羽, 换在别的地方哪有这种美事&lt;br&gt;✎【做一些服装】你看起来轻飘飘的, 就好像...什么也没穿。服装不仅是装饰品, 它们还能给你提供属性加成，有时还代表着你的身份。你可以去店里买一件, 但我更推荐自己做一件, 毕竟这才是任务安排。去&lt;b style=&quot;color:#51b606&quot;&gt;贝雷河旁的裁缝铺&lt;/b&gt;那儿做件&lt;b style=&quot;color:#ff6f23&quot;&gt;皮革手套&lt;/b&gt;吧,&lt;&lt;elseif $story[&quot;新的开始&quot;] == &quot;新的开始3&quot;&gt;&gt;✔︎【领尘羽】看来你已经完成了这项, 每天一次的免费尘羽, 换在别的地方哪有这种美事&lt;br&gt;✔︎【做一些服装】看看你，已经作出了自己的第一件大....哦，恭维的话还是让别人来说吧&lt;br&gt;✎【赚一些尘羽】不要去折磨那些可怜的鸟儿, 我们不用他们的羽毛. 尘羽是永无乡上的货币, 和其他硬币别无一二, 喏, 我刚给你的就是. 你可以用它买到这个岛上的许多东西, 当然也有它买不到的东西, 现在还不是说这些的时候&lt;br&gt;至于该怎么挣钱, 你随时可以来询问我「赚钱指南」, 别担心这不收费, 但你要真心想感谢我, 一些点心不算过分吧?&lt;br&gt;&lt;br&gt;&lt;b&gt;〖获得300尘羽以完成此项〗&lt;/b&gt;&lt;&lt;/if&gt;&gt;&lt;hr class=&quot;hr-fade-content&quot;&gt;&#39;}&gt;&gt;
 &lt;&lt;set setup.items[&#39;【已完成】新的开始&#39;] to {
     content: &#39;✔︎【领尘羽】看来你已经完成了这项, 每天一次的免费尘羽, 换在别的地方哪有这种美事&lt;br&gt;✔︎【做一些服装】看看你，已经作出了自己的第一件大....哦，恭维的话还是让别人来说吧&lt;br&gt;✔︎【赚一些尘羽】没那么难, 是吧? 我们可是费劲了心思让你不那么容易变成穷光蛋. 指南不定时会更新, 记得多看看&#39;}&gt;&gt;
 
@@ -12101,7 +12100,8 @@ $tnn看上去有些惊讶，仿佛从来没考虑过你会拒绝。&lt;br&gt;&lt
 
 /*未署名的来信*/
 &lt;&lt;if $choice == &quot;送信nix&quot;&gt;&gt;
-你在递出信时，瞥见了信封上的地址，那是英国的一个郡县，书写者的字迹优美，枘朴小姐“苏菲拜托你来的？”她毫不掩饰自己的惊讶，“我和她提过好几次了，岛上有很多猫都愿意分摊她的工作，”她边说着边拆开信封，似乎并不介意你在场，“
+你在递出信时，瞥见了信封上的地址，那是英国的一个郡县，书写者的字迹优美，署名的姓氏是Lewis，和拓荒者木屋中的路易红茶一个名字。&lt;br&gt;&lt;br&gt;
+“苏菲拜托你来的？”枘朴小姐接过信，毫不掩饰自己的惊讶，“我和她提过许多次了，岛上有很多猫都愿意分摊她的工作，但她都拒绝了。”她边说着边拆开信封，似乎并不介意你在场，“她愿意让你帮忙，这倒是头一次。
 &lt;&lt;set $story[&quot;未署名的来信&quot;].nix =1&gt;&gt;已送出&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「返回」 木屋内部&gt;&gt;&lt;&lt;set $npc to 0, $choice =0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;elseif $choice == &quot;送信bol&quot;&gt;&gt;
@@ -12351,7 +12351,7 @@ Seisi埋着头，用喙逐个拨开田鼠，仿佛在进行一种鸟类的算数
 &lt;&lt;link ◈「逃跑」 偷窃日常行动&gt;&gt;&lt;&lt;set $choice to &quot;逃跑&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;if setup.getStat(&quot;bold&quot;) &gt;= 3&gt;&gt;&lt;&lt;link ◈「辩解」 偷窃日常行动&gt;&gt;&lt;&lt;set $choice to &quot;辩解&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
     &lt;&lt;else&gt;&gt;
-    你蹑手蹑脚的在屋子里寻找值得偷窃的东西. 
+    你蹑手蹑脚地在屋子里寻找值得偷窃的东西. 
         &lt;&lt;if _r &lt;=40&gt;&gt;&lt;&lt;stoleall&gt;&gt;
         &lt;&lt;elseif _r &lt;= 64&gt;&gt;&lt;&lt;set _item =  [&quot;浆果馅饼&quot;,&quot;鲜花饼&quot;,&quot;苹果派&quot;,&quot;果酱罐头&quot;,&quot;熏肉干&quot;].random()&gt;&gt;你找到了一些_item, 他们看上去还足够新鲜
         &lt;&lt;elseif _r &lt;= 88&gt;&gt;&lt;&lt;set _item =  [&quot;虾虎鱼&quot;,&quot;白桂鱼&quot;,&quot;凤尾鱼&quot;].random()&gt;&gt;鱼缸里自由游动着被精心照料的_item, 也许你可以抓走一些
@@ -12369,7 +12369,7 @@ Seisi埋着头，用喙逐个拨开田鼠，仿佛在进行一种鸟类的算数
 &lt;&lt;link ◈「逃跑」 偷窃日常行动&gt;&gt;&lt;&lt;set $choice to &quot;逃跑&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;if setup.getStat(&quot;bold&quot;) &gt;= 3&gt;&gt;&lt;&lt;link ◈「辩解」 偷窃日常行动&gt;&gt;&lt;&lt;set $choice to &quot;辩解&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;else&gt;&gt;
-你蹑手蹑脚的在医院里寻找值得偷窃的东西。&lt;br&gt;&lt;br&gt;
+你蹑手蹑脚地在医院里寻找值得偷窃的东西。&lt;br&gt;&lt;br&gt;
  &lt;&lt;if _r &lt;=65&gt;&gt;&lt;&lt;stoleall&gt;&gt;
 &lt;&lt;else&gt;&gt;
 &lt;&lt;if $hospital.uniqueLength &gt;0&gt;&gt;
@@ -12385,7 +12385,7 @@ Seisi埋着头，用喙逐个拨开田鼠，仿佛在进行一种鸟类的算数
 &lt;&lt;link ◈「逃跑」 偷窃日常行动&gt;&gt;&lt;&lt;set $choice to &quot;逃跑&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;if setup.getStat(&quot;bold&quot;) &gt;= 3&gt;&gt;&lt;&lt;link ◈「辩解」 偷窃日常行动&gt;&gt;&lt;&lt;set $choice to &quot;辩解&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;else&gt;&gt;
-你蹑手蹑脚的在教堂里寻找值得偷窃的东西。&lt;br&gt;&lt;br&gt;
+你蹑手蹑脚地在教堂里寻找值得偷窃的东西。&lt;br&gt;&lt;br&gt;
 &lt;&lt;if _r &lt;=98&gt;&gt;&lt;&lt;stoleall&gt;&gt;
  /*&lt;&lt;elseif _r &lt;= 98&gt;&gt;约柜中摆放的小物件就在你触手可及的地方，也许你能拿走一个。&lt;&lt;set _item =  [&quot;树形胸针&quot;,&quot;黑曜石匕首&quot;,&quot;兔形玉雕&quot;,&quot;珍珠铜镜&quot;,&quot;浮雕桦木柱&quot;,&quot;芦苇笔&quot;].random()&gt;&gt;*/
         &lt;&lt;else&gt;&gt;
@@ -12398,7 +12398,7 @@ Seisi埋着头，用喙逐个拨开田鼠，仿佛在进行一种鸟类的算数
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $stoleloc == &quot;花店&quot;&gt;&gt;
-你蹑手蹑脚的在花店里寻找值得偷窃的东西。&lt;br&gt;&lt;br&gt;
+你蹑手蹑脚地在花店里寻找值得偷窃的东西。&lt;br&gt;&lt;br&gt;
  &lt;&lt;if _r &lt;=65&gt;&gt;&lt;&lt;stoleall&gt;&gt;
         &lt;&lt;else&gt;&gt;
 &lt;&lt;if $flowerstorehide.uniqueLength &gt;0&gt;&gt;
@@ -12408,12 +12408,23 @@ Seisi埋着头，用喙逐个拨开田鼠，仿佛在进行一种鸟类的算数
         &lt;&lt;/if&gt;&gt;
 &lt;&lt;stolechoice&gt;&gt;
 
+&lt;&lt;elseif $stoleloc == &quot;拓荒者木屋前门&quot;&gt;&gt;
+你蹑手蹑脚地在拓荒者木屋里寻找值得偷窃的东西。&lt;br&gt;&lt;br&gt;
+ &lt;&lt;if _r &lt;=97&gt;&gt;&lt;&lt;stoleall&gt;&gt;
+        &lt;&lt;else&gt;&gt;
+&lt;&lt;if $nixhomehide.uniqueLength &gt;0&gt;&gt;
+&lt;&lt;set _i =random(0, $nixhomehide.uniqueLength-1)&gt;&gt;
+&lt;&lt;set _item = $nixhomehide.list[_i], _n = 1&gt;&gt;你找到了一个_item
+            &lt;&lt;else&gt;&gt;&lt;&lt;stoleall&gt;&gt;&lt;&lt;/if&gt;&gt;
+        &lt;&lt;/if&gt;&gt;
+&lt;&lt;stolechoice&gt;&gt;
+
 &lt;&lt;elseif $stoleloc == &quot;图书馆&quot;&gt;&gt;
 &lt;&lt;if _s &lt;=20&gt;&gt;你发出来的一系列声响惊动了奥提斯。&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ◈「逃跑」 偷窃日常行动&gt;&gt;&lt;&lt;set $choice to &quot;逃跑&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;if setup.getStat(&quot;bold&quot;) &gt;= 3&gt;&gt;&lt;&lt;link ◈「辩解」 偷窃日常行动&gt;&gt;&lt;&lt;set $choice to &quot;辩解&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;else&gt;&gt;
-你蹑手蹑脚的在图书馆里寻找值得偷窃的东西。&lt;br&gt;&lt;br&gt;
+你蹑手蹑脚地在图书馆里寻找值得偷窃的东西。&lt;br&gt;&lt;br&gt;
  &lt;&lt;if _r &lt;=65&gt;&gt;&lt;&lt;stoleall&gt;&gt;
         &lt;&lt;else&gt;&gt;
 &lt;&lt;if $hospital.uniqueLength &gt;0&gt;&gt;
@@ -12429,7 +12440,7 @@ Seisi埋着头，用喙逐个拨开田鼠，仿佛在进行一种鸟类的算数
 &lt;&lt;link ◈「逃跑」 偷窃日常行动&gt;&gt;&lt;&lt;set $choice to &quot;逃跑&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;if setup.getStat(&quot;bold&quot;) &gt;= 3&gt;&gt;&lt;&lt;link ◈「辩解」 偷窃日常行动&gt;&gt;&lt;&lt;set $choice to &quot;辩解&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;else&gt;&gt;
-你蹑手蹑脚的在黑暗里的咖啡馆寻找值得偷窃的东西。&lt;br&gt;&lt;br&gt;
+你蹑手蹑脚地在黑暗里的咖啡馆寻找值得偷窃的东西。&lt;br&gt;&lt;br&gt;
  &lt;&lt;if _r &lt;=42&gt;&gt;&lt;&lt;stoleall&gt;&gt;
  &lt;&lt;elseif _r &lt;= 98&gt;&gt;你找到了一些咖啡馆为明天准备的商品, 健忘的老板娘大概并不会发现你偷偷拿走了其中几个。&lt;&lt;set _item =  [&quot;黑巧小蛋糕&quot;,&quot;意式浓缩&quot;,&quot;蜂蜜鲜奶&quot;,&quot;朗姆葡萄酥卷&quot;,&quot;蓝山咖啡&quot;,&quot;朗姆冰淇淋&quot;,&quot;羊角面包&quot;,&quot;芝士三明治&quot;,&quot;阿芙加朵&quot;,&quot;红茶&quot;].random()&gt;&gt;
         &lt;&lt;else&gt;&gt;
@@ -12438,6 +12449,26 @@ Seisi埋着头，用喙逐个拨开田鼠，仿佛在进行一种鸟类的算数
 &lt;&lt;set _item = $coffeehide.list[_i], _n = 1&gt;&gt;你找到了一个_item
 &lt;&lt;else&gt;&gt;&lt;&lt;stoleall&gt;&gt;&lt;&lt;/if&gt;&gt;
         &lt;&lt;/if&gt;&gt;
+&lt;&lt;stolechoice&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;elseif $stoleloc == &quot;泡泡布提&quot;&gt;&gt;
+&lt;&lt;if _s &lt;=7&gt;&gt;你发出来的一系列声响惊动了老板娘。&lt;br&gt;&lt;br&gt;
+&lt;&lt;link ◈「逃跑」 偷窃日常行动&gt;&gt;&lt;&lt;set $choice to &quot;逃跑&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;if setup.getStat(&quot;bold&quot;) &gt;= 3&gt;&gt;&lt;&lt;link ◈「辩解」 偷窃日常行动&gt;&gt;&lt;&lt;set $choice to &quot;辩解&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;
+你蹑手蹑脚地在黑暗里的泡泡布提寻找值得偷窃的东西。&lt;br&gt;&lt;br&gt;
+&lt;&lt;stoleall&gt;&gt;
+&lt;&lt;stolechoice&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;elseif $stoleloc == &quot;杂货铺&quot;&gt;&gt;
+&lt;&lt;if _s &lt;=7&gt;&gt;你发出来的一系列声响惊动了老板。&lt;br&gt;&lt;br&gt;
+&lt;&lt;link ◈「逃跑」 偷窃日常行动&gt;&gt;&lt;&lt;set $choice to &quot;逃跑&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;if setup.getStat(&quot;bold&quot;) &gt;= 3&gt;&gt;&lt;&lt;link ◈「辩解」 偷窃日常行动&gt;&gt;&lt;&lt;set $choice to &quot;辩解&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;
+你蹑手蹑脚地在黑暗里的杂货铺寻找值得偷窃的东西。&lt;br&gt;&lt;br&gt;
+&lt;&lt;stoleall&gt;&gt;
 &lt;&lt;stolechoice&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -12679,7 +12710,8 @@ _j*_v/&lt;&lt;itemcheck _j&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_j)&
 &lt;br&gt;
 /*******************/
 &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="64" name="烹饪" tags="nobr" position="1300,600" size="100,100">&lt;center&gt;&lt;h1&gt;$loc厨房&lt;/h1&gt;
+&lt;/div&gt;&lt;br&gt;
+（请随意尝试！材料散布在岛上各处，一些需要动手，一些需要运气，一些需要一颗好奇的心）</tw-passagedata><tw-passagedata pid="64" name="烹饪" tags="nobr" position="1300,600" size="100,100">&lt;center&gt;&lt;h1&gt;$loc厨房&lt;/h1&gt;
 &lt;hr&gt;&lt;/center&gt;
 &lt;&lt;link ▷「离开」 家&gt;&gt;&lt;&lt;set _gainitem = _tmp&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt; &lt;&lt;/link&gt;&gt;
 &lt;br&gt;&lt;br&gt;&lt;&lt;set _tmp = {}&gt;&gt;
@@ -12785,12 +12817,17 @@ _n&lt;/div&gt;
 &lt;&lt;for _idx, _method range _recipeinfo.methods&gt;&gt;
 &lt;&lt;capture _method&gt;&gt;
 &lt;span style=&quot;font-size:0.9em;padding:0px 0px 0px 20px;&quot;&gt;✧材料：
+
 &lt;&lt;for _k, _v range _method&gt;&gt;
-&lt;&lt;set _k to _k.replace(&quot;tag:&quot;, &quot;任意&quot;)&gt;&gt;
-&amp;nbsp;_k*_v/
-&lt;&lt;itemcheck _k&gt;&gt;
-&lt;&lt;=State.variables[_itemkind].count(_k)&gt;&gt;  
-&lt;&lt;/for&gt;&gt;&lt;/span&gt;    
+&lt;&lt;set _j to _k.replace(&quot;tag:&quot;, &quot;&quot;)&gt;&gt;
+&lt;&lt;if Item.get(_j).hasTag(&quot;tag&quot;)&gt;&gt;
+任意_j*_v/
+&lt;&lt;set _am = Object.keys($material.data).filter(id =&gt; {return Item.get(id)?.hasTag(_j);}).map(id =&gt; $material.count(id)).reduce((acc, curr) =&gt; acc + curr, 0);&gt;&gt;_am &amp;emsp;
+&lt;&lt;else&gt;&gt;
+_j*_v/&lt;&lt;itemcheck _j&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_j)&gt;&gt; &amp;emsp;&lt;&lt;/if&gt;&gt;  
+&lt;&lt;/for&gt;&gt;
+
+&lt;/span&gt;    
 &lt;span style=&quot;align-item:center;&quot;&gt;&lt;&lt;link &quot;烹饪&quot;&gt;&gt;
 &lt;&lt;set $active[&quot;做饭&quot;] +=1&gt;&gt;
 &lt;&lt;cook _n $food&gt;&gt;
@@ -12819,7 +12856,8 @@ _n&lt;/div&gt;
 &lt;br&gt;
 /*******************/
 &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="65" name="酿酒" tags="nobr" position="" size="">&lt;center&gt;&lt;h1&gt;酒馆厨房&lt;/h1&gt;
+&lt;/div&gt;&lt;br&gt;
+（请随意尝试！在探索菜谱的过程中会产生一些合理的损耗，大部分菜品都需要加入砂盐来调味，同理，大部分甜品也需要方糖*）</tw-passagedata><tw-passagedata pid="65" name="酿酒" tags="nobr" position="" size="">&lt;center&gt;&lt;h1&gt;酒馆厨房&lt;/h1&gt;
 &lt;hr&gt;&lt;/center&gt;
 &lt;&lt;link ▷「离开」 酒馆厨房&gt;&gt;&lt;&lt;set _gainitem = _tmp&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt; &lt;&lt;/link&gt;&gt;
 &lt;br&gt;&lt;br&gt;&lt;&lt;set _tmp = {}&gt;&gt;
@@ -13061,7 +13099,8 @@ _n&lt;/div&gt;
 &lt;&lt;/do&gt;&gt; 
 /*******************/
 &lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="66" name="焚草" tags="nobr" position="" size="">&lt;center&gt;&lt;h1&gt;焚草制作台&lt;/h1&gt;
+&lt;/div&gt;&lt;br&gt;
+（你可以随意尝试，但有指导的配方总归是好事，多和一些猫熟络熟络，他们也许有自己独家的酿酒配方）</tw-passagedata><tw-passagedata pid="66" name="焚草" tags="nobr" position="" size="">&lt;center&gt;&lt;h1&gt;焚草制作台&lt;/h1&gt;
 &lt;hr&gt;&lt;/center&gt;
 &lt;&lt;link ▷「离开」 花店&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;br&gt;&lt;br&gt;
@@ -16924,7 +16963,7 @@ _itemn的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;else&gt;&gt;
 【_itemn已经结果】&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;br&gt;
-&lt;&lt;link ❖采摘 采摘&gt;&gt;&lt;&lt;set $flower=_itemn&gt;&gt;&lt;&lt;set $land1.name = &quot;无&quot;, $land1.stat = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link ❖采摘 采摘&gt;&gt;&lt;&lt;set $flower=_itemn&gt;&gt;&lt;&lt;set $land1.name = &quot;无&quot;, $land1.stat = 0, $land1.watert =0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $land1.stat != 0 &amp;&amp; $rd ==0 &amp;&amp; $land1.watert &lt; $nt&gt;&gt;
@@ -16934,7 +16973,7 @@ _itemn的种子正安静地躺在土壤里&lt;br&gt;
   Dialog.open();
 &gt;&gt;&lt;&lt;/link&gt;&gt;  
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;if $land1.stat != 0&gt;&gt;&lt;&lt;link ❖拔除&gt;&gt;&lt;&lt;set $land1.name = &quot;无&quot;, $land1.stat = 0&gt;&gt;&lt;&lt;run UI.alert(&quot;&lt;center&gt;苗圃1中作物已移除&lt;/center&gt;&quot;)&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $land1.stat != 0&gt;&gt;&lt;&lt;link ❖拔除&gt;&gt;&lt;&lt;set $land1.name = &quot;无&quot;, $land1.stat = 0, $land1.watert =0&gt;&gt;&lt;&lt;run UI.alert(&quot;&lt;center&gt;苗圃1中作物已移除&lt;/center&gt;&quot;)&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;br&gt;
 &lt;/div&gt;&lt;br&gt;
 
@@ -16967,7 +17006,7 @@ _itemn2的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;elseif _item == &quot;龙舌兰&quot;&gt;&gt;【长出了一株健壮的龙舌兰】&lt;br&gt;
 &lt;&lt;else&gt;&gt;
 【_itemn2已经结果】&lt;br&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;link ❖采摘 采摘&gt;&gt;&lt;&lt;set $flower=_itemn2&gt;&gt;&lt;&lt;set $land2.name = &quot;无&quot;, $land2.stat = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link ❖采摘 采摘&gt;&gt;&lt;&lt;set $flower=_itemn2&gt;&gt;&lt;&lt;set $land2.name = &quot;无&quot;, $land2.stat = 0, $land2.watert =0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;if $land2.stat != 0 &amp;&amp; $rd ==0 &amp;&amp; $land2.watert &lt; $nt&gt;&gt;
 &lt;&lt;link ❖浇灌&gt;&gt;&lt;&lt;set $choice = &quot;land2&quot;&gt;&gt;&lt;&lt;run
@@ -16976,7 +17015,7 @@ _itemn2的种子正安静地躺在土壤里&lt;br&gt;
   Dialog.open();
 &gt;&gt;&lt;&lt;/link&gt;&gt;  
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;if $land2.stat != 0&gt;&gt;&lt;&lt;link ❖拔除&gt;&gt;&lt;&lt;set $land2.name = &quot;无&quot;, $land2.stat = 0&gt;&gt;&lt;&lt;run UI.alert(&quot;&lt;center&gt;苗圃2中作物已移除&lt;/center&gt;&quot;)&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $land2.stat != 0&gt;&gt;&lt;&lt;link ❖拔除&gt;&gt;&lt;&lt;set $land2.name = &quot;无&quot;, $land2.stat = 0, $land2.watert =0&gt;&gt;&lt;&lt;run UI.alert(&quot;&lt;center&gt;苗圃2中作物已移除&lt;/center&gt;&quot;)&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;br&gt;&lt;/div&gt;&lt;br&gt;
 
 &lt;div class=&quot;recipes-section&quot;&gt;
@@ -17008,7 +17047,7 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;elseif _item == &quot;龙舌兰&quot;&gt;&gt;【长出了一株健壮的龙舌兰】&lt;br&gt;
 &lt;&lt;else&gt;&gt;
 【_itemn3已经结果】&lt;br&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;link ❖采摘 采摘&gt;&gt;&lt;&lt;set $flower=_itemn3&gt;&gt;&lt;&lt;set $land3.name = &quot;无&quot;, $land3.stat = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link ❖采摘 采摘&gt;&gt;&lt;&lt;set $flower=_itemn3&gt;&gt;&lt;&lt;set $land3.name = &quot;无&quot;, $land3.stat = 0, $land3.watert =0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;if $land3.stat != 0 &amp;&amp; $rd ==0 &amp;&amp; $land3.watert &lt; $nt&gt;&gt;
 &lt;&lt;link ❖浇灌&gt;&gt;&lt;&lt;set $choice = &quot;land3&quot;&gt;&gt;&lt;&lt;run
@@ -17017,7 +17056,7 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
   Dialog.open();
 &gt;&gt;&lt;&lt;/link&gt;&gt;  
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;if $land3.stat != 0&gt;&gt;&lt;&lt;link ❖拔除&gt;&gt;&lt;&lt;set $land3.name = &quot;无&quot;, $land3.stat = 0&gt;&gt;&lt;&lt;run UI.alert(&quot;&lt;center&gt;苗圃3中作物已移除&lt;/center&gt;&quot;)&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $land3.stat != 0&gt;&gt;&lt;&lt;link ❖拔除&gt;&gt;&lt;&lt;set $land3.name = &quot;无&quot;, $land3.stat = 0, $land3.watert =0&gt;&gt;&lt;&lt;run UI.alert(&quot;&lt;center&gt;苗圃3中作物已移除&lt;/center&gt;&quot;)&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;br&gt;&lt;/div&gt;&lt;br&gt;
 &lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="129" name="采摘" tags="nobr" position="" size="">&lt;&lt;set _n to random(1,3)&gt;&gt;
 &lt;&lt;if $flower == &quot;玫瑰花&quot;&gt;&gt;&lt;&lt;set _flower= [&quot;红玫瑰&quot;,&quot;白玫瑰&quot;,&quot;蓝玫瑰&quot;,&quot;黄玫瑰&quot;].random()&gt;&gt;
@@ -17319,19 +17358,16 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
 修女将一些火药连同猎枪一同交给你, 将这些和之前的物品一起收纳好. 它们将会陪伴你度过接下来的几天&lt;br&gt;
 &lt;&lt;itemobtain &quot;猎枪 * 1、火药 * 20&quot;&gt;&gt;&lt;&lt;set _gainitem = {&quot;猎枪&quot;:1, &quot;火药&quot;:20}&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt;
 &lt;&lt;link ▷「返回」 教堂&gt;&gt;&lt;&lt;/link&gt;&gt;
+
 &lt;&lt;else&gt;&gt;&lt;&lt;set _b to random(0,4), _c to random(0,2), _d to random(1,4), _e to random(1,6), _gainitem = {&quot;红茶&quot;:_b, &quot;浆果馅饼&quot;:_c, &quot;烤鸡腿&quot;:_d, &quot;果汁&quot;:_e}&gt;&gt;
 其中一个修女听即便起身去了一旁的隔间，等她再次出现时，手里捧着一篮品相十分不错的点心和饮品，这就是你这周的供给了。你急忙去接过篮子。
 &lt;&lt;gainitems _gainitem&gt;&gt;
 &lt;div class=&quot;obtain&quot;&gt;
         &lt;div class=&quot;card-border&quot;&gt;&lt;/div&gt;你获得了&lt;br&gt;&lt;&lt;if _b != 0&gt;&gt;红茶 * _b、&lt;&lt;/if&gt;&gt;&lt;&lt;if _c != 0&gt;&gt;浆果馅饼 * _c、&lt;&lt;/if&gt;&gt;&lt;&lt;if _d != 0&gt;&gt;烤鸡腿 * _d、&lt;&lt;/if&gt;&gt;&lt;&lt;if _e != 0&gt;&gt;果汁 * _e&lt;&lt;/if&gt;&gt;&lt;/div&gt;
-&lt;&lt;if _f &gt;0&gt;&gt;&lt;&lt;set $textcard.pushUnique(&quot;柿子酒&quot;)&gt;&gt;&lt;&lt;/if&gt;&gt;
+
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;if !$firstbjb&gt;&gt;&lt;&lt;set $firstbjb == true&gt;&gt;
-&lt;&lt;timed 4s t8n&gt;&gt;你意识到篮子边还挂着什么，那是一双崭新的皮革手套，看起来也是为你准备的
-&lt;&lt;gainitem &quot;皮革手套&quot; 1&gt;&gt;
-&lt;&lt;itemobtain &quot;皮革手套 * 1&quot;&gt;&gt;
-&lt;br&gt;
-&lt;&lt;next 2s t8n&gt;&gt;在你准备谢过修女时, 她们又拿出了两样工具, 摆在你面前. 鱼竿和猎枪, 这显然是单项选择
+&lt;&lt;if !$firstbjb&gt;&gt;&lt;&lt;set $firstbjb == 1&gt;&gt;
+&lt;&lt;timed 2s t8n&gt;&gt;在你准备谢过修女时, 她们又拿出了两样工具, 摆在你面前. 鱼竿和猎枪, 这显然是单项选择
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「鱼竿」&gt;&gt;&lt;&lt;set $choice to &quot;鱼竿&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;br&gt;&lt;&lt;link ▷「猎枪」&gt;&gt;&lt;&lt;set $choice to &quot;猎枪&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/timed&gt;&gt;
@@ -18314,7 +18350,7 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 &lt;&lt;newinv $coffee&gt;&gt;
 &lt;&lt;pickup $coffee &quot;黑巧小蛋糕&quot; 1 &quot;意式浓缩&quot; 1 &quot;蜂蜜鲜奶&quot; 1 &quot;朗姆葡萄酥卷&quot; 1 &quot;蓝山咖啡&quot; 1 &quot;朗姆冰淇淋&quot; 1 &quot;羊角面包&quot; 1 &quot;芝士三明治&quot; 1 &quot;阿芙加朵&quot; 1 &quot;红茶&quot; 1&gt;&gt;
 &lt;&lt;newinv $store&gt;&gt;
-&lt;&lt;pickup $store &quot;玻璃瓶&quot; 1 &quot;信纸&quot; 1 &quot;羽墨&quot; 1 &quot;方糖&quot; 1 &quot;砂盐&quot; 1 &quot;蜡烛&quot; 1 &quot;煤油灯&quot; 1 &quot;巧克力棒&quot; 1 &quot;熏肉干&quot; 1 &quot;土豆种子&quot; 1 &quot;番茄种子&quot; 1 &quot;辣椒种子&quot; 1 &quot;洋葱种子&quot; 1 &quot;葡萄种子&quot; 1 &quot;玉米种子&quot; 1 &quot;胡萝卜种子&quot; 1&gt;&gt;
+&lt;&lt;pickup $store &quot;玻璃瓶&quot; 1 &quot;信纸&quot; 1 &quot;羽墨&quot; 1 &quot;方糖&quot; 1 &quot;砂盐&quot; 1 &quot;蜡烛&quot; 1 &quot;煤油灯&quot; 1 &quot;巧克力棒&quot; 1 &quot;熏肉干&quot; 1 &quot;柠檬&quot; 1 &quot;土豆种子&quot; 1 &quot;番茄种子&quot; 1 &quot;辣椒种子&quot; 1 &quot;洋葱种子&quot; 1 &quot;葡萄种子&quot; 1 &quot;玉米种子&quot; 1 &quot;胡萝卜种子&quot; 1&gt;&gt;
 &lt;&lt;newinv $pub&gt;&gt;
 &lt;&lt;pickup $pub &quot;果汁&quot; 1 &quot;蜜酒&quot; 1 &quot;黑麦啤酒&quot; 1 &quot;伏特加&quot; 1 &quot;血腥玛格丽特&quot; 1 &quot;法国75号&quot; 1 &quot;烤肉&quot; 1 &quot;炸鱼薯条&quot; 1 &quot;羊倌派&quot; 1 &quot;渔夫派&quot; 1 &quot;浆果馅饼&quot; 1&gt;&gt;
 &lt;&lt;newinv $flowerist&gt;&gt;
@@ -18335,7 +18371,7 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 &lt;&lt;newinv $chapelhide&gt;&gt;
 &lt;&lt;pickup $chapelhide &quot;河马胃袋&quot; 1 &quot;犬齿火炬&quot; 1 &quot;锈蚀天平&quot; 1&gt;&gt;
 &lt;&lt;newinv $hospital&gt;&gt;
-&lt;&lt;pickup $hospital &quot;鸦片酊&quot; 15 &quot;烟卷&quot; 33 &quot;药丸&quot; 25 &quot;绷带&quot; 30 &quot;未寄出的信件&quot; 3 &quot;铂金戒指&quot; 1 &quot;老照片&quot; 1 &quot;植物标本盒&quot; 1 &quot;作物培育笔记&quot; 1 &quot;碎茶杯&quot; 1 &quot;信纸&quot; 10&gt;&gt;
+&lt;&lt;pickup $hospital &quot;鸦片酊&quot; 33 &quot;烟卷&quot; 33 &quot;药丸&quot; 20 &quot;绷带&quot; 30 &quot;未寄出的信件&quot; 3 &quot;铂金戒指&quot; 1 &quot;老照片&quot; 1 &quot;植物标本盒&quot; 1 &quot;作物培育笔记&quot; 1 &quot;碎茶杯&quot; 1 &quot;信纸&quot; 10&gt;&gt;
 &lt;&lt;newinv $pubhide&gt;&gt;
 &lt;&lt;newinv $flowerstorehide&gt;&gt;
 &lt;&lt;pickup $flowerstorehide &quot;附子花&quot; 18&gt;&gt;
@@ -19120,14 +19156,14 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 
 &lt;h1&gt;游玩须知&lt;/h1&gt;
 &lt;div id=&quot;textcard&quot;&gt;
-游戏tag：crpg、剧情向、无恋爱倾向、单周目多结局&lt;br&gt;&lt;br&gt;
+游戏tag：无战斗crpg、剧情向、奇幻解谜、无恋爱内容、单周目多结局&lt;br&gt;&lt;br&gt;
 
 目前处于开发阶段，新内容可能与旧存档不兼容，不建议长期游玩。详细信息查看咨询与变动&lt;br&gt;&lt;br&gt;
 
 ✶️本游戏目前使用gitpage发布，图片使用图床，若有加载缓慢的问题建议科学上网。&lt;br&gt;
 ✶️游戏存档只有3个手动槽位和1个自动槽位，仅在进行睡觉时进行自动存档。默认储存在浏览器缓存内，若清理缓存会丢失，建议后期游玩时导出到本地保存。&lt;br&gt;
 ✶️所有延迟显示的字体效果都可以点击任意界面跳过。历史回溯只能后退6个页面，后退/前进的键盘快捷键为Q/E。&lt;br&gt;
-✶️游戏内进行技能鉴定的选项无文字提示，不显示检定条件和成功奖励。
+✶️游戏内进行技能鉴定的选项无文字提示，选项靠内容驱动，不显示检定条件和成功奖励，不鼓励刷属性。
 &lt;br&gt;&lt;br&gt;
 任何反馈请联系QQ:641549971
 &lt;/div&gt;&lt;br&gt;
@@ -19259,11 +19295,10 @@ $msname&lt;br&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="199" name="日志" tags="nobr" position="1800,100" size="100,100">&lt;&lt;reopen&gt;&gt;
 &lt;div id=&quot;idcard&quot;&gt;&lt;table style=&quot;width:100%; border-style: none;&quot;&gt;
 &lt;tbody align=&quot;center&quot;&gt;
-  &lt;tr&gt;&lt;td rowspan=7 style=&quot;width:60%&quot;&gt;&lt;img id=&quot;avatar-preview&quot; class=&quot;pic&quot; @src=&quot;$avatar&quot; width=100%&gt;&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td rowspan=6 style=&quot;width:60%&quot;&gt;&lt;img id=&quot;avatar-preview&quot; class=&quot;pic&quot; @src=&quot;$avatar&quot; width=100%&gt;&lt;/td&gt;&lt;/tr&gt;
   &lt;tr&gt;&lt;td&gt;$name&lt;/td&gt;&lt;/tr&gt;
-    &lt;tr&gt;&lt;td&gt;年龄：$age&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;年龄：$age&lt;/td&gt;&lt;/tr&gt;
   &lt;tr&gt;&lt;td&gt;来自：$hometown&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;身份：$id&lt;/td&gt;&lt;/tr&gt;
   &lt;tr&gt;&lt;td&gt;住所：$home&lt;/td&gt;&lt;/tr&gt;
   &lt;tr&gt;&lt;td&gt;工作：$job&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
 &lt;br&gt;
@@ -19894,11 +19929,9 @@ $msname&lt;br&gt;
 
 
 
-&lt;&lt;if $story[&quot;新的开始&quot;] == &quot;新的开始2&quot; &amp;&amp; $top.has(&#39;毛皮大衣&#39;)&gt;&gt;&lt;&lt;set $story[&quot;新的开始&quot;] = &quot;新的开始3&quot;&gt;&gt;&lt;&lt;notify 5s&gt;&gt;&lt;font color=&quot;BD5786&quot;&gt;☆完成任务：新的开始阶段II☆&lt;/font&gt;&lt;&lt;/notify&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $story[&quot;新的开始&quot;] == &quot;新的开始2&quot; &amp;&amp; $hand.has(&#39;皮革手套&#39;)&gt;&gt;&lt;&lt;set $story[&quot;新的开始&quot;] = &quot;新的开始3&quot;&gt;&gt;&lt;&lt;notify 5s&gt;&gt;&lt;font color=&quot;BD5786&quot;&gt;☆完成任务：新的开始阶段II☆&lt;/font&gt;&lt;&lt;/notify&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $story[&quot;新的开始&quot;] == &quot;新的开始3&quot; &amp;&amp; $ashes &gt;= 300&gt;&gt;&lt;&lt;set $story[&quot;新的开始&quot;] = &quot;新的开始完成&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;goto &quot;任务完成&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;if $story[&quot;20只田鼠的赎罪之旅&quot;] &lt; $date &amp;&amp; $seisistate ==&quot;生气1&quot;&gt;&gt;&lt;&lt;set $story[&quot;20只田鼠的赎罪之旅&quot;] = $date+1&gt;&gt;&lt;&lt;goto &quot;支线选项&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="211" name="杂项检定" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;noshadow&quot;&gt;&gt;
 &lt;&lt;if !$clue[&#39;第一个朋友&#39;]&gt;&gt;&lt;&lt;audio &quot;diceroll&quot; play&gt;&gt;
@@ -20138,32 +20171,32 @@ $msname&lt;br&gt;
 &lt;&lt;widget &quot;water&quot;&gt;&gt;
 &lt;&lt;switch $choice&gt;&gt;
 &lt;&lt;case &quot;land1&quot;&gt;&gt;
-&lt;&lt;set $land1.needt -= random(200,2000), $land1.watert = $nt +2500&gt;&gt;&lt;&lt;notify 3s&gt;&gt;田圃1中作物的生长时间缩短了&lt;&lt;/notify&gt;&gt;
+&lt;&lt;set $land1.needt -= random(1000,8000), $land1.watert = $nt +2500&gt;&gt;&lt;&lt;notify 3s&gt;&gt;田圃1中作物的生长时间缩短了&lt;&lt;/notify&gt;&gt;
 &lt;&lt;case &quot;land2&quot;&gt;&gt;
-&lt;&lt;set $land2.needt -= random(200,2000), $land2.watert = $nt +2500&gt;&gt;&lt;&lt;notify 3s&gt;&gt;田圃2中作物的生长时间缩短了&lt;&lt;/notify&gt;&gt;
+&lt;&lt;set $land2.needt -= random(1000,8000), $land2.watert = $nt +2500&gt;&gt;&lt;&lt;notify 3s&gt;&gt;田圃2中作物的生长时间缩短了&lt;&lt;/notify&gt;&gt;
 &lt;&lt;case &quot;land3&quot;&gt;&gt;
-&lt;&lt;set $land3.needt -= random(200,2000), $land3.watert = $nt +2500&gt;&gt;&lt;&lt;notify 3s&gt;&gt;田圃3中作物的生长时间缩短了&lt;&lt;/notify&gt;&gt;
+&lt;&lt;set $land3.needt -= random(1000,8000), $land3.watert = $nt +2500&gt;&gt;&lt;&lt;notify 3s&gt;&gt;田圃3中作物的生长时间缩短了&lt;&lt;/notify&gt;&gt;
 &lt;&lt;/switch&gt;&gt;
 
 &lt;&lt;if _itemn == &quot;灵魂罐&quot;&gt;&gt;/*特殊影响*/
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="215" name="每日委托判断" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;dailyjob&quot;&gt;&gt;
-&lt;&lt;set _j = random(1,5)&gt;&gt;
+&lt;&lt;set _j = random(1,5)&gt;&gt;&lt;&lt;set _a = random(2,4)&gt;&gt;
 &lt;&lt;if _j == 1&gt;&gt;
 &lt;&lt;set _f = [&quot;沙丁鱼&quot;,&quot;泥鳅&quot;,&quot;雅罗鱼&quot;,&quot;凤尾鱼&quot;,&quot;彩虹濑鱼&quot;,&quot;虾虎鱼&quot;,&quot;纹首鮨&quot;,&quot;比目鱼&quot;,&quot;虹鳟鱼&quot;,&quot;鲻鱼&quot;,&quot;鲤鱼&quot;,&quot;鲱鱼&quot;,&quot;白鲑鱼&quot;,&quot;龙虾&quot;,&quot;鹦哥鱼&quot;,&quot;大比目鱼&quot;,&quot;鳕鱼&quot;,&quot;无须鳕鱼&quot;,&quot;鲯鳅鱼&quot;,&quot;欧鳊&quot;,&quot;大西洋狐鲣&quot;,&quot;蓝鳍金枪鱼&quot;].random()&gt;&gt;
-&lt;&lt;set $dailyjob.push({name: &#39;鲜鱼供给&#39;, from: $rdmnpc.random(), content: _f, amount: random(2, 10), reward:Item.get(_f).price+1, state:0})&gt;&gt;
+&lt;&lt;set $dailyjob.push({name: &#39;鲜鱼供给&#39;, from: $rdmnpc.random(), content: _f, amount: random(2, 10), reward:Item.get(_f).price+_a, state:0})&gt;&gt;
 &lt;&lt;elseif _j == 2&gt;&gt;
 &lt;&lt;set _p =[&quot;小型皮毛&quot;,&quot;大型皮毛&quot;,&quot;羊绒&quot;,&quot;鸭绒&quot;,&quot;尾羽&quot;,&quot;兽肉&quot;,&quot;禽肉&quot;,&quot;白鼬皮&quot;].random()&gt;&gt;
-&lt;&lt;set $dailyjob.push({name: &#39;狩猎捕获&#39;, from: $rdmnpc.random(), content: _p, amount: random(6, 12), reward:Item.get(_p).price+1, state:0})&gt;&gt;
+&lt;&lt;set $dailyjob.push({name: &#39;狩猎捕获&#39;, from: $rdmnpc.random(), content: _p, amount: random(6, 12), reward:Item.get(_p).price+_a, state:0})&gt;&gt;
 &lt;&lt;elseif _j == 3&gt;&gt;
 &lt;&lt;set _p =[&quot;土豆&quot;,&quot;番茄&quot;,&quot;辣椒&quot;,&quot;洋葱&quot;,&quot;葡萄&quot;,&quot;玉米&quot;,&quot;胡萝卜&quot;,&quot;番茄&quot;,&quot;辣椒&quot;,&quot;洋葱&quot;,&quot;葡萄&quot;,&quot;玉米&quot;,&quot;胡萝卜&quot;,&quot;红玫瑰&quot;,&quot;白玫瑰&quot;,&quot;黄玫瑰&quot;,&quot;蓝玫瑰&quot;,&quot;蓝色鸢尾&quot;,&quot;蒲公英&quot;,&quot;附子花&quot;,&quot;藜芦花&quot;,&quot;牡丹花&quot;,&quot;紫罗兰&quot;,&quot;勿忘我&quot;,&quot;风信子&quot;,&quot;金盏花&quot;].random()&gt;&gt;
-&lt;&lt;set $dailyjob.push({name: &#39;作物种植&#39;, from: $rdmnpc.random(), content: _p, amount: random(8, 20), reward:Item.get(_p).price+1, state:0})&gt;&gt;
+&lt;&lt;set $dailyjob.push({name: &#39;作物种植&#39;, from: $rdmnpc.random(), content: _p, amount: random(8, 20), reward:Item.get(_p).price+_a, state:0})&gt;&gt;
 &lt;&lt;elseif _j == 4&gt;&gt;
 &lt;&lt;set _p =[&quot;皮革手套&quot;,&quot;毛皮大衣&quot;,&quot;玫瑰花环&quot;,&quot;贝壳项链&quot;].random()&gt;&gt;
-&lt;&lt;set $dailyjob.push({name: &#39;手工制作&#39;, from: $rdmnpc.random(), content: _p, amount: random(1, 2), reward:Item.get(_p).price+1, state:0})&gt;&gt;
+&lt;&lt;set $dailyjob.push({name: &#39;手工制作&#39;, from: $rdmnpc.random(), content: _p, amount: random(1, 2), reward:Item.get(_p).price+_a, state:0})&gt;&gt;
 &lt;&lt;elseif _j == 5&gt;&gt;
 &lt;&lt;set _p =[&quot;烤肉&quot;,&quot;烤鸡腿&quot;,&quot;煎蛋&quot;,&quot;柠香三文鱼&quot;,&quot;茄汁鲈鱼&quot;,&quot;蜂蜜柠檬水&quot;,&quot;炸鱼薯条&quot;,&quot;鲜花饼&quot;,&quot;土豆蛋饼&quot;,&quot;浆果馅饼&quot;,&quot;番茄浓汤&quot;,&quot;扇贝汤&quot;,&quot;法式吐司&quot;,&quot;牡丹花茶&quot;,&quot;蔬菜什锦&quot;].random()&gt;&gt;
-&lt;&lt;set $dailyjob.push({name: &#39;菜肴烹饪&#39;, from: $rdmnpc.random(), content: _p, amount: random(2, 8), reward:Item.get(_p).price+1, state:0})&gt;&gt;
+&lt;&lt;set $dailyjob.push({name: &#39;菜肴烹饪&#39;, from: $rdmnpc.random(), content: _p, amount: random(2, 8), reward:Item.get(_p).price+_a, state:0})&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="216" name="梦境判断" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;dreams&quot;&gt;&gt;
 /*特殊梦判断*/
