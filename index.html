@@ -624,7 +624,7 @@ input#setting-control-volume  {
     border-top-right-radius: 15px;
     border: 1.5px solid #F5E4CE;
   transition: all .3s ease-out;
-  font-family: "XiangcuiChaoxisongW15";
+ 
 }
 /* 按钮 */
 #menu ul {
@@ -1173,7 +1173,6 @@ color:var(--fontcolor-light);
 /* 右侧边栏 */
 html.bleached body #right-ui-bar, body.bleached #right-ui-bar {
     border: 1.5px solid #F5E4CE;
-    font-family: "XiangcuiChaoxisongW15";
     box-shadow: 0 8px 20px 0 rgba(79, 73, 64, 0.2);
     backdrop-filter: blur(4px);
        background:rgba(205,191,176, 1);
@@ -1391,9 +1390,9 @@ html.bleached body html[data-debug-view] .debug.hidden .debug, body.bleached htm
   color: #F5E4CE;
   background: linear-gradient(0deg, #00010e, #010b21, #0a0019);
     height: 125vh;
-    left: -20em;
+    left: -10em;
     top: -10em;
-    width: 165vw;
+    width: 185vw;
     overflow: auto;
     z-index: 0;
 }
@@ -1674,7 +1673,7 @@ width: 17.5em;
   border-bottom-left-radius: 15px;
   border-top-left-radius: 15px;
   border: 1.5px solid #F5E4CE;
-  font-family: "XiangcuiChaoxisongW15";
+
   text-align: center;
   position: fixed;
   z-index: 50;
@@ -7463,7 +7462,7 @@ Item.add("红茶", {displayName: "红茶", description: "<br><br>〖使用后体
 Item.add("麦芽酒", {displayName: "麦芽酒", description: "<br><br>〖使用后体力+4〗<<iwd \"麦芽酒\">>" , handler: "<<set $drunk+=2>><<eatfood 4>><<loseweight 0.5>>", consumable: "true", function: "false", store: 12, price: 4 , weight: 0.5},["食物", "酿酒", "酒", null, null, null, "fuelA"]);
 Item.add("黑麦啤酒", {displayName: "黑麦啤酒", description: "<br><br>〖使用后体力+4〗<<iwd \"黑麦啤酒\">>" , handler: "<<set $drunk+=2>><<eatfood 4>><<loseweight 0.5>>", consumable: "true", function: "false", store: 12, price: 4 , weight: 0.5},["食物", "酿酒", "酒", null, null, null, "fuelA"]);
 Item.add("战时乐观主义派", {displayName: "战时乐观主义派", description: "粗糙麦壳制的馅饼，里面勉强能看出一些果蔬和肉块的形状。据老乔什说，这名为“战时乐观主义派”（简称”乐观派“），是他最初在2019年的冬季，在战壕里靠着四处收集来的材料发明而成，内容物不限于剪报上的胜利宣言、士兵家书里的错别字以及防毒面具滤芯中的蒲公英种子。他还声称，最初乐观派被他制作成了颇为前卫的三角造型，但由于口碑不佳，最终还是向最经典的圆形妥协<br><br>〖使用后体力+12，恐惧-2〗<<iwd \"战时乐观主义派\">>" , handler: "<<eatfood 12>><<losebadexp \"恐惧\" 2>><<notify 3s>>你的恐惧降低了2点<</notify>><<loseweight 06>>", consumable: "true", function: "false", store: null, price: 6 , weight: 0.6},["食物", "烹饪", "派", null, "meaty", "trethate", "fuelA"]);
-Item.add("榛子咖啡", {displayName: "榛子咖啡", description: "一杯来自欧洲大陆的咖啡，经过精心烘焙，融入了榛果的独特香气。只能通过主港口的仓库定期订购<br><br>〖食用后体力+10 学识点数+3〗<<iwd \"榛子咖啡\">>" , handler: "<<run Dialog.setup('饮用榛子咖啡');Dialog.wiki('细腻而温暖的咖啡带着榛果的香气充斥你的口腔，驱散了疲惫与困惑。你的思绪变得清晰，曾经某些不解的思绪此刻似乎也变得更加了然');Dialog.open();>><<set $coffin+=1>><<addkexp 3>><<eatfood 10>><<loseweight 0.4>>", consumable: "true", function: "false", store: null, price: 20 , weight: 0.4},["食物", "咖啡", null, null, null, null, "fuelS"]);
+Item.add("榛子咖啡", {displayName: "榛子咖啡", description: "一杯来自欧洲大陆的咖啡，经过精心烘焙，融入了榛果的独特香气。只能通过主港口的仓库定期订购<br><br>〖食用后体力+10 学识经验+3〗<<iwd \"榛子咖啡\">>" , handler: "<<run Dialog.setup('饮用榛子咖啡');Dialog.wiki('细腻而温暖的咖啡带着榛果的香气充斥你的口腔，驱散了疲惫与困惑。你的思绪变得清晰，曾经某些不解的思绪此刻似乎也变得更加了然');Dialog.open();>><<set $coffin+=1>><<addkexp 3>><<eatfood 10>><<loseweight 0.4>>", consumable: "true", function: "false", store: null, price: 20 , weight: 0.4},["食物", "咖啡", null, null, null, null, "fuelS"]);
 Item.add("路易红茶", {displayName: "路易红茶", description: "似乎是某个英国的牌子，枘朴小姐家唯一饮用的红茶<br><br>〖使用后体力+1，噩梦-1〗<<iwd \"路易红茶\">>" , handler: "<<eatfood 1>><<losebadexp \"噩梦\"1>><<notify 3s>>你的噩梦降低了1点<</notify>><<loseweight 0.6>>", consumable: "true", function: "false", store: null, price: 5 , weight: 0.6},["食物", "茶", null, null, null, null, "fuelA"]);
 Item.add("玫瑰花", {displayName: "玫瑰花", description: null , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["花", null, null, null, null, null, "fuelA"]);
 Item.add("鸢尾花", {displayName: "鸢尾花", description: null , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["花", null, null, null, null, null, "fuelA"]);
@@ -8880,9 +8879,10 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
     &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;if $NPCinfo[$npc].Loc == &quot;仓库&quot;&gt;&gt;&lt;&lt;link ❖订购物资 苏菲互动&gt;&gt;&lt;&lt;set $state = &quot;订购物资&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $NPCinfo[&quot;苏菲&quot;].firstletter == 0&gt;&gt;&lt;&lt;link ❖未署名的来信 苏菲互动&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1, $choice = 0, $state = &quot;未署名的来信&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $NPCinfo[&quot;苏菲&quot;].wait == $date &amp;&amp; $hour &gt;= 18&gt;&gt;&lt;&lt;link ❖未署名的来信 苏菲互动&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1, $choice = &quot;黄昏&quot;, $state = &quot;未署名的来信&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $NPCinfo[$npc].Loc == &quot;仓库&quot;&gt;&gt;&lt;&lt;link ❖订购物资 苏菲互动&gt;&gt;&lt;&lt;set $state = &quot;订购物资&quot;&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if !$recording[&quot;送信&quot;] &gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;link ❖送信 苏菲互动&gt;&gt;&lt;&lt;set $state = &quot;送信&quot;&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $NPCinfo[&quot;苏菲&quot;].firstletter == 0&gt;&gt;&lt;&lt;link ❖未署名的来信 苏菲互动&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1, $choice = 0, $state = &quot;未署名的来信&quot;&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $NPCinfo[&quot;苏菲&quot;].wait == $date &amp;&amp; $hour &gt;= 18&gt;&gt;&lt;&lt;link ❖未署名的来信 苏菲互动&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1, $choice = &quot;黄昏&quot;, $state = &quot;未署名的来信&quot;&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 /***************佩拉大夫******************/
@@ -9655,7 +9655,7 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 
 /*******特殊交谈*******/
 &lt;&lt;if $state == &quot;未署名的来信&quot;&gt;&gt;
-&lt;&lt;if $choice ==0&gt;&gt;
+&lt;&lt;if $choice ==0&gt;&gt;&lt;&lt;set $NPCinfo[&quot;苏菲&quot;].firstletter = 1&gt;&gt;
 你叫住她时，@@.sophietalk;苏菲@@正在$loc的小径上疾走着，绿色的信使外套随着她的步伐上下摆动，让她看上去就像一只欢快的绿蝴蝶。&lt;br&gt;&lt;br&gt;
 她见到你，脸上立刻绽放出你熟悉的笑容：“嘿！是你呀！真高兴见到你。”她像往常一样热情问候着，脚步却未停下，仍向着她要去的方向坚定地前进。她那本身就过大的包此时被塞得鼓鼓囊囊，看起来还有十足的工作要做。&lt;br&gt;&lt;br&gt;
 &lt;&lt;do&gt;&gt;
@@ -9769,6 +9769,11 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 
 /***************订货******************/
 &lt;&lt;if $state == &quot;订购物资&quot;&gt;&gt;施工中
+&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;set $npc = 0, $choice = 0, $state = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+/***************送信******************/
+&lt;&lt;if $state == &quot;送信&quot;&gt;&gt;施工中
 &lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;set $npc = 0, $choice = 0, $state = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="佩拉大夫互动" tags="nobr" position="" size="">/***************交谈******************/
 &lt;&lt;if $state == &quot;问候&quot;&gt;&gt;
@@ -10616,10 +10621,10 @@ $npc收下了你的礼物
 〖话术〗诡辩, 说服, 虚言：$player.persuasive&lt;br&gt;&lt;&lt;link &quot; +1 &quot;&gt;&gt;&lt;&lt;if $points gt 0&gt;&gt;&lt;&lt;set $player.persuasive += 1, $points -= 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo &quot;2&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;  &lt;&lt;link&quot; -1 &quot;&gt;&gt;&lt;&lt;if $player.persuasive gt 0&gt;&gt;&lt;&lt;set $player.persuasive -= 1&gt;&gt;&lt;&lt;set $points += 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;redo &quot;2&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;/do&gt;&gt;
 &lt;br&gt;
-&lt;&lt;button 开始故事 间隔页&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="35" name="间隔页" tags="nobr UIBarhide" position="" size="">&lt;&lt;fadeout 5s 2s&gt;&gt;&lt;div class=&quot;black&quot;&gt;&lt;/div&gt;
+&lt;&lt;button 开始故事 间隔页&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="35" name="间隔页" tags="nobr UIBarhide" position="" size="">&lt;&lt;fadeout 5s 3s&gt;&gt;&lt;div class=&quot;black&quot;&gt;&lt;/div&gt;
 &lt;div style=&quot;color: #a6a6a6;display:flex;position: relative;width: 100%;height: 81%;justify-content: center;align-items: center;&quot;&gt;
 &lt;div style=&quot;text-shadow: 0em 0em 1.2em white;text-align:center;&quot;&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;在故事被抹去后，祂们的名字开始众猫被遗忘&lt;br&gt;&lt;br&gt;许多绝望，许多凋亡，许多陷入虚妄&lt;br&gt;&lt;br&gt;许多仍在寻求那无从归去之乡&lt;/div&gt;&lt;/div&gt;&lt;&lt;/fadeout&gt;&gt;
-&lt;&lt;timed 7s&gt;&gt;&lt;&lt;goto 开始故事&gt;&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="36" name="开始故事" tags="nobr UIBarhide" position="" size="">&lt;&lt;set $hideui = 1&gt;&gt;&lt;&lt;if $nn == &quot;Nix&quot;&gt;&gt;&lt;&lt;set $soul = &quot;金色&quot;&gt;&gt;&lt;&lt;elseif $blood == &quot;dragus&quot;&gt;&gt;&lt;&lt;set $soul = &quot;红色&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set $soul = &quot;蓝色&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;timed 8s&gt;&gt;&lt;&lt;goto 开始故事&gt;&gt;&lt;&lt;/timed&gt;&gt;</tw-passagedata><tw-passagedata pid="36" name="开始故事" tags="nobr UIBarhide" position="" size="">&lt;&lt;set $hideui = 1&gt;&gt;&lt;&lt;if $nn == &quot;Nix&quot;&gt;&gt;&lt;&lt;set $soul = &quot;金色&quot;&gt;&gt;&lt;&lt;elseif $blood == &quot;dragus&quot;&gt;&gt;&lt;&lt;set $soul = &quot;红色&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set $soul = &quot;蓝色&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $choice ==0&gt;&gt;
 你将自己裹进褪色的大衣外套，紧握手提箱，等待着东方快车的到来。太阳还未升起，夜晚残留的寒冷气息弥漫在站台上稀稀疏疏的猫群间，此时唯一的声响是广播正在播报的本季度第三次铁路罢工通知。
 &lt;br&gt;&lt;br&gt;
@@ -12099,11 +12104,23 @@ $tnn看上去有些惊讶，仿佛从来没考虑过你会拒绝。&lt;br&gt;&lt
 
 
 /*未署名的来信*/
-&lt;&lt;if $choice == &quot;送信nix&quot;&gt;&gt;
+&lt;&lt;if $choice == &quot;送信nix&quot;&gt;&gt;&lt;&lt;set $story[&quot;未署名的来信&quot;].nix =1&gt;&gt;
 你在递出信时，瞥见了信封上的地址，那是英国的一个郡县，书写者的字迹优美，署名的姓氏是Lewis，和拓荒者木屋中的路易红茶一个名字。&lt;br&gt;&lt;br&gt;
-“苏菲拜托你来的？”枘朴小姐接过信，毫不掩饰自己的惊讶，“我和她提过许多次了，岛上有很多猫都愿意分摊她的工作，但她都拒绝了。”她边说着边拆开信封，似乎并不介意你在场，“她愿意让你帮忙，这倒是头一次。
-&lt;&lt;set $story[&quot;未署名的来信&quot;].nix =1&gt;&gt;已送出&lt;br&gt;&lt;br&gt;
+“苏菲拜托你来的？”@@.nixtalk;枘朴小姐@@接过信，毫不掩饰自己的惊讶，“我和她提过许多次了，岛上有很多猫都愿意分摊她的工作，但她都拒绝了。她愿意让你帮忙，这倒是头一次。”她边说着边拆开信封，似乎并不介意你在场。&lt;br&gt;&lt;br&gt;
+沉默了几个心跳后，枘朴小姐应当是看完了信，再次看向了你，蓝眼睛眯成温和的弧度：&lt;br&gt;&lt;br&gt;
+“能答应我件事吗，就当我们之间的小秘密？”她的语气仿佛已经把你当成了密友，“之后苏菲忙不过来时，你都尽量帮帮她。那孩子太累了。”&lt;br&gt;&lt;br&gt;
+&lt;&lt;do&gt;&gt;
+&lt;&lt;if $choice == &quot;送信nix&quot;&gt;&gt;
+&lt;&lt;link ▷「答应」&gt;&gt;&lt;&lt;set $choice to &quot;答应&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「拒绝」&gt;&gt;&lt;&lt;set $choice to &quot;拒绝&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;elseif $choice == &quot;答应&quot;&gt;&gt;
+你接受了她的提议。你很乐意帮苏菲做事。&lt;&lt;set $recording[&quot;送信&quot;] =1&gt;&gt;&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「返回」 木屋内部&gt;&gt;&lt;&lt;set $npc to 0, $choice =0&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;elseif $choice == &quot;拒绝&quot;&gt;&gt;
+你拒绝了这样的要求，你还有自己的事需要做，就算再累，不能完成自己的工作，那也只是她自己的问题。&lt;br&gt;&lt;br&gt;
+&lt;&lt;link ▷「返回」 木屋内部&gt;&gt;&lt;&lt;set $npc to 0, $choice =0&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;traitaddwaves &quot;无情&quot; 1&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;
 &lt;&lt;elseif $choice == &quot;送信bol&quot;&gt;&gt;
 &lt;&lt;set $story[&quot;未署名的来信&quot;].bol =1&gt;&gt;已送出&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「返回」 $loc&gt;&gt;&lt;&lt;set $npc to 0, $choice =0&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -12199,7 +12216,7 @@ $tnn看上去有些惊讶，仿佛从来没考虑过你会拒绝。&lt;br&gt;&lt
 &lt;&lt;link ▷「继续」 酒馆&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;elseif $choice == &quot;接受&quot;&gt;&gt;
 那玉雕看上去久失保养, 因年代久远而失去了原有的色泽, 但若好好清洗擦拭一番, 必定能卖上好价钱。心中的天秤略作比较, 你决定接下这个流浪汉的请求。一杯酒有多难做?&lt;br&gt;&lt;br&gt;
-&lt;&lt;timed 2s t8n&gt;&gt;Coni听到你的灾中抢救出来的手稿, 上面用潦草的英语在原文旁写着注释. 这是布尔盖酒的配方&lt;br&gt;&lt;br&gt;
+&lt;&lt;timed 2s t8n&gt;&gt;寇尼听到你的灾中抢救出来的手稿, 上面用潦草的英语在原文旁写着注释. 这是布尔盖酒的配方&lt;br&gt;&lt;br&gt;
 &lt;&lt;set $story[&quot;布尔盖酒&quot;] = $date&gt;&gt;
 &lt;&lt;gainitem &quot;布尔盖酒配方&quot; 1&gt;&gt;
 &lt;&lt;itemobtain &quot;布尔盖酒配方 * 1&quot;&gt;&gt;
@@ -12217,8 +12234,8 @@ $tnn看上去有些惊讶，仿佛从来没考虑过你会拒绝。&lt;br&gt;&lt
 他伸手向你示意，这次连一句话都没说。&lt;br&gt;&lt;br&gt;
 &lt;&lt;do&gt;&gt;
 &lt;&lt;if $choice == &quot;交付布尔盖酒&quot;&gt;&gt;&lt;&lt;run delete $story[&quot;布尔盖酒&quot;]&gt;&gt;&lt;&lt;set $msname = &quot;无&quot;, $fame -=1&gt;&gt;&lt;&lt;set $storydone.push(&quot;【已完成】布尔盖酒&quot;)&gt;&gt;
-&lt;&lt;link ▷「再给他一瓶」 支线选项&gt;&gt;&lt;&lt;set $choice to &quot;再给他一瓶&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「拒绝」 支线选项&gt;&gt;&lt;&lt;set $choice to &quot;拒绝&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link ▷「再给他一瓶」&gt;&gt;&lt;&lt;set $choice to &quot;再给他一瓶&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;link ▷「拒绝」&gt;&gt;&lt;&lt;set $choice to &quot;拒绝&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;else&gt;&gt;
 &lt;&lt;if $choice == &quot;再给他一瓶&quot;&gt;&gt;
 &lt;&lt;if $food.has(&#39;布尔盖酒&#39;)&gt;&gt;&lt;&lt;dropitem &quot;布尔盖酒&quot; 1&gt;&gt;
@@ -12230,18 +12247,22 @@ $tnn看上去有些惊讶，仿佛从来没考虑过你会拒绝。&lt;br&gt;&lt
 你拒绝了更多无礼的请求。寇尼擦擦鼻子，也没说什么，
 &lt;&lt;/if&gt;&gt;
 转身准备回到他的床铺。酒瓶从他脱力的手中掉落，引来了酒馆内其他猫的视线，这时你才注意到，不少猫都对你投来异样的目光，就连在吧台后的公爵夫人也收起了她平日的微笑。&lt;br&gt;&lt;br&gt;
-帮助一个臭名昭著的酒鬼似乎确实不该是一个品行端正的猫族该做的事情，尤其还在你有所图的时候。在你还纠结是否要提醒寇尼有关你的报酬时，那枚兔形玉雕就从他的方向那顺着桌面向你滑来。&lt;br&gt;&lt;br&gt;
+帮助一个臭名昭著的酒鬼似乎确实不该是一个品行端正的猫族该做的事情，尤其还在你有所图的时候。在你还纠结是否要提醒寇尼有关你的报酬时，那枚兔形玉雕就从他的方向那顺着桌面向你滑来。&lt;br&gt;
+&lt;&lt;gainitem &quot;兔形玉雕&quot; 1&gt;&gt;&lt;&lt;itemobtain &quot;兔形玉雕 * 1&quot;&gt;&gt;
+&lt;br&gt;
 “拿着它吧，我也用不到了。”寇尼颤抖的声音传来。“谢谢你的酒。不要想我。不要、不要回忆我。”此刻，你已经不能确定这番话是否是在对你说的了，这一切听起来都只是一个酒鬼混乱的呓语，无需放在心上。&lt;br&gt;&lt;br&gt;
 有猫离开座位，上前来扶住寇尼，对他说了些什么。酒馆里的其他猫仍在看向这边，那些视线让你不安。也许你该走了。&lt;br&gt;&lt;br&gt;
 在走之前，寇尼的哭声传进你的耳朵，你隐约听见了他的最后一句话：&lt;br&gt;&lt;br&gt;
 “...我只是太想他们了....”&lt;br&gt;
-&lt;&lt;gainitem &quot;兔形玉雕&quot; 1&gt;&gt;
+
 &lt;&lt;set $social -=1&gt;&gt;&lt;&lt;badthing &quot;你的社交属性降低了1级&quot;&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「离开」 酒馆&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;
 &lt;&lt;elseif $choice == &quot;道歉&quot;&gt;&gt;
+你向寇尼解释你还没能做出布尔盖酒，他的神情让你心头一紧。&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「离开」 酒馆&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;elseif $choice == &quot;无视走开&quot;&gt;&gt;
+你没再理会这个酒鬼。&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「离开」 酒馆&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
@@ -12253,11 +12274,10 @@ $tnn看上去有些惊讶，仿佛从来没考虑过你会拒绝。&lt;br&gt;&lt
 在你被领至那舒适到能将猫吞噬的毛绒沙发上后，你明白房间里的其他东西也都同她一般在等待你的到来。茶几上摆着一套造型精巧的茶具，/*枘朴小姐似乎刚刚正在看书，但那本过厚而老旧的古书并没有选择把它的名字朝向你。*/而在一旁的，则是台造型古旧的金属相机，它与周遭格格不入，于是你便知道了它的身份。&lt;br&gt;&lt;br&gt;
 它是为你准备的。&lt;br&gt;&lt;br&gt;
 枘朴小姐拉开了沙发一旁的藤椅，一如既往地开始为你沏茶，仿佛在拓荒者木屋中，热水永不中断。等那杯热气腾腾的红茶递到你手中，她带着怀念的语气继续了你们的对话。&lt;br&gt;&lt;br&gt;
-“我曾经热衷于观鸟, 而以我的情况, 这是件相当便利的事. ”你不清楚她在指什么, 母猫看起来也没有要解释的意味，继续说着，“现在在永无乡, 你会发现, 这里的鸟类也是多么的易于观察, 而且品种繁多. ”她笑了一下，蓝眼睛眯成一个温和的弧度，“我确保了这一点. ”
-她拿起桌上的相机，打开它的保护壳，
-&quot;这原是一件来自朋友的纪念品, 这些年来, 我用它记录下来了许多值得回忆的时刻. 现在，把它交给你再合适不过了。&quot;       &lt;br&gt;&lt;br&gt;                      
-
-&quot;这是我仅剩的一些胶卷了, 不过你可以在主港口的仓库那下订单, 每周六都有货轮靠岸. &quot;....&lt;br&gt;&lt;br&gt;
+“我曾经热衷于观鸟, 而以我的情况, 这是件相当便利的事. ”你不清楚她在指什么, 母猫看起来也没有要解释的意味，继续说着，“现在在永无乡, 你会发现, 这里的鸟类也是多么的易于观察, 而且品种繁多. ”她笑了一下，蓝眼睛眯成一个温和的弧度，“我确保了这一点. ”&lt;br&gt;&lt;br&gt;
+她拿起桌上的相机，打开它的保护壳，递给了你。&lt;br&gt;&lt;br&gt;
+&quot;这原是一件来自朋友的纪念品, 这些年来, 我用它记录下来了许多值得回忆的时刻. 现在，把它交给你再合适不过了. &quot;&lt;br&gt;&lt;br&gt;                      
+&quot;这是我仅剩的一些胶卷了, 不过你可以在主港口的仓库那下订单, 每周六都有货轮靠岸. &quot;&lt;br&gt;&lt;br&gt;
 “我很期待你的观鸟记录。”&lt;br&gt;&lt;br&gt;
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;gainitem &quot;徕卡相机&quot; 1&gt;&gt;&lt;&lt;gainitem &quot;胶卷&quot; 6&gt;&gt;
