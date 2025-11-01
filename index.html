@@ -7499,6 +7499,7 @@ Item.add("牡丹花种子", {displayName: "牡丹花种子", description: "<br><
 Item.add("百合花种子", {displayName: "百合花种子", description: "<br><br>〖可在田圃里种植〗<<iwd \"红玫瑰\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "种子", "鸟食", null, null, null, "fuelB"]);
 Item.add("勿忘我种子", {displayName: "勿忘我种子", description: "<br><br>〖可在田圃里种植〗<<iwd \"红玫瑰\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "种子", "鸟食", null, null, null, "fuelB"]);
 Item.add("金盏花种子", {displayName: "金盏花种子", description: "<br><br>〖可在田圃里种植〗<<iwd \"红玫瑰\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "种子", "鸟食", null, null, null, "fuelB"]);
+Item.add("茉莉花种子", {displayName: "茉莉花种子", description: "<br><br>〖可在田圃里种植〗<<iwd \"红玫瑰\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "种子", "鸟食", null, null, null, "fuelB"]);
 Item.add("紫罗兰种子", {displayName: "紫罗兰种子", description: "<br><br>〖可在田圃里种植〗<<iwd \"红玫瑰\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "种子", "鸟食", null, null, null, "fuelB"]);
 Item.add("附子花种子", {displayName: "附子花种子", description: "<br><br>〖可在田圃里种植〗<<iwd \"红玫瑰\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "种子", "鸟食", null, null, null, "fuelB"]);
 Item.add("鸢尾花种子", {displayName: "鸢尾花种子", description: "<br><br>〖可在田圃里种植〗<<iwd \"红玫瑰\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "种子", "鸟食", null, null, null, "fuelB"]);
@@ -13866,10 +13867,11 @@ Dialog.open();&gt;&gt;
 &lt;&lt;if _m ==1&gt;&gt;&lt;&lt;audio &quot;枪声1&quot; play&gt;&gt;&lt;&lt;elseif _m ==2&gt;&gt;&lt;&lt;audio &quot;枪声2&quot; play&gt;&gt;&lt;&lt;elseif _m ==3&gt;&gt;&lt;&lt;audio &quot;枪声3&quot; play&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;dropitem &quot;火药&quot; 1&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「继续搜寻」 打猎&gt;&gt;
+&lt;&lt;if $tmpmaterial != 0&gt;&gt;
 &lt;&lt;set _m to random(1,12)&gt;&gt;
 &lt;&lt;if _n == 1&gt;&gt;&lt;&lt;set $choice = &quot;打猎结束&quot;&gt;&gt;&lt;&lt;dropitems _gainitem&gt;&gt;&lt;&lt;goto &quot;打猎遭遇&quot;&gt;&gt;
 &lt;&lt;else&gt;&gt;&lt;&lt;set $tmpmaterial to 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;if $tmpmaterial == &quot;红狐&quot;&gt;&gt;&lt;&lt;set $foxrelease +=1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
@@ -13878,48 +13880,48 @@ Dialog.open();&gt;&gt;
 &lt;&lt;if $tmpmaterial == &quot;田鼠&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;田鼠&quot;)&gt;&gt;
 &lt;&lt;if _n&lt;=19&gt;&gt;短暂的瞄准后, 你击中了田鼠。&lt;br&gt;&lt;br&gt;
 &lt;&lt;if $seisistate ==&quot;生气1&quot; || $seisistate ==&quot;生气2&quot; || $seisistate ==&quot;生气3&quot;&gt;&gt;小小的尸体躺在你的脚边，即将加入它的同族们，成为你向Seisi的赔礼。&lt;&lt;gainitem &quot;田鼠&quot; 1&gt;&gt;
-&lt;&lt;else&gt;&gt;你看着脚边的田鼠, 它太小了, 甚至不够用来煲汤, 而你也没饿到要吃老鼠的地步。&lt;&lt;/if&gt;&gt;
-&lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;你看着脚边的田鼠, 它太小了, 甚至不够用来煲汤, 而你也没饿到要吃老鼠的地步。&lt;&lt;set $tmpmaterial to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;_rpe&lt;&lt;set $tmpmaterial to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $tmpmaterial == &quot;灰兔&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;灰兔&quot;)&gt;&gt;
 &lt;&lt;if _n&lt;=17&gt;&gt;短暂的瞄准后, 你击中了灰兔&lt;br&gt;
 &lt;&lt;set _gainitem = {&quot;小型皮毛&quot;:1, &quot;兽肉&quot;:1}&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt;&lt;&lt;itemobtain &quot;兽肉*1 小型皮毛* 1 &quot;&gt;&gt;
 &lt;&lt;elseif _n&lt;=18&gt;&gt;特殊短暂的瞄准后, 你击中了灰兔&lt;br&gt;
 &lt;&lt;set _gainitem = {&quot;小型皮毛&quot;:1, &quot;兽肉&quot;:1}&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt;&lt;&lt;itemobtain &quot;兽肉*1 小型皮毛* 1 &quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;_rpe&lt;&lt;set $tmpmaterial to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $tmpmaterial == &quot;黄鼬&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;黄鼬&quot;)&gt;&gt;
 &lt;&lt;if _n&lt;=16&gt;&gt;短暂的瞄准后, 你击中了黄鼬&lt;br&gt;
 &lt;&lt;set _gainitem = {&quot;小型皮毛&quot;:1, &quot;兽肉&quot;:2}&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt;&lt;&lt;itemobtain &quot;兽肉*2 小型皮毛* 1 &quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;_rpe&lt;&lt;set $tmpmaterial to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif $tmpmaterial == &quot;白鼬&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;白鼬&quot;)&gt;&gt;
 &lt;&lt;if _n&lt;=14&gt;&gt;【短暂的瞄准后, 你击中了白鼬】&lt;br&gt;
 &lt;&lt;set _gainitem = {&quot;白鼬皮&quot;:1, &quot;兽肉&quot;:2}&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt;&lt;&lt;itemobtain &quot;兽肉*2 白鼬皮* 1 &quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;_rpe&lt;&lt;set $tmpmaterial to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $tmpmaterial == &quot;红狐&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;红狐&quot;)&gt;&gt;
 &lt;&lt;if _n&lt;=14&gt;&gt;【短暂的瞄准后, 你击中了红狐】&lt;br&gt;
 &lt;&lt;set _gainitem = {&quot;大型皮毛&quot;:1, &quot;兽肉&quot;:3}&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt;&lt;&lt;itemobtain &quot;兽肉*3 大型皮毛* 1 &quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;_rpe&lt;&lt;set $tmpmaterial to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $tmpmaterial == &quot;赤鹿&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;赤鹿&quot;)&gt;&gt;
 &lt;&lt;if _n&lt;=9&gt;&gt;【漫长的等待后, 你终于扣下了扳机, 雌鹿庞大的身躯在惊恐中倒下】&lt;br&gt;
 &lt;&lt;set _gainitem = {&quot;大型皮毛&quot;:2, &quot;兽肉&quot;:5}&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt;&lt;&lt;itemobtain &quot;兽肉*5 大型皮毛* 2 &quot;&gt;&gt;
 &lt;&lt;elseif _n&lt;=13&gt;&gt;【漫长的等待后，你终于扣下了扳机，雄鹿庞大的身躯在惊恐中倒下，所幸那对壮丽的鹿角仍然完整】&lt;br&gt;
 &lt;&lt;set _gainitem = {&quot;大型皮毛&quot;:2, &quot;兽肉&quot;:5,&quot;鹿角&quot;:1}&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt;&lt;&lt;itemobtain &quot;兽肉*5 大型皮毛* 2 鹿角*1&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;_rpe&lt;&lt;set $tmpmaterial to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $tmpmaterial == &quot;松鸡&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;松鸡&quot;)&gt;&gt;
 &lt;&lt;if _n&lt;=15&gt;&gt;【短暂的瞄准后，你击中了松鸡】&lt;br&gt;
 &lt;&lt;set _gainitem = {&quot;禽肉&quot;:1, &quot;尾羽&quot;:2}&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt;&lt;&lt;itemobtain &quot;禽肉*1 尾羽* 2 &quot;&gt;&gt;
 &lt;&lt;elseif _n&lt;=13&gt;&gt;【短暂的瞄准后，你击中了松鸡，在你前去拾起你的猎物时，这个可怜生灵留在世间的最后一比遗产也赫然摆在你面前】&lt;br&gt;&lt;&lt;set _r to random(1,3)&gt;&gt;
 &lt;&lt;set _gainitem = {&quot;禽肉&quot;:1, &quot;尾羽&quot;:2,&quot;鸟蛋&quot;:_r}&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt;&lt;&lt;itemobtain &quot;禽肉*1 尾羽* 2 鸟蛋*_r&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;_rpe&lt;&lt;set $tmpmaterial to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $tmpmaterial == &quot;狍子&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;狍子&quot;)&gt;&gt;
 &lt;&lt;if _n&lt;=18&gt;&gt;【精准的瞄准后, 你击中了一只狍子, 它的同伴在原地茫然地嗅着它的尸体】&lt;br&gt;
 &lt;&lt;set _gainitem = {&quot;小型皮毛&quot;:1, &quot;兽肉&quot;:4}&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt;&lt;&lt;itemobtain &quot;兽肉*4 大型皮毛* 1 &quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;_rpe&lt;&lt;set $tmpmaterial to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $tmpmaterial == &quot;野马&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;野马&quot;)&gt;&gt;
 这毫无戒备心的美丽生物, 明知着你的存在, 但直到你枪响前一刻还在安心地向你走来. 现在它倒在地上, 银血如它惊恐的同伴一样四散&lt;br&gt;
@@ -13928,30 +13930,30 @@ Dialog.open();&gt;&gt;
 &lt;&lt;elseif $tmpmaterial == &quot;野猪&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;狍子&quot;)&gt;&gt;
 &lt;&lt;if _n&lt;=11&gt;&gt;【漫长的瞄准后, 你击中了野猪，它哀嚎着向你冲来，但很快就失去力气倒下】&lt;br&gt;
 &lt;&lt;set _gainitem = {&quot;小型皮毛&quot;:1, &quot;兽肉&quot;:4,&quot;獠牙&quot;: 1}&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt;&lt;&lt;itemobtain &quot;兽肉*4 大型皮毛* 1 獠牙*1&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;这里要过一个力量检定失败会受伤&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;这里要过一个力量检定失败会受伤&lt;&lt;set $tmpmaterial to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $tmpmaterial == &quot;山羊&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;山羊&quot;)&gt;&gt;&lt;&lt;if _n&lt;=14&gt;&gt;漫长的等待后, 你终于扣下了扳机&lt;br&gt;
 &lt;&lt;set _gainitem = {&quot;羊绒&quot;:2, &quot;兽肉&quot;:4}&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt;&lt;&lt;itemobtain &quot;兽肉*4 羊绒*2 &quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;_rpe&lt;&lt;set $tmpmaterial to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $tmpmaterial == &quot;雷鸟&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;雷鸟&quot;)&gt;&gt;
 &lt;&lt;if _n&lt;=5 &amp;&amp; $rd == 1&gt;&gt;短暂的瞄准后，你击中了雷鸟，与以往不同的是，一枚有着深色纹路的鸟蛋躺在你的猎物旁&lt;br&gt;
 &lt;&lt;set _gainitem = {&quot;禽肉&quot;:1, &quot;尾羽&quot;:2, &quot;雷鸟蛋&quot;:1}&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt;&lt;&lt;itemobtain &quot;禽肉*1 尾羽* 2 雷鸟蛋*1&quot;&gt;&gt;
 &lt;&lt;elseif _n&lt;=16&gt;&gt;【短暂的瞄准后，你击中了雷鸟】&lt;br&gt;
 &lt;&lt;set _gainitem = {&quot;禽肉&quot;:1, &quot;尾羽&quot;:2}&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt;&lt;&lt;itemobtain &quot;禽肉*1 尾羽*2 &quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;_rpe&lt;&lt;set $tmpmaterial to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $tmpmaterial == &quot;鹌鹑&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;鹌鹑&quot;)&gt;&gt;
 &lt;&lt;if _n&lt;=13&gt;&gt;短暂的瞄准后, 你击中了鹌鹑&lt;br&gt;
 &lt;&lt;set _gainitem = {&quot;禽肉&quot;:1, &quot;尾羽&quot;:1}&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt;&lt;&lt;itemobtain &quot;禽肉*1 尾羽*1 &quot;&gt;&gt;
 &lt;&lt;elseif _n&lt;=16&gt;&gt;短暂的瞄准后，你击中了鹌鹑，在你前去拾起你的猎物时，这个可怜生灵留在世间的最后一比遗产也赫然摆在你面前&lt;br&gt;&lt;&lt;set _r to random(3,5)&gt;&gt;
 &lt;&lt;set _gainitem = {&quot;禽肉&quot;:1, &quot;尾羽&quot;:1, &quot;鸟蛋&quot;:_r}&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt;&lt;&lt;itemobtain &quot;禽肉*1 尾羽* 1 鸟蛋*_r&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;_rpe&lt;&lt;set $tmpmaterial to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;elseif $tmpmaterial == &quot;野鸭&quot;&gt;&gt;&lt;&lt;set $preycollect.pushUnique(&quot;野鸭&quot;)&gt;&gt;
 &lt;&lt;if _n&lt;=14&gt;&gt;短暂的瞄准后, 你击中了野鸭&lt;br&gt;
 &lt;&lt;set _gainitem = {&quot;禽肉&quot;:1, &quot;鸭绒&quot;:1}&gt;&gt;&lt;&lt;gainitems _gainitem&gt;&gt;&lt;&lt;itemobtain &quot;禽肉*1 鸭绒*1 &quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;_rpe&lt;&lt;/if&gt;&gt;
+&lt;&lt;else&gt;&gt;_rpe&lt;&lt;set $tmpmaterial to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;</tw-passagedata><tw-passagedata pid="79" name="打猎遭遇" tags="nobr" position="1100,1000" size="100,100">&lt;&lt;set _s to random(1,74), _t to random(1,3)&gt;&gt;
@@ -20086,7 +20088,7 @@ $msname&lt;br&gt;
 
 &lt;&lt;if _s ==1&gt;&gt;
 &lt;&lt;set _num to $item.uniqueLength - 1&gt;&gt;
-&lt;&lt;if _num == 0&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
+&lt;&lt;if _num &lt;= -1&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
 &lt;&lt;set _i to random(0, _num)&gt;&gt;
 &lt;&lt;set _itemn = $item.list[_i]&gt;&gt;
 &lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
@@ -20095,7 +20097,7 @@ $msname&lt;br&gt;
 
 &lt;&lt;elseif  _s ==2&gt;&gt;
 &lt;&lt;set _num to $food.uniqueLength - 1&gt;&gt;
-&lt;&lt;if _num == 0&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
+&lt;&lt;if _num &lt;= -1&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
 &lt;&lt;set _i to random(0, _num)&gt;&gt;
 &lt;&lt;set _itemn = $food.list[_i]&gt;&gt;
 &lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
@@ -20104,7 +20106,7 @@ $msname&lt;br&gt;
 
 &lt;&lt;elseif  _s ==3&gt;&gt;
 &lt;&lt;set _num to $book.uniqueLength - 1&gt;&gt;
-&lt;&lt;if _num == 0&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
+&lt;&lt;if _num &lt;= -1&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
 &lt;&lt;set _i to random(0, _num)&gt;&gt;
 &lt;&lt;set _itemn = $book.list[_i]&gt;&gt;
 &lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
@@ -20113,7 +20115,7 @@ $msname&lt;br&gt;
 
 &lt;&lt;elseif  _s ==4&gt;&gt;
 &lt;&lt;set _num to $material.uniqueLength - 1&gt;&gt;
-&lt;&lt;if _num == 0&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
+&lt;&lt;if _num &lt;= -1&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
 &lt;&lt;set _i to random(0, _num)&gt;&gt;
 &lt;&lt;set _itemn = $material.list[_i]&gt;&gt;
 &lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;&lt;&lt;lost&gt;&gt;&lt;&lt;else&gt;&gt;
