@@ -16890,9 +16890,12 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
     .sort(function(a, b) {
         return $active[b] - $active[a];
     })&gt;&gt;
-你来到永无乡已有$date日，过去的日子里，你最喜爱的岛民是&lt;&lt;=_filteredchat[0]&gt;&gt;，
-&lt;&lt;if _filteredchat[0] == _filteredlove[0]&gt;&gt;幸运的是，对方也这么觉得；&lt;&lt;else&gt;&gt;虽然可能对方不这么觉得；&lt;&lt;/if&gt;&gt;
-你最常做的活动是&lt;&lt;=_filteredactive[0]&gt;&gt;，&lt;&lt;if $active[_filteredactive[13]]==0&gt;&gt;你还没有尝试过&lt;&lt;=_filteredactive[13]&gt;&gt;。&lt;&lt;else&gt;&gt;你几乎不怎么&lt;&lt;=_filteredactive[13]&gt;&gt;。&lt;&lt;/if&gt;&gt;
+你来到永无乡已有$date日，过去的日子里，
+&lt;&lt;if _filteredchat[0] ==0&gt;&gt;你尚未与岛上的居民建立起什么联系；
+&lt;&lt;else&gt;&gt;你最喜爱的岛民是&lt;&lt;=_filteredchat[0]&gt;&gt;，
+&lt;&lt;if _filteredchat[0] == _filteredlove[0]&gt;&gt;幸运的是，对方也这么觉得；&lt;&lt;else&gt;&gt;虽然可能对方不这么觉得；&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if _filteredactive[0] ==0&gt;&gt;你还没有尝试过什么事情，永无乡的一切对你来说都是崭新的。
+&lt;&lt;else&gt;&gt;你最常做的活动是&lt;&lt;=_filteredactive[0]&gt;&gt;，&lt;&lt;if $active[_filteredactive[13]]==0&gt;&gt;你还没有尝试过&lt;&lt;=_filteredactive[13]&gt;&gt;。&lt;&lt;else&gt;&gt;你几乎不怎么&lt;&lt;=_filteredactive[13]&gt;&gt;。&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「返回」 浴室&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="124" name="书柜" tags="nobr" position="" size="">橡木书柜收纳着你的藏书和读物，书架外侧挂着一盏煤油灯，方便夜间取阅。&lt;br&gt;
