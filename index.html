@@ -8929,7 +8929,11 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
     &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-❖还书
+&lt;&lt;link ❖还书&gt;&gt;&lt;&lt;set $choice = 0, $state = &quot;还书&quot;&gt;&gt;&lt;&lt;run
+  Dialog.setup(&quot;还书&quot;);
+  Dialog.wiki(Story.get(&quot;奥提斯互动&quot;).processText());
+  Dialog.open();
+&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;if $story[&quot;点心代送&quot;] == 1&gt;&gt;&lt;br&gt;&lt;&lt;link ❖点心代送 支线选项&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if (!$book.has(&#39;梦日记&#39;) &amp;&amp; $sq.dream == 1) || ($NPCinfo[&quot;奥提斯&quot;].dream == &quot;制作中&quot; &amp;&amp; $item.has(&#39;捕梦网&#39;))&gt;&gt;&lt;&lt;link ❖梦的记录 奥提斯互动&gt;&gt;&lt;&lt;set $state = &quot;梦的记录&quot;, $choice = 0&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 
@@ -9987,7 +9991,22 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 “每次从梦里醒来的时候，什么都不要想，放松身体。理论上来说，梦境的记录是一个完全无意识的过程。”他盯着你补充了一句，确保你不会忘记：&lt;br&gt;&lt;br&gt;
 “记得把新的梦境素材带来给我，这很重要。“&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「继续」 图书馆&gt;&gt;&lt;&lt;set $choice to 0, $state =0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="公爵夫人互动" tags="nobr" position="" size="">/***************交谈******************/
+&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if $state == &quot;还书&quot;&gt;&gt;
+&lt;&lt;do&gt;&gt;
+&lt;div style=&quot;display: flex;justify-content: center;&quot;&gt;
+&lt;div class=&quot;littletext&quot; style=&quot;display: grid;grid-template-columns:1fr 1fr;&quot;&gt;
+&lt;&lt;for _i to 0, _m to 0; _i lt $book.uniqueLength;  _i++&gt;&gt;
+&lt;&lt;set _item1 = $book.list[_i]&gt;&gt;
+&lt;&lt;if Item.get(_item1).hasTag(&quot;图书馆&quot;)&gt;&gt;
+&lt;&lt;capture _item1&gt;&gt;
+&lt;&lt;set _m += 1&gt;&gt;
+&lt;span&gt;_item1 × &lt;&lt;=$book.count(_item1)&gt;&gt;&lt;/span&gt;
+&lt;span&gt;&lt;&lt;link &quot;还书&quot;&gt;&gt;&lt;&lt;dropitem _item1 1&gt;&gt;&lt;&lt;set $ashes += 20&gt;&gt;&lt;&lt;notify 3s&gt;&gt;成功归还_item1，取回押金20尘羽&lt;&lt;/notify&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
+&lt;&lt;/capture&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;/for&gt;&gt;&lt;/div&gt;&lt;/div&gt;&lt;&lt;/do&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="公爵夫人互动" tags="nobr" position="" size="">/***************交谈******************/
 &lt;&lt;if $state == &quot;问候&quot;&gt;&gt;
 /********初见********/
 &lt;&lt;if $NPCinfo[$npc].chat == 1&gt;&gt;
