@@ -104,7 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<tw-storydata name="NEVERLAND" startnode="195" creator="TweeRS" creator-version="0.1.16" ifid="E3246A24-2795-43D2-81E3-83C900F0F7B9" zoom="0.6" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "story/css\\01-main.css" */
+	<tw-storydata name="NEVERLAND" startnode="196" creator="TweeRS" creator-version="0.1.16" ifid="E3246A24-2795-43D2-81E3-83C900F0F7B9" zoom="0.6" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* twine-user-stylesheet #1: "story/css\\01-main.css" */
 @import url('https://static.zeoseven.com/cn/240/main/result.css');
 @import url('https://static.zeoseven.com/cn/237/main/result.css');
 @import url('https://static.zeoseven.com/cn/166/main/result.css');
@@ -7265,6 +7265,7 @@ Macro.add('clearGlobalAchievements', {
 
 /*成就内容*/
 window.defineAchievement("beginning", "新的篇章", "你成为了永无乡的新居民", "∞", "永无乡岛志", "写下你的第一页吧");
+window.defineAchievement("restore", "重建杂货铺", "你帮助了杂货铺重建", "∞", "永无乡岛志");
 
 window.defineAchievement("coffin", "梦境税收", "现在你终于有时间去数清星星上的针脚了", "⭐", "密契茶会");
 window.defineAchievement("lotus", "永无忧愁", "白日悠长, 黑夜凄冷, 你的时间, 两者皆无. 你属于蜡烛与玫瑰环绕的永无乡, 在那里, 你永无忧愁", "⭐", "密契茶会", "洗刷灵魂, 忘却烦恼");
@@ -7325,16 +7326,16 @@ Item.add("地图鼠", {displayName: "地图鼠", description: "一只灰扑扑�
 Item.add("刻刻蚁", {displayName: "刻刻蚁", description: "勤劳又忠诚的蚁群，它们团结高效的劳作能力足以让任何智慧种族自惭形愧<<iwd \"刻刻蚁\">>" , handler: null, consumable: null, function: "观察+2，可放置窗台", store: null, price: null , weight: 0.01},["宠物", null, null, "装备", null, null, "fuelS"]);
 Item.add("梦守宫", {displayName: "梦守宫", description: "半透明的守宫，眼睛的位置被人为的换成了两颗萤石。很少活动，远看着仿佛一件精致的摆件，只有透过皮肤看到体内器官组织的运作证明着它是一只活物。你不确定让它这样活着否合乎道德<<iwd \"梦守宫\">>" , handler: null, consumable: null, function: "力量+2，可放置窗台", store: null, price: null , weight: 0.03},["宠物", null, null, "装备", null, null, "fuelS"]);
 Item.add("夜织鸟", {displayName: "夜织鸟", description: "随处可见的鸟类，麻雀般大小，有着一身朴素的灰褐色羽毛，会在日出日落时分聚集起来鸣叫<<iwd \"夜织鸟\">>" , handler: null, consumable: null, function: "话术+2，可放置窗台", store: null, price: 40 , weight: 0.02},["宠物", null, null, "装备", null, null, "fuelS"]);
-Item.add("贝壳", {displayName: "贝壳", description: "被海浪打磨得光滑无比，贴在耳边能听见岛屿的心跳声（当然，大多数猫只会听到来自他们肚子的声响）<<iwd \"贝壳\">>" , handler: null, consumable: null, function: null, store: null, price: 1 , weight: 0.01},["材料", "制作", null, null, null, null, "fuelD"]);
-Item.add("没药", {displayName: "没药", description: "太阳底下最好的香料<<iwd \"没药\">>" , handler: null, consumable: null, function: null, store: null, price: 1 , weight: 0.01},["材料", "酿酒", null, null, null, null, "fuelB"]);
+Item.add("贝壳", {displayName: "贝壳", description: "被海浪打磨得光滑无比，贴在耳边能听见岛屿的心跳声（当然，大多数猫只会听到来自他们肚子的声响）<<iwd \"贝壳\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "制作", null, null, null, null, "fuelD"]);
+Item.add("没药", {displayName: "没药", description: "太阳底下最好的香料<<iwd \"没药\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "酿酒", null, null, null, null, "fuelB"]);
 Item.add("羊绒", {displayName: "羊绒", description: "柔软得就像没睡醒的美梦。埃拉坚持说他的羊不能白白奉献绒毛，所以对你手中的每一撮羊绒都要小心对待<<iwd \"羊绒\">> " , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "制材", null, null, null, null, "fuelA"]);
-Item.add("鸭绒", {displayName: "鸭绒", description: "<<iwd \"鸭绒\">>" , handler: null, consumable: null, function: null, store: null, price: 1 , weight: 0.01},["材料", "制材", null, null, null, null, "fuelA"]);
+Item.add("鸭绒", {displayName: "鸭绒", description: "<<iwd \"鸭绒\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "制材", null, null, null, null, "fuelA"]);
 Item.add("尾羽", {displayName: "尾羽", description: "<<iwd \"尾羽\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "制材", null, null, null, null, "fuelA"]);
 Item.add("雷鸟蛋", {displayName: "雷鸟蛋", description: "雷鸟从不轻易落巢，它们的蛋壳上带着闪电般的纹路。听说把蛋贴在耳边，能听到遥远的雷鸣。烹饪它？那可太过奢侈——有猫知道它们最适合的用途<<iwd \"雷鸟蛋\">>" , handler: null, consumable: null, function: null, store: null, price: 5 , weight: 0.08},["材料", "制材", null, null, null, null, "fuelS"]);
-Item.add("小型皮毛", {displayName: "小型皮毛", description: "柔软、轻便，用来缝制手套或小包。经常出现在裁缝学徒的手里，因为做坏了也不用心疼<<iwd \"小型皮毛\">>" , handler: null, consumable: null, function: null, store: null, price: 1 , weight: 0.02},["材料", "制材", "皮革", null, null, null, "fuelA"]);
-Item.add("大型皮毛", {displayName: "大型皮毛", description: "<<iwd \"大型皮毛\">>" , handler: null, consumable: null, function: null, store: null, price: 3 , weight: 0.04},["材料", "制材", "皮革", null, null, null, "fuelA"]);
-Item.add("白鼬皮", {displayName: "白鼬皮", description: "洁白如雪，柔软如吻。这是贵族小姐和林间猎手的共同爱好——前者用它做领饰，后者用它擦拭匕首<<iwd \"白鼬皮\">>" , handler: null, consumable: null, function: null, store: null, price: 5 , weight: 0.02},["材料", "制材", "皮革", null, null, null, "fuelA"]);
-Item.add("鹿角", {displayName: "鹿角", description: "造型优雅又质地坚硬，可以被雕成号角、钮扣，或者挂在门楣上彰显猎手的荣耀<<iwd \"鹿角\">>" , handler: null, consumable: null, function: null, store: null, price: 10 , weight: 2.7},["材料", "制材", "骨头", null, null, null, "fuelD"]);
+Item.add("小型皮毛", {displayName: "小型皮毛", description: "柔软、轻便，用来缝制手套或小包。经常出现在裁缝学徒的手里，因为做坏了也不用心疼<<iwd \"小型皮毛\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.02},["材料", "制材", "皮革", null, null, null, "fuelA"]);
+Item.add("大型皮毛", {displayName: "大型皮毛", description: "<<iwd \"大型皮毛\">>" , handler: null, consumable: null, function: null, store: null, price: 4 , weight: 0.04},["材料", "制材", "皮革", null, null, null, "fuelA"]);
+Item.add("白鼬皮", {displayName: "白鼬皮", description: "洁白如雪，柔软如吻。这是贵族小姐和林间猎手的共同爱好——前者用它做领饰，后者用它擦拭匕首<<iwd \"白鼬皮\">>" , handler: null, consumable: null, function: null, store: null, price: 8 , weight: 0.02},["材料", "制材", "皮革", null, null, null, "fuelA"]);
+Item.add("鹿角", {displayName: "鹿角", description: "造型优雅又质地坚硬，可以被雕成号角、钮扣，或者挂在门楣上彰显猎手的荣耀<<iwd \"鹿角\">>" , handler: null, consumable: null, function: null, store: null, price: 12 , weight: 2.7},["材料", "制材", "骨头", null, null, null, "fuelD"]);
 Item.add("智慧鲑鱼血", {displayName: "智慧鲑鱼血", description: "<<iwd \"智慧鲑鱼血\">>" , handler: null, consumable: null, function: null, store: null, price: 50 , weight: 0.08},["材料", "制材", "祭品", "酿酒", null, null, "fuelD"]);
 Item.add("银血", {displayName: "银血", description: "<<iwd \"银血\">>" , handler: null, consumable: null, function: null, store: null, price: 142 , weight: 0.12},["材料", "制材", "祭品", null, null, null, "fuelS"]);
 Item.add("田鼠骨头", {displayName: "田鼠骨头", description: "<<iwd \"田鼠骨头\">>" , handler: null, consumable: null, function: null, store: null, price: 1 , weight: 0.01},["材料", "制材", "骨头", null, null, null, "fuelD"]);
@@ -7402,45 +7403,45 @@ Item.add("龙舌兰根", {displayName: "龙舌兰根", description: "<br><br>〖
 Item.add("丁香树皮", {displayName: "丁香树皮", description: "<<iwd \"丁香树皮\">>" , handler: null, consumable: null, function: "false", store: null, price: 1 , weight: 0.1},["材料", "酿酒", null, null, null, null, "fuelA"]);
 Item.add("甜菜", {displayName: "甜菜", description: "<<iwd \"甜菜\">>" , handler: null, consumable: null, function: "false", store: null, price: 1 , weight: 0.1},["材料", "食材", null, null, null, null, "fuelC"]);
 Item.add("胡萝卜", {displayName: "胡萝卜", description: "<<iwd \"胡萝卜\">>" , handler: null, consumable: null, function: "false", store: null, price: 1 , weight: 0.1},["材料", "食材", null, null, null, null, "fuelC"]);
-Item.add("浆果", {displayName: "浆果", description: "<br><br>〖食用后体力+1〗<<iwd \"浆果\">>" , handler: "<<eatfood 1>><<loseweight  0.02>>", consumable: "true", function: "false", store: null, price: 1 , weight: 0.02},["食物", "食材", "水果", null, "fruity", null, "fuelC"]);
-Item.add("蜂蜜", {displayName: "蜂蜜", description: "<br><br>〖食用后体力+1〗<<iwd \"蜂蜜\">>" , handler: "<<eatfood 1>><<loseweight  0.03>>", consumable: "true", function: "false", store: null, price: 2 , weight: 0.03},["食物", "食材", "蜂蜜", null, "sweet", null, "fuelB"]);
-Item.add("牵牛花蜜", {displayName: "牵牛花蜜", description: "<br><br>〖食用后体力+1〗<<iwd \"牵牛花蜜\">>" , handler: "<<eatfood 1>><<loseweight 0.03>>", consumable: "true", function: "false", store: null, price: 1 , weight: 0.03},["材料", "酿酒", null, null, null, null, "fuelA"]);
-Item.add("黑蜂蜂蜜", {displayName: "黑蜂蜂蜜", description: "在别处你可见不到如此纯粹的蜂蜜, 盛起来时宛如流动的黄金, 可当你试着去享用它, 尝起来就像来自地狱的诅咒, 满是死亡的味道<br><br>〖直接食用后噩梦+1〗<<iwd \"黑蜂蜂蜜\">>" , handler: "<<addbadexp \"噩梦\" 1>><<notify 3s>>你的噩梦增加了1点<</notify>><<loseweight 0.03>>", consumable: "true", function: "false", store: null, price: 10 , weight: 0.03},["食物", "酿酒", "蜂蜜", "祭品", "bitter", null, "fuelS"]);
-Item.add("面包片", {displayName: "面包片", description: "<br><br>〖食用后体力+2〗<<iwd \"面包片\">>" , handler: "<<eatfood 2>><<loseweight  0.01>>", consumable: "true", function: "false", store: null, price: 2 , weight: 0.01},["食物", "食材", "鸟食", null, null, null, "fuelB"]);
-Item.add("龙舌兰蜜", {displayName: "龙舌兰蜜", description: "<br><br>〖食用后体力+1〗<<iwd \"龙舌兰蜜\">>" , handler: "<<eatfood 1>><<loseweight 0.03>>", consumable: "true", function: "false", store: null, price: 2 , weight: 0.03},["材料", "酿酒", null, null, null, null, "fuelA"]);
-Item.add("无花果", {displayName: "无花果", description: "<br><br>〖食用后体力+4〗<<iwd \"无花果\">>" , handler: "<<eatfood 4>><<loseweight 0.06>>", consumable: "true", function: "false", store: null, price: 2 , weight: 0.06},["食物", "食材", "酿酒", null, "fruity", null, "fuelA"]);
-Item.add("羊奶", {displayName: "羊奶", description: "新鲜的哺乳动物提取物<br><br>〖食用后体力+2〗<<iwd \"羊奶\">>" , handler: "<<eatfood 2>><<loseweight 0.2>>", consumable: "true", function: "false", store: null, price: 3 , weight: 0.2},["食物", "食材", null, null, "creamy", null, "fuelB"]);
-Item.add("煎蛋", {displayName: "煎蛋", description: "简单煎蛋<br><br>〖食用后体力+4〗<<iwd \"煎蛋\">>" , handler: "<<eatfood 4>><<loseweight  0.05>>", consumable: "true", function: "false", store: null, price: 2 , weight: 0.05},["食物", "食材", "烹饪", null, "meaty", null, "fuelA"]);
-Item.add("炸鱼", {displayName: "炸鱼", description: "<br><br>〖使用后体力+8〗<<iwd \"炸鱼\">>" , handler: "<<eatfood 8>><<loseweight 0.05>>", consumable: "true", function: "false", store: null, price: 4 , weight: 0.05},["食物", "食材", "烹饪", null, "fishy", null, "fuelA"]);
-Item.add("乌柿", {displayName: "乌柿", description: "生长在黑莲中的果实，通体乌黑，可以酿造柿子酒<br><br>〖使用后体力+4〗<<iwd \"乌柿\">>" , handler: "<<eatfood 4>><<set $lotus +=1>><<loseweight 0.05>>", consumable: "true", function: "false", store: null, price: 4 , weight: 0.05},["食物", "酿酒", null, null, null, null, "fuelS"]);
-Item.add("炸薯条", {displayName: "炸薯条", description: "<br><br>〖使用后体力+2〗<<iwd \"炸薯条\">>" , handler: "<<eatfood 2>><<loseweight 0.03>>", consumable: "true", function: "false", store: null, price: 2 , weight: 0.03},["食物", "食材", "烹饪", null, "fatty", null, "fuelA"]);
-Item.add("柠香三文鱼", {displayName: "柠香三文鱼", description: "<br><br>〖食用后体力+20〗<<iwd \"柠香三文鱼\">>" , handler: "<<eatfood 20>><<loseweight 0.3>>", consumable: "true", function: "false", store: null, price: 8 , weight: 0.3},["食物", "烹饪", null, null, "fishy", null, "fuelA"]);
-Item.add("茄汁鲈鱼", {displayName: "茄汁鲈鱼", description: "酸酸甜甜的番茄味几乎盖掉了鱼本来的气味。岛上流传一句话：“如果你分不清鱼是新鲜还是昨晚的，那就加番茄吧。”<br><br>〖食用后体力+20〗<<iwd \"茄汁鲈鱼\">>" , handler: "<<eatfood 20>><<loseweight 0.3>>", consumable: "true", function: "false", store: null, price: 8 , weight: 0.3},["食物", "烹饪", null, null, "fishy", null, "fuelA"]);
+Item.add("浆果", {displayName: "浆果", description: "<br><br>〖食用后体力+1〗<<iwd \"浆果\">>" , handler: "<<eatfood 1>><<loseweight  0.02>>", consumable: "true", function: "false", store: 2, price: 1 , weight: 0.02},["食物", "食材", "水果", null, "fruity", null, "fuelC"]);
+Item.add("蜂蜜", {displayName: "蜂蜜", description: "<br><br>〖食用后体力+1〗<<iwd \"蜂蜜\">>" , handler: "<<eatfood 1>><<loseweight  0.03>>", consumable: "true", function: "false", store: 2, price: 2 , weight: 0.03},["食物", "食材", "蜂蜜", null, "sweet", null, "fuelB"]);
+Item.add("牵牛花蜜", {displayName: "牵牛花蜜", description: "<br><br>〖食用后体力+1〗<<iwd \"牵牛花蜜\">>" , handler: "<<eatfood 1>><<loseweight 0.03>>", consumable: "true", function: "false", store: 2, price: 1 , weight: 0.03},["材料", "酿酒", null, null, null, null, "fuelA"]);
+Item.add("黑蜂蜂蜜", {displayName: "黑蜂蜂蜜", description: "在别处你可见不到如此纯粹的蜂蜜, 盛起来时宛如流动的黄金, 可当你试着去享用它, 尝起来就像来自地狱的诅咒, 满是死亡的味道<br><br>〖直接食用后噩梦+1〗<<iwd \"黑蜂蜂蜜\">>" , handler: "<<addbadexp \"噩梦\" 1>><<notify 3s>>你的噩梦增加了1点<</notify>><<loseweight 0.03>>", consumable: "true", function: "false", store: 2, price: 10 , weight: 0.03},["食物", "酿酒", "蜂蜜", "祭品", "bitter", null, "fuelS"]);
+Item.add("面包片", {displayName: "面包片", description: "<br><br>〖食用后体力+2〗<<iwd \"面包片\">>" , handler: "<<eatfood 2>><<loseweight  0.01>>", consumable: "true", function: "false", store: 4, price: 2 , weight: 0.01},["食物", "食材", "鸟食", null, null, null, "fuelB"]);
+Item.add("龙舌兰蜜", {displayName: "龙舌兰蜜", description: "<br><br>〖食用后体力+1〗<<iwd \"龙舌兰蜜\">>" , handler: "<<eatfood 1>><<loseweight 0.03>>", consumable: "true", function: "false", store: 2, price: 2 , weight: 0.03},["材料", "酿酒", null, null, null, null, "fuelA"]);
+Item.add("无花果", {displayName: "无花果", description: "<br><br>〖食用后体力+4〗<<iwd \"无花果\">>" , handler: "<<eatfood 4>><<loseweight 0.06>>", consumable: "true", function: "false", store: 8, price: 2 , weight: 0.06},["食物", "食材", "酿酒", null, "fruity", null, "fuelA"]);
+Item.add("羊奶", {displayName: "羊奶", description: "新鲜的哺乳动物提取物<br><br>〖食用后体力+2〗<<iwd \"羊奶\">>" , handler: "<<eatfood 2>><<loseweight 0.2>>", consumable: "true", function: "false", store: 4, price: 3 , weight: 0.2},["食物", "食材", null, null, "creamy", null, "fuelB"]);
+Item.add("8", {displayName: "8", description: "简单煎蛋<br><br>〖食用后体力+4〗<<iwd \"煎蛋\">>" , handler: "<<eatfood 4>><<loseweight  0.05>>", consumable: "true", function: "false", store: 8, price: 2 , weight: 0.05},["食物", "食材", "烹饪", null, "meaty", null, "fuelA"]);
+Item.add("炸鱼", {displayName: "炸鱼", description: "<br><br>〖使用后体力+8〗<<iwd \"炸鱼\">>" , handler: "<<eatfood 8>><<loseweight 0.05>>", consumable: "true", function: "false", store: 16, price: 4 , weight: 0.05},["食物", "食材", "烹饪", null, "fishy", null, "fuelA"]);
+Item.add("乌柿", {displayName: "乌柿", description: "生长在黑莲中的果实，通体乌黑，可以酿造柿子酒<br><br>〖使用后体力+4〗<<iwd \"乌柿\">>" , handler: "<<eatfood 4>><<set $lotus +=1>><<loseweight 0.05>>", consumable: "true", function: "false", store: 8, price: 4 , weight: 0.05},["食物", "酿酒", null, null, null, null, "fuelS"]);
+Item.add("炸薯条", {displayName: "炸薯条", description: "<br><br>〖使用后体力+2〗<<iwd \"炸薯条\">>" , handler: "<<eatfood 2>><<loseweight 0.03>>", consumable: "true", function: "false", store: 4, price: 2 , weight: 0.03},["食物", "食材", "烹饪", null, "fatty", null, "fuelA"]);
+Item.add("柠香三文鱼", {displayName: "柠香三文鱼", description: "<br><br>〖食用后体力+20〗<<iwd \"柠香三文鱼\">>" , handler: "<<eatfood 20>><<loseweight 0.3>>", consumable: "true", function: "false", store: 40, price: 8 , weight: 0.3},["食物", "烹饪", null, null, "fishy", null, "fuelA"]);
+Item.add("茄汁鲈鱼", {displayName: "茄汁鲈鱼", description: "酸酸甜甜的番茄味几乎盖掉了鱼本来的气味。岛上流传一句话：“如果你分不清鱼是新鲜还是昨晚的，那就加番茄吧。”<br><br>〖食用后体力+20〗<<iwd \"茄汁鲈鱼\">>" , handler: "<<eatfood 20>><<loseweight 0.3>>", consumable: "true", function: "false", store: 40, price: 8 , weight: 0.3},["食物", "烹饪", null, null, "fishy", null, "fuelA"]);
 Item.add("炸鱼薯条", {displayName: "炸鱼薯条", description: "<br><br>〖食用后体力+12〗<<iwd \"炸鱼薯条\">>" , handler: "<<eatfood 12>><<loseweight 0.08>>", consumable: "true", function: "false", store: 26, price: 5 , weight: 0.08},["食物", "烹饪", null, null, "fishy", null, "fuelA"]);
-Item.add("香蒜扇贝汤", {displayName: "香蒜扇贝汤", description: "<br><br>〖食用后体力+15〗<<iwd \"香蒜扇贝汤\">>" , handler: "<<eatfood 15>><<loseweight 0.4>>", consumable: "true", function: "false", store: null, price: 6 , weight: 0.4},["食物", "烹饪", null, null, "fishy", null, "fuelA"]);
-Item.add("蘑菇鱼汤", {displayName: "蘑菇鱼汤", description: "<br><br>〖食用后体力+22〗<<iwd \"蘑菇鱼汤\">>" , handler: "<<eatfood 22>><<loseweight 0.4>>", consumable: "true", function: "false", store: null, price: 10 , weight: 0.4},["食物", "烹饪", null, null, "fishy", null, "fuelA"]);
+Item.add("香蒜扇贝汤", {displayName: "香蒜扇贝汤", description: "<br><br>〖食用后体力+15〗<<iwd \"香蒜扇贝汤\">>" , handler: "<<eatfood 15>><<loseweight 0.4>>", consumable: "true", function: "false", store: 30, price: 6 , weight: 0.4},["食物", "烹饪", null, null, "fishy", null, "fuelA"]);
+Item.add("蘑菇鱼汤", {displayName: "蘑菇鱼汤", description: "<br><br>〖食用后体力+22〗<<iwd \"蘑菇鱼汤\">>" , handler: "<<eatfood 22>><<loseweight 0.4>>", consumable: "true", function: "false", store: 44, price: 10 , weight: 0.4},["食物", "烹饪", null, null, "fishy", null, "fuelA"]);
 Item.add("渔夫派", {displayName: "渔夫派", description: "表面金黄的土豆泥下藏着满满的海味馅料。岛上的渔夫常说：“别管今天打到什么鱼，塞进派里就没猫敢嫌弃。”<br><br>〖食用后体力+24〗<<iwd \"渔夫派\">>" , handler: "<<eatfood 24>><<loseweight 0.5>>", consumable: "true", function: "false", store: 50, price: 12 , weight: 0.5},["食物", "烹饪", null, null, "fishy", null, "fuelA"]);
-Item.add("土豆泥", {displayName: "土豆泥", description: "<br><br>〖食用后体力+3〗<<iwd \"土豆泥\">>" , handler: "<<eatfood 3>><<loseweight 0.05>>", consumable: "true", function: "false", store: null, price: 2 , weight: 0.05},["食物", "烹饪", null, null, "creamy", null, "fuelB"]);
-Item.add("鲜花饼", {displayName: "鲜花饼", description: "<br><br>〖食用后体力+6〗<<iwd \"鲜花饼\">>" , handler: "<<eatfood 6>><<loseweight 0.06>>", consumable: "true", function: "false", store: null, price: 3 , weight: 0.06},["食物", "烹饪", null, null, "floral", null, "fuelB"]);
-Item.add("土豆蛋饼", {displayName: "土豆蛋饼", description: "由土豆和鸡蛋做成的煎饼，口感粗糙但营养丰富。<br><br>〖食用后体力+8〗<<iwd \"土豆蛋饼\">>" , handler: "<<eatfood 8>><<loseweight 0.1>>", consumable: "true", function: "false", store: null, price: 4 , weight: 0.1},["食物", "烹饪", null, null, "meaty", null, "fuelB"]);
-Item.add("法式吐司", {displayName: "法式吐司", description: "<br><br>〖食用后体力+4〗<<iwd \"法式吐司\">>" , handler: "<<eatfood 4>><<loseweight 0.04>>", consumable: "true", function: "false", store: null, price: 2 , weight: 0.04},["食物", "烹饪", null, null, "meaty", null, "fuelB"]);
+Item.add("土豆泥", {displayName: "土豆泥", description: "<br><br>〖食用后体力+3〗<<iwd \"土豆泥\">>" , handler: "<<eatfood 3>><<loseweight 0.05>>", consumable: "true", function: "false", store: 6, price: 2 , weight: 0.05},["食物", "烹饪", null, null, "creamy", null, "fuelB"]);
+Item.add("鲜花饼", {displayName: "鲜花饼", description: "<br><br>〖食用后体力+6〗<<iwd \"鲜花饼\">>" , handler: "<<eatfood 6>><<loseweight 0.06>>", consumable: "true", function: "false", store: 12, price: 3 , weight: 0.06},["食物", "烹饪", null, null, "floral", null, "fuelB"]);
+Item.add("土豆蛋饼", {displayName: "土豆蛋饼", description: "由土豆和鸡蛋做成的煎饼，口感粗糙但营养丰富。<br><br>〖食用后体力+8〗<<iwd \"土豆蛋饼\">>" , handler: "<<eatfood 8>><<loseweight 0.1>>", consumable: "true", function: "false", store: 16, price: 4 , weight: 0.1},["食物", "烹饪", null, null, "meaty", null, "fuelB"]);
+Item.add("法式吐司", {displayName: "法式吐司", description: "<br><br>〖食用后体力+4〗<<iwd \"法式吐司\">>" , handler: "<<eatfood 4>><<loseweight 0.04>>", consumable: "true", function: "false", store: 8, price: 2 , weight: 0.04},["食物", "烹饪", null, null, "meaty", null, "fuelB"]);
 Item.add("烤肉", {displayName: "烤肉", description: "最原始，最粗糙的烹饪方式，带来最根本的美味<br><br>〖食用后体力+8〗<<iwd \"烤肉\">>" , handler: "<<eatfood 8>><<loseweight 0.08>>", consumable: "true", function: "false", store: 18, price: 3 , weight: 0.08},["食物", "烹饪", null, null, "meaty", null, "fuelA"]);
-Item.add("烤鸡腿", {displayName: "烤鸡腿", description: "<br><br>〖食用后体力+8〗<<iwd \"烤鸡腿\">>" , handler: "<<eatfood 8>><<loseweight 0.05>>", consumable: "true", function: "false", store: null, price: 3 , weight: 0.08},["食物", "烹饪", null, null, "meaty", null, "fuelA"]);
+Item.add("烤鸡腿", {displayName: "烤鸡腿", description: "<br><br>〖食用后体力+8〗<<iwd \"烤鸡腿\">>" , handler: "<<eatfood 8>><<loseweight 0.05>>", consumable: "true", function: "false", store: 16, price: 3 , weight: 0.08},["食物", "烹饪", null, null, "meaty", null, "fuelA"]);
 Item.add("浆果馅饼", {displayName: "浆果馅饼", description: "多汁可口的馅料让你感到满足. 浆果馅饼是最伟大的发明<br><br>〖使用后体力+10〗<<iwd \"浆果馅饼\">>" , handler: "<<eatfood 10>><<loseweight 0.4>>", consumable: "true", function: "false", store: 22, price: 4 , weight: 0.5},["食物", "烹饪", "派", null, "sweet", null, "fuelA"]);
-Item.add("奶油蘑菇汤", {displayName: "奶油蘑菇汤", description: "<br><br>〖食用后体力+12〗<<iwd \"奶油蘑菇汤\">>" , handler: "<<eatfood 12>><<loseweight 0.5>>", consumable: "true", function: "false", store: null, price: 5 , weight: 0.4},["食物", "烹饪", null, null, "creamy", null, "fuelA"]);
-Item.add("番茄浓汤", {displayName: "番茄浓汤", description: "<br><br>〖食用后体力+8〗<<iwd \"番茄浓汤\">>" , handler: "<<eatfood 8>><<loseweight 0.4>>", consumable: "true", function: "false", store: null, price: 4 , weight: 0.4},["食物", "烹饪", null, null, "fruity", null, "fuelA"]);
-Item.add("红椒酿肉", {displayName: "红椒酿肉", description: "<br><br>〖食用后体力+22〗<<iwd \"红椒酿肉\">>" , handler: "<<eatfood 22>><<loseweight 0.5>>", consumable: "true", function: "false", store: null, price: 10 , weight: 0.5},["食物", "烹饪", null, null, "spicy", null, "fuelA"]);
-Item.add("苏格兰汤", {displayName: "苏格兰汤", description: "粗糙的谷物，坚硬的根茎，隔夜的剩肉，这碗汤带着一股不屈的生命力。祝愿你永远都不需要依靠它来维持生命。<br><br>〖食用后体力+16〗<<iwd \"苏格兰汤\">>" , handler: "<<eatfood 16>><<loseweight 0.6>>", consumable: "true", function: "false", store: null, price: 8 , weight: 0.6},["食物", "烹饪", null, null, "fishy", null, "fuelA"]);
-Item.add("扇贝汤", {displayName: "扇贝汤", description: " <<iwd \"扇贝汤\">>" , handler: "<<eatfood 12>><<loseweight 0.6>>", consumable: "true", function: "false", store: null, price: 6 , weight: 0.6},["食物", "烹饪", null, null, "fishy", null, "fuelA"]);
-Item.add("蔬菜什锦", {displayName: "蔬菜什锦", description: " <<iwd \"蔬菜什锦\">>" , handler: "<<eatfood 8>><<loseweight 0.2>>", consumable: "true", function: "false", store: null, price: 4 , weight: 0.2},["食物", "烹饪", null, null, null, null, "fuelA"]);
-Item.add("无花果蜜饯", {displayName: "无花果蜜饯", description: " <<iwd \"无花果蜜饯\">>" , handler: "<<eatfood 8>><<loseweight 0.2>>", consumable: "true", function: "false", store: null, price: 6 , weight: 0.2},["食物", "烹饪", null, null, null, null, "fuelA"]);
+Item.add("奶油蘑菇汤", {displayName: "奶油蘑菇汤", description: "<br><br>〖食用后体力+12〗<<iwd \"奶油蘑菇汤\">>" , handler: "<<eatfood 12>><<loseweight 0.5>>", consumable: "true", function: "false", store: 24, price: 5 , weight: 0.4},["食物", "烹饪", null, null, "creamy", null, "fuelA"]);
+Item.add("番茄浓汤", {displayName: "番茄浓汤", description: "<br><br>〖食用后体力+8〗<<iwd \"番茄浓汤\">>" , handler: "<<eatfood 8>><<loseweight 0.4>>", consumable: "true", function: "false", store: 16, price: 4 , weight: 0.4},["食物", "烹饪", null, null, "fruity", null, "fuelA"]);
+Item.add("红椒酿肉", {displayName: "红椒酿肉", description: "<br><br>〖食用后体力+22〗<<iwd \"红椒酿肉\">>" , handler: "<<eatfood 22>><<loseweight 0.5>>", consumable: "true", function: "false", store: 44, price: 10 , weight: 0.5},["食物", "烹饪", null, null, "spicy", null, "fuelA"]);
+Item.add("苏格兰汤", {displayName: "苏格兰汤", description: "粗糙的谷物，坚硬的根茎，隔夜的剩肉，这碗汤带着一股不屈的生命力。祝愿你永远都不需要依靠它来维持生命。<br><br>〖食用后体力+16〗<<iwd \"苏格兰汤\">>" , handler: "<<eatfood 16>><<loseweight 0.6>>", consumable: "true", function: "false", store: 32, price: 8 , weight: 0.6},["食物", "烹饪", null, null, "fishy", null, "fuelA"]);
+Item.add("扇贝汤", {displayName: "扇贝汤", description: "<br><br>〖食用后体力+12〗 <<iwd \"扇贝汤\">>" , handler: "<<eatfood 12>><<loseweight 0.6>>", consumable: "true", function: "false", store: 24, price: 6 , weight: 0.6},["食物", "烹饪", null, null, "fishy", null, "fuelA"]);
+Item.add("蔬菜什锦", {displayName: "蔬菜什锦", description: "<br><br>〖食用后体力+8〗 <<iwd \"蔬菜什锦\">>" , handler: "<<eatfood 8>><<loseweight 0.2>>", consumable: "true", function: "false", store: 16, price: 4 , weight: 0.2},["食物", "烹饪", null, null, null, null, "fuelA"]);
+Item.add("无花果蜜饯", {displayName: "无花果蜜饯", description: "<br><br>〖食用后体力+8〗 <<iwd \"无花果蜜饯\">>" , handler: "<<eatfood 8>><<loseweight 0.2>>", consumable: "true", function: "false", store: 16, price: 6 , weight: 0.2},["食物", "烹饪", null, null, null, null, "fuelA"]);
 Item.add("羊倌派", {displayName: "羊倌派", description: "即使是叫这样的名字，但不论是从传统，还是埃拉的要求来说，这里面的都绝对不是羊肉。因为对埃拉而言，羊只能数，不能吃<br><br>〖食用后体力+24〗<<iwd \"羊倌派\">>" , handler: "<<eatfood 24>><<loseweight 0.5>>", consumable: "true", function: "false", store: 50, price: 12 , weight: 0.5},["食物", "烹饪", null, null, "meaty", null, "fuelA"]);
-Item.add("蜂蜜柠檬水", {displayName: "蜂蜜柠檬水", description: "<br><br>〖食用后体力+6〗<<iwd \"蜂蜜柠檬水\">>" , handler: "<<eatfood 6>><<loseweight 0.04>>", consumable: "true", function: "false", store: null, price: 2 , weight: 0.04},["食物", "食材", null, "蜂蜜", "sweet", null, "fuelB"]);
+Item.add("蜂蜜柠檬水", {displayName: "蜂蜜柠檬水", description: "<br><br>〖食用后体力+6〗<<iwd \"蜂蜜柠檬水\">>" , handler: "<<eatfood 6>><<loseweight 0.04>>", consumable: "true", function: "false", store: 12, price: 2 , weight: 0.04},["食物", "食材", null, "蜂蜜", "sweet", null, "fuelB"]);
 Item.add("蜂蜜鲜奶", {displayName: "蜂蜜鲜奶", description: "<br><br>〖食用后体力+5〗<<iwd \"蜂蜜鲜奶\">>" , handler: "<<eatfood 5>><<loseweight 0.04>>", consumable: "true", function: "false", store: 10, price: 2 , weight: 0.04},["食物", "食材", null, "蜂蜜", "creamy", null, "fuelB"]);
-Item.add("花茶", {displayName: "花茶", description: "<br><br>〖使用后体力+2〗<<iwd \"花茶\">>" , handler: "<<eatfood 1>><<loseweight 0.04>>", consumable: "true", function: "false", store: null, price: 2 , weight: 0.04},["食物", "食材", "茶", null, "floral", null, "fuelC"]);
-Item.add("牡丹花茶", {displayName: "牡丹花茶", description: "<br><br>〖使用后体力+1，噩梦-1〗<<iwd \"牡丹花茶\">>" , handler: "<<eatfood 1>><<losebadexp \"噩梦\" 1>><<notify 3s>>你的噩梦降低了1点<</notify>><<loseweight 0.04>>", consumable: "true", function: "false", store: null, price: 2 , weight: 0.04},["食物", "食材", "茶", null, "floral", null, "fuelC"]);
+Item.add("花茶", {displayName: "花茶", description: "<br><br>〖使用后体力+2〗<<iwd \"花茶\">>" , handler: "<<eatfood 1>><<loseweight 0.04>>", consumable: "true", function: "false", store: 2, price: 2 , weight: 0.04},["食物", "食材", "茶", null, "floral", null, "fuelC"]);
+Item.add("牡丹花茶", {displayName: "牡丹花茶", description: "<br><br>〖使用后体力+1，噩梦-1〗<<iwd \"牡丹花茶\">>" , handler: "<<eatfood 1>><<losebadexp \"噩梦\" 1>><<notify 3s>>你的噩梦降低了1点<</notify>><<loseweight 0.04>>", consumable: "true", function: "false", store: 2, price: 2 , weight: 0.04},["食物", "食材", "茶", null, "floral", null, "fuelC"]);
 Item.add("柿子酒", {displayName: "柿子酒", description: "乌黑醇香的家酿酒, 似乎是永无乡上的特产, 几乎每家每户都会在家中准备上这些口感甘甜的果酒, 也是赠礼的最佳选择<<iwd \"柿子酒\">><<if !$sq.lotus && $sq.lotus != 0>><<set $sq.lotus = 0>><<notify 3s>>Seisi提问新增“柿子酒”<</notify>><</if>>" , handler: "<<run Dialog.setup('饮用柿子酒');Dialog.wiki('有什么近似梦幻的东西滑进了你的嘴里, 然后是你的喉咙, 接着, 这种温暖而美妙的感觉扩散至了你的每一处知觉. 所有的悲痛, 所有的不幸, 似乎都已被这果酒洗刷. 等酒效过去, 你又回到了那个满是烦恼的世界');Dialog.open();>><<set $lotus += 1>><<if $lotus <= 24>><<set $player.nightmare -= 2>><<elseif $lotus <= 72>><<set $player.nightmare -= 1>><<elseif $lotus >= 241 && $lotus <=360>><<set $player.nightmare += 1>><<elseif $lotus <=666>><<set $player.nightmare += 1>><</if>><<loseweight 0.6>>", consumable: "true", function: "false", store: 6, price: 3 , weight: 0.6},["食物", "酒", "酿酒", null, null, null, "fuelS"]);
-Item.add("布尔盖酒", {displayName: "布尔盖酒", description: "<<iwd\"布尔盖酒\">>" , handler: "<<eatfood 8>><<loseweight 0.6>>", consumable: "true", function: "false", store: 3, price: 15 , weight: 0.6},["食物", "酒", null, null, null, null, "fuelA"]);
+Item.add("布尔盖酒", {displayName: "布尔盖酒", description: "<<iwd\"布尔盖酒\">>" , handler: "<<eatfood 8>><<loseweight 0.6>>", consumable: "true", function: "false", store: 16, price: 15 , weight: 0.6},["食物", "酒", null, null, null, null, "fuelA"]);
 Item.add("颂歌蜜酒", {displayName: "颂歌蜜酒", description: "<<iwd\"颂歌蜜酒\">>" , handler: "<<addkexp 10>><<addbadexp \"噩梦\" 3>><<loseweight 0.6>>", consumable: "true", function: "false", store: 9, price: 18 , weight: 0.6},["食物", "酒", null, "蜂蜜", null, null, "fuelS"]);
 Item.add("巧克力棒", {displayName: "巧克力棒", description: "<br><br>〖使用后体力+4〗<<iwd \"巧克力棒\">>" , handler: "<<eatfood 4>><<loseweight 0.05>>", consumable: "true", function: "false", store: 8, price: 2 , weight: 0.05},[null, null, null, null, null, null, "fuelC"]);
 Item.add("熏肉干", {displayName: "熏肉干", description: "<br><br>〖使用后体力+8〗<<iwd \"熏肉干\">>" , handler: "<<eatfood 8>><<loseweight 0.08>>", consumable: "true", function: "false", store: 8, price: 5 , weight: 0.08},["食物", null, null, null, null, null, "fuelA"]);
@@ -7461,9 +7462,9 @@ Item.add("伏特加", {displayName: "伏特加", description: "<br><br>〖使用
 Item.add("红茶", {displayName: "红茶", description: "<br><br>〖使用后体力+1〗<<iwd \"路易红茶\">>" , handler: "<<eatfood 1>><<loseweight 0.6>>", consumable: "true", function: "false", store: 6, price: 2 , weight: 0.6},["食物", "茶", null, null, null, null, "fuelA"]);
 Item.add("麦芽酒", {displayName: "麦芽酒", description: "<br><br>〖使用后体力+4〗<<iwd \"麦芽酒\">>" , handler: "<<set $drunk+=2>><<eatfood 4>><<loseweight 0.5>>", consumable: "true", function: "false", store: 12, price: 4 , weight: 0.5},["食物", "酿酒", "酒", null, null, null, "fuelA"]);
 Item.add("黑麦啤酒", {displayName: "黑麦啤酒", description: "<br><br>〖使用后体力+4〗<<iwd \"黑麦啤酒\">>" , handler: "<<set $drunk+=2>><<eatfood 4>><<loseweight 0.5>>", consumable: "true", function: "false", store: 12, price: 4 , weight: 0.5},["食物", "酿酒", "酒", null, null, null, "fuelA"]);
-Item.add("战时乐观主义派", {displayName: "战时乐观主义派", description: "粗糙麦壳制的馅饼，里面勉强能看出一些果蔬和肉块的形状。据老乔什说，这名为“战时乐观主义派”（简称”乐观派“），是他最初在2019年的冬季，在战壕里靠着四处收集来的材料发明而成，内容物不限于剪报上的胜利宣言、士兵家书里的错别字以及防毒面具滤芯中的蒲公英种子。他还声称，最初乐观派被他制作成了颇为前卫的三角造型，但由于口碑不佳，最终还是向最经典的圆形妥协<br><br>〖使用后体力+12，恐惧-2〗<<iwd \"战时乐观主义派\">>" , handler: "<<eatfood 12>><<losebadexp \"恐惧\" 2>><<notify 3s>>你的恐惧降低了2点<</notify>><<loseweight 06>>", consumable: "true", function: "false", store: null, price: 6 , weight: 0.6},["食物", "烹饪", "派", null, "meaty", "trethate", "fuelA"]);
-Item.add("榛子咖啡", {displayName: "榛子咖啡", description: "一杯来自欧洲大陆的咖啡，经过精心烘焙，融入了榛果的独特香气。只能通过主港口的仓库定期订购<br><br>〖食用后体力+10 学识经验+3〗<<iwd \"榛子咖啡\">>" , handler: "<<run Dialog.setup('饮用榛子咖啡');Dialog.wiki('细腻而温暖的咖啡带着榛果的香气充斥你的口腔，驱散了疲惫与困惑。你的思绪变得清晰，曾经某些不解的思绪此刻似乎也变得更加了然');Dialog.open();>><<set $coffin+=1>><<addkexp 3>><<eatfood 10>><<loseweight 0.4>>", consumable: "true", function: "false", store: null, price: 20 , weight: 0.4},["食物", "咖啡", null, null, null, null, "fuelS"]);
-Item.add("路易红茶", {displayName: "路易红茶", description: "似乎是某个英国的牌子，枘朴小姐家唯一饮用的红茶<br><br>〖使用后体力+1，噩梦-1〗<<iwd \"路易红茶\">>" , handler: "<<eatfood 1>><<losebadexp \"噩梦\"1>><<notify 3s>>你的噩梦降低了1点<</notify>><<loseweight 0.6>>", consumable: "true", function: "false", store: null, price: 5 , weight: 0.6},["食物", "茶", null, null, null, null, "fuelA"]);
+Item.add("战时乐观主义派", {displayName: "战时乐观主义派", description: "粗糙麦壳制的馅饼，里面勉强能看出一些果蔬和肉块的形状。据老乔什说，这名为“战时乐观主义派”（简称”乐观派“），是他最初在2019年的冬季，在战壕里靠着四处收集来的材料发明而成，内容物不限于剪报上的胜利宣言、士兵家书里的错别字以及防毒面具滤芯中的蒲公英种子。他还声称，最初乐观派被他制作成了颇为前卫的三角造型，但由于口碑不佳，最终还是向最经典的圆形妥协<br><br>〖使用后体力+12，恐惧-2〗<<iwd \"战时乐观主义派\">>" , handler: "<<eatfood 12>><<losebadexp \"恐惧\" 2>><<notify 3s>>你的恐惧降低了2点<</notify>><<loseweight 06>>", consumable: "true", function: "false", store: 24, price: 6 , weight: 0.6},["食物", "烹饪", "派", null, "meaty", "trethate", "fuelA"]);
+Item.add("榛子咖啡", {displayName: "榛子咖啡", description: "一杯来自欧洲大陆的咖啡，经过精心烘焙，融入了榛果的独特香气。只能通过主港口的仓库定期订购<br><br>〖食用后体力+10 学识经验+3〗<<iwd \"榛子咖啡\">>" , handler: "<<run Dialog.setup('饮用榛子咖啡');Dialog.wiki('细腻而温暖的咖啡带着榛果的香气充斥你的口腔，驱散了疲惫与困惑。你的思绪变得清晰，曾经某些不解的思绪此刻似乎也变得更加了然');Dialog.open();>><<set $coffin+=1>><<addkexp 3>><<eatfood 10>><<loseweight 0.4>>", consumable: "true", function: "false", store: 20, price: 20 , weight: 0.4},["食物", "咖啡", null, null, null, null, "fuelS"]);
+Item.add("路易红茶", {displayName: "路易红茶", description: "似乎是某个英国的牌子，枘朴小姐家唯一饮用的红茶<br><br>〖使用后体力+1，噩梦-1〗<<iwd \"路易红茶\">>" , handler: "<<eatfood 1>><<losebadexp \"噩梦\"1>><<notify 3s>>你的噩梦降低了1点<</notify>><<loseweight 0.6>>", consumable: "true", function: "false", store: 2, price: 5 , weight: 0.6},["食物", "茶", null, null, null, null, "fuelA"]);
 Item.add("玫瑰花", {displayName: "玫瑰花", description: null , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["花", null, null, null, null, null, "fuelA"]);
 Item.add("鸢尾花", {displayName: "鸢尾花", description: null , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["花", null, null, null, null, null, "fuelA"]);
 Item.add("红玫瑰", {displayName: "红玫瑰", description: "岛上随处可见野玫瑰, 但这不代表她们没有主人. 而这朵, 不可置疑的, 属于你<<iwd \"红玫瑰\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "食材", "制材", "花", "玫瑰", null, "fuelS"]);
@@ -7491,6 +7492,7 @@ Item.add("向日葵", {displayName: "向日葵", description: "是否会有一�
 Item.add("勿忘我", {displayName: "勿忘我", description: "遗憾的是在这里它还没有那么多情感上的含义, 作为随处可见的蓝色小花, 它们也么那么容易被忘记<<iwd \"红玫瑰\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "花", null, null, null, null, "fuelA"]);
 Item.add("牵牛花", {displayName: "牵牛花", description: "<<iwd \"红玫瑰\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "花", null, null, null, null, "fuelA"]);
 Item.add("金盏花", {displayName: "金盏花", description: "<<iwd \"红玫瑰\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "花", null, null, null, null, "fuelA"]);
+Item.add("百合花", {displayName: "百合花", description: "<<iwd \"红玫瑰\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "花", null, null, null, null, "fuelA"]);
 Item.add("风信子", {displayName: "风信子", description: "夜晚的时候, 寒冷的时候, 风信子会带来光明, 与寂静<<iwd \"红玫瑰\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "花", null, null, null, null, "fuelA"]);
 Item.add("蒲公英种子", {displayName: "蒲公英种子", description: "<br><br>〖可在田圃里种植〗<<iwd \"红玫瑰\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "种子", "鸟食", null, null, null, "fuelB"]);
 Item.add("玫瑰花种子", {displayName: "玫瑰花种子", description: "<br><br>〖可在田圃里种植〗<<iwd \"红玫瑰\">>" , handler: null, consumable: null, function: null, store: null, price: 2 , weight: 0.01},["材料", "种子", "鸟食", null, null, null, "fuelB"]);
@@ -7623,7 +7625,7 @@ Item.add("傲慢与偏见", {displayName: "傲慢与偏见", description: "简·
 Item.add("堂吉诃德", {displayName: "堂吉诃德", description: "塞万提斯的长篇小说，描写一个痴迷骑士故事的乡绅，化身为游侠骑士的荒诞冒险<<readbook \"堂吉诃德\">><<iwd \"堂吉诃德\">>" , handler: null, consumable: null, function: null, store: 1, price: 5 , weight: 0.8},["读物", "图书馆", null, null, null, null, "fuelA"]);
 Item.add("浮士德博士的生死悲剧史", {displayName: "浮士德博士的生死悲剧史", description: "克里斯托弗·马洛编写的戏剧，讲述一位学识卓绝的博士以灵魂为代价，换取二十四年的无限知识与力量。<<readbook \"堂吉诃德\">><<iwd \"堂吉诃德\">>" , handler: null, consumable: null, function: null, store: 1, price: 5 , weight: 0.8},["读物", "图书馆", null, null, null, null, "fuelA"]);
 
-</script><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="widget" color="orange"></tw-tag><tw-tag name="autosave" color="blue"></tw-tag><tw-tag name="UIBarhide" color="green"></tw-tag><tw-tag name="nobr" color="yellow"></tw-tag><tw-tag name="init" color="green"></tw-tag><tw-passagedata pid="1" name="demo结语" tags="" position="2000,1000" size="100,100">&lt;center&gt;
+</script><tw-tag name="autosave" color="blue"></tw-tag><tw-tag name="init" color="green"></tw-tag><tw-tag name="nobr" color="yellow"></tw-tag><tw-tag name="widget" color="orange"></tw-tag><tw-tag name="UIBarhide" color="green"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-passagedata pid="1" name="demo结语" tags="" position="2000,1000" size="100,100">&lt;center&gt;
 
 demo的游戏内容到此结束, 主要内容有5段主线剧情、3个主线任务、3段支线剧情、2个支线任务、12个可互动角色、13个成就、7条线索
 
@@ -7911,7 +7913,17 @@ demo的游戏内容到此结束, 主要内容有5段主线剧情、3个主线任
   Dialog.wiki(Story.get(&quot;赠送&quot;).processText());
   Dialog.open();
 &gt;&gt;
+&lt;&lt;elseif _pages == &quot;尘羽资助&quot;&gt;&gt;
+拥有：$ashes&lt;br&gt;&lt;br&gt;
+&lt;&lt;numberbox &quot;_amt1&quot; 1&gt;&gt;  &lt;&lt;button &quot;确认&quot;&gt;&gt;
+&lt;&lt;if $ashes &gt;= _amt1&gt;&gt;&lt;&lt;set $ashes -= _amt1,$recording[&quot;杂货铺&quot;].ash += _amt1, $restore +=_amt1/10&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;dialogclose&gt;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;run UI.alert(&quot;你的尘羽不足&quot;)&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/button&gt;&gt;
 
+
+&lt;&lt;elseif _pages == &quot;劳工帮助&quot;&gt;&gt;
+文本文本
+&lt;&lt;badthing &quot;体力降低20点&quot;&gt;&gt;
+&lt;&lt;set $HP-= 20, $recording[&quot;杂货铺&quot;].work += 1, $restore +=3&gt;&gt;&lt;&lt;redo&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="弹窗导向页2" tags="" position="2300,1000" size="100,100">&lt;&lt;if _pages2 == &quot;任务描述&quot;&gt;&gt;
 &lt;&lt;run Dialog.setup(_name); Dialog.wiki(setup.items[_name].content); Dialog.open();&gt;&gt;
 
@@ -7958,40 +7970,39 @@ demo的游戏内容到此结束, 主要内容有5段主线剧情、3个主线任
 &lt;&lt;for _i to 0; _i lt $bookcollect.length;  _i++&gt;&gt;
 &lt;span class=&quot;books&quot;&gt;&lt;&lt;=$bookcollect[_i]&gt;&gt;&lt;/span&gt;
 &lt;&lt;/for&gt;&gt;&lt;/div&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="死亡" tags="autosave nobr" position="1700,1000" size="100,100">&lt;&lt;if setup.getStat(&quot;wound&quot;) &gt;= 24&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="死亡" tags="autosave nobr" position="1700,1000" size="100,100">&lt;&lt;if $death ==&quot;伤口&quot;&gt;&gt;
 你的伤口像一头明亮、炙热、初获新生的小兽，舔舐着你的皮毛，饥渴地吞噬着你，你看着它越来越大，越来越壮硕，感到一阵自豪。
-
+&lt;br&gt;&lt;br&gt;
 你是一个出色的饲主，不是吗？
+&lt;br&gt;&lt;br&gt;
 
+&lt;&lt;elseif $death ==&quot;恐惧&quot;&gt;&gt;
+你的恐惧绝对符合逻辑，因为神明在上啊（神明？你意识到你不理解这个词），你的恐惧就是你存在的一部分。
+&lt;br&gt;&lt;br&gt;
+当然会是这样，因为它就像你的眼睛，就像你的手臂，它曾那般亲密的链接于你，只是现在它不知所踪了。
+&lt;br&gt;&lt;br&gt;
+你想知道它去哪了。&lt;br&gt;
+你想找回它。&lt;br&gt;&lt;br&gt;
 
-&lt;&lt;/if&gt;&gt;
+你可能再也找不到它的想法让你//恐惧//。&lt;br&gt;&lt;br&gt;
 
-&lt;&lt;if setup.getStat(&quot;dread&quot;) &gt;= 24&gt;&gt;
-你的恐惧绝对符合逻辑，因为神明在上啊（神明？你意识到你不理解这个词）&lt;&lt;/if&gt;&gt;
+于是你开始剖开你的腹部，手指伸进内部翻找着，因为它就是你存在的一部分，而你的全部都在这肉质的铁盒中密封着。&lt;br&gt;&lt;br&gt;
 
-&lt;&lt;if setup.getStat(&quot;nightmare&quot;) &gt;= 24&gt;&gt;
-你的噩梦终于找上了你。
-&lt;&lt;/if&gt;&gt;
-
-&lt;&lt;if setup.getStat(&quot;suspicion&quot;) &gt;= 24&gt;&gt;
-你的怀疑就是你存在的一部分，当然会是这样，因为它就像你的眼睛，就像你的手臂，它曾那般亲密的链接于你，只是现在它不知所踪了。
-
-你想知道它去哪了。
-
-你想找回它。
-
-你//怀疑//它在跟你玩一种躲藏的游戏。
-
-于是你开始剖开你的腹部，手指伸进内部翻找着，因为它就是你存在的一部分，而你的全部都在这肉质的铁盒中密封着。
-
-当然会是这样，因为它就像你的肝脏，就像你的小肠，它是如此亲密的链接于你。
+当然会是这样，因为它就像你的肝脏，就像你的小肠，它是如此亲密的链接于你。&lt;br&gt;&lt;br&gt;
 
 直到你将所有的东西都从铁盒里掏出，你想你最终还是找到了它。
+
+&lt;&lt;elseif $death ==&quot;噩梦&quot;&gt;&gt;
+你的噩梦终于找上了你。
+
+
+&lt;&lt;elseif $death ==&quot;嫌疑&quot;&gt;&gt;
+
 &lt;&lt;/if&gt;&gt;
 
-死亡结算
 
-&lt;&lt;link ▷「回到最初」 界面&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="沙龙" tags="" position="500,1000" size="100,100"></tw-passagedata><tw-passagedata pid="9" name="测试" tags="" position="800,200" size="100,100">$needt1  $nt
+&lt;br&gt;&lt;br&gt;
+&lt;&lt;button 醒来 家&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="沙龙" tags="" position="500,1000" size="100,100"></tw-passagedata><tw-passagedata pid="9" name="测试" tags="" position="800,200" size="100,100">$needt1  $nt
 &lt;&lt;gainitem &quot;蜡烛&quot; 1&gt;&gt;
 &lt;&lt;set $ashes =1227&gt;&gt;
 &lt;&lt;do tag &quot;1&quot;&gt;&gt;&lt;&lt;if !$avatar&gt;&gt;输入 文件路径(去掉引号) 或 图床链接&lt;&lt;else&gt;&gt;&lt;&lt;print &#39;&lt;img src=&quot; &#39; + $avatar + &#39; &quot; width=30% class=&quot;picr&quot;&gt;&#39;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;
@@ -9527,7 +9538,7 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
 
 /***************放羊******************/
 &lt;&lt;if $state == &quot;放羊&quot;&gt;&gt;
-&lt;&lt;if $NPCinfo[&quot;埃拉&quot;].love&lt;= 10&gt;&gt;
+&lt;&lt;if $NPCinfo[&quot;埃拉&quot;].love&lt; 10&gt;&gt;
 埃拉打量了一下你，谢绝了你的好意。他还不够信任你。&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「返回」 草甸&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;elseif $fycs == 0&gt;&gt;
@@ -11828,6 +11839,7 @@ $tnn看上去有些惊讶，仿佛从来没考虑过你会拒绝。&lt;br&gt;&lt
 &lt;&lt;traitaddwaves &quot;大胆&quot; 1&gt;&gt;&lt;&lt;set $resonancefire +=3&gt;&gt;
 &lt;&lt;timed 2s t8n&gt;&gt;四周的猫发出几声惊呼。防火士没料到你这样的举动，在你快要进去时才反应过来，飞奔着想阻拦你，可当你一进入废墟，他们也不再靠近。&lt;br&gt;&lt;br&gt;
 &lt;&lt;next 2s t8n&gt;&gt;你踏入废墟，热浪扑面而来，空气中满是刺鼻的焦糊味和粗粝的烟雾。烧塌的货架横七竖八地倒在地上，各种可燃物都化作焦黑的残骸。你目光所及处没有任何猫的身影。&lt;br&gt;&lt;br&gt;
+&lt;&lt;nightwaver&gt;&gt;
 &lt;&lt;next 2s t8n&gt;&gt;&lt;&lt;linkreplace ▷「继续寻找」&gt;&gt;&lt;&lt;set $minute += 1&gt;&gt;&lt;&lt;audio &quot;废墟翻找&quot; play&gt;&gt;&lt;&lt;set $resonancefire +=1&gt;&gt;
 你还不能放弃。你小心地绕过还在发红的木板，在倒塌的货架中搜寻，燃烧未尽的木材烫伤了你的肉垫，却仍一无所获。&lt;br&gt;&lt;br&gt;&lt;&lt;addbadexp &quot;伤口&quot; 1&gt;&gt;&lt;br&gt;
 &lt;&lt;linkreplace ▷「继续寻找」&gt;&gt;&lt;&lt;set $minute += 1&gt;&gt;&lt;&lt;audio &quot;垮塌1&quot; play&gt;&gt;
@@ -11884,13 +11896,14 @@ $tnn看上去有些惊讶，仿佛从来没考虑过你会拒绝。&lt;br&gt;&lt
 这一事实&lt;font color=#D4A34C&gt;困扰&lt;/font&gt;着你。以你的经验来看，他身上没有一处致命伤，制服烧毁的面积并不足以夺取生命，头盔也并未破裂。&lt;&lt;set $clue.push({name: &#39;防火士的死因&#39;, dscr: &#39;你没在死去的防火士身上发现致命伤和挣扎的痕迹&#39;})&gt;&gt;&lt;&lt;notify 3s&gt;&gt;〖获得线索: 防火士的死因〗&lt;&lt;/notify&gt;&gt;&lt;br&gt;&lt;&lt;addkexp 3&gt;&gt;
 &lt;&lt;else&gt;&gt;想到他最终可能并没有太多痛苦，多少还是能给你一些慰藉。
 &lt;&lt;/if&gt;&gt;&lt;br&gt;&lt;br&gt;
-头顶再次传来令人不安的嘎吱声，更多的灰烬和木炭开始掉落。你必须得走了。&lt;br&gt;
+头顶再次传来令人不安的嘎吱声，更多的灰烬和木炭开始掉落。你必须得走了。&lt;br&gt;&lt;br&gt;
+&lt;&lt;nightwaver&gt;&gt;
 &lt;&lt;/linkreplace&gt;&gt;
 &lt;&lt;/linkreplace&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「带他出去」 主线D5&gt;&gt;&lt;&lt;set $choice to &quot;带他出去&quot;&gt;&gt;&lt;&lt;set $recording[&quot;救出防火士&quot;] =&quot;救出&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/timed&gt;&gt;
 
 /*第六页*/
-&lt;&lt;elseif $choice == &quot;带他出去&quot;&gt;&gt;&lt;&lt;audio &quot;diceroll&quot; play&gt;&gt;
+&lt;&lt;elseif $choice == &quot;带他出去&quot;&gt;&gt;&lt;&lt;audio &quot;diceroll&quot; play&gt;&gt;&lt;&lt;set $restore =2, $recording[&quot;杂货铺&quot;].ash=0,$recording[&quot;杂货铺&quot;].food=0,$recording[&quot;杂货铺&quot;].work=0&gt;&gt;
 &lt;&lt;if $recording[&quot;救火&quot;] ==0&gt;&gt;&lt;&lt;checkfix &quot;strength&quot; 10&gt;&gt;
 &lt;&lt;elseif $recording[&quot;救火&quot;] ==1&gt;&gt;&lt;&lt;checkfix &quot;strength&quot; 20&gt;&gt;
 &lt;&lt;elseif $recording[&quot;救火&quot;] ==2&gt;&gt;&lt;&lt;checkfix &quot;strength&quot; 30&gt;&gt;
@@ -11938,8 +11951,9 @@ $tnn看上去有些惊讶，仿佛从来没考虑过你会拒绝。&lt;br&gt;&lt
 &lt;&lt;next 2s t8n&gt;&gt;“这叫‘战时乐观主义派’。”老乔什竭力让自己的声音听起来轻快一些，“大战争时期，那场仗打到最后，大家都没粮食吃了，我到处找东西，抓到什么是什么，全都混到一起，”他边说边比划着，做出了一个大爆炸一样的手势，“砰——‘乐观派’就这样诞生了。”&lt;br&gt;&lt;br&gt;
 &lt;&lt;next 3s t8n&gt;&gt;他说到这，仿佛是在回忆什么更加美好的东西，渐渐地恢复了开玩笑的气力：“别担心，现在这个是改良版，不会有什么子弹弹壳，旧军靴这种东西。”
 &lt;&lt;gainitem &quot;战时乐观主义派&quot; 1&gt;&gt;&lt;&lt;itemobtain &quot;战时乐观主义派 * 1&quot;&gt;&gt;
-&lt;&lt;next 2s t8n&gt;&gt;老乔什离开后不久，病房的门再次被敲响，枘朴小姐走了进来。她平日里整洁的长毛此刻有些凌乱，你能看出一些梳理的痕迹，但显然那还不够。处理这样的事故一定让她忙坏了。&lt;br&gt;&lt;br&gt;
-&lt;&lt;next 2s t8n&gt;&gt;“听到你醒来的消息，我尽可能快得赶过来了。”她走到你床边，轻轻坐下，“你今天所作的事，非常伟大。岛上的居民都在讲你的故事，我想你收获了不少仰慕者。”她看向你床头摆放的那些慰问品，蓝眼睛里此刻才有了一丝笑意。&lt;br&gt;&lt;br&gt;
+&lt;&lt;linkreplace ▷「继续」&gt;&gt;
+老乔什离开后不久，病房的门再次被敲响，枘朴小姐走了进来。她平日里整洁的长毛此刻有些凌乱，你能看出一些梳理的痕迹，但显然那还不够。处理这样的事故一定让她忙坏了。&lt;br&gt;&lt;br&gt;
+&lt;&lt;timed 2s t8n&gt;&gt;“听到你醒来的消息，我尽可能快得赶过来了。”她走到你床边，轻轻坐下，“你今天所作的事，非常伟大。岛上的居民都在讲你的故事，我想你收获了不少仰慕者。”她看向你床头摆放的那些慰问品，蓝眼睛里此刻才有了一丝笑意。&lt;br&gt;&lt;br&gt;
 &lt;&lt;next 3s t8n&gt;&gt;“即便这样，作为永无乡的管理者，我还是需要向你道歉。你不该经历这样的事。谁都不应该。”&lt;br&gt;&lt;br&gt;
 &lt;&lt;next 2s t8n&gt;&gt;枘朴小姐的耳朵耷拉下来，愧疚和忧虑让她此时看起来更加憔悴，她轻轻捏了一下你放在床单上的手，似乎是想表达一些安抚。接着，她从外套里拿出了一枚淡金色的勋章，放进你手中。&lt;br&gt;&lt;br&gt;
 &lt;&lt;next 2s t8n&gt;&gt;“这算是一份小纪念，象征着你在危难时刻展现出的非凡勇气与无私精神。虽然我相信这完全不需要勋章来代表，但还是希望你能收下。&quot;勋章依旧是永无乡的图标，中心镶这一块质地上佳的红色宝石，反射着火焰一般的光芒。&lt;br&gt;&lt;br&gt;
@@ -11947,7 +11961,7 @@ $tnn看上去有些惊讶，仿佛从来没考虑过你会拒绝。&lt;br&gt;&lt
 &lt;&lt;else&gt;&gt;你不知这之间是否有讽刺的意味，但还是收下了勋章。&lt;&lt;/if&gt;&gt;&lt;&lt;set $resonancefire +=1&gt;&gt;&lt;br&gt;&lt;br&gt;
 &lt;&lt;next 2s t8n&gt;&gt;见你收下，枘朴小姐看起来释怀了很多，继续说了下去，语气温和而郑重：“今晚，我们会在教堂举行守夜，身体允许的话，我们都希望你能来。”&lt;br&gt;&lt;br&gt;
 &lt;&lt;next 2s t8n&gt;&gt;最后，她起身对你点点头，便轻声离去了，又留下你独自在这冷清的医院病房中。
-&lt;&lt;link ▷「继续」 医院&gt;&gt;&lt;&lt;set $msd = 5,$state =0, $choice =0&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;link ▷「继续」 医院&gt;&gt;&lt;&lt;set $msd = 5,$state =0, $choice =0&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/timed&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;&lt;&lt;/timed&gt;&gt;
 &lt;&lt;elseif $choice == &quot;献上焚草&quot;&gt;&gt;
 你来不及挑选，从焚草袋里取出一支之前制作的焚草，叶片在你手中折断了几片，落到白布上。
 &lt;&lt;addsocial 1&gt;&gt;
@@ -12263,7 +12277,7 @@ $tnn看上去有些惊讶，仿佛从来没考虑过你会拒绝。&lt;br&gt;&lt
 &lt;&lt;link ▷「拒绝」&gt;&gt;&lt;&lt;set $choice to &quot;拒绝&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;else&gt;&gt;
 &lt;&lt;if $choice == &quot;再给他一瓶&quot;&gt;&gt;
-&lt;&lt;if $food.has(&#39;布尔盖酒&#39;)&gt;&gt;&lt;&lt;dropitem &quot;布尔盖酒&quot; 1&gt;&gt;
+&lt;&lt;if $food.has(&#39;布尔盖酒&#39;)&gt;&gt;&lt;&lt;dropitem &quot;布尔盖酒&quot; 1&gt;&gt;&lt;&lt;badthing &quot;你失去了布尔盖酒 * 1&quot;&gt;&gt;
 寇尼接过你的又一瓶布尔盖酒，也和刚才一样一饮而尽，只是这次，他没再继续索求，只是眼神涣散地盯着地面，
 &lt;&lt;else&gt;&gt;
 你翻开背包，示意他你也没有更多了。寇尼擦擦鼻子，也没说什么，
@@ -12326,6 +12340,9 @@ Seisi把那卷羊皮纸交给你, 你挑开端正系好的红丝带, 只见里�
 &lt;&lt;if $story[&quot;田鼠的赎罪之旅&quot;] &gt;= $date&gt;&gt;
 &lt;&lt;if ($item.count(&quot;田鼠&quot;) &gt;=20 &amp;&amp; $seisistate ==&quot;生气1&quot;) || ($item.count(&quot;田鼠&quot;) &gt;=40 &amp;&amp; $seisistate ==&quot;生气2&quot;) || ($item.count(&quot;田鼠&quot;) &gt;=60 &amp;&amp; $seisistate ==&quot;生气3&quot;)&gt;&gt;
 田鼠的尸体冰冷又僵硬，保持着它们死时的姿态，互相堆叠着占满了Seisi的鸟窝，多出来的几只掉在了书架柜上，发出如它们生命一般脆弱的声响。&lt;br&gt;&lt;br&gt;
+&lt;&lt;if $seisistate ==&quot;生气1&quot;&gt;&gt;
+&lt;&lt;dropitem &quot;田鼠&quot; 20&gt;&gt;&lt;&lt;badthing &quot;你失去了田鼠 * 20&quot;&gt;&gt;
+&lt;&lt;elseif $seisistate ==&quot;生气2&quot;&gt;&gt;&lt;&lt;dropitem &quot;田鼠&quot; 40&gt;&gt;&lt;&lt;badthing &quot;你失去了田鼠 * 40&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 Seisi埋着头，用喙逐个拨开田鼠，仿佛在进行一种鸟类的算数，当那结果终于达到让它满意的程度时，鹩哥才迟迟的发出一声满意的鸣叫。&lt;br&gt;&lt;br&gt;
 @@.seisitalk;“我不关心你是怎么做到的，我也不想听你的任何埋怨，你完成了我的条件，而我总是遵守诺言。”@@它那副模样仿佛在宫殿里发表演讲，可它身后只有已经略微腐臭的肉块，@@.seisitalk;“今后我将继续接受你的召唤，凡物，心怀感恩吧。”@@&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「返回」 鸟窝&gt;&gt;&lt;&lt;set $state =0&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -12378,9 +12395,14 @@ Seisi埋着头，用喙逐个拨开田鼠，仿佛在进行一种鸟类的算数
 
 &lt;&lt;widget &quot;stolecheck&quot;&gt;&gt;
 &lt;&lt;losehp 8&gt;&gt;&lt;&lt;set $active[&quot;偷窃&quot;] +=1&gt;&gt;
-&lt;&lt;checkrage strength _args[0] _args[1]&gt;&gt;
+&lt;&lt;if setup.getStat(&quot;strength&quot;) &gt;=30 &gt;&gt;
+&lt;&lt;checkrage strength _args[0]*0.7 _args[1]*0.7&gt;&gt;
+&lt;&lt;else&gt;&gt;
+&lt;&lt;checkrage strength _args[0] _args[1]&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;
-&lt;&lt;checkrage observation _args[2] _args[3]&gt;&gt;
+&lt;&lt;if setup.getStat(&quot;strength&quot;) &gt;=40 &gt;&gt;
+&lt;&lt;checkrage observation _args[2]*0.7 _args[3]*0.7&gt;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;checkrage observation _args[2] _args[3]&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;&lt;&lt;audio &quot;开锁进门&quot; play&gt;&gt;
 &lt;&lt;set $state = &quot;偷窃成功&quot;, $loc = $stoleloc&gt;&gt;
 &lt;&lt;else&gt;&gt;&lt;&lt;audio &quot;差点打开门&quot; play&gt;&gt;&lt;&lt;set $state = &quot;偷窃未遂&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
@@ -12454,6 +12476,8 @@ Seisi埋着头，用喙逐个拨开田鼠，仿佛在进行一种鸟类的算数
 &lt;&lt;stolechoice&gt;&gt;
 
 &lt;&lt;elseif $stoleloc == &quot;拓荒者木屋前门&quot;&gt;&gt;
+〖你正在&lt;b&gt;@@.nixtalk;枘朴小姐@@&lt;/b&gt;的家中〗&lt;br&gt;
+〖&lt;b&gt;@@.nixtalk;枘朴小姐@@&lt;/b&gt;现在不在家〗&lt;br&gt;&lt;br&gt;
 你蹑手蹑脚地在拓荒者木屋里寻找值得偷窃的东西。&lt;br&gt;&lt;br&gt;
  &lt;&lt;if _r &lt;=97&gt;&gt;&lt;&lt;stoleall&gt;&gt;
         &lt;&lt;else&gt;&gt;
@@ -12534,7 +12558,7 @@ Seisi埋着头，用喙逐个拨开田鼠，仿佛在进行一种鸟类的算数
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;stolechoice&gt;&gt;
 &lt;&lt;elseif $choice == &quot;后厨&quot;&gt;&gt;
-&lt;&lt;stolecheck&gt;&gt;
+&lt;&lt;stolecheck 10 15 15 20&gt;&gt;
 &lt;&lt;if $state == &quot;偷窃成功&quot;&gt;&gt;
 经过你的一番尝试, 木门简陋的门锁在你手下嘎吱一声放弃了自己的职责, 你成功进入了$stoleloc。&lt;&lt;addsexp 2&gt;&gt;&lt;&lt;addoexp 2&gt;&gt;
 &lt;br&gt;&lt;br&gt;
@@ -12550,7 +12574,7 @@ Seisi埋着头，用喙逐个拨开田鼠，仿佛在进行一种鸟类的算数
 &lt;&lt;link ▷「离开」 偷窃&gt;&gt;&lt;&lt;set $choice = 0, $state = &quot;偷窃成功&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;elseif $choice == &quot;酒窖&quot;&gt;&gt;
-&lt;&lt;stolecheck&gt;&gt;
+&lt;&lt;stolecheck 25 30 15 30&gt;&gt;
 &lt;&lt;if $state == &quot;偷窃成功&quot;&gt;&gt;
 经过你的一番尝试, 木门简陋的门锁在你手下嘎吱一声放弃了自己的职责, 你成功进入了$stoleloc。&lt;&lt;addsexp 2&gt;&gt;&lt;&lt;addoexp 2&gt;&gt;
 &lt;br&gt;&lt;br&gt;
@@ -13027,14 +13051,12 @@ _j*_v/&lt;&lt;itemcheck _j&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_j)&
 &lt;&lt;run UI.alert(&quot;酿酒失败！&quot;)&gt;&gt;
 &lt;&lt;elseif $spending.cellarI.state == 3&gt;&gt;
 获得醋
-&lt;&lt;elseif $spending.cellarI.state == 4&gt;&gt;&lt;&lt;set $drinkcollect.pushUnique(_result.id)&gt;&gt;
+&lt;&lt;elseif $spending.cellarI.state == 4&gt;&gt;
 &lt;&lt;set _n = $spending.cellarI.name&gt;&gt;
 &lt;&lt;cook _n $food&gt;&gt;
 &lt;&lt;if _result.success&gt;&gt;
-&lt;&lt;itemcheck _result.id&gt;&gt;
-&lt;&lt;dropitem _result.id _result.servings&gt;&gt;
 &lt;&lt;gainitem _result.id _result.servings&gt;&gt;
-&lt;&lt;notify 3s&gt;&gt;酿造成功！你获得了_result.servings份_result.id&lt;&lt;/notify&gt;&gt;
+&lt;&lt;notify 3s&gt;&gt;酿造成功！你获得了_result.servings份_result.id&lt;&lt;/notify&gt;&gt;&lt;&lt;set $drinkcollect.pushUnique(_result.id)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/cook&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -13077,10 +13099,8 @@ _j*_v/&lt;&lt;itemcheck _j&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_j)&
 &lt;&lt;set _n = $spending.cellarI.name&gt;&gt;
 &lt;&lt;cook _n $food&gt;&gt;
 &lt;&lt;if _result.success&gt;&gt;
-&lt;&lt;itemcheck _result.id&gt;&gt;
-&lt;&lt;dropitem _result.id _result.servings&gt;&gt;
 &lt;&lt;gainitem _result.id _result.servings&gt;&gt;
-&lt;&lt;notify 3s&gt;&gt;酿造成功！你获得了_result.servings份_result.id&lt;&lt;/notify&gt;&gt;
+&lt;&lt;notify 3s&gt;&gt;酿造成功！你获得了_result.servings份_result.id&lt;&lt;/notify&gt;&gt;&lt;&lt;set $drinkcollect.pushUnique(_result.id)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/cook&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -13123,10 +13143,8 @@ _j*_v/&lt;&lt;itemcheck _j&gt;&gt;&lt;&lt;=State.variables[_itemkind].count(_j)&
 &lt;&lt;set _n = $spending.cellarI.name&gt;&gt;
 &lt;&lt;cook _n $food&gt;&gt;
 &lt;&lt;if _result.success&gt;&gt;
-&lt;&lt;itemcheck _result.id&gt;&gt;
-&lt;&lt;dropitem _result.id _result.servings&gt;&gt;
 &lt;&lt;gainitem _result.id _result.servings&gt;&gt;
-&lt;&lt;notify 3s&gt;&gt;酿造成功！你获得了_result.servings份_result.id&lt;&lt;/notify&gt;&gt;
+&lt;&lt;notify 3s&gt;&gt;酿造成功！你获得了_result.servings份_result.id&lt;&lt;/notify&gt;&gt;&lt;&lt;set $drinkcollect.pushUnique(_result.id)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/cook&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -13271,7 +13289,7 @@ Dialog.open();&gt;&gt;
 &lt;&lt;elseif $dn == 0&gt;&gt;阳光洒在花田上，照得一切过于明亮。你觉得花瓣上的光泽几乎刺穿了视网膜。这里太安静了，安静得像时间被压碎成细小的灰尘，你甚至听见了自己血液流动的声音。
 &lt;&lt;else&gt;&gt;月色苍白，夜风吹得花田一阵低鸣。花朵仿佛在黑暗中轻轻转头，盯着你。&lt;&lt;/if&gt;&gt;
 &lt;br&gt;&lt;br&gt;
-[&quot;罂粟在风中轻轻摇晃，像是低语，又像是召唤，花瓣的红色几乎像干涸的血渍。&quot;,&quot;矢车菊柔和的蓝色，此时却仿佛被水墨晕染过，幽暗且模糊，你几乎要被这片蓝色吞没。&quot;].random()&lt;br&gt;&lt;br&gt;
+&lt;&lt;print [&quot;罂粟在风中轻轻摇晃，像是低语，又像是召唤，花瓣的红色几乎像干涸的血渍。&quot;,&quot;矢车菊柔和的蓝色，此时却仿佛被水墨晕染过，幽暗且模糊，你几乎要被这片蓝色吞没。&quot;].random()&gt;&gt;&lt;br&gt;&lt;br&gt;
 你下意识地攥紧衣角，想快点离开这片地方。
 &lt;&lt;/if&gt;&gt;&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「返回」 花田&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="拓荒者木屋地点活动" tags="nobr" position="" size="">&lt;&lt;if $recording.fig &gt;= 6&gt;&gt;
@@ -13745,7 +13763,7 @@ Dialog.open();&gt;&gt;
 &lt;&lt;addkexp 1&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="75" name="打工" tags="nobr" position="1200,500" size="100,100">&lt;&lt;set _s to random(1,8)&gt;&gt;&lt;&lt;set _m to random(10,25)&gt;&gt;&lt;&lt;set _n to random(25,40)&gt;&gt;
-&lt;&lt;if $HP lt 8&gt;&gt;&lt;font color=#BA3030&gt;你感到些许疲惫, 做事情力不从心. 你最好去吃点东西休息一下, 充足的睡眠没有坏处&lt;/font&gt;&lt;br&gt;&lt;br&gt;
+&lt;&lt;if $HP lt 18&gt;&gt;&lt;font color=#BA3030&gt;你感到些许疲惫, 做事情力不从心. 你最好去吃点东西休息一下, 充足的睡眠没有坏处&lt;/font&gt;&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「返回」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 &lt;&lt;elseif $gzcs == 0 &amp;&amp; $loc == &quot;木屋内部&quot;&gt;&gt;今天已经做了很多事了&lt;br&gt;&lt;br&gt;
@@ -13754,10 +13772,10 @@ Dialog.open();&gt;&gt;
 &lt;&lt;elseif $dgcs == 0&gt;&gt;今天已经做了很多事了&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「返回」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
 
-&lt;&lt;elseif $choice == &quot;打扫小路&quot;&gt;&gt;&lt;&lt;set $gzcs -= 1&gt;&gt;&lt;&lt;set $HP -= 3&gt;&gt;你在木屋里找到扫帚, 开始清理起门口的小路. &lt;&lt;set _rpe = [&quot;一旁的无花果树时不时飘落几片树叶, 似乎很不给你面子&quot;,&quot;几只乌鸦沉默地飞过, 只留下了振翅声&quot;,&quot;几个面生的猫绕过正在打扫的你, 敲响了木屋的门&quot;].random()&gt;&gt;_rpe
+&lt;&lt;elseif $choice == &quot;打扫小路&quot;&gt;&gt;&lt;&lt;set $gzcs -= 1&gt;&gt;&lt;&lt;set $HP -= 6&gt;&gt;你在木屋里找到扫帚, 开始清理起门口的小路. &lt;&lt;set _rpe = [&quot;一旁的无花果树时不时飘落几片树叶, 似乎很不给你面子&quot;,&quot;几只乌鸦沉默地飞过, 只留下了振翅声&quot;,&quot;几个面生的猫绕过正在打扫的你, 敲响了木屋的门&quot;].random()&gt;&gt;_rpe
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「返回」 木屋内部&gt;&gt;&lt;&lt;/link&gt;&gt;
 
-&lt;&lt;elseif $choice == &quot;遛seisi&quot;&gt;&gt;&lt;&lt;set $gzcs -= 1&gt;&gt;&lt;&lt;set $HP to $HP- 6&gt;&gt;你在&lt;&lt;set _rpe1 = [&quot;壁炉上&quot;,&quot;藤椅上&quot;,&quot;鸟窝里&quot;].random()&gt;&gt;_rpe1找到&lt;&lt;set _rpe2 = [&quot;还在打盹&quot;,&quot;在玩玻璃珠&quot;,&quot;撕咬肉干&quot;].random()&gt;&gt;_rpe2的Seisi, 它看起来&lt;&lt;set _rpe3 = [&quot;并不愿意跟你出门&quot;,&quot;更想待在木屋里&quot;,&quot;能把你整个吞掉&quot;].random()&gt;&gt;_rpe3. 而当你终于说服它走出木屋后, &lt;&lt;set _rpe4 = [&quot;它趴在你的头顶度过了一整个散步环节&quot;,&quot;它一出门就飞得不见踪影. 你四处寻找无果, 只能再次回到木屋, 却看见Seisi站在门口的无花果树枝上取笑你&quot;,&quot;Seisi时不时用爪子和尖喙殴打你以表达自己的不满&quot;].random()&gt;&gt;_rpe4. 真是愉快的一天
+&lt;&lt;elseif $choice == &quot;遛seisi&quot;&gt;&gt;&lt;&lt;set $gzcs -= 1&gt;&gt;&lt;&lt;set $HP -= 18&gt;&gt;你在&lt;&lt;set _rpe1 = [&quot;壁炉上&quot;,&quot;藤椅上&quot;,&quot;鸟窝里&quot;].random()&gt;&gt;_rpe1找到&lt;&lt;set _rpe2 = [&quot;还在打盹&quot;,&quot;在玩玻璃珠&quot;,&quot;撕咬肉干&quot;].random()&gt;&gt;_rpe2的Seisi, 它看起来&lt;&lt;set _rpe3 = [&quot;并不愿意跟你出门&quot;,&quot;更想待在木屋里&quot;,&quot;能把你整个吞掉&quot;].random()&gt;&gt;_rpe3. 而当你终于说服它走出木屋后, &lt;&lt;set _rpe4 = [&quot;它趴在你的头顶度过了一整个散步环节&quot;,&quot;它一出门就飞得不见踪影. 你四处寻找无果, 只能再次回到木屋, 却看见Seisi站在门口的无花果树枝上取笑你&quot;,&quot;Seisi时不时用爪子和尖喙殴打你以表达自己的不满&quot;].random()&gt;&gt;_rpe4. 真是愉快的一天
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「返回」 木屋内部&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 &lt;&lt;elseif $loc == &quot;木屋内部&quot;&gt;&gt;
@@ -13774,7 +13792,7 @@ Dialog.open();&gt;&gt;
 &lt;&lt;else&gt;&gt;枘朴小姐安排你去打扫木屋外的小路. 每天都会有不少岛民经过这里, 小路的整洁美观是不可忽视的
 &lt;br&gt;&lt;br&gt;&lt;&lt;link 打扫小路 打工&gt;&gt;&lt;&lt;set $choice to &quot;打扫小路&quot;, $loc = &quot;拓荒者木屋&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;elseif $loc == &quot;咖啡馆&quot;&gt;&gt;&lt;&lt;set $active[&quot;打工&quot;] +=1&gt;&gt;&lt;&lt;losehp 18&gt;&gt;
+&lt;&lt;elseif $loc == &quot;咖啡馆&quot;&gt;&gt;&lt;&lt;set $active[&quot;打工&quot;] +=1, $jobt +=1&gt;&gt;&lt;&lt;losehp 15&gt;&gt;&lt;&lt;if $jobt &gt;=8&gt;&gt;&lt;&lt;set $jobt =0&gt;&gt;&lt;&lt;losebadexp &quot;嫌疑&quot; 1&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;set $dgcs -= 1, $hour += 1&gt;&gt;&lt;&lt;set _rpe = [&quot;你在老板娘的安排下打磨起了咖啡&quot;,&quot;你拿起点餐单, 准备好向顾客推荐店里的招牌点心了&quot;].random()&gt;&gt;_rpe
 &lt;br&gt;&lt;br&gt;&lt;&lt;audio &quot;diceroll&quot; play&gt;&gt;
 &lt;&lt;timed 3s&gt;&gt;&lt;&lt;set _t to random(15,35)&gt;&gt;&lt;&lt;set _r to setup.getStat(&quot;persuasive&quot;)*_t/10&gt;&gt;&lt;&lt;set _a to setup.getStat(&quot;persuasive&quot;)/_r*100&gt;&gt;&lt;&lt;checkWidget&gt;&gt;
@@ -13788,7 +13806,7 @@ Dialog.open();&gt;&gt;
 &lt;br&gt;
 &lt;&lt;link ▷「返回」 咖啡馆&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/timed&gt;&gt;
 
-&lt;&lt;elseif $loc == &quot;酒馆&quot;&gt;&gt;&lt;&lt;set $active[&quot;打工&quot;] +=1&gt;&gt;
+&lt;&lt;elseif $loc == &quot;酒馆&quot;&gt;&gt;&lt;&lt;set $active[&quot;打工&quot;] +=1, $jobt +=1&gt;&gt;&lt;&lt;losehp 15&gt;&gt;&lt;&lt;if $jobt &gt;=8&gt;&gt;&lt;&lt;set $jobt =0&gt;&gt;&lt;&lt;losebadexp &quot;嫌疑&quot; 1&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;audio &quot;整理杯子&quot; play&gt;&gt;&lt;&lt;losehp 18&gt;&gt;
 &lt;&lt;set $dgcs -= 1, $hour += 1&gt;&gt;&lt;&lt;set _rpe = [&quot;委托给你洗餐具的工作&quot;,&quot;委托给你上餐的工作&quot;,&quot;委托给你打扫酒馆的工作&quot;].random()&gt;&gt;&lt;&lt;if $NPCinfo[&quot;公爵夫人&quot;].loc == &quot;上班&quot;&gt;&gt;@@.ductalk;公爵夫人@@微笑着&lt;&lt;else&gt;&gt;厨师威利&lt;&lt;/if&gt;&gt;_rpe
 &lt;br&gt;&lt;br&gt;
@@ -13804,7 +13822,8 @@ Dialog.open();&gt;&gt;
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;next 2s t8n&gt;&gt;&lt;&lt;link ▷「返回」 酒馆&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/timed&gt;&gt;
 
-&lt;&lt;elseif $loc == &quot;花店&quot;&gt;&gt;&lt;&lt;set $active[&quot;打工&quot;] +=1&gt;&gt;&lt;&lt;losehp 18&gt;&gt;&lt;&lt;set $dgcs -= 1, $hour += 1&gt;&gt;&lt;&lt;set _rpe = [&quot;你在枘朴小姐的指导下尝试着给生长中的幼苗换花盆&quot;,&quot;你拿起了清扫工具, 开始清理店里的泥土&quot;,&quot;你拿出喷壶和花园铲, 开始给店里的盆栽浇水松土&quot;].random()&gt;&gt;_rpe
+&lt;&lt;elseif $loc == &quot;花店&quot;&gt;&gt;&lt;&lt;set $active[&quot;打工&quot;] +=1, $jobt +=1&gt;&gt;&lt;&lt;losehp 15&gt;&gt;&lt;&lt;if $jobt &gt;=8&gt;&gt;&lt;&lt;set $jobt =0&gt;&gt;&lt;&lt;losebadexp &quot;嫌疑&quot; 1&gt;&gt;&lt;&lt;/if&gt;&gt;
+    &lt;&lt;set $dgcs -= 1, $hour += 1&gt;&gt;&lt;&lt;set _rpe = [&quot;你在枘朴小姐的指导下尝试着给生长中的幼苗换花盆&quot;,&quot;你拿起了清扫工具, 开始清理店里的泥土&quot;,&quot;你拿出喷壶和花园铲, 开始给店里的盆栽浇水松土&quot;].random()&gt;&gt;_rpe
 &lt;br&gt;&lt;br&gt;&lt;&lt;audio &quot;diceroll&quot; play&gt;&gt;
 &lt;&lt;timed 3s&gt;&gt;&lt;&lt;set _t to random(15,35)&gt;&gt;&lt;&lt;set _r to setup.getStat(&quot;observation&quot;)*_t/10&gt;&gt;&lt;&lt;set _a to setup.getStat(&quot;observation&quot;)/_r*100&gt;&gt;&lt;&lt;checkWidget&gt;&gt;
 &lt;&lt;if _rst == &quot;大成功&quot;&gt;&gt;你&lt;font color=#ffb700&gt;出色地&lt;/font&gt;完成了在花店的工作, 花儿们在你的照料下看起来更鲜嫩了&lt;br&gt;
@@ -15176,7 +15195,7 @@ Dialog.open();&gt;&gt;
 眺望的妇人： 一个穿着黑色长裙的妇人，每天都会在固定时间出现在码头，她久久地凝望着远方的海平线，仿佛在等待一艘永远不会归来的船。
 
 潮间拾遗： 退潮后，几个孩子提着木桶在裸露的滩涂上寻找贝壳和小螃蟹，他们的欢笑声被海风送得很远。*/</tw-passagedata><tw-passagedata pid="86" name="一般梦" tags="nobr" position="" size="">&lt;&lt;set _m to random(48,60), _s to random(1,20)&gt;&gt;&lt;&lt;eatfood _m&gt;&gt;
-&lt;&lt;if $sleeptime &gt;=3&gt;&gt;&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;losebadexp &quot;伤口&quot; 1&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $sleeptime &gt;=3 &amp;&amp; $player.wound &gt;=1&gt;&gt;&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;losebadexp &quot;伤口&quot; 1&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $player.nightmare &lt;= 2 &amp;&amp; $player.nightmare &gt;0&gt;&gt;&lt;&lt;losebadexp &quot;噩梦&quot; 1&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if _s &lt;= 1&gt;&gt;&lt;center&gt;——✮入梦·鹈鹕王国✭——&lt;/center&gt;
@@ -15215,7 +15234,7 @@ Dialog.open();&gt;&gt;
 
 &lt;&lt;else&gt;&gt;你从睡眠中醒来. 真是轻松的一觉. 没有梦境的叨扰, 你感到疲惫和劳累都离你而去, 心中只剩宁静
 &lt;&lt;/if&gt;&gt;
-&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;goto &quot;家&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="美梦" tags="nobr" position="" size="">&lt;&lt;if $sleeptime &gt;=3&gt;&gt;&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;losebadexp &quot;伤口&quot; 1&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;goto &quot;家&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="87" name="美梦" tags="nobr" position="" size="">&lt;&lt;if $sleeptime &gt;=3 &amp;&amp; $player.wound &gt;=1&gt;&gt;&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;losebadexp &quot;伤口&quot; 1&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;set _m to random(64,96), _s to random(1,30)&gt;&gt;&lt;&lt;eatfood _m&gt;&gt;
 &lt;&lt;if $player.nightmare &lt;= 4 &amp;&amp; $player.nightmare &gt;0&gt;&gt;&lt;&lt;losebadexp &quot;噩梦&quot; 1&gt;&gt;
@@ -15253,7 +15272,7 @@ Dialog.open();&gt;&gt;
 &lt;&lt;set _rpl = [&quot;你从睡眠中醒来。刚刚梦境的内容开始在你脑海中浮现。你回味着梦中那个世界——晨曦洒在沙滩上，咸湿的海风拂过耳边，爪垫下是细软的白沙。你想再度回到那里，随即意识到，也许你现在就是生活在你梦想中的世界。&quot;,&quot;你还尚未完全睁开双眼，梦境的片段在你眼前清晰依旧。那里的天空是清晨港湾的那种蓝色，倒映在平静的海面，上面有渔船随波微晃。居民们在岸边捞起新鲜的鱼，笑声透过梦境飘到耳边。醒来不乏觉得有些遗憾，但你渐渐意识到，那梦境离现实似乎也并不遥远。&quot;,&quot;睡意渐渐褪去，你的意识重新归于清醒。可梦中的景象依旧鲜明，熟悉又安全，你倚靠在户外的藤椅上，阳光透过葡萄藤洒在毛发上。那是你不愿为之离开而前往清醒世界的地方，仿佛那才是你真正的归属。&quot;,&quot;你从梦中带着浅浅的微笑醒来，连空气都似乎染上了柔和的光。梦里，你沿着永无乡的小路散步，就像你每天都在做的那样。海雾被阳光驱散，脚下是盛开的矢车菊和碎石路，连海鸥的叫声都格外亲切。这一切都像羽毛一样，抚平了你近日来所有的疲惫与不安。&quot;,&quot;你醒来的时候，呼吸间还残留着梦中的气息。梦里的你在岛上的花田中打盹，蜜蜂在一旁嗡嗡奏鸣，接着你意识到，这似乎和你在清醒时会做的事并无二辙，因为你已经生活在了你能梦想到的最美好的地方。&quot;].random()&gt;&gt;_rpl
 
 &lt;&lt;/if&gt;&gt;
-&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;goto &quot;家&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="88" name="噩梦" tags="nobr" position="" size="">&lt;&lt;if $sleeptime &gt;=3&gt;&gt;&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;losebadexp &quot;伤口&quot; 1&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;goto &quot;家&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="88" name="噩梦" tags="nobr" position="" size="">&lt;&lt;if $sleeptime &gt;=3 &amp;&amp; $player.wound &gt;=1&gt;&gt;&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;losebadexp &quot;伤口&quot; 1&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;set _m to random(24,38), _s to random(1,20)&gt;&gt;&lt;&lt;eatfood _m&gt;&gt;
 &lt;&lt;addbadexp &quot;噩梦&quot; 1&gt;&gt;
@@ -15261,7 +15280,7 @@ Dialog.open();&gt;&gt;
 
 
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「继续」&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;goto &quot;家&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="89" name="火之梦" tags="nobr" position="" size="">&lt;&lt;if $sleeptime &gt;=3&gt;&gt;&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;losebadexp &quot;伤口&quot; 1&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;link ▷「继续」&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;goto &quot;家&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="89" name="火之梦" tags="nobr" position="" size="">&lt;&lt;if $sleeptime &gt;=3 &amp;&amp; $player.wound &gt;=1&gt;&gt;&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;losebadexp &quot;伤口&quot; 1&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;set _tmplock =0&gt;&gt;
 
 &lt;&lt;if $msd &gt;= 2 &amp;&amp; $dream_fire.zero ==0&gt;&gt;
@@ -17180,7 +17199,7 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;link ✧「医院」 医院&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;span class=&quot;introtext&quot;&gt;这里是一些文本这里是一些文本这里是一些文本这里是一些文本&lt;/span&gt;
 &lt;br&gt;东向建筑&lt;br&gt;
 &lt;&lt;link ✧「旅店」 旅店&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;if $msd &gt;=5&gt;&gt;&lt;&lt;link ✧「杂货铺」&gt;&gt;&lt;&lt;/link&gt;&gt;（重建中）&lt;&lt;else&gt;&gt;&lt;&lt;link ✧「杂货铺」 杂货铺&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;br&gt;&lt;span class=&quot;introtext&quot;&gt;出售和收购零碎物品的小店，交给了残疾的英国老兵约翰看管&lt;/span&gt;
+&lt;&lt;link ✧「杂货铺」 杂货铺&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;if $msd &gt;=5 &amp;&amp; $restore &lt;100&gt;&gt;（重建中）&lt;&lt;/if&gt;&gt;&lt;br&gt;&lt;span class=&quot;introtext&quot;&gt;出售和收购零碎物品的小店，交给了残疾的英国老兵约翰看管&lt;/span&gt;
 &lt;&lt;link ✧「杜松子酒馆」 酒馆&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;span class=&quot;introtext&quot;&gt;@@.ductalk;公爵夫人@@的酒馆，这里是永无乡最热闹的地方&lt;/span&gt;
 &lt;br&gt;西向建筑&lt;br&gt;
 &lt;&lt;link ✧「咖啡馆」 咖啡馆&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
@@ -17429,7 +17448,7 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
         &lt;div class=&quot;card-border&quot;&gt;&lt;/div&gt;你获得了&lt;br&gt;&lt;&lt;if _b != 0&gt;&gt;红茶 * _b、&lt;&lt;/if&gt;&gt;&lt;&lt;if _c != 0&gt;&gt;浆果馅饼 * _c、&lt;&lt;/if&gt;&gt;&lt;&lt;if _d != 0&gt;&gt;烤鸡腿 * _d、&lt;&lt;/if&gt;&gt;&lt;&lt;if _e != 0&gt;&gt;果汁 * _e&lt;&lt;/if&gt;&gt;&lt;/div&gt;
 
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;if !$firstbjb&gt;&gt;&lt;&lt;set $firstbjb == 1&gt;&gt;
+&lt;&lt;if !$firstbjb&gt;&gt;&lt;&lt;set $firstbjb = 1&gt;&gt;
 &lt;&lt;timed 2s t8n&gt;&gt;在你准备谢过修女时, 她们又拿出了两样工具, 摆在你面前. 鱼竿和猎枪, 这显然是单项选择
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「鱼竿」&gt;&gt;&lt;&lt;set $choice to &quot;鱼竿&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -17504,6 +17523,12 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;else&gt;&gt;前台的女孩在漫不经心的翻着手里的时尚杂志, 见到你进门也只是问了句: &quot;几号房? &quot; 你并没有旅店的钥匙, 只能一脸窘迫的离开了这里, 幸运的是, 直到你出门前台的姑娘都没正眼看过你&lt;br&gt;
 &lt;&lt;link ▷「离开」 小镇&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="140" name="杂货铺" tags="nobr" position="100,600" size="100,100">&lt;h3&gt;@@.emboss;杂货铺@@&lt;/h3&gt;
+
+&lt;&lt;if $msd&gt;=5 &amp;&amp; !$restore&gt;&gt;
+&lt;&lt;set $restore =2, $recording[&quot;杂货铺&quot;]={}, $recording[&quot;杂货铺&quot;].ash=0,$recording[&quot;杂货铺&quot;].food=0,$recording[&quot;杂货铺&quot;].work=0&gt;&gt;&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if !$restore || $restore&gt;=100 &gt;&gt;
+
 &lt;font color=#D4A34C&gt;【营业时间：上午~下午】&lt;/font&gt;&lt;br&gt;
 &lt;br&gt;
 &lt;&lt;if $hour &gt;= 8 &amp;&amp; $hour &lt; 18&gt;&gt;
@@ -17522,8 +17547,44 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;else&gt;&gt;杂货铺的门紧闭着，换个时间再来吧。
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ✧「撬锁」 偷窃&gt;&gt;&lt;&lt;set $stoleloc = &quot;杂货铺&quot;&gt;&gt;&lt;&lt;stolecheck 25 35 20 30&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 小镇&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="141" name="酒馆" tags="nobr" position="300,600" size="100,100">&lt;h3&gt;@@.emboss;杜松子酒馆@@&lt;/h3&gt;
+
+&lt;&lt;else&gt;&gt;
+&lt;font color=#D4A34C&gt;【建筑状态：重建中】&lt;/font&gt;&lt;br&gt;
+文本占位
+&lt;&lt;do&gt;&gt;&lt;&lt;if $restore&gt;=100&gt;&gt;&lt;&lt;notify 3s&gt;&gt;杂货铺重建完成！感谢你的付出！&lt;&lt;/notify&gt;&gt;&lt;&lt;checkachievement &quot;restore&quot;&gt;&gt;
+&lt;&lt;if !$hasAchievement&gt;&gt;&lt;&lt;achievement &quot;restore&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;timed 3s&gt;&gt;&lt;&lt;goto 杂货铺&gt;&gt;&lt;&lt;/timed&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;div style=&quot;    display: flex;justify-content: center;flex-direction: column;align-content: center;align-items: center;&quot;&gt;
+杂货铺重建进度：&lt;br&gt;
+&lt;meter min=&quot;0&quot; high=&quot;20&quot; optimum=&quot;100&quot; max=&quot;100&quot; @value=&quot;$restore&quot; align=&quot;center&quot; style=&quot;width:200px&quot;&gt;&lt;/meter&gt;&lt;br&gt;
+&lt;div class=&quot;littletext&quot;&gt;
+&lt;&lt;link ◈尘羽资助&gt;&gt; &lt;&lt;set _pages = &quot;尘羽资助&quot;&gt;&gt;
+    &lt;&lt;Dialog title=&quot;尘羽资助&quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
+&lt;&lt;/link&gt;&gt;    已资助：$recording[&quot;杂货铺&quot;].ash尘羽&lt;br&gt;
+&lt;&lt;link ◈食物补给&gt;&gt; &lt;&lt;run
+  Dialog.setup(&quot;食物补给&quot;);
+  Dialog.wiki(Story.get(&quot;食物补给&quot;).processText());
+  Dialog.open();&gt;&gt;
+&lt;&lt;/link&gt;&gt;    已提供：$recording[&quot;杂货铺&quot;].food个&lt;br&gt;
+&lt;&lt;link ◈劳工帮助&gt;&gt; &lt;&lt;set _pages = &quot;劳工帮助&quot;&gt;&gt;
+    &lt;&lt;Dialog title=&quot;劳工帮助&quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
+&lt;&lt;/link&gt;&gt;    已工作：$recording[&quot;杂货铺&quot;].work次
+&lt;/div&gt;&lt;/div&gt;
+&lt;&lt;/do&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 小镇&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="141" name="食物补给" tags="nobr" position="" size="">&lt;div style=&quot;display: grid;grid-template-columns:2fr 2fr;padding:5px 25px 5px 25px;&quot;&gt;&lt;&lt;for _i to 0; _i lt $food.uniqueLength;  _i++&gt;&gt;
+&lt;&lt;set _itemn = $food.list[_i]&gt;&gt;
+&lt;span&gt;◈_itemn * &lt;&lt;=$food.count(_itemn)&gt;&gt;&lt;/span&gt;
+&lt;&lt;capture _itemn&gt;&gt;
+&lt;span&gt;&lt;&lt;numberbox &quot;_amount&quot; 1&gt;&gt;
+&lt;&lt;link &quot;确认&quot;&gt;&gt;
+&lt;&lt;if _amount &lt;= $food.count(_itemn)&gt;&gt;
+&lt;&lt;dropitem _itemn _amount&gt;&gt;
+&lt;&lt;set $recording[&quot;杂货铺&quot;].food += _amount, $restore +=_amount*Item.get(_itemn).store/16&gt;&gt;
+
+&lt;&lt;redo&gt;&gt;&lt;&lt;dialogclose&gt;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;run UI.alert(&quot;你没有那么多&quot;)&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;&lt;&lt;/capture&gt;&gt;
+&lt;&lt;/for&gt;&gt;&lt;/div&gt;</tw-passagedata><tw-passagedata pid="142" name="酒馆" tags="nobr" position="300,600" size="100,100">&lt;h3&gt;@@.emboss;杜松子酒馆@@&lt;/h3&gt;
 &lt;font color=#D4A34C&gt;【营业时间：正午~午夜】&lt;/font&gt;&lt;br&gt;
 &lt;&lt;if $hour &gt;= 12 || $hour &lt; 3&gt;&gt;
 &lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107577619_5q0K53iHXg3JWWE.jpg&quot; width=100% class=&quot;image-mask&quot;&gt;
@@ -17559,9 +17620,9 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
 &lt;br&gt;离开酒馆&lt;br&gt;
 &lt;&lt;link ▷「回到小镇」 小镇&gt;&gt;&lt;&lt;set $npc to 0, $choice = 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 
-&lt;center&gt;&lt;div class=&quot;hidden&quot;&gt;Alcohol was the gift of the Deity, just as the Deity had shared it with felins, cats were expected to share it with each other&lt;/div&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="142" name="酒馆游戏" tags="" position="1000,700" size="100,100">&lt;&lt;link ▷「皮克牌」 皮克牌&gt;&gt;&lt;&lt;set $npc to &quot;欧马卡特&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;（仅有玩法叙事内容未实装）
+&lt;center&gt;&lt;div class=&quot;hidden&quot;&gt;Alcohol was the gift of the Deity, just as the Deity had shared it with felins, cats were expected to share it with each other&lt;/div&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="143" name="酒馆游戏" tags="" position="1000,700" size="100,100">&lt;&lt;link ▷「皮克牌」 皮克牌&gt;&gt;&lt;&lt;set $npc to &quot;欧马卡特&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;（仅有玩法叙事内容未实装）
 
-&lt;&lt;link ▷「回到酒馆」 酒馆&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="143" name="酒馆厨房" tags="nobr" position="" size="">&lt;&lt;if $NPCinfo[&quot;公爵夫人&quot;].brewchat == 1 &amp;&amp; $hour &gt;=14 &amp;&amp; $hour &lt;=19&gt;&gt;
+&lt;&lt;link ▷「回到酒馆」 酒馆&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="144" name="酒馆厨房" tags="nobr" position="" size="">&lt;&lt;if $NPCinfo[&quot;公爵夫人&quot;].brewchat == 1 &amp;&amp; $hour &gt;=14 &amp;&amp; $hour &lt;=19&gt;&gt;
 后厨里弥漫着炖煮香料与肉类的浓郁香气，石砌灶台上的火焰欢腾，大铁锅里浓汤咕嘟冒泡，木架挂满风干的香草和熏鱼，陶罐里盛着自家酿造的甜酱。厨师威利手法熟练地处理着食材，在缭绕蒸汽间将托盘摆满食物。&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「酿酒」 酿酒&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;else&gt;&gt;
@@ -17569,10 +17630,10 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;if $NPCinfo[&quot;公爵夫人&quot;].brewchat == 1&gt;&gt;&lt;br&gt;&lt;br&gt;〖你在每天的下午到黄昏时才可进入后厨〗&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 酒馆&gt;&gt;&lt;&lt;set $npc to 0, $choice = 0&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="144" name="酒馆酒窖" tags="nobr" position="" size="">&lt;&lt;if $NPCinfo[&quot;公爵夫人&quot;].love &lt;=25&gt;&gt;一扇紧锁的木门阻挡了去路，门后传来阴凉的空气与陈年的酒香。门上的挂牌写着闲猫免进。
+&lt;&lt;link ▷「离开」 酒馆&gt;&gt;&lt;&lt;set $npc to 0, $choice = 0&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="145" name="酒馆酒窖" tags="nobr" position="" size="">&lt;&lt;if $NPCinfo[&quot;公爵夫人&quot;].love &lt;=25&gt;&gt;一扇紧锁的木门阻挡了去路，门后传来阴凉的空气与陈年的酒香。门上的挂牌写着闲猫免进。
 &lt;&lt;else&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 酒馆&gt;&gt;&lt;&lt;set $npc to 0, $choice = 0&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="145" name="咖啡馆" tags="nobr" position="500,600" size="100,100">&lt;h3&gt;@@.emboss;咖啡馆@@&lt;/h3&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 酒馆&gt;&gt;&lt;&lt;set $npc to 0, $choice = 0&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="咖啡馆" tags="nobr" position="500,600" size="100,100">&lt;h3&gt;@@.emboss;咖啡馆@@&lt;/h3&gt;
 &lt;font color=#D4A34C&gt;【营业时间 早晨~黄昏】&lt;/font&gt;&lt;br&gt;
 &lt;&lt;if $hour &gt;= 6 &amp;&amp; $hour &lt; 20&gt;&gt;
 &lt;&lt;audio &quot;mainBGM&quot; mute&gt;&gt;
@@ -17607,7 +17668,7 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
 咖啡馆的门紧闭着, 门口的牌子写着休息中. 换个时间再来吧&lt;br&gt;&lt;br&gt;&lt;&lt;link ✧「撬锁」 偷窃&gt;&gt;&lt;&lt;set $stoleloc = &quot;咖啡馆&quot;&gt;&gt;&lt;&lt;stolecheck 15 25 10 15&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;br&gt;离开&lt;br&gt;
 &lt;&lt;link ▷「回到小镇」 小镇&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="146" name="图书馆" tags="nobr" position="700,600" size="100,100">&lt;h3&gt;@@.emboss;图书馆@@&lt;/h3&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="147" name="图书馆" tags="nobr" position="700,600" size="100,100">&lt;h3&gt;@@.emboss;图书馆@@&lt;/h3&gt;
 &lt;font color=#D4A34C&gt;【开放时间 早晨~黄昏】&lt;/font&gt;&lt;br&gt;
 &lt;&lt;if $dn == 0&gt;&gt;图书馆里的门上挂着关门的牌子, 尽管里面还在不断闪烁着温暖的烛光, 你决定还是不要在这时候打扰, 等到白天再来吧。
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ✧「撬锁」 偷窃&gt;&gt;&lt;&lt;set $stoleloc = &quot;图书馆&quot;&gt;&gt;&lt;&lt;stolecheck 15 20 25 35&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
@@ -17620,7 +17681,7 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;link ◈「翻阅书架」 地点活动&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;br&gt;离开&lt;br&gt;
-&lt;&lt;link ▷「回到小镇」 小镇&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="147" name="泡泡布提" tags="nobr" position="300,700" size="100,100">&lt;h3&gt;@@.emboss;泡泡布提@@&lt;/h3&gt;&lt;font color=#D4A34C&gt;【营业时间：上午~午后】&lt;/font&gt;
+&lt;&lt;link ▷「回到小镇」 小镇&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="泡泡布提" tags="nobr" position="300,700" size="100,100">&lt;h3&gt;@@.emboss;泡泡布提@@&lt;/h3&gt;&lt;font color=#D4A34C&gt;【营业时间：上午~午后】&lt;/font&gt;
 &lt;&lt;if $hour &gt;= 9 &amp;&amp; $hour &lt; 15&gt;&gt;
 &lt;&lt;set $loc = &quot;泡泡布提&quot;, $loct = &quot;泡泡布提&quot;, $minute += random(3,8)&gt;&gt;
 &lt;&lt;if $NPCinfo[&quot;玛丽亚小姐&quot;].chat == 0&gt;&gt;&lt;&lt;set $loct = $loc, $choice = 0, $state = &quot;问候&quot;, $NPCinfo[&quot;玛丽亚小姐&quot;].chat =1, $npc = &quot;玛丽亚小姐&quot;&gt;&gt;&lt;&lt;goto 玛丽亚小姐互动&gt;&gt;&lt;&lt;/if&gt;&gt;
@@ -17642,15 +17703,15 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;else&gt;&gt;泡泡布提的门紧闭着, 换个时间再来吧。
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ✧「撬锁」 偷窃&gt;&gt;&lt;&lt;set $stoleloc = &quot;泡泡布提&quot;&gt;&gt;&lt;&lt;stolecheck 20 30 10 15&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「回到小镇」 小镇&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="148" name="天上人间" tags="nobr" position="" size="">&lt;h3&gt;@@.emboss;天上人间@@&lt;/h3&gt;
+&lt;&lt;link ▷「回到小镇」 小镇&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="149" name="天上人间" tags="nobr" position="" size="">&lt;h3&gt;@@.emboss;天上人间@@&lt;/h3&gt;
 &lt;font color=#D4A34C&gt;【营业时间 入夜~黎明】&lt;/font&gt;&lt;br&gt;
 
 &lt;&lt;set $loc = &quot;天上人间&quot;, $loct = &quot;天上人间&quot;&gt;&gt;你穿过街角的小巷，走向一个建筑的后门，随后拉开门，走进了名为天上人间的店铺，室内充斥的女孩们的嬉笑与香甜的味道&lt;br&gt;“欢迎——”懒散的趴在前台的少年和你打了声招呼“这次想要什么类型？”说着对你露出了笑容&lt;br&gt;
 
 &lt;&lt;NPCnow&gt;&gt;&lt;br&gt;
 
-&lt;&lt;link ▷「指名」 天上人间&gt;&gt;&lt;&lt;set $choice to &quot;指名&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 小镇&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="149" name="指名" tags="nobr" position="" size="">&lt;&lt;if $choice == &quot;指名&quot;&gt;&gt;
+&lt;&lt;link ▷「指名」 指名&gt;&gt;&lt;&lt;set $choice to &quot;指名&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;br&gt;
+&lt;&lt;link ▷「离开」 小镇&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="150" name="指名" tags="nobr" position="" size="">&lt;&lt;if $choice == &quot;指名&quot;&gt;&gt;
 &lt;&lt;if $HP lt 26&gt;&gt;你感到些许疲惫, 做事情力不从心. 你最好去吃点东西休息一下, 充足的睡眠没有坏处&lt;br&gt;&lt;br&gt;
 
 &lt;&lt;else&gt;&gt;▸▹ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾ ✾◃◂&lt;br&gt;
@@ -17683,7 +17744,7 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
 
 &lt;&lt;elseif $choice == &quot;结束&quot;&gt;&gt;&lt;br&gt;&lt;br&gt;你和你的床伴度过了愉快的几个小时, 她收下钱就先行离开了. 如果你要在此过夜的话, 要付上更多的钱。&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「返回」 天上人间&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="150" name="随便逛逛" tags="nobr" position="1200,600" size="100,100">&lt;&lt;set _s to random(1,55)&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="151" name="随便逛逛" tags="nobr" position="1200,600" size="100,100">&lt;&lt;set _s to random(1,55)&gt;&gt;
 &lt;&lt;if $loc == &quot;小镇&quot;&gt;&gt;
 
 &lt;&lt;if _s &lt;= 14&gt;&gt;
@@ -17701,7 +17762,7 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;elseif _s &lt;= 45&gt;&gt;&lt;&lt;lockedhouse&gt;&gt;
 
 &lt;&lt;else&gt;&gt;&lt;&lt;include &quot;天上人间&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="151" name="沙地" tags="nobr" position="300,400" size="100,100">&lt;&lt;set $loc = &quot;沙地&quot;&gt;&gt;&lt;&lt;set $minute += random(10,15)&gt;&gt;&lt;&lt;losehp 1&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="152" name="沙地" tags="nobr" position="300,400" size="100,100">&lt;&lt;set $loc = &quot;沙地&quot;&gt;&gt;&lt;&lt;set $minute += random(10,15)&gt;&gt;&lt;&lt;losehp 1&gt;&gt;
 &lt;&lt;audio &quot;mainBGM&quot; unmute&gt;&gt;
 &lt;&lt;set _img = [&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543144_b65Wbr7Oe80ABO2.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107570776_iGvNT8nGr802Khx.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107570765_rboh2mhE8O3ljYs.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107581581_ncySDHMsAvQjUHe.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107581572_a9aRamgyS4EheG9.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107581566_o5qv7GGVW09DkCB.jpg&quot;].random()&gt;&gt;
 &lt;&lt;print &#39;&lt;img src=&quot; &#39; + _img + &#39; &quot; width=100% class=&quot;image-mask&quot;&gt;&#39;&gt;&gt;
@@ -17718,14 +17779,14 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;link ✧「断桥」 断桥&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;br&gt;其他地区&lt;br&gt;
 &lt;&lt;link ♢「小镇」 小镇&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ♢「主港口」 主港口&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="152" name="断桥" tags="nobr" position="500,500" size="100,100">&lt;&lt;set $loc = &quot;断桥&quot;&gt;&gt;&lt;&lt;timeWidget&gt;&gt;&lt;&lt;set $minute to $minute+ random(5,10)&gt;&gt;
+&lt;&lt;link ♢「主港口」 主港口&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="153" name="断桥" tags="nobr" position="500,500" size="100,100">&lt;&lt;set $loc = &quot;断桥&quot;&gt;&gt;&lt;&lt;timeWidget&gt;&gt;&lt;&lt;set $minute to $minute+ random(5,10)&gt;&gt;
 &lt;font color=#D4A34C&gt;//位于沙地的最北端，永无乡西北角的断桥，是一座未完成也永远不会被完成的桥，它延伸出去的模样仿佛伸开的臂膀。现在没有谁知道它究竟是通向何处, 也不知为何从未完成，顺着断桥建造下去只会达到海底//&lt;/font&gt;&lt;br&gt;
 &lt;&lt;NPCnow&gt;&gt;
 &lt;br&gt;
 &lt;&lt;if $lostsheep[0] == 1&gt;&gt;&lt;&lt;link ◈「找羊」 埃拉互动&gt;&gt;&lt;&lt;set $state = &quot;找羊&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;link ◈「钓鱼」 钓鱼&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 沙地&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="153" name="骨头市场" tags="nobr" position="" size="">一个不大的露天摊位，由粗木简易搭成，有着遮雨的篷布，柜台上摆放着各种清洗干净、大小不一的骨头，按着固定的分类法排列着。  &lt;br&gt;&lt;br&gt;
+&lt;&lt;link ▷「离开」 沙地&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="154" name="骨头市场" tags="nobr" position="" size="">一个不大的露天摊位，由粗木简易搭成，有着遮雨的篷布，柜台上摆放着各种清洗干净、大小不一的骨头，按着固定的分类法排列着。  &lt;br&gt;&lt;br&gt;
 
 &lt;&lt;link &quot;✣「翡翠小姐」&quot;&gt;&gt;&lt;&lt;set $loct = $loc, $npc to &quot;翡翠小姐&quot;, $choice = 0&gt;&gt;
 &lt;&lt;run Dialog.setup($npc);
@@ -17733,7 +17794,7 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
   Dialog.open();&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;坐在摊前清点着货物
 
   &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="154" name="白雾" tags="nobr" position="" size="">&lt;&lt;set $hidemap = 1&gt;&gt;
+&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="155" name="白雾" tags="nobr" position="" size="">&lt;&lt;set $hidemap = 1&gt;&gt;
 &lt;&lt;set _s to random(1,18)&gt;&gt;
 &lt;&lt;if $whm == 0&gt;&gt;
 &lt;&lt;set $hidemap = 0&gt;&gt;
@@ -17764,7 +17825,7 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;link ▷「向北走」 白雾&gt;&gt;&lt;&lt;set $choice to &quot;向北走&quot;, $whm = 5&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ▷「向南走」 白雾&gt;&gt;&lt;&lt;set $choice to &quot;向南走&quot;, $whm = 5&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;linkreplace ▷「查看四周」&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;&lt;hazelocs&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="155" name="白雾遭遇" tags="" position="1000,900" size="100,100">&lt;&lt;hunter&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="156" name="白雾遭遇" tags="" position="1000,900" size="100,100">&lt;&lt;hunter&gt;&gt;
 你遇到了$hunter
 
 &lt;&lt;set _da to [&quot;信仰&quot;,&quot;突袭&quot;,&quot;洞察&quot;,&quot;诱唆&quot;].random()&gt;&gt;
@@ -17823,7 +17884,7 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
 
 选择献祭则猫族死亡
 选择信奉则猫族成为神明的信徒 
-*/</tw-passagedata><tw-passagedata pid="156" name="罗索伦特湖" tags="nobr" position="700,400" size="100,100">&lt;&lt;set $loc = &quot;罗索伦特湖&quot;&gt;&gt;&lt;&lt;audio &quot;mainBGM&quot; unmute&gt;&gt;
+*/</tw-passagedata><tw-passagedata pid="157" name="罗索伦特湖" tags="nobr" position="700,400" size="100,100">&lt;&lt;set $loc = &quot;罗索伦特湖&quot;&gt;&gt;&lt;&lt;audio &quot;mainBGM&quot; unmute&gt;&gt;
 &lt;&lt;set $minute to $minute+ random(5,10)&gt;&gt;&lt;&lt;losehp 1&gt;&gt;
 
 &lt;&lt;if $choice == &quot;回到湖边&quot;&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;
@@ -17847,7 +17908,7 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;link ♢「高地」 高地&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ♢「贝雷河」 贝雷河&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ♢「秋毛岗」 秋毛岗&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt; &lt;br&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="157" name="潜水" tags="nobr" position="1100,600" size="100,100">&lt;&lt;if $HP lt 6&gt;&gt;&lt;font color=#BA3030&gt;你感到些许疲惫, 做事情力不从心. 你最好去吃点东西休息一下, 充足的睡眠没有坏处&lt;/font&gt;&lt;br&gt;&lt;br&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="158" name="潜水" tags="nobr" position="1100,600" size="100,100">&lt;&lt;if $HP lt 6&gt;&gt;&lt;font color=#BA3030&gt;你感到些许疲惫, 做事情力不从心. 你最好去吃点东西休息一下, 充足的睡眠没有坏处&lt;/font&gt;&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「返回」 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;else&gt;&gt;
 &lt;&lt;set $HP to $HP- 6&gt;&gt;
@@ -17894,11 +17955,11 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;/timed&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/timed&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="158" name="沼泽" tags="" position="600,700" size="100,100">&lt;&lt;set $loc = &quot;沼泽&quot;&gt;&gt;&lt;font color=#D4A34C&gt;//罗索伦特湖湖靠近深林一侧的一处土质松软的土地, 在长久的湖水侵蚀下成为了如今的沼泽地, 真菌占据了植物们放弃的土壤, 让此地变得更加黏稠阴寒, 似乎在追随深林一般的摒弃了天空的存在, 只有萤火虫偶尔会在夜间闪烁//&lt;/font&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="159" name="沼泽" tags="" position="600,700" size="100,100">&lt;&lt;set $loc = &quot;沼泽&quot;&gt;&gt;&lt;font color=#D4A34C&gt;//罗索伦特湖湖靠近深林一侧的一处土质松软的土地, 在长久的湖水侵蚀下成为了如今的沼泽地, 真菌占据了植物们放弃的土壤, 让此地变得更加黏稠阴寒, 似乎在追随深林一般的摒弃了天空的存在, 只有萤火虫偶尔会在夜间闪烁//&lt;/font&gt;
 &lt;&lt;NPCnow&gt;&gt;
 &lt;&lt;if $dn == 0&gt;&gt;&lt;&lt;link ❖「捕捉萤火虫」 萤火虫&gt;&gt;&lt;&lt;set $qte to true&gt;&gt;&lt;&lt;set $succ = 0, $num to random(4,8)&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;br&gt;离开&lt;br&gt;
-&lt;&lt;link ♢「罗索伦特湖」 罗索伦特湖&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="159" name="萤火虫" tags="nobr night UIBarhide" position="1000,500" size="100,100">&lt;div class=&quot;space&quot;&gt;&lt;div class=&quot;particle&quot;&gt;&lt;/div&gt;
+&lt;&lt;link ♢「罗索伦特湖」 罗索伦特湖&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="160" name="萤火虫" tags="nobr night UIBarhide" position="1000,500" size="100,100">&lt;div class=&quot;space&quot;&gt;&lt;div class=&quot;particle&quot;&gt;&lt;/div&gt;
 &lt;div class=&quot;particle&quot;&gt;&lt;/div&gt;
 &lt;div class=&quot;particle&quot;&gt;&lt;/div&gt;
 &lt;div class=&quot;particle&quot;&gt;&lt;/div&gt;&lt;/div&gt;
@@ -17938,7 +17999,7 @@ function qteChange() {
 &lt;&lt;link 返回 $loc&gt;&gt;&lt;&lt;/link&gt;&gt;
 
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="160" name="深林边缘" tags="nobr" position="600,800" size="100,100">&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107289050_39JN0vcVYou6qfr.jpg&quot; width=100% class=&quot;pic&quot;&gt;
+&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="161" name="深林边缘" tags="nobr" position="600,800" size="100,100">&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107289050_39JN0vcVYou6qfr.jpg&quot; width=100% class=&quot;pic&quot;&gt;
 &lt;&lt;set $loc = &quot;深林边缘&quot;, $minute += random(5,10)&gt;&gt;&lt;&lt;losehp 1&gt;&gt;
 &lt;&lt;set _s to random(1,5)&gt;&gt;&lt;&lt;if setup.getStat(&quot;knowledge&quot;) &gt;= 6 &amp;&amp; _s &lt;=2 &amp;&amp; $wellfirst != 1&gt;&gt;&lt;&lt;goto &quot;许愿井&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 
@@ -17949,13 +18010,13 @@ function qteChange() {
 &lt;&lt;if  $wellfirst == 1&gt;&gt;&lt;&lt;link ✧「许愿井」 许愿井&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;link ✧「防火会钟塔」 钟塔&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;br&gt;离开&lt;br&gt;
-&lt;&lt;link ♢「罗索伦特湖」 罗索伦特湖&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="161" name="钟塔" tags="nobr" position="" size="">&lt;&lt;set $loc = &quot;钟塔&quot;, $minute += random(2,4)&gt;&gt;
+&lt;&lt;link ♢「罗索伦特湖」 罗索伦特湖&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="钟塔" tags="nobr" position="" size="">&lt;&lt;set $loc = &quot;钟塔&quot;, $minute += random(2,4)&gt;&gt;
 防火会钟塔矗立在深林边缘，作为防火士的住所和岛上安全的守望者。塔顶巨大的铜钟每日敲响三次，声音传遍岛屿，为居民们报响时间。
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;if !$ORGinfo[&quot;防火会&quot;].reputation&gt;&gt;&lt;&lt;set $ORGinfo[&quot;防火会&quot;].reputation = 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 值班的防火士礼貌地请你离开。
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ♢「深林边缘」 深林边缘&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="162" name="许愿井" tags="nobr" position="" size="">&lt;&lt;set $recording[&quot;许愿井&quot;]=1&gt;&gt;
+&lt;&lt;link ♢「深林边缘」 深林边缘&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="163" name="许愿井" tags="nobr" position="" size="">&lt;&lt;set $recording[&quot;许愿井&quot;]=1&gt;&gt;
 &lt;&lt;set $loc = &quot;许愿井&quot;&gt;&gt;
 &lt;&lt;if  $wellfirst != 1&gt;&gt;&lt;&lt;set  $wellfirst = 1&gt;&gt;
 你在深林边缘漫步着, 突然意识到一旁有一条不明显的小路. 这条路看上去很久没人走过了, 大部分已经被植被覆盖, 这一定是你之前没能发现它的原因, 但现在你注意到, 路旁生长的荆棘和灌木略微不融入周围环境&lt;br&gt;
@@ -17972,7 +18033,7 @@ function qteChange() {
 ✧「许愿」&lt;br&gt;
 &lt;br&gt;
 &lt;&lt;link ▷「离开」 深林边缘&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="163" name="草甸" tags="nobr" position="200,400" size="100,100">&lt;&lt;set $loc = &quot;草甸&quot;&gt;&gt;&lt;&lt;set $minute += random(10,20)&gt;&gt;&lt;&lt;losehp 1&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="164" name="草甸" tags="nobr" position="200,400" size="100,100">&lt;&lt;set $loc = &quot;草甸&quot;&gt;&gt;&lt;&lt;set $minute += random(10,20)&gt;&gt;&lt;&lt;losehp 1&gt;&gt;
 &lt;&lt;audio &quot;mainBGM&quot; unmute&gt;&gt;
 &lt;&lt;set _img = [&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543119_kFc4jWGEE9lHRil.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107289864_Y13ljQczCwaVg9v.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107577579_dKDnB286uIqK9Bs.jpg&quot;].random()&gt;&gt;
 &lt;&lt;print &#39;&lt;img src=&quot; &#39; + _img + &#39; &quot; width=100% class=&quot;image-mask&quot;&gt;&#39;&gt;&gt;
@@ -17991,7 +18052,7 @@ function qteChange() {
 &lt;&lt;link ♢「高地」 高地&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ♢「贝雷河」 贝雷河&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ♢「副港口」 副港口&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ♢「礁岩区」 礁岩区&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="164" name="磨坊" tags="nobr" position="" size="">&lt;h3&gt;@@.emboss;磨坊@@&lt;/h3&gt;
+&lt;&lt;link ♢「礁岩区」 礁岩区&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="165" name="磨坊" tags="nobr" position="" size="">&lt;h3&gt;@@.emboss;磨坊@@&lt;/h3&gt;
 &lt;font color=#D4A34C&gt;【开放时间 早晨~黄昏】&lt;/font&gt;&lt;br&gt;
 &lt;&lt;if $dn == 0&gt;&gt;磨坊的门紧闭着, 换个时间再来吧&lt;&lt;else&gt;&gt;
 &lt;&lt;set $minute += random(2,5)&gt;&gt;&lt;&lt;set $loc = &quot;磨坊&quot;&gt;&gt;&lt;&lt;losehp 1&gt;&gt;
@@ -18004,7 +18065,7 @@ function qteChange() {
 &lt;&lt;/Dialog&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;br&gt;
 
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;link ▷「离开」 草甸&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="165" name="磨坊帮工" tags="nobr" position="" size="">&lt;&lt;if $HP &lt;17&gt;&gt;你感到些许疲惫, 做事情力不从心. 你最好去吃点东西休息一下, 充足的睡眠没有坏处。
+&lt;&lt;link ▷「离开」 草甸&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="166" name="磨坊帮工" tags="nobr" position="" size="">&lt;&lt;if $HP &lt;17&gt;&gt;你感到些许疲惫, 做事情力不从心. 你最好去吃点东西休息一下, 充足的睡眠没有坏处。
 &lt;&lt;else&gt;&gt;
 &lt;&lt;losehp 15&gt;&gt;
 见你来帮忙，磨坊主头也不回地用略带沙哑的嗓音说道：“来得正好，可不能让这阵好风白浪费掉。”&lt;br&gt;&lt;br&gt;
@@ -18017,12 +18078,12 @@ function qteChange() {
 &lt;&lt;set $ashes += 10&gt;&gt;&lt;&lt;itemobtain &quot;尘羽 * 10&quot;&gt;&gt;
 &lt;&lt;else&gt;&gt;“这质量简直是糟蹋我的谷子！”他淬了一口，满眼嫌弃地看着你和你的劳动成果，“就你这样还想拿报酬？我这批被浪费的粮食和损耗的石磨，没让你赔，你就感恩戴德吧！”&lt;br&gt;&lt;br&gt;除了一身的汗水和粉尘，你什么都没有得到。&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 磨坊&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="166" name="羊舍" tags="nobr" position="" size="">&lt;&lt;if $dn == 0&gt;&gt;羊舍的门紧闭着, 里面看着一片漆黑，偶尔有绵羊的叫声传来。&lt;&lt;else&gt;&gt;
+&lt;&lt;link ▷「离开」 磨坊&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="167" name="羊舍" tags="nobr" position="" size="">&lt;&lt;if $dn == 0&gt;&gt;羊舍的门紧闭着, 里面看着一片漆黑，偶尔有绵羊的叫声传来。&lt;&lt;else&gt;&gt;
 &lt;&lt;set $loc = &quot;羊舍&quot;&gt;&gt;&lt;&lt;set $minute += random(1,2)&gt;&gt;&lt;&lt;losehp 1&gt;&gt;
 羊舍里干草垛堆落整齐，空气中弥漫着羊毛与牧草的气息。羊群们会在这里挨挤着歇息，发出安稳的咩咩声。埃拉就住在这里，在门边搭着的简单床铺上，守护着他的羊群。
 &lt;br&gt;〖羊群里有$sheep只羊〗&lt;br&gt;
 &lt;&lt;NPCnow&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 草甸&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="167" name="LSS马场" tags="nobr" position="800,500" size="100,100">&lt;&lt;set $minute += random(2,5)&gt;&gt;&lt;&lt;set $loc = &quot;LSS马场&quot;&gt;&gt;&lt;&lt;losehp 1&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 草甸&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="LSS马场" tags="nobr" position="800,500" size="100,100">&lt;&lt;set $minute += random(2,5)&gt;&gt;&lt;&lt;set $loc = &quot;LSS马场&quot;&gt;&gt;&lt;&lt;losehp 1&gt;&gt;
 //马场占据着草甸最平坦的一块土地, 规划出了一片足够让马匹驰骋的赛道. 在没有比赛的日子, 马场经理诺姆先生会在附近的草地上放牧马群。你看到马厩的标语上写着&quot;欢迎来到LSS! 我们将在每个礼拜四为大家带来岛上最为精彩的赛马比赛! &quot;//&lt;br&gt;&lt;br&gt;
 &lt;&lt;if $dn == 1&gt;&gt;
 &lt;&lt;link ◈「查询赛事」 下注&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
@@ -18031,8 +18092,8 @@ function qteChange() {
 马场的围栏紧锁着。
 &lt;&lt;link ◈「撬锁」 偷窃&gt;&gt;&lt;&lt;set $stoleloc = &quot;马场&quot;&gt;&gt;&lt;&lt;stolecheck 30 40 30 40&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;br&gt;&lt;&lt;link ▷「离开」 草甸&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="168" name="马场帮工" tags="nobr" position="" size="">未实装 马场打工每日一次
-&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「返回」 LSS马场&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="169" name="贝雷河" tags="nobr" position="500,400" size="100,100">&lt;&lt;set $loc = &quot;贝雷河&quot;&gt;&gt;&lt;&lt;set $minute += random(5,10)&gt;&gt;&lt;&lt;losehp 1&gt;&gt;
+&lt;br&gt;&lt;&lt;link ▷「离开」 草甸&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="169" name="马场帮工" tags="nobr" position="" size="">未实装 马场打工每日一次
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「返回」 LSS马场&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="170" name="贝雷河" tags="nobr" position="500,400" size="100,100">&lt;&lt;set $loc = &quot;贝雷河&quot;&gt;&gt;&lt;&lt;set $minute += random(5,10)&gt;&gt;&lt;&lt;losehp 1&gt;&gt;
 &lt;&lt;set _img = [&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107570655_VSYwVrUqSRXaUOJ.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107570650_tl2Ne0ZGbk5i7Ag.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107570638_qTTayF6AHYUM5eu.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107570627_PR7r4GndZjwbnGp.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107570614_1MVx2oz7aVpv6WS.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107577755_8Me42Eo443LQgM2.jpg&quot;].random()&gt;&gt;
 &lt;&lt;print &#39;&lt;img src=&quot; &#39; + _img + &#39; &quot; width=100% class=&quot;image-mask&quot;&gt;&#39;&gt;&gt;
 &lt;font color=#D4A34C&gt;//作为横穿岛屿的一条淡水河, 贝雷河及其支流是永无乡上最主要的用水来源. 众多的建筑都是依河而建, 马场、小镇、港口码头...即使在最冷的季节贝雷河也不会冻结, 永远沉默着从西至东流逝, 为岛屿带来生机. 但无论河水看起来有多么平静, 永远不要涉身到她的黑水中//&lt;/font&gt;
@@ -18053,13 +18114,13 @@ function qteChange() {
 &lt;&lt;link ♢「高地」 高地&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ♢「主港口」 主港口&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ♢「副港口」 副港口&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ♢「罗索伦特湖」 罗索伦特湖&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="170" name="工坊" tags="nobr" position="100,700" size="100,100">&lt;&lt;set $loc = &quot;工坊&quot;, $minute += random(3,8)&gt;&gt;
+&lt;&lt;link ♢「罗索伦特湖」 罗索伦特湖&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="171" name="工坊" tags="nobr" position="100,700" size="100,100">&lt;&lt;set $loc = &quot;工坊&quot;, $minute += random(3,8)&gt;&gt;
 贝雷河边的这间无猫看守的木棚，是提供给岛民自由使用的公共工坊，这里工具齐全，放置有序，宽大工作台上刻满使用痕迹。角落堆放着一些木材、藤蔓与石料，架上还有免费取用的针线。
 &lt;br&gt;&lt;br&gt;
 
 
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 贝雷河&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="171" name="裁缝铺" tags="nobr" position="" size="">&lt;h3&gt;@@.emboss;裁缝铺堂@@&lt;/h3&gt;
+&lt;&lt;link ▷「离开」 贝雷河&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="172" name="裁缝铺" tags="nobr" position="" size="">&lt;h3&gt;@@.emboss;裁缝铺堂@@&lt;/h3&gt;
 &lt;font color=#D4A34C&gt;【开门时间 上午~入夜】&lt;/font&gt;&lt;br&gt;
 &lt;&lt;if $hour &lt;8 || $hour &gt;21&gt;&gt;裁缝铺的门紧闭着, 换个时间再来吧&lt;&lt;else&gt;&gt;
 &lt;&lt;set $loc = &quot;裁缝铺&quot;, $minute += random(3,8)&gt;&gt;
@@ -18082,7 +18143,7 @@ function qteChange() {
 &gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ◈「扩容背包」 地点活动&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 贝雷河&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="172" name="猎户小屋" tags="nobr" position="600,500" size="100,100">&lt;&lt;if $dn == 0&gt;&gt;小屋的门紧闭着。&lt;&lt;elseif $dn == 1 &amp;&amp; $week == 7&gt;&gt;小屋的门紧闭着，看来今天的小屋没有看守。&lt;&lt;else&gt;&gt;&lt;&lt;set $loc = &quot;猎户小屋&quot;&gt;&gt;&lt;&lt;timeWidget&gt;&gt;&lt;&lt;set $minute to $minute+ random(5,10)&gt;&gt;&lt;&lt;losehp 1&gt;&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543075_TIdlSzs9pMDM0hD.jpg&quot; width=100%&gt;
+&lt;&lt;link ▷「离开」 贝雷河&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="173" name="猎户小屋" tags="nobr" position="600,500" size="100,100">&lt;&lt;if $dn == 0&gt;&gt;小屋的门紧闭着。&lt;&lt;elseif $dn == 1 &amp;&amp; $week == 7&gt;&gt;小屋的门紧闭着，看来今天的小屋没有看守。&lt;&lt;else&gt;&gt;&lt;&lt;set $loc = &quot;猎户小屋&quot;&gt;&gt;&lt;&lt;timeWidget&gt;&gt;&lt;&lt;set $minute to $minute+ random(5,10)&gt;&gt;&lt;&lt;losehp 1&gt;&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543075_TIdlSzs9pMDM0hD.jpg&quot; width=100%&gt;
 &lt;font color=#D4A34C&gt;//猎户小屋建在草甸的一处小林地上, 起初只用于民居, 在重建时出于便利改为了公共建筑, 存放岛上的肉食储蓄。小屋的屋檐下整齐悬挂着烟熏肉，一张毛色黯红的鹿皮作为装饰装订在木门上//&lt;/font&gt;
 &lt;br&gt;&lt;br&gt;
 
@@ -18131,7 +18192,7 @@ function qteChange() {
 
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 贝雷河&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="173" name="高地" tags="nobr" position="400,400" size="100,100">&lt;&lt;set $loc = &quot;高地&quot;&gt;&gt;&lt;&lt;set $minute += random(5,10)&gt;&gt;&lt;&lt;losehp 1&gt;&gt;
+&lt;&lt;link ▷「离开」 贝雷河&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="174" name="高地" tags="nobr" position="400,400" size="100,100">&lt;&lt;set $loc = &quot;高地&quot;&gt;&gt;&lt;&lt;set $minute += random(5,10)&gt;&gt;&lt;&lt;losehp 1&gt;&gt;
 &lt;&lt;audio &quot;mainBGM&quot; unmute&gt;&gt;
 &lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543101_EspOXZWRg0VWkcL.jpg&quot; width=100% class=&quot;pic&quot;&gt;
 &lt;font color=#D4A34C&gt;//&quot;它的全名其实是&quot;拓荒者高地&quot;, 跟我的屋子一样的来历, 但是现在大家都只说&quot;去高地&quot;. 不被需要的事物就是这样吧, 他们离去, 他们消失, 他们被从群体的记忆中抹去. &quot;//&lt;/font&gt;
@@ -18151,7 +18212,7 @@ function qteChange() {
 &lt;&lt;link ♢「秋毛岗」 秋毛岗&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ♢「贝雷河」 贝雷河&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ♢「主港口」 主港口&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ♢「礁岩区」 礁岩区&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="174" name="秋毛岗" tags="nobr" position="" size="">&lt;&lt;set $loc = &quot;秋毛岗&quot;&gt;&gt;&lt;&lt;timeWidget&gt;&gt;&lt;&lt;set $minute += random(5,10)&gt;&gt;&lt;&lt;losehp 1&gt;&gt;
+&lt;&lt;link ♢「礁岩区」 礁岩区&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="175" name="秋毛岗" tags="nobr" position="" size="">&lt;&lt;set $loc = &quot;秋毛岗&quot;&gt;&gt;&lt;&lt;timeWidget&gt;&gt;&lt;&lt;set $minute += random(5,10)&gt;&gt;&lt;&lt;losehp 1&gt;&gt;
 &lt;&lt;audio &quot;mainBGM&quot; unmute&gt;&gt;
 &lt;&lt;set _img = [&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107577834_Azf01N1rYlBL1mX.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107577871_01uHE1KC64wri1O.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107577915_LNb55SknzWo7t4O.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107577931_OpRqmtFqL6p8ACn.jpg&quot;].random()&gt;&gt;
 &lt;&lt;print &#39;&lt;img src=&quot; &#39; + _img + &#39; &quot; width=100% class=&quot;image-mask&quot;&gt;&#39;&gt;&gt;
@@ -18167,9 +18228,9 @@ function qteChange() {
 &lt;br&gt;其他地区&lt;br&gt;
 &lt;&lt;link ♢「高地」 高地&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ♢「贝雷河」 贝雷河&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ♢「罗索伦特湖」 罗索伦特湖&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="175" name="山区" tags="nobr" position="" size="">这里禁止前往。&lt;br&gt;
+&lt;&lt;link ♢「罗索伦特湖」 罗索伦特湖&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="176" name="山区" tags="nobr" position="" size="">这里禁止前往。&lt;br&gt;
 &lt;br&gt;其他地区&lt;br&gt;
-&lt;&lt;link ♢「高地」 高地&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;</tw-passagedata><tw-passagedata pid="176" name="拓荒者木屋" tags="nobr" position="400,500" size="100,100">&lt;&lt;set $loc = &quot;拓荒者木屋&quot;&gt;&gt;&lt;&lt;set $minute += random(5,10)&gt;&gt;
+&lt;&lt;link ♢「高地」 高地&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;</tw-passagedata><tw-passagedata pid="177" name="拓荒者木屋" tags="nobr" position="400,500" size="100,100">&lt;&lt;set $loc = &quot;拓荒者木屋&quot;&gt;&gt;&lt;&lt;set $minute += random(5,10)&gt;&gt;
 &lt;&lt;audio &quot;mainBGM&quot; unmute&gt;&gt;
 &lt;&lt;set _img = [&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543090_MgvNmETrLnnkikY.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107577490_cdvVHcc7e5kcCHw.jpg&quot;].random()&gt;&gt;
 &lt;&lt;print &#39;&lt;img src=&quot; &#39; + _img + &#39; &quot; width=100% class=&quot;image-mask&quot;&gt;&#39;&gt;&gt;
@@ -18186,20 +18247,17 @@ function qteChange() {
 &lt;&lt;link ♢「高地」 高地&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ♢「秋毛岗」 秋毛岗&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ♢「贝雷河」 贝雷河&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ♢「主港口」 主港口&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="177" name="木屋内部" tags="nobr" position="" size="">&lt;&lt;if $loc !=&quot;木屋内部&quot;&gt;&gt;
-&lt;&lt;set $loc = &quot;木屋内部&quot;&gt;&gt;
-&lt;&lt;if $choice == &quot;打扫小路&quot; || $choice == &quot;浇花&quot; || $choice == &quot;遛seisi&quot; || $choice == &quot;送货&quot;&gt;&gt;等你回到木屋, 枘朴小姐已经准备好了你的报酬&lt;br&gt;
+&lt;&lt;link ♢「主港口」 主港口&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="178" name="木屋内部" tags="nobr" position="" size="">&lt;&lt;if $loc !=&quot;木屋内部&quot;&gt;&gt;
+&lt;&lt;if $choice == &quot;打扫小路&quot; || $choice == &quot;浇花&quot; || $choice == &quot;遛seisi&quot; || $choice == &quot;送货&quot;&gt;&gt;
+&lt;&lt;set $jobt +=1&gt;&gt;&lt;&lt;if $jobt &gt;=8&gt;&gt;&lt;&lt;set $jobt =0&gt;&gt;&lt;&lt;losebadexp &quot;嫌疑&quot; 1&gt;&gt;&lt;&lt;/if&gt;&gt;
+等你回到木屋, 枘朴小姐已经准备好了你的报酬&lt;br&gt;
 &lt;&lt;set _m to random(1,25)&gt;&gt;&lt;&lt;set _n to random(5,15)&gt;&gt;
 &lt;&lt;if _m &lt;= 14&gt;&gt;&lt;&lt;set $ashes += _n&gt;&gt;&lt;&lt;itemobtain &quot;尘羽 * _n&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;
 &lt;&lt;elseif _m &lt;=22&gt;&gt;&lt;&lt;set _a = [&quot;鲜花饼&quot;,&quot;浆果馅饼&quot;,&quot;路易红茶&quot;].random()&gt;&gt;&lt;&lt;gainitem _a 1&gt;&gt;&lt;&lt;itemobtain &quot;_a * 1&quot;&gt;&gt;
 &lt;&lt;else&gt;&gt;&lt;&lt;gainitem &quot;红玫瑰&quot; 1&gt;&gt;&lt;&lt;itemobtain &quot;红玫瑰 * 1&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「继续」 木屋内部&gt;&gt;&lt;&lt;set $choice to 0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $state == &quot;撬锁进入&quot;&gt;&gt;
-〖你正在&lt;b&gt;@@.nixtalk;枘朴小姐@@&lt;/b&gt;的家中〗&lt;br&gt;
-〖&lt;b&gt;@@.nixtalk;枘朴小姐@@&lt;/b&gt;现在不在家〗&lt;br&gt;&lt;br&gt;
-【内容施工中】
-&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 拓荒者木屋&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $nixloc == &quot;拓荒者木屋&quot;&gt;&gt;&lt;&lt;fadeout 1s 1s&gt;&gt;
+
+&lt;&lt;elseif $nixloc == &quot;拓荒者木屋&quot;&gt;&gt;&lt;&lt;fadeout 1s 1s&gt;&gt;&lt;&lt;set $loc = &quot;木屋内部&quot;&gt;&gt;
 你进入了拓荒者木屋, 枘朴小姐给你开了门, 进去坐坐吧。
 &lt;&lt;/fadeout&gt;&gt;
 &lt;&lt;timed 2s t8n&gt;&gt;
@@ -18226,7 +18284,7 @@ function qteChange() {
 &lt;&lt;if $sq.feedbirds == 1&gt;&gt;&lt;&lt;link ❖「观鸟爱好者」 支线选项&gt;&gt;&lt;&lt;set $choice = &quot;观鸟&quot;, $sq.feedbirds = 2&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;link ❖「今日工作」 打工&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;br&gt;
 &lt;&lt;link ❖「查看鸟窝」 鸟窝&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 拓荒者木屋&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="178" name="木屋后门" tags="nobr" position="" size="">&lt;&lt;set _s = random(1,6)&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 拓荒者木屋&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="179" name="木屋后门" tags="nobr" position="" size="">&lt;&lt;set _s = random(1,6)&gt;&gt;
 你来到拓荒者木屋的后门，
 &lt;&lt;if _s ==6&gt;&gt;
 门正虚掩着，真是幸运。
@@ -18234,7 +18292,7 @@ function qteChange() {
 &lt;&lt;else&gt;&gt;
 这扇门也依旧紧闭着。你试图撬锁，可无奈的发现它并没有门锁。
 &lt;&lt;/if&gt;&gt;
-&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 拓荒者木屋&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="179" name="鸟窝" tags="nobr" position="" size="">书架的一格被专门留出来，摆放那个用稻草和羽毛垒成的鸟窝。
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 拓荒者木屋&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="180" name="鸟窝" tags="nobr" position="" size="">书架的一格被专门留出来，摆放那个用稻草和羽毛垒成的鸟窝。
 &lt;&lt;if $seisistate ==&quot;生气1&quot; || $seisistate ==&quot;生气2&quot; || $seisistate ==&quot;生气3&quot;&gt;&gt;
 Seisi此时正一脸凶狠的趴在窝里，看上去随时准备攻击你。&lt;br&gt;&lt;br&gt;
 &lt;&lt;if !$story[&quot;田鼠的赎罪之旅&quot;]&gt;&gt;
@@ -18261,7 +18319,7 @@ Seisi此时正一脸凶狠的趴在窝里，看上去随时准备攻击你。&lt
 &lt;&lt;set _rpe = [&quot;Seisi正把脑袋埋在翅膀里酣睡，对你的靠近毫无察觉。&quot;,&quot;Seisi正在窝里梳理羽毛，丝毫没有要搭理你的意思。&quot;].random()&gt;&gt;_rpe
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;linkreplace ❖摸seisi&gt;&gt;你还没来得及反应, Seisi就已经把喙伸过来啄了你一口。&lt;&lt;/linkreplace&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 木屋内部&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="180" name="花田" tags="nobr" position="" size="">&lt;&lt;set _img = [&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107570840_SntZo559JqkFXgZ.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107577539_Ny3ep6YcpaQJxxP.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107577553_mS6MD6rTZ711tBp.jpg&quot;].random()&gt;&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 木屋内部&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="181" name="花田" tags="nobr" position="" size="">&lt;&lt;set _img = [&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107570840_SntZo559JqkFXgZ.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107577539_Ny3ep6YcpaQJxxP.jpg&quot;,&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/107577553_mS6MD6rTZ711tBp.jpg&quot;].random()&gt;&gt;
 &lt;&lt;print &#39;&lt;img src=&quot; &#39; + _img + &#39; &quot; width=100% class=&quot;image-mask&quot;&gt;&#39;&gt;&gt;
 &lt;&lt;set $minute += random(8,15)&gt;&gt;&lt;&lt;set $loc = &quot;花田&quot;&gt;&gt;
 高地上这片绵延几英里的山坡，被岛主规划成了一片花儿自由生长的田地，其间肆意生长的野生花簇与精心栽培的名贵品种和谐地交织在一起，引来成群的蜜蜂&lt;br&gt;
@@ -18273,7 +18331,7 @@ Seisi此时正一脸凶狠的趴在窝里，看上去随时准备攻击你。&lt
 &lt;&lt;link ◈「赏花」 花田地点活动&gt;&gt;&lt;&lt;set $active[&quot;欣赏风景&quot;] +=1&gt;&gt;&lt;&lt;set $choice = &quot;赏花&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 高地&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="181" name="StoryInit" tags="" position="100,100" size="100,100">&lt;&lt;cacheaudio &quot;mainBGM&quot; &quot;media/audio/Neverland.mp3&quot;&gt;&gt;
+&lt;&lt;link ▷「离开」 高地&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="182" name="StoryInit" tags="" position="100,100" size="100,100">&lt;&lt;cacheaudio &quot;mainBGM&quot; &quot;media/audio/Neverland.mp3&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;gardenBGM&quot; &quot;media/audio/GardenofUntamedRoses.mp3&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;wildhuntBGM&quot; &quot;media/audio/Whistling Winds.mp3&quot;&gt;&gt;
 &lt;&lt;cacheaudio &quot;homeBGM&quot; &quot;media/audio/home.mp3&quot;&gt;&gt;
@@ -18316,7 +18374,7 @@ Seisi此时正一脸凶狠的趴在窝里，看上去随时准备攻击你。&lt
 &lt;/ScrollView&gt;
 
 &lt;&lt;set setup.items to {}&gt;&gt; 
-&lt;&lt;set $test to 1025.4&gt;&gt; 
+&lt;&lt;set $test to 1025.5&gt;&gt; 
 &lt;&lt;set $hideui = 0&gt;&gt;
 /******************属性值们******************/
 &lt;&lt;set $luck to random(35,95)&gt;&gt;
@@ -18325,7 +18383,7 @@ $knowledgeexp to 0, $strengthexp to 0, $observationexp to 0, $persuasiveexp to 0
 $sin to 0, $resonancefire = 0, $resonancebael = 0&gt;&gt;
 &lt;&lt;set $player = {knowledge: 0, strength: 0, observation: 0, persuasive: 0, wound: 0, dread: 0, nightmare: 0, suspicion : 0, cautious: 0, heartless: 0, curiosity: 0, bold : 0, kindness: 0, enjoy: 0}&gt;&gt;
 &lt;&lt;set $godstyle = {bloodthirsty:0, majesty:0, peaceful:0, stead:0}&gt;&gt;
-
+&lt;&lt;set $death ={&quot;伤口&quot;:0, &quot;恐惧&quot;:0, &quot;噩梦&quot;:0, &quot;嫌疑&quot;:0}&gt;&gt;
 /******************初始值们******************/
 &lt;&lt;set $active to {
     &quot;钓鱼&quot;: 0,
@@ -18343,7 +18401,7 @@ $sin to 0, $resonancefire = 0, $resonancebael = 0&gt;&gt;
     &quot;欣赏风景&quot;: 0,
     &quot;堆沙堡&quot;: 0,
 }&gt;&gt;
-&lt;&lt;set $itemweight = {dreamdiary:0.03, firebloom : 0.02, bookshelf:0, cupboard:2.96}, $firebloom =[], $dream =[]&gt;&gt;&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;set $fontSize =16, $bycs = 3&gt;&gt;
+&lt;&lt;set $itemweight = {dreamdiary:0.03, firebloom : 0.02, bookshelf:0, cupboard:2.96}, $firebloom =[], $dream =[]&gt;&gt;&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;set $fontSize =16, $bycs = 3, $jobt =0&gt;&gt;
 &lt;&lt;set $loc = &quot;未知&quot;, $loct = &quot;未知&quot;, $job = &quot;暂无&quot;,$home = &quot;暂无&quot;, $avatar = &quot;https://f2.toyhou.se/file/f2-toyhou-se/images/108251338_WycNJsCuPu3j39s.png&quot;, $choice =0,
 $chop = 0, $dgcs = 6, $fycs = 3, $gzcs = 3, $bjb to 0, $Owuotake = 0&gt;&gt;
 &lt;&lt;set $sq = {way : 0, moon: 0, ashes: 0}&gt;&gt;
@@ -18418,7 +18476,7 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 
 &lt;&lt;include &quot;任务描述&quot;&gt;&gt;&lt;&lt;include &quot;随机文案描述&quot;&gt;&gt;
 
-&lt;&lt;set $receivemail = [], $sendmail = []&gt;&gt;</tw-passagedata><tw-passagedata pid="182" name="店铺初始" tags="init" position="" size="">/*&quot;霍诺里乌斯的宣誓&quot;,&quot;智者的正道&quot;,&quot;赫耳墨斯文集&quot;,&quot;所罗门之钥&quot;,&quot;自然的至高奥秘&quot;,&quot;恶魔伪君主制&quot;,&quot;大阿尔伯特&quot;,&quot;小阿尔伯特&quot;,&quot;黑母鸡&quot;,&quot;真魔法书&quot;,&quot;红色巨龙&quot;, &quot;历史绪论&quot;,&quot;来自金色草地&quot;,   魔法书籍 之后再设定   &quot;兰巴丹的女士们&quot;,&quot;罗兰之歌&quot;,&quot;贝奥武甫&quot;,&quot;牧歌&quot;,&quot;农事诗&quot;,  &quot;布尔芬奇故事集&quot;,&quot;缠结之森的故事&quot;,&quot;奥德赛&quot;,&quot;伊利亚特&quot;,&quot;埃涅阿斯纪&quot;,&quot;尼伯龙根之歌&quot;,&quot;诗体埃达&quot;,&quot;吉尔伽美什史诗&quot;,&quot;卢加尔班达史诗&quot;,&quot;英国民间故事&quot;,&quot;德国民间故事&quot;,&quot;波兰民间故事&quot;,&quot;匈牙利民间故事&quot;,*/
+&lt;&lt;set $receivemail = [], $sendmail = []&gt;&gt;</tw-passagedata><tw-passagedata pid="183" name="店铺初始" tags="init" position="" size="">/*&quot;霍诺里乌斯的宣誓&quot;,&quot;智者的正道&quot;,&quot;赫耳墨斯文集&quot;,&quot;所罗门之钥&quot;,&quot;自然的至高奥秘&quot;,&quot;恶魔伪君主制&quot;,&quot;大阿尔伯特&quot;,&quot;小阿尔伯特&quot;,&quot;黑母鸡&quot;,&quot;真魔法书&quot;,&quot;红色巨龙&quot;, &quot;历史绪论&quot;,&quot;来自金色草地&quot;,   魔法书籍 之后再设定   &quot;兰巴丹的女士们&quot;,&quot;罗兰之歌&quot;,&quot;贝奥武甫&quot;,&quot;牧歌&quot;,&quot;农事诗&quot;,  &quot;布尔芬奇故事集&quot;,&quot;缠结之森的故事&quot;,&quot;奥德赛&quot;,&quot;伊利亚特&quot;,&quot;埃涅阿斯纪&quot;,&quot;尼伯龙根之歌&quot;,&quot;诗体埃达&quot;,&quot;吉尔伽美什史诗&quot;,&quot;卢加尔班达史诗&quot;,&quot;英国民间故事&quot;,&quot;德国民间故事&quot;,&quot;波兰民间故事&quot;,&quot;匈牙利民间故事&quot;,*/
 &lt;&lt;set $books = [&quot;理想国&quot;,&quot;战争与和平&quot;,&quot;傲慢与偏见&quot;,&quot;堂吉诃德&quot;,&quot;十日谈&quot;,&quot;爱丽丝梦游仙境&quot;,&quot;一千零一夜&quot;,&quot;变形记&quot;,&quot;查拉图斯特拉如是说&quot;,&quot;悲剧的诞生&quot;,&quot;三个火枪手&quot;,&quot;罪与罚&quot;,&quot;卡拉马佐夫兄弟&quot;,&quot;复活&quot;,&quot;红与黑&quot;,&quot;哈姆雷特&quot;,&quot;李尔王&quot;,&quot;罗密欧与朱丽叶&quot;,&quot;雾都孤儿&quot;,&quot;巨猫传&quot;,&quot;化身博士&quot;,&quot;浮士德博士的生死悲剧史&quot;,&quot;渡鸦之书&quot;]&gt;&gt;
 &lt;&lt;set $godstory = [&quot;世界树远征&quot;,&quot;丰饶的代价&quot;,&quot;生命之果实&quot;,&quot;黄金之泪&quot;,&quot;光子之歌&quot;,&quot;枝痕之言&quot;,&quot;逐浪之袍&quot;,&quot;四风之梦&quot;,&quot;欲与刃之律&quot;,&quot;风之冠&quot;,&quot;水之密文&quot;,&quot;冥根&quot;,&quot;二十花之书&quot;,&quot;血与创造&quot;,&quot;鲜血献给黎明&quot;,&quot;黑曜之镜&quot;,&quot;兔与醉迷之殿&quot;,&quot;誓言之羽&quot;,&quot;酒神的喉歌&quot;,&quot;铁砧之息&quot;,&quot;空谷之歌&quot;,&quot;欲之丝&quot;]&gt;&gt;
 
@@ -18462,7 +18520,7 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 &lt;&lt;newinv $coffeehide&gt;&gt;
 &lt;&lt;pickup $coffeehide &quot;吊坠项链&quot; 1 &quot;六分仪&quot; 1 &quot;烧焦的航海图&quot; 1 &quot;老照片&quot; 1 &quot;朗姆酒&quot; 27&gt;&gt;
 &lt;&lt;newinv $house&gt;&gt;
-&lt;&lt;pickup $house &quot;断弦的吉他&quot; 1 &quot;天文望远镜&quot; 1 &quot;老照片&quot; 1 &quot;信纸&quot; 10 &quot;羽毛笔&quot; 12 &quot;甘草袋&quot; 6 &quot;蜡烛&quot; 20 &quot;柿子酒&quot; 33&gt;&gt;</tw-passagedata><tw-passagedata pid="183" name="NPC初始" tags="init" position="" size="">&lt;&lt;set $rdmnpc = [&quot;悲伤的女裁缝&quot;,&quot;温和的农夫&quot;,&quot;独臂的将军&quot;,&quot;静坐的少女&quot;,&quot;手巧的青年&quot;,&quot;爱讲故事的叔叔&quot;,&quot;煎药的老猫&quot;,&quot;吹笛子的男孩&quot;,&quot;衣衫褴褛的船夫&quot;,&quot;沉默的舞者&quot;,&quot;好脾气的太太&quot;,&quot;一尘不染的洗衣工&quot;,&quot;赤脚走路的母猫&quot;,&quot;穿红裙子的母猫&quot;,&quot;高高在上的磨坊主&quot;,&quot;多管闲事的渔夫&quot;,&quot;多病的老书商&quot;,&quot;雨天散步的鸟贩&quot;,&quot;自言自语的木雕师&quot;,&quot;站在桥头的女孩&quot;,&quot;站在树后的猎人&quot;,&quot;头戴鲜花的少女&quot;,&quot;手捧水罐的公猫&quot;,&quot;穿蛇皮裙的母猫&quot;,&quot;种向日葵的老猫&quot;]&gt;&gt;
+&lt;&lt;pickup $house &quot;断弦的吉他&quot; 1 &quot;天文望远镜&quot; 1 &quot;老照片&quot; 1 &quot;信纸&quot; 10 &quot;羽毛笔&quot; 12 &quot;甘草袋&quot; 6 &quot;蜡烛&quot; 20 &quot;柿子酒&quot; 33&gt;&gt;</tw-passagedata><tw-passagedata pid="184" name="NPC初始" tags="init" position="" size="">&lt;&lt;set $rdmnpc = [&quot;悲伤的女裁缝&quot;,&quot;温和的农夫&quot;,&quot;独臂的将军&quot;,&quot;静坐的少女&quot;,&quot;手巧的青年&quot;,&quot;爱讲故事的叔叔&quot;,&quot;煎药的老猫&quot;,&quot;吹笛子的男孩&quot;,&quot;衣衫褴褛的船夫&quot;,&quot;沉默的舞者&quot;,&quot;好脾气的太太&quot;,&quot;一尘不染的洗衣工&quot;,&quot;赤脚走路的母猫&quot;,&quot;穿红裙子的母猫&quot;,&quot;高高在上的磨坊主&quot;,&quot;多管闲事的渔夫&quot;,&quot;多病的老书商&quot;,&quot;雨天散步的鸟贩&quot;,&quot;自言自语的木雕师&quot;,&quot;站在桥头的女孩&quot;,&quot;站在树后的猎人&quot;,&quot;头戴鲜花的少女&quot;,&quot;手捧水罐的公猫&quot;,&quot;穿蛇皮裙的母猫&quot;,&quot;种向日葵的老猫&quot;]&gt;&gt;
 &lt;&lt;set $rdmcat = [&quot;帕斯卡先生&quot;,&quot;施密特博士&quot;,&quot;乔瓦尼教授&quot;,&quot;罗曼诺夫先生 &quot;,&quot;汉森少校&quot;,&quot;贝纳利律师 &quot;,&quot;科斯塔先生&quot;,&quot;彼得斯将军&quot;,&quot;沃尔科夫先生&quot;,&quot;塞巴斯蒂安&quot;,&quot;詹金斯博士&quot;,&quot;罗西教授&quot;,&quot;科斯塔女士&quot;,&quot;比安卡小姐&quot;,&quot;艾琳娜女士&quot;,&quot;奥利维亚小姐&quot;,&quot;阿尔瓦雷斯太太&quot;,&quot;克拉克女士 &quot;,&quot;穆勒女士&quot;,&quot;杜波依斯夫人&quot;,&quot;帕修女&quot;]&gt;&gt;
 
 &lt;&lt;set $relic to [
@@ -18499,7 +18557,7 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
     &quot;防火会&quot;: {member: 3, leader: &quot;无&quot;},
     &quot;遗忘诗社&quot;: {member: 3, leader: &quot;无&quot;},
     &quot;离岛派&quot;: {member: 3, leader: &quot;无&quot;}
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="184" name="装备初始" tags="init" position="" size="">&lt;&lt;set $savedSlots to {
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="185" name="装备初始" tags="init" position="" size="">&lt;&lt;set $savedSlots to {
     &quot;日常&quot;: {headSlot: &quot;无&quot;, neckSlot: &quot;无&quot;, topSlot: &quot;无&quot;, handSlot: &quot;无&quot;, pantsSlot: &quot;无&quot;, footSlot: &quot;无&quot;, toolSlot: &quot;无&quot;, petSlot: &quot;无&quot; },
     &quot;沙龙&quot;: {headSlot: &quot;无&quot;, neckSlot: &quot;无&quot;, topSlot: &quot;无&quot;, handSlot: &quot;无&quot;, pantsSlot: &quot;无&quot;, footSlot: &quot;无&quot;, toolSlot: &quot;无&quot;, petSlot: &quot;无&quot; },
     &quot;工作&quot;: {headSlot: &quot;无&quot;, neckSlot: &quot;无&quot;, topSlot: &quot;无&quot;, handSlot: &quot;无&quot;, pantsSlot: &quot;无&quot;, footSlot: &quot;无&quot;, toolSlot: &quot;无&quot;, petSlot: &quot;无&quot; }
@@ -18534,7 +18592,7 @@ if (ndef $player[stat]) {throw new Error(`Invalid stat: ${stat}`);}
     let ret = Math.trunc(Math.clamp($player[stat] + $adjustments.tool[stat] + $adjustments.head[stat] +  $adjustments.neck[stat] + $adjustments.top[stat] + $adjustments.hand[stat] + $adjustments.pants[stat] + $adjustments.foot[stat] + $adjustments.pet[stat] + $adjustments.access[stat], 0, 99));
     if (Number.isNaN(ret)) {ret = 0;}
     return ret;
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="185" name="装备" tags="" position="1700,600" size="100,100">&lt;&lt;set setup.tool = new Map([
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="186" name="装备" tags="" position="1700,600" size="100,100">&lt;&lt;set setup.tool = new Map([
  	 [&quot;无&quot;, {knowledge : 0, strength : 0, observation : 0, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, curiosity: 0, bold : 0, kindness: 0, enjoy : 0}],
     [&quot;鱼竿&quot;, {knowledge : 0, strength : 0, observation : 1, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, curiosity: 0, bold : 0, kindness: 0, enjoy : 0}],
     [&quot;猎枪&quot;, {knowledge : 0, strength : 1, observation : 0, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, curiosity: 0, bold : 0, kindness: 0, enjoy : 0}],
@@ -18606,7 +18664,7 @@ if (ndef $player[stat]) {throw new Error(`Invalid stat: ${stat}`);}
 
 &lt;&lt;set setup.access = new Map([
  [&quot;丝带白玫瑰&quot;, {knowledge : 0, strength : 0, observation : 0, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, curiosity: 0, bold : 0, kindness: 0, enjoy : 0}],
-])&gt;&gt;</tw-passagedata><tw-passagedata pid="186" name="重启数据" tags="" position="" size="">&lt;&lt;set $hideui = 0&gt;&gt;
+])&gt;&gt;</tw-passagedata><tw-passagedata pid="187" name="重启数据" tags="" position="" size="">&lt;&lt;set $hideui = 0&gt;&gt;
 /******************属性值们******************/
 &lt;&lt;set $luck to random(35,95)&gt;&gt;
 &lt;&lt;set $hunger=0, $abs =0, $social = 0, $weight = 0, $bagstate =1, $fame = 0, $ashes to 0, $points to 12, $HP to 100, $myth to 0, $drunk = 0, $coffin = 0, $hplock = 0,  
@@ -18614,7 +18672,7 @@ $knowledgeexp to 0, $strengthexp to 0, $observationexp to 0, $persuasiveexp to 0
 $sin to 0, $resonancefire = 0, $resonancebael = 0&gt;&gt;
 &lt;&lt;set $player = {knowledge: 0, strength: 0, observation: 0, persuasive: 0, wound: 0, dread: 0, nightmare: 0, suspicion : 0, cautious: 0, heartless: 0, curiosity: 0, bold : 0, kindness: 0, enjoy: 0}&gt;&gt;
 &lt;&lt;set $godstyle = {bloodthirsty:0, majesty:0, peaceful:0, stead:0}&gt;&gt;
-
+&lt;&lt;set $death ={&quot;伤口&quot;:0, &quot;恐惧&quot;:0, &quot;噩梦&quot;:0, &quot;嫌疑&quot;:0}&gt;&gt;
 /******************初始值们******************/
 &lt;&lt;set $itemweight = {dreamdiary:0.03, firebloom : 0.02, bookshelf:0, cupboard:2.96}, $firebloom =[], $dream =[]&gt;&gt;
 &lt;&lt;set $loc = &quot;未知&quot;, $loct = &quot;未知&quot;, $job = &quot;暂无&quot;,$home = &quot;暂无&quot;, $avatar = &quot;https://f2.toyhou.se/file/f2-toyhou-se/images/108251338_WycNJsCuPu3j39s.png&quot;, $choice =0,
@@ -18743,7 +18801,7 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
     &quot;日常&quot;: {headSlot: &quot;无&quot;, neckSlot: &quot;无&quot;, topSlot: &quot;无&quot;, handSlot: &quot;无&quot;, pantsSlot: &quot;无&quot;, footSlot: &quot;无&quot;, toolSlot: &quot;无&quot;, petSlot: &quot;无&quot; },
     &quot;沙龙&quot;: {headSlot: &quot;无&quot;, neckSlot: &quot;无&quot;, topSlot: &quot;无&quot;, handSlot: &quot;无&quot;, pantsSlot: &quot;无&quot;, footSlot: &quot;无&quot;, toolSlot: &quot;无&quot;, petSlot: &quot;无&quot; },
     &quot;工作&quot;: {headSlot: &quot;无&quot;, neckSlot: &quot;无&quot;, topSlot: &quot;无&quot;, handSlot: &quot;无&quot;, pantsSlot: &quot;无&quot;, footSlot: &quot;无&quot;, toolSlot: &quot;无&quot;, petSlot: &quot;无&quot; }
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="187" name="随机文案描述" tags="nobr" position="" size="">&lt;&lt;set setup.items[&#39;永无乡&#39;] to {name: &#39;永无乡&#39;,
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="188" name="随机文案描述" tags="nobr" position="" size="">&lt;&lt;set setup.items[&#39;永无乡&#39;] to {name: &#39;永无乡&#39;,
     description: &#39;&lt;&lt;set $textm= [&quot;漂浮在地中海某处的小岛，终年气候温和&lt;br&gt;永无乡欢迎所有人的到来&quot;,&quot;在这座被鲜花和蜡烛环绕的小岛上, 永远自由, 永无哀愁&quot;].random()&gt;&gt;$textm&#39;
 }&gt;&gt;
 &lt;&lt;set setup.items[&#39;雪&#39;] to {name: &#39;雪&#39;,
@@ -18823,16 +18881,18 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 }&gt;&gt;
 &lt;&lt;set setup.items[&#39;荒野&#39;] to {name: &#39;荒野&#39;,
     description: &#39;黑暗而冰冷的土地, 如其名称一般的荒芜, 似乎绵延永无尽头&#39;
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="188" name="版本信息" tags="" position="1700,900" size="100,100">&lt;h2&gt;版本&lt;/h2&gt;
-最新版本：0.251025.4&lt;br&gt;&lt;br&gt;制作&amp;测试阶段&lt;br&gt;有任何问题请联系qq: 641549971&lt;br&gt;
+}&gt;&gt;</tw-passagedata><tw-passagedata pid="189" name="版本信息" tags="" position="1700,900" size="100,100">&lt;h2&gt;版本&lt;/h2&gt;
+最新版本：0.25&lt;&lt;=$test&gt;&gt;&lt;br&gt;&lt;br&gt;制作&amp;测试阶段&lt;br&gt;有任何问题请联系qq: 641549971&lt;br&gt;
 &lt;h2&gt;CREDITS&lt;/h2&gt;世界观创作、游戏制作、剧情设计、角色设计、文本编写：Nix&lt;br&gt;特别感谢：Chapel、Shour、黑星&lt;br&gt;
 
-&lt;&lt;include &quot;更新日志&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="189" name="版本更新" tags="" position="" size="">&lt;&lt;do&gt;&gt;当前版本：0.25&lt;&lt;=$test&gt;&gt;
-最新版本：0.251025.4&lt;br&gt;
+&lt;&lt;include &quot;更新日志&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="190" name="版本更新" tags="" position="" size="">&lt;&lt;do&gt;&gt;当前版本：0.25&lt;&lt;=$test&gt;&gt;
+最新版本：0.251025.5&lt;br&gt;
 &lt;&lt;link 更新版本&gt;&gt;
-&lt;&lt;if $test = 1025.3&gt;&gt;&lt;&lt;set $books.push($choice)&gt;&gt;&lt;&lt;set $test = 1025.4&gt;&gt;
+&lt;&lt;if $test = 1025.4&gt;&gt;
+&lt;&lt;set $death ={&quot;伤口&quot;:0, &quot;恐惧&quot;:0, &quot;噩梦&quot;:0, &quot;嫌疑&quot;:0}&gt;&gt;
+&lt;&lt;elseif $test = 1025.3&gt;&gt;&lt;&lt;set $books.push($choice)&gt;&gt;&lt;&lt;set $death ={&quot;伤口&quot;:0, &quot;恐惧&quot;:0, &quot;噩梦&quot;:0, &quot;嫌疑&quot;:0}&gt;&gt;
 &lt;&lt;else&gt;&gt;
-&lt;&lt;set $test = 1025.4&gt;&gt;&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;set $books.push($choice)&gt;&gt;&lt;&lt;set $fontSize =16&gt;&gt;&lt;&lt;set $bycs to 3&gt;&gt;&lt;&lt;set $NPCinfo[&quot;特里特&quot;].img = &quot;https://f2.toyhou.se/file/f2-toyhou-se/images/109578981_Ewt7NxYOK9EPNt4.png&quot;&gt;&gt;
+&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;set $books.push($choice)&gt;&gt;&lt;&lt;set $fontSize =16&gt;&gt;&lt;&lt;set $bycs to 3&gt;&gt;&lt;&lt;set $NPCinfo[&quot;特里特&quot;].img = &quot;https://f2.toyhou.se/file/f2-toyhou-se/images/109578981_Ewt7NxYOK9EPNt4.png&quot;&gt;&gt;
 &lt;&lt;set $active to {
     &quot;钓鱼&quot;: 0,
     &quot;打猎&quot;: 0,
@@ -18848,11 +18908,11 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
     &quot;读书&quot;: 0,
     &quot;欣赏风景&quot;: 0,
     &quot;堆沙堡&quot;: 0,
-}&gt;&gt;&lt;&lt;/if&gt;&gt;
+}&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;set $test = 1025.5&gt;&gt;
 &lt;&lt;notify 3s&gt;&gt;已更新至最新版本&lt;&lt;/notify&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
 (已触发内容的更新无法同步，测试阶段不建议长期游玩)
 &lt;&lt;/do&gt;&gt;&lt;br&gt;
-&lt;&lt;include &quot;更新日志&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="190" name="更新日志" tags="" position="" size="">&lt;h2&gt;更新日志&lt;/h2&gt;
+&lt;&lt;include &quot;更新日志&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="191" name="更新日志" tags="" position="" size="">&lt;h2&gt;更新日志&lt;/h2&gt;
 10.27-30 增加调节字体大小功能，修了很多很多bug
 增加了一些风味性文本和事件，加入了灵魂状态描述
 修改了睡觉的逻辑，酒馆表演的逻辑
@@ -18958,13 +19018,13 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 6.27 完成了日志描述梗概、白雾地点文本、赏花文本差分
      修改了白雾遭遇的框架
      写了一个死亡结局的文本
-     开始使用黑星的弹窗宏</tw-passagedata><tw-passagedata pid="191" name="PassageDone" tags="" position="700,200" size="100,100">/*----------------BGM判断----------------*/
+     开始使用黑星的弹窗宏</tw-passagedata><tw-passagedata pid="192" name="PassageDone" tags="" position="700,200" size="100,100">/*----------------BGM判断----------------*/
 &lt;&lt;if $hideui == 1&gt;&gt;&lt;&lt;audio &quot;mainBGM&quot; loop play&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $loc !=&quot;木屋内部&quot;&gt;&gt;&lt;&lt;audio &quot;NixBGM&quot; stop&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $loc !=&quot;酒馆&quot;&gt;&gt;&lt;&lt;audio &quot;酒馆&quot; stop&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $loc !=&quot;你的小屋&quot; &amp;&amp; $loc !=&quot;旅店&quot;&gt;&gt;&lt;&lt;audio &quot;homeBGM&quot; stop&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $loc !=&quot;咖啡馆&quot;&gt;&gt;&lt;&lt;audio &quot;咖啡馆&quot; stop&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $HP &gt; 100&gt;&gt;&lt;&lt;set $HP = 100&gt;&gt;&lt;&lt;elseif $HP &lt;0&gt;&gt;&lt;&lt;set $HP = 0&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="192" name="PassageFooter" tags="nobr" position="600,200" size="100,100">&lt;br&gt;  &lt;br&gt;   &lt;br&gt;  &lt;br&gt;  &lt;br&gt;  &lt;br&gt;  &lt;br&gt; 
+&lt;&lt;if $HP &gt; 100&gt;&gt;&lt;&lt;set $HP = 100&gt;&gt;&lt;&lt;elseif $HP &lt;0&gt;&gt;&lt;&lt;set $HP = 0&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="193" name="PassageFooter" tags="nobr" position="600,200" size="100,100">&lt;br&gt;  &lt;br&gt;   &lt;br&gt;  &lt;br&gt;  &lt;br&gt;  &lt;br&gt;  &lt;br&gt; 
 &lt;&lt;if $hideui == 1&gt;&gt;&lt;div id=&quot;phonehistory&quot;&gt;
 &lt;span&gt;
 &lt;&lt;button &#39;&lt;i class=&quot;fa-solid fa-arrow-left&quot;&gt;&lt;/i&gt;&#39;&gt;&gt;
@@ -19026,7 +19086,7 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 &lt;&lt;if $player.wound &lt; 0&gt;&gt;&lt;&lt;set $player.wound = 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $player.dread &lt; 0&gt;&gt;&lt;&lt;set $player.dread = 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $player.nightmare &lt; 0&gt;&gt;&lt;&lt;set $player.nightmare = 0&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $player.suspicion &lt; 0&gt;&gt;&lt;&lt;set $player.suspicion = 0&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="193" name="PassageHeader" tags="nobr" position="600,100" size="100,100">&lt;&lt;script&gt;&gt;
+&lt;&lt;if $player.suspicion &lt; 0&gt;&gt;&lt;&lt;set $player.suspicion = 0&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="194" name="PassageHeader" tags="nobr" position="600,100" size="100,100">&lt;&lt;script&gt;&gt;
   var w1 = window.innerWidth;
   State.variables.testW1 = w1;
 &lt;&lt;/script&gt;&gt;
@@ -19098,18 +19158,20 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 
 
 @@&lt;&lt;/fadein&gt;&gt;&lt;/font&gt;
-&lt;br&gt;</tw-passagedata><tw-passagedata pid="194" name="PassageReady" tags="" position="700,100" size="100,100">&lt;&lt;set $nt to $month*1000000+$day*10000+$hour/24*10000+$minute/60*100&gt;&gt;
+&lt;br&gt;</tw-passagedata><tw-passagedata pid="195" name="PassageReady" tags="" position="700,100" size="100,100">&lt;&lt;set $nt to $month*1000000+$day*10000+$hour/24*10000+$minute/60*100&gt;&gt;
 &lt;div class=&quot;timed-click-skip&quot;&gt;&lt;/div&gt;
 
-&lt;&lt;if setup.getStat(&quot;wound&quot;) &gt;= 24&gt;&gt;&lt;&lt;set $death = &quot;伤口&quot;&gt;&gt;&lt;&lt;goto &quot;死亡&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if setup.getStat(&quot;dread&quot;) &gt;= 24&gt;&gt;&lt;&lt;set $death = &quot;恐惧&quot;&gt;&gt;&lt;&lt;goto &quot;死亡&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if setup.getStat(&quot;nightmare&quot;) &gt;= 24&gt;&gt;&lt;&lt;set $death = &quot;噩梦&quot;&gt;&gt;&lt;&lt;goto &quot;死亡&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if setup.getStat(&quot;suspicion&quot;) &gt;= 24&gt;&gt;&lt;&lt;set $death = &quot;质疑&quot;&gt;&gt;&lt;&lt;goto &quot;死亡&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $player.nightmare &lt;0&gt;&gt;&lt;&lt;set $player.nightmare = 0&gt;&gt;
-&lt;&lt;elseif $player.wound &lt;0&gt;&gt;&lt;&lt;set $player.wound = 0&gt;&gt;
-&lt;&lt;elseif $player.dread &lt;0&gt;&gt;&lt;&lt;set $player.dread = 0&gt;&gt;
-&lt;&lt;elseif $player.suspicion &lt;0&gt;&gt;&lt;&lt;set $player.suspicion = 0&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if setup.getStat(&quot;wound&quot;) &gt;= 24&gt;&gt;&lt;&lt;set $death[&quot;伤口&quot;]+=1, $choice =&quot;伤口&quot;, $player.wound = $death[&quot;伤口&quot;]*3&gt;&gt;&lt;&lt;goto &quot;死亡&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if setup.getStat(&quot;dread&quot;) &gt;= 24&gt;&gt;&lt;&lt;set $death[&quot;恐惧&quot;]+=1, $choice =&quot;恐惧&quot;, $player.dread = $death[&quot;恐惧&quot;]*3&gt;&gt;&lt;&lt;goto &quot;死亡&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if setup.getStat(&quot;nightmare&quot;) &gt;= 24&gt;&gt;&lt;&lt;set $death[&quot;噩梦&quot;] +=1 , $choice =&quot;噩梦&quot;, $player.nightmare =$death[&quot;噩梦&quot;]*3&gt;&gt;&lt;&lt;goto &quot;死亡&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if setup.getStat(&quot;suspicion&quot;) &gt;= 24&gt;&gt;&lt;&lt;set $death[&quot;嫌疑&quot;]+=1, $choice =&quot;嫌疑&quot;, $player.suspicion = $death[&quot;嫌疑&quot;]*3&gt;&gt;&lt;&lt;goto &quot;死亡&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
+
+
+&lt;&lt;if $player.nightmare &lt;$death[&quot;噩梦&quot;]*3&gt;&gt;&lt;&lt;set $player.nightmare = $death[&quot;噩梦&quot;]*3&gt;&gt;
+&lt;&lt;elseif $player.wound &lt;$death[&quot;伤口&quot;]*3&gt;&gt;&lt;&lt;set $player.wound = $death[&quot;伤口&quot;]*3&gt;&gt;
+&lt;&lt;elseif $player.dread &lt;$death[&quot;恐惧&quot;]*3&gt;&gt;&lt;&lt;set $player.dread = $death[&quot;恐惧&quot;]*3&gt;&gt;
+&lt;&lt;elseif $player.suspicion &lt;$death[&quot;嫌疑&quot;]*3&gt;&gt;&lt;&lt;set $player.suspicion = $death[&quot;嫌疑&quot;]*3&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if setup.getStat(&quot;heartless&quot;) &gt;= 24&gt;&gt;&lt;&lt;set $soul = &quot;寒冷&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if setup.getStat(&quot;curiosity&quot;) &gt;= 24&gt;&gt;&lt;&lt;set $soul = &quot;污秽&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
@@ -19125,7 +19187,7 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 
 &lt;&lt;if !$sleeptime&gt;&gt;&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if !$fontSize&gt;&gt;&lt;&lt;set $fontSize =16&gt;&gt;&lt;&lt;/if&gt;&gt;
-
+&lt;&lt;if !$jobt&gt;&gt;&lt;&lt;set $jobt =0&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 /*------------NPC行程----------------*/
 &lt;&lt;if $hour &gt;=8 &amp;&amp; $hour &lt;=18 &amp;&amp; $week ==3&gt;&gt;&lt;&lt;set $nixloc =&quot;花店&quot;&gt;&gt;&lt;&lt;elseif $hour &gt;=8 &amp;&amp; $hour &lt;=18&gt;&gt;&lt;&lt;set $nixloc =&quot;拓荒者木屋&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set _w to random(1,15)&gt;&gt;&lt;&lt;if _w &lt;=3&gt;&gt;&lt;&lt;set $nixloc = &quot;献祭&quot;&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set $nixloc = &quot;不在&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
@@ -19234,7 +19296,7 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 &lt;&lt;set _t = Math.round(Item.get(_n).store/3*100) / 100&gt;&gt;
 &lt;&lt;set $spending.cellarIII.needt = $nt + _t*10000, $spending.cellarIII.state +=1&gt;&gt;
 &lt;&lt;notify 3s&gt;&gt;酒窖中酿造的_n进入了新阶段&lt;&lt;/notify&gt;&gt;
-&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="195" name="界面" tags="nobr UIBarhide" position="100,1200" size="100,100">&lt;center&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87542752_OTAoFb7FjfGxA9I.png&quot; width=100%&gt;&lt;br&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="196" name="界面" tags="nobr UIBarhide" position="100,1200" size="100,100">&lt;center&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87542752_OTAoFb7FjfGxA9I.png&quot; width=100%&gt;&lt;br&gt;
 &lt;h1&gt;-NEVERLAND- 「永无乡」&lt;/h1&gt;
 由©Nix P. R. 创作的&lt;br&gt;
 &lt;兽人&gt;&lt;现实半架空&gt;&lt;多元神话&gt;&lt;低魔&gt;世界观&lt;br&gt;
@@ -19289,14 +19351,14 @@ Save.browser.continue()
 &lt;br&gt;
 &lt;/div&gt;&lt;br&gt;
 &lt;br&gt;&lt;br&gt;
-&lt;div class=&quot;hidden&quot;&gt;Hiding a word is the glory of the Deity, revealing a word is the glory of the King&lt;/div&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="196" name="StoryCaption" tags="" position="200,100" size="100,100">&lt;&lt;do&gt;&gt;&lt;hr class=&quot;hr-fade-content&quot;&gt;&lt;&lt;if !$nn&gt;&gt; 欢迎你来到永无乡, 远方的旅客, &lt;br&gt;请完成入岛登记&lt;br&gt;&lt;br&gt;&lt;&lt;elseif $loc == &quot;未知&quot;&gt;&gt;$nn, 永无乡永远都是你的归宿&lt;&lt;else&gt;&gt;嗨 &lt;b&gt;$nn&lt;/b&gt;!&lt;br&gt;&lt;&lt;print &#39;&lt;img src=&quot; &#39; + $avatar + &#39; &quot; width=60% class=&quot;picr&quot;&gt;&#39;&gt;&gt;&lt;br&gt;欢迎来到&lt;br&gt;&lt;font size=5px&gt;&lt;b&gt;&lt;font color=#f8f0e7&gt;$loc&lt;/font&gt;&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;&lt;if $loc == &quot;白雾&quot;&gt;&gt;美味&lt;&lt;else&gt;&gt;永远&lt;&lt;/if&gt;&gt;的朋友!
+&lt;div class=&quot;hidden&quot;&gt;Hiding a word is the glory of the Deity, revealing a word is the glory of the King&lt;/div&gt;&lt;/center&gt;</tw-passagedata><tw-passagedata pid="197" name="StoryCaption" tags="" position="200,100" size="100,100">&lt;&lt;do&gt;&gt;&lt;hr class=&quot;hr-fade-content&quot;&gt;&lt;&lt;if !$nn&gt;&gt; 欢迎你来到永无乡, 远方的旅客, &lt;br&gt;请完成入岛登记&lt;br&gt;&lt;br&gt;&lt;&lt;elseif $loc == &quot;未知&quot;&gt;&gt;$nn, 永无乡永远都是你的归宿&lt;&lt;else&gt;&gt;嗨 &lt;b&gt;$nn&lt;/b&gt;!&lt;br&gt;&lt;&lt;print &#39;&lt;img src=&quot; &#39; + $avatar + &#39; &quot; width=60% class=&quot;picr&quot;&gt;&#39;&gt;&gt;&lt;br&gt;欢迎来到&lt;br&gt;&lt;font size=5px&gt;&lt;b&gt;&lt;font color=#f8f0e7&gt;$loc&lt;/font&gt;&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;&lt;if $loc == &quot;白雾&quot;&gt;&gt;美味&lt;&lt;else&gt;&gt;永远&lt;&lt;/if&gt;&gt;的朋友!
 &lt;hr class=&quot;hr-fade-content&quot;&gt;&lt;&lt;do&gt;&gt;尘羽 &lt;span style=&quot;font-family:&#39;货币&#39;;font-size: 1.2em;top:3px;position:relative;color:#a27a15;text-shadow: 0 0 9px #b89c52;&quot;&gt;A&lt;&lt;= $ashes&gt;&gt;&lt;/span&gt;&lt;&lt;/do&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;timeWidget&gt;&gt;&lt;&lt;if $dtr == 0&gt;&gt;&lt;&lt;set $dtn1 to random(1,24), $dtn2 to random(1,24), $dtr to 1&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;weatherWidget&gt;&gt;&lt;div id=&quot;moon&quot;&gt;&lt;&lt;moonphase&gt;&gt;&amp;nbsp;$weather $wind&lt;/div&gt;$month月$day日 • $dayOfWeek • $time&lt;br&gt;
 &lt;&lt;if !$nn&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;if $HP &gt; 100&gt;&gt;&lt;&lt;set $HP = 100&gt;&gt;&lt;&lt;elseif $HP &lt;0&gt;&gt;&lt;&lt;set $HP = 0&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;b&gt;体力&lt;/b&gt; $HP/100&lt;span class=&quot;hp&quot;&gt;&lt;meter min=&quot;0&quot; high=&quot;20&quot; optimum=&quot;100&quot; max=&quot;100&quot; @value=&quot;$HP&quot; align=&quot;center&quot; style=&quot;width:200px&quot;&gt;&lt;/meter&gt;&lt;/span&gt;
-&lt;&lt;set $kl to $player.knowledge+ 1&gt;&gt;&lt;&lt;set _extk to setup.getStat(&quot;knowledge&quot;)- $player.knowledge&gt;&gt;&lt;span class=&quot;tooltip&quot;&gt;&lt;b&gt;学识&lt;/b&gt;&lt;span class=&quot;tooltiptext&quot;&gt;知识, 阅历, 智慧&lt;br&gt;等级：$player.knowledge+_extk/120&lt;br&gt;当前经验：$knowledgeexp/$kl&lt;/span&gt;&lt;/span&gt; $player.knowledge &lt;font color=&quot;white&quot;&gt;+_extk&lt;/font&gt;&lt;meter min=0 @max=&quot;$kl&quot;  @value=&quot;$knowledgeexp&quot; align=&quot;center&quot; style=&quot;width:200px&quot;&gt;&lt;/meter&gt;
+&lt;&lt;set $kl to $player.knowledge+ 1&gt;&gt;&lt;&lt;set _extk to setup.getStat(&quot;knowledge&quot;)- $player.knowledge&gt;&gt;&lt;span class=&quot;tooltip&quot;&gt;&lt;b&gt;学识&lt;/b&gt;&lt;span class=&quot;tooltiptext&quot;&gt;知识, 阅历, 智慧&lt;br&gt;等级：$player.knowledge+_extk/120&lt;br&gt;当前经验：$knowledgeexp/$kl&lt;/span&gt;&lt;/span&gt; $player.knowledge &lt;font color=&quot;white&quot;&gt;+_extk&lt;/font&gt;&lt;meter min=&quot;0&quot; @max=&quot;$kl&quot;  @value=&quot;$knowledgeexp&quot; align=&quot;center&quot; style=&quot;width:200px&quot;&gt;&lt;/meter&gt;
 &lt;&lt;set $sl to $player.strength+ 1&gt;&gt;&lt;&lt;set _exts to setup.getStat(&quot;strength&quot;)- $player.strength&gt;&gt;&lt;span class=&quot;tooltip&quot;&gt;&lt;b&gt;力量&lt;/b&gt;&lt;span class=&quot;tooltiptext&quot;&gt;体魄, 蛮力, 战斗&lt;br&gt;等级：$player.strength+_exts/120&lt;br&gt;当前经验：$strengthexp/$sl&lt;/span&gt;&lt;/span&gt; $player.strength &lt;font color=&quot;white&quot;&gt;+_exts&lt;/font&gt;&lt;meter @value=&quot;$strengthexp&quot; min=&quot;0&quot; high=&quot;0&quot; @max=&quot;$sl&quot; align=&quot;center&quot; style=&quot;width:200px&quot;&gt;&lt;/meter&gt;
 &lt;&lt;set $ol to $player.observation+ 1&gt;&gt;&lt;&lt;set _exto to setup.getStat(&quot;observation&quot;)- $player.observation&gt;&gt;&lt;span class=&quot;tooltip&quot;&gt;&lt;b&gt;观察&lt;/b&gt;&lt;span class=&quot;tooltiptext&quot;&gt;敏锐, 狡黠, 觉察&lt;br&gt;等级：$player.observation+_exto/120&lt;br&gt;当前经验：$observationexp/$ol&lt;/span&gt;&lt;/span&gt; $player.observation &lt;font color=&quot;white&quot;&gt;+_exto&lt;/font&gt;&lt;meter @value=&quot;$observationexp&quot; min=&quot;0&quot; high=&quot;0&quot; @max=&quot;$ol&quot; align=&quot;center&quot; style=&quot;width:200px&quot;&gt;&lt;/meter&gt;
 &lt;&lt;set $pl to $player.persuasive+ 1&gt;&gt;&lt;&lt;set _extp to setup.getStat(&quot;persuasive&quot;)- $player.persuasive&gt;&gt;&lt;span class=&quot;tooltip&quot;&gt;&lt;b&gt;话术&lt;/b&gt;&lt;span class=&quot;tooltiptext&quot;&gt;诡辩, 说服, 虚言&lt;br&gt;等级：$player.persuasive+_extp/120&lt;br&gt;当前经验：$persuasiveexp/$pl&lt;/span&gt;&lt;/span&gt; $player.persuasive &lt;font color=&quot;white&quot;&gt;+_extp&lt;/font&gt;&lt;meter @value=&quot;$persuasiveexp&quot; min=&quot;0&quot; high=&quot;0&quot; @max=&quot;$pl&quot; align=&quot;center&quot; style=&quot;width:200px&quot;&gt;&lt;/meter&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;
-  &lt;br&gt;</tw-passagedata><tw-passagedata pid="197" name="StoryDisplayTitle" tags="" position="800,100" size="100,100">&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87586917_ODEphEoOE67jGWI.png&quot; width=100%&gt;</tw-passagedata><tw-passagedata pid="198" name="StoryMenu" tags="" position="300,100" size="100,100">&lt;a href=&quot;https://www.wjx.cn/vm/mX8nUry.aspx# &quot;&gt;试玩问卷&lt;/a&gt;
+  &lt;br&gt;</tw-passagedata><tw-passagedata pid="198" name="StoryDisplayTitle" tags="" position="800,100" size="100,100">&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87586917_ODEphEoOE67jGWI.png&quot; width=100%&gt;</tw-passagedata><tw-passagedata pid="199" name="StoryMenu" tags="" position="300,100" size="100,100">&lt;a href=&quot;https://www.wjx.cn/vm/mX8nUry.aspx# &quot;&gt;试玩问卷&lt;/a&gt;
 
 &lt;&lt;if $testW1 &gt;= 800&gt;&gt;
 &lt;&lt;link &#39;&lt;i class=&quot;fa-solid fa-bag-shopping&quot;&gt;&lt;/i&gt;&amp;nbsp;&amp;nbsp;背包&#39;&gt;&gt;&lt;&lt;set $choice = 0&gt;&gt;&lt;&lt;if $seisistate == &quot;上供&quot;&gt;&gt;&lt;&lt;set $seisistate =0&gt;&gt;&lt;&lt;/if&gt;&gt;
@@ -19317,7 +19379,7 @@ Save.browser.continue()
   Dialog.setup(&quot;版本更新&quot;);
   Dialog.wiki(Story.get(&quot;版本更新&quot;).processText());
   Dialog.open();
-&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="199" name="StoryRightSidebar" tags="nobr" position="400,100" size="100,100">&lt;&lt;do tag &quot;rightbar&quot;&gt;&gt;&lt;&lt;stories&gt;&gt;
+&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="200" name="StoryRightSidebar" tags="nobr" position="400,100" size="100,100">&lt;&lt;do tag &quot;rightbar&quot;&gt;&gt;&lt;&lt;stories&gt;&gt;
 &lt;&lt;if !$nn&gt;&gt;
 &lt;&lt;elseif !$firsts&gt;&gt;&lt;&lt;elseif !$npc || $npc == 0&gt;&gt;
 
@@ -19378,7 +19440,7 @@ $msname&lt;br&gt;
 &lt;br&gt;&lt;br&gt;
 &lt;div style=&quot;float: right;&quot;&gt;&lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;set $npc to 0&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/div&gt;
 
-&lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="200" name="日志" tags="nobr" position="1800,100" size="100,100">&lt;&lt;reopen&gt;&gt;
+&lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="201" name="日志" tags="nobr" position="1800,100" size="100,100">&lt;&lt;reopen&gt;&gt;
 &lt;div id=&quot;idcard&quot;&gt;&lt;table style=&quot;width:100%; border-style: none;&quot;&gt;
 &lt;tbody align=&quot;center&quot;&gt;
   &lt;tr&gt;&lt;td rowspan=6 style=&quot;width:60%&quot;&gt;&lt;img id=&quot;avatar-preview&quot; class=&quot;pic&quot; @src=&quot;$avatar&quot; width=100%&gt;&lt;/td&gt;&lt;/tr&gt;
@@ -19502,7 +19564,7 @@ $msname&lt;br&gt;
 &lt;span id=&quot;lightlesssoul&quot;&gt;&lt;/span&gt;
 
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="201" name="社交" tags="nobr" position="1800,200" size="100,100">&lt;b&gt;&lt;center&gt;概况&lt;/center&gt;&lt;/b&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="202" name="社交" tags="nobr" position="1800,200" size="100,100">&lt;b&gt;&lt;center&gt;概况&lt;/center&gt;&lt;/b&gt;
 &lt;&lt;dated&gt;&gt;&lt;&lt;sociald&gt;&gt;
 &lt;br&gt;&lt;br&gt;
 &lt;b&gt;&lt;center&gt;角色&lt;/center&gt;&lt;/b&gt;&lt;br&gt;
@@ -19659,21 +19721,21 @@ $msname&lt;br&gt;
 &lt;&lt;if $ORGinfo[&quot;防火会&quot;].reputation &gt;= 0&gt;&gt;
 &lt;center&gt;防火会&lt;br&gt;防火士们不关心你&lt;/center&gt;
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="202" name="成就" tags="" position="1800,300" size="100,100">&lt;&lt;achievementspopup&gt;&gt;</tw-passagedata><tw-passagedata pid="203" name="线索" tags="" position="1800,400" size="100,100">&lt;&lt;if !$clue || $clue == []&gt;&gt;暂无线索&lt;&lt;else&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="203" name="成就" tags="" position="1800,300" size="100,100">&lt;&lt;achievementspopup&gt;&gt;</tw-passagedata><tw-passagedata pid="204" name="线索" tags="" position="1800,400" size="100,100">&lt;&lt;if !$clue || $clue == []&gt;&gt;暂无线索&lt;&lt;else&gt;&gt;
 &lt;center&gt;&lt;&lt;for _i to 0; _i lt $clue.length;  _i++&gt;&gt;
 &lt;&lt;if $msd &gt;5 &amp;&amp; (($clue[_i].name ==&quot;防火士头盔&quot; &amp;&amp; $clue[_i].dscr ==&quot;你发现在头盔内部有紫色的颗粒物&quot;) || ($clue[_i].name ==&quot;防火士的死因&quot; &amp;&amp; $clue[_i].dscr ==&quot;你没在死去的防火士身上发现致命伤和挣扎的痕迹&quot;))&gt;&gt;
 &lt;div class=&quot;write&quot;&gt;&lt;span class=&quot;blur&quot;&gt;&amp;nbsp;•&amp;nbsp;&lt;&lt;= $clue[_i].name&gt;&gt;：&lt;&lt;= $clue[_i].dscr&gt;&gt;&amp;nbsp;•&amp;nbsp;&lt;/span&gt;&lt;/div&gt;
 &lt;&lt;else&gt;&gt;
 &lt;div class=&quot;write&quot;&gt;&amp;nbsp;•&amp;nbsp;&lt;&lt;= $clue[_i].name&gt;&gt;：&lt;&lt;= $clue[_i].dscr&gt;&gt;&amp;nbsp;•&amp;nbsp;&lt;/div&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;/for&gt;&gt;&lt;/center&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="204" name="map" tags="nobr" position="" size="">&lt;center&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543023_OIVHUOa4IIFoVeI.png&quot;  width=100%&gt;&lt;h3&gt;--- 可活动地区 ---&lt;/h3&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="205" name="map" tags="nobr" position="" size="">&lt;center&gt;&lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/87543023_OIVHUOa4IIFoVeI.png&quot;  width=100%&gt;&lt;h3&gt;--- 可活动地区 ---&lt;/h3&gt;
 &lt;&lt;link ♢「小镇」 小镇&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;  &lt;&lt;link ♢「草甸」 草甸&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;  &lt;&lt;link ♢「沙地」 沙地&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link ♢「高地」 高地&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link ♢「贝雷河」 贝雷河&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;br&gt;
 &lt;&lt;link ♢「秋毛岗」 秋毛岗&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link ♢「罗索伦特湖」 罗索伦特湖&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link ♢「主港口」 主港口&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt; &lt;&lt;link ♢「副港口」 副港口&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;br&gt;&lt;br&gt;
 &lt;h3&gt;--- 暂未开发地区 ---&lt;/h3&gt;
 ♢「深林」   ♢「山区」&lt;/center&gt;
 &lt;br&gt;
-&lt;div style=&quot;float: right;&quot;&gt;&lt;&lt;link ♢「漫步」&gt;&gt;&lt;&lt;wanderWidget&gt;&gt;&lt;&lt;goto $locs&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;     &lt;&lt;link ♢「回家」&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;if $home == &quot;旅店&quot;&gt;&gt;&lt;&lt;goto &quot;旅店&quot;&gt;&gt;&lt;&lt;elseif $home == &quot;暂无&quot;&gt;&gt;&lt;&lt;run Dialog.setup(&quot;回家&quot;);Dialog.wiki(&quot;你还没有住所&quot;);Dialog.open();&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;goto &quot;家&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;</tw-passagedata><tw-passagedata pid="205" name="装备栏" tags="nobr" position="" size="">&lt;table style=&quot;border-style: none;&quot;&gt;
+&lt;div style=&quot;float: right;&quot;&gt;&lt;&lt;link ♢「漫步」&gt;&gt;&lt;&lt;wanderWidget&gt;&gt;&lt;&lt;goto $locs&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;     &lt;&lt;link ♢「回家」&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;if $home == &quot;旅店&quot;&gt;&gt;&lt;&lt;goto &quot;旅店&quot;&gt;&gt;&lt;&lt;elseif $home == &quot;暂无&quot;&gt;&gt;&lt;&lt;run Dialog.setup(&quot;回家&quot;);Dialog.wiki(&quot;你还没有住所&quot;);Dialog.open();&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;goto &quot;家&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt;</tw-passagedata><tw-passagedata pid="206" name="装备栏" tags="nobr" position="" size="">&lt;table style=&quot;border-style: none;&quot;&gt;
 &lt;tbody font size=2px align=&quot;left&quot;&gt;
 
 &lt;tr&gt;&lt;td style=&quot;width:30%&quot;&gt;&amp;emsp;&amp;emsp;&lt;&lt;button &#39;手持&#39;&gt;&gt;&lt;&lt;set _eqchoice = &quot;手持&quot;&gt;&gt;&lt;&lt;run Dialog.setup(&quot;更换手持工具&quot;);Dialog.wiki(Story.get(&quot;更换装备&quot;).processText());Dialog.open()&gt;&gt;&lt;&lt;/button&gt;&gt;&amp;emsp;
@@ -19716,7 +19778,7 @@ $msname&lt;br&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;/tbody&gt;
-&lt;/table&gt;</tw-passagedata><tw-passagedata pid="206" name="更换装备" tags="nobr" position="1700,700" size="100,100">&lt;&lt;if _eqchoice == &quot;手持&quot;&gt;&gt;
+&lt;/table&gt;</tw-passagedata><tw-passagedata pid="207" name="更换装备" tags="nobr" position="1700,700" size="100,100">&lt;&lt;if _eqchoice == &quot;手持&quot;&gt;&gt;
 &lt;&lt;for _tool range $tool.list&gt;&gt;
         &lt;&lt;capture _tool&gt;&gt;
             &lt;li&gt;&lt;&lt;button `_tool`&gt;&gt; 
@@ -19817,7 +19879,7 @@ $msname&lt;br&gt;
 &lt;&lt;run Dialog.close()&gt;&gt;&lt;&lt;run setup.equip(&quot;access&quot;, _access)&gt;&gt;
 &lt;&lt;redo&gt;&gt;&lt;&lt;/button&gt;&gt;〖&lt;&lt;=Item.get(_access).function&gt;&gt;〗&lt;/li&gt;&lt;&lt;/capture&gt;&gt;&lt;&lt;/for&gt;&gt;
 
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="207" name="物品" tags="nobr" position="1700,100" size="100,100">&lt;&lt;reopen&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="208" name="物品" tags="nobr" position="1700,100" size="100,100">&lt;&lt;reopen&gt;&gt;
 &lt;&lt;if $choice == &quot;赠送&quot;&gt;&gt;&lt;div style=&quot;display: grid;grid-template-columns:2fr 1fr;padding:5px 35px 5px 35px;&quot;&gt;
 &lt;&lt;for _i to 0; _i lt $item.uniqueLength;  _i++&gt;&gt;
 &lt;&lt;set _itemn = $item.list[_i]&gt;&gt;
@@ -19866,7 +19928,7 @@ $msname&lt;br&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;&lt;&lt;/capture&gt;&gt;
 &lt;&lt;/for&gt;&gt;&lt;/div&gt;&lt;&lt;/do&gt;&gt;
 
-&lt;&lt;else&gt;&gt;&lt;&lt;inv $item use drop inspect stack filter&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;float: right;&quot;&gt;负重：&lt;&lt;do tag &quot;重量&quot;&gt;&gt;$weight&lt;&lt;/do&gt;&gt;/25kg&lt;/span&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="208" name="食物" tags="nobr" position="1700,200" size="100,100">&lt;&lt;reopen&gt;&gt;&lt;&lt;if $choice == &quot;赠送&quot;&gt;&gt;&lt;div style=&quot;display: grid;grid-template-columns:2fr 1fr;padding:5px 35px 5px 35px;&quot;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;inv $item use drop inspect stack filter&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;float: right;&quot;&gt;负重：&lt;&lt;do tag &quot;重量&quot;&gt;&gt;$weight&lt;&lt;/do&gt;&gt;/25kg&lt;/span&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="209" name="食物" tags="nobr" position="1700,200" size="100,100">&lt;&lt;reopen&gt;&gt;&lt;&lt;if $choice == &quot;赠送&quot;&gt;&gt;&lt;div style=&quot;display: grid;grid-template-columns:2fr 1fr;padding:5px 35px 5px 35px;&quot;&gt;
 &lt;&lt;for _i to 0; _i lt $food.uniqueLength;  _i++&gt;&gt;
 &lt;&lt;set _itemn = $food.list[_i]&gt;&gt;
 &lt;span&gt;◈_itemn * &lt;&lt;=$food.count(_itemn)&gt;&gt;&lt;/span&gt;
@@ -19911,7 +19973,7 @@ $msname&lt;br&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;&lt;&lt;/capture&gt;&gt;
 &lt;&lt;/for&gt;&gt;&lt;/div&gt;&lt;&lt;/do&gt;&gt;
 
-&lt;&lt;else&gt;&gt;&lt;&lt;inv $food use drop inspect stack filter&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;float: right;&quot;&gt;负重：&lt;&lt;do tag &quot;重量&quot;&gt;&gt;$weight&lt;&lt;/do&gt;&gt;/25kg&lt;/span&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="209" name="读物" tags="nobr" position="1700,300" size="100,100">&lt;&lt;reopen&gt;&gt;&lt;&lt;if $choice == &quot;赠送&quot;&gt;&gt;&lt;div style=&quot;display: grid;grid-template-columns:2fr 1fr;padding:5px 35px 5px 35px;&quot;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;inv $food use drop inspect stack filter&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;float: right;&quot;&gt;负重：&lt;&lt;do tag &quot;重量&quot;&gt;&gt;$weight&lt;&lt;/do&gt;&gt;/25kg&lt;/span&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="210" name="读物" tags="nobr" position="1700,300" size="100,100">&lt;&lt;reopen&gt;&gt;&lt;&lt;if $choice == &quot;赠送&quot;&gt;&gt;&lt;div style=&quot;display: grid;grid-template-columns:2fr 1fr;padding:5px 35px 5px 35px;&quot;&gt;
 &lt;&lt;for _i to 0; _i lt $book.uniqueLength;  _i++&gt;&gt;
 &lt;&lt;set _itemn = $book.list[_i]&gt;&gt;
 &lt;span&gt;◈_itemn * &lt;&lt;=$book.count(_itemn)&gt;&gt;&lt;/span&gt;
@@ -19956,7 +20018,7 @@ $msname&lt;br&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;&lt;&lt;/capture&gt;&gt;
 &lt;&lt;/for&gt;&gt;&lt;/div&gt;&lt;&lt;/do&gt;&gt;
 
-&lt;&lt;else&gt;&gt;&lt;&lt;inv $book drop inspect stack filter&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;float: right;&quot;&gt;负重：&lt;&lt;do tag &quot;重量&quot;&gt;&gt;$weight&lt;&lt;/do&gt;&gt;/25kg&lt;/span&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="210" name="材料" tags="nobr" position="1700,400" size="100,100">&lt;&lt;reopen&gt;&gt;&lt;&lt;if $choice == &quot;赠送&quot;&gt;&gt;&lt;div style=&quot;display: grid;grid-template-columns:2fr 1fr;padding:5px 35px 5px 35px;&quot;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;inv $book drop inspect stack filter&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;float: right;&quot;&gt;负重：&lt;&lt;do tag &quot;重量&quot;&gt;&gt;$weight&lt;&lt;/do&gt;&gt;/25kg&lt;/span&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="211" name="材料" tags="nobr" position="1700,400" size="100,100">&lt;&lt;reopen&gt;&gt;&lt;&lt;if $choice == &quot;赠送&quot;&gt;&gt;&lt;div style=&quot;display: grid;grid-template-columns:2fr 1fr;padding:5px 35px 5px 35px;&quot;&gt;
 &lt;&lt;for _i to 0; _i lt $material.uniqueLength;  _i++&gt;&gt;
 &lt;&lt;set _itemn = $material.list[_i]&gt;&gt;
 &lt;span&gt;◈_itemn * &lt;&lt;=$material.count(_itemn)&gt;&gt;&lt;/span&gt;
@@ -20001,7 +20063,7 @@ $msname&lt;br&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;&lt;&lt;/capture&gt;&gt;
 &lt;&lt;/for&gt;&gt;&lt;/div&gt;&lt;&lt;/do&gt;&gt;
 
-&lt;&lt;else&gt;&gt;&lt;&lt;inv $material use drop inspect stack filter&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;float: right;&quot;&gt;负重：&lt;&lt;do tag &quot;重量&quot;&gt;&gt;$weight&lt;&lt;/do&gt;&gt;/25kg&lt;/span&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="211" name="主线判断" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;stories&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;&lt;&lt;inv $material use drop inspect stack filter&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;float: right;&quot;&gt;负重：&lt;&lt;do tag &quot;重量&quot;&gt;&gt;$weight&lt;&lt;/do&gt;&gt;/25kg&lt;/span&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="212" name="主线判断" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;stories&quot;&gt;&gt;
 &lt;&lt;if $loc == &quot;小镇&quot; &amp;&amp; $msd== 1 &amp;&amp; $date &gt;=2 &amp;&amp; $hour &gt;=6 &amp;&amp; $hour &lt;=18&gt;&gt;
 &lt;&lt;set $choice to 0,$msd= 1.5 &gt;&gt;&lt;&lt;goto &quot;主线D2&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 
@@ -20019,13 +20081,13 @@ $msname&lt;br&gt;
 
 &lt;&lt;if $story[&quot;新的开始&quot;] == &quot;新的开始3&quot; &amp;&amp; $ashes &gt;= 300&gt;&gt;&lt;&lt;set $story[&quot;新的开始&quot;] = &quot;新的开始完成&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;goto &quot;任务完成&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="212" name="杂项检定" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;noshadow&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="213" name="杂项检定" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;noshadow&quot;&gt;&gt;
 &lt;&lt;if !$clue[&#39;第一个朋友&#39;]&gt;&gt;&lt;&lt;audio &quot;diceroll&quot; play&gt;&gt;
 &lt;&lt;set _a to setup.getStat(&quot;observation&quot;)/33*100&gt;&gt;&lt;&lt;checkWidget&gt;&gt;
 &lt;&lt;if _rst == &quot;大成功&quot;&gt;&gt;
 你盯着地面走路, 不禁注意到, 一旁同伴的脚下, 似乎没有阴影&lt;br&gt;&lt;&lt;set $clue.push({name: &#39;第一个朋友&#39;, dscr: &#39;他似乎没有影子&#39;})&gt;&gt;&lt;&lt;notify 3s&gt;&gt;〖获得线索: 第一个朋友〗&lt;&lt;/notify&gt;&gt;
 &lt;&lt;set _add = 6+random(0,3)&gt;&gt;&lt;&lt;addoexp _add&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="213" name="买卖" tags="widget nobr" position="300,200" size="100,100">&lt;&lt;widget &quot;buy&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="214" name="买卖" tags="widget nobr" position="300,200" size="100,100">&lt;&lt;widget &quot;buy&quot;&gt;&gt;
     &lt;&lt;set _item to _args[0]&gt;&gt;
     &lt;&lt;set _price to Item.get(_item).store || 1&gt;&gt;
     &lt;p @data-item=&quot;_item&quot; class=&quot;buy-listing&quot;&gt;
@@ -20131,7 +20193,7 @@ $msname&lt;br&gt;
             &lt;&lt;/capture&gt;&gt;
         &lt;/span&gt;
     &lt;/p&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="214" name="物品得失" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;lost&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="215" name="物品得失" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;lost&quot;&gt;&gt;
 &lt;&lt;set _s= random(1,4)&gt;&gt;
 
 &lt;&lt;if _s ==1&gt;&gt;
@@ -20170,7 +20232,6 @@ $msname&lt;br&gt;
 &lt;&lt;dropitem _itemn 1&gt;&gt;&lt;&lt;pickup $nest _itemn 1&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-_s _i &lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;11111&lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;itemcheck&quot;&gt;&gt;
@@ -20236,7 +20297,7 @@ _s _i &lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;11111&
 &lt;&lt;set _nn = State.variables[_itemkind]&gt;&gt;
 &lt;&lt;drop _nn _name _amount&gt;&gt;&lt;&lt;set $weight -= (Item.get(_name).weight * _amount)&gt;&gt;&lt;&lt;set $weight = Math.round($weight*100) / 100&gt;&gt;
 &lt;&lt;/capture&gt;&gt;&lt;&lt;/for&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="215" name="种地判断" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;seed&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="216" name="种地判断" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;seed&quot;&gt;&gt;
 &lt;&lt;set $minute += 15&gt;&gt;
 &lt;&lt;if _itemn == &quot;龙舌兰根&quot;&gt;&gt;
 &lt;&lt;set _itemn2 = &quot;龙舌兰&quot;&gt;&gt;
@@ -20276,7 +20337,7 @@ _s _i &lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;11111&
 
 &lt;&lt;if _itemn == &quot;灵魂罐&quot;&gt;&gt;/*特殊影响*/
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="216" name="每日委托判断" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;dailyjob&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="217" name="每日委托判断" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;dailyjob&quot;&gt;&gt;
 &lt;&lt;set _j = random(1,5)&gt;&gt;&lt;&lt;set _a = random(2,4)&gt;&gt;
 &lt;&lt;if _j == 1&gt;&gt;
 &lt;&lt;set _f = [&quot;沙丁鱼&quot;,&quot;泥鳅&quot;,&quot;雅罗鱼&quot;,&quot;凤尾鱼&quot;,&quot;彩虹濑鱼&quot;,&quot;虾虎鱼&quot;,&quot;纹首鮨&quot;,&quot;比目鱼&quot;,&quot;虹鳟鱼&quot;,&quot;鲻鱼&quot;,&quot;鲤鱼&quot;,&quot;鲱鱼&quot;,&quot;白鲑鱼&quot;,&quot;龙虾&quot;,&quot;鹦哥鱼&quot;,&quot;大比目鱼&quot;,&quot;鳕鱼&quot;,&quot;无须鳕鱼&quot;,&quot;鲯鳅鱼&quot;,&quot;欧鳊&quot;,&quot;大西洋狐鲣&quot;,&quot;蓝鳍金枪鱼&quot;].random()&gt;&gt;
@@ -20294,7 +20355,7 @@ _s _i &lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;11111&
 &lt;&lt;set _p =[&quot;烤肉&quot;,&quot;烤鸡腿&quot;,&quot;煎蛋&quot;,&quot;柠香三文鱼&quot;,&quot;茄汁鲈鱼&quot;,&quot;蜂蜜柠檬水&quot;,&quot;炸鱼薯条&quot;,&quot;鲜花饼&quot;,&quot;土豆蛋饼&quot;,&quot;浆果馅饼&quot;,&quot;番茄浓汤&quot;,&quot;扇贝汤&quot;,&quot;法式吐司&quot;,&quot;牡丹花茶&quot;,&quot;蔬菜什锦&quot;].random()&gt;&gt;
 &lt;&lt;set $dailyjob.push({name: &#39;菜肴烹饪&#39;, from: $rdmnpc.random(), content: _p, amount: random(2, 8), reward:Item.get(_p).price+_a, state:0})&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="217" name="梦境判断" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;dreams&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="218" name="梦境判断" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;dreams&quot;&gt;&gt;
 /*特殊梦判断*/
 &lt;&lt;if ($msd &gt;= 2 &amp;&amp; $dream_fire.zero ==0) || ($fpfirst ==1 &amp;&amp; $dream_fire.I ==0) || ($msd &gt;= 5 &amp;&amp; $dream_fire.III ==0)&gt;&gt;
 &lt;&lt;goto &quot;火之梦&quot;&gt;&gt;
@@ -20342,7 +20403,7 @@ _s _i &lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;11111&
 &lt;&lt;/capture&gt;&gt;
 &lt;&lt;/for&gt;&gt;
 
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="218" name="白雾判断" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;hazelocs&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="219" name="白雾判断" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;hazelocs&quot;&gt;&gt;
 &lt;&lt;findclue &quot;龙舌兰&quot; &quot;白雾中或许有龙舌兰&quot;&gt;&gt;
 &lt;&lt;set _s =random(1,5)&gt;&gt;
 &lt;&lt;if _hasclue ==1 &amp;&amp; $story[&quot;布尔盖酒&quot;] &gt;= $date - 20 &amp;&amp; _s &lt;=4 &gt;&gt;破败的石阶延伸至塌陷的高台，浮雕着一个你从未见过的生物盘踞其上，本该作为生物眼睛的宝石早已不见，但不知为何你觉得，那应该是&lt;span class=&quot;nobglink&quot; style=&quot;color:green;&quot;&gt;&lt;&lt;linkreplace 绿色&gt;&gt;绿色&lt;&lt;gainitem &quot;龙舌兰根&quot; 1&gt;&gt;&lt;&lt;notify 3s&gt;&gt;获得龙舌兰根*1&lt;&lt;/notify&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;&lt;/span&gt;的。
@@ -20398,7 +20459,7 @@ _s _i &lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;11111&
 你在石圈中央环视，四周的光线在许多你无法描述的色彩中交替闪烁。
 &lt;&lt;/switch&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="219" name="可调用的" tags="widget nobr" position="500,200" size="100,100">&lt;&lt;widget &quot;line&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="220" name="可调用的" tags="widget nobr" position="500,200" size="100,100">&lt;&lt;widget &quot;line&quot;&gt;&gt;
 &lt;div style=&quot;color:#FFAA00; text-align: center;&quot;&gt;--------------------✧✦✧✦✧--------------------&lt;/div&gt; 
 &lt;&lt;/widget&gt;&gt;
 
@@ -20416,7 +20477,8 @@ _s _i &lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;11111&
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
-&lt;&lt;widget &quot;eatfood&quot;&gt;&gt;&lt;&lt;set $HP += _args[0]&gt;&gt;&lt;&lt;notify 3s&gt;&gt;体力恢复_args[0]点&lt;&lt;/notify&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/widget&gt;&gt;
+&lt;&lt;widget &quot;eatfood&quot;&gt;&gt;
+&lt;&lt;set $HP += _args[0]&gt;&gt;&lt;&lt;notify 3s&gt;&gt;体力恢复_args[0]点&lt;&lt;/notify&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/widget&gt;&gt;
 
 &lt;&lt;widget &quot;storyget&quot;&gt;&gt;&lt;&lt;notify 3s&gt;&gt;&lt;center&gt;&lt;font color=&quot;CF7C34&quot;&gt;开启任务&lt;br&gt;✶_args[0]✶&lt;/font&gt;&lt;/center&gt;&lt;&lt;/notify&gt;&gt;&lt;&lt;/widget&gt;&gt;
 
@@ -20437,7 +20499,7 @@ _s _i &lt;&lt;if Item.get(_itemn).hasTag(&quot;不可丢弃&quot;)&gt;&gt;11111&
 
 &lt;&lt;widget &quot;lessashes&quot;&gt;&gt;
 &lt;&lt;run Dialog.setup(&quot;制作&quot;);Dialog.wiki(&quot;你的尘羽不足&quot;);Dialog.open();&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="220" name="杂项判断" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;catchsoul&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="221" name="杂项判断" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;catchsoul&quot;&gt;&gt;
 &lt;&lt;if _soul == &quot;红色&quot;&gt;&gt;&lt;&lt;set _sn = &quot;龙裔&quot;&gt;&gt;
 &lt;&lt;elseif _soul == &quot;蓝色&quot;&gt;&gt;&lt;&lt;set _sn = &quot;健全&quot;&gt;&gt;
 &lt;&lt;elseif _soul == &quot;绯红色&quot;&gt;&gt;&lt;&lt;set _sn = &quot;染血&quot;&gt;&gt;
@@ -20575,7 +20637,14 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;&lt;elseif _p == 13&gt;&gt;&lt;&lt;goto &quot;位移事件&quot;&gt;&gt;
 &lt;&lt;elseif _p ==25&gt;&gt;&lt;&lt;goto &quot;散步遭遇&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="221" name="属性" tags="widget nobr" position="200,200" size="100,100">/*技能属性*/
+&lt;&lt;/widget&gt;&gt;
+
+
+&lt;&lt;widget &quot;nightwaver&quot;&gt;&gt;
+&lt;&lt;if $pet == &quot;夜织鸟&quot;&gt;&gt;
+&lt;&lt;print [&quot;你的夜织鸟突然从口袋里飞出，拍打着小翅膀，冲着你的耳朵尖叫，似乎想警告你什么。&quot;,&quot;你的夜织鸟站在你肩头，冲着你的耳朵喳喳叫着，似乎想警告你什么。&quot;,&quot;你的夜织鸟一反常态，不安地啄着你的手，似乎想警告你什么&quot;].random()&gt;&gt;&lt;br&gt;&lt;br&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="222" name="属性" tags="widget nobr" position="200,200" size="100,100">/*技能属性*/
 &lt;&lt;widget &quot;addkexp&quot;&gt;&gt;
 &lt;&lt;set $knowledgeexp += _args[0]&gt;&gt;
 &lt;&lt;set $oldk = $player.knowledge&gt;&gt;
@@ -20675,7 +20744,7 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;&lt;widget &quot;addsocial&quot;&gt;&gt;&lt;&lt;set $social += _args[0]&gt;&gt;
 @@.goodblur;&lt;div class=&quot;logo is-animetion&quot;&gt;&lt;span&gt;你&lt;/span&gt;&lt;span&gt;的&lt;/span&gt;&lt;span&gt;社&lt;/span&gt;&lt;span&gt;交&lt;/span&gt;&lt;span&gt;属&lt;/span&gt;&lt;span&gt;性&lt;/span&gt;&lt;span&gt;提&lt;/span&gt;&lt;span&gt;升&lt;/span&gt;&lt;span&gt;了&lt;/span&gt;&lt;span&gt;_args[0]&lt;/span&gt;&lt;span&gt;级&lt;/span&gt;
 &lt;/div&gt;@@
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="222" name="检定" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;checkWidget&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="223" name="检定" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;checkWidget&quot;&gt;&gt;
 &lt;&lt;set _S = random(1,100)&gt;&gt;
 &lt;&lt;set _b = _a/6&gt;&gt;
 &lt;&lt;if _b &gt;=6 &amp;&amp; _S &lt;= _b&gt;&gt;
@@ -20726,7 +20795,7 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;&lt;widget &quot;checkfix&quot;&gt;&gt;
 &lt;&lt;set _a to setup.getStat(_args[0])/_args[1]*100&gt;&gt;
 &lt;&lt;checkWidget&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="223" name="时间" tags="widget nobr" position="400,200" size="100,100">&lt;&lt;widget &quot;timeWidget&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="224" name="时间" tags="widget nobr" position="400,200" size="100,100">&lt;&lt;widget &quot;timeWidget&quot;&gt;&gt;
 &lt;&lt;if $minute &gt;= 60&gt;&gt;
 	&lt;&lt;set $hour += 1&gt;&gt;
 	&lt;&lt;set $minute = $minute - 60&gt;&gt;
@@ -20939,7 +21008,7 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 &lt;img src=&quot;https://f2.toyhou.se/file/f2-toyhou-se/images/88029872_VCUppna7ap8bfHY.png&quot; width=8% style=&quot;border-radius: 50%;box-shadow: 0 0 9px white;&quot;&gt;
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="224" name="界面文本" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;weatherWidget&quot;&gt;&gt;
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="225" name="界面文本" tags="widget nobr" position="" size="">&lt;&lt;widget &quot;weatherWidget&quot;&gt;&gt;
 &lt;&lt;set $weathers= [&quot;晴天&quot;,&quot;晴天&quot;,&quot;晴天&quot;,&quot;少云&quot;,&quot;晴转多云&quot;,&quot;多云转阴&quot;,&quot;少云&quot;,&quot;晴转多云&quot;,&quot;多云转阴&quot;,&quot;多云&quot;,&quot;阴天&quot;,&quot;海雾&quot;,&quot;海雾&quot;,&quot;雷阵雨&quot;,&quot;雷阵雨&quot;,&quot;小雨&quot;,&quot;小雨&quot;,&quot;小雨&quot;,&quot;中雨&quot;,&quot;暴雨&quot;].random()&gt;&gt;
 &lt;&lt;set $winds= [&quot;西南风&quot;,&quot;东风&quot;,&quot;西北风&quot;,&quot;西风&quot;,&quot;东北风&quot;,&quot;东南风&quot;,&quot;南风&quot;,&quot;北风&quot;].random()&gt;&gt;
 
