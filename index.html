@@ -4533,9 +4533,9 @@ Config.ui.stowBarInitially = false;
 (()=>{const isValidVariable=varName=>varName&&typeof varName==="string"&&varName.length>=2&&(varName[0]==="$"||varName[0]==="_");const repeat=(times,action)=>{for(let i=0;i<times;i++){action(i)}};const WikiVars=(pairs,entity)=>{const shadowStore={};for(const[varName,value]of Object.entries(pairs)){if(Object.hasOwn(State.temporary,varName)){shadowStore[`_${varName}`]=State.temporary[varName]}State.temporary[varName]=value;entity.addShadow(`_${varName}`);if(Object.hasOwn(State.variables,varName)){shadowStore[`$${varName}`]=State.variables[varName]}State.variables[varName]=State.temporary[varName];entity.addShadow(`$${varName}`)}try{new Wikifier(entity.output,entity?.payload?.[0]?.contents||"")}finally{for(const[varName]of Object.entries(pairs)){if(Object.hasOwn(shadowStore,`_${varName}`)){State.temporary[varName]=shadowStore[`_${varName}`]}else{delete State.temporary[varName]}if(Object.hasOwn(shadowStore,`$${varName}`)){State.variables[varName]=shadowStore[`$${varName}`]}else{delete State.variables[varName]}}}};const applyBounds=(value,min,max)=>Math.max(min,Math.min(max,value));setup.applyBounds=applyBounds;window.applyBounds=window.applyBounds||applyBounds;setup.repeat=repeat;window.repeat=window.repeat||repeat;setup.isValidVariable=isValidVariable;window.isValidVariable=window.isValidVariable||isValidVariable;setup.WikiVars=WikiVars;window.WikiVars=window.WikiVars||WikiVars})();
 /* End Macro Utils */
 
-/* Recipes, Ver.0.3.2, By BlackStar */
-/// Build Date: 2025-07-04T14:40:02.674Z
-(()=>{function e(e,t){var n="undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(!n){if(Array.isArray(e)||(n=r(e))||t&&e&&"number"==typeof e.length){n&&(e=n);var i=0,o=function(){};return{s:o,n:function(){return i>=e.length?{done:!0}:{done:!1,value:e[i++]}},e:function(e){throw e},f:o}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var a,s=!0,u=!1;return{s:function(){n=n.call(e)},n:function(){var e=n.next();return s=e.done,e},e:function(e){u=!0,a=e},f:function(){try{s||null==n.return||n.return()}finally{if(u)throw a}}}}function t(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){var r=null==e?null:"undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(null!=r){var n,i,o,a,s=[],u=!0,c=!1;try{if(o=(r=r.call(e)).next,0===t){if(Object(r)!==r)return;u=!1}else for(;!(u=(n=o.call(r)).done)&&(s.push(n.value),s.length!==t);u=!0);}catch(e){c=!0,i=e}finally{try{if(!u&&null!=r.return&&(a=r.return(),Object(a)!==a))return}finally{if(c)throw i}}return s}}(e,t)||r(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function r(e,t){if(e){if("string"==typeof e)return n(e,t);var r={}.toString.call(e).slice(8,-1);return"Object"===r&&e.constructor&&(r=e.constructor.name),"Map"===r||"Set"===r?Array.from(e):"Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)?n(e,t):void 0}}function n(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=Array(t);r<t;r++)n[r]=e[r];return n}function i(e){return i="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},i(e)}function o(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,a(n.key),n)}}function a(e){var t=function(e,t){if("object"!=i(e)||!e)return e;var r=e[Symbol.toPrimitive];if(void 0!==r){var n=r.call(e,t||"default");if("object"!=i(n))return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===t?String:Number)(e)}(e,"string");return"symbol"==i(t)?t:t+""}!function(){"use strict";var r=Object.freeze({INCLUDES:"includes",EQUALS:"equals"});State.variables.recipe_save_data=State.variables.recipe_save_data||new Map;var n=function(){return State.variables.recipe_save_data},a={servings:1,successRate:100,priority:100,condition:r.INCLUDES,_unlock:!1},s={unlock:!1};setup.Conditions=r,window.Conditions=window.Conditions||r;var u=function(){return u=function e(t){var r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:[],o=arguments.length>2&&void 0!==arguments[2]?arguments[2]:clone(a),u=arguments.length>3&&void 0!==arguments[3]?arguments[3]:[];if(function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.id=t,"object"!==i(r)||"object"!==i(o))throw new Error("Invalid recipe definition");if(this.methods=r,Object.assign(this,Object.assign({},a,o)),!n().has(t)){var c,l=clone(s);l.unlock=null!==(c=o._unlock)&&void 0!==c&&c,n().set(t,l)}this._tags=u instanceof Array?u:"string"==typeof u?[u]:[]},(c=[{key:"unlock",get:function(){return n().get(this.id).unlock},set:function(e){n().get(this.id).unlock=e}},{key:"name",get:function(){return this.displayName||this.id},set:function(e){this.displayName=e}},{key:"tags",get:function(){return this._tags}},{key:"hasTag",value:function(e){return this._tags.includes(e)}},{key:"hasAllTags",value:function(e){return this._tags.includesAll(e)}},{key:"hasAnyTags",value:function(e){return this._tags.includesAny(e)}},{key:"validate",value:function(e){switch(this.condition){case r.EQUALS:return this.equals(e);case r.INCLUDES:return this.includes(e);default:throw new TypeError("Invalid condition type: ".concat(this.condition))}}},{key:"calculate",value:function(e,r){if(this.methods.length<=r)throw new Error("Unable to access recipe at index ".concat(r,", total number of available crafting methods is ").concat(this.ingredients.length));return Object.entries(this.methods[r]).reduce((function(r,n){var i=t(n,2),o=i[0],a=i[1];if(o.startsWith("tag:")){for(var s=o.substring(4),u=0,c=0,l=Object.entries(e);c<l.length;c++){var f=t(l[c],2),h=f[0],v=f[1],y=Item.get(h);y&&y.hasTag(s)&&(u+=v)}return Math.min(r,Math.floor(u/a))}var d=e[o];return Math.min(r,Math.floor(d/a))}),1/0)}},{key:"multiply",value:function(r,n){if(void 0!==n&&this.methods.length<=n)throw new Error("Unable to access recipe at index ".concat(n,", total number of available crafting methods is ").concat(this.ingredients.length));if("number"!=typeof r||r<=0)throw new Error("Invalid number of servings");var i,o=[],a=e(void 0!==n?[this.methods[n]]:this.methods);try{for(a.s();!(i=a.n()).done;){for(var s=i.value,u={},c=0,l=Object.entries(s);c<l.length;c++){var f=t(l[c],2),h=f[0],v=f[1];u[h]=v*r}o.push(u)}}catch(e){a.e(e)}finally{a.f()}return o}},{key:"includes",value:function(r){var n,i=e(this.methods);try{for(i.s();!(n=i.n()).done;){var o=n.value;if(Object.keys(r).length<Object.keys(o).length)return}}catch(e){i.e(e)}finally{i.f()}var a,s=e(this.methods.entries());try{for(s.s();!(a=s.n()).done;){var u=t(a.value,2),c=u[0],l=u[1],f=!0;for(var h in l)if(h.startsWith("tag:")){for(var v=h.substring(4),y=!1,d=0,p=Object.entries(r);d<p.length;d++){var g=t(p[d],2),b=g[0],m=g[1],k=Item.get(b);if(k&&k.hasTag(v)&&m>=l[h]){y=!0;break}}if(!y){f=!1;break}}else if(!r[h]||r[h]<l[h]){f=!1;break}if(f)return c}}catch(e){s.e(e)}finally{s.f()}}},{key:"cook",value:function(){if(100===this.successRate)return!0;var e=randomInt(1,100);return this.successRate>=e}},{key:"equals",value:function(r){var n,i=e(this.methods);try{for(i.s();!(n=i.n()).done;){var o=n.value;if(Object.keys(r).length<Object.keys(o).length)return}}catch(e){i.e(e)}finally{i.f()}var a,s=e(this.methods.entries());try{for(s.s();!(a=s.n()).done;){var u=t(a.value,2),c=u[0],l=u[1],f=!0;for(var h in l)if(h.startsWith("tag:")){for(var v=h.substring(4),y=0,d=0,p=Object.entries(r);d<p.length;d++){var g=t(p[d],2),b=g[0],m=g[1],k=Item.get(b);k&&k.hasTag(v)&&(y+=m)}if(y!==l[h]){f=!1;break}}else if(!r[h]||r[h]!==l[h]){f=!1;break}if(f)return c}}catch(e){s.e(e)}finally{s.f()}}}])&&o(u.prototype,c),l&&o(u,l),Object.defineProperty(u,"prototype",{writable:!1}),u;var u,c,l}();setup.Recipe=u,window.Recipe=window.Recipe||u}()})(),(()=>{function e(t){return e="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e(t)}function t(e,t){var r="undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(!r){if(Array.isArray(e)||(r=a(e))||t&&e&&"number"==typeof e.length){r&&(e=r);var n=0,i=function(){};return{s:i,n:function(){return n>=e.length?{done:!0}:{done:!1,value:e[n++]}},e:function(e){throw e},f:i}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var o,s=!0,u=!1;return{s:function(){r=r.call(e)},n:function(){var e=r.next();return s=e.done,e},e:function(e){u=!0,o=e},f:function(){try{s||null==r.return||r.return()}finally{if(u)throw o}}}}function r(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,i(n.key),n)}}function n(e,t,r){return(t=i(t))in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function i(t){var r=function(t,r){if("object"!=e(t)||!t)return t;var n=t[Symbol.toPrimitive];if(void 0!==n){var i=n.call(t,r||"default");if("object"!=e(i))return i;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===r?String:Number)(t)}(t,"string");return"symbol"==e(r)?r:r+""}function o(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){var r=null==e?null:"undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(null!=r){var n,i,o,a,s=[],u=!0,c=!1;try{if(o=(r=r.call(e)).next,0===t){if(Object(r)!==r)return;u=!1}else for(;!(u=(n=o.call(r)).done)&&(s.push(n.value),s.length!==t);u=!0);}catch(e){c=!0,i=e}finally{try{if(!u&&null!=r.return&&(a=r.return(),Object(a)!==a))return}finally{if(c)throw i}}return s}}(e,t)||a(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function a(e,t){if(e){if("string"==typeof e)return s(e,t);var r={}.toString.call(e).slice(8,-1);return"Object"===r&&e.constructor&&(r=e.constructor.name),"Map"===r||"Set"===r?Array.from(e):"Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)?s(e,t):void 0}}function s(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=Array(t);r<t;r++)n[r]=e[r];return n}!function(){"use strict";var i,a=function(){function n(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:new Map,r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:[];if(function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,n),!(t instanceof Map))throw new Error('Expected "recipes" to be an instance of Map');if(!Array.isArray(r))throw new Error('Expected "invs" to be an array');this.invs=r,this.ct=e,State.variables[this.ct]=State.variables[this.ct]||new Inventory,this.recipes=t,this._recipes=n.sort(t)}return i=n,a=[{key:"names",value:function(){return Array.from(this.recipes.keys())}},{key:"has",value:function(e){return this.recipes.has(e)}},{key:"hasItems",value:function(e){for(var t=State.variables[this.ct],r=0,n=Object.entries(e);r<n.length;r++){var i=o(n[r],2),a=i[0],s=i[1];if(a.startsWith("tag:")){for(var u=a.substring(4),c=!1,l=0,f=Object.entries(t.data);l<f.length;l++){var h=o(f[l],2),v=h[0],y=h[1],d=Item.get(v);if(d&&d.hasTag(u)&&y>=s){c=!0;break}}if(!c)return!1}else if(t.count(a)<s)return!1}return!0}},{key:"drop",value:function(e){for(var t=State.variables[this.ct],r=0,n=Object.entries(e);r<n.length;r++){var i=o(n[r],2),a=i[0],s=i[1];if(a.startsWith("tag:"))for(var u=a.substring(4),c=s,l=0,f=Object.entries(t.data);l<f.length;l++){var h=o(f[l],2),v=h[0],y=h[1];if(c<=0)break;var d=Item.get(v);if(d&&d.hasTag(u)){var p=Math.min(y,c);void 0===t.pickup?t.delete(v,p):t.drop(v,p),c-=p}}else void 0===t.pickup?t.delete(a,s):t.drop(a,s)}}},{key:"update",value:function(){this._recipes=n.sort(this.recipes)}},{key:"hasAllTags",value:function(){var e,r=[].slice.call(arguments).flat(1/0),n=[],i=t(this._recipes);try{for(i.s();!(e=i.n()).done;){var o=e.value;o.hasAllTags(r)&&n.push(o)}}catch(e){i.e(e)}finally{i.f()}return n}},{key:"searchIndex",value:function(e){for(var t=0,r=this._recipes.length-1;t<=r;){var n=Math.floor((t+r)/2);if(this._recipes[n].priority===e)return n;this._recipes[n].priority<e?t=n+1:r=n-1}return t}},{key:"insert",value:function(e,t,r,n){Array.isArray(t)||(t=[t]);var i=this.set(e,t,r,n),o=this.searchIndex(i.priority);this._recipes.splice(o,0,i)}},{key:"set",value:function(e,t,r,n){Array.isArray(t)||(t=[t]);var i=new Recipe(e,t,r,n);return this.recipes.set(e,i),i}},{key:"get",value:function(e){return this.recipes.get(e)}},{key:"calculate",value:function(e){var t=o(this.match(e),2),r=t[0],i=t[1];return void 0===r||void 0===i?[n.default_no_recipe,0]:[i.name,i.calculate(e,r)*i.servings]}},{key:"cook",value:function(r){var i=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1,a=o(this.match(r),2),s=a[0],u=a[1],c={id:"",success:!1,unlock:!1,exist:!1,servings:0,message:n.not_found};if(null==u&&null==s)"object"===e(r)&&Object.keys(r).forEach((function(e){return delete r[e]}));else if(u.unlock||"string"!=typeof r)if("string"==typeof r&&void 0===s){c.id=u.name,c.servings=0,c.success=!1,c.message=n.missing_materials;var l,f=t(u.multiply(i));try{for(f.s();!(l=f.n()).done;){var h=l.value;if(this.hasItems(h)){this.drop(h),c.success=!0,c.servings=i,c.message=n.success;break}}}catch(e){f.e(e)}finally{f.f()}}else void 0!==s&&void 0!==u&&(c.id=u.id,c.success=u.cook(),r.length=0,c.success?(c.servings=u.calculate(r,s),u.unlock?c.message=n.success:(c.message=n.unlocked_success,u.unlock=!0)):(c.servings=0,c.message=n.failure),Object.keys(r).forEach((function(e){return delete r[e]})));else c.id=u.name,c.success=!1,c.unlock=!1,c.message=n.not_unlocked;return u&&(c.servings*=u.servings),c}},{key:"cookSave",value:function(e,t){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:1,i=this.cook(t,r);return i.success&&n.pickup(e,i.id,i.servings),i}},{key:"match",value:function(r){if("object"!==e(r)||null===r){if("string"==typeof r){var n=this.recipes.get(r);return void 0===n?[void 0,void 0]:[void 0,n]}throw new Error("Invalid argument: ".concat(r))}var i,o=t(this._recipes);try{for(o.s();!(i=o.n()).done;){var a=i.value;if(!(a instanceof Recipe))throw new Error("Invalid Recipe: ".concat(a));var s=a.validate(r);if(void 0!==s)return[s,a]}}catch(e){o.e(e)}finally{o.f()}return[void 0,void 0]}},{key:"filter",value:function(e){if("undefined"==typeof filterObjs)throw new Error('The "filter-utils" is required but has not been imported');return filterObjs(this._recipes,e,(function(e,t){return!t.tags||e.methods.some((function(e){return Object.keys(e).some((function(e){var r,n;return null!==(r=null===(n=Item.get(e))||void 0===n?void 0:n.hasAnyTags(t.tags))&&void 0!==r&&r}))}))}))}},{key:"crafting_table",get:function(){return this.ct},set:function(e){this.ct=e,State.variables[this.ct]=State.variables[this.ct]||new Inventory}}],s=[{key:"sort",value:function(e){var t=Array.from(e.values()),r={};t.forEach((function(e){var t=void 0!==e.priority?e.priority:100;r[t]=(r[t]||0)+1}));var n=Object.keys(r).map(Number).sort((function(e,t){return e-t})),i={},o=0;n.forEach((function(e){i[e]=o,o+=r[e]}));for(var a=Array(t.length),s=t.length-1;s>=0;s--){var u=t[s],c=void 0!==u.priority?u.priority:100;a[i[c]]=u,i[c]++}return a}},{key:"pickup",value:function(e){if(!(e instanceof Inventory))throw new Error("Invalid inventory");for(var t=arguments.length,r=new Array(t>1?t-1:0),n=1;n<t;n++)r[n-1]=arguments[n];if(void 0!==e.pickup)return e.pickup.apply(e,r);for(var i,o=0;o<r.length-1;o+=2){var a=r[o],s=r[o+1];if(!a||!s)return i;if(!(i=e.store(a,s)).success)return i}}}],a&&r(i.prototype,a),s&&r(i,s),Object.defineProperty(i,"prototype",{writable:!1}),i;var i,a,s}();n(a,"success","制作成功"),n(a,"failure","制作失败"),n(a,"not_found","配方不存在"),n(a,"not_unlocked","配方未解锁"),n(a,"missing_materials","缺少材料"),n(a,"unlocked_success","配方成功解锁"),n(a,"default_no_recipe","待探索"),n(a,"crafting_table","crafting_table"),i=a,["success","failure","not_found","not_unlocked","missing_materials","unlocked_success","default_no_recipe"].forEach((function(e){Object.defineProperty(i.prototype,e,{get:function(){return i[e]},set:function(t){i[e]=t}})})),setup._RecipeBook=a,window._RecipeBook=window._RecipeBook||a,setup.RecipeBook=setup.RecipeBook||new a(a.crafting_table),window.RecipeBook=window.RecipeBook||setup.RecipeBook}()})(),(()=>{function e(e,r){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){var r=null==e?null:"undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(null!=r){var n,i,o,a,s=[],u=!0,c=!1;try{if(o=(r=r.call(e)).next,0===t){if(Object(r)!==r)return;u=!1}else for(;!(u=(n=o.call(r)).done)&&(s.push(n.value),s.length!==t);u=!0);}catch(e){c=!0,i=e}finally{try{if(!u&&null!=r.return&&(a=r.return(),Object(a)!==a))return}finally{if(c)throw i}}return s}}(e,r)||function(e,r){if(e){if("string"==typeof e)return t(e,r);var n={}.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?t(e,r):void 0}}(e,r)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function t(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=Array(t);r<t;r++)n[r]=e[r];return n}function r(e){return r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},r(e)}Macro.add("cook",{tags:null,handler:function(){if(this.args.length<1)return this.error("Not enough arguments provided. At least two arguments are required");var e,t=this.args[0];if("object"!==r(t)&&"string"!=typeof t||null===t)return this.error("Expected an object or a string, but received: "+r(t));if(this.args.length>=2){var n=this.args[1];if(!(n&&n instanceof Inventory))return this.error("Expected an instance of Inventory, but received: "+r(n));e=RecipeBook.cookSave(n,t,parseInt(this.args[2])||1)}else e=RecipeBook.cook(t);WikiVars({result:e},this)}}),Macro.add("filter_recipe",{tags:null,handler:function(){if(this.args.length<1)return this.error("Not enough arguments provided. At least two arguments are required.");var e=this.args[0];if(e&&"object"!==r(e))return this.error("Invalid input: 'filters' should be an object");var t=RecipeBook.filter(e);WikiVars({result:t},this)}}),Macro.add("recipes_with_tag",{handler:function(){if(this.args.length<1)return this.error("Not enough arguments provided. At least one tag is required");var e=RecipeBook.filter(this.args);WikiVars({result:e},this)}}),Macro.add("calculate",{tags:null,handler:function(){if(this.args.length<1)return this.error("Not enough arguments provided. At least one tag is required");var t=this.args[0];if("object"!==r(t))return this.error("Invalid argument: expected an object as the first argument");var n=e(RecipeBook.calculate(t),2),i=n[0],o=n[1];WikiVars({servings:o,name:i},this)}})})();
+/* Recipes, Ver.0.3.3, By BlackStar */
+/// Build Date: 2025-11-04T13:28:41.220Z
+(()=>{function e(e,t){var n="undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(!n){if(Array.isArray(e)||(n=r(e))||t&&e&&"number"==typeof e.length){n&&(e=n);var i=0,o=function(){};return{s:o,n:function(){return i>=e.length?{done:!0}:{done:!1,value:e[i++]}},e:function(e){throw e},f:o}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var a,s=!0,u=!1;return{s:function(){n=n.call(e)},n:function(){var e=n.next();return s=e.done,e},e:function(e){u=!0,a=e},f:function(){try{s||null==n.return||n.return()}finally{if(u)throw a}}}}function t(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){var r=null==e?null:"undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(null!=r){var n,i,o,a,s=[],u=!0,c=!1;try{if(o=(r=r.call(e)).next,0===t){if(Object(r)!==r)return;u=!1}else for(;!(u=(n=o.call(r)).done)&&(s.push(n.value),s.length!==t);u=!0);}catch(e){c=!0,i=e}finally{try{if(!u&&null!=r.return&&(a=r.return(),Object(a)!==a))return}finally{if(c)throw i}}return s}}(e,t)||r(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function r(e,t){if(e){if("string"==typeof e)return n(e,t);var r={}.toString.call(e).slice(8,-1);return"Object"===r&&e.constructor&&(r=e.constructor.name),"Map"===r||"Set"===r?Array.from(e):"Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)?n(e,t):void 0}}function n(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=Array(t);r<t;r++)n[r]=e[r];return n}function i(e){return i="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},i(e)}function o(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,a(n.key),n)}}function a(e){var t=function(e,t){if("object"!=i(e)||!e)return e;var r=e[Symbol.toPrimitive];if(void 0!==r){var n=r.call(e,t||"default");if("object"!=i(n))return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===t?String:Number)(e)}(e,"string");return"symbol"==i(t)?t:t+""}function s(e,t){(function(e,t){if(t.has(e))throw new TypeError("Cannot initialize the same private elements twice on an object")})(e,t),t.add(e)}!function(){"use strict";var r=Object.freeze({INCLUDES:"includes",EQUALS:"equals"});State.variables.recipe_save_data=State.variables.recipe_save_data||new Map;var n=function(){return State.variables.recipe_save_data},a={servings:1,successRate:100,priority:100,condition:r.INCLUDES,_unlock:!1},u={unlock:!1};setup.Conditions=r,window.Conditions=window.Conditions||r;var c=new WeakSet,l=function(){return l=function e(t){var r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:[],o=arguments.length>2&&void 0!==arguments[2]?arguments[2]:clone(a),l=arguments.length>3&&void 0!==arguments[3]?arguments[3]:[];if(function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),s(this,c),this.id=t,"object"!==i(r)||"object"!==i(o))throw new Error("Invalid recipe definition");if(this.methods=r,Object.assign(this,Object.assign({},a,o)),!n().has(t)){var f,h=clone(u);h.unlock=null!==(f=o._unlock)&&void 0!==f&&f,n().set(t,h)}this._tags=l instanceof Array?l:"string"==typeof l?[l]:[]},h=[{key:"unlock",get:function(){return function(e,t,r){if("function"==typeof e?e===t:e.has(t))return arguments.length<3?t:r;throw new TypeError("Private element is not present on this object")}(c,this,f).call(this),n().get(this.id).unlock},set:function(e){n().get(this.id).unlock=e}},{key:"name",get:function(){return this.displayName||this.id},set:function(e){this.displayName=e}},{key:"tags",get:function(){return this._tags}},{key:"hasTag",value:function(e){return this._tags.includes(e)}},{key:"hasAllTags",value:function(e){return this._tags.includesAll(e)}},{key:"hasAnyTags",value:function(e){return this._tags.includesAny(e)}},{key:"validate",value:function(e){switch(this.condition){case r.EQUALS:return this.equals(e);case r.INCLUDES:return this.includes(e);default:throw new TypeError("Invalid condition type: ".concat(this.condition))}}},{key:"calculate",value:function(e,r){if(this.methods.length<=r)throw new Error("Unable to access recipe at index ".concat(r,", total number of available crafting methods is ").concat(this.ingredients.length));return Object.entries(this.methods[r]).reduce((function(r,n){var i=t(n,2),o=i[0],a=i[1];if(o.startsWith("tag:")){for(var s=o.substring(4),u=0,c=0,l=Object.entries(e);c<l.length;c++){var f=t(l[c],2),h=f[0],v=f[1],y=Item.get(h);y&&y.hasTag(s)&&(u+=v)}return Math.min(r,Math.floor(u/a))}var d=e[o];return Math.min(r,Math.floor(d/a))}),1/0)}},{key:"multiply",value:function(r,n){if(void 0!==n&&this.methods.length<=n)throw new Error("Unable to access recipe at index ".concat(n,", total number of available crafting methods is ").concat(this.ingredients.length));if("number"!=typeof r||r<=0)throw new Error("Invalid number of servings");var i,o=[],a=e(void 0!==n?[this.methods[n]]:this.methods);try{for(a.s();!(i=a.n()).done;){for(var s=i.value,u={},c=0,l=Object.entries(s);c<l.length;c++){var f=t(l[c],2),h=f[0],v=f[1];u[h]=v*r}o.push(u)}}catch(e){a.e(e)}finally{a.f()}return o}},{key:"includes",value:function(r){var n,i=e(this.methods);try{for(i.s();!(n=i.n()).done;){var o=n.value;if(Object.keys(r).length<Object.keys(o).length)return}}catch(e){i.e(e)}finally{i.f()}var a,s=e(this.methods.entries());try{for(s.s();!(a=s.n()).done;){var u=t(a.value,2),c=u[0],l=u[1],f=!0;for(var h in l)if(h.startsWith("tag:")){for(var v=h.substring(4),y=!1,d=0,p=Object.entries(r);d<p.length;d++){var g=t(p[d],2),b=g[0],m=g[1],k=Item.get(b);if(k&&k.hasTag(v)&&m>=l[h]){y=!0;break}}if(!y){f=!1;break}}else if(!r[h]||r[h]<l[h]){f=!1;break}if(f)return c}}catch(e){s.e(e)}finally{s.f()}}},{key:"cook",value:function(){if(100===this.successRate)return!0;var e=randomInt(1,100);return this.successRate>=e}},{key:"equals",value:function(r){var n,i=e(this.methods);try{for(i.s();!(n=i.n()).done;){var o=n.value;if(Object.keys(r).length<Object.keys(o).length)return}}catch(e){i.e(e)}finally{i.f()}var a,s=e(this.methods.entries());try{for(s.s();!(a=s.n()).done;){var u=t(a.value,2),c=u[0],l=u[1],f=!0;for(var h in l)if(h.startsWith("tag:")){for(var v=h.substring(4),y=0,d=0,p=Object.entries(r);d<p.length;d++){var g=t(p[d],2),b=g[0],m=g[1],k=Item.get(b);k&&k.hasTag(v)&&(y+=m)}if(y!==l[h]){f=!1;break}}else if(!r[h]||r[h]!==l[h]){f=!1;break}if(f)return c}}catch(e){s.e(e)}finally{s.f()}}}],h&&o(l.prototype,h),v&&o(l,v),Object.defineProperty(l,"prototype",{writable:!1}),l;var l,h,v}();function f(){if(!n().has(this.id)){var e,t=clone(u);t.unlock=null!==(e=this._unlock)&&void 0!==e&&e,n().set(this.id,t)}}setup.Recipe=l,window.Recipe=window.Recipe||l}()})(),(()=>{function e(t){return e="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e(t)}function t(e,t){var r="undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(!r){if(Array.isArray(e)||(r=a(e))||t&&e&&"number"==typeof e.length){r&&(e=r);var n=0,i=function(){};return{s:i,n:function(){return n>=e.length?{done:!0}:{done:!1,value:e[n++]}},e:function(e){throw e},f:i}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var o,s=!0,u=!1;return{s:function(){r=r.call(e)},n:function(){var e=r.next();return s=e.done,e},e:function(e){u=!0,o=e},f:function(){try{s||null==r.return||r.return()}finally{if(u)throw o}}}}function r(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,i(n.key),n)}}function n(e,t,r){return(t=i(t))in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function i(t){var r=function(t,r){if("object"!=e(t)||!t)return t;var n=t[Symbol.toPrimitive];if(void 0!==n){var i=n.call(t,r||"default");if("object"!=e(i))return i;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===r?String:Number)(t)}(t,"string");return"symbol"==e(r)?r:r+""}function o(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){var r=null==e?null:"undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(null!=r){var n,i,o,a,s=[],u=!0,c=!1;try{if(o=(r=r.call(e)).next,0===t){if(Object(r)!==r)return;u=!1}else for(;!(u=(n=o.call(r)).done)&&(s.push(n.value),s.length!==t);u=!0);}catch(e){c=!0,i=e}finally{try{if(!u&&null!=r.return&&(a=r.return(),Object(a)!==a))return}finally{if(c)throw i}}return s}}(e,t)||a(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function a(e,t){if(e){if("string"==typeof e)return s(e,t);var r={}.toString.call(e).slice(8,-1);return"Object"===r&&e.constructor&&(r=e.constructor.name),"Map"===r||"Set"===r?Array.from(e):"Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)?s(e,t):void 0}}function s(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=Array(t);r<t;r++)n[r]=e[r];return n}!function(){"use strict";var i,a=function(){function n(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:new Map,r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:[];if(function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,n),!(t instanceof Map))throw new Error('Expected "recipes" to be an instance of Map');if(!Array.isArray(r))throw new Error('Expected "invs" to be an array');this.invs=r,this.ct=e,State.variables[this.ct]=State.variables[this.ct]||new Inventory,this.recipes=t,this._recipes=n.sort(t)}return i=n,a=[{key:"names",value:function(){return Array.from(this.recipes.keys())}},{key:"has",value:function(e){return this.recipes.has(e)}},{key:"hasItems",value:function(e){for(var t=State.variables[this.ct],r=0,n=Object.entries(e);r<n.length;r++){var i=o(n[r],2),a=i[0],s=i[1];if(a.startsWith("tag:")){for(var u=a.substring(4),c=!1,l=0,f=Object.entries(t.data);l<f.length;l++){var h=o(f[l],2),v=h[0],y=h[1],d=Item.get(v);if(d&&d.hasTag(u)&&y>=s){c=!0;break}}if(!c)return!1}else if(t.count(a)<s)return!1}return!0}},{key:"drop",value:function(e){for(var t=State.variables[this.ct],r=0,n=Object.entries(e);r<n.length;r++){var i=o(n[r],2),a=i[0],s=i[1];if(a.startsWith("tag:"))for(var u=a.substring(4),c=s,l=0,f=Object.entries(t.data);l<f.length;l++){var h=o(f[l],2),v=h[0],y=h[1];if(c<=0)break;var d=Item.get(v);if(d&&d.hasTag(u)){var p=Math.min(y,c);void 0===t.pickup?t.delete(v,p):t.drop(v,p),c-=p}}else void 0===t.pickup?t.delete(a,s):t.drop(a,s)}}},{key:"update",value:function(){this._recipes=n.sort(this.recipes)}},{key:"hasAllTags",value:function(){var e,r=[].slice.call(arguments).flat(1/0),n=[],i=t(this._recipes);try{for(i.s();!(e=i.n()).done;){var o=e.value;o.hasAllTags(r)&&n.push(o)}}catch(e){i.e(e)}finally{i.f()}return n}},{key:"searchIndex",value:function(e){for(var t=0,r=this._recipes.length-1;t<=r;){var n=Math.floor((t+r)/2);if(this._recipes[n].priority===e)return n;this._recipes[n].priority<e?t=n+1:r=n-1}return t}},{key:"insert",value:function(e,t,r,n){Array.isArray(t)||(t=[t]);var i=this.set(e,t,r,n),o=this.searchIndex(i.priority);this._recipes.splice(o,0,i)}},{key:"set",value:function(e,t,r,n){Array.isArray(t)||(t=[t]);var i=new Recipe(e,t,r,n);return this.recipes.set(e,i),i}},{key:"get",value:function(e){return this.recipes.get(e)}},{key:"calculate",value:function(e){var t=o(this.match(e),2),r=t[0],i=t[1];return void 0===r||void 0===i?[n.default_no_recipe,0]:[i.name,i.calculate(e,r)*i.servings]}},{key:"cook",value:function(r){var i=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1,a=o(this.match(r),2),s=a[0],u=a[1],c={id:"",success:!1,unlock:!1,exist:!1,servings:0,message:n.not_found};if(null==u&&null==s)"object"===e(r)&&Object.keys(r).forEach((function(e){return delete r[e]}));else if(u.unlock||"string"!=typeof r)if("string"==typeof r&&void 0===s){c.id=u.name,c.servings=0,c.success=!1,c.message=n.missing_materials;var l,f=t(u.multiply(i));try{for(f.s();!(l=f.n()).done;){var h=l.value;if(this.hasItems(h)){this.drop(h),c.success=!0,c.servings=i,c.message=n.success;break}}}catch(e){f.e(e)}finally{f.f()}}else void 0!==s&&void 0!==u&&(c.id=u.id,c.success=u.cook(),r.length=0,c.success?(c.servings=u.calculate(r,s),u.unlock?c.message=n.success:(c.message=n.unlocked_success,u.unlock=!0)):(c.servings=0,c.message=n.failure),Object.keys(r).forEach((function(e){return delete r[e]})));else c.id=u.name,c.success=!1,c.unlock=!1,c.message=n.not_unlocked;return u&&(c.servings*=u.servings),c}},{key:"cookSave",value:function(e,t){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:1,i=this.cook(t,r);return i.success&&n.pickup(e,i.id,i.servings),i}},{key:"match",value:function(r){if("object"!==e(r)||null===r){if("string"==typeof r){var n=this.recipes.get(r);return void 0===n?[void 0,void 0]:[void 0,n]}throw new Error("Invalid argument: ".concat(r))}var i,o=t(this._recipes);try{for(o.s();!(i=o.n()).done;){var a=i.value;if(!(a instanceof Recipe))throw new Error("Invalid Recipe: ".concat(a));var s=a.validate(r);if(void 0!==s)return[s,a]}}catch(e){o.e(e)}finally{o.f()}return[void 0,void 0]}},{key:"filter",value:function(e){if("undefined"==typeof filterObjs)throw new Error('The "filter-utils" is required but has not been imported');return filterObjs(this._recipes,e,(function(e,t){return!t.tags||e.methods.some((function(e){return Object.keys(e).some((function(e){var r,n;return null!==(r=null===(n=Item.get(e))||void 0===n?void 0:n.hasAnyTags(t.tags))&&void 0!==r&&r}))}))}))}},{key:"crafting_table",get:function(){return this.ct},set:function(e){this.ct=e,State.variables[this.ct]=State.variables[this.ct]||new Inventory}}],s=[{key:"sort",value:function(e){var t=Array.from(e.values()),r={};t.forEach((function(e){var t=void 0!==e.priority?e.priority:100;r[t]=(r[t]||0)+1}));var n=Object.keys(r).map(Number).sort((function(e,t){return e-t})),i={},o=0;n.forEach((function(e){i[e]=o,o+=r[e]}));for(var a=Array(t.length),s=t.length-1;s>=0;s--){var u=t[s],c=void 0!==u.priority?u.priority:100;a[i[c]]=u,i[c]++}return a}},{key:"pickup",value:function(e){if(!(e instanceof Inventory))throw new Error("Invalid inventory");for(var t=arguments.length,r=new Array(t>1?t-1:0),n=1;n<t;n++)r[n-1]=arguments[n];if(void 0!==e.pickup)return e.pickup.apply(e,r);for(var i,o=0;o<r.length-1;o+=2){var a=r[o],s=r[o+1];if(!a||!s)return i;if(!(i=e.store(a,s)).success)return i}}}],a&&r(i.prototype,a),s&&r(i,s),Object.defineProperty(i,"prototype",{writable:!1}),i;var i,a,s}();n(a,"success","制作成功"),n(a,"failure","制作失败"),n(a,"not_found","配方不存在"),n(a,"not_unlocked","配方未解锁"),n(a,"missing_materials","缺少材料"),n(a,"unlocked_success","配方成功解锁"),n(a,"default_no_recipe","空配方"),n(a,"crafting_table","crafting_table"),i=a,["success","failure","not_found","not_unlocked","missing_materials","unlocked_success","default_no_recipe"].forEach((function(e){Object.defineProperty(i.prototype,e,{get:function(){return i[e]},set:function(t){i[e]=t}})})),setup._RecipeBook=a,window._RecipeBook=window._RecipeBook||a,setup.RecipeBook=setup.RecipeBook||new a(a.crafting_table),window.RecipeBook=window.RecipeBook||setup.RecipeBook}()})(),(()=>{function e(e,r){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){var r=null==e?null:"undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(null!=r){var n,i,o,a,s=[],u=!0,c=!1;try{if(o=(r=r.call(e)).next,0===t){if(Object(r)!==r)return;u=!1}else for(;!(u=(n=o.call(r)).done)&&(s.push(n.value),s.length!==t);u=!0);}catch(e){c=!0,i=e}finally{try{if(!u&&null!=r.return&&(a=r.return(),Object(a)!==a))return}finally{if(c)throw i}}return s}}(e,r)||function(e,r){if(e){if("string"==typeof e)return t(e,r);var n={}.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?t(e,r):void 0}}(e,r)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function t(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=Array(t);r<t;r++)n[r]=e[r];return n}function r(e){return r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},r(e)}Macro.add("cook",{tags:null,handler:function(){if(this.args.length<1)return this.error("Not enough arguments provided. At least two arguments are required");var e,t=this.args[0];if("object"!==r(t)&&"string"!=typeof t||null===t)return this.error("Expected an object or a string, but received: "+r(t));if(this.args.length>=2){var n=this.args[1];if(!(n&&n instanceof Inventory))return this.error("Expected an instance of Inventory, but received: "+r(n));e=RecipeBook.cookSave(n,t,parseInt(this.args[2])||1)}else e=RecipeBook.cook(t);WikiVars({result:e},this)}}),Macro.add("filter_recipe",{tags:null,handler:function(){if(this.args.length<1)return this.error("Not enough arguments provided. At least two arguments are required.");var e=this.args[0];if(e&&"object"!==r(e))return this.error("Invalid input: 'filters' should be an object");var t=RecipeBook.filter(e);WikiVars({result:t},this)}}),Macro.add("recipes_with_tag",{handler:function(){if(this.args.length<1)return this.error("Not enough arguments provided. At least one tag is required");var e=RecipeBook.filter(this.args);WikiVars({result:e},this)}}),Macro.add("calculate",{tags:null,handler:function(){if(this.args.length<1)return this.error("Not enough arguments provided. At least one tag is required");var t=this.args[0];if("object"!==r(t))return this.error("Invalid argument: expected an object as the first argument");var n=e(RecipeBook.calculate(t),2),i=n[0],o=n[1];WikiVars({servings:o,name:i},this)}})})();
 /* End Recipes */
 
 RecipeBook.crafting_table= 'material';
@@ -6790,7 +6790,6 @@ window.startRaceAnimation = function () {
                     move *= factor;
                     h.boosted = true; // 确保只触发一次
                 }
-
                 h.pos += move;
                 if (h.pos >= finishX) {
                     h.pos = finishX;
@@ -6798,15 +6797,12 @@ window.startRaceAnimation = function () {
                         State.variables.raceResults.push(h.obj.name);
                     }
                 }
-
                 const el = document.getElementById(h.id);
                 if (el) el.style.left = h.pos + 'px';
             }
             avgProgress += h.pos;
         });
-
         avgProgress /= horses.length;
-
         // 玩家加油按钮：平均进度超过 1/3 且还没显示
         if (!cheerShown && avgProgress > finishX/3) {
             cheerShown = true;
@@ -6816,7 +6812,7 @@ window.startRaceAnimation = function () {
             btn.onclick = function () {
                 const idx = State.variables.selectedHorseIndex;
                 const myHorse = horses[idx];
-                myHorse.pos +=(Math.floor(Math.random()*10)+40); // 冲刺奖励
+                myHorse.pos +=(Math.floor(Math.random()*20)+40); // 冲刺奖励
                 btn.remove();
             };
             track.parentElement.appendChild(btn);
@@ -6895,6 +6891,7 @@ RecipeBook.set("羊倌派", {"兽肉": 1, "胡萝卜": 1, "洋葱": 1, "土豆�
 RecipeBook.set("面包片", {"面粉": 1, "黄油": 1, "羊奶": 1, "方糖": 1}, {servings: 5});
 RecipeBook.set("法式吐司", {"面包片": 2, "鸟蛋": 1, "羊奶": 1, "黄油": 1}, {servings: 3});
 RecipeBook.set("蔬菜什锦", [{"洋葱": 2, "胡萝卜": 1, "玉米": 1, "黄油": 1}, {"洋葱": 2, "胡萝卜": 1, "玉米": 1, "黄油": 1, "番茄": 1}], {servings: 4});
+RecipeBook.set("鲜花饼", [{"tag:花":3, "面粉": 1, "方糖": 1}], {servings: 3});
 /*喝的*/
 RecipeBook.set("花茶", {"tag:花": 1, "方糖": 1}, {servings: 3});
 RecipeBook.set("牡丹花茶", {"牡丹花": 1, "方糖": 1}, {servings: 3});
@@ -6903,8 +6900,8 @@ RecipeBook.set("巴尔谢酒", {"丁香树皮": 1, "玉米": 1, "蜂蜜": 1, "�
 
 RecipeBook.set("蒲公英酒", {"蒲公英": 3, "方糖": 1, "柠檬": 1}, {servings: 5});
 RecipeBook.set("布尔盖酒", {"龙舌兰蜜": 1}, {servings: 3});
+RecipeBook.set("柿子酒", {"乌柿": 1, "方糖": 1}, {servings: 3});
 
-RecipeBook.set("鲜花饼", [{"tag:花":3, "面粉": 1, "方糖": 1}], {servings: 3});
 
 /*用的*/
 RecipeBook.set("皮革手套", [{"小型皮毛": 4}, {"大型皮毛": 1}]);
@@ -6913,7 +6910,9 @@ RecipeBook.set("玫瑰花环", [{"tag:玫瑰": 6}]);
 RecipeBook.set("茉莉手链", [{"茉莉花": 12}]);
 RecipeBook.set("贝壳项链", [{"贝壳": 6}]);
 RecipeBook.set("月光提灯", [{"鱼竿": 1, "萤火虫罐": 1}]);
-RecipeBook.set("柿子酒", {"乌柿": 1, "方糖": 1}, {servings: 3});
+RecipeBook.set("羽毛帽", [{"尾羽": 1, "草帽": 1}]);
+RecipeBook.set("獠牙匕首", [{"獠牙": 1, "小型皮毛": 3}]);
+
 RecipeBook.update();
 /* twine-user-script #9: "story/js\\07-achieve.js" */
 /*---------------------------成就系统-------------------------*/
@@ -7289,7 +7288,7 @@ Item.add("猎枪", {displayName: "猎枪", description: "当下最常见的型�
 Item.add("短镰", {displayName: "短镰", description: "岛主干活时用的短柄镰刀, 收割作物最称手的工具, 镰刃上的划痕看上去仿佛经历过几场战争<<iwd \"短镰\">>" , handler: null, consumable: null, function: "力量+8 大胆+4", store: null, price: 33 , weight: 1.27},["工具", null, null, "装备", null, null, "fuelS"]);
 Item.add("宝石镜", {displayName: "宝石镜", description: "镶嵌着宝石的铜镜。也许你不该拥有它<<iwd \"宝石镜\">>" , handler: null, consumable: null, function: "观察+8，享乐+2", store: null, price: 30 , weight: 0.8},["工具", null, null, "装备", null, null, "fuelS"]);
 Item.add("月光提灯", {displayName: "月光提灯", description: "<<iwd \"月光提灯\">>" , handler: null, consumable: null, function: "观察+4，谨慎+1，可提供光源", store: null, price: 6 , weight: 0.6},["工具", "制作", null, "装备", null, null, "fuelD"]);
-Item.add("獠牙匕首", {displayName: "獠牙匕首", description: "<<iwd \"獠牙匕首\">>" , handler: null, consumable: null, function: "力量+3，大胆+1", store: null, price: 3 , weight: 0.9},["工具", null, null, "装备", null, null, "fuelD"]);
+Item.add("獠牙匕首", {displayName: "獠牙匕首", description: "<<iwd \"獠牙匕首\">>" , handler: null, consumable: null, function: "力量+3，大胆+1", store: null, price: 3 , weight: 0.9},["工具", "制作", null, "装备", null, null, "fuelD"]);
 Item.add("徕卡相机", {displayName: "徕卡相机", description: "一个略显磨损、黄铜质感、造型极其精密的便携相机，镜头深邃，顶部取景器折叠着，散发着微弱而温暖的金属光泽，弹簧预紧时发出细微而悦耳的“咔嗒”声<<iwd \"徕卡相机\">>" , handler: null, consumable: null, function: "学识+1，观察+2", store: null, price: 20 , weight: 1},["工具", null, null, "装备", null, null, "fuelB"]);
 Item.add("玫瑰花环", {displayName: "玫瑰花环", description: "盛开的玫瑰花制成的花环, 佩戴时要小心她们的棘刺<<iwd \"玫瑰花环\">>" , handler: null, consumable: null, function: "观察+1 享乐+1", store: null, price: 3 , weight: 0.1},["头部", "制作", null, "装备", null, null, "fuelA"]);
 Item.add("拥抱之盔", {displayName: "拥抱之盔", description: "\"Glittering worm, thy hissing was great, And hard didst show thy heart; But hatred more | have the sons of men For him who owns the helm.\"<<iwd \"拥抱之盔\">>" , handler: null, consumable: null, function: null, store: null, price: 24 , weight: 0.8},["头部", null, null, "装备", null, null, "fuelS"]);
@@ -7386,7 +7385,7 @@ Item.add("鸟蛋", {displayName: "鸟蛋", description: "不管是煎是煮，�
 Item.add("鱼油", {displayName: "鱼油", description: " 鱼油能让油灯发光、皮革柔软，还能让你的皮毛健康柔顺<<iwd \"鱼油\">>" , handler: null, consumable: null, function: "false", store: null, price: 1 , weight: 0.01},["材料", "食材", "烹饪", "油", "fishy", null, "fuelA"]);
 Item.add("黄油", {displayName: "黄油", description: "羊奶的黄金变体，一块优质的黄油能让黑面包变成盛宴，让土豆拥有灵魂<<iwd \"黄油\">>" , handler: null, consumable: null, function: "false", store: null, price: 1 , weight: 0.01},["材料", "食材", "烹饪", "油", null, null, "fuelA"]);
 Item.add("面粉", {displayName: "面粉", description: "苍白而沉默，却是文明的基石。没有面粉，就没有面包、没有馅饼、没有孩子们粘在嘴角的笑 <<iwd \"面粉\">>" , handler: null, consumable: null, function: "false", store: null, price: 1 , weight: 0.01},["材料", "食材", null, null, null, null, "fuelD"]);
-Item.add("方糖", {displayName: "方糖", description: "<<iwd \"方糖\">>" , handler: null, consumable: null, function: "false", store: 2, price: 1 , weight: 0.01},["材料", "食材", "烹饪", null, "sweet", null, "fuelD"]);
+Item.add("方糖", {displayName: "方糖", description: "<<iwd \"方糖\">>" , handler: null, consumable: null, function: "false", store: 2, price: 1 , weight: 0.01},["材料", "食材", "烹饪", "酿酒", "sweet", null, "fuelD"]);
 Item.add("砂盐", {displayName: "砂盐", description: "乌黑的颗粒晶体，有一股难以形容的芳香<<iwd \"砂盐\">>" , handler: null, consumable: null, function: "false", store: 2, price: 1 , weight: 0.01},["材料", "食材", "烹饪", null, null, null, "fuelS"]);
 Item.add("柠檬", {displayName: "柠檬", description: "<<iwd \"柠檬\">>" , handler: null, consumable: null, function: "false", store: null, price: 1 , weight: 0.05},["材料", "食材", null, null, null, null, "fuelC"]);
 Item.add("葡萄", {displayName: "葡萄", description: "<<iwd \"葡萄\">>" , handler: null, consumable: null, function: "false", store: null, price: 1 , weight: 0.05},["材料", "食材", null, null, null, null, "fuelC"]);
@@ -7411,7 +7410,7 @@ Item.add("面包片", {displayName: "面包片", description: "<br><br>〖食用
 Item.add("龙舌兰蜜", {displayName: "龙舌兰蜜", description: "<br><br>〖食用后体力+1〗<<iwd \"龙舌兰蜜\">>" , handler: "<<eatfood 1>><<loseweight 0.03>>", consumable: "true", function: "false", store: 2, price: 2 , weight: 0.03},["材料", "酿酒", null, null, null, null, "fuelA"]);
 Item.add("无花果", {displayName: "无花果", description: "<br><br>〖食用后体力+4〗<<iwd \"无花果\">>" , handler: "<<eatfood 4>><<loseweight 0.06>>", consumable: "true", function: "false", store: 8, price: 2 , weight: 0.06},["食物", "食材", "酿酒", null, "fruity", null, "fuelA"]);
 Item.add("羊奶", {displayName: "羊奶", description: "新鲜的哺乳动物提取物<br><br>〖食用后体力+2〗<<iwd \"羊奶\">>" , handler: "<<eatfood 2>><<loseweight 0.2>>", consumable: "true", function: "false", store: 4, price: 3 , weight: 0.2},["食物", "食材", null, null, "creamy", null, "fuelB"]);
-Item.add("8", {displayName: "8", description: "简单煎蛋<br><br>〖食用后体力+4〗<<iwd \"煎蛋\">>" , handler: "<<eatfood 4>><<loseweight  0.05>>", consumable: "true", function: "false", store: 8, price: 2 , weight: 0.05},["食物", "食材", "烹饪", null, "meaty", null, "fuelA"]);
+Item.add("煎蛋", {displayName: "煎蛋", description: "简单煎蛋<br><br>〖食用后体力+4〗<<iwd \"煎蛋\">>" , handler: "<<eatfood 4>><<loseweight  0.05>>", consumable: "true", function: "false", store: 8, price: 2 , weight: 0.05},["食物", "食材", "烹饪", null, "meaty", null, "fuelA"]);
 Item.add("炸鱼", {displayName: "炸鱼", description: "<br><br>〖使用后体力+8〗<<iwd \"炸鱼\">>" , handler: "<<eatfood 8>><<loseweight 0.05>>", consumable: "true", function: "false", store: 16, price: 4 , weight: 0.05},["食物", "食材", "烹饪", null, "fishy", null, "fuelA"]);
 Item.add("乌柿", {displayName: "乌柿", description: "生长在黑莲中的果实，通体乌黑，可以酿造柿子酒<br><br>〖使用后体力+4〗<<iwd \"乌柿\">>" , handler: "<<eatfood 4>><<set $lotus +=1>><<loseweight 0.05>>", consumable: "true", function: "false", store: 8, price: 4 , weight: 0.05},["食物", "酿酒", null, null, null, null, "fuelS"]);
 Item.add("炸薯条", {displayName: "炸薯条", description: "<br><br>〖使用后体力+2〗<<iwd \"炸薯条\">>" , handler: "<<eatfood 2>><<loseweight 0.03>>", consumable: "true", function: "false", store: 4, price: 2 , weight: 0.03},["食物", "食材", "烹饪", null, "fatty", null, "fuelA"]);
@@ -7441,7 +7440,7 @@ Item.add("蜂蜜鲜奶", {displayName: "蜂蜜鲜奶", description: "<br><br>〖
 Item.add("花茶", {displayName: "花茶", description: "<br><br>〖使用后体力+2〗<<iwd \"花茶\">>" , handler: "<<eatfood 1>><<loseweight 0.04>>", consumable: "true", function: "false", store: 2, price: 2 , weight: 0.04},["食物", "食材", "茶", null, "floral", null, "fuelC"]);
 Item.add("牡丹花茶", {displayName: "牡丹花茶", description: "<br><br>〖使用后体力+1，噩梦-1〗<<iwd \"牡丹花茶\">>" , handler: "<<eatfood 1>><<losebadexp \"噩梦\" 1>><<notify 3s>>你的噩梦降低了1点<</notify>><<loseweight 0.04>>", consumable: "true", function: "false", store: 2, price: 2 , weight: 0.04},["食物", "食材", "茶", null, "floral", null, "fuelC"]);
 Item.add("柿子酒", {displayName: "柿子酒", description: "乌黑醇香的家酿酒, 似乎是永无乡上的特产, 几乎每家每户都会在家中准备上这些口感甘甜的果酒, 也是赠礼的最佳选择<<iwd \"柿子酒\">><<if !$sq.lotus && $sq.lotus != 0>><<set $sq.lotus = 0>><<notify 3s>>Seisi提问新增“柿子酒”<</notify>><</if>>" , handler: "<<run Dialog.setup('饮用柿子酒');Dialog.wiki('有什么近似梦幻的东西滑进了你的嘴里, 然后是你的喉咙, 接着, 这种温暖而美妙的感觉扩散至了你的每一处知觉. 所有的悲痛, 所有的不幸, 似乎都已被这果酒洗刷. 等酒效过去, 你又回到了那个满是烦恼的世界');Dialog.open();>><<set $lotus += 1>><<if $lotus <= 24>><<set $player.nightmare -= 2>><<elseif $lotus <= 72>><<set $player.nightmare -= 1>><<elseif $lotus >= 241 && $lotus <=360>><<set $player.nightmare += 1>><<elseif $lotus <=666>><<set $player.nightmare += 1>><</if>><<loseweight 0.6>>", consumable: "true", function: "false", store: 6, price: 3 , weight: 0.6},["食物", "酒", "酿酒", null, null, null, "fuelS"]);
-Item.add("布尔盖酒", {displayName: "布尔盖酒", description: "<<iwd\"布尔盖酒\">>" , handler: "<<eatfood 8>><<loseweight 0.6>>", consumable: "true", function: "false", store: 16, price: 15 , weight: 0.6},["食物", "酒", null, null, null, null, "fuelA"]);
+Item.add("布尔盖酒", {displayName: "布尔盖酒", description: "<<iwd\"布尔盖酒\">>" , handler: "<<eatfood 8>><<loseweight 0.6>>", consumable: "true", function: "false", store: 3, price: 15 , weight: 0.6},["食物", "酒", null, null, null, null, "fuelA"]);
 Item.add("颂歌蜜酒", {displayName: "颂歌蜜酒", description: "<<iwd\"颂歌蜜酒\">>" , handler: "<<addkexp 10>><<addbadexp \"噩梦\" 3>><<loseweight 0.6>>", consumable: "true", function: "false", store: 9, price: 18 , weight: 0.6},["食物", "酒", null, "蜂蜜", null, null, "fuelS"]);
 Item.add("巧克力棒", {displayName: "巧克力棒", description: "<br><br>〖使用后体力+4〗<<iwd \"巧克力棒\">>" , handler: "<<eatfood 4>><<loseweight 0.05>>", consumable: "true", function: "false", store: 8, price: 2 , weight: 0.05},[null, null, null, null, null, null, "fuelC"]);
 Item.add("熏肉干", {displayName: "熏肉干", description: "<br><br>〖使用后体力+8〗<<iwd \"熏肉干\">>" , handler: "<<eatfood 8>><<loseweight 0.08>>", consumable: "true", function: "false", store: 8, price: 5 , weight: 0.08},["食物", null, null, null, null, null, "fuelA"]);
@@ -7625,7 +7624,7 @@ Item.add("傲慢与偏见", {displayName: "傲慢与偏见", description: "简·
 Item.add("堂吉诃德", {displayName: "堂吉诃德", description: "塞万提斯的长篇小说，描写一个痴迷骑士故事的乡绅，化身为游侠骑士的荒诞冒险<<readbook \"堂吉诃德\">><<iwd \"堂吉诃德\">>" , handler: null, consumable: null, function: null, store: 1, price: 5 , weight: 0.8},["读物", "图书馆", null, null, null, null, "fuelA"]);
 Item.add("浮士德博士的生死悲剧史", {displayName: "浮士德博士的生死悲剧史", description: "克里斯托弗·马洛编写的戏剧，讲述一位学识卓绝的博士以灵魂为代价，换取二十四年的无限知识与力量。<<readbook \"堂吉诃德\">><<iwd \"堂吉诃德\">>" , handler: null, consumable: null, function: null, store: 1, price: 5 , weight: 0.8},["读物", "图书馆", null, null, null, null, "fuelA"]);
 
-</script><tw-tag name="autosave" color="blue"></tw-tag><tw-tag name="init" color="green"></tw-tag><tw-tag name="nobr" color="yellow"></tw-tag><tw-tag name="widget" color="orange"></tw-tag><tw-tag name="UIBarhide" color="green"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-passagedata pid="1" name="demo结语" tags="" position="2000,1000" size="100,100">&lt;center&gt;
+</script><tw-tag name="autosave" color="blue"></tw-tag><tw-tag name="UIBarhide" color="green"></tw-tag><tw-tag name="widget" color="orange"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="nobr" color="yellow"></tw-tag><tw-tag name="init" color="green"></tw-tag><tw-passagedata pid="1" name="demo结语" tags="" position="2000,1000" size="100,100">&lt;center&gt;
 
 demo的游戏内容到此结束, 主要内容有5段主线剧情、3个主线任务、3段支线剧情、2个支线任务、12个可互动角色、13个成就、7条线索
 
@@ -8004,7 +8003,7 @@ demo的游戏内容到此结束, 主要内容有5段主线剧情、3个主线任
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;button 醒来 家&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="沙龙" tags="" position="500,1000" size="100,100"></tw-passagedata><tw-passagedata pid="9" name="测试" tags="" position="800,200" size="100,100">$needt1  $nt
 &lt;&lt;gainitem &quot;蜡烛&quot; 1&gt;&gt;
-&lt;&lt;set $ashes =1227&gt;&gt;
+&lt;&lt;set $ashes =1227, $hidemap =0&gt;&gt;
 &lt;&lt;do tag &quot;1&quot;&gt;&gt;&lt;&lt;if !$avatar&gt;&gt;输入 文件路径(去掉引号) 或 图床链接&lt;&lt;else&gt;&gt;&lt;&lt;print &#39;&lt;img src=&quot; &#39; + $avatar + &#39; &quot; width=30% class=&quot;picr&quot;&gt;&#39;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;
 &lt;&lt;textbox &quot;_img&quot; &quot;&quot; autofocus&gt;&gt; &lt;&lt;link 确认&gt;&gt;&lt;&lt;set $avatar = _img&gt;&gt;&lt;&lt;redo &quot;1&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
 🌆🌙✨🪐🕯️💀
@@ -8874,6 +8873,13 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
     &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;if $msd &gt;= 3&gt;&gt;&lt;&lt;link ❖赠送焚草&gt;&gt;&lt;&lt;set $choice = &quot;赠送&quot;&gt;&gt;
+&lt;&lt;run
+  Dialog.setup(&quot;赠送焚草&quot;);
+  Dialog.wiki(&quot;&lt;&lt;firebloombag&gt;&gt;&quot;);
+  Dialog.open();
+&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $loc == &quot;草甸&quot;&gt;&gt;&lt;&lt;link ❖放羊 埃拉互动&gt;&gt;&lt;&lt;set $state = &quot;放羊&quot;, $npc to 0&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $loc == &quot;酒馆&quot;&gt;&gt;&lt;&lt;link ❖邀请饮酒 埃拉互动&gt;&gt;&lt;&lt;set $state = &quot;饮酒&quot;&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $NPCinfo[$npc].love &gt;= 16 &amp;&amp; $NPCinfo[$npc].love &lt;= 85&gt;&gt;&lt;&lt;link ❖讲个故事 埃拉互动&gt;&gt;&lt;&lt;set $choice = &quot;讲个故事&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
@@ -8895,6 +8901,13 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
     &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;if $msd &gt;= 3&gt;&gt;&lt;&lt;link ❖赠送焚草&gt;&gt;&lt;&lt;set $choice = &quot;赠送&quot;&gt;&gt;
+&lt;&lt;run
+  Dialog.setup(&quot;赠送焚草&quot;);
+  Dialog.wiki(&quot;&lt;&lt;firebloombag&gt;&gt;&quot;);
+  Dialog.open();
+&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $NPCinfo[$npc].Loc == &quot;仓库&quot;&gt;&gt;&lt;&lt;link ❖订购物资 苏菲互动&gt;&gt;&lt;&lt;set $state = &quot;订购物资&quot;&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if !$recording[&quot;送信&quot;] &gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;link ❖送信 苏菲互动&gt;&gt;&lt;&lt;set $state = &quot;送信&quot;&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $NPCinfo[&quot;苏菲&quot;].firstletter == 0&gt;&gt;&lt;&lt;link ❖未署名的来信 苏菲互动&gt;&gt;&lt;&lt;set $NPCinfo[$npc].chat += 1, $choice = 0, $state = &quot;未署名的来信&quot;&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
@@ -8914,6 +8927,13 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
     &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;if $msd &gt;= 3&gt;&gt;&lt;&lt;link ❖赠送焚草&gt;&gt;&lt;&lt;set $choice = &quot;赠送&quot;&gt;&gt;
+&lt;&lt;run
+  Dialog.setup(&quot;赠送焚草&quot;);
+  Dialog.wiki(&quot;&lt;&lt;firebloombag&gt;&gt;&quot;);
+  Dialog.open();
+&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $story[&quot;点心代送&quot;] == 4&gt;&gt;&lt;br&gt;&lt;&lt;link ❖点心代送 支线选项&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 /***************公爵夫人******************/
@@ -8928,6 +8948,13 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
     &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;if $msd &gt;= 3&gt;&gt;&lt;&lt;link ❖赠送焚草&gt;&gt;&lt;&lt;set $choice = &quot;赠送&quot;&gt;&gt;
+&lt;&lt;run
+  Dialog.setup(&quot;赠送焚草&quot;);
+  Dialog.wiki(&quot;&lt;&lt;firebloombag&gt;&gt;&quot;);
+  Dialog.open();
+&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $loc == &quot;酒馆&quot;&gt;&gt;&lt;&lt;link ❖邀请饮酒 公爵夫人互动&gt;&gt;&lt;&lt;set $state = &quot;饮酒&quot;&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if !$NPCinfo[&quot;公爵夫人&quot;].brewchat&gt;&gt;&lt;&lt;link ❖酿酒的技艺 公爵夫人互动&gt;&gt;&lt;&lt;set $choice = 0, $state = &quot;酿酒的技艺&quot;&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
@@ -8945,6 +8972,13 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
     &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;if $msd &gt;= 3&gt;&gt;&lt;&lt;link ❖赠送焚草&gt;&gt;&lt;&lt;set $choice = &quot;赠送&quot;&gt;&gt;
+&lt;&lt;run
+  Dialog.setup(&quot;赠送焚草&quot;);
+  Dialog.wiki(&quot;&lt;&lt;firebloombag&gt;&gt;&quot;);
+  Dialog.open();
+&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;link ❖还书&gt;&gt;&lt;&lt;set $choice = 0, $state = &quot;还书&quot;&gt;&gt;&lt;&lt;run
   Dialog.setup(&quot;还书&quot;);
   Dialog.wiki(Story.get(&quot;奥提斯互动&quot;).processText());
@@ -8967,6 +9001,13 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
     &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;if $msd &gt;= 3&gt;&gt;&lt;&lt;link ❖赠送焚草&gt;&gt;&lt;&lt;set $choice = &quot;赠送&quot;&gt;&gt;
+&lt;&lt;run
+  Dialog.setup(&quot;赠送焚草&quot;);
+  Dialog.wiki(&quot;&lt;&lt;firebloombag&gt;&gt;&quot;);
+  Dialog.open();
+&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;link ❖交换诗集 萨巴夫人互动&gt;&gt;&lt;&lt;set $choice = 0, $state = &quot;交换诗集&quot;&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
@@ -8982,6 +9023,13 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
     &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;if $msd &gt;= 3&gt;&gt;&lt;&lt;link ❖赠送焚草&gt;&gt;&lt;&lt;set $choice = &quot;赠送&quot;&gt;&gt;
+&lt;&lt;run
+  Dialog.setup(&quot;赠送焚草&quot;);
+  Dialog.wiki(&quot;&lt;&lt;firebloombag&gt;&gt;&quot;);
+  Dialog.open();
+&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $story[&quot;点心代送&quot;] == 2&gt;&gt;&lt;br&gt;&lt;&lt;link ❖点心代送 支线选项&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 /***************玛丽亚小姐******************/
@@ -9012,6 +9060,13 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
     &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;if $msd &gt;= 3&gt;&gt;&lt;&lt;link ❖赠送焚草&gt;&gt;&lt;&lt;set $choice = &quot;赠送&quot;&gt;&gt;
+&lt;&lt;run
+  Dialog.setup(&quot;赠送焚草&quot;);
+  Dialog.wiki(&quot;&lt;&lt;firebloombag&gt;&gt;&quot;);
+  Dialog.open();
+&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $loc == &quot;酒馆&quot;&gt;&gt;&lt;&lt;link ❖邀请饮酒 巴尔韦克老爷互动&gt;&gt;&lt;&lt;set $state = &quot;饮酒&quot;&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if !$story[&quot;未署名的来信&quot;]&gt;&gt;&lt;&lt;elseif $story[&quot;未署名的来信&quot;].bol ==0&gt;&gt;&lt;&lt;link ❖送信 支线选项&gt;&gt;&lt;&lt;set $choice = &quot;送信bol&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
@@ -9029,6 +9084,13 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
     &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;if $msd &gt;= 3&gt;&gt;&lt;&lt;link ❖赠送焚草&gt;&gt;&lt;&lt;set $choice = &quot;赠送&quot;&gt;&gt;
+&lt;&lt;run
+  Dialog.setup(&quot;赠送焚草&quot;);
+  Dialog.wiki(&quot;&lt;&lt;firebloombag&gt;&gt;&quot;);
+  Dialog.open();
+&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $loc == &quot;酒馆&quot;&gt;&gt;&lt;&lt;link ❖邀请饮酒 欧马卡特互动&gt;&gt;&lt;&lt;set $state = &quot;饮酒&quot;&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
@@ -9045,6 +9107,13 @@ Seisi给了你一个白眼，尽管你不确定是否应该这样叫，因为它
     &lt;&lt;Dialog title=&quot; &quot; passage=&quot;弹窗导向页&quot;&gt;&gt;&lt;&lt;/Dialog&gt;&gt;
     &lt;&lt;else&gt;&gt;&lt;&lt;run Dialog.setup(&quot;赠送&quot;); Dialog.wiki(&quot;$npc今天已经接受过你的礼物了&quot;); Dialog.open();&gt;&gt;
     &lt;&lt;/if&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+&lt;&lt;if $msd &gt;= 3&gt;&gt;&lt;&lt;link ❖赠送焚草&gt;&gt;&lt;&lt;set $choice = &quot;赠送&quot;&gt;&gt;
+&lt;&lt;run
+  Dialog.setup(&quot;赠送焚草&quot;);
+  Dialog.wiki(&quot;&lt;&lt;firebloombag&gt;&gt;&quot;);
+  Dialog.open();
+&gt;&gt;
+&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
  
 &lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="seisi" tags="nobr" position="2100,100" size="100,100">&lt;&lt;if $seisistate ==&quot;生气1&quot; || $seisistate ==&quot;生气2&quot; || $seisistate ==&quot;生气3&quot;&gt;&gt;
@@ -10501,12 +10570,12 @@ C. 沉默离开 （认亏）
 &lt;&lt;elseif $gift == &quot;海螯虾&quot;&gt;&gt;&lt;&lt;set _rpl= [&quot;接过海螯虾，把它举到眼前仔细端详，手法专业的检查着：“这家伙长得可真不错。以前出海，捕到这种，那可是大伙儿狂欢的理由。” 他说着，回忆似乎却从美好转向另一种东西，染上他的表情，可他很快又恢复到平日的笑容，“很棒的礼物，非常感谢你，$nn。”&quot;,&quot;轻轻吹了声口哨，接过了海螯虾，抬起掂量着它分量：“比起岛上的食物，这个已经算得上奢侈了。再配上朗姆酒，简直就是国王的款待。”&quot;,&quot;收下你的礼物，语气里带上回忆：“好久没尝到这味道了。以前在海上，这可是最好的东西。谢谢你，$nn。” &quot;].random()&gt;&gt;_rpl
 &lt;&lt;npclove _m&gt;&gt;
 &lt;&lt;elseif $gift == &quot;蓝宝石&quot;&gt;&gt;暗示自己的船沉船是枘朴小姐背地操控&lt;br&gt;&lt;&lt;npclove 10&gt;&gt;
+&lt;&lt;elseif $gift == &quot;焚草&quot;&gt;&gt;收下了你的焚草，表情有些复杂。他的脸色阴沉，目光扫过焚草，而后又看向你，仿佛在确认你的意图。“你的好意我心领了....但别再给我这个了。”他仿佛在努力克制，“你最好也别碰，丢的越远越好。”&lt;&lt;npchate 1&gt;&gt;&lt;&lt;set $firebloom.deleteAt($inx)&gt;&gt;
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;ellalike&quot;)&gt;&gt;接过礼物，惊讶和喜悦同时表现在他那张分色的脸上：“谢谢你，$nn。你很会挑东西....很少有猫能想到这些。”
 &lt;&lt;npclove _n&gt;&gt;
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;ellahate&quot;)&gt;&gt;看到你的礼物，伸出的手僵持在半空。他的脸色阴沉，目光扫过礼物，而后又看向你，仿佛在确认你的意图。“你的好意我心领了....但别再给我这个了。”他仿佛在努力克制，“你最好也别碰，丢的越远越好。”
 &lt;&lt;npchate 1&gt;&gt;
-&lt;&lt;elseif $gift == &quot;焚草&quot;&gt;&gt;收下了你的焚草，表情有些复杂。他的脸色阴沉，目光扫过焚草，而后又看向你，仿佛在确认你的意图。“你的好意我心领了....但别再给我这个了。”他仿佛在努力克制，“你最好也别碰，丢的越远越好。”
-&lt;&lt;npchate 1&gt;&gt;
+
 &lt;&lt;else&gt;&gt;&lt;&lt;set $erahgd +=1&gt;&gt;接过礼物，往日笑容中的疲惫似乎都减轻了一些：“谢了，$nn。下次来陪我看着羊群就好，礼物就不必了。”
 &lt;&lt;npclove 1&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10515,12 +10584,19 @@ C. 沉默离开 （认亏）
 &lt;&lt;elseif $npc == &quot;苏菲&quot;&gt;&gt;
 @@.sophietalk;苏菲@@&lt;&lt;if $gift == &quot;笔记残页&quot;&gt;&gt;有些迟疑的接过，她那看着残缺书页的眼神，仿佛她能够读懂它的内容。“你...你是从哪儿找到这个的？” 一时间，你看不懂她脸上的表情，但那很快就回归到苏菲一贯的笑容上，你的这份礼物真的让她很高兴，“真的太感谢你了，$nn！”她给了你一个大大的拥抱。
 &lt;&lt;npclove _m&gt;&gt;
+&lt;&lt;elseif $gift == &quot;焚草&quot;&gt;&gt;开心地收下了你的焚草。&lt;&lt;npclove 2&gt;&gt;
+“&lt;&lt;print [&quot;$firebloom[$inx].one&quot;,&quot;$firebloom[$inx].two&quot;,&quot;$firebloom[$inx].three&quot;].random()&gt;&gt;！我喜欢你的选择！”女孩给了你一个满怀欣喜的微笑，“我也有给你的，我不知道你喜欢哪些，但是...”她从自己的大衣兜里小心地摘出了一朵精心制作的焚草，相比起来你的简直不堪入目，“一定要收下呀！”
+&lt;&lt;itemobtain &quot;苏菲赠送的焚草 * 1&quot;&gt;&gt;
+&lt;&lt;set _rpl1= [&quot;红玫瑰&quot;,&quot;白玫瑰&quot;,&quot;蓝玫瑰&quot;,&quot;黄玫瑰&quot;,&quot;蒲公英&quot;,&quot;藜芦花&quot;,&quot;牡丹花&quot;,&quot;茉莉花&quot;,&quot;紫罗兰&quot;,&quot;向日葵&quot;,&quot;勿忘我&quot;,&quot;牵牛花&quot;,&quot;金盏花&quot;,&quot;百合花&quot;,&quot;风信子&quot;].random()&gt;&gt;
+&lt;&lt;set _rpl2= [&quot;红玫瑰&quot;,&quot;白玫瑰&quot;,&quot;蓝玫瑰&quot;,&quot;黄玫瑰&quot;,&quot;蒲公英&quot;,&quot;藜芦花&quot;,&quot;牡丹花&quot;,&quot;茉莉花&quot;,&quot;紫罗兰&quot;,&quot;向日葵&quot;,&quot;勿忘我&quot;,&quot;牵牛花&quot;,&quot;金盏花&quot;,&quot;百合花&quot;,&quot;风信子&quot;].random()&gt;&gt;
+&lt;&lt;set _rpl3= [&quot;红玫瑰&quot;,&quot;白玫瑰&quot;,&quot;蓝玫瑰&quot;,&quot;黄玫瑰&quot;,&quot;蒲公英&quot;,&quot;藜芦花&quot;,&quot;牡丹花&quot;,&quot;茉莉花&quot;,&quot;紫罗兰&quot;,&quot;向日葵&quot;,&quot;勿忘我&quot;,&quot;牵牛花&quot;,&quot;金盏花&quot;,&quot;百合花&quot;,&quot;风信子&quot;].random()&gt;&gt;
+&lt;&lt;set $firebloom.push({one: _rpl1, two: _rpl2, three: _rpl3, text:&quot;给我的BFF$nn，在永无乡的每一天都要开心！&quot;})&gt;&gt;
+&lt;&lt;set $weight += 0.03, $itemweight.firebloom += 0.03&gt;&gt;
+&lt;&lt;set $firebloom.deleteAt($inx)&gt;&gt;
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;sweet&quot;) &amp;&amp; !Item.get($gift).hasTag(&quot;酒&quot;)&gt;&gt;接过礼物，看清是什么后，就像$gift本身一样甜蜜的笑了起来：“哇，甜食！这可真是个好主意。我每天都在路上，很少能停下来休息。这能让我有更多力气继续我的工作。谢谢$nn！”
 &lt;&lt;npclove _n&gt;&gt;
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;sophiehate&quot;) || Item.get($gift).hasTag(&quot;垃圾&quot;)&gt;&gt;接过礼物，脸上依旧带着微笑：“哦...谢谢你。这东西看起来很...不错。”她象征性的研究了一会手中的礼物，然后迅速把它收起。
 &lt;&lt;npchate 1&gt;&gt;
-&lt;&lt;elseif $gift == &quot;焚草&quot;&gt;&gt;开心地收下了你的焚草。
-&lt;&lt;npclove 2&gt;&gt;
 &lt;&lt;else&gt;&gt;接过礼物，小心地放进自己的挎包中，露出感激的笑容：“谢谢你，$nn，能收到这样的礼物，让我觉得一切都值得了。”
 &lt;&lt;npclove 1&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10529,12 +10605,11 @@ C. 沉默离开 （认亏）
 &lt;&lt;elseif $npc == &quot;特里特&quot;&gt;&gt;@@.trettalk;特里特@@
 &lt;&lt;if $gift == &quot;三头马木雕&quot;&gt;&gt;
 &lt;&lt;elseif $gift == &quot;伏特加&quot;&gt;&gt;微微点头，用俄语嘟囔一句什么，又接上了你能听懂的几个词：“为了健康。”&lt;&lt;npclove _m&gt;&gt;
+&lt;&lt;elseif $gift == &quot;焚草&quot;&gt;&gt;收下了你的焚草。&lt;&lt;npclove 1&gt;&gt;&lt;&lt;set $firebloom.deleteAt($inx)&gt;&gt;
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;tretlike&quot;)&gt;&gt;专业地检查着鱼的眼珠和鳃，少有的对你抛出了一个赞赏的眼神。“不错，很强壮。你是一个好钓手。”&lt;&lt;npclove _n&gt;&gt;
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;酒&quot;)&gt;&gt;
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;trethate&quot;)&gt;&gt;的脸色瞬间阴沉下来，独眼中流露出毫不掩饰的厌恶。“拿开。”他压抑脾气的模样宛如能将你吞噬的海啸。&lt;&lt;npchate 2&gt;&gt;
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;观赏鱼&quot;)&gt;&gt;皱起眉头，拎起那条可怜的鱼儿：“这玩意属于大海吗？不。属于餐桌吗？也不。”他拒绝了你的礼物。&lt;&lt;npchate 1&gt;&gt;
-&lt;&lt;elseif $gift == &quot;焚草&quot;&gt;&gt;收下了你的焚草。
-&lt;&lt;npclove 1&gt;&gt;
 &lt;&lt;else&gt;&gt;
 &lt;&lt;set _rpl= [&quot;接过礼物，只是看了看，然后又把注意力放回手中的鱼上：“我不需要这个。你自己留着吧。”&quot;,&quot;接过礼物，但没有打开，直接放在了柜台下面：“放这吧。我还有很多活要干。”&quot;].random()&gt;&gt;_rpl
 &lt;&lt;npclove 1&gt;&gt;
@@ -10548,11 +10623,14 @@ $npc收下了你的礼物
 /***************巴尔韦克老爷******************/
 &lt;&lt;elseif $npc == &quot;巴尔韦克老爷&quot;&gt;&gt;&lt;&lt;if $gift == &quot;颂歌蜜酒&quot; &amp;&amp; $story[&quot;颂歌蜜酒&quot;] ==0&gt;&gt;任务剧情
 &lt;&lt;else&gt;&gt;@@.odintalk;巴尔韦克老爷@@&lt;&lt;if $gift == &quot;颂歌蜜酒&quot;&gt;&gt;&lt;&lt;npclove _m&gt;&gt;普通赠予
+&lt;&lt;elseif $gift == &quot;焚草&quot;&gt;&gt;沉默地接过你的焚草。你猜岛上一定没几个猫愿意给他送焚草，不然为何他看着如此动容？&lt;br&gt;&lt;br&gt;
+老猫看了一会，那束花草在他过大的手掌中更显得脆弱不堪：“要在以前...在北方...礼物可不是几根花花草草就能应付的。要有庆典，要有牺牲，@@.odintalk;真正的牺牲@@。”&lt;br&gt;&lt;br&gt;
+他摇摇头，结束了对往日的回忆。&lt;br&gt;&lt;br&gt;
+&lt;&lt;npclove 1&gt;&gt;&lt;&lt;set $firebloom.deleteAt($inx)&gt;&gt;
 &lt;&lt;elseif $gift == &quot;智慧鲑鱼&quot;&gt;&gt;拿起你的礼物，眯起独眼端详了片刻，嘴角扯出一个近乎欣慰的笑：“倒是难为你找到这东西。” &lt;&lt;npclove _n&gt;&gt;
-&lt;&lt;elseif $gift == &quot;蜜酒&quot;&gt;&gt;举起酒瓶，晃动着瓶内琥珀色的液体）：“蜜酒？这不过是给孩子喝的甜水。真正的蜜酒应该用金杯盛放，酒沫里该有诗歌的韵律，喝下去就能获得智慧，而不是仅仅让你头晕。”说罢，他一口气将蜜酒饮尽。&lt;&lt;npclove _n&gt;&gt;
+&lt;&lt;elseif $gift == &quot;蜜酒&quot;&gt;&gt;举起酒瓶，晃动着瓶内琥珀色的液体）：“蜜酒？这岛上的蜜酒不过是给孩子喝的甜水。真正的蜜酒应该用金杯盛放，酒沫里该有诗歌的韵律，喝下去就能获得智慧，而不是仅仅让你头晕。”说罢，他一口气将蜜酒饮尽。&lt;&lt;npclove _n&gt;&gt;
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;meaty&quot;)&gt;&gt;这才是像样的食物&lt;&lt;npclove _n&gt;&gt;
-&lt;&lt;elseif $gift == &quot;焚草&quot;&gt;&gt;收下了你的焚草。
-&lt;&lt;npclove 1&gt;&gt;
+
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;bolverkhate&quot;)&gt;&gt;看到你递出的物品，厚重的尾巴不耐烦地拍打着地面，独眼里满是不屑：“我的厅堂里不需要这种垃圾。”&lt;&lt;npchate 1&gt;&gt;
 &lt;&lt;else&gt;&gt;收下了你的礼物
 &lt;&lt;npclove 1&gt;&gt;
@@ -10560,13 +10638,13 @@ $npc收下了你的礼物
 
 /***************奥提斯******************/
 &lt;&lt;elseif $npc == &quot;奥提斯&quot;&gt;&gt;
-@@.otistalk;奥提斯@@&lt;&lt;if $gift == &quot;榛子咖啡&quot;&gt;&gt;看到榛子咖啡的包装，眼睛瞬间从厚厚的眼镜片后亮了起来，他的鼻尖微微抽动，暂时放下了笔，伸出两只手郑重地接过：“哦？这是...！你特意为我搞来的？真是感谢！”他凑近深深吸了一口香气，露出一副极其陶醉的表情，“嗯...这醇厚的香气，是知识与灵感的味道…不对，这么说太俗套了。应该说是‘能让混沌的思绪沉淀为清晰字句的催化剂’。我想，下一个章节的思维会因此而格外流畅。”他抬头看你，仿佛在此刻的某个瞬间，他察觉到了你身上某种不存在的品质，“现在我得说，我手上的故事也许会变得格外出色呢，都得感谢你，我的朋友！”&lt;&lt;npclove _m&gt;&gt;
+@@.otistalk;奥提斯@@&lt;&lt;if $gift == &quot;焚草&quot;&gt;&gt;收下了你的焚草。&lt;&lt;npclove 1&gt;&gt;&lt;&lt;set $firebloom.deleteAt($inx)&gt;&gt;
+&lt;&lt;elseif $gift == &quot;榛子咖啡&quot;&gt;&gt;看到榛子咖啡的包装，眼睛瞬间从厚厚的眼镜片后亮了起来，他的鼻尖微微抽动，暂时放下了笔，伸出两只手郑重地接过：“哦？这是...！你特意为我搞来的？真是感谢！”他凑近深深吸了一口香气，露出一副极其陶醉的表情，“嗯...这醇厚的香气，是知识与灵感的味道…不对，这么说太俗套了。应该说是‘能让混沌的思绪沉淀为清晰字句的催化剂’。我想，下一个章节的思维会因此而格外流畅。”他抬头看你，仿佛在此刻的某个瞬间，他察觉到了你身上某种不存在的品质，“现在我得说，我手上的故事也许会变得格外出色呢，都得感谢你，我的朋友！”&lt;&lt;npclove _m&gt;&gt;
 &lt;&lt;elseif $gift == &quot;无花果蜜饯&quot;&gt;&gt;写作的动作完全停了下来，的目光几乎黏在了你手里的蜜饯上，他努力想保持平静，但微微晃动的尾巴尖出卖了他的渴望：“啊，无花果蜜饯...想必是你自己制作的，岛上懂得欣赏这口味的猫可不多。”，他小心地捏起一块，对着光亮看着皱缩的表皮上覆盖的糖霜，口水快要滴到稿纸上，“甜味饱满，质地软糯，最重要的是——不会掉渣，完美符合书房礼仪。这是最不会打扰写作的补给品！”他咬了一小口，满足地眯起眼睛，发出一阵咕噜声。&lt;&lt;npclove _m&gt;&gt;
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;咖啡&quot;) &amp;&amp; $gift != &quot;蓝山咖啡&quot;&gt;&gt;的鼻子微微抽动一下，目光从稿纸上抬起，锁定在了在咖啡上：“啊，是咖啡的香味…来得正好。我这会儿正需要一点暖乎乎的东西来提提神。”他用胖乎乎的手接过咖啡，小心地放在桌角，“这应该足以支撑我完成眼下这个稍显冗长的‘场景过渡’段落了。谢了，我的朋友，你总是这么贴心。”&lt;&lt;npclove _n&gt;&gt;
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;sweet&quot;)&gt;&gt;的目光立刻被甜食吸引，尾巴愉快地在身后摆动着：“哦？是给我的吗？真是让人开心的小惊喜。”他暂时放下笔，饶有兴致地端详着你的礼物，仿佛正在想象该如何享用它，“等我处理完这个棘手的对话描写再来‘处理’它。太谢谢你了，这份甜意我收下了。”&lt;&lt;npclove _n&gt;&gt;
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;otishate&quot;)&gt;&gt;从稿纸上抬起头，小眼睛扫过你的礼物，略带疑惑地看看它，又看看你：“这...是给我的？”他腾出一只手推了下眼镜，“如果这是一个玩笑，那么您在这方面上相当出色！如果不是...”橘猫的胡须不确定的上下摆动了一下，似乎不愿意说完他的句子，“总之，请务必把它拿走。它让我的故事都开始感到悲伤了。”他埋头继续投入进他的写作中了。&lt;&lt;npchate 1&gt;&gt;
-&lt;&lt;elseif $gift == &quot;焚草&quot;&gt;&gt;收下了你的焚草。
-&lt;&lt;npclove 1&gt;&gt;
+
 &lt;&lt;else&gt;&gt;从稿纸上抬起头，小眼睛眨了眨，似乎还没从自己的故事中脱离出来：“嗯？这是...给我的吗？谢谢你想着我，我的朋友。”他的目光已经回到了稿纸上，写作似乎正进行到关键的部分，“先放那儿吧，等我写完这段再说...”
 &lt;&lt;npclove 1&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -10577,12 +10655,22 @@ $npc收下了你的礼物
 &lt;&lt;elseif $gift == &quot;砂盐&quot;&gt;&gt;捏起一小撮盐，在指尖搓捻，感受其独特的质感，随后露出一个深邃而了然的微笑：“啊...来自天上的馈赠。我认得这种独特的‘风味’，它能让平淡的酒也变得...颇有风味，让猫忘却所有无关的琐碎。” &lt;&lt;npclove _m&gt;&gt;
 &lt;&lt;elseif $gift == &quot;附子花&quot;&gt;&gt;&lt;&lt;npclove _n&gt;&gt;拿起那株美丽却致命的花朵，放在鼻尖下深深嗅吸，露出一个危险而迷人的微笑：“美丽的危险，危险的美丽…我最喜欢这种矛盾结合体了。它的特性如此强烈，只需一点点，就能让一杯平凡的酒变得...刻骨铭心。一份非常特别的礼物，我很喜欢。”
 &lt;&lt;elseif $gift == &quot;朗姆酒&quot;&gt;&gt;旋转着瓶身查看标签，然后轻轻放在一旁，露出一个略带歉意的微笑：“哦，亲爱的，真是谢谢你的心意。不过，我的酒馆更专注于提供一些风格更独特的烈酒。这瓶朗姆或许更适合接受不了高度数的猫品尝呢。” &lt;&lt;npchate 1&gt;&gt;
-&lt;&lt;elseif $gift == &quot;焚草&quot;&gt;&gt;收下了你的焚草。
-&lt;&lt;npchate 1&gt;&gt;
+&lt;&lt;elseif $gift == &quot;焚草&quot;&gt;&gt;接过焚草，手指捋过这束花草干脆的叶子，但那琥珀色的双眸注视着的一直是你。&lt;br&gt;&lt;br&gt;
+“谢谢你的心意，我亲爱的，但我向来对这种寄托愿景的小玩意不感兴趣。”她把你的礼物放在吧台的角落，你注意到那里已经有了数量可观的焚草，每条系带上的笔迹都不相同，“与其为一些转瞬即逝的东西浪费精力，不如来一杯我的特调酒。至少酒精带给你的是真实的感受。”
+&lt;&lt;npchate 1&gt;&gt;&lt;&lt;set $firebloom.deleteAt($inx)&gt;&gt;
 &lt;&lt;elseif $gift == &quot;方糖&quot;&gt;&gt;看着你递来的礼物，甚至没有伸手接过：“多么精致而甜蜜的小东西啊。但它过于完美的甜腻，会掩盖掉酒液本身复杂的层次感和真实的韵味。在我的领域，我们更倾向于欣赏那些...嗯...更原始、更强烈的本味。”&lt;&lt;npchate 1&gt;&gt;
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;花&quot;) &amp;&amp; $gift != &quot;附子花&quot;&gt;&gt;接过花束，闭上眼眸，表情沉醉地轻嗅了一下，随即将它插在吧台的一个杯子里：“真是鲜艳欲滴啊。可惜它们娇嫩的生命力，与我这里浓烈的酒香和喧嚣的气氛相比，显得有些....难以长久。但我依然感谢这份带来不同气息的礼物。”&lt;&lt;npchate 1&gt;&gt;
 &lt;&lt;elseif Item.get($gift).hasTag(&quot;饮料&quot;)&gt;&gt;看着你递出的礼物，露出一个宽容却又带着一丝无奈的笑容：“亲爱的，你真是体贴。不过在这里，我们相信唯有经过时间发酵的精华，才能真正慰藉灵魂。这些甜美的饮品，或许可以留给街头嬉闹的孩子们？&lt;&lt;npchate 1&gt;&gt;
 &lt;&lt;else&gt;&gt;&lt;&lt;set _rpl= [&quot;接过礼物，绿眼睛微微弯起，露出一个真诚而愉悦的笑容：“哎呀，真是份意外的惊喜！虽然我这老派的口味可能一时想不到怎么用它，但这份心意本身就像一杯恰到好处的开胃酒，令人心情愉悦。谢谢你，亲爱的，总是这么有心。”&quot;,&quot;拿起物品，饶有兴致地把玩了一下，随即发出一阵闷热的笑声，仿佛雨季的风穿过树林：“哈，这可真有意思！我的脑子光围着酒瓶和酒杯转了，差点忘了世界上还有这样有趣的小东西。很好，它会给吧台增添一点新的话题。感谢你为我这枯燥的老板娘带来一丝新鲜感。”&quot;,&quot;轻轻抚摸着礼物，眼神变得柔和，语气中带着恰到好处的感动：“哦，我亲爱的...你总能注意到这些细节。这份被惦记的温暖，比任何陈年美酒都更让人沉醉。我会为它找个特别的位置安放的，我保证。”&quot;].random()&gt;&gt;_rpl&lt;&lt;npclove 1&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+/***************欧马卡特******************/
+&lt;&lt;elseif $npc == &quot;欧马卡特&quot;&gt;&gt;
+@@.omatalk;欧马卡特@@&lt;&lt;if $gift == &quot;焚草&quot;&gt;&gt;接过你的焚草，不知道是你写的祝福语，还仅仅是你那期待的眼神，引得他一阵发笑。&lt;br&gt;&lt;br&gt;
+“原来他们还在搞这个，我以为我们的//小拯救者//早就放弃了，”他顿了一下，装出一副思考的模样，“或者说，她只是放弃我了。”&lt;br&gt;&lt;br&gt;
+那副近似哀悼的沉思表情意外的很合适出现在他脸上，可不出两个心跳，他就恢复到了往日那副尖牙外露的夸张笑容。&lt;br&gt;&lt;br&gt;
+“不说那些有的没的了，让我猜猜，你的这份里面有多少真情，多少假意？”他眯起漆黑的眼睛，没有任何额外动作，却让你不由自主地抬起头他双目对视，接着，就像在你身上找够了乐子般，他移开了视线，“不管多少，谢谢你的礼物，亲爱的，祝你有一个愉快的焚芳节，他们都在指望这个。”
+&lt;&lt;npclove 1&gt;&gt;&lt;&lt;set $firebloom.deleteAt($inx)&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
 
@@ -10798,23 +10886,23 @@ $npc收下了你的礼物
 
 &lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="39" name="主线D1" tags="nobr" position="600,1200" size="100,100">&lt;&lt;if $choice == &quot;我想去拓荒者木屋&quot;&gt;&gt;
 &lt;&lt;set $loc = &quot;拓荒者木屋&quot;&gt;&gt;&lt;&lt;set $minute += random(1,3)&gt;&gt;
-你的话音刚落, 一道炫目的金光占据了你全部的视野, 几个心跳过后, 你意识到你已经不在港口码头, 面前也不再是Seisi那张鸟脸, 取而代之的是一间被花丛环绕的小木屋, 门虚掩着, 仿佛在等待你的到来。&lt;br&gt;&lt;br&gt;
-&lt;&lt;timed 3s t8n&gt;&gt;你踏进木屋, 木柴燃烧的气息立刻充斥着你的鼻孔, 却并不刺激, 更像是阳光那般的温暖气息。你看到木屋的客厅里混杂着藤制摇椅和布制沙发, 似乎随时准备着接待一群客人; 一些盆栽被屋主不经意似地搁置在各个角落, 从横跨客厅外围的落地窗透进的阳光下努力生存; 客厅的另一面墙安上了壁橱, 用来放置各类杂物和书籍, 壁橱的尽头是一直通向屋顶的壁炉, 里面正在热烈燃烧着&lt;b&gt;炉火&lt;/b&gt;。&lt;br&gt;&lt;br&gt;
-&lt;&lt;next 6s t8n&gt;&gt;你盯着火焰看得出神, 差点没听见那句“请坐下吧”。等你回过神来, 发现自己已经坐在了沙发上, 面前是摆满茶点的小圆桌, 还有一位正在为你倒茶的白毛母猫.&lt;br&gt;&lt;br&gt;
-&lt;&lt;next 4s t8n&gt;&gt;这一定就是岛主了. 你努力搜刮记忆里他人对于她的描述。她比你想象的要年轻, 或者说, 没有一处符合你对一个岛屿管理者的假设, 她更像是你会在一座陌生城市的街角遇到的当地女孩，有些走神地指出你要前往的道路.&lt;br&gt;&lt;br&gt;
-&lt;&lt;next&gt;&gt;&quot;这些是我平日里的口味, 希望你还喜欢. &quot;她递来的红茶在阳光下闪烁着宝石般通透的光芒, 热气中透露着那种发酵后的甜腻。若你对茶叶有些学问, 你就会知道这杯茶的市价不菲&lt;br&gt;&lt;br&gt;
+你的话音刚落，一道炫目的金光占据了你全部的视野，几个心跳过后，你意识到你已经不在港口码头，面前也不再是Seisi那张鸟脸，取而代之的是一间被花丛环绕的小木屋，门虚掩着，仿佛在等待你的到来。&lt;br&gt;&lt;br&gt;
+&lt;&lt;timed 3s t8n&gt;&gt;你踏进木屋，木柴燃烧的气息立刻充斥着你的鼻孔，却并不刺激，更像是阳光那般的温暖气息。你看到木屋的客厅里混杂着藤制摇椅和布制沙发，似乎随时准备着接待一群客人; 一些盆栽被屋主不经意似地搁置在各个角落，从横跨客厅外围的落地窗透进的阳光下努力生存; 客厅的另一面墙安上了壁橱，用来放置各类杂物和书籍，壁橱的尽头是一直通向屋顶的壁炉，里面正在热烈燃烧着&lt;b&gt;炉火&lt;/b&gt;。&lt;br&gt;&lt;br&gt;
+&lt;&lt;next 6s t8n&gt;&gt;你盯着火焰看得出神，差点没听见那句“请坐下吧”。等你回过神来，发现自己已经坐在了沙发上，面前是摆满茶点的小圆桌，还有一位正在为你倒茶的白毛母猫.&lt;br&gt;&lt;br&gt;
+&lt;&lt;next 4s t8n&gt;&gt;这一定就是@@.nixtalk;岛主@@了。你努力搜刮记忆里他人对于她的描述。她比你想象的要年轻，或者说，没有一处符合你对一个岛屿管理者的假设，她更像是你会在一座陌生城市的街角遇到的当地女孩，有些走神地指出你要前往的道路.&lt;br&gt;&lt;br&gt;
+&lt;&lt;next&gt;&gt;&quot;这些是我平日里的口味, 希望你还喜欢. &quot;她递来的红茶在阳光下闪烁着宝石般通透的光芒，热气中透露着那种发酵后的甜腻。若你对茶叶有些学问，你就会知道这杯茶的市价不菲&lt;br&gt;&lt;br&gt;
 &lt;&lt;next&gt;&gt;
 &lt;&lt;link ▷「喝茶」 主线D1&gt;&gt;&lt;&lt;set $choice to &quot;喝茶&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/timed&gt;&gt;
 
 &lt;&lt;elseif $choice == &quot;喝茶&quot;&gt;&gt;&lt;&lt;set $minute += random(3,5)&gt;&gt;
-你道谢一声, 低头喝了口红茶, 如料想中的那般甜味, 还带有植物本该的苦涩和一丝烟熏的口感. 你现在很想来上一块茶点了&lt;br&gt;&lt;br&gt;
-&lt;&lt;timed 1s t8n&gt;&gt;见你喝了茶, 岛主也坐下享用起她的那杯. 空气中的灰尘在阳光下翻涌, 方才滋养起来的沉默被瓷器碰撞的声响泯末. 她放下茶杯, 用那双蓝色眼睛看着你:&quot;欢迎来到永无乡, $nn, &quot;她如此自然亲切的叫出你的昵称, 仿佛你们早已熟识, &quot;我是@@.nixtalk;枘朴@@, 永无乡的管理者. 我们一直在期待你的到来. &quot;
+你道谢一声，低头喝了口红茶，如料想中的那般甜味，还带有植物本该的苦涩和一丝烟熏的口感. 你现在很想来上一块茶点了&lt;br&gt;&lt;br&gt;
+&lt;&lt;timed 1s t8n&gt;&gt;见你喝了茶，岛主也坐下享用起她的那杯. 空气中的灰尘在阳光下翻涌，方才滋养起来的沉默被瓷器碰撞的声响泯末. 她放下茶杯，用那双蓝色眼睛看着你:&quot;欢迎来到永无乡, $nn, &quot;她如此自然亲切的叫出你的昵称, 仿佛你们早已熟识, &quot;我是@@.nixtalk;枘朴@@, 永无乡的管理者. 我们一直在期待你的到来. &quot;
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;next 4s t8n&gt;&gt;沙发另一侧堆着枘朴小姐在你进门前在处理的文件，还有几个简易包装的礼盒，她在文件堆中翻找几下，拿出了一张你有些眼熟的信纸。&lt;br&gt;&lt;br&gt;
-&lt;&lt;next 3s t8n&gt;&gt;&quot;我们收到了你的邮件, 老实说, 很少有一段文字能如此打动我. &quot;你意识到她手中拿着的就是你寄出的&lt;b&gt;那封信&lt;/b&gt;, 信的内容几乎已经从你的记忆中逃离, 但你仍能感受到那份羞耻感。
-&quot;而作为一个美妙的巧合，我们的焚芳节也会在几天后举行，所以我立刻想到，为什么不邀请你前来，亲自体验永无乡的生活？这样一来，在你最终做出决定时，也会更周全. &quot;
+&lt;&lt;next 3s t8n&gt;&gt;&quot;我们收到了你的邮件, 老实说, 很少有一段文字能如此打动我. &quot;你意识到她手中拿着的就是你寄出的&lt;b&gt;那封信&lt;/b&gt;，信的内容几乎已经从你的记忆中逃离，但你仍能感受到那份羞耻感。&lt;br&gt;&lt;br&gt;
+&quot;而作为一个美妙的巧合, @@.nixtalk;我们的焚芳节也会在几天后举行@@, 所以我立刻想到, 为什么不邀请你前来, 亲自体验永无乡的生活? 这样一来, 在你最终做出决定时, 也会更周全. &quot;
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;next 4s t8n&gt;&gt;她似乎察觉到了你的疑惑, 回你以一个安心的微笑. &quot;是的, 永无乡是作为一处移居地产对外宣传的, 如果这中间产生了误解, 我很抱歉. 因为比起一座仅供栖身的小岛, 永无乡更多的是一片供猫们自由生活的土地. 岛上的居民, 都是选择自愿留下的旅客, 我明白抛下外面的生活有多么不易, 所以我珍惜他们每一位的决定, 我的职责便是让他们在永无乡上生活的更舒适. &quot;
+&lt;&lt;next 4s t8n&gt;&gt;她似乎察觉到了你的疑惑, 回你以一个安心的微笑. &quot;是的, 永无乡是作为一处移居地产对外宣传的, 如果这中间产生了误解, 我很抱歉. @@.nixtalk;因为比起一座仅供栖身的小岛, 永无乡更多的是一片供猫们自由生活的土地. @@岛上的居民, 都是选择自愿留下的旅客, 我明白抛下外面的生活有多么不易, 所以我珍惜他们每一位的决定, 我的职责便是让他们在永无乡上生活的更舒适. &quot;
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;next 4s t8n&gt;&gt;“这里不是什么大地方, 比不上城市的繁华, 但大家的生活都很轻松, 彼此之间也没有什么隔阂, 而这就是我建起永无乡的初衷. ” 她最后总结道。
 &lt;br&gt;&lt;br&gt;
@@ -12647,7 +12735,7 @@ Seisi埋着头，用喙逐个拨开田鼠，仿佛在进行一种鸟类的算数
 &lt;&lt;do&gt;&gt;〖你的牢狱时间将在&lt;&lt;if $date == $celltime&gt;&gt;明天&lt;&lt;elseif $date == $celltime +1&gt;&gt;今天&lt;&lt;/if&gt;&gt;正午结束〗&lt;br&gt;&lt;br&gt;
 &lt;&lt;link ❖小憩一会&gt;&gt;&lt;&lt;set _m = random(4,10), $HP += _m, $hour += 1&gt;&gt;&lt;&lt;notify 3s&gt;&gt;体力恢复_m点&lt;&lt;/notify&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;link ❖越狱 越狱&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;if $date == $celltime +1 &amp;&amp; $hour &gt;=12&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 小镇&gt;&gt;&lt;&lt;set $hidemap = 0&gt;&gt;&lt;&lt;notify 3s&gt;&gt;你的嫌疑降低了2点&lt;&lt;/notify&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="越狱" tags="nobr" position="" size="">还没写，乖乖待着吧。
+&lt;&lt;if $date == $celltime +1 &amp;&amp; $hour &gt;=12&gt;&gt;&lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「离开」 小镇&gt;&gt;&lt;&lt;set $hidemap = 0&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="62" name="越狱" tags="nobr" position="" size="">还没写，乖乖待着吧。
 &lt;br&gt;&lt;br&gt;&lt;&lt;link ▷「返回」 牢房&gt;&gt;&lt;&lt;set $choice = 0&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="63" name="制作" tags="nobr" position="1400,600" size="100,100">&lt;center&gt;&lt;h1&gt;工坊制作台&lt;/h1&gt;
 &lt;hr&gt;&lt;/center&gt;
 &lt;&lt;link ▷「离开」 裁缝铺&gt;&gt;
@@ -13473,6 +13561,10 @@ Dialog.open();&gt;&gt;
 &lt;&lt;buy _item _amount&gt;&gt;&lt;&lt;/for&gt;&gt;&lt;/div&gt;
 &lt;br&gt;&lt;div style=&quot;float: right;&quot;&gt;每日现做，尽请挑选&lt;/div&gt;
 &lt;&lt;elseif $loc == &quot;酒馆&quot;&gt;&gt;
+&lt;div class=&quot;shopping-interface&quot;&gt;
+&lt;&lt;for _item, _amount range $pub.table&gt;&gt;
+&lt;&lt;buy _item _amount&gt;&gt;&lt;&lt;/for&gt;&gt;&lt;/div&gt;
+&lt;&lt;elseif $loc == &quot;花店&quot;&gt;&gt;
 &lt;div class=&quot;shopping-interface&quot;&gt;
 &lt;&lt;for _item, _amount range $pub.table&gt;&gt;
 &lt;&lt;buy _item _amount&gt;&gt;&lt;&lt;/for&gt;&gt;&lt;/div&gt;
@@ -15866,7 +15958,10 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;&lt;bird&gt;&gt;
 &lt;&lt;/do&gt;&gt;
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="下注" tags="nobr" position="" size="">&lt;div class=&quot;racingcontainer&quot;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="94" name="下注" tags="nobr" position="" size="">&lt;&lt;if $recording[&quot;赛马&quot;]==&quot;已结束&quot;&gt;&gt;
+本周的比赛已经结束。
+&lt;&lt;else&gt;&gt;
+&lt;div class=&quot;racingcontainer&quot;&gt;
   &lt;header&gt;&lt;h1&gt;🏇 赛马 🏇  &lt;span style=&quot;font-size:0.5em;&quot;&gt;开赛时间：礼拜四下午&lt;/span&gt;&lt;/h1&gt;&lt;/header&gt;
 
   &lt;div class=&quot;game-info&quot;&gt;&lt;&lt;do&gt;&gt;
@@ -15884,9 +15979,11 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
      &lt;&lt;else&gt;&gt;
   &lt;&lt;goto &quot;赛马进行&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="95" name="赛马进行" tags="nobr" position="" size="">&lt;h2&gt;比赛进行中…&lt;/h2&gt;
-&lt;div class=&quot;race-track&quot;&gt;&lt;/div&gt;
 
+&lt;/div&gt;&lt;&lt;/if&gt;&gt;
+&lt;br&gt;
+&lt;&lt;link ▷「离开」 LSS马场&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="95" name="赛马进行" tags="nobr" position="" size="">&lt;h2&gt;比赛进行中…&lt;/h2&gt;
+&lt;div class=&quot;race-track&quot;&gt;&lt;/div&gt;
 &lt;script&gt;startRaceAnimation();&lt;/script&gt;</tw-passagedata><tw-passagedata pid="96" name="赛马结果" tags="nobr" position="" size="">&lt;h2&gt;比赛结果&lt;/h2&gt;&lt;&lt;set $recording[&quot;赛马&quot;]=&quot;已结束&quot;&gt;&gt;
 获胜马匹：&lt;&lt;print $raceWinner&gt;&gt;  
 奖金：&lt;&lt;print $prize&gt;&gt;  
@@ -17448,7 +17545,7 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
         &lt;div class=&quot;card-border&quot;&gt;&lt;/div&gt;你获得了&lt;br&gt;&lt;&lt;if _b != 0&gt;&gt;红茶 * _b、&lt;&lt;/if&gt;&gt;&lt;&lt;if _c != 0&gt;&gt;浆果馅饼 * _c、&lt;&lt;/if&gt;&gt;&lt;&lt;if _d != 0&gt;&gt;烤鸡腿 * _d、&lt;&lt;/if&gt;&gt;&lt;&lt;if _e != 0&gt;&gt;果汁 * _e&lt;&lt;/if&gt;&gt;&lt;/div&gt;
 
 &lt;br&gt;&lt;br&gt;
-&lt;&lt;if !$firstbjb&gt;&gt;&lt;&lt;set $firstbjb = 1&gt;&gt;
+&lt;&lt;if !$firstbjb || $firstbjb !=1&gt;&gt;&lt;&lt;set $firstbjb = 1&gt;&gt;
 &lt;&lt;timed 2s t8n&gt;&gt;在你准备谢过修女时, 她们又拿出了两样工具, 摆在你面前. 鱼竿和猎枪, 这显然是单项选择
 &lt;br&gt;&lt;br&gt;
 &lt;&lt;link ▷「鱼竿」&gt;&gt;&lt;&lt;set $choice to &quot;鱼竿&quot;&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
@@ -17478,11 +17575,10 @@ _itemn3的种子正安静地躺在土壤里&lt;br&gt;
 &lt;&lt;else&gt;&gt;&lt;&lt;set $loc = &quot;花店&quot;, $loct = &quot;花店&quot;, $minute += random(3,8)&gt;&gt;
 @@.intrtext;你踏进这家一周只开一天的店, 旺盛生长的花草堆满了室内有限的空间. 枘朴小姐正坐在透光的玻璃窗下, 整理着一束干花@@&lt;br&gt;
 &lt;&lt;NPCnow&gt;&gt;
-&lt;br&gt;
-地点活动&lt;br&gt;
-&lt;&lt;link ◈「打工」 打工&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;br&gt;地点活动&lt;br&gt;
+&lt;&lt;link ◈「打工」 打工&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;br&gt;
+&lt;br&gt;花店门口&lt;br&gt;
 &lt;&lt;if $msd &gt;=3 &amp;&amp; $msd &lt;=9&gt;&gt;
 &lt;&lt;link ◈「制作焚草」 焚草&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;br&gt;&lt;br&gt;
@@ -18383,7 +18479,7 @@ $knowledgeexp to 0, $strengthexp to 0, $observationexp to 0, $persuasiveexp to 0
 $sin to 0, $resonancefire = 0, $resonancebael = 0&gt;&gt;
 &lt;&lt;set $player = {knowledge: 0, strength: 0, observation: 0, persuasive: 0, wound: 0, dread: 0, nightmare: 0, suspicion : 0, cautious: 0, heartless: 0, curiosity: 0, bold : 0, kindness: 0, enjoy: 0}&gt;&gt;
 &lt;&lt;set $godstyle = {bloodthirsty:0, majesty:0, peaceful:0, stead:0}&gt;&gt;
-&lt;&lt;set $death ={&quot;伤口&quot;:0, &quot;恐惧&quot;:0, &quot;噩梦&quot;:0, &quot;嫌疑&quot;:0}&gt;&gt;
+&lt;&lt;set $death ={}, $death[&quot;伤口&quot;]=0, $death[&quot;恐惧&quot;]=0, $death[&quot;噩梦&quot;]=0, $death[&quot;嫌疑&quot;]=0&gt;&gt;
 /******************初始值们******************/
 &lt;&lt;set $active to {
     &quot;钓鱼&quot;: 0,
@@ -18401,7 +18497,7 @@ $sin to 0, $resonancefire = 0, $resonancebael = 0&gt;&gt;
     &quot;欣赏风景&quot;: 0,
     &quot;堆沙堡&quot;: 0,
 }&gt;&gt;
-&lt;&lt;set $itemweight = {dreamdiary:0.03, firebloom : 0.02, bookshelf:0, cupboard:2.96}, $firebloom =[], $dream =[]&gt;&gt;&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;set $fontSize =16, $bycs = 3, $jobt =0&gt;&gt;
+&lt;&lt;set $itemweight = {dreamdiary:0.03, firebloom : 0.02, bookshelf:0, cupboard:2.96}, $firebloom =[], $dream =[]&gt;&gt;&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;set $fontSize =16, $bycs = 3, $jobt =0, $celltime =0&gt;&gt;
 &lt;&lt;set $loc = &quot;未知&quot;, $loct = &quot;未知&quot;, $job = &quot;暂无&quot;,$home = &quot;暂无&quot;, $avatar = &quot;https://f2.toyhou.se/file/f2-toyhou-se/images/108251338_WycNJsCuPu3j39s.png&quot;, $choice =0,
 $chop = 0, $dgcs = 6, $fycs = 3, $gzcs = 3, $bjb to 0, $Owuotake = 0&gt;&gt;
 &lt;&lt;set $sq = {way : 0, moon: 0, ashes: 0}&gt;&gt;
@@ -18411,7 +18507,7 @@ $chop = 0, $dgcs = 6, $fycs = 3, $gzcs = 3, $bjb to 0, $Owuotake = 0&gt;&gt;
 &lt;&lt;set $stoletime =  0&gt;&gt;
 &lt;&lt;set $textcard= [&quot;永无乡&quot;,&quot;猫族&quot;,&quot;南风&quot;,&quot;月亮&quot;,&quot;羽墨&quot;]&gt;&gt;
 &lt;&lt;set _now to new Date()&gt;&gt;
-&lt;&lt;set $innpay = 1, $date to 1, $month = 6, $day = 14, $dailyash to 0, $week to 7, $hour to 7, $minute to 0, $dtr to 0, $dtr1 to 0, $dtr2 to 0, $weather to &quot;晴天&quot;, $wind to &quot;东风&quot;, $npc = 0, $msstat = &quot;初始&quot;&gt;&gt;
+&lt;&lt;set $innpay = 1, $date to 1, $month = 6, $day = 14, $dailyash to 0, $week to 7, $hour to 7, $minute to 0, $dtr to 0, $dtr1 to 0, $dtr2 to 0, $weather to &quot;晴天&quot;, $wind to &quot;东风&quot;, $npc = 0, $msstat = &quot;初始&quot;,$msname =&quot;无&quot;&gt;&gt;
 &lt;&lt;set $sheep to 27, $boat to 6, $sleepnt = 1, $sleept = 2, $drowner = 12&gt;&gt;&lt;&lt;set $lostsheep = [0, 0]&gt;&gt;
 &lt;&lt;set $land1 = {name: &#39;无&#39;, stat: 0, needt:0, watert:0},  $land2 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}, $land3 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}, $land4 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}, $land5 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}, $land6 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}&gt;&gt;
 &lt;&lt;set $achv = [], $story = {}, $storydone = [], $storymiss = [], $clue = []&gt;&gt;
@@ -18663,6 +18759,7 @@ if (ndef $player[stat]) {throw new Error(`Invalid stat: ${stat}`);}
 ])&gt;&gt;
 
 &lt;&lt;set setup.access = new Map([
+  [&quot;无&quot;, {knowledge : 0, strength : 0, observation : 0, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, curiosity: 0, bold : 0, kindness: 0, enjoy : 0}],
  [&quot;丝带白玫瑰&quot;, {knowledge : 0, strength : 0, observation : 0, persuasive : 0, wound : 0, dread : 0, nightmare : 0, suspicion : 0, cautious: 0, heartless: 0, curiosity: 0, bold : 0, kindness: 0, enjoy : 0}],
 ])&gt;&gt;</tw-passagedata><tw-passagedata pid="187" name="重启数据" tags="" position="" size="">&lt;&lt;set $hideui = 0&gt;&gt;
 /******************属性值们******************/
@@ -18672,9 +18769,25 @@ $knowledgeexp to 0, $strengthexp to 0, $observationexp to 0, $persuasiveexp to 0
 $sin to 0, $resonancefire = 0, $resonancebael = 0&gt;&gt;
 &lt;&lt;set $player = {knowledge: 0, strength: 0, observation: 0, persuasive: 0, wound: 0, dread: 0, nightmare: 0, suspicion : 0, cautious: 0, heartless: 0, curiosity: 0, bold : 0, kindness: 0, enjoy: 0}&gt;&gt;
 &lt;&lt;set $godstyle = {bloodthirsty:0, majesty:0, peaceful:0, stead:0}&gt;&gt;
-&lt;&lt;set $death ={&quot;伤口&quot;:0, &quot;恐惧&quot;:0, &quot;噩梦&quot;:0, &quot;嫌疑&quot;:0}&gt;&gt;
+&lt;&lt;set $death ={}, $death[&quot;伤口&quot;]=0, $death[&quot;恐惧&quot;]=0, $death[&quot;噩梦&quot;]=0, $death[&quot;嫌疑&quot;]=0&gt;&gt;
 /******************初始值们******************/
-&lt;&lt;set $itemweight = {dreamdiary:0.03, firebloom : 0.02, bookshelf:0, cupboard:2.96}, $firebloom =[], $dream =[]&gt;&gt;
+&lt;&lt;set $active to {
+    &quot;钓鱼&quot;: 0,
+    &quot;打猎&quot;: 0,
+    &quot;散步&quot;: 0,
+    &quot;打工&quot;: 0,
+    &quot;偷窃&quot;: 0,
+    &quot;喂鸟&quot;: 0,
+    &quot;做饭&quot;: 0,
+    &quot;睡觉&quot;: 0,
+    &quot;小憩&quot;: 0,
+    &quot;喝酒&quot;: 0,
+    &quot;表演&quot;: 0,
+    &quot;读书&quot;: 0,
+    &quot;欣赏风景&quot;: 0,
+    &quot;堆沙堡&quot;: 0,
+}&gt;&gt;
+&lt;&lt;set $itemweight = {dreamdiary:0.03, firebloom : 0.02, bookshelf:0, cupboard:2.96}, $firebloom =[], $dream =[]&gt;&gt;&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;set $fontSize =16, $bycs = 3, $jobt =0, $celltime =0,$bedside = 0, $hidemap =0&gt;&gt;
 &lt;&lt;set $loc = &quot;未知&quot;, $loct = &quot;未知&quot;, $job = &quot;暂无&quot;,$home = &quot;暂无&quot;, $avatar = &quot;https://f2.toyhou.se/file/f2-toyhou-se/images/108251338_WycNJsCuPu3j39s.png&quot;, $choice =0,
 $chop = 0, $dgcs = 6, $fycs = 3, $gzcs = 3, $bjb to 0, $Owuotake = 0&gt;&gt;
 &lt;&lt;set $sq = {way : 0, moon: 0, ashes: 0}&gt;&gt;
@@ -18684,7 +18797,7 @@ $chop = 0, $dgcs = 6, $fycs = 3, $gzcs = 3, $bjb to 0, $Owuotake = 0&gt;&gt;
 &lt;&lt;set $stoletime =  0&gt;&gt;
 &lt;&lt;set $textcard= [&quot;永无乡&quot;,&quot;猫族&quot;,&quot;南风&quot;,&quot;月亮&quot;,&quot;羽墨&quot;]&gt;&gt;
 &lt;&lt;set _now to new Date()&gt;&gt;
-&lt;&lt;set $innpay = 1, $date to 1, $month = 6, $day = 14, $dailyash to 0, $week to 7, $hour to 7, $minute to 0, $dtr to 0, $dtr1 to 0, $dtr2 to 0, $weather to &quot;晴天&quot;, $wind to &quot;东风&quot;, $npc = 0, $msstat = &quot;初始&quot;&gt;&gt;
+&lt;&lt;set $innpay = 1, $date to 1, $month = 6, $day = 14, $dailyash to 0, $week to 7, $hour to 7, $minute to 0, $dtr to 0, $dtr1 to 0, $dtr2 to 0, $weather to &quot;晴天&quot;, $wind to &quot;东风&quot;, $npc = 0, $msstat = &quot;初始&quot;,$msname =&quot;无&quot;&gt;&gt;
 &lt;&lt;set $sheep to 27, $boat to 6, $sleept = 2, $sleepnt = 1, $drowner = 12&gt;&gt;&lt;&lt;set $lostsheep = [0, 0]&gt;&gt;
 &lt;&lt;set $land1 = {name: &#39;无&#39;, stat: 0, needt:0, watert:0},  $land2 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}, $land3 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}, $land4 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}, $land5 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}, $land6 ={name: &#39;无&#39;, stat: 0, needt:0, watert:0}&gt;&gt;
 &lt;&lt;set $achv = [], $story = {}, $storydone = [], $storymiss = [], $clue = []&gt;&gt;
@@ -18801,7 +18914,14 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
     &quot;日常&quot;: {headSlot: &quot;无&quot;, neckSlot: &quot;无&quot;, topSlot: &quot;无&quot;, handSlot: &quot;无&quot;, pantsSlot: &quot;无&quot;, footSlot: &quot;无&quot;, toolSlot: &quot;无&quot;, petSlot: &quot;无&quot; },
     &quot;沙龙&quot;: {headSlot: &quot;无&quot;, neckSlot: &quot;无&quot;, topSlot: &quot;无&quot;, handSlot: &quot;无&quot;, pantsSlot: &quot;无&quot;, footSlot: &quot;无&quot;, toolSlot: &quot;无&quot;, petSlot: &quot;无&quot; },
     &quot;工作&quot;: {headSlot: &quot;无&quot;, neckSlot: &quot;无&quot;, topSlot: &quot;无&quot;, handSlot: &quot;无&quot;, pantsSlot: &quot;无&quot;, footSlot: &quot;无&quot;, toolSlot: &quot;无&quot;, petSlot: &quot;无&quot; }
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="188" name="随机文案描述" tags="nobr" position="" size="">&lt;&lt;set setup.items[&#39;永无乡&#39;] to {name: &#39;永无乡&#39;,
+}&gt;&gt;
+
+
+&lt;&lt;dropall $head&gt;&gt;&lt;&lt;dropall $access&gt;&gt;&lt;&lt;dropall $neck&gt;&gt;&lt;&lt;dropall $top&gt;&gt;&lt;&lt;dropall $hand&gt;&gt;&lt;&lt;dropall $pants&gt;&gt;&lt;&lt;dropall $foot&gt;&gt;&lt;&lt;dropall $tool&gt;&gt;&lt;&lt;dropall $pet&gt;&gt;
+
+&lt;&lt;set $headSlot = &quot;无&quot;&gt;&gt;&lt;&lt;set $accessSlot = &quot;无&quot;&gt;&gt;&lt;&lt;set $neckSlot = &quot;无&quot;&gt;&gt;&lt;&lt;set $topSlot = &quot;无&quot;&gt;&gt;&lt;&lt;set $handSlot = &quot;无&quot;&gt;&gt;&lt;&lt;set $pantsSlot = &quot;无&quot;&gt;&gt;&lt;&lt;set $footSlot = &quot;无&quot;&gt;&gt;&lt;&lt;set $toolSlot = &quot;无&quot;, $petSlot = &quot;无&quot;, $toolds = &quot;无，没有，不&quot;&gt;&gt;
+
+&lt;&lt;run setup.equip(&quot;tool&quot;, &quot;无&quot;)&gt;&gt;&lt;&lt;run setup.equip(&quot;access&quot;, &quot;无&quot;)&gt;&gt;&lt;&lt;run setup.equip(&quot;neck&quot;, &quot;无&quot;)&gt;&gt;&lt;&lt;run setup.equip(&quot;top&quot;, &quot;无&quot;)&gt;&gt;&lt;&lt;run setup.equip(&quot;hand&quot;, &quot;无&quot;)&gt;&gt;&lt;&lt;run setup.equip(&quot;foot&quot;, &quot;无&quot;)&gt;&gt;&lt;&lt;run setup.equip(&quot;head&quot;, &quot;无&quot;)&gt;&gt;&lt;&lt;run setup.equip(&quot;pet&quot;, &quot;无&quot;)&gt;&gt;</tw-passagedata><tw-passagedata pid="188" name="随机文案描述" tags="nobr" position="" size="">&lt;&lt;set setup.items[&#39;永无乡&#39;] to {name: &#39;永无乡&#39;,
     description: &#39;&lt;&lt;set $textm= [&quot;漂浮在地中海某处的小岛，终年气候温和&lt;br&gt;永无乡欢迎所有人的到来&quot;,&quot;在这座被鲜花和蜡烛环绕的小岛上, 永远自由, 永无哀愁&quot;].random()&gt;&gt;$textm&#39;
 }&gt;&gt;
 &lt;&lt;set setup.items[&#39;雪&#39;] to {name: &#39;雪&#39;,
@@ -19183,7 +19303,7 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 &lt;&lt;if $hour &gt;= 6 &amp;&amp; $hour &lt; 20&gt;&gt;&lt;&lt;set $dn = 1&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set $dn = 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $weather == &quot;中雨&quot; || $weather == &quot;雷阵雨&quot; || $weather == &quot;小雨&quot; || $weather == &quot;暴雨&quot; &gt;&gt;&lt;&lt;set $rd = 1&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set $rd = 0&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-&lt;&lt;if $date &lt;= $celltime +1 &amp;&amp; $hour &lt;12 &amp;&amp; $loc != &quot;牢房&quot;&gt;&gt;&lt;&lt;goto 牢房&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $date &lt;= $celltime +1 &amp;&amp; $hour &lt;12 &amp;&amp; $loc != &quot;牢房&quot; &amp;&amp; $celltime !=0&gt;&gt;&lt;&lt;goto 牢房&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if !$sleeptime&gt;&gt;&lt;&lt;set $sleeptime =0&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if !$fontSize&gt;&gt;&lt;&lt;set $fontSize =16&gt;&gt;&lt;&lt;/if&gt;&gt;
@@ -19381,7 +19501,7 @@ Save.browser.continue()
   Dialog.open();
 &gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="200" name="StoryRightSidebar" tags="nobr" position="400,100" size="100,100">&lt;&lt;do tag &quot;rightbar&quot;&gt;&gt;&lt;&lt;stories&gt;&gt;
 &lt;&lt;if !$nn&gt;&gt;
-&lt;&lt;elseif !$firsts&gt;&gt;&lt;&lt;elseif !$npc || $npc == 0&gt;&gt;
+&lt;&lt;elseif !$npc || $npc == 0&gt;&gt;
 
 &lt;font size=4px&gt;&lt;b&gt;任务跟踪&lt;/b&gt;&lt;/font&gt;&lt;br&gt;
 &lt;&lt;link &#39;&lt;span style=&quot;font-size: 0.9em;&quot;&gt;❖ 清单&lt;/span&gt;&#39;&gt;&gt;
@@ -20595,9 +20715,9 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 &lt;&lt;=$firebloom[_i].one&gt;&gt; + &lt;&lt;=$firebloom[_i].two&gt;&gt; + &lt;&lt;=$firebloom[_i].three&gt;&gt;  
 祝福：&lt;&lt;=$firebloom[_i].text&gt;&gt;
 &lt;&lt;if $choice == &quot;赠送&quot;&gt;&gt;
-&lt;&lt;link &quot;赠送&quot; 赠送回复&gt;&gt;&lt;&lt;set $gift = &quot;焚草&quot;, _inx =_i&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &quot;赠送&quot; 赠送回复&gt;&gt;&lt;&lt;set $gift = &quot;焚草&quot;, $inx =_i&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;elseif $choice == &quot;焚烧&quot;&gt;&gt;
-&lt;&lt;link &quot;焚烧&quot;&gt;&gt;&lt;&lt;set _inx =_i&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;link &quot;焚烧&quot;&gt;&gt;&lt;&lt;set $inx =_i&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;br&gt;
 &lt;&lt;/capture&gt;&gt;
@@ -20809,7 +20929,7 @@ _item2 × &lt;&lt;=$material.count(_item2)&gt;&gt;
 	&lt;&lt;set $week +=1&gt;&gt;
     &lt;&lt;set $date +=1, $dailyash to 0, $day +=1&gt;&gt;&lt;&lt;set $dtr to 0, $dtr1 to 0, $dtr2 to 0, $recording[&quot;无花果&quot;] +=1&gt;&gt;&lt;&lt;set $sleept = 2, $sleepnt = 1&gt;&gt;&lt;&lt;set $dgcs = 6, $fycs = 3, $gzcs = 3,$recording.fig +=1&gt;&gt;&lt;&lt;set $innpay = 0&gt;&gt;&lt;&lt;set $eragift = 1&gt;&gt;&lt;&lt;set $origift = 1&gt;&gt;&lt;&lt;set $bellring1 = 0, $bellring2 = 0, $bellring3 = 0&gt;&gt; 
 	&lt;&lt;if $windowsill == &quot;蝙蝠粪便&quot;&gt;&gt;&lt;&lt;set $recording[&quot;蝙蝠粪便&quot;]+=1&gt;&gt;&lt;&lt;else&gt;&gt;&lt;&lt;set $recording[&quot;蝙蝠粪便&quot;]=0&gt;&gt;&lt;&lt;/if&gt;&gt;
-    &lt;&lt;if $date%6 == 0&gt;&gt;&lt;&lt;set $sheep -= random(3,6)&gt;&gt;&lt;&lt;/if&gt;&gt;
+    &lt;&lt;if $date%6 == 0&gt;&gt;&lt;&lt;set $sheep -= random(3,6)&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $sheep &lt;= 0&gt;&gt;&lt;&lt;set $sheep =0&gt;&gt;&lt;&lt;/if&gt;&gt;
     &lt;&lt;if $lostsheep[0] ==1&gt;&gt;&lt;&lt;set $lostsheep[0] = 2&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 
@@ -20827,7 +20947,7 @@ $racing.bitamount = $horse[0].bitamount+$horse[1].bitamount+$horse[2].bitamount+
 $racing.bitmoney = $horse[0].bitmoney+$horse[1].bitmoney+$horse[2].bitmoney+$horse[3].bitmoney+$horse[4].bitmoney+$horse[5].bitmoney+$horse[6].bitmoney+$horse[7].bitmoney
 &gt;&gt;
 &lt;&lt;set 
-$horse[0].odds = Math.floor($horse[0].odds*(1-$horse[0].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100, 
+$horse[0].odds = Math.floor($horse[0].odds*(1-$horse[0].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
 $horse[1].odds = Math.floor($horse[1].odds*(1-$horse[1].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
 $horse[2].odds = Math.floor($horse[2].odds*(1-$horse[2].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
 $horse[3].odds = Math.floor($horse[3].odds*(1-$horse[3].bitmoney*$racing.adjust/$racing.bitmoney)*100)/100,
@@ -20838,7 +20958,7 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 
 
 &lt;&lt;set $dailyjob = []&gt;&gt;&lt;&lt;dailyjob&gt;&gt;&lt;&lt;dailyjob&gt;&gt;&lt;&lt;dailyjob&gt;&gt;
-&lt;&lt;set $NPCinfo[&quot;埃拉&quot;].gift = 0, $NPCinfo[&quot;特里特&quot;].gift = 0, $NPCinfo[&quot;奥提斯&quot;].gift = 0, $NPCinfo[&quot;玛丽亚小姐&quot;].gift = 0, $NPCinfo[&quot;佩拉大夫&quot;].gift = 0, $NPCinfo[&quot;巴尔韦克老爷&quot;].gift = 0, $NPCinfo[&quot;萨巴夫人&quot;].gift = 0, $NPCinfo[&quot;公爵夫人&quot;].gift = 0, $NPCinfo[&quot;翡翠小姐&quot;].gift = 0, $NPCinfo[&quot;苏菲&quot;].gift = 0&gt;&gt;
+&lt;&lt;set $NPCinfo[&quot;埃拉&quot;].gift = 0, $NPCinfo[&quot;特里特&quot;].gift = 0, $NPCinfo[&quot;奥提斯&quot;].gift = 0, $NPCinfo[&quot;玛丽亚小姐&quot;].gift = 0, $NPCinfo[&quot;佩拉大夫&quot;].gift = 0, $NPCinfo[&quot;巴尔韦克老爷&quot;].gift = 0, $NPCinfo[&quot;萨巴夫人&quot;].gift = 0, $NPCinfo[&quot;公爵夫人&quot;].gift = 0, $NPCinfo[&quot;翡翠小姐&quot;].gift = 0, $NPCinfo[&quot;苏菲&quot;].gift = 0, $NPCinfo[&quot;欧马卡特&quot;].gift = 0, $NPCinfo[&quot;路娜&quot;].gift = 0&gt;&gt;
 
 &lt;&lt;if $week == 3 || $week == 5&gt;&gt;
 &lt;&lt;set $NPCinfo[&quot;翡翠小姐&quot;].loc =[&quot;沙地&quot;,&quot;贝雷河&quot;,&quot;草甸&quot;,&quot;罗索伦特湖&quot;,&quot;高地&quot;,&quot;秋毛岗&quot;,&quot;主港口&quot;,&quot;副港口&quot;].random()&gt;&gt;&lt;&lt;/if&gt;&gt;
@@ -21023,7 +21143,7 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 
 &lt;&lt;widget &quot;wanderWidget&quot;&gt;&gt;
 &lt;&lt;set _s to random(1,66)&gt;&gt;
-&lt;&lt;if ($wind == &quot;南风&quot; &amp;&amp; _s &lt;= 3) || (setup.getStat(&quot;nightmare&quot;) &gt;= 12 &amp;&amp; _s &lt;= 3) ||  _s == 1&gt;&gt;&lt;&lt;set $locs = &quot;白雾&quot;, $tlocs = &quot;白雾&quot;&gt;&gt;
+&lt;&lt;if ($wind == &quot;南风&quot; &amp;&amp; _s &lt;= 3) || (setup.getStat(&quot;nightmare&quot;) &gt;= 12 &amp;&amp; _s &lt;= 6) || ($sheep == 0 &amp;&amp; _s &lt;= 6) ||  _s == 1&gt;&gt;&lt;&lt;set $locs = &quot;白雾&quot;, $tlocs = &quot;白雾&quot;&gt;&gt;
 &lt;&lt;else&gt;&gt;&lt;&lt;set $locs to [&quot;罗索伦特湖&quot;,&quot;草甸&quot;,&quot;沙地&quot;,&quot;贝雷河&quot;,&quot;小镇&quot;,&quot;礁岩区&quot;,&quot;主港口&quot;,&quot;副港口&quot;,&quot;断桥&quot;,&quot;秋毛岗&quot;,&quot;拓荒者木屋&quot;,&quot;深林边缘&quot;,&quot;沼泽&quot;].random()&gt;&gt;
 &lt;&lt;set $tlocs to [&quot;咖啡馆&quot;,&quot;酒馆&quot;,&quot;花店&quot;,&quot;医院&quot;,&quot;图书馆&quot;,&quot;泡泡布提&quot;,&quot;教堂&quot;,&quot;杂货铺&quot;,&quot;小镇&quot;,&quot;小镇&quot;,&quot;小镇&quot;].random()&gt;&gt;
 &lt;&lt;/if&gt;&gt;
