@@ -12684,8 +12684,13 @@ Macro.add('clearGlobalAchievements', {
 
 
 /*成就内容*/
-window.defineAchievement("beginning", "新的篇章", "你成为了永无乡的新居民", "∞", "永无乡岛志", "写下你的第一页吧");
 window.defineAchievement("restore", "重建杂货铺", "你帮助了杂货铺重建", "∞", "永无乡岛志");
+window.defineAchievement("innstay", "借来的屋檐", "岛主替你安排了一处住处。至少在这里，你暂时不必担心今夜该在哪里安睡", "∞", "永无乡岛志", "搬进一处住所");
+window.defineAchievement("sophieroom", "同一屋檐", "永无乡的夜晚并没有因此变得更温暖，只是从今以后，你知道一墙之外，有猫在等你回来", "∞", "永无乡岛志", "搬进一处住所");
+window.defineAchievement("kitchenrest", "后厨雅居", "没有床，没有窗，也没有什么值得称为隐私的东西。不过这里有一块能让你躺下的地方，以及一位暂时不打算收你房租的老板。", "∞", "永无乡岛志", "搬进一处住所");
+window.defineAchievement("hisname", "他的名字", "你给了一只没有名字的猫以称号，你赋予了一个无法自述的存在以符号", "∞", "永无乡岛志", "为某只猫取名");
+window.defineAchievement("rayfriend", "鳐鱼！朋友！", "你被划归为一种温驯而奇异的生物，在赋予者的辞典里，那是“朋友”的古老同义词", "∞", "永无乡岛志", "接受一个奇怪的称呼");
+window.defineAchievement("nickname", "奇怪的称呼", "你接受了一个与你毫不相干的称呼，取名者显然水平不高，但你毫不介意", "∞", "永无乡岛志", "接受一个奇怪的称呼");
 
 window.defineAchievement("coffin", "梦境税收", "现在你终于有时间去数清星星上的针脚了", "⭐", "密契茶会");
 window.defineAchievement("lotus", "永无忧愁", "白日悠长, 黑夜凄冷, 你的时间, 两者皆无. 你属于蜡烛与玫瑰环绕的永无乡, 在那里, 你永无忧愁", "⭐", "密契茶会", "洗刷灵魂, 忘却烦恼");
@@ -12696,6 +12701,7 @@ window.defineAchievement("hunthelper", "打猎小帮手", "狐狸报恩？有点
 window.defineAchievement("antlover", "蚂蚁守护者", "你已经获得了蚂蚁国度大门的钥匙，蚂蚁洞穴里永远会流传着你的美名", "⭐", "密契茶会");
 window.defineAchievement("nomoney", "一贫如洗", "你终于成功将口袋里的每一分尘羽都放归自由", "⭐", "密契茶会");
 window.defineAchievement("nohp", "筋疲力尽", "为你的幸运干杯吧，至少你没有沦为野兽的美餐", "⭐", "密契茶会","也许你该到处走走，挥霍一下多余的精力");
+window.defineAchievement("caketea", "一因一果", "甜与苦，因与果，在你的舌尖达成了脆弱的平衡，哪种味道是你更怀念的呢？", "⭐", "密契茶会","品尝你的第一份茶点与下午茶");
 
 
 window.defineAchievement("fish", "潮渊尽处", "1111", "🪶", "琥珀窖藏");
@@ -13067,7 +13073,7 @@ State.variables.NPCinfo["玛丽亚小姐"]={ name:"玛丽亚小姐", allname:"Ma
 State.variables.NPCinfo["佩拉大夫"]={ name:"佩拉大夫", allname:"Perramo", cssname:"chinese-quote", pron:"他", species:"猫族", age:"0", nation:"哥伦比亚", home:"医院", knowlive:"false", id:"大夫", intro:"即使岛主为他在小镇的街口安排了一间带有田地的平房, 佩拉大夫更多时候是住在医院的. 他就在装有换气扇的那面墙旁挂起了吊床, 将药瓶稀稀散散地放上物架, 在书桌上摊开他不知要写给谁的空白信纸. 要问起来, 他的回答永远是: ”早晚的事“", img:null, icon:null,love:0, chat:0, gift:0, knowledge:45, strength:37, observation:73, persuasive:79, met:"false", like:[null], hate:[null], rec:[null], stage:"firstage", firstage:"还没写", secstage:"还没写", thistage:"还没写", foustage:"还没写", fifstage:"还没写", sixstage:"还没写"};
 State.variables.NPCinfo["寇尼"]={ name:"寇尼", allname:"Coni", cssname:"godtalk", pron:"他", species:"神话神", age:"0", nation:"墨西哥", home:"酒馆", knowlive:"false", id:"酒鬼", intro:"岛上几乎猫尽皆知的酒鬼, 赊账到琥珀夫人已经不再试图从他那儿要来酒钱, 还好心地给他提供了酒馆角落的桌椅当作夜晚栖身的地方. 没谁知道他是如何流浪到的永无乡, 岛主曾经给他供给过几次资助, 但一切物资到他手里都会被换成酒水, 仿佛那才是他的生命之源", img:null, icon:null,love:0, chat:0, gift:0, knowledge:25, strength:65, observation:23, persuasive:15, met:"false", like:[null], hate:[null], rec:[null], stage:"firstage", firstage:"还没写", secstage:"还没写", thistage:"还没写", foustage:"还没写", fifstage:"还没写", sixstage:"还没写"};
 
-</script><tw-tag name="init" color="green"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="UIBarhide" color="green"></tw-tag><tw-tag name="nobr" color="yellow"></tw-tag><tw-tag name="widget" color="orange"></tw-tag><tw-tag name="autosave" color="blue"></tw-tag><tw-passagedata pid="1" name="NPC" tags="nobr notime" position="" size="">&lt;&lt;reopen&gt;&gt;
+</script><tw-tag name="init" color="green"></tw-tag><tw-tag name="widget" color="orange"></tw-tag><tw-tag name="autosave" color="blue"></tw-tag><tw-tag name="nobr" color="yellow"></tw-tag><tw-tag name="UIBarhide" color="green"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-passagedata pid="1" name="NPC" tags="nobr notime" position="" size="">&lt;&lt;reopen&gt;&gt;
 &lt;div id=&quot;idcard&quot;&gt;
 &lt;table style=&quot;width:100%; border-style: none;&quot;&gt;
 &lt;tbody align=&quot;center&quot;&gt;
@@ -15004,7 +15010,7 @@ $NPCinfo[$npc].intro
 
       &lt;&lt;pick &quot;「同意」&quot; &quot;住所和工资，听起来像是你乐意做的事情&quot;&gt;&gt;
         &lt;&lt;eventchange &quot;抵达永无乡&quot; 2 &quot;你接受了公爵夫人的条件，现在酒馆是你夜间的归宿&quot;&gt;&gt;
-        &lt;&lt;eventdone &quot;抵达永无乡&quot; 2&gt;&gt;
+        &lt;&lt;eventdone &quot;抵达永无乡&quot; 2&gt;&gt;&lt;&lt;achievement &quot;kitchenrest&quot;&gt;&gt;
         &lt;&lt;eventstatus &quot;抵达永无乡&quot; &quot;已经结束&quot;&gt;&gt;
         她似乎很开心你接受了，碎发随着她的笑声摇晃。&lt;br&gt;&lt;br&gt;
         |ductalk&gt;“很好。这里有下午到入夜和夜晚到黎明的班次，你选定一个，会有其他猫接你的班。”她随即又加了一句：|ductalk&gt;“当然，你要是想值全班，也不会有猫介意。”
@@ -16253,7 +16259,7 @@ $(document)
 
 &lt;&lt;choices&gt;&gt;
 &lt;&lt;if $recording[&quot;吃鲜花饼&quot;]==&quot;吃&quot;&gt;&gt;
-    &lt;&lt;pick &quot;「喝茶」&quot; &quot;鲜花饼甜腻的味道还徘徊在你的舌头上，也许红茶能中和一些&quot;&gt;&gt;
+    &lt;&lt;pick &quot;「喝茶」&quot; &quot;鲜花饼甜腻的味道还徘徊在你的舌头上，也许红茶能中和一些&quot;&gt;&gt;&lt;&lt;achievement &quot;caketea&quot;&gt;&gt;
         你端起茶杯，还未褪去的热气拂过你的鼻尖，带着醇厚的香味。你低头喝了一口，入嘴的口感比你想象中更加柔和，红茶特有的那种温润甜味遮盖了所有的苦涩，温暖从你的喉咙一路漫开，让你感到放松又安宁。&lt;br&gt;
         &lt;&lt;set $player.nightmare -=1&gt;&gt;
         @@.goodblur;你的噩梦降低了@@
@@ -16390,7 +16396,7 @@ $(document)
 作为一个临时住所来说，它已经足够。&lt;br&gt;&lt;br&gt;
 而且此时此刻，在这个陌生的小岛上，它属于你。&lt;br&gt;&lt;br&gt;
 〖你的住所已移动到 小镇-旅店〗&lt;br&gt;&lt;br&gt;
-&lt;&lt;eventdone &quot;抵达永无乡&quot; 2&gt;&gt;
+&lt;&lt;eventdone &quot;抵达永无乡&quot; 2&gt;&gt;&lt;&lt;achievement &quot;innstay&quot;&gt;&gt;
 &lt;&lt;eventstatus &quot;抵达永无乡&quot; &quot;已经结束&quot; &quot;你开启了六天的永无乡之旅，岛主安排你住在旅店，来度过等待焚芳节到来的这几天&quot;&gt;&gt;
 &lt;span style=&quot;float: right;&quot;&gt;
 &lt;&lt;if $dream_fire[&quot;蛾&quot;]&gt;&gt;
@@ -16528,7 +16534,7 @@ $(document)
         &lt;&lt;set $home = &quot;礼堂客房&quot;&gt;&gt;&lt;&lt;npcrec &quot;苏菲&quot; &quot;你开始和苏菲一起住在小镇礼堂&quot;&gt;&gt;
 &lt;&lt;eventchange &quot;抵达永无乡&quot; 2 &quot;你接受了苏菲的邀请，和她一同住在礼堂&quot;&gt;&gt;
 &lt;&lt;eventdone &quot;抵达永无乡&quot; 2&gt;&gt;
-&lt;&lt;eventstatus &quot;抵达永无乡&quot; &quot;已经结束&quot;&gt;&gt;
+&lt;&lt;eventstatus &quot;抵达永无乡&quot; &quot;已经结束&quot;&gt;&gt;&lt;&lt;achievement &quot;sophieroom&quot;&gt;&gt;
         〖你的住所已移动到 小镇-礼堂客房〗&lt;br&gt;&lt;br&gt;
         &lt;span style=&quot;float: right;&quot;&gt;&lt;&lt;link 继续 入住礼堂&gt;&gt;&lt;&lt;set $choice =&quot;睡觉&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
 &lt;&lt;/choices&gt;&gt;
@@ -16829,6 +16835,8 @@ $(document)
 &lt;&lt;/choicesrp&gt;&gt;
 
     &lt;&lt;pick &quot;「接受」&quot; &quot;你不介意顶着这样一个称呼&quot;&gt;&gt;
+    &lt;&lt;if $bpnn == &quot;鳐鱼女士&quot; || $bpnn == &quot;鳐鱼先生&quot;&gt;&gt;&lt;&lt;achievement &quot;rayfriend&quot;&gt;&gt;
+        &lt;&lt;else&gt;&gt;&lt;&lt;achievement &quot;nickname&quot;&gt;&gt;&lt;&lt;/if&gt;&gt;
         奇怪的称呼，来自奇怪的猫，但你愿意接受这样的昵称。&lt;br&gt;&lt;br&gt;
         |baeltalk&gt;“那么，$bpnn，很高兴认识您。”他的尾巴尖颤动了一下，露出满意的微笑，|baeltalk&gt;“我&lt;b&gt;今天早上&lt;/b&gt;刚到，他们说我可以住在旅店，我花了很久才找对地方，现在在搬运我的行李...”他看了眼一旁垒起来的木箱，然后突然像毁掉了一件世纪古董一样发出一声懊恼的大叫:
     &lt;&lt;/pick&gt;&gt;
@@ -16944,7 +16952,7 @@ $(document)
 &lt;&lt;/choicesrp2&gt;&gt;&lt;&lt;/timed&gt;&gt; 
 
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="35" name="主线D1结束" tags="nobr" position="1200,1200" size="100,100">/*第一页*/
-&lt;&lt;if $choice == &quot;取名&quot;&gt;&gt;&lt;&lt;set $dream_fire.zero = 0&gt;&gt;
+&lt;&lt;if $choice == &quot;取名&quot;&gt;&gt;&lt;&lt;set $dream_fire.zero = 0&gt;&gt;&lt;&lt;achievement &quot;hisname&quot;&gt;&gt;
 你几乎是抱着玩乐的心态说出了这个名字，却不料他欣然接受，甚至不忘把登记表递给你，请你帮忙填写。
 你伸手接过，表上大多已经填满，同你之前在手稿中看到的如出一辙的字体，只是这上面的字迹模糊，很多处都难以辨认，比如故乡那一栏填写的&quot;希腊&quot;有一半的词已经晕开，像被反复揉搓过一般，而登岛日期那里的年份也写错了。&lt;br&gt;&lt;br&gt;
 2025年，今年已经是2026年了，战争结束的第六年。&lt;br&gt;&lt;br&gt;
@@ -20070,7 +20078,7 @@ Dialog.open();&gt;&gt;
 
 &lt;&lt;gainitem &quot;旅店钥匙&quot; 1&gt;&gt;
 &lt;&lt;itemobtain &quot;旅店钥匙 * 1&quot;&gt;&gt;
-&lt;&lt;set $home = &quot;旅店&quot;&gt;&gt;
+&lt;&lt;set $home = &quot;旅店&quot;&gt;&gt;&lt;&lt;achievement &quot;innstay&quot;&gt;&gt;
 枘朴小姐靠回了椅背，看起来像松了口气。“在焚芳节结束前，你可以一直住在这里。这些天的费用我会处理，你不需担心，等之后你找到更合适的地方，再搬走就好。”
 &lt;br&gt;&lt;br&gt;
 她伸出手，很自然的抚上你的额头，轻柔地帮你理了理头上散乱的毛发，这一动作中的亲近让你有些意外，你几乎能闻到她袖口处清淡的玫瑰花香。&lt;br&gt;&lt;br&gt;
