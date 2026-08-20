@@ -3565,7 +3565,9 @@ body[data-tags~="UIBarhide"] #passages {
     "bottom-bar bottom-bar bottom-bar" 8%
     / 1fr;
 }	/*全局表格布局*/
-
+#story {
+    min-height: var(--app-height);
+}
   #rightside {
     position:fixed;
 	  right:-280px;
@@ -7646,6 +7648,14 @@ document.addEventListener('contextmenu', function(event) {
  });
 
  State.variables.avatar = localStorage.getItem('userAvatar');
+
+
+$(window).on("resize", function () {
+    document.documentElement.style.setProperty(
+        "--app-height",
+        `${window.visualViewport.height}px`
+    );
+});
 
  /*-----------------界面汉化-----------------*/
 (function () {
@@ -12313,7 +12323,7 @@ RecipeBook.set("花茶", {"tag:花": 1, "方糖": 1}, {servings: 3});
 RecipeBook.set("牡丹花茶", {"牡丹花": 1, "方糖": 1}, {servings: 3});
 RecipeBook.set("无花果酒", {"无花果": 6, "柿子酒": 1, "黑蜂蜂蜜": 1}, {servings: 6});
 RecipeBook.set("巴尔谢酒", {"丁香树皮": 1, "玉米": 1, "蜂蜜": 1, "朗姆酒": 1}, {servings: 5});
-
+RecipeBook.set("颂歌蜜酒", {"丁香树皮": 1, "玉米": 1, "蜂蜜": 1, "朗姆酒": 1}, {servings: 5});
 RecipeBook.set("蒲公英酒", {"蒲公英": 3, "方糖": 1, "柠檬": 1}, {servings: 5});
 RecipeBook.set("布尔盖酒", {"龙舌兰蜜": 1}, {servings: 3});
 RecipeBook.set("柿子酒", {"乌柿": 1, "方糖": 1}, {servings: 3});
@@ -13069,7 +13079,7 @@ State.variables.NPCinfo["玛丽亚小姐"]={ name:"玛丽亚小姐", allname:"Ma
 State.variables.NPCinfo["佩拉大夫"]={ name:"佩拉大夫", allname:"Perramo", cssname:"chinese-quote", pron:"他", species:"猫族", age:"0", nation:"哥伦比亚", home:"医院", knowlive:"false", id:"大夫", intro:"即使岛主为他在小镇的街口安排了一间带有田地的平房, 佩拉大夫更多时候是住在医院的. 他就在装有换气扇的那面墙旁挂起了吊床, 将药瓶稀稀散散地放上物架, 在书桌上摊开他不知要写给谁的空白信纸. 要问起来, 他的回答永远是: ”早晚的事“", img:null, icon:null,love:0, chat:0, gift:0, knowledge:45, strength:37, observation:73, persuasive:79, met:"false", like:[null], hate:[null], rec:[null], stage:"firstage", firstage:"还没写", secstage:"还没写", thistage:"还没写", foustage:"还没写", fifstage:"还没写", sixstage:"还没写"};
 State.variables.NPCinfo["寇尼"]={ name:"寇尼", allname:"Coni", cssname:"godtalk", pron:"他", species:"神话神", age:"0", nation:"墨西哥", home:"酒馆", knowlive:"false", id:"酒鬼", intro:"岛上几乎猫尽皆知的酒鬼, 赊账到琥珀夫人已经不再试图从他那儿要来酒钱, 还好心地给他提供了酒馆角落的桌椅当作夜晚栖身的地方. 没谁知道他是如何流浪到的永无乡, 岛主曾经给他供给过几次资助, 但一切物资到他手里都会被换成酒水, 仿佛那才是他的生命之源", img:null, icon:null,love:0, chat:0, gift:0, knowledge:25, strength:65, observation:23, persuasive:15, met:"false", like:[null], hate:[null], rec:[null], stage:"firstage", firstage:"还没写", secstage:"还没写", thistage:"还没写", foustage:"还没写", fifstage:"还没写", sixstage:"还没写"};
 
-</script><tw-tag name="autosave" color="blue"></tw-tag><tw-tag name="UIBarhide" color="green"></tw-tag><tw-tag name="init" color="green"></tw-tag><tw-tag name="nobr" color="yellow"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="widget" color="orange"></tw-tag><tw-passagedata pid="1" name="NPC" tags="nobr notime" position="" size="">&lt;&lt;reopen&gt;&gt;
+</script><tw-tag name="init" color="green"></tw-tag><tw-tag name="nobr" color="yellow"></tw-tag><tw-tag name="autosave" color="blue"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="UIBarhide" color="green"></tw-tag><tw-tag name="widget" color="orange"></tw-tag><tw-passagedata pid="1" name="NPC" tags="nobr notime" position="" size="">&lt;&lt;reopen&gt;&gt;
 &lt;div id=&quot;idcard&quot;&gt;
 &lt;table style=&quot;width:100%; border-style: none;&quot;&gt;
 &lt;tbody align=&quot;center&quot;&gt;
@@ -13209,7 +13219,7 @@ $NPCinfo[$npc].intro
 &gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;if $events[&quot;抵达永无乡&quot;].list[2].text.includes(&quot;去图书馆看看&quot;)&gt;&gt;&lt;&lt;link ❖寻求住所 奥提斯互动&gt;&gt;&lt;&lt;set $choice = 0, $state = &quot;寻求住所&quot;&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $story[&quot;点心代送&quot;] == 1&gt;&gt;&lt;br&gt;&lt;&lt;link ❖点心代送 支线选项&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if (!$book.has(&#39;梦日记&#39;) &amp;&amp; $sq.dream == 1) || ($NPCinfo[&quot;奥提斯&quot;].dream == &quot;制作中&quot; &amp;&amp; $item.has(&#39;捕梦网&#39;))&gt;&gt;&lt;&lt;link ❖梦的记录 奥提斯互动&gt;&gt;&lt;&lt;set $state = &quot;梦的记录&quot;, $choice = 0&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $events[&quot;梦的记录&quot;].list[0]==false || $events[&quot;梦的记录&quot;].list[2]&gt;&gt;&lt;&lt;link ❖梦的记录 梦的记录&gt;&gt;&lt;&lt;set $state = &quot;梦的记录&quot;, $choice = 0&gt;&gt;&lt;&lt;dialogclose&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
@@ -13441,7 +13451,7 @@ $NPCinfo[$npc].intro
 &lt;&lt;elseif _qst == &quot;梦境&quot;&gt;&gt;&lt;&lt;set $NPCinfo[&quot;奥提斯&quot;].dream == 0&gt;&gt;
 做了奇怪的梦，想要记住？你的脑子是被//图拉特//啃了吗？这种无聊的问题也拿来浪费我的时间。&lt;br&gt;&lt;br&gt;
 这种事情，去图书馆找@@.otistalk;奥提斯@@，他不就是//负责记录//的吗，肯定知道些什么。
-&lt;&lt;eventstatus &quot;梦境的记录&quot; &quot;正在进行&quot;&gt;&gt;
+&lt;&lt;eventstatus &quot;梦的记录&quot; &quot;正在进行&quot;&gt;&gt;
 
 &lt;&lt;elseif _qst == &quot;属性值&quot;&gt;&gt;
 永无乡上的居民拥有四种&lt;b&gt;技能属性&lt;/b&gt;, 也就是创建角色时分配的技能点, 与四种只有在异常时才会显示的&lt;b&gt;负面属性&lt;/b&gt;, 以及六种随机获取的&lt;b&gt;特质&lt;/b&gt;. 
@@ -14161,7 +14171,7 @@ $NPCinfo[$npc].intro
 
 /*初见第二页*/
 &lt;&lt;elseif $choice == &quot;打开包装&quot;&gt;&gt;
-&lt;&lt;npcrec &quot;苏菲&quot; &quot;苏菲送给你一个小圆镜作为见面礼&quot;&gt;&gt;
+&lt;&lt;npcrec &quot;苏菲&quot; &quot;苏菲送给你一个小圆镜作为见面礼&quot;&gt;&gt;&lt;&lt;eventchange &quot;拿到居民给你准备的见面礼&quot; 0 &quot;拿到见面礼：2/4&quot;&gt;&gt;
 你捧着苏菲的礼物，轻轻一拽丝带，包装就随之散开。一面小圆镜躺在里面，镜面似乎是黄铜的材质，光线在它的反射下变得柔和又轻巧，你清楚地看见自己倒映在镜子之中。&lt;br&gt;
 &lt;&lt;gainitem &quot;小圆镜&quot; 1&gt;&gt;
 &lt;&lt;itemobtain &quot;小圆镜 * 1&quot;&gt;&gt;
@@ -14468,8 +14478,8 @@ $NPCinfo[$npc].intro
     &lt;br&gt;&lt;br&gt;
     |otistalk&gt;“这是旅行靴，”他调整着座位，|otistalk&gt;“以前别的猫送给我的，方便我四处旅行收集素材，但我一直有那么多东西要写，几乎不可能去外面走走看看。我早就打算把它送出去，正好你来了。”
     &lt;br&gt;&lt;br&gt;
-    这话让你听上去像一个废物处理站。
-    &lt;&lt;gainitem &quot;旅行靴&quot; 1&gt;&gt;&lt;&lt;itemobtain &quot;旅行靴 * 1&quot;&gt;&gt;&lt;br&gt;
+    这话让你听上去像一个废物处理站。&lt;br&gt;
+    &lt;&lt;gainitem &quot;旅行靴&quot; 1&gt;&gt;&lt;&lt;itemobtain &quot;旅行靴 * 1&quot;&gt;&gt;&lt;br&gt;&lt;&lt;eventchange &quot;拿到居民给你准备的见面礼&quot; 0 &quot;拿到见面礼：3/4&quot;&gt;&gt;
     |otistalk&gt;“抱歉，这里有点拥挤，我指我的书桌——” 奥提斯坐正身体，有些尴尬地环视了一下四周，|otistalk&gt;“好吧，还有整个图书馆。枘朴小姐把这里全权交给我打理，但是我好像有点沉迷写作了... ”
     &lt;br&gt;&lt;br&gt;
     &lt;&lt;choicesgt &quot;「“你在写什么”」&quot; &quot;奥提斯互动&quot; &quot;你的角度难以辨识他写的东西&quot;&gt;&gt;&lt;&lt;set $choice to &quot;你在写什么&quot;&gt;&gt;&lt;&lt;/choicesgt&gt;&gt;
@@ -14480,8 +14490,8 @@ $NPCinfo[$npc].intro
     |otistalk&gt;“好吧，这该死的破桌子——”他撒气似的把靴子丢到地上，随即又露出歉意的表情，|otistalk&gt;“哦不，不不不，抱歉，这本该是给你的礼物。”他似乎没法进行第二次弯腰将靴子捡起来的动作了，|otistalk&gt;“但是放心，它们很结实，偶尔摔一两下不碍事。”那双小眼睛在你和靴子之间飘忽着，心虚地说着。&lt;br&gt;&lt;br&gt;
     &lt;&lt;choicesrp &quot;「收下靴子」&quot; &quot;那看起来确实是一双不错的皮鞋&quot;&gt;&gt;
     &lt;&lt;npcrec &quot;奥提斯&quot; &quot;奥提斯送给你一双旅行靴作为见面礼&quot;&gt;&gt;
-    见你拿走了靴子，奥提斯松了一口气。
-    &lt;br&gt;&lt;br&gt;
+    见你拿走了靴子，奥提斯松了一口气。&lt;br&gt;
+    &lt;&lt;gainitem &quot;旅行靴&quot; 1&gt;&gt;&lt;&lt;itemobtain &quot;旅行靴 * 1&quot;&gt;&gt;&lt;br&gt;&lt;&lt;eventchange &quot;拿到居民给你准备的见面礼&quot; 0 &quot;拿到见面礼：3/4&quot;&gt;&gt;
     |otistalk&gt;“这是旅行靴，”他调整着座位，|otistalk&gt;“以前别的猫送给我的，方便我四处旅行收集素材，但我一直有那么多东西要写，几乎不可能去外面走走看看。我早就打算把它送出去，正好你来了。”
     &lt;br&gt;&lt;br&gt;
     这话让你听上去像一个废物处理站。
@@ -14600,143 +14610,6 @@ $NPCinfo[$npc].intro
 &lt;&lt;link ▷「离开」 $loc&gt;&gt;&lt;&lt;set $npc = 0, $choice = 0, $state = 0&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-
-/***************梦的记录******************/
-&lt;&lt;if $state == &quot;梦的记录&quot;&gt;&gt;
-/*第一页*/
-&lt;&lt;if $choice ==0 &amp;&amp; !$NPCinfo[&quot;奥提斯&quot;].dream&gt;&gt;
-你到来时，图书馆似乎比往日还要寂静。一般来讲，只有少数猫乐意待在这间狭小沉闷的建筑中，他们也总是遵守图书馆保持安静的要求，但此时，除开他们的翻书声，似乎有什么关键的东西缺少了。&lt;br&gt;&lt;br&gt;
-这之中的缘由很快便显露出来——@@.otistalk;奥提斯@@正趴在一堆散乱的稿纸上，圆滚滚的身体随着呼吸轻轻起伏，忘却一切般地睡着了。看来再勤奋的作家也需要一些偶尔的放松。&lt;br&gt;&lt;br&gt;
-你纠结是否该叫醒他。这位图书管理员可能不怎么尽职，但他仍值得拥有他的睡眠，可你梦境中那些零碎的记忆似乎会在任何时刻消散殆尽。&lt;br&gt;&lt;br&gt;
-&lt;&lt;do tag &quot;1&quot;&gt;&gt;
-&lt;&lt;if $choice ==0&gt;&gt;
-&lt;&lt;link ▷「叫醒他」&gt;&gt;&lt;&lt;set $choice to &quot;叫醒他&quot;&gt;&gt;&lt;&lt;redo &quot;1&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「等待他醒来」&gt;&gt;&lt;&lt;set $choice to &quot;等待他醒来&quot;&gt;&gt;&lt;&lt;redo &quot;1&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;离开&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;（后续路线未实装）
-&lt;&lt;elseif $choice ==&quot;叫醒他&quot;&gt;&gt;
-你的呼唤声越来越大，大到馆内埋怨的目光已经化作实体的寒意让你颈毛竖立，奥提斯还是纹丝不动，完全没有要醒来的意味。&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「在他耳边说悄悄话」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;在他耳边说悄悄话&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「等待」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;继续等待&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;离开&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;（后续路线未实装）
-&lt;&lt;elseif $choice ==&quot;等待他醒来&quot;&gt;&gt;&lt;&lt;set $minute += random(20,40)&gt;&gt;
-你等待着，等到本就来客稀少的图书馆都进进出出了不少猫——他们在门口路过书桌时，不约而同地都向你投来好奇的目光——奥提斯还是纹丝不动，完全没有要醒来的意味。&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「叫醒他」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;叫醒他&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「继续等待」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;继续等待&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;离开&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;（后续路线未实装）
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;/do&gt;&gt;
-
-&lt;&lt;elseif $choice ==&quot;叫醒他&quot;&gt;&gt;
-你的呼唤声越来越大，大到馆内埋怨的目光已经化作实体的寒意让你颈毛竖立，奥提斯终于在你快要放弃时...地醒来，眨着迷惑的小眼睛看向你：“哦...是你，我的朋友，把我叫醒有什么事吗？”他话刚说完，就打了一个能吞下牛津词典的哈欠，看上去仍回味着他的美觉。
-&lt;&lt;linkreplace ▷「告诉他你的想法」&gt;&gt;
-你告诉奥提斯你想记下你的梦境。本还睡眼朦胧的作家瞬间提起精神，小眼睛兴奋地睁大，目不转睛地盯着你。&lt;br&gt;&lt;br&gt;
-“你是说...你想记录你的梦？哦这真是...真是...天才的想法！”他猛然起身，过大的肚腩撞得书桌摇晃了一下，险些彻底翻倒。&lt;br&gt;&lt;br&gt;
-他不顾桌子的阻隔，竭力伸出手臂抓住你的肩膀，兴奋从他肥胖的双手传到你的肌肉间，变成一阵生硬的疼痛。“你简直是天才，$nn！我一直觉得我的故事缺了些什么，现在我终于知道了！是梦...是梦境！多么完美的素材啊，我怎么现在才发现！？” &lt;br&gt;&lt;br&gt;
-奥提斯似乎意识到自己的失态，收回了紧抓在你肩膀上的双手，轻咳几声，重新坐回到椅子上。&lt;br&gt;&lt;br&gt;
-“总而言之，为了感谢你提出来这个绝妙的想法，你就来成为我的第一位梦境素材提供者吧！”
-&lt;&lt;link ▷「&quot;你自己不做梦吗&quot;」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;你自己不做梦吗&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「询问记录方法」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;询问记录方法&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「拒绝他」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;拒绝他&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;（后续路线未实装）
-&lt;&lt;/linkreplace&gt;&gt;
-
-&lt;&lt;elseif $choice ==&quot;离开&quot;&gt;&gt;&lt;&lt;set $NPCinfo[&quot;奥提斯&quot;].dream == &quot;未完成&quot;&gt;&gt;
-你失去了耐心。也许还有其他猫能教你怎么记录梦境。
-&lt;&lt;link ▷「继续」 小镇&gt;&gt;&lt;&lt;set $choice to 0, $state =0&gt;&gt;&lt;&lt;/link&gt;&gt;
-
-&lt;&lt;elseif $choice ==&quot;在他耳边说悄悄话&quot;&gt;&gt;
-你俯下身，在他耳边小声说了一句：&lt;br&gt;&lt;br&gt;
-&lt;&lt;do tag &quot;1&quot;&gt;&gt;
-&lt;&lt;if $choice ==&quot;在他耳边说悄悄话&quot;&gt;&gt;
-&lt;&lt;link ▷「&quot;枘朴小姐来检查进度了&quot;」&gt;&gt;&lt;&lt;set $choice to &quot;枘朴小姐来检查进度了&quot;&gt;&gt;&lt;&lt;redo &quot;1&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「&quot;刚出炉的小蛋糕送来了&quot;」&gt;&gt;&lt;&lt;set $choice to &quot;等待他醒来&quot;&gt;&gt;&lt;&lt;redo &quot;1&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「&quot;你写的东西烂透了&quot;」&gt;&gt;&lt;&lt;set $choice to &quot;离开&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice ==&quot;枘朴小姐来检查进度了&quot;&gt;&gt;
-“枘朴小姐来检查进度了！” &lt;br&gt;&lt;br&gt;
-话音刚落，奥提斯就慌张着醒来：“默、默斯！我正在写！这周的要求我一定...”他回过神来，眨着迷茫的小眼睛，寻找着枘朴小姐的身影，却只看见了你。&lt;br&gt;&lt;br&gt;
-“哦...是你，我的朋友...”他眯起眼睛，已然明白发生了什么，“用这种方式把我叫醒，一定是有什么要紧的事吧。” &lt;br&gt;&lt;br&gt;
-&lt;&lt;linkreplace ▷「告诉他你的想法」&gt;&gt;
-你告诉奥提斯你想记下你的梦境。本还有些生气的作家瞬间提起精神，小眼睛兴奋地睁大，目不转睛地盯着你。&lt;br&gt;&lt;br&gt;
-“你是说...你想记录你的梦？哦这真是...真是...天才的想法！”他猛然起身，过大的肚腩撞得书桌摇晃了一下，险些彻底翻倒。&lt;br&gt;&lt;br&gt;
-他不顾桌子的阻隔，竭力伸出手臂抓住你的肩膀，兴奋从他肥胖的双手传到你的肌肉间，变成一阵生硬的疼痛。“你简直是天才，$nn！我一直觉得我的故事缺了些什么，现在我终于知道了！是梦...是梦境！多么完美的素材啊，我怎么现在才发现！？” &lt;br&gt;&lt;br&gt;
-奥提斯似乎意识到自己的失态，收回了紧抓在你肩膀上的双手，轻咳几声，重新坐回到椅子上。&lt;br&gt;&lt;br&gt;
-“总而言之，为了感谢你提出来这个绝妙的想法，你就来成为我的第一位梦境素材提供者吧！” &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「&quot;你自己不做梦吗&quot;」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;你自己不做梦吗&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「询问记录方法」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;询问记录方法&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「拒绝他」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;拒绝他&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;（后续路线未实装）
-&lt;&lt;/linkreplace&gt;&gt;
-&lt;&lt;elseif $choice ==&quot;刚出炉的小蛋糕送来了&quot;&gt;&gt;
-“刚出炉的小蛋糕送来了！” &lt;br&gt;&lt;br&gt;
-话音刚落，奥提斯就瞬间睁开眼，抽动着鼻子寻找着小蛋糕：“蛋糕、小蛋糕！在哪里？”他回过神来，眨着迷茫的小眼睛，寻找着小蛋糕的身影，却只看见了你。&lt;br&gt;&lt;br&gt;
-“哦...是你，我的朋友...”他眯起眼睛，已然明白发生了什么，“用这种方式把我叫醒，一定是有什么要紧的事吧。” &lt;br&gt;&lt;br&gt;
-&lt;&lt;linkreplace ▷「告诉他你的想法」&gt;&gt;
-你告诉奥提斯你想记下你的梦境。本还有些生气的作家瞬间提起精神，小眼睛兴奋地睁大，目不转睛地盯着你。&lt;br&gt;&lt;br&gt;
-“你是说...你想记录你的梦？哦这真是...真是...天才的想法！”他猛然起身，过大的肚腩撞得书桌摇晃了一下，险些彻底翻倒。&lt;br&gt;&lt;br&gt;
-他不顾桌子的阻隔，竭力伸出手臂抓住你的肩膀，兴奋从他肥胖的双手传到你的肌肉间，变成一阵生硬的疼痛。“你简直是天才，$nn！我一直觉得我的故事缺了些什么，现在我终于知道了！是梦...是梦境！多么完美的素材啊，我怎么现在才发现！？” &lt;br&gt;&lt;br&gt;
-奥提斯似乎意识到自己的失态，收回了紧抓在你肩膀上的双手，轻咳几声，重新坐回到椅子上。&lt;br&gt;&lt;br&gt;
-“总而言之，为了感谢你提出来这个绝妙的想法，你就来成为我的第一位梦境素材提供者吧！” &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「&quot;你自己不做梦吗&quot;」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;你自己不做梦吗&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「询问记录方法」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;询问记录方法&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「拒绝他」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;拒绝他&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;（后续路线未实装）
-&lt;&lt;/linkreplace&gt;&gt;
-&lt;&lt;elseif $choice ==&quot;你写的东西烂透了&quot;&gt;&gt;
-“你写的东西烂透了！” &lt;br&gt;&lt;br&gt;
-话音刚落，奥提斯猛地坐起，瞬间从睡眠中清醒过来，看起来已经准备好大肆反驳一番，在看清是你之后，又疑惑的眯起小眼睛，片刻后便明白了刚刚发生的事情。&lt;br&gt;&lt;br&gt;
-“哦...是你，我的朋友...用这种方式把我叫醒，一定是有什么要紧的事吧。” &lt;br&gt;&lt;&lt;traitaddwaves &quot;无情&quot; 1&gt;&gt;&lt;br&gt;
-&lt;&lt;linkreplace ▷「告诉他你的想法」&gt;&gt;
-你告诉奥提斯你想记下你的梦境。本还有些生气的作家瞬间提起精神，小眼睛兴奋地睁大，目不转睛地盯着你。&lt;br&gt;&lt;br&gt;
-“你是说...你想记录你的梦？哦这真是...真是...天才的想法！”他猛然起身，过大的肚腩撞得书桌摇晃了一下，险些彻底翻倒。&lt;br&gt;&lt;br&gt;
-他不顾桌子的阻隔，竭力伸出手臂抓住你的肩膀，兴奋从他肥胖的双手传到你的肌肉间，变成一阵生硬的疼痛。“你简直是天才，$nn！我一直觉得我的故事缺了些什么，现在我终于知道了！是梦...是梦境！多么完美的素材啊，我怎么现在才发现！？” &lt;br&gt;&lt;br&gt;
-奥提斯似乎意识到自己的失态，收回了紧抓在你肩膀上的双手，轻咳几声，重新坐回到椅子上。&lt;br&gt;&lt;br&gt;
-“总而言之，为了感谢你提出来这个绝妙的想法，你就来成为我的第一位梦境素材提供者吧！” &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「&quot;你自己不做梦吗&quot;」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;你自己不做梦吗&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「询问记录方法」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;询问记录方法&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「拒绝他」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;拒绝他&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;（后续路线未实装）
-&lt;&lt;/linkreplace&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;/do&gt;&gt;
-&lt;&lt;elseif $choice ==&quot;继续等待&quot;&gt;&gt;&lt;&lt;set $minute += random(20,40)&gt;&gt;
-不知又过去了多久，你仍在徒劳地等待着。有时你真希望岛上的钟能每小时敲一次，但你又怀疑，岛上也许根本没有小时的概念。&lt;br&gt;&lt;br&gt;
-奥提斯却选择在你这虔诚的等待之旅中唯一的一次走神时结束了他的睡眠，他缓缓坐起身，打了一个能吞下牛津词典的哈欠，接着才注意到站在书桌前的你。那橘色的胖脑袋很快就明白发生了什么。&lt;br&gt;&lt;br&gt;
-“哦，混沌在上，我的朋友...你一直在等我睡醒吗？”他迟疑地扶了下眼镜，“这实在是令我惭愧...快说吧，你有什么事情要找我吗？不论是什么，我一定会竭力相助。” &lt;br&gt;&lt;br&gt;
-&lt;&lt;set $npc = &quot;奥提斯&quot;&gt;&gt;&lt;&lt;npclove 1&gt;&gt;&lt;&lt;traitaddwaves &quot;良善&quot; 1&gt;&gt;&lt;&lt;set $npc = 0&gt;&gt;
-&lt;&lt;linkreplace ▷「告诉他你的想法」&gt;&gt;
-你告诉奥提斯你想记下你的梦境。本还睡眼朦胧的作家瞬间提起精神，小眼睛兴奋地睁大，目不转睛地盯着你。&lt;br&gt;&lt;br&gt;
-“你是说...你想记录你的梦？哦这真是...真是...天才的想法！”他猛然起身，过大的肚腩撞得书桌摇晃了一下，险些彻底翻倒。&lt;br&gt;&lt;br&gt;
-他不顾桌子的阻隔，竭力伸出手臂抓住你的肩膀，兴奋从他肥胖的双手传到你的肌肉间，变成一阵生硬的疼痛。“你简直是天才，$nn！我一直觉得我的故事缺了些什么，现在我终于知道了！是梦...是梦境！多么完美的素材啊，我怎么现在才发现！？” &lt;br&gt;&lt;br&gt;
-奥提斯似乎意识到自己的失态，收回了紧抓在你肩膀上的双手，轻咳几声，重新坐回到椅子上。&lt;br&gt;&lt;br&gt;
-“总而言之，为了感谢你提出来这个绝妙的想法，你就来成为我的第一位梦境素材提供者吧！” &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「&quot;你自己不做梦吗&quot;」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;你自己不做梦吗&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「询问记录方法」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;询问记录方法&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「拒绝他」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;拒绝他&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;（后续路线未实装）
-&lt;&lt;/linkreplace&gt;&gt;
-
-&lt;&lt;elseif $choice == &quot;你自己不做梦吗&quot;&gt;&gt;
-“看在混沌的份儿上，我的朋友，即使是你这个问题也有一些冒犯了。”橘猫不悦地说着，额前的褶皱扭成了一团，“让我们回到更愉悦的话题上——我已经有了实现的方法！” &lt;br&gt;&lt;&lt;traitaddwaves &quot;求知&quot; 1&gt;&gt;&lt;br&gt;
-他抓过一张废纸，飞速地写着什么，“老实说，我们其实有更好的选择，但那要花上好几天，虽然时间在这里也无关紧要，但——”他没能说完这句话，因为他停下了羽毛笔，开始专注地检查自己写下的字句，确认一切无误后才将纸条折好交给你。&lt;br&gt;&lt;br&gt;
-“到贝雷河去，把这个交给裁缝铺的女裁缝，告诉她这是为我的新书准备的。她会很乐意帮你的。” &lt;br&gt;&lt;br&gt;
-&lt;&lt;gainitem &quot;奥提斯的纸条&quot; 1&gt;&gt;&lt;&lt;itemobtain &quot;奥提斯的纸条 * 1&quot;&gt;&gt;&lt;&lt;set $NPCinfo[&quot;奥提斯&quot;].dream = &quot;制作中&quot;&gt;&gt;
-“她应该有需要的材料，没有的话也没关系，他们有办法弄到，只是那样可能会有一点小问题。”奥提斯捏着自己的手指，看起来有些不确定，“他们也许会收钱，或者别的东西，但别担心，北欧那边的都很讲道理的。” &lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「继续」 图书馆&gt;&gt;&lt;&lt;set $choice to 0, $state =0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;询问记录方法&quot;&gt;&gt;
-“当然，当然，我答应过会有解决方法。”他抓过一张废纸，飞速地写着什么，“老实说，我们其实有更好的选择，但那要花上好几天，虽然时间在这里也无关紧要，但——”他没能说完这句话，因为他停下了羽毛笔，开始专注地检查自己写下的字句，确认一切无误后才将纸条折好交给你。&lt;br&gt;&lt;br&gt;
-“到贝雷河去，把这个交给裁缝铺的女裁缝，告诉她这是为我的新书准备的。她会很乐意帮你的。” &lt;br&gt;&lt;br&gt;
-&lt;&lt;gainitem &quot;奥提斯的纸条&quot; 1&gt;&gt;&lt;&lt;itemobtain &quot;奥提斯的纸条 * 1&quot;&gt;&gt;&lt;&lt;set $NPCinfo[&quot;奥提斯&quot;].dream = &quot;制作中&quot;&gt;&gt;
-“顺利的话，你在今晚就能记录上你的新的梦境。” &lt;br&gt;&lt;br&gt;&lt;&lt;eventadd &quot;梦境的记录&quot; &quot;去见女裁缝&quot;&gt;&gt;&lt;&lt;eventdone &quot;梦境的记录&quot; 0&gt;&gt;
-&lt;&lt;link ▷「继续」 图书馆&gt;&gt;&lt;&lt;set $choice to 0, $state =0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;elseif $choice == &quot;拒绝他&quot;&gt;&gt;
-你没想到奥提斯还有这样一面。
-&lt;&lt;link ▷「同意」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;询问记录方法&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「离开」 奥提斯互动&gt;&gt;&lt;&lt;set $choice to &quot;离开&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;
-
-&lt;&lt;elseif $choice ==0 &amp;&amp; $NPCinfo[&quot;奥提斯&quot;].dream == &quot;制作中&quot; &amp;&amp; $item.has(&#39;捕梦网&#39;)&gt;&gt;&lt;&lt;set $NPCinfo[&quot;奥提斯&quot;].dream = &quot;结束&quot;&gt;&gt;
-你向奥提斯展示女裁缝那无可挑剔的手艺，橘猫抬了下眼镜，接过捕梦网，更仔细地翻看了一遍，发出不可置否的赞赏：“我就知道找她没错。”他的尾巴在身后愉快地弹动着，仿佛是他亲手做出了这件作品，“把它挂在你的床头，还有这本日记。”他从抽屉里拿出给你准备好的日记本，上面不出意料的有一个永无乡的纹样。&lt;br&gt;&lt;br&gt;
-&lt;&lt;gainitem &quot;梦日记&quot; 1&gt;&gt;&lt;&lt;itemobtain &quot;梦日记 * 1&quot;&gt;&gt;
-“每次从梦里醒来的时候，什么都不要想，放松身体。理论上来说，梦境的记录是一个完全无意识的过程。”他盯着你补充了一句，确保你不会忘记：&lt;br&gt;&lt;br&gt;
-“记得把新的梦境素材带来给我，这很重要。”
-&lt;br&gt;&lt;br&gt;&lt;&lt;eventdone &quot;梦境的记录&quot; 2&gt;&gt;&lt;&lt;eventstatus &quot;梦境的记录&quot; &quot;已经结束&quot; &quot;描述描述&quot;&gt;&gt;
-
-&lt;&lt;link ▷「继续」 图书馆&gt;&gt;&lt;&lt;set $choice to 0, $state =0&gt;&gt;&lt;&lt;/link&gt;&gt;
-&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
 &lt;&lt;if $state == &quot;还书&quot;&gt;&gt;
 &lt;&lt;do&gt;&gt;
@@ -15085,8 +14958,8 @@ $NPCinfo[$npc].intro
           &lt;span style=&quot;float: right;&quot;&gt;
           &lt;&lt;link ▷「离开」 酒馆&gt;&gt;&lt;&lt;set $npc = 0, $choice = 0, $state = 0&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
         &lt;&lt;/choices&gt;&gt; 
-&lt;&lt;/linkreplace &gt;&gt;&lt;&lt;/linkreplace &gt;&gt;
-
+&lt;&lt;/linkreplace&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;/pick&gt;&gt;
 &lt;&lt;/choices&gt;&gt;
 
 &lt;&lt;/if&gt;&gt;
@@ -15163,8 +15036,7 @@ $NPCinfo[$npc].intro
 &lt;&lt;elseif $choice == &quot;喝一口&quot;&gt;&gt;&lt;&lt;set $NPCinfo[&quot;萨巴夫人&quot;].love += 1&gt;&gt;&lt;&lt;set $drinkteast.pushUnique(&quot;柿子酒&quot;)&gt;&gt;
 你拿过酒瓶，试探地饮下一口，一开始，那种苦涩的前调让你眉头皱起，但在味蕾被刺激开来、另一种不知名的味道占据你的口腔后，你的口舌和喉咙像是不受控制一般将瓶中余下的液体统统饮尽。如此美妙...如此美味。&lt;br&gt;&lt;br&gt;
 你迫切地望向萨巴夫人，盼着她能再给你来一瓶，但她只是笑笑，像是预料到了你这般的反应：&lt;br&gt;&lt;br&gt;
-“瞧吧，你爱上了柿子酒。”
-&lt;br&gt;&lt;br&gt;
+“瞧吧，你爱上了柿子酒。” &lt;br&gt;&lt;br&gt;
 &lt;&lt;if !$recording[&quot;柿子酒&quot;]&gt;&gt;
 &lt;&lt;npcrec &quot;萨巴夫人&quot; &quot;你在萨巴夫人那第一次喝到了柿子酒&quot;&gt;&gt;&lt;&lt;set $recording[&quot;柿子酒&quot;] = &quot;萨巴夫人&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;
@@ -16302,7 +16174,7 @@ $(document)
 &lt;&lt;itemobtain &quot;旅店钥匙 * 1&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;next 2s t8n&gt;&gt;|nixtalk&gt;“在给你发出邀请后，岛上的大家就商量着给你准备一份见面礼，因为拿不下主意，我们就各自准备了一份，打算亲手交给你。”她把木盒往你那边推了推，|nixtalk&gt;“这个&lt;b&gt;音乐盒&lt;/b&gt;，就是我想送给你的，希望它能陪你度过在永无乡的这段时间。”
-&lt;br&gt;&lt;br&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;eventstatus &quot;拿到居民给你准备的见面礼&quot; &quot;正在进行&quot;&gt;&gt;&lt;&lt;eventchange &quot;拿到居民给你准备的见面礼&quot; 0 &quot;拿到见面礼：1/4&quot;&gt;&gt;
 &lt;&lt;next 3s t8n&gt;&gt;你仔细看了一眼，方方正正的盒子似乎是很经典的音乐盒造型，用深色木材制作，雕刻着永无乡的纹样，侧边还有一个金属手柄，看起来要手动转动才能发声。
 &lt;br&gt;&lt;br&gt;
 &lt;span style=&quot;float: right;&quot;&gt;
@@ -18189,8 +18061,8 @@ _showname.finish
     finish: &quot;无&quot;,
     fail: &quot;无&quot;
 }&gt;&gt;
-&lt;&lt;set $events[&quot;梦境的记录&quot;] = {
-    title: &quot;梦境的记录&quot;,
+&lt;&lt;set $events[&quot;梦的记录&quot;] = {
+    title: &quot;梦的记录&quot;,
     receiveDay: null,
     endDay: null,
     status: &quot;尚未发生&quot;,
@@ -18381,36 +18253,124 @@ _showname.finish
     content: &#39;也许你再也见不到那只聒噪的鹩哥了，或许这是件好事&#39;}&gt;&gt;
 
 &lt;&lt;set setup.items[&#39;未署名的来信&#39;] to {
-    content: &#39;//在黄昏前帮苏菲完成今天的工作，以便她有空帮你//&lt;br&gt;&lt;hr class=&quot;hr-fade-content&quot;&gt;&lt;&lt;if ($story[&quot;未署名的来信&quot;].bol + $story[&quot;未署名的来信&quot;].nix + $story[&quot;未署名的来信&quot;].rdmone + $story[&quot;未署名的来信&quot;].rdmtwo + $story[&quot;未署名的来信&quot;].rdmthree + $story[&quot;未署名的来信&quot;].rdmfour) &lt;6&gt;&gt;&lt;&lt;if $story[&quot;未署名的来信&quot;].bol ==0&gt;&gt;收信方：巴尔韦克老爷 地址：贝雷河-裁缝铺&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $story[&quot;未署名的来信&quot;].nix ==0&gt;&gt;收信方：枘朴小姐 地址：高地-拓荒者木屋&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $story[&quot;未署名的来信&quot;].rdmone ==0&gt;&gt;收信方：比安卡小姐 地址：贝雷河&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $story[&quot;未署名的来信&quot;].rdmtwo ==0&gt;&gt;收信方：彼得斯将军 地址：秋毛岗&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $story[&quot;未署名的来信&quot;].rdmthree ==0&gt;&gt;收信方：罗西教授 地址：高地&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $story[&quot;未署名的来信&quot;].rdmfour ==0&gt;&gt;收信方：杜波依斯夫人 地址：高地&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;else&gt;&gt;你送完了所有的信，去仓库见苏菲吧&lt;&lt;/if&gt;&gt;&lt;hr class=&quot;hr-fade-content&quot;&gt;&#39;}&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="梦的记录" tags="nobr" position="" size="">&lt;&lt;if $state == &quot;梦的记录&quot;&gt;&gt;
-&lt;&lt;if $choice == &quot;拿出奥提斯的纸条&quot;&gt;&gt;
+    content: &#39;//在黄昏前帮苏菲完成今天的工作，以便她有空帮你//&lt;br&gt;&lt;hr class=&quot;hr-fade-content&quot;&gt;&lt;&lt;if ($story[&quot;未署名的来信&quot;].bol + $story[&quot;未署名的来信&quot;].nix + $story[&quot;未署名的来信&quot;].rdmone + $story[&quot;未署名的来信&quot;].rdmtwo + $story[&quot;未署名的来信&quot;].rdmthree + $story[&quot;未署名的来信&quot;].rdmfour) &lt;6&gt;&gt;&lt;&lt;if $story[&quot;未署名的来信&quot;].bol ==0&gt;&gt;收信方：巴尔韦克老爷 地址：贝雷河-裁缝铺&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $story[&quot;未署名的来信&quot;].nix ==0&gt;&gt;收信方：枘朴小姐 地址：高地-拓荒者木屋&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $story[&quot;未署名的来信&quot;].rdmone ==0&gt;&gt;收信方：比安卡小姐 地址：贝雷河&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $story[&quot;未署名的来信&quot;].rdmtwo ==0&gt;&gt;收信方：彼得斯将军 地址：秋毛岗&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $story[&quot;未署名的来信&quot;].rdmthree ==0&gt;&gt;收信方：罗西教授 地址：高地&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $story[&quot;未署名的来信&quot;].rdmfour ==0&gt;&gt;收信方：杜波依斯夫人 地址：高地&lt;br&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;else&gt;&gt;你送完了所有的信，去仓库见苏菲吧&lt;&lt;/if&gt;&gt;&lt;hr class=&quot;hr-fade-content&quot;&gt;&#39;}&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="梦的记录" tags="nobr" position="" size="">&lt;&lt;if $choice ==0 &amp;&amp; $events[&quot;梦的记录&quot;].list[0]==false&gt;
+你到来时，图书馆似乎比往日还要寂静。一般来讲，只有少数猫乐意待在这间狭小沉闷的建筑中，他们也总是遵守图书馆保持安静的要求，但此时，除开他们的翻书声，似乎有什么关键的东西缺少了。&lt;br&gt;&lt;br&gt;
+这之中的缘由很快便显露出来——@@.otistalk;奥提斯@@正趴在一堆散乱的稿纸上，圆滚滚的身体随着呼吸轻轻起伏，忘却一切般地睡着了。看来再勤奋的作家也需要一些偶尔的放松。&lt;br&gt;&lt;br&gt;
+你纠结是否该叫醒他。这位图书管理员可能不怎么尽职，但他仍值得拥有他的睡眠，可你梦境中那些零碎的记忆似乎会在任何时刻消散殆尽。&lt;br&gt;&lt;br&gt;
+
+&lt;&lt;choices&gt;&gt;
+    &lt;&lt;pick &quot;「叫醒他」&quot; &quot;&quot;&gt;&gt;
+        你的呼唤声越来越大，大到馆内埋怨的目光已经化作实体的寒意让你颈毛竖立，奥提斯还是纹丝不动，完全没有要醒来的意味。
+        &lt;&lt;choices&gt;&gt;
+            &lt;&lt;pick &quot;「在他耳边说悄悄话」&quot; &quot;看来得用一些特殊手段了&quot;&gt;&gt;
+                你的呼唤声越来越大，大到馆内埋怨的目光已经化作实体的寒意让你颈毛竖立，奥提斯还是纹丝不动，完全没有要醒来的意味。
+                你俯下身，在他耳边小声说了一句：&lt;br&gt;&lt;br&gt;
+                &lt;&lt;choices&gt;&gt;
+                    &lt;&lt;pick &quot;「“枘朴小姐来检查进度了”」&quot; &quot;如果要说谁能使唤得动奥提斯，那恐怕只有岛主了&quot;&gt;&gt;
+                        “枘朴小姐来检查进度了！” &lt;br&gt;&lt;br&gt;
+                        话音刚落，奥提斯就慌张着醒来：“默、默斯！我正在写！这周的要求我一定...”他回过神来，眨着迷茫的小眼睛，寻找着枘朴小姐的身影，却只看见了你。&lt;br&gt;&lt;br&gt;
+                        “哦...是你，我的朋友...”他眯起眼睛，已然明白发生了什么，“用这种方式把我叫醒，一定是有什么要紧的事吧。” 
+                    &lt;&lt;/pick&gt;&gt;
+                    &lt;&lt;pick &quot;「“刚出炉的小蛋糕送来了”」&quot; &quot;&quot;&gt;&gt;
+                        “刚出炉的小蛋糕送来了！” &lt;br&gt;&lt;br&gt;
+                        话音刚落，奥提斯就瞬间睁开眼，抽动着鼻子寻找着小蛋糕：“蛋糕、小蛋糕！在哪里？”他回过神来，眨着迷茫的小眼睛，寻找着小蛋糕的身影，却只看见了你。&lt;br&gt;&lt;br&gt;
+                        “哦...是你，我的朋友...”他眯起眼睛，已然明白发生了什么，“用这种方式把我叫醒，一定是有什么要紧的事吧。”
+                    &lt;&lt;/pick&gt;&gt; 
+                    &lt;&lt;pick &quot;「“你写的东西烂透了”」&quot; &quot;&quot;&gt;&gt;
+                        “你写的东西烂透了！” &lt;br&gt;&lt;br&gt;
+                        话音刚落，奥提斯猛地坐起，瞬间从睡眠中清醒过来，看起来已经准备好大肆反驳一番，在看清是你之后，又疑惑的眯起小眼睛，片刻后便明白了刚刚发生的事情。&lt;br&gt;&lt;br&gt;
+                        “哦...是你，我的朋友...用这种方式把我叫醒，一定是有什么要紧的事吧。” 
+                        &lt;br&gt;&lt;&lt;traitaddwaves &quot;无情&quot; 1&gt;&gt;
+                    &lt;&lt;/pick&gt;&gt;
+                    &lt;&lt;choicesgt &quot;「告诉他你的想法」&quot; &quot;梦的记录&quot; &quot;&quot;&gt;&gt;&lt;&lt;set $choice to &quot;告诉他你的想法&quot;&gt;&gt;&lt;&lt;/choicesgt&gt;&gt;
+                &lt;&lt;/choices&gt;&gt;
+            &lt;&lt;/pick&gt;&gt;
+            &lt;&lt;pick &quot;「等待」&quot; &quot;梦的记录&quot; &quot;&quot;&gt;&gt;
+                不知又过去了多久，你仍在徒劳地等待着。有时你真希望岛上的钟能每小时敲一次，但你又怀疑，岛上也许根本没有小时的概念。&lt;br&gt;&lt;br&gt;
+                奥提斯却选择在你这虔诚的等待之旅中唯一的一次走神时结束了他的睡眠，他缓缓坐起身，打了一个能吞下牛津词典的哈欠，接着才注意到站在书桌前的你。那橘色的胖脑袋很快就明白发生了什么。&lt;br&gt;&lt;br&gt;
+                “哦，混沌在上，我的朋友...你一直在等我睡醒吗？”他迟疑地扶了下眼镜，“这实在是令我惭愧...快说吧，你有什么事情要找我吗？不论是什么，我一定会竭力相助。” &lt;br&gt;&lt;br&gt;
+                &lt;&lt;set $npc = &quot;奥提斯&quot;&gt;&gt;&lt;&lt;npclove 1&gt;&gt;&lt;&lt;traitaddwaves &quot;良善&quot; 1&gt;&gt;
+                &lt;&lt;choicesgt &quot;「告诉他你的想法」&quot; &quot;梦的记录&quot; &quot;那玉雕看上去能卖上好价钱&quot;&gt;&gt;&lt;&lt;set $choice to &quot;告诉他你的想法&quot;&gt;&gt;&lt;&lt;/choicesgt&gt;&gt;
+            &lt;&lt;/pick&gt;&gt;
+        &lt;&lt;/choices&gt;&gt;
+    &lt;&lt;/pick&gt;&gt;
+    &lt;&lt;pick &quot;「等待他醒来」&quot; &quot;那玉雕看上去能卖上好价钱&quot;&gt;&gt;
+        你等待着，等到本就来客稀少的图书馆都进进出出了不少猫——他们在门口路过书桌时，不约而同地都向你投来好奇的目光——奥提斯还是纹丝不动，完全没有要醒来的意味。
+        &lt;&lt;choices&gt;&gt;
+            &lt;&lt;pick &quot;「叫醒他」&quot; &quot;即使是金子做的雕像也不能让你替这个流浪汉做事&quot;&gt;&gt;
+                你的呼唤声越来越大，大到馆内埋怨的目光已经化作实体的寒意让你颈毛竖立，奥提斯终于在你快要放弃时...地醒来，眨着迷惑的小眼睛看向你：“哦...是你，我的朋友，把我叫醒有什么事吗？” &lt;br&gt;&lt;br&gt;
+                他话刚说完，就打了一个能吞下牛津词典的哈欠，看上去仍回味着他的美觉。
+                &lt;&lt;choicesgt &quot;「告诉他你的想法」&quot; &quot;梦的记录&quot; &quot;那玉雕看上去能卖上好价钱&quot;&gt;&gt;&lt;&lt;set $choice to &quot;告诉他你的想法&quot;&gt;&gt;&lt;&lt;/choicesgt&gt;&gt;
+            &lt;&lt;/pick&gt;&gt;
+            &lt;&lt;pick &quot;「继续等待」&quot;&quot;那玉雕看上去能卖上好价钱&quot;&gt;&gt;
+                不知又过去了多久，你仍在徒劳地等待着。有时你真希望岛上的钟能每小时敲一次，但你又怀疑，岛上也许根本没有小时的概念。&lt;br&gt;&lt;br&gt;
+                奥提斯却选择在你这虔诚的等待之旅中唯一的一次走神时结束了他的睡眠，他缓缓坐起身，打了一个能吞下牛津词典的哈欠，接着才注意到站在书桌前的你。那橘色的胖脑袋很快就明白发生了什么。&lt;br&gt;&lt;br&gt;
+                “哦，混沌在上，我的朋友...你一直在等我睡醒吗？”他迟疑地扶了下眼镜，“这实在是令我惭愧...快说吧，你有什么事情要找我吗？不论是什么，我一定会竭力相助。” &lt;br&gt;&lt;br&gt;
+                &lt;&lt;set $npc = &quot;奥提斯&quot;&gt;&gt;&lt;&lt;npclove 1&gt;&gt;&lt;&lt;traitaddwaves &quot;良善&quot; 1&gt;&gt;
+            &lt;&lt;/pick&gt;&gt;
+        &lt;&lt;/choices&gt;&gt;
+    &lt;&lt;/pick&gt;&gt;
+&lt;&lt;/choices&gt;&gt;
+
+&lt;&lt;elseif $choice ==&quot;告诉他你的想法&quot;&gt;&gt;
+你告诉奥提斯你想记下你的梦境。本还睡眼朦胧的作家瞬间提起精神，小眼睛兴奋地睁大，目不转睛地盯着你。&lt;br&gt;&lt;br&gt;
+“你是说...你想记录你的梦？哦这真是...真是...天才的想法！”他猛然起身，过大的肚腩撞得书桌摇晃了一下，险些彻底翻倒。&lt;br&gt;&lt;br&gt;
+他不顾桌子的阻隔，竭力伸出手臂抓住你的肩膀，兴奋从他肥胖的双手传到你的肌肉间，变成一阵生硬的疼痛。“你简直是天才，$nn！我一直觉得我的故事缺了些什么，现在我终于知道了！是梦...是梦境！多么完美的素材啊，我怎么现在才发现！？” &lt;br&gt;&lt;br&gt;
+奥提斯似乎意识到自己的失态，收回了紧抓在你肩膀上的双手，轻咳几声，重新坐回到椅子上。&lt;br&gt;&lt;br&gt;
+“总而言之，为了感谢你提出来这个绝妙的想法，你就来成为我的第一位梦境素材提供者吧！” &lt;br&gt;&lt;br&gt;
+&lt;&lt;choices&gt;&gt;
+    &lt;&lt;pick &quot;「“你自己不做梦吗”」&quot; &quot;&quot;&gt;&gt;&lt;&lt;set $recording[给奥提斯梦] = true&gt;&gt;
+        “看在混沌的份儿上，我的朋友，即使是你这个问题也有一些冒犯了。”橘猫不悦地说着，额前的褶皱扭成了一团，“让我们回到更愉悦的话题上——我已经有了实现的方法！” &lt;br&gt;&lt;&lt;traitaddwaves &quot;求知&quot; 1&gt;&gt;&lt;br&gt;
+        他抓过一张废纸，飞速地写着什么，“老实说，我们其实有更好的选择，但那要花上好几天，虽然时间在这里也无关紧要，但——”他没能说完这句话，因为他停下了羽毛笔，开始专注地检查自己写下的字句，确认一切无误后才将纸条折好交给你。
+    &lt;&lt;/pick&gt;&gt;
+    &lt;&lt;pick &quot;「询问记录方法」&quot; &quot;&quot;&gt;&gt;&lt;&lt;set $recording[给奥提斯梦] = true&gt;&gt;
+        “当然，当然，我答应过会有解决方法。”他抓过一张废纸，飞速地写着什么，“老实说，我们其实有更好的选择，但那要花上好几天，虽然时间在这里也无关紧要，但——”他没能说完这句话，因为他停下了羽毛笔，开始专注地检查自己写下的字句，确认一切无误后才将纸条折好交给你。
+    &lt;&lt;/pick&gt;&gt; 
+    &lt;&lt;pick &quot;「拒绝他」&quot; &quot;你的梦境可不是给什么二流作家当素材的&quot;&gt;&gt;
+        你拒绝了这样奇怪的请求，你梦境的内容只是给你自己看的，而不是成为什么二流作家的素材。
+        “好吧，好吧，你知道吗，这没关系。”橘猫看起来有些挫败，“我会有其他办法的。”
+        你抖抖胡须，不管他的办法是什么，都与你无关了。
+        “总之我会教你怎么把做过的梦记下来。”他抓过一张废纸，飞速地写着什么，“老实说，我们其实有更好的选择，但那要花上好几天，虽然时间在这里也无关紧要，但——”他没能说完这句话，因为他停下了羽毛笔，开始专注地检查自己写下的字句，确认一切无误后才将纸条折好交给你。
+    &lt;&lt;/pick&gt;&gt;
+    “到贝雷河去，把这个交给裁缝铺的女裁缝，告诉她这是为我的新书准备的。她会很乐意帮你的。” &lt;br&gt;&lt;br&gt;
+    &lt;&lt;gainitem &quot;奥提斯的纸条&quot; 1&gt;&gt;&lt;&lt;itemobtain &quot;奥提斯的纸条 * 1&quot;&gt;&gt;&lt;&lt;eventadd &quot;梦的记录&quot; &quot;去见女裁缝&quot;&gt;&gt;&lt;&lt;eventdone &quot;梦的记录&quot; 0&gt;&gt;
+    “她应该有需要的材料，没有的话也没关系，他们有办法弄到，只是那样可能会有一点小问题。”奥提斯捏着自己的手指，看起来有些不确定，“他们也许会收钱，或者别的东西，但别担心，北欧那边的都很讲道理的。” &lt;br&gt;&lt;br&gt;
+    &lt;span style=&quot;float: right;&quot;&gt;&lt;&lt;link ▷「继续」 图书馆&gt;&gt;&lt;&lt;set $choice to 0, $state =0&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;
+&lt;&lt;/choices&gt;&gt;
+
+&lt;&lt;elseif $choice == &quot;拿出奥提斯的纸条&quot;&gt;&gt;
 你将奥提斯的纸条交给女裁缝，她有些疑惑地接下，花了比你预期更多的时间来读上面那短短几行字。接着，她从炉火前起身，去橱柜翻找着什么，但最终空手而归。&lt;br&gt;&lt;br&gt;
 女裁缝没向你做出解释，径直走向门外，动作熟练地吹了一声鸟哨。几个心跳后，振翅的声音从远方传来，愈渐变大。&lt;br&gt;&lt;br&gt;
 你一开始以为她召来了Seisi，但落在她手臂上的是一只硕大的渡鸦。那黑鸟低着头，垂着尖锐的鸟喙，乖顺地听女裁缝对着它小声耳语。最后，随着她挥动胳膊，渡鸦又朝着来时的方向飞离了。&lt;br&gt;&lt;br&gt;
 “在屋里坐着等等吧，”女裁缝转身走回屋里，顺手带上了门，“@@.odintalk;他@@很快就能回来。炉子上温着有蜜酒，随意取来喝吧。” &lt;br&gt;&lt;br&gt;
-&lt;&lt;do tag &quot;1&quot;&gt;&gt;
-&lt;&lt;if $choice ==&quot;拿出奥提斯的纸条&quot;&gt;&gt;
-&lt;&lt;link ▷「喝酒」&gt;&gt;&lt;&lt;set $choice to &quot;喝酒&quot;&gt;&gt;&lt;&lt;redo &quot;1&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「只是坐着」&gt;&gt;&lt;&lt;set $choice to &quot;只是坐着&quot;&gt;&gt;&lt;&lt;redo &quot;1&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;else&gt;&gt;
-&lt;&lt;if $choice ==&quot;喝酒&quot;&gt;&gt;&lt;&lt;set _drink =1&gt;&gt;
-你给自己倒了一杯蜜酒，坐在火炉旁喝了起来。&lt;br&gt;&lt;br&gt;
-&lt;&lt;elseif $choice ==&quot;只是坐着&quot;&gt;&gt;
-你什么也没做，只是坐在火炉旁取暖。&lt;br&gt;&lt;br&gt;&lt;&lt;/if&gt;&gt;
 
-不知过了多久，在屋中没法很好的判断天色，&lt;&lt;if _drink ==1&gt;&gt;你只觉得连蜜酒的效果都已经褪去，&lt;&lt;/if&gt;&gt;门外终于传来了动静。那是@@.odintalk;巴尔韦克老爷@@，一如既往的穿着一身猎装，手里拎着他今日的战利品：两只兔子，一只野鸭。&lt;br&gt;&lt;br&gt;
-女裁缝走过去，开始一件一件地为他卸下身上的行李。公猫就那样站着，一言不发，任由妻子解开他肩上的皮绳，取下包裹与背后的猎枪。&lt;br&gt;&lt;br&gt;
-“给，蜘蛛网，你要的三扎。”他从自己大衣兜里翻找着，掏出来一大捆用树叶裹起的东西，丢到桌上，“母猫，真是麻烦。” &lt;br&gt;&lt;br&gt;
-“这可不是给我的，是给那个孩子。”女裁缝朝你瞅了瞅，巴尔韦克老爷顺着她看过来，他的神情明显是认出了你，但没说什么，步伐沉重地走到壁炉边，给自己倒了杯蜜酒，坐到你对面的矮凳上。&lt;br&gt;&lt;br&gt;
-你觉得你不应该在这里。&lt;br&gt;&lt;br&gt;
-&lt;&lt;linkreplace ▷「继续」&gt;&gt;
-女裁缝挂好丈夫的衣物，又提起猎物，朝裁缝铺的后屋走去。“我先去把兔子剥皮，你们在火边坐坐，暖暖身子。”她就这样残忍地把你和巴尔韦克老爷留在一起。&lt;br&gt;&lt;br&gt;
-老猫一口接一口喝着蜜酒，皮毛间散发出浓烈而腥臭的气味，如同一头从不打理自己的野兽。他开始用一只手搅动挂在火堆上的锅炉，里面熬着已经看不出形状的肉汤，自始至终没再看你一眼。&lt;br&gt;&lt;br&gt;
-后屋传来女裁缝扯着嗓子的喊声，询问巴尔韦克老爷把铲子放在哪了，公猫也粗声粗气地吼着回应了一句，又一并说了其他几件家什的位置，仿佛生怕妻子再发现有什么东西离开了它们该在的地方，想在提问发生前就解决它们。&lt;br&gt;&lt;br&gt;
-你更加确定你不该在这里。&lt;br&gt;&lt;br&gt;
-&lt;&lt;link ▷「闲聊」 梦的记录&gt;&gt;&lt;&lt;set $choice to &quot;闲聊&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;link ▷「沉默」 梦的记录&gt;&gt;&lt;&lt;set $choice to &quot;沉默&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
-&lt;&lt;/linkreplace&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;/do&gt;&gt;
+&lt;&lt;choices&gt;&gt;
+    &lt;&lt;pick &quot;「喝酒」&quot; &quot;免费的快乐&quot;&gt;&gt;&lt;&lt;set _drink =1&gt;&gt;&lt;&lt;set $drinkteast.pushUnique(&quot;颂歌蜜酒&quot;)&gt;&gt;
+        你一点没客气，给自己倒了满满一杯蜜酒，坐在火炉旁喝了起来。&lt;br&gt;&lt;br&gt;
+        第一口下去，你便后悔自己倒得太满。
+        它闻起来有蜂蜜的甜香，入口却完全不是那么回事。甜味只在舌尖停留了片刻，随即便被一种浓重而古怪的腥咸压了过去，像是有什么不该出现在酒里的东西被一并熬了进去，混着酒精的辛辣让你眉头紧皱。
+        你本想就此放下杯子，可几个心跳之后，那股令人不适的感觉却慢慢沉了下去。你盯着杯中晃动的橙色酒液，脑海里莫名浮现出几个此前从未认真想过的问题，方才还懒散的思绪也一点点收拢，仿佛某扇蒙尘已久的门从里面轻轻推开了一条缝。此时就连炉火都悦动地比以往更欢快了一点，仿佛在为你庆祝你刚刚所获得的。
+        &lt;&lt;addkexp 10&gt;&gt;&lt;&lt;addbadexp &quot;噩梦&quot; 3&gt;&gt;&lt;&lt;set $resonancefire +=1&gt;&gt;
+    &lt;&lt;/pick&gt;&gt;
+    &lt;&lt;pick &quot;「只是坐着」&quot; &quot;&quot;&gt;&gt;
+       你什么也没做，只是坐在火炉旁取暖。
+    &lt;&lt;/pick&gt;&gt; 
+    不知过了多久，在屋中没法很好的判断天色，&lt;&lt;if _drink ==1&gt;&gt;你只觉得连蜜酒的效果都已经褪去，&lt;&lt;/if&gt;&gt;门外终于传来了动静。那是@@.odintalk;巴尔韦克老爷@@，一如既往的穿着一身猎装，手里拎着他今日的战利品：两只兔子，一只野鸭。&lt;br&gt;&lt;br&gt;
+    女裁缝走过去，开始一件一件地为他卸下身上的行李。公猫就那样站着，一言不发，任由妻子解开他肩上的皮绳，取下包裹与背后的猎枪。&lt;br&gt;&lt;br&gt;
+    “给，蜘蛛网，你要的三扎。”他从自己大衣兜里翻找着，掏出来一大捆用树叶裹起的东西，丢到桌上，“母猫，真是麻烦。” &lt;br&gt;&lt;br&gt;
+    “这可不是给我的，是给那个孩子。”女裁缝朝你瞅了瞅，巴尔韦克老爷顺着她看过来，他的神情明显是认出了你，但没说什么，步伐沉重地走到壁炉边，给自己倒了杯蜜酒，坐到你对面的矮凳上。&lt;br&gt;&lt;br&gt;
+    你觉得你不应该在这里。&lt;br&gt;&lt;br&gt;
+    &lt;&lt;linkreplace ▷「继续」&gt;&gt;
+    女裁缝挂好丈夫的衣物，又提起猎物，朝裁缝铺的后屋走去。“我先去把兔子剥皮，你们在火边坐坐，暖暖身子。”她就这样残忍地把你和巴尔韦克老爷留在一起。&lt;br&gt;&lt;br&gt;
+    老猫一口接一口喝着蜜酒，皮毛间散发出浓烈而腥臭的气味，如同一头从不打理自己的野兽。他开始用一只手搅动挂在火堆上的锅炉，里面熬着已经看不出形状的肉汤，自始至终没再看你一眼。&lt;br&gt;&lt;br&gt;
+    后屋传来女裁缝扯着嗓子的喊声，询问巴尔韦克老爷把铲子放在哪了，公猫也粗声粗气地吼着回应了一句，又一并说了其他几件家什的位置，仿佛生怕妻子再发现有什么东西离开了它们该在的地方，想在提问发生前就解决它们。&lt;br&gt;&lt;br&gt;
+    你更加确定你不该在这里。&lt;br&gt;&lt;br&gt;
+    &lt;&lt;link ▷「闲聊」 梦的记录&gt;&gt;&lt;&lt;set $choice to &quot;闲聊&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+    &lt;&lt;link ▷「沉默」 梦的记录&gt;&gt;&lt;&lt;set $choice to &quot;沉默&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
+    &lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;/choices&gt;&gt;
+
+
 &lt;&lt;elseif $choice ==&quot;闲聊&quot;&gt;&gt;
 木柴在炉火中噼啪作响，巴尔韦克老爷在你身旁粗粝的呼吸着，后屋不断传出女裁缝的劳作声，这些声响比寂静还更要折磨你。你最终耐不住这哀伤般的沉默，寻找着一切能将你解救出来的话题。&lt;br&gt;&lt;br&gt;
 &lt;&lt;do tag &quot;1&quot;&gt;&gt;
@@ -18455,11 +18415,25 @@ _showname.finish
 &lt;&lt;else&gt;&gt;当你说你没有那么多钱后，女裁缝走了过来，拦在她丈夫面前，语气有些斥责：“够了，这委托是交给我的，钱由我来收。” &lt;br&gt;
 她收取了你50尘羽当作报酬。&lt;&lt;set $ashes -=50&gt;&gt;&lt;&lt;badthing &quot;你失去了50尘羽&quot;&gt;&gt;&lt;&lt;gainitem &quot;捕梦网&quot; 1&gt;&gt;&lt;&lt;itemobtain &quot;捕梦网&quot; 1&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/linkreplace&gt;&gt;&lt;br&gt;&lt;&lt;eventadd &quot;梦境的记录&quot; &quot;回去找奥提斯&quot;&gt;&gt;&lt;&lt;eventdone &quot;梦境的记录&quot; 1&gt;&gt;
+&lt;&lt;/linkreplace&gt;&gt;&lt;br&gt;&lt;&lt;eventadd &quot;梦的记录&quot; &quot;回去找奥提斯&quot;&gt;&gt;&lt;&lt;eventdone &quot;梦的记录&quot; 1&gt;&gt;
 &lt;&lt;link ▷「离开」 贝雷河&gt;&gt;&lt;&lt;set $choice to 0, $state =0&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/do&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
-&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="47" name="未署名的来信" tags="nobr" position="" size="">/*未署名的来信*/
+
+&lt;&lt;elseif $choice ==0 &amp;&amp; $events[&quot;梦的记录&quot;].list[2]&gt;&gt;
+你向奥提斯展示女裁缝那无可挑剔的手艺，橘猫抬了下眼镜，接过捕梦网，更仔细地翻看了一遍，发出不可置否的赞赏：“我就知道找她没错。”他的尾巴在身后愉快地弹动着，仿佛是他亲手做出了这件作品，“把它挂在你的床头，还有这本日记。”他从抽屉里拿出给你准备好的日记本，上面不出意料的有一个永无乡的纹样。&lt;br&gt;&lt;br&gt;
+&lt;&lt;gainitem &quot;梦日记&quot; 1&gt;&gt;&lt;&lt;itemobtain &quot;梦日记 * 1&quot;&gt;&gt;&lt;&lt;eventdone &quot;梦的记录&quot; 2&gt;&gt;
+“每次从梦里醒来的时候，什么都不要想，放松身体。理论上来说，梦的记录是一个完全无意识的过程。”
+&lt;&lt;if $recording[给奥提斯梦]&gt;&gt;&lt;&lt;eventstatus &quot;梦的记录&quot; &quot;已经结束&quot; &quot;女裁缝为你织出了捕梦网，奥提斯给了你梦日记，今后你的梦境便会被记录，而你答应将那些内容作为素材提供给奥提斯&quot;&gt;&gt;
+他盯着你补充了一句，确保你不会忘记：&lt;br&gt;&lt;br&gt;
+“记得把新的梦境素材带来给我，这很重要。”
+&lt;&lt;else&gt;&gt;&lt;&lt;eventstatus &quot;梦的记录&quot; &quot;已经结束&quot; &quot;女裁缝为你织出了捕梦网，奥提斯给了你梦日记，今后你的梦境便会被记录&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;br&gt;&lt;br&gt;
+
+&lt;&lt;link ▷「继续」 图书馆&gt;&gt;&lt;&lt;set $choice to 0, $state =0&gt;&gt;&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="47" name="未署名的来信" tags="nobr" position="" size="">/*未署名的来信*/
 &lt;&lt;if $choice == &quot;送信nix&quot;&gt;&gt;&lt;&lt;set $story[&quot;未署名的来信&quot;].nix =1&gt;&gt;
 你在递出信时，瞥见了信封上的地址，那是英国的一个郡县，书写者的字迹优美，署名的姓氏是Lewis，和拓荒者木屋中的路易红茶一个名字。&lt;br&gt;&lt;br&gt;
 “苏菲拜托你来的？”@@.nixtalk;枘朴小姐@@接过信，毫不掩饰自己的惊讶，“我和她提过许多次了，岛上有很多猫都愿意分摊她的工作，但她都拒绝了。她愿意让你帮忙，这倒是头一次。”她边说着边拆开信封，似乎并不介意你在场。&lt;br&gt;&lt;br&gt;
@@ -26329,6 +26303,7 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 (已触发内容的更新无法同步，测试阶段不建议长期游玩)
 &lt;&lt;/do&gt;&gt;&lt;br&gt;
 &lt;&lt;include &quot;更新日志&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="186" name="更新日志" tags="notime" position="" size="">&lt;h2&gt;更新日志&lt;/h2&gt;
+8.20 修了一些bug 修改旧文案中 增加了两个事项
 8.19 走通了一些事项的流程 增加了未能完成事项的显示
 8.18 改好了保存并退出键 增加了logo 调好了手机版界面 增加了几个成就
 8.17 增加了和苏菲一起住的剧情文本 差分未完成
