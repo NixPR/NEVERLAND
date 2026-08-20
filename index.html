@@ -7615,40 +7615,35 @@ $(document).on(":passagerender", function (ev) {
 });
 
 $(document).on(':passageend', function () {
-
     $("#passages").scrollTop(0);
 
 });
-
-console.log("A");
 
 if(!State.variables.NPCinfo){
     State.variables.NPCinfo={}
 }
 
-console.log("B");
+document.addEventListener('contextmenu', function(event) {
+ event.preventDefault();
+ });
 
-// document.addEventListener('contextmenu', function(event) {
-//  event.preventDefault();
-//  });
+ document.addEventListener('keydown', function(e) {
+ if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+ e.preventDefault();
+ }
+}, false);
 
-//  document.addEventListener('keydown', function(e) {
-//  if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
-//  e.preventDefault();
-//  }
-// }, false);
+ document.addEventListener('keydown', function(e) {
+ if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+ e.preventDefault();
+ }
+}, false);
 
-//  document.addEventListener('keydown', function(e) {
-//  if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-//  e.preventDefault();
-//  }
-// }, false);
-
-//  document.addEventListener('keydown', function(event) {
-//  if ( event.key === 'F12') {
-//  event.preventDefault();
-//  }
-//  });
+ document.addEventListener('keydown', function(event) {
+ if ( event.key === 'F12') {
+ event.preventDefault();
+ }
+ });
 
  State.variables.avatar = localStorage.getItem('userAvatar');
 
@@ -13074,7 +13069,7 @@ State.variables.NPCinfo["玛丽亚小姐"]={ name:"玛丽亚小姐", allname:"Ma
 State.variables.NPCinfo["佩拉大夫"]={ name:"佩拉大夫", allname:"Perramo", cssname:"chinese-quote", pron:"他", species:"猫族", age:"0", nation:"哥伦比亚", home:"医院", knowlive:"false", id:"大夫", intro:"即使岛主为他在小镇的街口安排了一间带有田地的平房, 佩拉大夫更多时候是住在医院的. 他就在装有换气扇的那面墙旁挂起了吊床, 将药瓶稀稀散散地放上物架, 在书桌上摊开他不知要写给谁的空白信纸. 要问起来, 他的回答永远是: ”早晚的事“", img:null, icon:null,love:0, chat:0, gift:0, knowledge:45, strength:37, observation:73, persuasive:79, met:"false", like:[null], hate:[null], rec:[null], stage:"firstage", firstage:"还没写", secstage:"还没写", thistage:"还没写", foustage:"还没写", fifstage:"还没写", sixstage:"还没写"};
 State.variables.NPCinfo["寇尼"]={ name:"寇尼", allname:"Coni", cssname:"godtalk", pron:"他", species:"神话神", age:"0", nation:"墨西哥", home:"酒馆", knowlive:"false", id:"酒鬼", intro:"岛上几乎猫尽皆知的酒鬼, 赊账到琥珀夫人已经不再试图从他那儿要来酒钱, 还好心地给他提供了酒馆角落的桌椅当作夜晚栖身的地方. 没谁知道他是如何流浪到的永无乡, 岛主曾经给他供给过几次资助, 但一切物资到他手里都会被换成酒水, 仿佛那才是他的生命之源", img:null, icon:null,love:0, chat:0, gift:0, knowledge:25, strength:65, observation:23, persuasive:15, met:"false", like:[null], hate:[null], rec:[null], stage:"firstage", firstage:"还没写", secstage:"还没写", thistage:"还没写", foustage:"还没写", fifstage:"还没写", sixstage:"还没写"};
 
-</script><tw-tag name="nobr" color="yellow"></tw-tag><tw-tag name="init" color="green"></tw-tag><tw-tag name="UIBarhide" color="green"></tw-tag><tw-tag name="widget" color="orange"></tw-tag><tw-tag name="autosave" color="blue"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-passagedata pid="1" name="NPC" tags="nobr notime" position="" size="">&lt;&lt;reopen&gt;&gt;
+</script><tw-tag name="autosave" color="blue"></tw-tag><tw-tag name="UIBarhide" color="green"></tw-tag><tw-tag name="init" color="green"></tw-tag><tw-tag name="nobr" color="yellow"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="widget" color="orange"></tw-tag><tw-passagedata pid="1" name="NPC" tags="nobr notime" position="" size="">&lt;&lt;reopen&gt;&gt;
 &lt;div id=&quot;idcard&quot;&gt;
 &lt;table style=&quot;width:100%; border-style: none;&quot;&gt;
 &lt;tbody align=&quot;center&quot;&gt;
@@ -13446,7 +13441,7 @@ $NPCinfo[$npc].intro
 &lt;&lt;elseif _qst == &quot;梦境&quot;&gt;&gt;&lt;&lt;set $NPCinfo[&quot;奥提斯&quot;].dream == 0&gt;&gt;
 做了奇怪的梦，想要记住？你的脑子是被//图拉特//啃了吗？这种无聊的问题也拿来浪费我的时间。&lt;br&gt;&lt;br&gt;
 这种事情，去图书馆找@@.otistalk;奥提斯@@，他不就是//负责记录//的吗，肯定知道些什么。
-
+&lt;&lt;eventstatus &quot;梦境的记录&quot; &quot;正在进行&quot;&gt;&gt;
 
 &lt;&lt;elseif _qst == &quot;属性值&quot;&gt;&gt;
 永无乡上的居民拥有四种&lt;b&gt;技能属性&lt;/b&gt;, 也就是创建角色时分配的技能点, 与四种只有在异常时才会显示的&lt;b&gt;负面属性&lt;/b&gt;, 以及六种随机获取的&lt;b&gt;特质&lt;/b&gt;. 
@@ -14726,7 +14721,7 @@ $NPCinfo[$npc].intro
 “当然，当然，我答应过会有解决方法。”他抓过一张废纸，飞速地写着什么，“老实说，我们其实有更好的选择，但那要花上好几天，虽然时间在这里也无关紧要，但——”他没能说完这句话，因为他停下了羽毛笔，开始专注地检查自己写下的字句，确认一切无误后才将纸条折好交给你。&lt;br&gt;&lt;br&gt;
 “到贝雷河去，把这个交给裁缝铺的女裁缝，告诉她这是为我的新书准备的。她会很乐意帮你的。” &lt;br&gt;&lt;br&gt;
 &lt;&lt;gainitem &quot;奥提斯的纸条&quot; 1&gt;&gt;&lt;&lt;itemobtain &quot;奥提斯的纸条 * 1&quot;&gt;&gt;&lt;&lt;set $NPCinfo[&quot;奥提斯&quot;].dream = &quot;制作中&quot;&gt;&gt;
-“顺利的话，你在今晚就能记录上你的新的梦境。” &lt;br&gt;&lt;br&gt;
+“顺利的话，你在今晚就能记录上你的新的梦境。” &lt;br&gt;&lt;br&gt;&lt;&lt;eventadd &quot;梦境的记录&quot; &quot;去见女裁缝&quot;&gt;&gt;&lt;&lt;eventdone &quot;梦境的记录&quot; 0&gt;&gt;
 &lt;&lt;link ▷「继续」 图书馆&gt;&gt;&lt;&lt;set $choice to 0, $state =0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;elseif $choice == &quot;拒绝他&quot;&gt;&gt;
 你没想到奥提斯还有这样一面。
@@ -14738,7 +14733,8 @@ $NPCinfo[$npc].intro
 &lt;&lt;gainitem &quot;梦日记&quot; 1&gt;&gt;&lt;&lt;itemobtain &quot;梦日记 * 1&quot;&gt;&gt;
 “每次从梦里醒来的时候，什么都不要想，放松身体。理论上来说，梦境的记录是一个完全无意识的过程。”他盯着你补充了一句，确保你不会忘记：&lt;br&gt;&lt;br&gt;
 “记得把新的梦境素材带来给我，这很重要。”
-&lt;br&gt;&lt;br&gt;
+&lt;br&gt;&lt;br&gt;&lt;&lt;eventdone &quot;梦境的记录&quot; 2&gt;&gt;&lt;&lt;eventstatus &quot;梦境的记录&quot; &quot;已经结束&quot; &quot;描述描述&quot;&gt;&gt;
+
 &lt;&lt;link ▷「继续」 图书馆&gt;&gt;&lt;&lt;set $choice to 0, $state =0&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
@@ -16732,7 +16728,7 @@ $(document)
 &lt;&lt;/timed&gt;&gt;
 
 /*第二页*/
-&lt;&lt;elseif $choice == &quot;帮他收拾残局&quot;&gt;&gt;&lt;&lt;checkfix &quot;knowledge&quot; &quot;学识&quot; 10&gt;&gt;
+&lt;&lt;elseif $choice == &quot;帮他收拾残局&quot;&gt;&gt;&lt;&lt;checkfix &quot;knowledge&quot; &quot;学识&quot; 9&gt;&gt;
 你率先弯腰去捡脚边那本摊开的笔记本。本该妥帖夹藏的纸条与手稿，此刻如同挣脱束缚的蝶群，沿着坠落的轨迹泼洒遍地。你将它们一一拾起，重新归拢入册，而这些笔记的内容难不吸引你的注意——每一页笔记都密密麻麻写满了文字，乍一看会以为是孩童的涂鸦，因为书写者的字迹幼稚，写作方向杂乱无序，却又写得格外认真。&lt;br&gt;&lt;br&gt;
 &lt;&lt;timed 2s t8n&gt;&gt;
 &lt;&lt;if _rst == &quot;大成功&quot;&gt;&gt;&lt;&lt;set $resonancebael +=1&gt;&gt;
@@ -16744,6 +16740,7 @@ $(document)
 &lt;&lt;else&gt;&gt;
 当你试图辨认时，幼稚的笔划和满篇陌生的字符，如蛰伏的荆棘一般将你理解的路径阻断，你似乎看出来了几个英文词汇，但这不工整的笔触让你实在无法确定。&lt;br&gt;
 &lt;&lt;/if&gt;&gt;
+
 &lt;&lt;next 5s t8n&gt;&gt;&lt;br&gt;你又飞速拾起散落的几件日用品，触手所及皆是上乘质地，件件透着私人定制的精细。将它们稍作整理递过去时，公猫仍怔在原地，一副手足无措的模样。&lt;br&gt;&lt;br&gt;
 &lt;&lt;next 4s t8n&gt;&gt;当你转向另一个需要搬动的木箱时，它的尺寸仿佛在警告不要妄想一只猫就能将它搬起。公猫这时总算回过神，急忙凑过来想帮忙，
 &lt;&lt;checkfix &quot;strength&quot; &quot;力量&quot; 6&gt;&gt;
@@ -16973,7 +16970,7 @@ $(document)
     你只好就这样将你为他所取的名字填入，将登记表还给他。他收回纸张，将它塞回信封，直到此刻，你才意识到眼前正在发生的事的怪异之处，即使远比不上这只今后就要被你称作$tnn的猫奇怪的言谈举止、堆叠如山的行李、甚至没有名字这件事本身，但那种不对劲的感觉仍在你的皮毛上爬行。&lt;br&gt;&lt;br&gt;
     &lt;&lt;choices&gt;&gt;
     &lt;&lt;choicesrp &quot;「仔细想想」&quot; &quot;有什么显而易见的事情正发生在你眼前&quot;&gt;&gt;
-        &lt;&lt;checkfix observation &quot;观察&quot; 10&gt;&gt;
+        &lt;&lt;checkfix observation &quot;观察&quot; 6&gt;&gt;
         &lt;&lt;if _rst == &quot;大成功&quot; || _rst == &quot;成功&quot;&gt;&gt;&lt;&lt;set $recording[&quot;发现登记表&quot;]=true&gt;&gt;
             你回忆起来，你刚为$tnn填好的登记表，理应和你的，以及所有其他新到岛的猫一样，在下船时就已经上交。&lt;br&gt;&lt;br&gt;
 
@@ -17008,7 +17005,7 @@ $(document)
         &lt;&lt;else&gt;&gt;
         那思绪随着$tnn起身向你致谢的动作一哄而散，你怎么也没能看出来有哪里不对。$tnn似乎没有察觉到你的情绪变化，他看着你，目光诚挚得不容置疑：|baeltalk&gt;“我不知道该怎么感谢您, $name, 您拯救了我的这一天...希望日后，我也能有拯救您的机会。” 又是一句让你莫名其妙的措辞，真该有猫教教他怎么得体地表达了，|baeltalk&gt;“现在, 容我告辞, 我要去送出这份登记表了。”
         &lt;br&gt;&lt;br&gt;
-        此时，远方传来了一阵钟声，
+        此时，远方传来了一阵钟声
         &lt;&lt;if $recording[&quot;了解钟&quot;] == true&gt;&gt;
             ，你差不多已经习惯了钟声报时这件事，但显然$tnn并没有
         &lt;&lt;/if&gt;&gt;。&lt;br&gt;&lt;br&gt;
@@ -17054,65 +17051,68 @@ $(document)
                     &lt;&lt;set _i =random(0, $food.uniqueLength-1)&gt;&gt;&lt;&lt;set _tmpn = $food.list[_i]&gt;&gt;&lt;&lt;dropitem _tmpn 1&gt;&gt;
                     &lt;&lt;else&gt;&gt;&lt;&lt;set _tmpn = &quot;玫瑰花种子&quot;&gt;&gt;&lt;&lt;dropitem _tmpn 1&gt;&gt;&lt;&lt;/if&gt;&gt;
                     你随意的从包里拿出一个_tmpn递给Seisi，甚至不确定鸟是否能够食用，而Seisi埋头啄了几下，立刻开始暴躁地在你头顶拍打翅膀，_tmpn从你手中滑落，啪地掉到了地上。&lt;br&gt;&lt;br&gt;
-                    &lt;&lt;timed 3s t8n&gt;&gt;|seisitalk&gt;“少拿你们凡物的东西糊弄我！” 它的嗓音听上去像木锯在咒骂，|seisitalk&gt;“我要的可是正经的贡品！”
-                    &lt;&lt;/timed&gt;&gt;
+                    |seisitalk&gt;“少拿你们凡物的东西糊弄我！” 它的嗓音听上去像木锯在咒骂，|seisitalk&gt;“我要的可是正经的贡品！”
+                    
                 &lt;&lt;/pick&gt;&gt;
                 &lt;&lt;pick &quot;「不给」&quot; &quot;你来岛上不是为了喂一只讨猫嫌的鸟&quot;&gt;&gt;
                 &lt;&lt;/pick&gt;&gt;
                 出乎你意料的，鹩哥似乎没打算继续骚扰你，此时的Seisi像是把全部注意力都放在找吃的这件事上了，仿佛预见在你这里不会得到更多有价值的东西，它抖抖翅膀，准备把你这段小插曲抛在身后。在鹩哥离开之前，你思索着要不要将刚刚那只猫的奇怪举动告诉它。&lt;br&gt;&lt;br&gt;
+                &lt;&lt;choices&gt;&gt;
+                    &lt;&lt;pick &quot;「告诉」&quot; &quot;你现在在永无乡上生活&lt;br&gt;岛上的危险因素或多或少也会影响到你&quot;&gt;&gt;
+                        你现在在永无乡上生活, 岛上的危险因素或多或少也会影响到你。你叫住Seisi，犹豫了一下，还是&lt;span class=&quot;texttip&quot;&gt;
+                    向它讲起
+                    &lt;span class=&quot;texttiptext&quot;&gt;这一切感觉起来都不对，但若Seisi真是一只如此聪慧还会回嘴的鸟儿，也许它能向岛主传达到你的关切，又或许，亲自去拜访一下岛主会更有诚意。&lt;/span&gt;&lt;/span&gt;  
+                    &lt;&lt;set $thoughts[&quot;向它讲起&quot;]=&quot;这一切感觉起来都不对，但若Seisi真是一只如此聪慧还会回嘴的鸟儿，也许它能向岛主传达到你的关切，又或许，亲自去拜访一下岛主会更有诚意。&quot;&gt;&gt;
+                    了刚刚发生的事。
+                    &lt;&lt;/pick&gt;&gt;
+                    &lt;&lt;pick &quot;「不告诉」&quot; &quot;你帮助了一个陌生猫，仅此而已&quot;&gt;&gt;
+                        岛上的治安倒还不用你来担心, 你帮助了一个陌生猫, 仅此而已, 即使他在这里用的是你给的名字。&lt;br&gt;&lt;br&gt;
+                        但此刻Seisi正歪着头看你，纯白的眼珠转动着，似乎看出了你的犹豫。“你有什么事情要告诉我？”
+                    &lt;&lt;/pick&gt;&gt;
+                    &lt;&lt;choices&gt;&gt;
+                        &lt;&lt;pick &quot;「告诉它那只猫没有名字」&quot; &quot;&quot;&gt;&gt;
+                        鹩哥听了你的讲述，也不急着飞走了，饶有兴趣地盯着你：|seisitalk&gt;“是这样吗？一只举止古怪的猫？你想着告诉我这件事可真是贴心，既然他已经在用你给他的名字了，你可是要对他负责到底呢！”
+                        &lt;&lt;/pick&gt;&gt;
+
+                        &lt;&lt;pick  &quot;「告诉它那只猫有许多尘羽」&quot; &quot;多到可疑！&quot;&gt;&gt;
+                        鹩哥听了你的讲述，也不急着飞走了，饶有兴趣地盯着你：|seisitalk&gt;“是这样吗？一只举止古怪的猫？你想着告诉我这件事可真是贴心，既然他这么富有，你为什么不去跟他交个朋友呢？说不定还能从他身上赚到不少。”
+                        &lt;&lt;/pick&gt;&gt;
+
+                        &lt;&lt;if $recording[&quot;发现登记表&quot;]==true&gt;&gt;
+                        &lt;&lt;pick  &quot;「告诉它那只猫没交登记表」&quot; &quot;他到底是怎么上岛的？&quot;&gt;&gt;
+                        鹩哥听了你的讲述，也不急着飞走了，饶有兴趣地盯着你：|seisitalk&gt;“是这样吗？一只举止古怪的猫？你想着告诉我这件事可真是贴心，既然你这么不放心，那不如多关注关注他。”
+                        &lt;&lt;/pick&gt;&gt;&lt;&lt;/if&gt;&gt;
+
+                        &lt;&lt;pick  &quot;「告诉它你遇到了一只需要帮助的猫」&quot; &quot;你说出了事实&quot;&gt;&gt;
+                        鹩哥听了你的讲述，也不急着飞走了，饶有兴趣地盯着你：|seisitalk&gt;“是这样吗？一只需要帮助的猫？你想着告诉我这件事可真是贴心，既然你这么好心，为什么不继续帮他呢？”
+                        &lt;&lt;/pick&gt;&gt;
+
+                        &lt;&lt;timed 4s t8n&gt;&gt;它扑棱着翅膀笑起来。“也许他只是需要一点*爱*，就像你们这些猫都喜欢的那样——”这只老鸟故意拖长嗓音，又把这个词重复了一遍
+                        &lt;&lt;if $resonancebael &gt;=2&gt;&gt;
+                        &lt;span class=&quot;texttip&quot;&gt;
+                        |seisitalk&gt;“——*爱*！”
+                        &lt;span class=&quot;texttiptext&quot;&gt;不，不是爱，不是这个词...&lt;/span&gt;&lt;/span&gt;  
+                        &lt;&lt;set $thoughts[&quot;爱&quot;]=&quot;不，不是爱，不是这个词...&quot;&gt;&gt;
+                        &lt;&lt;else&gt;&gt;|seisitalk&gt;“——*爱*！”&lt;&lt;/if&gt;&gt;
+                        &lt;br&gt;&lt;br&gt;
+                        &lt;&lt;next 2s t8n&gt;&gt;你很确定在Seisi那张鸟脸上看出了戏虐的表情。即使是天底下最纯粹的词，用它的声音说出来也变得无比难听。&lt;br&gt;&lt;br&gt;
+                        &lt;&lt;next 2s t8n&gt;&gt;老鸟像是在你这里享受够了乐子，似乎把这作为没得到你的贡品的补偿，满意地甩甩尾巴，张开翅膀飞走了，临走时它还不忘抛下一句：“别忘了给我找贡品！”
+                        &lt;br&gt;&lt;br&gt;
+                        &lt;&lt;next 2s t8n&gt;&gt;它似乎完全没把那只猫放在心上，那个今后被你称作$tnn的猫。也许你也不该。
+                        &lt;span style=&quot;float: right;&quot;&gt;&lt;&lt;link &quot;▷「继续」&quot; 小镇&gt;&gt;&lt;&lt;set $msd = 1&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;&lt;&lt;/timed&gt;&gt;
+                    &lt;&lt;/choices&gt;&gt;
+                &lt;&lt;/choices&gt;&gt;
+
             &lt;&lt;/choices&gt;&gt;
         &lt;&lt;/choicesrp&gt;&gt;
     &lt;&lt;/choices&gt;&gt;
 &lt;&lt;/choices&gt;&gt;&lt;&lt;/timed&gt;&gt;
 
-/*第三页*/
-&lt;&lt;elseif $choice == &quot;告诉&quot; || $choice == &quot;不告诉&quot;&gt;&gt;
-&lt;&lt;if $choice == &quot;告诉&quot;&gt;&gt;
-你现在在永无乡上生活, 岛上的危险因素或多或少也会影响到你。你叫住Seisi，犹豫了一下，还是&lt;span class=&quot;texttip&quot;&gt;
-向它讲起
-&lt;span class=&quot;texttiptext&quot;&gt;这一切感觉起来都不对，但若Seisi真是一只如此聪慧还会回嘴的鸟儿，也许它能向岛主传达到你的关切，又或许，亲自去拜访一下岛主会更有诚意。&lt;/span&gt;&lt;/span&gt;  
-&lt;&lt;set $thoughts[&quot;向它讲起&quot;]=&quot;这一切感觉起来都不对，但若Seisi真是一只如此聪慧还会回嘴的鸟儿，也许它能向岛主传达到你的关切，又或许，亲自去拜访一下岛主会更有诚意。&quot;&gt;&gt;
-了刚刚发生的事。&lt;br&gt;&lt;br&gt;
-&lt;&lt;elseif $choice == &quot;不告诉&quot;&gt;&gt;
-岛上的治安倒还不用你来担心, 你帮助了一个陌生猫, 仅此而已, 即使他在这里用的是你给的名字。
-但此刻Seisi正歪着头看你，纯白的眼珠转动着，似乎看出了你的犹豫。“你有什么事情要告诉我？”
 &lt;&lt;/if&gt;&gt;
 
-&lt;&lt;choices&gt;&gt;
-    &lt;&lt;pick &quot;「告诉它那只猫没有名字」&quot; &quot;&quot;&gt;&gt;
-    鹩哥听了你的讲述，也不急着飞走了，饶有兴趣地盯着你：|seisitalk&gt;“是这样吗？一只举止古怪的猫？你想着告诉我这件事可真是贴心，既然他已经在用你给他的名字了，你可是要对他负责到底呢！”
-    &lt;&lt;/pick&gt;&gt;
-
-    &lt;&lt;pick  &quot;「告诉它那只猫有许多尘羽」&quot; &quot;多到可疑！&quot;&gt;&gt;
-    鹩哥听了你的讲述，也不急着飞走了，饶有兴趣地盯着你：|seisitalk&gt;“是这样吗？一只举止古怪的猫？你想着告诉我这件事可真是贴心，既然他这么富有，你为什么不去跟他交个朋友呢？说不定还能从他身上赚到不少。”
-    &lt;&lt;/pick&gt;&gt;
-
-    &lt;&lt;if $recording[&quot;发现登记表&quot;]==true&gt;&gt;
-    &lt;&lt;pick  &quot;「告诉它那只猫没交登记表」&quot; &quot;他到底是怎么上岛的？&quot;&gt;&gt;
-    鹩哥听了你的讲述，也不急着飞走了，饶有兴趣地盯着你：|seisitalk&gt;“是这样吗？一只举止古怪的猫？你想着告诉我这件事可真是贴心，既然你这么不放心，那不如多关注关注他。”
-    &lt;&lt;/pick&gt;&gt;&lt;&lt;/if&gt;&gt;
-
-    &lt;&lt;pick  &quot;「告诉它你遇到了一只需要帮助的猫」&quot; &quot;你说出了事实&quot;&gt;&gt;
-    鹩哥听了你的讲述，也不急着飞走了，饶有兴趣地盯着你：|seisitalk&gt;“是这样吗？一只需要帮助的猫？你想着告诉我这件事可真是贴心，既然你这么好心，为什么不继续帮他呢？”
-    &lt;&lt;/pick&gt;&gt;
-
-    &lt;&lt;timed 4s t8n&gt;&gt;它扑棱着翅膀笑起来。“也许他只是需要一点*爱*，就像你们这些猫都喜欢的那样——”这只老鸟故意拖长嗓音，又把这个词重复了一遍
-    &lt;&lt;if $resonancebael &gt;=2&gt;&gt;
-    &lt;span class=&quot;texttip&quot;&gt;
-    |seisitalk&gt;“——*爱*！”
-    &lt;span class=&quot;texttiptext&quot;&gt;不，不是爱，不是这个词...&lt;/span&gt;&lt;/span&gt;  
-    &lt;&lt;set $thoughts[&quot;爱&quot;]=&quot;不，不是爱，不是这个词...&quot;&gt;&gt;
-    &lt;&lt;else&gt;&gt;|seisitalk&gt;“——*爱*！”&lt;&lt;/if&gt;&gt;
-&lt;br&gt;&lt;br&gt;
-&lt;&lt;next 2s t8n&gt;&gt;你很确定在Seisi那张鸟脸上看出了戏虐的表情。即使是天底下最纯粹的词，用它的声音说出来也变得无比难听。&lt;br&gt;&lt;br&gt;
-&lt;&lt;next 2s t8n&gt;&gt;老鸟像是在你这里享受够了乐子，似乎把这作为没得到你的贡品的补偿，满意地甩甩尾巴，张开翅膀飞走了，临走时它还不忘抛下一句：“别忘了给我找贡品！”
-&lt;br&gt;&lt;br&gt;
-&lt;&lt;next 2s t8n&gt;&gt;它似乎完全没把那只猫放在心上，那个今后被你称作$tnn的猫。也许你也不该。
-&lt;span style=&quot;float: right;&quot;&gt;&lt;&lt;link &quot;▷「继续」&quot; 小镇&gt;&gt;&lt;&lt;set $msd = 1&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;/span&gt;&lt;&lt;/timed&gt;&gt;
-&lt;&lt;/choices&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="36" name="主线D2" tags="nobr" position="" size="">/*第一页*/
+0</tw-passagedata><tw-passagedata pid="36" name="主线D2" tags="nobr" position="" size="">/*第一页*/
 &lt;&lt;if $choice == 0&gt;&gt;
-你走近小镇，猫们都各自或忙碌或悠闲地在度过自己的又一天，只是这次，一个眼熟的身影吸引了你的注意：那是$tnn，正在打开图书馆的门走进去。&lt;br&gt;&lt;br&gt;
+你走进小镇，猫们都各自或忙碌或悠闲地在度过自己的又一天，只是这次，一个眼熟的身影吸引了你的注意：那是$tnn，正在打开图书馆的门走进去。&lt;br&gt;&lt;br&gt;
 
 &lt;&lt;choices&gt;&gt;
     &lt;&lt;pick &quot;「跟上前去」&quot; &quot;看来你在永无乡上的日子就是摆脱不掉这只老鸟&quot;&gt;&gt;
@@ -18110,7 +18110,6 @@ _showname.finish
     finish: &quot;你开启了十天的永无乡之旅，岛主安排你住在旅店，但你仍可以靠自己的努力换取一套独立的小屋&quot;,
     fail: &quot;无&quot;
 }&gt;&gt;
-
 &lt;&lt;set $events[&quot;永无乡生活指南&quot;] = {
     title: &quot;永无乡生活指南&quot;,
     receiveDay: &quot;6月14日上午&quot;,
@@ -18123,6 +18122,18 @@ _showname.finish
         {text:&quot;逛逛岛上的地区（$biglocwent.length/9）&quot;, done:false},
     ],
     finish: &quot;Seisi：“不错，你已经不像一名迷路的旅客了”&quot;,
+    fail: &quot;无&quot;
+}&gt;&gt;
+&lt;&lt;set $events[&quot;拿到居民给你准备的见面礼&quot;] = {
+    title: &quot;拿到居民给你准备的见面礼&quot;,
+    receiveDay: null,
+    endDay: null,
+    status: &quot;尚未发生&quot;,
+    summary: &quot;永无乡的居民给你准备了一些见面礼，打算亲自交给你&quot;,
+    list: [
+        {text:&quot;拿到见面礼：0/4&quot;, done:false},
+    ],
+    finish: &quot;无&quot;,
     fail: &quot;无&quot;
 }&gt;&gt;
 
@@ -18174,6 +18185,18 @@ _showname.finish
     summary: &quot;公爵夫人答应教你如何酿造柿子酒，作为酿造专家的她一定能让你实现自产柿子酒&quot;,
     list: [
         {text:&quot;找到公爵夫人所说的黑色莲花&quot;, done:false},
+    ],
+    finish: &quot;无&quot;,
+    fail: &quot;无&quot;
+}&gt;&gt;
+&lt;&lt;set $events[&quot;梦境的记录&quot;] = {
+    title: &quot;梦境的记录&quot;,
+    receiveDay: null,
+    endDay: null,
+    status: &quot;尚未发生&quot;,
+    summary: &quot;你似乎做了一些内容生动的梦，记忆只剩残余，但梦中的那般感觉久久无法散去，也许有什么方法能把梦境记录下来&quot;,
+    list: [
+        {text:&quot;去图书馆询问奥提斯&quot;, done:false},
     ],
     finish: &quot;无&quot;,
     fail: &quot;无&quot;
@@ -18415,6 +18438,7 @@ _showname.finish
 &lt;&lt;elseif $choice ==&quot;沉默&quot;&gt;&gt;&lt;&lt;set $choice to &quot;结束&quot;&gt;&gt;
 木柴在炉火中噼啪作响，巴尔韦克老爷在你身旁粗粝的呼吸着，后屋不断传出女裁缝的切肉声，这些声响比寂静还更要折磨你。你缄默不语，喂养着屋中这哀伤一般的沉默，让它将你吞没。&lt;br&gt;&lt;br&gt;
 &lt;&lt;include 梦的记录&gt;&gt;
+
 &lt;&lt;elseif $choice ==&quot;结束&quot;&gt;&gt;
 直到女裁缝端着一盆用腌好的兔肉回到炉边，给这份沉默添进了新的柴薪，因为这对夫妻似乎是觉得再也无法容忍彼此的存在，便决定用比分离更加残忍的方式互相惩罚，言语在他们之间过于累赘，只有手上的活计和不间断的蜜酒才能填补二者间的裂痕。&lt;br&gt;&lt;br&gt;
 女裁缝将兔肉放在火炉旁后，在围裙上擦了擦手，拿起那捆从进门就被搁置在桌上的蜘蛛网，坐回到她的工作台，开始了新一轮劳作。&lt;br&gt;&lt;br&gt;
@@ -18431,7 +18455,7 @@ _showname.finish
 &lt;&lt;else&gt;&gt;当你说你没有那么多钱后，女裁缝走了过来，拦在她丈夫面前，语气有些斥责：“够了，这委托是交给我的，钱由我来收。” &lt;br&gt;
 她收取了你50尘羽当作报酬。&lt;&lt;set $ashes -=50&gt;&gt;&lt;&lt;badthing &quot;你失去了50尘羽&quot;&gt;&gt;&lt;&lt;gainitem &quot;捕梦网&quot; 1&gt;&gt;&lt;&lt;itemobtain &quot;捕梦网&quot; 1&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/linkreplace&gt;&gt;&lt;br&gt;
+&lt;&lt;/linkreplace&gt;&gt;&lt;br&gt;&lt;&lt;eventadd &quot;梦境的记录&quot; &quot;回去找奥提斯&quot;&gt;&gt;&lt;&lt;eventdone &quot;梦境的记录&quot; 1&gt;&gt;
 &lt;&lt;link ▷「离开」 贝雷河&gt;&gt;&lt;&lt;set $choice to 0, $state =0&gt;&gt;&lt;&lt;/link&gt;&gt;&lt;br&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;/do&gt;&gt;&lt;&lt;/linkreplace&gt;&gt;
@@ -19533,9 +19557,9 @@ Dialog.open();&gt;&gt;
 
 
 &lt;&lt;/do&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="酒馆座位" tags="nobr" position="1200,400" size="100,100">&lt;&lt;set _s to random(1,100)&gt;&gt;
-&lt;&lt;if _s &lt;= 80 &amp;&amp; $events[&quot;帮酒鬼寇尼做布尔盖酒&quot;].state == &quot;尚未发生&quot;&gt;&gt;
+&lt;&lt;if _s &lt;= 80 &amp;&amp; $events[&quot;帮酒鬼寇尼做布尔盖酒&quot;].status == &quot;尚未发生&quot;&gt;&gt;
 &lt;&lt;goto &quot;布尔盖酒&quot;&gt;&gt;
-&lt;&lt;elseif _s &lt;= 40 &amp;&amp; $events[&quot;帮酒鬼寇尼做布尔盖酒&quot;].state == &quot;正在进行&quot; &amp;&amp; $events[&quot;帮酒鬼寇尼做布尔盖酒&quot;].date &gt;= $date - 20&gt;&gt;
+&lt;&lt;elseif _s &lt;= 40 &amp;&amp; $events[&quot;帮酒鬼寇尼做布尔盖酒&quot;].status == &quot;正在进行&quot; &amp;&amp; $events[&quot;帮酒鬼寇尼做布尔盖酒&quot;].date &gt;= $date - 20&gt;&gt;
 &lt;&lt;goto &quot;布尔盖酒&quot;&gt;&gt;
 
 &lt;&lt;else&gt;&gt;
@@ -26274,9 +26298,33 @@ $horse[7].odds = Math.floor($horse[7].odds*(1-$horse[7].bitmoney*$racing.adjust/
 &lt;h2&gt;CREDITS&lt;/h2&gt;世界观创作、游戏制作、剧情设计、角色设计、文本编写：Nix&lt;br&gt;特别感谢：Chapel、Shour、黑星&lt;br&gt;
 
 &lt;&lt;include &quot;更新日志&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="185" name="版本更新" tags="notime" position="" size="">&lt;&lt;do&gt;&gt;当前版本：0.26&lt;&lt;=$test&gt;&gt;
-最新版本：0.26815&lt;br&gt;
+最新版本：0.26820&lt;br&gt;
 &lt;&lt;link 更新版本&gt;&gt;
-&lt;&lt;set $test = 0815&gt;&gt;
+&lt;&lt;set $test = 820&gt;&gt;
+&lt;&lt;set $events[&quot;梦境的记录&quot;] = {
+    title: &quot;梦境的记录&quot;,
+    receiveDay: null,
+    endDay: null,
+    status: &quot;尚未发生&quot;,
+    summary: &quot;你似乎做了一些内容生动的梦，记忆只剩残余，但梦中的那般感觉久久无法散去，也许有什么方法能把梦境记录下来&quot;,
+    list: [
+        {text:&quot;去图书馆询问奥提斯&quot;, done:false},
+    ],
+    finish: &quot;无&quot;,
+    fail: &quot;无&quot;
+}&gt;&gt;
+&lt;&lt;set $events[&quot;拿到居民给你准备的见面礼&quot;] = {
+    title: &quot;拿到居民给你准备的见面礼&quot;,
+    receiveDay: null,
+    endDay: null,
+    status: &quot;尚未发生&quot;,
+    summary: &quot;永无乡的居民给你准备了一些见面礼，打算亲自交给你&quot;,
+    list: [
+        {text:&quot;拿到见面礼：0/4&quot;, done:false},
+    ],
+    finish: &quot;无&quot;,
+    fail: &quot;无&quot;
+}&gt;&gt;
 &lt;&lt;notify 3s&gt;&gt;已更新至最新版本&lt;&lt;/notify&gt;&gt;&lt;&lt;redo&gt;&gt;&lt;&lt;/link&gt;&gt;
 (已触发内容的更新无法同步，测试阶段不建议长期游玩)
 &lt;&lt;/do&gt;&gt;&lt;br&gt;
