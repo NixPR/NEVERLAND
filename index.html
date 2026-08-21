@@ -13079,7 +13079,7 @@ State.variables.NPCinfo["玛丽亚小姐"]={ name:"玛丽亚小姐", allname:"Ma
 State.variables.NPCinfo["佩拉大夫"]={ name:"佩拉大夫", allname:"Perramo", cssname:"chinese-quote", pron:"他", species:"猫族", age:"0", nation:"哥伦比亚", home:"医院", knowlive:"false", id:"大夫", intro:"即使岛主为他在小镇的街口安排了一间带有田地的平房, 佩拉大夫更多时候是住在医院的. 他就在装有换气扇的那面墙旁挂起了吊床, 将药瓶稀稀散散地放上物架, 在书桌上摊开他不知要写给谁的空白信纸. 要问起来, 他的回答永远是: ”早晚的事“", img:null, icon:null,love:0, chat:0, gift:0, knowledge:45, strength:37, observation:73, persuasive:79, met:"false", like:[null], hate:[null], rec:[null], stage:"firstage", firstage:"还没写", secstage:"还没写", thistage:"还没写", foustage:"还没写", fifstage:"还没写", sixstage:"还没写"};
 State.variables.NPCinfo["寇尼"]={ name:"寇尼", allname:"Coni", cssname:"godtalk", pron:"他", species:"神话神", age:"0", nation:"墨西哥", home:"酒馆", knowlive:"false", id:"酒鬼", intro:"岛上几乎猫尽皆知的酒鬼, 赊账到琥珀夫人已经不再试图从他那儿要来酒钱, 还好心地给他提供了酒馆角落的桌椅当作夜晚栖身的地方. 没谁知道他是如何流浪到的永无乡, 岛主曾经给他供给过几次资助, 但一切物资到他手里都会被换成酒水, 仿佛那才是他的生命之源", img:null, icon:null,love:0, chat:0, gift:0, knowledge:25, strength:65, observation:23, persuasive:15, met:"false", like:[null], hate:[null], rec:[null], stage:"firstage", firstage:"还没写", secstage:"还没写", thistage:"还没写", foustage:"还没写", fifstage:"还没写", sixstage:"还没写"};
 
-</script><tw-tag name="init" color="green"></tw-tag><tw-tag name="nobr" color="yellow"></tw-tag><tw-tag name="autosave" color="blue"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="UIBarhide" color="green"></tw-tag><tw-tag name="widget" color="orange"></tw-tag><tw-passagedata pid="1" name="NPC" tags="nobr notime" position="" size="">&lt;&lt;reopen&gt;&gt;
+</script><tw-tag name="init" color="green"></tw-tag><tw-tag name="UIBarhide" color="green"></tw-tag><tw-tag name="nobr" color="yellow"></tw-tag><tw-tag name="widget" color="orange"></tw-tag><tw-tag name="autosave" color="blue"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-passagedata pid="1" name="NPC" tags="nobr notime" position="" size="">&lt;&lt;reopen&gt;&gt;
 &lt;div id=&quot;idcard&quot;&gt;
 &lt;table style=&quot;width:100%; border-style: none;&quot;&gt;
 &lt;tbody align=&quot;center&quot;&gt;
@@ -18546,7 +18546,7 @@ _showname.finish
 &lt;&lt;/if&gt;&gt;&lt;&lt;/do&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;/do&gt;&gt;
 &lt;&lt;/if&gt;&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="49" name="布尔盖酒" tags="nobr" position="" size="">&lt;&lt;if $events[&quot;帮酒鬼寇尼做布尔盖酒&quot;].state == &quot;尚未发生&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="49" name="布尔盖酒" tags="nobr" position="" size="">&lt;&lt;if $events[&quot;帮酒鬼寇尼做布尔盖酒&quot;].status == &quot;尚未发生&quot;&gt;&gt;
 你还没来得及坐稳，一只毛发凌乱的灰猫不知道从哪个角落出现，就要爬上你的木桌。你认出来了他，这是一直在岛上无业的流浪猫。你记得他们称他为寇尼——岛上几乎猫尽皆知的酒鬼，赊账到公爵夫人已经不再试图从他那儿要来酒钱，还好心地给他提供了酒馆角落的桌椅当作夜晚栖身的地方. 没谁知道他是如何流浪到的永无乡，岛主曾经给他供给过几次资助，但一切物资到他手里都会被换成酒水，仿佛那才是他的生命之源。&lt;br&gt;&lt;br&gt;
 你想赶在彻底扫兴之前换一处座位，寇尼却抓住你的肩膀，用因饮酒过度而嘶哑的嗓音对你低吼着:&lt;br&gt;&lt;br&gt;“酒，布尔盖酒，你有吗... ”
 &lt;br&gt;&lt;br&gt;醉汉的话语酒气熏天，而你也从未在岛上见到过什么布尔盖酒。&lt;br&gt;&lt;br&gt;
@@ -18556,7 +18556,7 @@ _showname.finish
         你强忍着恶心推开寇尼，他那意外消瘦的身躯踉跄跌倒在地，一枚玉雕从他的大衣里滑出来，他颤颤巍巍的捡起玉雕，又凑到你面前。“你帮我做出来布尔盖酒，我就给你这些。”
     &lt;&lt;/pick&gt;&gt;
     &lt;&lt;pick &quot;「询问布尔盖酒」&quot; &quot;此前你从未听说过这样的酒名，也许是岛上独有的酒&quot;&gt;&gt;
-        你强忍着恶心，问寇尼布尔盖酒是什么，他在听到问题后突然双目失神的放开了你，你以为酒鬼的醉话已经结束，却看见他从大衣的内袋中掏出一块兔子形状的玉雕。&lt;br&gt;&lt;br&gt;
+        你强忍着恶心，问寇尼布尔盖酒是什么，他在听到问题后突然双目失神地放开了你，你以为酒鬼的醉话已经结束，却看见他从大衣的内袋中掏出一块兔子形状的玉雕。&lt;br&gt;&lt;br&gt;
         “你帮我做出来布尔盖酒，我就给你这些。”他用颤颤巍巍的手爪捧着玉雕，看起来丝毫不怜惜。
     &lt;&lt;/pick&gt;&gt; 
     &lt;&lt;choices&gt;&gt;
